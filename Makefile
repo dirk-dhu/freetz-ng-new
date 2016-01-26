@@ -371,8 +371,13 @@ TOOLCHAIN_DISTCLEAN:=$(patsubst %,%-distclean,$(TOOLCHAIN))
 TOOLCHAIN_SOURCE:=$(patsubst %,%-source,$(TOOLCHAIN))
 
 ifeq ($(strip $(FREETZ_BUILD_TOOLCHAIN)),y)
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 include $(TOOLCHAIN_DIR)/make/kernel-toolchain.mk
+endif
 include $(TOOLCHAIN_DIR)/make/target-toolchain.mk
+ifeq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
+include $(TOOLCHAIN_DIR)/make/download-toolchain.mk
+endif
 else
 include $(TOOLCHAIN_DIR)/make/download-toolchain.mk
 endif

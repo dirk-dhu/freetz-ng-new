@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_DEV_TOOLS_M4
+	bool "Dev Tools m4 (binary only)"
+	depends on (FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL)
+	default n
+	help
+		development tools m4,
+		needed by target toolchain.

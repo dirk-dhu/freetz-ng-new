@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_AUTOMAKE
+	depends on EXTERNAL_ENABLED && EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_AUTOMAKE
+	bool "Dev Tools automake  (binary only)"
+	default n
+	help
+		externals the following file(s):
+		 /usr/local/bin/automake

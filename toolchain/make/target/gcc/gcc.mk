@@ -49,6 +49,10 @@ GCC_COMMON_CONFIGURE_OPTIONS += --disable-fixed-point
 GCC_COMMON_CONFIGURE_OPTIONS += $(strip $(GCC_COMMON_CONFIGURE_OPTIONS_HW_CAPABILITIES))
 GCC_COMMON_CONFIGURE_OPTIONS += --disable-nls
 GCC_COMMON_CONFIGURE_OPTIONS += $(QUIET)
+# disable libatomic at least for 4.8 and 5.5 to prevent: configure: error: Pthreads are required to build libatomic
+GCC_COMMON_CONFIGURE_OPTIONS += --disable-libatomic
+
+
 
 ifneq ($(strip $(FREETZ_TARGET_TOOLCHAIN_AVM_COMPATIBLE)),y)
 ifeq ($(strip $(FREETZ_TARGET_ARCH_MIPS)),y)
@@ -243,7 +247,11 @@ $(GCC_BUILD_DIR2)/.installed: $(GCC_BUILD_DIR2)/.compiled
 
 gcc-configured: $(GCC_BUILD_DIR2)/.configured
 
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 gcc: uclibc-configured binutils gcc_initial uclibc $(GCC_BUILD_DIR2)/.installed
+else
+gcc: uclibc-configured binutils uclibc
+endif
 
 
 gcc-uninstall:
@@ -268,7 +276,11 @@ gcc-distclean: gcc-dirclean
 #############################################################
 GCC_BUILD_DIR3:=$(TARGET_TOOLCHAIN_DIR)/gcc-$(GCC_VERSION)-target
 
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 $(GCC_BUILD_DIR3)/.configured: $(GCC_BUILD_DIR2)/.installed $(GCC_TARGET_PREREQ) | binutils_target
+else
+$(GCC_BUILD_DIR3)/.configured: $(GCC_DIR)/.unpacked $(GCC_TARGET_PREREQ) | binutils_target
+endif
 	@$(call _ECHO,configuring,$(GCC_ECHO_TYPE),$(GCC_ECHO_MAKE),target)
 	mkdir -p $(GCC_BUILD_DIR3)
 	(cd $(GCC_BUILD_DIR3); $(RM) config.cache; \
@@ -277,6 +289,8 @@ $(GCC_BUILD_DIR3)/.configured: $(GCC_BUILD_DIR2)/.installed $(GCC_TARGET_PREREQ)
 		\
 		CXX="$(TARGET_MAKE_PATH)/$(TARGET_CROSS)g++" \
 		\
+		CFLAGS="$(TOOLCHAIN_HOST_CFLAGS) -O2 -I$(HOST_TOOLS_DIR)/include" \
+		CXXFLAGS="$(TOOLCHAIN_HOST_CFLAGS) -O2 -I$(HOST_TOOLS_DIR)/include" \
 		CFLAGS_FOR_BUILD="$(TOOLCHAIN_HOST_CFLAGS) -O2 -I$(HOST_TOOLS_DIR)/include" \
 		CXXFLAGS_FOR_BUILD="$(TOOLCHAIN_HOST_CFLAGS) -O2 -I$(HOST_TOOLS_DIR)/include" \
 		LDFLAGS_FOR_BUILD="-L$(HOST_TOOLS_DIR)/lib" \
@@ -333,6 +347,7 @@ gcc_target-clean: gcc_target-uninstall
 	$(RM) -r $(GCC_BUILD_DIR3)
 
 gcc_target-dirclean: gcc_target-clean gcc-dirclean
+	-find $(TARGET_TOOLCHAIN_DIR) -name config.cache -exec rm {} \;
 
 gcc_target-distclean: gcc_target-dirclean
 

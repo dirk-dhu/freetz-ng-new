@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_M4
+	depends on EXTERNAL_ENABLED && EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_M4
+	bool "Dev Tools m4  (binary only)"
+	default n
+	help
+		externals the following file(s):
+		 /usr/local/bin/m4
