@@ -72,7 +72,11 @@ binutils-clean: binutils-uninstall
 binutils-dirclean: binutils-clean binutils_target-dirclean
 	$(RM) -r $(BINUTILS_DIR)
 
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 binutils: binutils-dependencies $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/$(REAL_GNU_TARGET_NAME)/bin/ld
+else
+binutils: $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/$(REAL_GNU_TARGET_NAME)/bin/ld
+endif
 
 #############################################################
 #
@@ -101,7 +105,7 @@ $(BINUTILS_DIR2)/.configured: $(BINUTILS_DIR)/.unpacked
 	touch $@
 
 $(BINUTILS_DIR2)/.compiled: $(BINUTILS_DIR2)/.configured
-	$(MAKE_ENV) $(MAKE) $(BINUTILS_EXTRA_MAKE_OPTIONS) -C $(BINUTILS_DIR2) all
+	LIB_PATH="/usr/lib/freetz:/usr/local/lib:/lib:/usr/lib" $(MAKE_ENV) $(MAKE) $(BINUTILS_EXTRA_MAKE_OPTIONS) -C $(BINUTILS_DIR2) all
 	touch $@
 
 $(TARGET_UTILS_DIR)/usr/bin/ld: $(BINUTILS_DIR2)/.compiled

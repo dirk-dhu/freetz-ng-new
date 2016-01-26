@@ -15,4 +15,4 @@
 +#endif
  
  #define mclear(x) memset(&x, 0, sizeof(x))
- 
+ 

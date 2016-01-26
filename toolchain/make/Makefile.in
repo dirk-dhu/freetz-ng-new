@@ -55,7 +55,9 @@ KERNEL_MAKE_PATH:=$(KERNEL_TOOLCHAIN_STAGING_DIR)/bin
 TARGET_MAKE_PATH:=$(TARGET_TOOLCHAIN_STAGING_DIR)/bin
 
 ifeq ($(strip $(FREETZ_BUILD_TOOLCHAIN)),y)
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 TOOLCHAIN:=kernel-toolchain target-toolchain
+endif
 else
 TOOLCHAIN:=download-toolchain
 endif

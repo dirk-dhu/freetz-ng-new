@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_DEV_TOOLS_BISON
+	bool "Dev Tools bison (binary only)"
+	depends on (FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL)
+	default n
+	help
+		development tools bison,
+		needed by target toolchain.
