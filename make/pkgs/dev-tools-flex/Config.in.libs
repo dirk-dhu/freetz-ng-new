@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_DEV_TOOLS_FLEX
+	bool "Dev Tools flex (binary only)"
+	depends on (FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL)
+	default n
+	help
+		development tools flex,
+		needed by target toolchain.

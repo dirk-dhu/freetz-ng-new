@@ -1,0 +1,23 @@
+config EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_DEV_TOOLS
+	bool "Dev Tools (compiler binaries)"
+	select EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_AUTOMAKE if EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_AUTOMAKE
+	select EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_AUTOCONF if EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_AUTOCONF
+	select EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_M4       if EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_M4
+	select EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_FLEX     if EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_FLEX
+	select EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_BISON    if EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_BISON
+	select EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_LIBSINCS if EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_LIBSINCS
+	default n
+	help
+		externals the following file(s):
+		 /usr/local
+
+		 
+menu "further target dev tools"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+	source make/pkgs/dev-tools-m4/external.in
+	source make/pkgs/dev-tools-autoconf/external.in
+	source make/pkgs/dev-tools-automake/external.in
+	source make/pkgs/dev-tools-bison/external.in
+	source make/pkgs/dev-tools-flex/external.in
+endmenu

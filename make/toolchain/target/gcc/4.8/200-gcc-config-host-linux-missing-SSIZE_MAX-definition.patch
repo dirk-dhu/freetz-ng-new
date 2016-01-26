@@ -1,0 +1,16 @@
+2013-12-17  Bernd Edlinger  <bernd.edlinger@hotmail.de>
+
+        * gcc/config/host-linux.c (linux_gt_pch_use_address): Don't
+	use SSIZE_MAX because it is not always defined. 
+
+--- gcc/config/host-linux.c	2013-01-10 21:38:27.000000000 +0100
++++ gcc/config/host-linux.c	2013-12-09 09:36:14.566516055 +0100
+@@ -212,7 +212,7 @@ linux_gt_pch_use_address (void *base, si
+     {
+       ssize_t nbytes;
+ 
+-      nbytes = read (fd, base, MIN (size, SSIZE_MAX));
++      nbytes = read (fd, base, MIN (size, (size_t)-1 >> 1));
+       if (nbytes <= 0)
+         return -1;
+       base = (char *) base + nbytes;
