@@ -1,0 +1,67 @@
+config FREETZ_PACKAGE_DEV_TOOLS
+	bool "Dev Tools  (binary only)"
+	depends on (FREETZ_DOWNLOAD_TOOLCHAIN || FREETZ_BUILD_TOOLCHAIN)
+	select FREETZ_TARGET_TOOLCHAIN if FREETZ_BUILD_TOOLCHAIN
+	select FREETZ_BUSYBOX__DEVELOPER if FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL 
+	select FREETZ_BUSYBOX_COMM if FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL
+	select FREETZ_PACKAGE_GNU_MAKE if FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL
+	select FREETZ_PACKAGE_BASH if FREETZ_PACKAGE_DEV_TOOLS && ! FREETZ_PACKAGE_DEV_TOOLS_MINIMAL
+	select FREETZ_PACKAGE_DEV_TOOLS_AUTOCONF if FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL || FREETZ_PACKAGE_DEV_TOOLS_COMPILER_MOSTLY_NEEDED
+	select FREETZ_PACKAGE_DEV_TOOLS_AUTOMAKE if FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL || FREETZ_PACKAGE_DEV_TOOLS_COMPILER_MOSTLY_NEEDED
+	select FREETZ_PACKAGE_DEV_TOOLS_BISON    if FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL || FREETZ_PACKAGE_DEV_TOOLS_COMPILER_MOSTLY_NEEDED
+	select FREETZ_PACKAGE_DEV_TOOLS_FLEX     if FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL || FREETZ_PACKAGE_DEV_TOOLS_COMPILER_MOSTLY_NEEDED
+	select FREETZ_PACKAGE_DEV_TOOLS_M4       if FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL || FREETZ_PACKAGE_DEV_TOOLS_COMPILER_MOSTLY_NEEDED
+	select FREETZ_PACKAGE_DEV_TOOLS_LIBSINCS if FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL
+	default n
+	help
+		development tools as binutils and gcc,
+		used from target toolchain.
+
+menu "further target dev tools"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+	source make/pkgs/dev-tools-m4/Config.in.libs
+	source make/pkgs/dev-tools-autoconf/Config.in.libs
+	source make/pkgs/dev-tools-automake/Config.in.libs
+	source make/pkgs/dev-tools-bison/Config.in.libs
+	source make/pkgs/dev-tools-flex/Config.in.libs
+	source make/pkgs/dev-tools/Config.in.libs
+endmenu
+
+comment "Amount of tools selected from the target toolchain -------------"
+choice
+	prompt "Amount of tools selected"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+	default FREETZ_PACKAGE_DEV_TOOLS_MINIMAL
+	help
+		if choosing compiler you have to enable according external.
+		if you change selection you have to select minimal version
+		and re-build for cleanup and then choose the wanted item.
+
+	config FREETZ_PACKAGE_DEV_TOOLS_MINIMAL
+	bool "minimal (some binaries, compiler is not functional)"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+
+	config FREETZ_PACKAGE_DEV_TOOLS_COMPILER_MOSTLY_NEEDED
+	bool "compiler (fully functional, compiler and tools)"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+
+	config FREETZ_PACKAGE_DEV_TOOLS_COMPILER_FULL
+	bool "compiler (fully blown set, all incs and libs, SEE HELP)"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+	help
+		GUI UPLOAD DOES NOT WORK, if selected
+		use workaround instead and transfer *.external to fritz.box 
+		and unpack file in exteranl directory using tar -xf *.external
+		or select create upload file for every package in external menu
+
+	config FREETZ_PACKAGE_DEV_TOOLS_COMPILER_CONFIGURABLE
+	bool "compiler (select needed set, yourself)"
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+endchoice
+
+comment "Install prefix for Compiler Dev-Tools -------------"
+	config FREETZ_PACKAGE_DEV_TOOLS_PREFIX
+	string 
+	depends on FREETZ_PACKAGE_DEV_TOOLS
+	default "/usr/local" if !FREETZ_PACKAGE_DEV_TOOLS_MINIMAL
+	default "/usr"       if  FREETZ_PACKAGE_DEV_TOOLS_MINIMAL

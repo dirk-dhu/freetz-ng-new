@@ -175,7 +175,11 @@ uclibc-olddefconfig: $(UCLIBC_DIR)/.config
 	cp -f $^ $(UCLIBC_CONFIG_FILE) && \
 	touch $^
 
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 $(UCLIBC_DIR)/lib/libc.a: $(UCLIBC_DIR)/.configured | $(UCLIBC_PREREQ_GCC_INITIAL)
+else
+$(UCLIBC_DIR)/lib/libc.a: $(UCLIBC_DIR)/.configured
+endif
 	@$(call _ECHO,building,$(UCLIBC_ECHO_TYPE),$(UCLIBC_ECHO_MAKE))
 	$(UCLIBC_MAKE) -C $(UCLIBC_DIR) \
 		$(UCLIBC_COMMON_BUILD_FLAGS) \
@@ -302,7 +306,11 @@ $(TARGET_UTILS_DIR)/usr/lib/libc.a: $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libc
 	$(call REMOVE_DOC_NLS_DIRS,$(TARGET_UTILS_DIR))
 	touch -c $@
 
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 uclibc_target: gcc uclibc $(TARGET_UTILS_DIR)/usr/lib/libc.a
+else
+uclibc_target: uclibc $(TARGET_UTILS_DIR)/usr/lib/libc.a
+endif
 
 
 uclibc_target-clean: uclibc_target-dirclean
