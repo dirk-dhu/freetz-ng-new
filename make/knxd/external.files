@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_KNXD" == "y" ] && EXTERNAL_FILES+=" /usr/bin/knxd /usr/bin/knxtool /usr/bin/findknxusb /usr/lib/knxd_args /usr/lib/knxd"

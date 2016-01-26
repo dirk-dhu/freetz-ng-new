@@ -1,0 +1,3 @@
+ifeq ($(strip $(FREETZ_LIB_libargp_WITH_STATIC)),y)
+LIBS+=argp
+endif

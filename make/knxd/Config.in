@@ -1,0 +1,15 @@
+config FREETZ_PACKAGE_KNXD
+	bool "KNXD 0.4.17 (KNX/EIB daemon)"
+	select FREETZ_LIB_libev
+	select FREETZ_LIB_libfmt
+	select FREETZ_BUSYBOX_START_STOP_DAEMON
+	default n
+	help
+		KNX is a very common building automation 
+		protocol which runs on dedicated 9600-baud wire 
+		as well as IP multicast. knxd is an advanced 
+		router/gateway which runs on any Linux computer; 
+		it can talk to all known KNX interfaces.
+		
+		This code is a fork of eibd 0.0.5 (from bcusdk)
+

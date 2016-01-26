@@ -1,0 +1,88 @@
+--- doc/example-config/conf.d/10-master.conf	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/10-master.conf	2014-08-26 23:17:00.000000000 +0200
+@@ -1,22 +1,25 @@
+ #default_process_limit = 100
+ #default_client_limit = 1000
++default_process_limit = 7
++default_client_limit = 13
+ 
+ # Default VSZ (virtual memory size) limit for service processes. This is mainly
+ # intended to catch and kill processes that leak memory before they eat up
+ # everything.
+ #default_vsz_limit = 256M
++default_vsz_limit = 15M
+ 
+ # Login user is internally used by login processes. This is the most untrusted
+ # user in Dovecot system. It shouldn't have access to anything at all.
+-#default_login_user = dovenull
++default_login_user = nobody
+ 
+ # Internal user is used by unprivileged processes. It should be separate from
+ # login user, so that login processes can't disturb other processes.
+-#default_internal_user = dovecot
++default_internal_user = dovecot
+ 
+ service imap-login {
+   inet_listener imap {
+-    #port = 143
++    port = 143
+   }
+   inet_listener imaps {
+     #port = 993
+ }
+ 
+ service pop3-login {
+--- doc/example-config/conf.d/10-master.conf	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/10-master.conf	2014-08-26 23:17:00.000000000 +0200
+@@ -102,13 +102,13 @@
+ 
+   # Auth process is run as this user.
+-  #user = $default_internal_user
++  user = root
+ }
+ 
+ service auth-worker {
+   # Auth worker process is run as root by default, so that it can access
+   # /etc/shadow. If this isn't necessary, the user should be changed to
+   # $default_internal_user.
+-  #user = root
++  user = $default_internal_user
+ }
+ 
+ service dict {
+--- doc/example-config/conf.d/10-ssl.conf	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/10-ssl.conf	2014-08-26 00:57:00.000000000 +0200
+@@ -3,14 +3,15 @@
+ ##
+ 
+ # SSL/TLS support: yes, no, required. <doc/wiki/SSL.txt>
+-#ssl = yes
++ssl = yes
+ 
+ # PEM encoded X.509 SSL/TLS certificate and private key. They're opened before
+ # dropping root privileges, so keep the key file unreadable by anyone but
+ # root. Included doc/mkcert.sh can be used to easily generate self-signed
+ # certificate, just make sure to update the domains in dovecot-openssl.cnf
+-ssl_cert = </etc/ssl/certs/dovecot.pem
+-ssl_key = </etc/ssl/private/dovecot.pem
++ssl_cert = </mod/etc/dovecot/server.crt
++ssl_key  = </mod/etc/dovecot/server.key
++ssl_dh   = </mod/etc/dovecot/dhparams.pem
+ 
+ # If key file is password protected, give the password here. Alternatively
+ # give it when starting dovecot with -p parameter. Since this file is often
+--- doc/example-config/conf.d/15-lda.conf	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/15-lda.conf	2014-09-06 21:50:00.000000000 +0200
+@@ -15,10 +15,10 @@
+ #quota_full_tempfail = no
+ 
+ # Binary to use for sending mails.
+-#sendmail_path = /usr/sbin/sendmail
++sendmail_path = /usr/lib/MailRoot/bin/sendmail
+ 
+ # If non-empty, send mails via this SMTP host[:port] instead of sendmail.
+-#submission_host =
++#submission_host = 127.0.0.1:10025
+ 
+ # Subject: header to use for rejection mails. You can use the same variables
+ # as for rejection_reason below.

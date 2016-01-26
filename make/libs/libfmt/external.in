@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libfmt
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libfmt
+	bool "libfmt"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libfmt.so.1.0

@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libpthsem
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libpthsem
+	bool "libpthsem"
+	default n
+	help
+		externals the following file(s):
+		 /usr/lib/freetz/libpthsem.so.20.0.28
