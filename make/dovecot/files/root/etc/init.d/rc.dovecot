@@ -1,0 +1,316 @@
+#!/bin/sh
+
+DAEMON=dovecot
+DAEMON_LONG_NAME="Dovecot IMAP server"
+DAEMON_ADM=doveadm
+DAEMON_BIN_DIR=/usr/bin
+DAEMON_SBIN_DIR=/usr/sbin
+PID_FILE=/var/run/$DAEMON/master.pid
+DOVECOT_CONFIGLOCATION_DEFAULT=/mod/etc/$DAEMON
+DAEMON_CONFIG=/tmp/flash/${DAEMON}/${DAEMON}.conf
+. /etc/init.d/modlibrc
+
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+
+CMDOPTS=
+
+start_xmail=n
+if [ "$FREETZ_PACKAGE_XMAIL" = "y" ] && [ "$(/mod/etc/init.d/rc.xmail status)" != "running" ]; then
+	 start_xmail=y
+fi
+
+startdaemon_pre() {
+	if [ "$start_xmail" = "y" ]; then 
+		/mod/etc/init.d/rc.xmail start >/dev/null
+		sleep 1
+	fi
+}
+
+
+cleanup() {
+	rm -rf /mod/etc/$DAEMON
+	rm -rf /var/run/$DAEMON
+}
+
+ed_edit() {
+   # old_value, new_value, filename
+   ed $3 <<EOF
+1,\$s/$1/$2/g
+w
+q
+EOF
+}
+
+
+configure() {
+	mkdir -p /mod/etc/$DAEMON
+
+	if [ "$DOVECOT_UNPRIV" = "yes" ]; then
+		modlib_add_user_and_group $DAEMON
+
+		mkdir /var/run/$DAEMON
+		chown root:dovecot /var/run/$DAEMON
+	fi
+
+	if [ -n "$DOVECOT_CONFIGLOCATION" ] && [ ! -d "$DOVECOT_CONFIGLOCATION" ]; then
+		mkdir -p $DOVECOT_CONFIGLOCATION
+	fi
+
+	if [ ${DOVECOT_COPY_CONFIG_TO_FLASH} = 'yes' ]; then
+		modconf set ${DAEMON} DOVECOT_COPY_CONFIG_TO_FLASH='no'
+		modconf save ${DAEMON}
+		modsave flash
+		if [ -e "$DOVECOT_CONFIGLOCATION/dovecot.conf" ]; then
+			doveconf -n -c $DOVECOT_CONFIGLOCATION/dovecot.conf > $DAEMON_CONFIG
+			echo -n "Copying of external $DAEMON configuration to internal storage ... done."
+		else
+			echo -n "Copying of external $DAEMON configuration to internal storage ... failed." 1>&2
+		fi
+	fi
+
+	if [ "${DOVECOT_USE_CONFIG_FROM_FLASH}" = 'yes' ]; then
+		if [ ! -e $DAEMON_CONFIG ]; then
+			echo -n "Default $DAEMON configuration missing ... failed" 1>&2
+			exit 1
+		else
+			ln -s $DAEMON_CONFIG $DOVECOT_CONFIGLOCATION_DEFAULT/dovecot.conf
+		fi
+	elif [ -n "$DOVECOT_CONFIGLOCATION" ] && [ ! -e "$DOVECOT_CONFIGLOCATION/dovecot.conf" ]; then
+		echo -n 'initialzing mail location folder with default values ... '
+		tar -C $DOVECOT_CONFIGLOCATION -xf /mod/etc/default.$DAEMON/default_config/default_config.tar
+		echo 'done.'
+	elif [ -n "$DOVECOT_CONFIGLOCATION" ] && [ -e "$DOVECOT_CONFIGLOCATION/dovecot.conf" ]; then
+		for i in $(tar -tf /mod/etc/default.$DAEMON/default_config/default_config.tar); do
+			[ "${i:0:2}" = "./" ] && ii=${i:2}
+			[ ! -z "$ii" ] && [ ! -e "$DOVECOT_CONFIGLOCATION/$ii" ] && tar -C $DOVECOT_CONFIGLOCATION \
+				-xf /mod/etc/default.$DAEMON/default_config/default_config.tar $i
+		done
+	fi
+	if [ -e "$DOVECOT_CONFIGLOCATION/dovecot.conf" ] && [ "${DOVECOT_USE_CONFIG_FROM_FLASH}" != 'yes' ]; then
+		ln -s $DOVECOT_CONFIGLOCATION/* /mod/etc/$DAEMON/
+	fi
+
+	if [ "$FREETZ_PACKAGE_XMAIL" = "y" ]; then
+		# set MAIL_ROOT for sendmail to work
+		export MAIL_ROOT=/mod/etc/xmail
+		. /mod/etc/conf/xmail.cfg
+		if [ -z "$XMAIL_MAILLOCATION" ] || [ ! -d  "$XMAIL_MAILLOCATION" ]; then
+			echo "XMAIL_MAILLOCATION is not set or not existing, can not create dovecotusers.tab"
+		elif [ ! -e $XMAIL_MAILLOCATION/dovecotusers.tab ]; then
+			touch $XMAIL_MAILLOCATION/dovecotusers.tab
+			if [ ! -e /mod/etc/xmail/dovecotusers.tab ]; then
+				ln -s $XMAIL_MAILLOCATION/dovecotusers.tab /mod/etc/xmail/dovecotusers.tab
+			fi
+			# convert XMail passwords to Dovecot passwords
+			/usr/mww/xmail_sync.php
+		fi
+	fi
+	local use_certbot='no'
+	rm -f /mod/etc/$DAEMON/server.crt /mod/etc/$DAEMON/server-ca.crt /mod/etc/$DAEMON/server.key /mod/etc/$DAEMON/dhparams.pem
+	[ ! -e /mod/etc/$DAEMON/dhparams.pem ] && ln -s /mod/etc/default.$DAEMON/dhparams.pem /mod/etc/$DAEMON/dhparams.pem
+	if [ "${DOVECOT_USECERTBOT}" = 'yes' ]; then
+	  if [ -e /mod/etc/conf/certbot.cfg ]; then
+	    . /mod/etc/conf/certbot.cfg
+	    if [ "$CERTBOT_ENABLED" = 'yes' ]; then
+	      if [ ! -z ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) ] && [ ! -z ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) ]; then
+		echo -n 'using certbot certs ... '
+		#ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) /mod/etc/$DAEMON/server-ca.crt	
+		#ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) /mod/etc/$DAEMON/server.crt
+		ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_FULLCHAINPATH}) /mod/etc/$DAEMON/server.crt
+		ln -s ${CERTBOT_FLASH}/server.key /mod/etc/$DAEMON/server.key
+		use_certbot='yes'
+		echo 'done.'
+	      fi
+	    fi
+	  fi	
+	fi
+	if [ "$use_certbot" = 'no' ]; then 
+	  echo -n 'using xmail certs ... '
+	  [ ! -e /mod/etc/$DAEMON/server.crt     ] && ln -s /mod/etc/xmail/server.cert   /mod/etc/$DAEMON/server.crt
+	  #[ ! -e /mod/etc/$DAEMON/server-ca.crt ] && ln -s /mod/etc/xmail/server-ca.crt /mod/etc/$DAEMON/server-ca.crt
+	  [ ! -e /mod/etc/$DAEMON/server.key     ] && ln -s /mod/etc/xmail/server.key    /mod/etc/$DAEMON/server.key
+	  echo 'done.'
+	fi
+
+	[ ! -z "$DOVECOT_SPECIAL" ] && CMDOPTS="$CMDOPTS $DOVECOT_SPECIAL"
+}
+
+update_configs() {
+	local DOVECOT_CONFIGLOCATION=$1
+	local ONE_CONF_FILE='yes'
+	[ -n "$2" ] && ONE_CONF_FILE=$2
+	if [ "$DOVECOT_IMAP" = "yes" ]; then
+		CURRENT_IMAP_PORT=`$DAEMON_BIN_DIR/doveconf -c $DOVECOT_CONFIGLOCATION/dovecot.conf service/imap-login/inet_listener/imap/port -h`
+		if [ -n "$DOVECOT_IMAPPORT" ] && [ "$CURRENT_IMAP_PORT" != "$DOVECOT_IMAPPORT" ]; then
+			if [ "${DOVECOT_USE_CONFIG_FROM_FLASH}" = 'yes' ] && [ "$ONE_CONF_FILE" = 'yes' ]; then
+				sed -i "s~$CURRENT_IMAP_PORT~$DOVECOT_IMAPPORT~g" $DOVECOT_CONFIGLOCATION/$DAEMON.conf > /dev/null
+			else
+				sed -i "s~$CURRENT_IMAP_PORT~$DOVECOT_IMAPPORT~g" $DOVECOT_CONFIGLOCATION/conf.d/10-master.conf > /dev/null
+			fi
+			CURRENT_IMAP_PORT=`$DAEMON_BIN_DIR/doveconf -c $DOVECOT_CONFIGLOCATION/dovecot.conf service/imap-login/inet_listener/imap/port -h`
+			if [ "$CURRENT_IMAP_PORT" != "$DOVECOT_IMAPPORT" ]; then
+				echo "change imap port $CURRENT_IMAP_PORT to $DOVECOT_IMAPPORT failed" 1>&2
+				exit 1
+			fi
+		fi
+	fi
+
+	if [ "$FREETZ_PACKAGE_XMAIL" = "y" ]; then
+		#check xmail user and group
+		XMAIL_UID=`cat /etc/passwd | grep xmail | cut -d: -f3 | uniq`
+		DOVECOT_XMAIL_UID=`$DAEMON_BIN_DIR/doveconf -c $DOVECOT_CONFIGLOCATION/dovecot.conf mail_uid -h`
+		if [ "$XMAIL_UID" !=  "$DOVECOT_XMAIL_UID" ]; then
+			if [ "${DOVECOT_USE_CONFIG_FROM_FLASH}" = 'yes' ] && [ "$ONE_CONF_FILE" = 'yes' ]; then
+				sed -i "s~mail_uid = $DOVECOT_XMAIL_UID~mail_uid = $XMAIL_UID~g" $DOVECOT_CONFIGLOCATION/$DAEMON.conf > /dev/null
+				sed -i "s~uid=$DOVECOT_XMAIL_UID~uid=$XMAIL_UID~g" $DOVECOT_CONFIGLOCATION/$DAEMON.conf > /dev/null
+			else
+				sed -i "s~mail_uid = $DOVECOT_XMAIL_UID~mail_uid = $XMAIL_UID~g" $DOVECOT_CONFIGLOCATION/conf.d/10-mail.conf > /dev/null
+				sed -i "s~uid=$DOVECOT_XMAIL_UID~uid=$XMAIL_UID~g" $DOVECOT_CONFIGLOCATION/conf.d/auth-passwdfile.conf.ext > /dev/null
+			fi
+			DOVECOT_XMAIL_UID=`$DAEMON_BIN_DIR/doveconf -c $DOVECOT_CONFIGLOCATION/dovecot.conf mail_uid -h`
+			if [ "$XMAIL_UID" !=  "$DOVECOT_XMAIL_UID" ]; then
+				echo "change uid $XMAIL_UID to $DOVECOT_XMAIL_UID failed" 1>&2
+				exit 1
+			fi
+		fi
+		XMAIL_GID=`cat /etc/passwd | grep xmail | cut -d: -f4 | uniq`
+		DOVECOT_XMAIL_GID=`$DAEMON_BIN_DIR/doveconf -c $DOVECOT_CONFIGLOCATION/dovecot.conf mail_gid -h`
+		if [ "$XMAIL_GID" !=  "$DOVECOT_XMAIL_GID" ]; then
+			if [ "${DOVECOT_USE_CONFIG_FROM_FLASH}" = 'yes' ] && [ "$ONE_CONF_FILE" = 'yes' ]; then
+				sed -i "s~mail_gid = $DOVECOT_XMAIL_GID~mail_gid = $XMAIL_GID~g" $DOVECOT_CONFIGLOCATION/$DAEMON.conf > /dev/null
+				sed -i "s~gid=$DOVECOT_XMAIL_GID~gid=$XMAIL_GID~g" $DOVECOT_CONFIGLOCATION/$DAEMON.conf > /dev/null
+			else
+				sed -i "s~mail_gid = $DOVECOT_XMAIL_GID~mail_gid = $XMAIL_GID~g" $DOVECOT_CONFIGLOCATION/conf.d/10-mail.conf > /dev/null
+				sed -i "s~gid=$DOVECOT_XMAIL_GID~gid=$XMAIL_GID~g" $DOVECOT_CONFIGLOCATION/conf.d/auth-passwdfile.conf.ext > /dev/null
+			fi
+			DOVECOT_XMAIL_GID=`$DAEMON_BIN_DIR/doveconf -c $DOVECOT_CONFIGLOCATION/dovecot.conf mail_gid -h`
+			if [ "$XMAIL_GID" !=  "$DOVECOT_XMAIL_GID" ]; then
+				echo "change gid $XMAIL_GID to $DOVECOT_XMAIL_GID failed" 1>&2
+				exit 1
+			fi
+		fi
+	fi
+}
+
+config () {
+	[ ! -e $DOVECOT_CONFIGLOCATION_DEFAULT ] && mkdir -p $DOVECOT_CONFIGLOCATION_DEFAULT
+	if [ "${DOVECOT_USE_CONFIG_FROM_FLASH}" = 'yes' ]; then
+		[ ! -e /tmp/flash/${DAEMON} ] && mkdir -p /tmp/flash/${DAEMON}/
+		if [ ! -e $DAEMON_CONFIG ]; then
+			echo -n "Creating $DAEMON configuration ... "
+			DOVECOT_TMP=/tmp/dovecot
+			mkdir -p $DOVECOT_TMP
+			tar -C $DOVECOT_TMP -xf /mod/etc/default.$DAEMON/default_config/default_config.tar
+			update_configs $DOVECOT_TMP 'no'
+			doveconf -n -c $DOVECOT_TMP/dovecot.conf > $DAEMON_CONFIG
+			rm -rf $DOVECOT_TMP
+		else
+			[ ! -e $DOVECOT_CONFIGLOCATION_DEFAULT/doveconf.conf ] && ln -s $DAEMON_CONFIG $DOVECOT_CONFIGLOCATION_DEFAULT/doveconf.conf
+		fi
+	elif [ -n "$DOVECOT_CONFIGLOCATION" ]; then
+		configure
+	fi
+	if [ ! $(grep -se '^\*\.php\:' /mod/etc/webcfg.conf) ]; then
+		echo "Warning[$DAEMON]: php ist not configured in /mod/etc/webcfg.conf"
+		echo "Warning[$DAEMON]: convert of passwords will not work"
+	fi
+}
+
+start() {
+	trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 0 1 2 3 15
+	echo -n "Starting $DAEMON_LONG_NAME ... "
+	if modlib_check_running; then
+		echo "already running."
+		exit 0
+	fi
+
+	if [ "$start_xmail" = "y" ] && [ "$(/mod/etc/init.d/rc.xmail status)" != "running" ]; then
+		. /mod/etc/conf/xmail.cfg
+		if [ "$XMAIL_ENABLED" = "yes" ]; then
+			i=120 && while [ $i -gt 0 ]; do
+				sleep 5; i=$(($i-5))
+			        [ "$(/mod/etc/init.d/rc.xmail status)" = "running" ] && break
+			done
+		fi
+		if [ "$(/mod/etc/init.d/rc.xmail status)" != "running" ]; then
+			echo "Warning[$DAEMON]: the depending daemon xmail was not started, is autostart enabled?." 1>&2
+			if [ ! -e "/mod/etc/xmail/domains" ]; then
+				echo "Error[$DAEMON]: can not find /mod/etc/xmail/domains, where dovecot expects the mails, will exit!" 1>&2
+				rm -f /var/run/rc.$DAEMON.pid
+				exit 1
+			fi
+		fi
+	fi
+
+	cleanup
+	configure
+	update_configs $DOVECOT_CONFIGLOCATION_DEFAULT
+	
+	if [ ! -e $DOVECOT_CONFIGLOCATION_DEFAULT/$DAEMON.conf ]; then
+		echo "Check configuration, no configuration found, ... failed." 1>&2
+		exit 1
+	fi
+
+	/sbin/start-stop-daemon -S -b -m -p ${PID_FILE} -x /usr/sbin/$DAEMON -N 10 -- $CMDOPTS
+	exitval=$?
+
+	if [ "$exitval" -eq 0 ]; then
+		echo 'done.'
+	else
+		echo 'failed.'
+		exit $exitval
+	fi
+}
+
+trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 1 2 3 15
+case $1 in
+	""|load)
+		modreg cgi 'dovecot' 'Dovecot'
+		modreg daemon $DAEMON
+		modreg file $DAEMON conf 'dovecot.conf' 1 "dovecot_conf"
+		config
+
+		if [ "$DOVECOT_ENABLED" != "yes" ]; then
+			echo "autostart of $DAEMON is disabled." 1>&2
+			exit 1
+		fi
+
+		( start ) &
+		echo $! > /var/run/rc.$DAEMON.pid
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg cgi dovecot
+		modunreg file $DAEMON
+		[ -s /var/run/rc.$DAEMON.pid ] && PID_FILE=/var/run/rc.$DAEMON.pid
+		modlib_stop && cleanup
+		;;
+	start)	
+		if [ -s /var/run/rc.$DAEMON.pid ]; then
+			kill -0 $(cat /var/run/rc.$DAEMON.pid)
+			if [ $? -eq 0 ]; then
+				echo "Startup of $DAEMON already performed." 1>&2
+				exit 0
+			fi
+			rm -f /var/run/rc.$DAEMON.pid
+		fi
+		( start ) &
+		echo $! > /var/run/rc.$DAEMON.pid
+		;;
+	stop)
+		[ -s /var/run/rc.$DAEMON.pid ] && PID_FILE=/var/run/rc.$DAEMON.pid
+		modlib_stop && cleanup
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|reload|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

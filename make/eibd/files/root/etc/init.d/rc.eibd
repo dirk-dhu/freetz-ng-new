@@ -1,0 +1,59 @@
+#!/bin/sh
+
+DAEMON=eibd
+DAEMON_LONG_NAME="EIB/KNX IP server"
+PID_FILE=/var/run/eibd.pid
+. /etc/init.d/modlibrc
+
+#CMDOPTS="-d --pid-file=$PID_FILE"
+CMDOPTS=""
+
+start() {
+	echo -n "Starting ${DAEMON_LONG_NAME} ... "
+	modlib_add_user_and_group nobody
+	
+	[ ! -z "$EIBD_SPECIAL" ] && CMDOPTS="$EIBD_SPECIAL $CMDOPTS"
+	[ "$EIBD_LOG_DISABLE" != "yes" ] && CMDOPTS="$CMDOPTS --daemon=$EIBD_LOG_FILE"
+	if [ ! -z "$EIBD_ADDRESS" ]; then
+		CMDOPTS="$CMDOPTS ipt:$EIBD_ADDRESS"
+	else
+		echo "ip of knx/eib ip router/gateway for tunneling is not set, start ... failed" 1>&2
+		exit 1
+	fi
+	#modlib_startdaemon $DAEMON $CMDOPTS
+	/sbin/start-stop-daemon -c nobody -S -b -m -p ${PID_FILE} -x /usr/bin/$DAEMON -N 15 -- $CMDOPTS
+	
+	echo "done."
+}
+
+case "$1" in
+	""|load)
+		modreg cgi eibd 'EIBD-Server'
+		modreg daemon $DAEMON
+
+		modlib_start $EIBD_ENABLED
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg cgi eibd
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|reload|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

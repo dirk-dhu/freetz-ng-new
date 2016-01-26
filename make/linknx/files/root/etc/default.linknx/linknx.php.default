@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>Linknx</title>
+</head>
+<body>
+<?php
+
+function knxread($fp, $name)
+{
+    $in = "<read><object id='$name'/></read>\n\4";
+
+    fwrite($fp, $in);
+
+    $ret = '';
+    $cnt = 0;
+    while ($cnt < 4 && $fp && !feof($fp)) {
+        $ret .= fgets($fp, 128);
+        $c = fgetc($fp);
+        if ($c == "\4") {
+            if (ereg ("<read status='success'>([^<]+)</read>", $ret,$regs))
+              $ret = $regs[1];
+            if (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 'On') {
+               if ($c == "\4") {
+                  print("ret=$ret regs0=$regs[0] regs1=$regs[1]");
+               }
+            }
+            break;
+        }
+        $ret .= $c;
+        $cnt++;
+    }
+    return $ret;
+}
+
+function knxwrite($fp, $name, $value)
+{
+    $in = "<write><object id='$name' value='$value'/></write>\n\4";
+
+    fwrite($fp, $in);
+
+    $ret = '';
+    $cnt = 0;
+    while ($cnt < 4 && $fp && !feof($fp)) {
+        $ret .= fgets($fp, 128);
+        $c = fgetc($fp);
+        if ($c == "\4") {
+            if (ereg ("<write status='success'", $ret))
+              return 1;
+            break;
+        }
+        $ret .= $c;
+        $cnt++;
+    }
+    return 0;
+}
+
+function switching($fp, $name, $gad) {
+  print("<tr><td>$name</td><td>");
+  $gad = ereg_replace(" EinAus", "", $gad);
+  $status_gad = $gad . " EinAus";
+  $status = knxread($fp, $status_gad);
+  if ( FALSE != strpos($status,"Object ID not found") ) {
+	$gad = ereg_replace(" EinAus", "", $gad);
+	$status = knxread($fp, $gad);
+  }
+  if (ereg("on",$status))
+    print(" $status </td><td><a href='index.php?action=Off&gad=$gad'>Turn Off</a>");
+  else
+    print(" $status </td><td><a href='index.php?action=On&gad=$gad'>Turn On</a>");
+  print("</td></tr>\n");
+}
+
+function switching_status($fp, $name, $gad) {
+  print("<tr><td>$name</td><td>");
+  $gad = ereg_replace(" EinAus", "", $gad);
+  $status_gad = $gad . " EinAus" ;
+  $status = knxread($fp, $status_gad);
+  if ( FALSE != strpos($status,"Object ID not found") ) {
+	$gad = ereg_replace(" EinAus", "", $gad);
+	$status = knxread($fp, $gad);
+  }
+  if (ereg("on",$status))
+    print(" On </td></tr>\n");
+  else
+    print(" Off </td></tr>\n");
+}
+
+function heating($fp, $name, $id) {
+  print("<tr><td>$name</td><td>");
+  $val = knxread($fp, 'heating_'.$id);
+  print(knxread($fp, 'temp_'.$id).'</td><td>'.$val.' ('.knxread($fp, 'setpoint_'.$id).")</td>\n");
+  print ("<td><a href='index.php?action=comfort&gad=heating_$id'>C</a> <a href='index.php?action=standby&gad=heating_$id'>S</a> <a href='index.php?
+  action=night&gad=heating_$id'>N</a> <a href='index.php?action=frost&gad=heating_$id'>F</a></td></tr>\n");
+}
+
+$address = "127.0.0.1";
+$port = 1028;
+
+$fp = fsockopen($address, $port, $errno, $errstr, 30);
+if (!$fp) {
+    echo "$errstr ($errno)<br />\n";
+}
+else {
+
+if (isset($_REQUEST['action'])) {
+	$action = $_REQUEST['action'];
+	$gad = $_REQUEST['gad'];
+  if ($action == 'On') {
+		knxwrite($fp, $gad, 1);
+	}
+	elseif ($action == 'Off') {
+		knxwrite($fp, $gad, 0);
+	}
+	elseif ($action == 'comfort') {
+		knxwrite($fp, $gad, $action);
+	}
+	elseif ($action == 'standby') {
+		knxwrite($fp, $gad, $action);
+	}
+	elseif ($action == 'night') {
+		knxwrite($fp, $gad, $action);
+	}
+	elseif ($action == 'frost') {
+		knxwrite($fp, $gad, $action);
+	}
+}
+
+print("<h2>Title</h2>\n<table border=1>\n");
+
+
+print("</table>\n");
+
+fclose($fp);
+}
+?>
+
+</body>
+</html>

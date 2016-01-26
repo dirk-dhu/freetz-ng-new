@@ -1,0 +1,68 @@
+#!/bin/sh
+
+DAEMON=knxd
+DAEMON_LONG_NAME="EIB/KNX IP server"
+PID_FILE=/var/run/knxd.pid
+DAEMON_USER=nobody
+. /etc/init.d/modlibrc
+
+#CMDOPTS="-d --pid-file=$PID_FILE"
+CMDOPTS=""
+
+correct_rights() {
+	rm -f ${PID_FILE}; touch ${PID_FILE}
+	[ -e $KNXD_LOG_FILE ] || touch $KNXD_LOG_FILE
+	chown $DAEMON_USER:$DAEMON_USER ${PID_FILE}
+	chown $DAEMON_USER:$DAEMON_USER $KNXD_LOG_FILE
+}
+
+start() {
+	echo -n "Starting ${DAEMON_LONG_NAME} ... "
+	modlib_add_user_and_group ${DAEMON_USER}
+	
+	correct_rights
+	[ ! -z "$KNXD_SPECIAL" ] && CMDOPTS="$KNXD_SPECIAL $CMDOPTS"
+	[ "$KNXD_LOG_DISABLE" != "yes" ] && CMDOPTS="-d $KNXD_LOG_FILE $CMDOPTS "
+	if [ ! -z "$KNXD_ADDRESS" ]; then
+		CMDOPTS="$CMDOPTS ipt:$KNXD_ADDRESS"
+	else
+		echo "ip of knx/eib ip router/gateway for tunneling is not set, start ... failed" 1>&2
+		exit 1
+	fi
+	#modlib_startdaemon $DAEMON $CMDOPTS
+	/sbin/start-stop-daemon -c ${DAEMON_USER} -S -b -x /usr/bin/$DAEMON -N 15 --  -p ${PID_FILE} $CMDOPTS
+	
+	echo "done."
+}
+
+case "$1" in
+	""|load)
+		modreg cgi knxd 'KNXD-Server'
+		modreg daemon $DAEMON
+
+		modlib_start $KNXD_ENABLED
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg cgi knxd
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|reload|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

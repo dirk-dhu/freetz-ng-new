@@ -1,0 +1,4 @@
+config EXTERNAL_FREETZ_PACKAGE_KNXD
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_KNXD
+	bool "knxd"
+	default n

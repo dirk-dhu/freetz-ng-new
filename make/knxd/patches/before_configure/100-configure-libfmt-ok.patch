@@ -1,0 +1,11 @@
+--- configure	2017-12-09 04:21:56.789662794 +0100
++++ configure   2017-12-09 04:22:39.465677260 +0100
+@@ -18907,7 +18907,7 @@
+   return 0;
+ }
+ _ACEOF
+-if ac_fn_cxx_try_link "$LINENO"; then :
++if :; then :
+   HAVE_FMT=1
+ else
+ 

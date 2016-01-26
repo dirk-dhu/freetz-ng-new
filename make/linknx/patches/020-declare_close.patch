@@ -1,0 +1,9 @@
+fix compile error: 'close' was not declared in this scope
+
+--- src/ioport.cpp
+--- src/ioport.cpp
+@@ -22,3 +22,4 @@
+ #include "ioport.h"
+ #include <fcntl.h>
++#include <unistd.h>
+ 

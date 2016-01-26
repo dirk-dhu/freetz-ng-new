@@ -55,6 +55,51 @@ configure() {
 		[ "$fat" = "0" ] && chown -hR xmail:xmail $XMAIL_MAILLOCATION || chmod -R 777 $XMAIL_MAILLOCATION
 	fi
 
+	if [ ! -e /tmp/flash/${DAEMON} ]; then
+	  mkdir -p /tmp/flash/${DAEMON}
+	fi
+	if [ ! -e /tmp/flash/${DAEMON}/server.key ]; then
+	  touch /tmp/flash/${DAEMON}/server.key
+	fi
+	if [ ! -e /tmp/flash/${DAEMON}/server.cert ]; then
+	  touch /tmp/flash/${DAEMON}/server.cert
+	fi
+	local use_certbot='no'
+	if [ "${XMAIL_USECERTBOT}" = 'yes' ]; then
+	  if [ -e /mod/etc/conf/certbot.cfg ]; then
+	    . /mod/etc/conf/certbot.cfg
+	    if [ "$CERTBOT_ENABLED" = 'yes' ]; then
+	      if [ ! -z ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) ] && [ ! -z ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) ]; then
+		echo -n 'using certbot certs ... '
+		rm -f /mod/etc/$DAEMON/server.cert /mod/etc/$DAEMON/server.key /mod/etc/$DAEMON/server.crt
+		ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_FULLCHAINPATH}) /mod/etc/$DAEMON/server.cert
+		ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_FULLCHAINPATH}) /mod/etc/$DAEMON/server.crt
+		ln -s ${CERTBOT_FLASH}/server.key /mod/etc/$DAEMON/server.key
+		use_certbot='yes'
+		echo 'done.'
+	      fi
+	    fi
+	  fi	
+	fi
+	if [ "$use_certbot" = 'no' ]; then 
+	  if [ -s /tmp/flash/${DAEMON}/server.cert ] && [ -s /tmp/flash/${DAEMON}/server.key ]; then
+	    echo -n 'using xmail certs from flash ... '
+	    rm -f /mod/etc/$DAEMON/server.cert /mod/etc/$DAEMON/server.key /mod/etc/$DAEMON/server.crt
+	    ln -s /tmp/flash/${DAEMON}/server.cert   /mod/etc/$DAEMON/server.cert
+	    ln -s /tmp/flash/${DAEMON}/server.crt    /mod/etc/$DAEMON/server.crt
+	    ln -s /tmp/flash/${DAEMON}/server.key    /mod/etc/$DAEMON/server.key
+	    echo 'done.'
+	  else 
+	    if [ -e /mod/etc/$DAEMON/server.cert ] && [ -e /mod/etc/$DAEMON/server.key ]; then
+	      echo -n 'use xmail certs from disk ... '
+	      echo 'done.'
+	    else
+	      echo -n 'ERROR certs are ... missing '
+	      exit 1
+	    fi
+	  fi
+	fi
+
 	[ ! -z "$XMAIL_SPECIAL" ] && CMDOPTS="$CMDOPTS $XMAIL_SPECIAL"
 	if [ "$XMAIL_POP3" = "yes" ]; then
 		[ -n "$XMAIL_POP3PORT" ] && CMDOPTS="$CMDOPTS -Pp $XMAIL_POP3PORT"
@@ -130,6 +175,8 @@ case $1 in
 	""|load)
 		modreg cgi 'xmail' 'XMail'
 		modreg daemon $DAEMON
+		modreg file $DAEMON cert 'server.cert' 1 "server_cert"
+		modreg file $DAEMON key  'server.key'  1 "server_key"
 
 		if [ "$XMAIL_ENABLED" != "yes" ]; then
 			echo "$DAEMON is disabled." 1>&2
@@ -142,6 +189,7 @@ case $1 in
 	unload)
 		modunreg daemon $DAEMON
 		modunreg cgi xmail
+		modunreg file $DAEMON
 		[ -s /var/run/rc.$DAEMON.pid ] && PID_FILE=/var/run/rc.$DAEMON.pid
 		modlib_stop && cleanup
 		;;

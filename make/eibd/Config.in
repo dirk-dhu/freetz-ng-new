@@ -1,0 +1,11 @@
+config FREETZ_PACKAGE_EIBD
+	bool "EIBD BCUSDK 0.0.5 (KNX/EIB daemon)"
+	select FREETZ_LIB_libpthsem
+	select FREETZ_LIB_libargp_WITH_STATIC
+	select FREETZ_BUSYBOX_START_STOP_DAEMON
+	default n
+	help
+		Free Development Environment for
+		Bus Coupling Units of the European
+		Installation Bus.
+

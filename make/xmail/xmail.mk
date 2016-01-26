@@ -3,6 +3,8 @@ $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=e91341b779ffd3d70af6f00028bcd7f65ae664fedf947a27c42311102a84784e
 $(PKG)_SITE:=http://www.xmailserver.org
 
+$(PKG)_STARTLEVEL=91 # before dovecot
+
 $(PKG)_BINARIES := compartment sendmail XMail XMCrypt CtrlClnt MkUsers
 $(PKG)_BINARIES_BUILD_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/lib/MailRoot/bin/%)

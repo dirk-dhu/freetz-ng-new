@@ -1,0 +1,10 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+        etc/init.d/rc.dovecot
+        etc/default.dovecot/dovecot_conf.def
+        usr/lib/cgi-bin/dovecot.cgi
+}

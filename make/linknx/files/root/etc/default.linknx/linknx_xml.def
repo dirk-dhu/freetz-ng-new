@@ -1,0 +1,10 @@
+CAPTION='linknx.xml'
+DESCRIPTION='$(lang de:"Konfigurationsbeschreibung: " en:"Description of Configuration: ")<a target=blank href=http://sourceforge.net/p/linknx/wiki/Configuration/>http://sourceforge.net/p/linknx/wiki/Configuration</a>'
+
+CONFIG_FILE='/tmp/flash/linknx/linknx.xml'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+

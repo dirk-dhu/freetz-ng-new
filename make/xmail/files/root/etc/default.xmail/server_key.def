@@ -1,0 +1,10 @@
+CAPTION='server.key'
+DESCRIPTION='$(lang de:"Privater SSL Server Schl&uuml;sel: " en:"Private SSL server key: ")'
+
+CONFIG_FILE='/tmp/flash/xmail/server.key'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+

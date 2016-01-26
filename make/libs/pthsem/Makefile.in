@@ -1,0 +1,3 @@
+ifeq ($(strip $(FREETZ_LIB_libpthsem)),y)
+LIBS+=pthsem
+endif

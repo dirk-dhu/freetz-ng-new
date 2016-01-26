@@ -1,0 +1,55 @@
+--- doc/example-config/conf.d/10-auth.conf	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/10-auth.conf	2011-03-28 00:00:00.000000000 +0200
+@@ -119,10 +116,10 @@
+ #!include auth-deny.conf.ext
+ #!include auth-master.conf.ext
+ 
+-!include auth-system.conf.ext
++#!include auth-system.conf.ext
+ #!include auth-sql.conf.ext
+ #!include auth-ldap.conf.ext
+-#!include auth-passwdfile.conf.ext
++!include auth-passwdfile.conf.ext
+ #!include auth-checkpassword.conf.ext
+ #!include auth-vpopmail.conf.ext
+ #!include auth-static.conf.ext
+--- doc/example-config/conf.d/10-mail.conf	2014-05-02 09:39:07.000000000 +0200
++++ doc/example-config/conf.d/10-mail.conf	2014-08-26 00:58:00.000000000 +0200
+@@ -27,7 +27,7 @@
+ #
+ # <doc/wiki/MailLocation.txt>
+ #
+-#mail_location = 
++mail_location = maildir:/mod/etc/xmail/domains/%d/%n/Maildir
+ 
+ # If you need to set multiple mailbox locations or want to change default
+ # namespace settings, you can do it by defining namespace sections.
+@@ -103,8 +108,8 @@
+ # System user and group used to access mails. If you use multiple, userdb
+ # can override these by returning uid or gid fields. You can use either numbers
+ # or names. <doc/wiki/UserIds.txt>
+-#mail_uid =
+-#mail_gid =
++mail_uid = 504
++mail_gid = 504
+ 
+ # Group to enable temporarily for privileged operations. Currently this is
+ # used only with INBOX when either its initial creation or dotlocking fails.
+--- doc/example-config/conf.d/auth-passwdfile.conf.ext	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/auth-passwdfile.conf.ext	2014-08-26 23:01:00.000000000 +0200
+@@ -5,12 +5,12 @@
+ 
+ passdb {
+   driver = passwd-file
+-  args = scheme=CRYPT username_format=%u /etc/dovecot/users
++  args = scheme=CRYPT username_format=%u /mod/etc/xmail/dovecotusers.tab
+ }
+ 
+ userdb {
+-  driver = passwd-file
+-  args = username_format=%u /etc/dovecot/users
++  driver = static
++  args = uid=504 gid=504 home=/mod/etc/xmail/domains/%d/%n/Maildir
+ 
+   # Default fields that can be overridden by passwd-file
+   #default_fields = quota_rule=*:storage=1G

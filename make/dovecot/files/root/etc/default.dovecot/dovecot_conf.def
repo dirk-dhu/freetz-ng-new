@@ -1,0 +1,10 @@
+CAPTION='dovecot.conf'
+DESCRIPTION='$(lang de:"Konfigurationsbeschreibung: " en:"Description of Configuration: ")<a target=blank href=http://wiki2.dovecot.org/#Dovecot_configuration>http://wiki2.dovecot.org/#Dovecot_configuration</a>'
+
+CONFIG_FILE='/tmp/flash/dovecot/dovecot.conf'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+

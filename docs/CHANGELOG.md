@@ -446,6 +446,7 @@ Latest changes
 - New packages, libs, modules:
     * ACME.sh 2.88 (letsencrypt)
     * Addhole (for dnsmasq) 1.0
+    * argp-standalone 1.3
     * asterisk 11.25.3
     * asterisk-chan-capi post-1.1.6 with asterisk11 adjustments by Mihai Moldovan
     * asterisk-chan-dongle 1.1-git (asterisk11 branch)
@@ -463,6 +464,8 @@ Latest changes
     * CurlFtpFS 0.9.2
     * decrypt FRITZ!OS configs v0.2 (renamed version of PeterPawn's script decode_passwords)
     * dehydrated 0.7.0 (letsencrypt)
+    * dovecot 2.3.18
+    * EIBD BCUSDK 0.0.5
     * ISC dhcp 4.3.6-P1
     * E-MailRelay 1.9
     * getdns 1.5.2
@@ -481,10 +484,12 @@ Latest changes
     * libnettle 3.6
     * liblz4 1.9.3
     * libonig 6.7.1
+    * libpthsem 2.0.8
     * libsrtp-1.4.4+20100615
     * libssh2 1.10.0
     * libtirpc 1.2.6
     * libusb-compat 0.1.5
+    * Linknx 0.0.1.30
     * lzma1 4.65
     * mbed TLS 2.7.18/2.25.0
     * minisatip 1.0.4

@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_LIB_libpthsem" == "y" ] && EXTERNAL_FILES+=" $FREETZ_LIBRARY_DIR/pthsem.so.20.0.28"
