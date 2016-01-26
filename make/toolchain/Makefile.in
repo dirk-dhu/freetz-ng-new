@@ -57,7 +57,9 @@ KERNEL_CCACHE_PATH:=$(KERNEL_TOOLCHAIN_STAGING_DIR)/bin-ccache
 TARGET_CCACHE_PATH:=$(TARGET_TOOLCHAIN_STAGING_DIR)/bin-ccache
 
 ifeq ($(strip $(FREETZ_BUILD_TOOLCHAIN)),y)
+ifneq ($(strip $(FREETZ_BUILD_TOOLCHAIN_TARGET_ONLY)),y)
 TOOLCHAIN:=kernel-toolchain target-toolchain
+endif
 else
 TOOLCHAIN:=download-toolchain
 endif

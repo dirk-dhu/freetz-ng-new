@@ -1,0 +1,10 @@
+config EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS_FLEX
+	depends on EXTERNAL_ENABLED && EXTERNAL_FREETZ_PACKAGE_DEV_TOOLS && FREETZ_PACKAGE_DEV_TOOLS_FLEX
+	bool "Dev Tools flex  (binary only)"
+	default n
+	help
+		externals the following file(s):
+		 /usr/local/bin/flex
+		 /usr/local/bin/flex++
+		 /usr/local/lib/libfl*
+		 /usr/local/include/FlexLexer.h
