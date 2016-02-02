@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_PARSEDATETIME
+	bool "parsedatetime 2.1"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_FUTURE
+	default n
+	help
+		parsedatetime is a library to parse 
+		human-readable date/time strings.

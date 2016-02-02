@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_CONFIGARGPARSE
+	bool "configargparse 11.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		configargparse is  drop-in replacement for argparse 
+		that allows options to also be set via config files 
+		and/or environment variables
