@@ -131,11 +131,13 @@ config FREETZ_PACKAGE_PYTHON_MOD_CTYPES
 	bool "ctypes"
 	depends on FREETZ_PACKAGE_PYTHON
 	select FREETZ_LIB_libffi
+	select FREETZ_PACKAGE_DEV_TOOLS
 	default n
 	help
 		Foreign function library for Python, that provides C compatible
 		data types and allows calling functions in DLLs or shared
-		libraries. Requires libffi.
+		libraries. Requires libffi 
+		(needs objdump, ld gcc, therefore target DEV_TOOLS).
 		For details, see: http://docs.python.org/2/library/ctypes.html
 
 config FREETZ_PACKAGE_PYTHON_MOD_CURSES
@@ -367,5 +369,38 @@ menu "3rd-party modules"
 	source "make/pkgs/python-pyrrd/Config.in"
 	source "make/pkgs/python-pyserial/Config.in"
 	source "make/pkgs/python-yenc/Config.in"
+	source "make/pkgs/python-augeas/Config.in"
+	source "make/pkgs/python-backports.ssl_match_hostname/Config.in"
+	source "make/pkgs/python-certbot/Config.in"
+	source "make/pkgs/python-cffi/Config.in"
+	source "make/pkgs/python-configargparse/Config.in"
+	source "make/pkgs/python-cryptography/Config.in"
+	source "make/pkgs/python-configobj/Config.in"
+	source "make/pkgs/python-enum34/Config.in"
+	source "make/pkgs/python-future/Config.in"
+	source "make/pkgs/python-idna/Config.in"
+	source "make/pkgs/python-ipaddress/Config.in"
+	source "make/pkgs/python-josepy/Config.in"
+	source "make/pkgs/python-mock/Config.in"
+	source "make/pkgs/python-ndg_httpsclient/Config.in"
+	source "make/pkgs/python-lxml/Config.in"
+	source "make/pkgs/python-parsedatetime/Config.in"
+	source "make/pkgs/python-platformer/Config.in"
+	source "make/pkgs/python-pyasn1/Config.in"
+	source "make/pkgs/python-pycparser/Config.in"
+	source "make/pkgs/python-pygooglechart/Config.in"
+	source "make/pkgs/python-pyrfc3339/Config.in"
+	source "make/pkgs/python-pythondialog/Config.in"
+	source "make/pkgs/python-pytz/Config.in"
+	source "make/pkgs/python-pyusb/Config.in"
+	source "make/pkgs/python-pyyaml/Config.in"
+	source "make/pkgs/python-requests/Config.in"
+	source "make/pkgs/python-samsungctl/Config.in"
+	source "make/pkgs/python-setuptools/Config.in"
+	source "make/pkgs/python-six/Config.in"
+	source "make/pkgs/python-websocket-client/Config.in"
+	source "make/pkgs/python-zopecomponent/Config.in"
+	source "make/pkgs/python-zopeevent/Config.in"
+	source "make/pkgs/python-zopeinterface/Config.in"
 endmenu
 

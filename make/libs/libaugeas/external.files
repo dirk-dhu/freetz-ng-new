@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_LIB_libaugeas" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libaugeas.so.0.21.0"

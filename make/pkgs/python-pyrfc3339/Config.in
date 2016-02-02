@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_PYTHON_PYRFC3339
+	bool "pyrfc3339 1.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		pyrfc3339 parses and generates RFC 3339-compliant 
+		timestamps using Python datetime.datetime objects.
