@@ -1,0 +1,7 @@
+apply_changes() {
+	/mod/etc/init.d/rc.wfrog config
+}
+
+rc_status() { :; }
+
+pkg_post_save() { :; }

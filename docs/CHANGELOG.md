@@ -614,6 +614,8 @@ Latest changes
     * vermagic 1ac45e08d4-git
     * wireguard-tools 1.0.20200827
     * wireguard-linux-compat 1.0.20201112
+    * wfrog 0.8.2+svn953
+    * ws28xx master
     * xz 5.2.4
 
 - Documentation/Wiki:

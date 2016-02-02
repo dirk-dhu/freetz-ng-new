@@ -1,0 +1,148 @@
+#!/bin/sh
+
+DAEMON=wfrog
+DAEMON_LONG_NAME="Wfrog - Weather Station Software"
+WFROG_HOME=/usr/lib/wfrog
+WFROG_DATA=/mod/etc/wfrog
+PID_FILE=/var/run/wfrog/wfrog.pid
+
+PYTHON_ENV="PYTHONPATH=$PYTHONPATH:${WFROG_HOME}/ws-28xx"
+WFLOGGER="--backend -m"
+WFRENDERER="--renderer -m"
+if [ "$(basename $0)" = "wflogger" ] ; then
+	ARGS=$WFLOGGER
+elif [ "$(basename $0)" = "wfrenderer" ] ; then
+	ARGS=$WFRENDERER
+else
+	ARGS=
+fi
+
+. /etc/init.d/modlibrc
+
+
+export PATH=/usr/local/bin:$PATH
+RESTART_TERM1="CRITICAL.*Consumer of events"
+
+cleanup() {
+	rm -rf /mod/etc/$DAEMON
+	rm -rf /var/run/$DAEMON
+}
+
+config() {
+	[ -d ${WFROG_DATA}          ] || mkdir -p ${WFROG_DATA}
+	if [ ! -e /tmp/flash/${DAEMON}/settings.yaml ]; then
+		echo -n "Creating $DAEMON configuration ... "
+		cat /mod/etc/default.${DAEMON}/settings.yaml.default > /tmp/flash/${DAEMON}/settings.yaml
+	fi
+	if [ ! -e ${WFROG_DATA}/settings.yaml ]; then
+		ln -s /tmp/flash/${DAEMON}/settings.yaml ${WFROG_DATA}/settings.yaml
+	fi
+	if [ ! -e /tmp/flash/${DAEMON}/WV5Datastore.cfg ] && [ -e /mod/etc/default.${DAEMON}/WV5Datastore.cfg.default ]; then
+		echo -n "Creating ws-28xx driver configuration ... "
+		cat /mod/etc/default.${DAEMON}/WV5Datastore.cfg.default > /tmp/flash/${DAEMON}/WV5Datastore.cfg
+	fi
+}
+
+configure() {
+	[ -d $(dirname $PID_FILE)   ] || mkdir -p $(dirname $PID_FILE)
+	[ -d ${WFROG_DATA}          ] || mkdir -p ${WFROG_DATA}
+	[ -d ${WFROG_LOCATION}      ] || mkdir -p ${WFROG_LOCATION}
+	[ -d ${WFROG_LOCATION}/data ] || mkdir -p ${WFROG_LOCATION}/data
+	[ -d ${WFROG_LOCATION}/www  ] || mkdir -p ${WFROG_LOCATION}/www
+	if [ -d ${WFROG_LOCATION}/data    ] && [ ! -e ${WFROG_DATA}/data ]; then
+		ln -s ${WFROG_LOCATION}/data ${WFROG_DATA}/data
+	fi
+	if [ -d ${WFROG_LOCATION}/www     ] && [ ! -e ${WFROG_DATA}/www ]; then
+		ln -s ${WFROG_LOCATION}/www ${WFROG_DATA}/www
+	fi
+	if [ ! -e ${WFROG_LOCATION}/www/index.html ] && [ -e ${WFROG_LOCATION}/www/3hours.html ]; then
+		(cd ${WFROG_LOCATION}/www; ln -s 3hours.html index.html)
+	fi
+	if [ ! -e $(dirname $0)/restart_WFROG ]; then
+		ln -s $(dirname $0)/rc.${DAEMON} $(dirname $0)/restart_WFROG
+	fi
+	ARGS="$WFROG_CMDLINE $ARGS"
+}
+
+start() {
+	echo -n "Starting ${DAEMON_LONG_NAME} ... "
+
+	[ -r /etc/options.cfg ] && . /etc/options.cfg
+
+	if [ -z "${WFROG_LOCATION}" ]; then
+		echo "Warning[$DAEMON]: location is not set" 1>&2
+		return 1
+	fi
+	configure
+	
+	start-stop-daemon -S -b -m -p $PID_FILE -x /usr/bin/env $PYTHON_ENV $WFROG_HOME/bin/$DAEMON -N15 -- $ARGS
+	
+	if [ "${WFROG_WS28XX_GREP_IDS}" = 'yes' ]; then
+		sleep 60; echo ""; grep -e ID= -e inp= /var/log/wfrog*.log;
+	fi
+	
+	echo "done."
+}
+
+
+case $1 in
+	""|load)
+		[ ! -d "/tmp/flash/$DAEMON" ] && mkdir -p /tmp/flash/$DAEMON
+		[ ! -d /mod/etc/wfrog ] && mkdir -p /mod/etc/wfrog
+		
+		config
+
+		modreg file $DAEMON yaml 'settings.yaml' 1 "settings_yaml"
+		[ -e /mod/etc/default.${DAEMON}/WV5Datastore.cfg.default ] && modreg file $DAEMON cfg 'WV5Datastore.cfg' 1 "WV5Datastore_cfg" ||:
+		modreg cgi $DAEMON wfrog
+		modreg daemon $DAEMON
+
+		modlib_start $WFROG_ENABLED
+		;;
+	unload)
+		modunreg file $DAEMON
+		modunreg daemon $DAEMON
+		modunreg cgi $DAEMON
+		
+		modlib_stop 
+		cleanup
+		;;
+	config)
+		config
+		;;
+	start)
+		modlib_start && $(dirname $0)/restart_WFROG restart_WFROG &
+		;;
+	restart_WFROG)
+		sleep 30
+		while true; do 
+		    tail -1 /var/log/wfrog.log | grep -q -e "$RESTART_TERM1"
+		    if [ $? -eq 0 ] ; then 
+			echo restart $DAEMON | logger -t $DAEMON
+			$(dirname $0)/rc.${DAEMON} restart
+			break
+		    else
+			sleep 60
+		    fi
+		done
+		;;
+	stop)
+		killall restart_WFROG
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	reload)
+		modlib_reload
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|config|start|stop|restart|reload|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0
