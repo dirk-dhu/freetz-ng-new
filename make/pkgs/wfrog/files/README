@@ -1,0 +1,13 @@
+wfrog Freetz package
+   __  _   __  __ ___ __
+  |__ |_) |__ |__  |   /
+  |   |\  |__ |__  |  /_
+
+Copyright (C) 2014 Dirk H <dirk at dhu.homeip.net>
+
+This is a package for Freetz: http://www.freetz.org/
+
+wfrog sources are available here:
+http://www.wfrog.org/
+
+This package derives its ideas from the dovecot package.
