@@ -1,0 +1,48 @@
+--- bin/wfrog
++++ bin/wfrog
+@@ -41,7 +41,7 @@
+ import getpass
+ 
+ SETTINGS_FILE = 'settings.yaml'
+-GLOBAL_CONF_DIR = '/etc/wfrog/'
++GLOBAL_CONF_DIR = '/mod/etc/wfrog/'
+ SETTINGS_DEF=os.path.normpath(WFROG_HOME+'/wfcommon/config/settings-definition.yaml')
+ 
+ if sys.platform == 'win32':
+--- wflogger/config/wfrog.yaml
++++ wflogger/config/wfrog.yaml
+@@ -63,5 +63,5 @@
+                 choices:
+                     root: !xmlfile
+-                        path: /var/lib/wfrog/wfrog-current.xml
++                        path: /mod/etc/wfrog/data/wfrog-current.xml
+                         storage : !service
+                             name: storage
+--- wflogger/config/wflogger.yaml
++++ wflogger/config/wflogger.yaml
+@@ -24,5 +24,5 @@
+                 choices:
+                     root: !xmlfile
+-                        path: /var/lib/wfrog/wfrog-current.xml
++                        path: /mod/etc/wfrog/data/wfrog-current.xml
+                         storage : !service
+                             name: storage
+--- wfcommon/config/storage.yaml
++++ wfcommon/config/storage.yaml
+@@ -2,5 +2,5 @@
+     choices:
+         root: !csv
+-            path: /var/lib/wfrog/wfrog.csv
++            path: /mod/etc/wfrog/data/wfrog.csv
+         default: !csv
+ 
+--- wfrender/config/default/current.yaml
++++ wfrender/config/default/current.yaml
+@@ -2,6 +2,6 @@
+     source: !user
+         choices:
+             root: !currentxml
+-                path: /var/lib/wfrog/wfrog-current.xml
++                path: /mod/etc/wfrog/data/wfrog-current.xml
+             default: !currentxml
+                 path: data/wfrog-current.xml

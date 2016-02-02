@@ -1,0 +1,9 @@
+CAPTION='ws-28xx: WV5Datastore.cfg'
+DESCRIPTION='$(lang de:"ws-28xx Treiber Einstellungen" en:"ws-28xx driver settings")'
+
+CONFIG_FILE='/tmp/flash/wfrog/WV5Datastore.cfg'
+CONFIG_SAVE='modsave flash; /mod/etc/init.d/rc.wfrog restart'
+CONFIG_TYPE='text'
+
+TEXT_ROWS=15
+

@@ -1,0 +1,10 @@
+config FREETZ_PACKAGE_WFROG_WS28XX
+	bool "ws28xx master"
+	depends on FREETZ_PACKAGE_WFROG
+	select FREETZ_PACKAGE_PYTHON_CONFIGOBJ
+	default n
+	help
+		Linux driver based on reverse engineering HeavyWeather 
+		software for La Crosse Technology WS-2813U-IT 
+		(and perhaps WS-28xx series).
+
