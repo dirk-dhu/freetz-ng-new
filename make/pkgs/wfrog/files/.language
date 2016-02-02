@@ -1,0 +1,10 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	usr/lib/cgi-bin/wfrog.cgi
+	etc/default.wfrog/settings_yaml.def
+}
+
