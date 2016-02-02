@@ -1,0 +1,14 @@
+
+--- setup.py
++++ setup.py
+@@ -117,3 +117,9 @@
+ if __name__ == '__main__':
+-    from setuptools import setup, Distribution, Extension
++    try:
++        from setuptools import setup, Distribution, Extension
++    except ImportError:
++        from ez_setup import use_setuptools
++        use_setuptools("28.3.0")
++        from setuptools import setup, Distribution, Extension
++
+ 

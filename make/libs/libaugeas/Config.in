@@ -1,0 +1,10 @@
+config FREETZ_LIB_libaugeas
+	bool "libaugeas (libaugeas.so)"
+	select FREETZ_LIB_libxml2
+	select FREETZ_LIB_libreadline
+	default n
+	help
+		Augeas is a library and command line tool that 
+		focuses on the most basic problem in handling 
+		Linux configurations programmatically: 
+		editing actual configuration files in a controlled manner

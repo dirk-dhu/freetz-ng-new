@@ -1,0 +1,6 @@
+config FREETZ_PACKAGE_PYTHON_PYGOOGLECHART
+	bool "pygooglechart 0.3.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		 A complete Python wrapper for the Google Chart API.

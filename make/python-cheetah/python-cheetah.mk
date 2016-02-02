@@ -25,6 +25,7 @@ $(pkg)-clean:
 
 $(pkg)-uninstall:
 	$(RM) -r \
+		$(PYTHON_CHEETAH_DEST_DIR)/usr/bin/cheetah* \
 		$(PYTHON_CHEETAH_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/Cheetah \
 		$(PYTHON_CHEETAH_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/Cheetah-*.egg-info
 

@@ -1,0 +1,10 @@
+config FREETZ_PACKAGE_PYTHON_LXML
+	bool "lxml 3.4.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_LIB_libxslt
+	select FREETZ_LIB_libexslt
+	select FREETZ_LIB_libxml2
+	default n
+	help
+		 Powerful and Pythonic XML processing library combining 
+		 libxml2/libxslt with the ElementTree API.

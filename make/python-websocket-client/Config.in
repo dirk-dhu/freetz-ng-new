@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_WEBSOCKET_CLIENT
+	bool "websocket-client 0.47.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_LIB_libpython2 if !FREETZ_PACKAGE_PYTHON_STATIC
+	select FREETZ_PACKAGE_PYTHON_BACKPORTS_SSL_MATCH_HOSTNAME 
+	default n
+	help
+		WebSocket client for python. hybi13 is supported

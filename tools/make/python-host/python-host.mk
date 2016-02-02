@@ -1,18 +1,19 @@
 PYTHON_HOST_VERSION:=2.7.18
+PYTHON_HOST_MAJOR_VERSION:=2.7
 PYTHON_HOST_SOURCE:=Python-$(PYTHON_HOST_VERSION).tar.xz
 PYTHON_HOST_MD5:=fd6cc8ec0a78c44036f825e739f36e5a
 PYTHON_HOST_SITE:=http://www.python.org/ftp/python/$(PYTHON_HOST_VERSION)
 
 PYTHON_HOST_DIR:=$(TOOLS_SOURCE_DIR)/Python-$(PYTHON_HOST_VERSION)
 PYTHON_HOST_BINARY:=$(PYTHON_HOST_DIR)/python
-PYTHON_HOST_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python2.7
+PYTHON_HOST_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(PYTHON_HOST_MAJOR_VERSION)
 
 
 python-host-source: $(DL_DIR)/$(PYTHON_HOST_SOURCE)
 $(DL_DIR)/$(PYTHON_HOST_SOURCE): | $(DL_DIR)
 	$(DL_TOOL) $(DL_DIR) $(PYTHON_HOST_SOURCE) $(PYTHON_HOST_SITE) $(PYTHON_HOST_MD5)
 
-python-host-unpacked: $(PYTHON_HOST_DIR)/.unpacked
+python-host-unpacked: $(PYTHON_HOST_DIR)/.unpacked 
 $(PYTHON_HOST_DIR)/.unpacked: $(DL_DIR)/$(PYTHON_HOST_SOURCE) | $(TOOLS_SOURCE_DIR) $(UNPACK_TARBALL_PREREQUISITES)
 	$(call UNPACK_TARBALL,$(DL_DIR)/$(PYTHON_HOST_SOURCE),$(TOOLS_SOURCE_DIR))
 	@touch $@
@@ -31,7 +32,7 @@ $(PYTHON_HOST_DIR)/.configured: $(PYTHON_HOST_DIR)/.unpacked
 		--build=$(GNU_HOST_NAME) \
 		--host=$(GNU_HOST_NAME) \
 		--target=$(GNU_HOST_NAME) \
-		--prefix=/usr \
+		--prefix=$(HOST_TOOLS_DIR)/usr \
 	);
 	@touch $@
 
@@ -44,10 +45,11 @@ $(PYTHON_HOST_BINARY): $(PYTHON_HOST_DIR)/.configured
 $(PYTHON_HOST_TARGET_BINARY): $(PYTHON_HOST_BINARY) | $(HOST_TOOLS_DIR)
 	PATH=$(TARGET_PATH) \
 		$(MAKE) -C $(PYTHON_HOST_DIR) \
-		DESTDIR="$(HOST_TOOLS_DIR)" \
 		install
 	cp -a $(PYTHON_HOST_BINARY) $(PYTHON_HOST_DIR)/Parser/pgen \
 		$(HOST_TOOLS_DIR)/usr/bin
+	cp -a $(PYTHON_HOST_DIR)/Lib/site.py \
+		$(HOST_TOOLS_DIR)/usr/lib/python$(PYTHON_HOST_MAJOR_VERSION)
 
 python-host-precompiled: $(PYTHON_HOST_TARGET_BINARY)
 

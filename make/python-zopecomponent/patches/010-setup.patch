@@ -1,0 +1,13 @@
+
+--- setup.py
++++ setup.py
+@@ -23,3 +23,8 @@
+ import os
+-from setuptools import setup, find_packages
++try:
++    from setuptools import setup, find_packages
++except ImportError:
++    from ez_setup import use_setuptools
++    use_setuptools("28.3.0")
++    from setuptools import setup, find_packages
+ 
