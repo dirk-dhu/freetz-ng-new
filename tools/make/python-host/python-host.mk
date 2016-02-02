@@ -33,6 +33,8 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
 		install )
 	cp -a $(PYTHON_HOST_BINARY) $(PYTHON_HOST_DIR)/Parser/pgen \
 		$(HOST_TOOLS_DIR)/usr/bin
+	cp -a $(PYTHON_HOST_DIR)/Lib/site.py \
+		$(HOST_TOOLS_DIR)/usr/lib/python$(PYTHON_HOST_MAJOR_VERSION)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 

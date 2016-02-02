@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libaugeas
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libaugeas
+	bool "libaugeas"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libaugeas.so.0.21.0

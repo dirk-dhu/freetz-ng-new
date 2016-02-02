@@ -1,0 +1,9 @@
+config FREETZ_PACKAGE_PYTHON_CFFI
+	bool "cffi 1.8"
+	depends on FREETZ_PACKAGE_PYTHON
+	depends on FREETZ_LIB_libffi
+	select FREETZ_PACKAGE_PYTHON_PLATFORMER
+	select FREETZ_PACKAGE_PYTHON_PYCPARSER
+	default n
+	help
+		cffi is a library for testing in Python.

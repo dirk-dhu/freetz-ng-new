@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_PYTHON_SAMSUNGCTL
+	bool "samsungctl 0.7.1"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_WEBSOCKET_CLIENT
+	default n
+	help
+		Remote control Samsung televisions via a TCP/IP connection.

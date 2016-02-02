@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_PYTHON_ZOPEINTERFACE
+	bool "zopeinterface 4.3.2"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		This package provides an implementation 
+		of “object interfaces” for Python.

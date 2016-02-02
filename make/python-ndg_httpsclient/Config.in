@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_NDG_HTTPSCLIENT
+	bool "ndg-httpsclient 0.4.2"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_PYOPENSSL
+	default n
+	help
+		ndg-httpsclient Provides enhanced HTTPS 
+		support for httplib and urllib2 using PyOpenSSL.

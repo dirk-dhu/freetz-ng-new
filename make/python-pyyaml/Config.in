@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_PYTHON_PYYAML
+	bool "pyyaml 3.11"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_LIB_libyaml
+	default n
+	help
+		 YAML parser and emitter for Python.

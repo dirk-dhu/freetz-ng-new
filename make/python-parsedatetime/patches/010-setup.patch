@@ -1,0 +1,18 @@
+
+--- setup.py
++++ setup.py
+@@ -8,3 +8,9 @@
+ 
+-from setuptools import setup, find_packages
++try:
++    from setuptools import setup, find_packages
++except ImportError:
++    from ez_setup import use_setuptools
++    use_setuptools("28.3.0")
++    from setuptools import setup, find_packages
++
+ 
+@@ -44,3 +44,2 @@
+     install_requires=['future'],
+-    setup_requires=['pytest-runner'],
+     tests_require=['pytest'],

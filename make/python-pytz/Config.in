@@ -1,0 +1,6 @@
+config FREETZ_PACKAGE_PYTHON_PYTZ
+	bool "pytz release_2016.7"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		pytz brings the Olson tz database into Python.

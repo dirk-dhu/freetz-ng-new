@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_ZOPEEVENT
+	bool "zopeevent 4.3.2"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		This package is an implementation of “object interfaces” 
+		for Python. Interfaces are a mechanism for labeling objects 
+		as conforming to a given API or contract.

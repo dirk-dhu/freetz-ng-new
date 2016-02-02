@@ -1,0 +1,23 @@
+--- samsungctl/__main__.py	2018-01-15 20:59:51.000000000 +0100
++++ samsungctl/__main__.py	2018-04-07 22:17:46.714156703 +0200
+@@ -29,18 +29,14 @@
+     if xdg_config:
+         directories.append(xdg_config)
+ 
+-    directories.append(os.path.join(os.getenv("HOME"), ".config"))
+     directories.append("/etc")
+ 
+     for directory in directories:
+         path = os.path.join(directory, "samsungctl.conf")
+         try:
+             config_file = open(path)
+-        except IOError as e:
+-            if e.errno == errno.ENOENT:
+-                continue
+-            else:
+-                raise
++        except:
++            continue
+         else:
+             file_loaded = True
+             break

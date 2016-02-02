@@ -1,0 +1,21 @@
+
+--- setup.py
++++ setup.py
+@@ -1,7 +1,14 @@
+ from codecs import open
+ 
+-from setuptools import setup
+-from setuptools.command.test import test as TestCommand
++try:
++    from setuptools import setup
++    from setuptools.command.test import test as TestCommand
++except ImportError:
++    from ez_setup import use_setuptools
++    use_setuptools("28.3.0")
++    from setuptools import setup
++    from setuptools.command.test import test as TestCommand
++
+ 
+ 
+ class PyTest(TestCommand):
+

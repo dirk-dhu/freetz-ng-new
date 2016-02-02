@@ -1,0 +1,6 @@
+config FREETZ_PACKAGE_PYTHON_SIX
+	bool "six 1.11.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		Python 2 and 3 compatibility utilities.
