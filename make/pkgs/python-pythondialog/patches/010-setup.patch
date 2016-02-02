@@ -1,0 +1,12 @@
+
+--- setup.py
++++ setup.py
+@@ -98,3 +98,3 @@
+     if os.path.isdir(".git"):
+-        generate_changelog(ch_name)
++        print("Skip generating Changelog.", file=sys.stderr)
+     elif not os.path.isfile(ch_name):
+@@ -105,3 +105,2 @@
+ generate the '{cl}' file from the Git log. Aborting.""".format(cl=ch_name)
+-        sys.exit(msg)
+ 

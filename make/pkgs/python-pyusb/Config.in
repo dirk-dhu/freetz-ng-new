@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_PYUSB
+	bool "pyusb 1.0.0b2"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_MOD_CTYPES
+	select FREETZ_LIB_libusb_1
+	default n
+	help
+		 Easy USB access on Python.

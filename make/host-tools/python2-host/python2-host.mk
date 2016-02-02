@@ -33,7 +33,14 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
 		$(TOOLS_SUBMAKE) -C $(PYTHON2_HOST_DIR) \
 		DESTDIR="$(HOST_TOOLS_DIR)" \
 		install )
+	cp -a $(PYTHON2_HOST_BINARY) $(PYTHON2_HOST_DIR)/Parser/pgen \
+		$(HOST_TOOLS_DIR)/usr/bin
+	cp -a $(PYTHON2_HOST_DIR)/Lib/site.py \
+		$(HOST_TOOLS_DIR)/usr/lib/python$(PYTHON2_HOST_MAJOR_VERSION)
 
+$(HOST_TOOLS_DIR)/usr/bin:
+	@mkdir -p $@
+		
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 

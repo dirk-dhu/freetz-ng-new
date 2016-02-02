@@ -34,6 +34,9 @@ $(PKG)_UNNECESSARY_DIRS := $(if $(FREETZ_PACKAGE_PYTHON_COMPRESS_PYC),$(call new
 $(PKG)_UNNECESSARY_DIRS += $(call newline2space,$(foreach mod,$($(PKG)_MODULES_EXCLUDED),$(PyMod/$(mod)/dirs)))
 
 $(PKG)_DEPENDS_ON += python2-host expat libffi zlib
+$(PKG)_BUILD_PREREQ += zip
+$(PKG)_BUILD_PREREQ_HINT := Hint: on Debian-like systems this binary is provided by the zip package (sudo apt-get install zip)
+
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_PYTHON_MOD_BSDDB),db)
 $(PKG)_DEPENDS_ON += $(if $(or $(FREETZ_PACKAGE_PYTHON_MOD_CURSES),$(FREETZ_PACKAGE_PYTHON_MOD_READLINE)),ncurses)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_PYTHON_MOD_READLINE),readline)
@@ -48,6 +51,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PYTHON_MOD_SQLITE
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PYTHON_MOD_SSL
 $(PKG)_REBUILD_SUBOPTS += $(OPENSSL_REBUILD_SUBOPTS)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_IPV6_SUPPORT
+$(PKG)_REBUILD_SUBOPTS += $(if $(FREETZ_PACKAGE_PYTHON_MOD_CTYPES),FREETZ_TARGET_TOOLCHAIN)
 
 
 $(PKG)_CONFIGURE_ENV += ac_cv_have_chflags=no
@@ -136,6 +140,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.installed
 	); \
 	touch -c $@
 
+
 ifneq ($(strip $(FREETZ_PACKAGE_PYTHON_STATIC)),y)
 $($(PKG)_LIB_PYTHON_TARGET_DIR): $($(PKG)_DIR)/.installed
 	@mkdir -p $(dir $@); \
@@ -187,6 +192,8 @@ $(pkg)-clean:
 	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpython$(PYTHON_MAJOR_VERSION).*
 	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/python*
 
+
+
 $(pkg)-uninstall:
 	$(RM) -r \
 		$(PYTHON_TARGET_BINARY) \
@@ -196,5 +203,6 @@ $(pkg)-uninstall:
 		$(PYTHON_DEST_DIR)/usr/lib/python$(PYTHON_MAJOR_VERSION) \
 		$(PYTHON_ZIPPED_PYC_TARGET_DIR) \
 		$(PYTHON_DEST_DIR)/usr/include/python$(PYTHON_MAJOR_VERSION)
+
 
 $(PKG_FINISH)

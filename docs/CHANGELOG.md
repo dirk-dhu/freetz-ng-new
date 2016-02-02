@@ -927,7 +927,13 @@ Latest changes
     * Fritz!Box private key password framework v0.7-git (by PeterPawn)
     * ProxyChains-NG 4.14 (e895fb713a-git)
     * python-cheetah 2.4.4
+    * python-configobj 5.0.6
+    * python-googlechart 0.3.0
+    * python-lxml 3.4.0
     * python-mechanize 0.2.5
+    * python-six 1.8.0
+    * python-usb 1.0.0b2
+    * python-yaml 3.11
     * python-yEnc 0.4.0
     * serf 1.3.9
     * ScanButton 0.2.3.cvs20090713
