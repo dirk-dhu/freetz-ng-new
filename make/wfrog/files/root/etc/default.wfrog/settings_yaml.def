@@ -1,0 +1,9 @@
+CAPTION='wfrog: settings.yaml'
+DESCRIPTION='$(lang de:"Wfrog Einstellungen" en:"Wfrog settings")'
+
+CONFIG_FILE='/tmp/flash/wfrog/settings.yaml'
+CONFIG_SAVE='modsave flash; /mod/etc/init.d/rc.wfrog restart'
+CONFIG_TYPE='text'
+
+TEXT_ROWS=15
+

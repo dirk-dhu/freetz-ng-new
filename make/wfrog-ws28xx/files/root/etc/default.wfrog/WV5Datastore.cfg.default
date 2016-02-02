@@ -1,0 +1,18 @@
+[DataStore]
+TransceiverSerNo = ??????????????
+[Settings]
+DeviceID = ???
+[TransceiverSettings]
+TransmissionFrequency = 1
+[ws28xx]
+CheckSumm = 1363
+ClockMode = 0
+TemperatureFormat = 1
+PressureFormat = 1
+RainFormat = 0
+WindspeedFormat = 3
+WeatherThreshold = 3
+StormThreshold = 5
+LCDContrast = 4
+LowBatFlags = 8
+HistoryInterval = 7

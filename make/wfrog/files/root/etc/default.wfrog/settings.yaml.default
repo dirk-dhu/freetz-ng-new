@@ -1,0 +1,8 @@
+altitude: 70
+station:
+  driver: auto
+units:
+  press: hPa
+  rain: mm
+  temp: C
+  wind: m/s

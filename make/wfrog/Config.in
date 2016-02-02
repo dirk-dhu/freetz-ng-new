@@ -1,0 +1,18 @@
+config FREETZ_PACKAGE_WFROG
+	bool "wfrog 0.8.2+svn953"
+	select FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_MOD_ELEMENTTREE
+	select FREETZ_PACKAGE_PYTHON_MOD_CSV
+	select FREETZ_PACKAGE_PYTHON_MOD_JSON
+	select FREETZ_PACKAGE_PYTHON_MOD_SYSLOG
+	select FREETZ_PACKAGE_PYTHON_MOD_TERMIOS
+	select FREETZ_PACKAGE_PYTHON_CHEETAH
+	select FREETZ_PACKAGE_PYTHON_LXML
+	select FREETZ_PACKAGE_PYTHON_PYGOOGLECHART
+	select FREETZ_PACKAGE_PYTHON_PYUSB
+	select FREETZ_PACKAGE_PYTHON_PYYAML
+	
+	default n
+	help
+		wfrog is a web-based weather station software with nice charts 
+		and many ways to publish them on the web, and much more.

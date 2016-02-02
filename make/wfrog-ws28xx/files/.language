@@ -1,0 +1,9 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	etc/default.wfrog/WV5Datastore_cfg.def
+}
+
