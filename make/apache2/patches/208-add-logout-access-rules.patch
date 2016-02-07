@@ -1,0 +1,22 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,3 +406,7 @@
+ Include @rel_sysconfdir@/extra/proxy-html.conf
+ </IfModule>
++
++# Add access rules for logout webmail directory
++Include @rel_sysconfdir@/extra/httpd-logout.conf
++
+ 
+--- docs/conf/extra/httpd-logout.conf
++++ docs/conf/extra/httpd-logout.conf
+@@ -0,0 +1,8 @@
++SetEnvIfNoCase Request_URI "^/logout[/]?(loggedout\.html)?(logout\.php)?$" noauth=1
++Alias /logout /usr/mww/logout
++<Directory /usr/mww/logout>
++  <RequireAny>
++    Require user logout
++    Require env noauth
++  </RequireAny>
++</Directory>

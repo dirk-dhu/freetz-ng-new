@@ -1,0 +1,11 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,3 +406,7 @@
+ Include @rel_sysconfdir@/extra/proxy-html.conf
+ </IfModule>
++
++# Add site specific rules
++Include @rel_sysconfdir@/extra/httpd_myconfig.conf
++
+ 

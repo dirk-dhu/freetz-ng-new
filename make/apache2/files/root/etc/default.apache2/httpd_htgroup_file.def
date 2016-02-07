@@ -1,0 +1,6 @@
+CAPTION='Apache2: AuthGroupFile - .htgroup'
+DESCRIPTION='$(lang de:"Hier ist die Benutzer zu Gruppen Zuordnung für die Rechtevergabe der Verzeichnisse hinterlegt." en:"The user assignment to groups for the directory priveleges is saved here.")'
+
+CONFIG_FILE='/tmp/flash/apache2/.htgroup'
+CONFIG_SAVE='chmod 644 /tmp/flash/apache2/.htgroup; modsave flash'
+CONFIG_TYPE='text'

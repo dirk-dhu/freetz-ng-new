@@ -1,0 +1,41 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+@@ -49,8 +49,8 @@
+ # prevent Apache from glomming onto all bound IP addresses.
+ #
+ #Listen 12.34.56.78:80
+-Listen @@Port@@
++Listen 8081
+ 
+ #
+ # Dynamic Shared Object (DSO) Support
+ #
+@@ -111,7 +113,17 @@
+ # LoadModule foo_module modules/mod_foo.so
+ #
++LoadModule mime_magic_module lib/apache2/mod_mime_magic.so
++LoadModule slotmem_shm_module lib/apache2/mod_slotmem_shm.so
++LoadModule cgi_module lib/apache2/mod_cgi.so
++LoadModule session_module lib/apache2/mod_session.so
++LoadModule session_cookie_module lib/apache2/mod_session_cookie.so
++LoadModule proxy_module lib/apache2/mod_proxy.so
++LoadModule proxy_connect_module lib/apache2/mod_proxy_connect.so
++LoadModule proxy_http_module lib/apache2/mod_proxy_http.so
++LoadModule proxy_fcgi_module lib/apache2/mod_proxy_fcgi.so
++LoadModule proxy_scgi_module lib/apache2/mod_proxy_scgi.so
+ @@LoadModule@@
+ 
+ <IfModule unixd_module>
+ #
+ # If you wish httpd to run as a different user or group, you must run
+@@ -172,8 +174,8 @@
+ # It is usually good practice to create a dedicated user and group for
+ # running httpd, as with most system services.
+ #
+-User daemon
+-Group daemon
++User thttp
++Group thttp
+ 
+ </IfModule>
+ 

@@ -1,0 +1,47 @@
+<html><head>
+<meta charset="utf-8">
+<meta http-equiv='cache-control' content='no-cache'>
+<meta http-equiv='expires' content='0'>
+<meta http-equiv='pragma' content='no-cache'>
+<script type="text/javascript">
+function logout() {
+    var xmlhttp;
+    if (window.ActiveXObject) {
+      // IE clear HTTP Authentication
+      document.execCommand("ClearAuthenticationCache");
+      window.location.href='/logout/loggedout.html';
+    } else {
+      xmlhttp = createXMLObject()
+      //xmlhttp.open("GET", '/logout/index.html', false, "logout", "logout");
+      xmlhttp.open("GET", '/logout/logout.php', false, "logout", "logout");
+      xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4) {window.location.href='/logout/loggedout.html';}
+      }
+      xmlhttp.send("");
+
+      //xmlhttp.abort();
+      //window.location.href='/logout/loggedout.html';
+      //window.location.replace='/logout/loggedout.html';
+    }
+    return false;
+}
+function createXMLObject() {
+  try {
+    if (window.XMLHttpRequest) {
+      xmlhttp = new XMLHttpRequest();
+    }
+    // code for IE
+    else if (window.ActiveXObject) {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+  } catch (e) {
+    xmlhttp=false
+  }
+  return xmlhttp;
+}
+</script>
+</head>
+<body>
+<a href="#" onclick="logout();">Log out</a>
+</body>
+</html>

@@ -1,0 +1,285 @@
+#!/bin/sh
+
+DAEMON=apache2
+DAEMON_LONG_NAME="Apache2 HTTP server"
+DAEMON_CTL=apachectl
+DAEMON_BIN_DIR=/usr/bin
+DAEMON_SBIN_DIR=/usr/sbin
+DAEMON_CHECK=${DAEMON}
+PHPRC=/tmp/flash/php.ini
+PID_FILE=/var/run/${DAEMON}/httpd.pid
+. /etc/init.d/modlibrc
+
+CONFFILE=$APACHE2_CONFIGLOCATION/$DAEMON.conf
+CMDOPTS="-f $CONFFILE -k"
+
+cleanup() {
+	rm -rf /mod/etc/$DAEMON
+	rm -rf /mod/usr/share/$DAEMON
+	rm -rf /var/run/$DAEMON
+	rm -rf /var/$DAEMON
+}
+
+ed_edit() {
+   # old_value, new_value, filename
+   ed $3 <<EOF
+1,\$s/$1/$2/g
+w
+q
+EOF
+}
+
+config () {
+	local need_save=0
+	[ ! -e /tmp/flash/${DAEMON} ] && mkdir -p /tmp/flash/${DAEMON}/
+	if [ ! -e /tmp/flash/${DAEMON}/httpd_myconfig.conf ]; then
+		echo -n "Creating $DAEMON local site my configuration ... "
+		cat /etc/default.${DAEMON}/httpd_myconfig_conf.default > /tmp/flash/${DAEMON}/httpd_myconfig.conf
+		need_save=1
+	fi
+	if [ ! -e /tmp/flash/${DAEMON}/.htgroup ]; then
+		echo -n "Creating $DAEMON htgroup ... "
+		cat /etc/default.${DAEMON}/_htgroup.default > /tmp/flash/${DAEMON}/.htgroup
+		chmod 644 /tmp/flash/${DAEMON}/.htgroup
+		need_save=1
+	fi
+	if [ ! -e /tmp/flash/${DAEMON}/.htpasswd ]; then
+		echo -n "Creating $DAEMON htpasswd ... "
+		cat /etc/default.${DAEMON}/_htpasswd.default > /tmp/flash/${DAEMON}/.htpasswd
+		chmod 666 /tmp/flash/${DAEMON}/.htpasswd
+		need_save=1
+	fi
+	if [ ! -s /tmp/flash/$DAEMON/server.crt ]; then
+		echo -n "Creating $DAEMON certificate ... "
+		cat /mod/etc/default.$DAEMON/ssl/server.crt > /tmp/flash/${DAEMON}/server.crt
+		chmod 644 /tmp/flash/${DAEMON}/server.crt
+		need_save=1
+	fi
+	if [ ! -s /tmp/flash/$DAEMON/server-ca.crt ]; then
+		echo -n "Creating $DAEMON chain certificate ... "
+		cat /mod/etc/default.$DAEMON/ssl/server-ca.crt > /tmp/flash/${DAEMON}/server-ca.crt
+		chmod 644 /tmp/flash/${DAEMON}/server-ca.crt
+		need_save=1
+	fi
+	if [ ! -s /tmp/flash/$DAEMON/server.key ]; then
+		echo -n "Creating $DAEMON key ... "
+		cat /mod/etc/default.$DAEMON/ssl/server.key > /tmp/flash/${DAEMON}/server.key
+		chmod 600 /tmp/flash/${DAEMON}/server.key
+		need_save=1
+	fi
+	if [ $need_save -eq 1 ]; then
+		modsave flash
+	fi
+	if [ ! $(grep -se '^\*\.php\:' /mod/etc/webcfg.conf) ]; then
+		echo "Warning[$DAEMON]: php ist not configured in /mod/etc/webcfg.conf"
+		echo "Warning[$DAEMON]: entering of passwords and logout will not work"
+	fi
+}
+
+configure() {
+	cleanup
+
+	[ -r /etc/options.cfg ] && . /etc/options.cfg
+
+	mkdir -p /mod/etc/$DAEMON
+	mkdir -p /mod/usr/share/$DAEMON
+	mkdir -p /var/$DAEMON
+	mkdir -p /var/tmp/php
+
+	if [ "$APACHE2_UNPRIV" = "yes" ]; then
+		modlib_add_user_and_group thttp
+
+		mkdir /var/run/$DAEMON
+	fi
+
+	if [ ! -e "$APACHE2_CONFIGLOCATION/$DAEMON.conf" ]; then
+		echo -n 'initialzing apache2 configuration folder with default values ... '
+		tar -C $APACHE2_CONFIGLOCATION -xf /mod/etc/default.$DAEMON/default_config/default_config.tar
+		echo 'done.'
+	else
+		for i in $(tar -tf /mod/etc/default.$DAEMON/default_config/default_config.tar); do
+			[ "${i:0:2}" = "./" ] && ii=${i:2}
+			[ ! -z "$ii" ] && [ ! -e "$APACHE2_CONFIGLOCATION/$ii" ] && tar -C $APACHE2_CONFIGLOCATION \
+				-xf /mod/etc/default.$DAEMON/default_config/default_config.tar $i
+		done
+	fi
+
+	if [ ! -e "$APACHE2_HTDOCLOCATION/htdocs" ]; then
+		echo -n 'initialzing apache2 HTML root folder with default values ... '
+		tar -C $APACHE2_HTDOCLOCATION -xf /mod/etc/default.$DAEMON/default_htdoc/default_htdoc.tar
+		echo 'done.'
+	else
+		for i in $(tar -tf /mod/etc/default.$DAEMON/default_htdoc/default_htdoc.tar); do
+			[ "${i:0:2}" = "./" ] && ii=${i:2}
+			[ ! -z "$ii" ] && [ ! -e "$APACHE2_HTDOCLOCATION/$ii" ] && tar -C $APACHE2_HTDOCLOCATION \
+				-xf /mod/etc/default.$DAEMON/default_htdoc/default_htdoc.tar $i
+		done
+	fi
+
+	ln -s $APACHE2_CONFIGLOCATION/* /mod/etc/$DAEMON/
+	[ ! -e /mod/etc/$DAEMON/extra/httpd_myconfig.conf ] && ln -s /tmp/flash/${DAEMON}/httpd_myconfig.conf /mod/etc/$DAEMON/extra/httpd_myconfig.conf
+	[ ! -e /mod/etc/$DAEMON/.htgroup ]  && ln -s /tmp/flash/${DAEMON}/.htgroup  /mod/etc/$DAEMON/.htgroup
+	[ ! -e /mod/etc/$DAEMON/.htpasswd ] && ln -s /tmp/flash/${DAEMON}/.htpasswd /mod/etc/$DAEMON/.htpasswd
+	local use_certbot='no'
+	rm -f /mod/etc/$DAEMON/server.crt /mod/etc/$DAEMON/server-ca.crt /mod/etc/$DAEMON/server.key
+	if [ "${APACHE2_USECERTBOT}" = 'yes' ]; then
+	  if [ -e /mod/etc/conf/certbot.cfg ]; then
+	    . /mod/etc/conf/certbot.cfg
+	    if [ "$CERTBOT_ENABLED" = 'yes' ]; then
+	      if [ ! -z ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) ] && [ ! -z ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) ]; then
+		echo -n 'using certbot certs ... '
+		ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) /mod/etc/$DAEMON/server-ca.crt
+		ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) /mod/etc/$DAEMON/server.crt
+		ln -s ${CERTBOT_FLASH}/server.key /mod/etc/$DAEMON/server.key
+		use_certbot='yes'
+		echo 'done.'
+	      fi
+	    fi
+	  fi	
+	fi
+	if [ "$use_certbot" = 'no' ]; then 
+	  echo -n 'using apache2 certs ... '
+	  [ ! -e /mod/etc/$DAEMON/server.crt    ] && ln -s /tmp/flash/${DAEMON}/server.crt    /mod/etc/$DAEMON/server.crt
+	  [ ! -e /mod/etc/$DAEMON/server-ca.crt ] && ln -s /tmp/flash/${DAEMON}/server-ca.crt /mod/etc/$DAEMON/server-ca.crt
+	  [ ! -e /mod/etc/$DAEMON/server.key    ] && ln -s /tmp/flash/${DAEMON}/server.key    /mod/etc/$DAEMON/server.key
+	  echo 'done.'
+	fi
+	ln -s $APACHE2_HTDOCLOCATION/*  /mod/usr/share/$DAEMON/
+	ln -s $APACHE2_LOGLOCATION      /var/$DAEMON/logs
+	chown root:root /var/$DAEMON/logs
+
+	[ ! -z "$APACHE2_SPECIAL" ] && CMDOPTS="$APACHE2_SPECIAL $CMDOPTS"
+
+	APACHE2_CONF_PORT=`grep -se ^Listen $APACHE2_CONFIGLOCATION/$DAEMON.conf | cut -d" " -f2`
+	if [ "$APACHE2_CONF_PORT" !=  "$APACHE2_PORT" ]; then
+		ed_edit "Listen $APACHE2_CONF_PORT" "Listen $APACHE2_PORT" $APACHE2_CONFIGLOCATION/$DAEMON.conf > /dev/null
+		APACHE2_CONF_PORT=`grep -se ^Listen $APACHE2_CONFIGLOCATION/$DAEMON.conf | cut -d" " -f2`
+		if [ "$APACHE2_CONF_PORT" !=  "$APACHE2_PORT" ]; then
+			echo "Error[$DAEMON]: change port to $APACHE2_PORT failed" 1>&2
+			exit 1
+		fi
+	fi
+}
+
+start() {
+	trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 0 1 2 3 15
+	echo -n "Starting $DAEMON_LONG_NAME ... "
+	if modlib_check_running; then
+		echo "already running."
+		exit 0
+	fi
+
+	if [ -z "$APACHE2_CONFIGLOCATION" ]; then
+		echo "Error[$DAEMON]: set up $DAEMON configuration location ... failed (value not set)." 1>&2
+		exit 1
+	fi
+
+	if [ -z "$APACHE2_HTDOCLOCATION" ]; then
+		echo "Error[$DAEMON]: set up $DAEMON HTML root location ... failed (value not set)." 1>&2
+		exit 1
+	fi
+
+	if [ -z "$APACHE2_LOGLOCATION" ]; then
+		echo "Error[$DAEMON]: set up $DAEMON log location ... failed (value not set)." 1>&2
+		exit 1
+	fi
+
+	if [ -n "$APACHE2_CONFIGLOCATION" ] && [ ! -d "$APACHE2_CONFIGLOCATION" ]; then
+		mkdir -p $APACHE2_CONFIGLOCATION
+	fi
+
+	if [ -n "$APACHE2_HTDOCLOCATION" ] && [ ! -d "$APACHE2_HTDOCLOCATION" ]; then
+		mkdir -p $APACHE2_HTDOCLOCATION
+	fi
+
+	if [ -n "$APACHE2_LOGLOCATION" ] && [ ! -d "$APACHE2_LOGLOCATION" ]; then
+		mkdir -p $APACHE2_LOGLOCATION
+	fi
+
+	configure
+
+	$DAEMON_SBIN_DIR/$DAEMON_CTL $CMDOPTS start
+	exitval=$?
+
+	if [ "$exitval" -eq 0 ]; then
+		echo 'done.'
+	else
+		echo 'failed.'
+		exit $exitval
+	fi
+}
+
+stop () {
+	$DAEMON_SBIN_DIR/$DAEMON_CTL $CMDOPTS stop
+	sleep 3
+	apache2_pids=`pidof $DAEMON`
+	if [ -z "$apache2_pids" ]; then
+		cleanup
+		return 0
+	else
+		return 1
+	fi
+}
+
+restart () {
+	$DAEMON_SBIN_DIR/$DAEMON_CTL $CMDOPTS restart
+}
+
+trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 1 2 3 15
+case $1 in
+	""|load)
+		modreg cgi $DAEMON 'Apache2'
+		modreg daemon $DAEMON
+		modreg file $DAEMON conf 'httpd_myconfig.conf' 1 "httpd_myconfig_conf"
+		modreg file $DAEMON group '.htgroup' 1 "httpd_htgroup_file"
+		if [ -e /mod/etc/default.$DAEMON/ssl/server.crt ]; then
+			modreg file $DAEMON crt 'server.crt' 0 "httpd_crt"
+			modreg file $DAEMON chain 'server-ca.crt' 0 "httpd_chain"
+			modreg file $DAEMON key 'server.key' 0 "httpd_key"
+		fi
+		config
+
+		if [ "$APACHE2_ENABLED" != "yes" ]; then
+			echo "Error[$DAEMON]: $DAEMON is disabled." 1>&2
+			exit 1
+		fi
+
+		( start ) &
+		echo $! > /var/run/rc.$DAEMON.pid
+		;;
+	unload)
+		modunreg daemon $DAEMON
+		modunreg cgi $DAEMON
+		modunreg file $DAEMON
+		[ -s /var/run/rc.$DAEMON.pid ] && PID_FILE=/var/run/rc.$DAEMON.pid
+		modlib_stop
+		;;
+	start)	
+		if [ -s /var/run/rc.$DAEMON.pid ]; then
+			kill -0 $(cat /var/run/rc.$DAEMON.pid)
+			if [ $? -eq 0 ]; then
+				echo "Warning[$DAEMON]: Startup of $DAEMON already performed." 1>&2
+				exit 0
+			fi
+			rm -f /var/run/rc.$DAEMON.pid
+		fi
+		( start ) &
+		echo $! > /var/run/rc.$DAEMON.pid
+		;;
+	stop)
+		[ -s /var/run/rc.$DAEMON.pid ] && PID_FILE=/var/run/rc.$DAEMON.pid
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|reload|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

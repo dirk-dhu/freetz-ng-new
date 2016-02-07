@@ -1,0 +1,13 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -162,5 +162,5 @@
+     #
+     # Controls who can get stuff from this server.
+     #
+-    Require all granted
++    #Require all granted
+ </Directory>
+
+ 
+
