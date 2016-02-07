@@ -1,0 +1,46 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,2 +406,3 @@
+ 
++Include @rel_sysconfdir@/extra/httpd-proxy-freetz.conf
+ # Configure mod_proxy_html to understand HTML4/XHTML1
+--- docs/conf/extra/httpd-proxy-freetz.conf
++++ docs/conf/extra/httpd-proxy-freetz.conf
+@@ -0,0 +1,36 @@
++#load html passing module to patch links tobe accessible with proxy etc
++LoadModule	proxy_html_module	lib/apache2/mod_proxy_html.so
++LoadModule	xml2enc_module		lib/apache2/mod_xml2enc.so
++LoadModule	rewrite_module		lib/apache2/mod_rewrite.so
++#load dumpio module and do a few settings as workaround otherwise png images are not servered
++LoadModule	dumpio_module		lib/apache2/mod_dumpio.so
++LogLevel dumpio:error
++DumpIOOutput On
++
++#add direct access to images/legacy as workaround instead of patching urls in css does not work
++Alias /images/legacy /usr/share/images/legacy
++<Directory /usr/share/images/legacy>
++  #Require ip 127.0.0.1
++  Require all granted
++</Directory>
++
++ProxyRequests Off  # <-- this is an important security setting
++ProxyPass /freetz http://127.0.0.1:81
++ProxyHTMLURLMap http://127.0.0.1:81 /freetz
++<Location /freetz>
++  ProxyHTMLEnable On
++  ProxyHTMLExtended On
++  ProxyHTMLMeta On
++  ProxyPassReverse http://127.0.0.1:81 
++  ProxyHTMLURLMap /freetz/gi-bin /cgi-bin
++  ProxyHTMLURLMap b/freetz/8 b/8
++  ProxyHTMLURLMap / /freetz/
++  #AllowOverride None
++  # Access control for valid users belonging to group admin
++  # for this directory (add the user to group admin)
++  AuthMerging Or
++  <RequireAll>
++    Require group admin
++    Require valid-user
++  </RequireAll>
++</Location>

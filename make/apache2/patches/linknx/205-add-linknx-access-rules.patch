@@ -1,0 +1,26 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,3 +406,7 @@
+ Include @rel_sysconfdir@/extra/proxy-html.conf
+ </IfModule>
++
++# Add access rules for linknx web directory
++Include @rel_sysconfdir@/extra/httpd-linknx.conf
++
+ 
+--- docs/conf/extra/httpd-linknx.conf
++++ docs/conf/extra/httpd-linknx.conf
+@@ -0,0 +1,12 @@
++Alias /linknx /usr/mww/linknx
++<Directory /usr/mww/linknx>
++  Options +FollowSymLinks +Indexes
++  AllowOverride None
++  # Access control for valid users belonging to group linknx
++  # for this directory (add the user to group linknx)
++  AuthMerging Or
++  <RequireAll>
++    Require group linknx
++    Require valid-user
++  </RequireAll>
++</Directory>

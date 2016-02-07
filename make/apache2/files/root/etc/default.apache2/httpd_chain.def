@@ -1,0 +1,6 @@
+CAPTION='Apache2: server-ca.crt'
+DESCRIPTION='$(lang de:"Hier ist der Server Zertifikatskette hinterlegt." en:"The server chain certificate is saved here.")'
+
+CONFIG_FILE='/tmp/flash/apache2/server-ca.crt'
+CONFIG_SAVE='chmod 600 /tmp/flash/apache2/server-ca.crt; modsave flash'
+CONFIG_TYPE='text'

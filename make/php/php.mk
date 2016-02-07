@@ -6,14 +6,12 @@ $(PKG)_SITE:=http://de.php.net/distributions,http://de2.php.net/distributions
 
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 
-$(PKG)_BINARY              := $($(PKG)_DIR)/sapi/cgi/php-cgi
-$(PKG)_TARGET_BINARY       := $($(PKG)_DEST_DIR)/usr/bin/php-cgi
-
-$(PKG)_CLI_BINARY          := $($(PKG)_DIR)/sapi/cli/php
-$(PKG)_CLI_TARGET_BINARY   := $($(PKG)_DEST_DIR)/usr/bin/php
-
-$(PKG)_APXS2_BINARY        := $($(PKG)_DIR)/libs/libphp5.so
-$(PKG)_APXS2_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/lib/apache2/libphp5.so
+$(PKG)_BINARY              :=$($(PKG)_DIR)/sapi/cgi/php-cgi
+$(PKG)_TARGET_BINARY       :=$($(PKG)_DEST_DIR)/usr/bin/php-cgi
+$(PKG)_APXS2_BINARY        :=$(if $(FREETZ_PACKAGE_PHP_WITH_APACHE2),$($(PKG)_DIR)/libs/libphp5.so,)
+$(PKG)_APXS2_TARGET_BINARY :=$(if $(FREETZ_PACKAGE_PHP_WITH_APACHE2),$($(PKG)_DEST_DIR)/usr/lib/apache2/libphp5.so,)
+$(PKG)_CLI_BINARY          :=$(if $(FREETZ_PACKAGE_PHP_WITH_CLI)    ,$($(PKG)_DIR)/sapi/cli/php,)
+$(PKG)_CLI_TARGET_BINARY   :=$(if $(FREETZ_PACKAGE_PHP_WITH_CLI)    ,$($(PKG)_DEST_DIR)/usr/bin/php,)
 
 $(PKG)_STARTLEVEL=90 # before lighttpd
 
@@ -23,11 +21,18 @@ ifeq ($(strip $(FREETZ_PACKAGE_PHP_STATIC)),y)
 $(PKG)_EXTRA_LDFLAGS += -all-static
 endif
 
+ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_APACHE2)),y)
+$(PKG)_DEPENDS_ON += apache2
+$(PKG)_CONFIGURE_OPTIONS += --with-apxs2="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/apxs"
+endif
+
 $(PKG)_DEPENDS_ON += pcre
 $(PKG)_CONFIGURE_OPTIONS += --with-pcre-regex="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-cli
+ifneq ($(strip $(FREETZ_PACKAGE_PHP_WITH_CLI)),y)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_PHP_cli),,$($(PKG)_CLI_TARGET_BINARY))
+endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_apxs2)),y)
 $(PKG)_DEPENDS_ON += apache2
@@ -38,6 +43,16 @@ ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_CURL)),y)
 $(PKG)_REBUILD_SUBOPTS += $(filter FREETZ_LIB_libcurl_%,$(CURL_REBUILD_SUBOPTS))
 $(PKG)_DEPENDS_ON += curl
 $(PKG)_CONFIGURE_OPTIONS += --with-curl="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
+endif
+
+ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_INTL)),y)
+#prepare enable-intl does not work yet needs icu-config in icu-dir
+$(PKG)_REBUILD_SUBOPTS += $(filter FREETZ_LIB_gettext_%,$(INTL_REBUILD_SUBOPTS))
+$(PKG)_DEPENDS_ON += gettext
+$(PKG)_CONFIGURE_OPTIONS += --enable-intl
+$(PKG)_CONFIGURE_OPTIONS += --with-icu-dir="$(TARGET_TOOLCHAIN_STAGING_DIR)"
+else
+$(PKG)_CONFIGURE_OPTIONS += --disable-intl
 endif
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_FILEINFO),--enable-fileinfo,--disable-fileinfo)
@@ -76,6 +91,14 @@ $(PKG)_CONFIGURE_OPTIONS += --without-iconv
 endif
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_JSON),--enable-json,--disable-json)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MHASH)       ,--with-mhash,--without-mhash)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT),--enable-memory-limit,--disable-memory-limit)
+
+ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_MCRYPT)),y)
+$(PKG)_DEPENDS_ON += libmcrypt
+$(PKG)_CONFIGURE_OPTIONS += --with-mcrypt="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
+$(PKG)_CONFIGURE_POST_CMDS += sed -i -r -e '/EXTRA_LIBS/ s/-lltdl//g' ./Makefile;
+endif
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_LIBXML)),y)
 $(PKG)_DEPENDS_ON += libxml2
@@ -90,17 +113,11 @@ $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-simplexml
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-xmlreader
 $(PKG)_CONFIGURE_OPTIONS += --$($(PKG)_XML_SUPPORT)-xmlwriter
 
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MHASH),--with-mhash,--without-mhash)
-
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT),--enable-memory-limit,--disable-memory-limit)
-
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_PCNTL),--enable-pcntl,--disable-pcntl)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_SESSION),--enable-session,--disable-session)
 
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_SOCKETS),--enable-sockets,--disable-sockets)
-
-$(PKG)_CONFIGURE_OPTIONS += --without-sqlite
 
 ifeq ($(strip $(FREETZ_PACKAGE_PHP_WITH_SQLITE3)),y)
 $(PKG)_DEPENDS_ON += sqlite
@@ -191,6 +208,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-ipv6
 endif
 $(PKG)_CONFIGURE_OPTIONS += --enable-exif
 $(PKG)_CONFIGURE_OPTIONS += --enable-mbstring
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_PHP_WITH_CLI)     ,--enable-cli,--disable-cli)
 $(PKG)_CONFIGURE_OPTIONS += --disable-phar
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
 $(PKG)_CONFIGURE_OPTIONS += --with-config-file-path=/tmp/flash

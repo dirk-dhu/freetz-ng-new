@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_LIB_libmcrypt" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/libmcrypt.so.4.4.8"

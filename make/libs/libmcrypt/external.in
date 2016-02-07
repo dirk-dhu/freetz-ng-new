@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libmcrypt
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libmcrypt
+	bool "libmcrypt"
+	default n
+	help
+		externals the following file(s):
+		 ${FREETZ_LIBRARY_DIR}/libmcrypt.so.4.4.8

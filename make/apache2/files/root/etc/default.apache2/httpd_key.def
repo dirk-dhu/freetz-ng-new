@@ -1,0 +1,6 @@
+CAPTION='Apache2: server.key'
+DESCRIPTION='$(lang de:"Hier ist der Server Schl&uuml;ssel hinterlegt." en:"The server key is saved here.")'
+
+CONFIG_FILE='/tmp/flash/apache2/server.key'
+CONFIG_SAVE='chmod 600 /tmp/flash/apache2/server.key; modsave flash'
+CONFIG_TYPE='text'

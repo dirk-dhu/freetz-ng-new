@@ -1,0 +1,29 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -263,7 +264,7 @@
+ # is requested.
+ #
+ <IfModule dir_module>
+-    DirectoryIndex index.html
++    DirectoryIndex index.html index.php
+ </IfModule>
+ 
+ #
+@@ -401,7 +406,15 @@
+     # To use CGI scripts outside of ScriptAliased directories:
+     # (You will also need to add "ExecCGI" to the "Options" directive.)
+     #
+-    #AddHandler cgi-script .cgi
++    AddHandler cgi-script .cgi
++
++    # To use php module, follwoing lines are enabled:
++    # (check that index.php is enabled in dir_module section)
++    # 
++    LoadModule php5_module lib/apache2/libphp5.so
++    AddHandler php5-script .php
++    AddType application/x-httpd-php .php
++    AddType text/html .php .phps
+ 
+     # For type maps (negotiated resources):
+     #AddHandler type-map var

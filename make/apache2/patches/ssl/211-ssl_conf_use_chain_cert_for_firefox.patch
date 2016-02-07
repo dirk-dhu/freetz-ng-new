@@ -1,0 +1,7 @@
+--- docs/conf/extra/httpd-ssl.conf.in
++++ docs/conf/extra/httpd-ssl.conf.in
+@@ -174,3 +174,3 @@
+ #   certificate for convenience.
+-#SSLCertificateChainFile "@exp_sysconfdir@/server-ca.crt"
++SSLCertificateChainFile "@exp_sysconfdir@/server-ca.crt"
+ 
