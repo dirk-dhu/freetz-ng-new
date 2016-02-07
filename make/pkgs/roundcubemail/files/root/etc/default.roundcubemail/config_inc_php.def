@@ -1,0 +1,10 @@
+CAPTION='ROUNDCUBEMAIL: config.inc.php'
+DESCRIPTION='$(lang de:"Offizielle manpage: " en:"Official manpage: ")<a target=blank href=http://trac.roundcube.net/wiki/Howto_Config>http://trac.roundcube.net/wiki/Howto_Config</a>'
+
+CONFIG_FILE='/tmp/flash/roundcubemail/config.inc.php'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=50
+
