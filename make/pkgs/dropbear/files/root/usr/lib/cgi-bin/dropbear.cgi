@@ -29,6 +29,7 @@ EOF
 
 cgi_print_checkbox_br "pwdauth" "$DROPBEAR_PWDAUTH" "$(lang de:"Passwort-Login erlauben" en:"Allow password login")"
 cgi_print_checkbox_br "rootonly" "$DROPBEAR_ROOTONLY" "$(lang de:"Login nur f&uuml;r root erlauben" en:"Allow only root login")"
+cgi_print_textline_p "loginonlyasuser" "$DROPBEAR_LOGINONLYASUSER" 20/30 "$(lang de:"Login nur f&uuml;r folgenden Benutzer erlauben" en:"Allow login only for user"):"
 
 cat << EOF
 <p style="font-size:10px;">$(lang de:"Bitte beachte, dass die FRITZ!Box keine ad&auml;quate Benutzerverwaltung bietet. Die Dateien /etc/passwd und /etc/shadow m&uuml;ssen mit <b>modsave</b> gespeichert werden. Bitte aktiviere die Unterst&uuml;tzung f&uuml;r normale Benutzer nur, wenn Du genau wei&szlig;t, was Du tust." en:"Please note that the FRITZ!Box does not support normal user management. The files /etc/passwd and /etc/shadow have to be saved with <b>modsave</b>. Please activate the support for regular users only if you know what you are doing.")</p>
