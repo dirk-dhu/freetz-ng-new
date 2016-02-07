@@ -1,0 +1,211 @@
+#!/bin/sh
+
+DAEMON=roundcubemail
+. /etc/init.d/modlibrc
+
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+
+
+cleanup() {
+	rm -rf /mod/etc/$DAEMON
+	rm -rf /var/run/$DAEMON
+}
+
+ed_edit() {
+   # old_value, new_value, filename
+   ed $3 <<EOF
+1,\$s/$1/$2/g
+w
+q
+EOF
+}
+
+check_and_change_parameters() {
+	local ret=0
+	. /mod/etc/conf/dovecot.cfg
+	
+	local CURRENT_VALUE=`grep default_port /mod/etc/$DAEMON/config/config.inc.php | cut -d' ' -f3 | tr -d "';"`
+	if [ -n "$DOVECOT_IMAPPORT" ] && [ "$CURRENT_VALUE" != "$DOVECOT_IMAPPORT" ]; then
+		ed_edit "$CURRENT_VALUE" "$DOVECOT_IMAPPORT" /mod/etc/$DAEMON/config/config.inc.php > /dev/null
+		CURRENT_VALUE=`grep default_port /mod/etc/$DAEMON/config/config.inc.php | cut -d' ' -f3 | tr -d "';"`
+		if [ "$CURRENT_VALUE" != "$DOVECOT_IMAPPORT" ]; then
+			echo "Warning[$DAEMON]: change imap port from $CURRENT_VALUE to $DOVECOT_IMAPPORT failed" 1>&2
+			return 1
+		else
+			ret=2
+		fi
+	fi
+	. /mod/etc/conf/xmail.cfg
+	CURRENT_VALUE=`grep smtp_port /mod/etc/$DAEMON/config/config.inc.php | cut -d' ' -f3 | tr -d "';"`
+	if [ -n "$XMAIL_SMTPPORT" ] && [ "$CURRENT_VALUE" != "$XMAIL_SMTPPORT" ]; then
+		ed_edit "$CURRENT_VALUE" "$XMAIL_SMTPPORT" /mod/etc/$DAEMON/config/config.inc.php > /dev/null
+		CURRENT_VALUE=`grep smtp_port /mod/etc/$DAEMON/config/config.inc.php | cut -d' ' -f3 | tr -d "';"`
+		if [ "$CURRENT_VALUE" != "$XMAIL_SMTPPORT" ]; then
+			echo "Warning[$DAEMON]: change smtp port from $CURRENT_VALUE to $XMAIL_SMTPPORT failed" 1>&2
+			return 1
+		else
+			ret=2
+		fi
+	fi
+	CURRENT_VALUE=`grep memory_limit /mod/etc/$DAEMON/.htaccess | cut -f4 | tr -d "';"`
+	local SET_VALUE='9M'
+	if [ -n "$CURRENT_VALUE" ] && [ "$CURRENT_VALUE" != "$SET_VALUE" ]; then
+		ed_edit "$CURRENT_VALUE" "$SET_VALUE" /mod/etc/$DAEMON/.htaccess > /dev/null
+		CURRENT_VALUE=`grep memory_limit /mod/etc/$DAEMON/.htaccess | cut -f4 | tr -d "';"`
+		if [ "$CURRENT_VALUE" != "$SET_VALUE" ]; then
+			echo "Warning[$DAEMON]: change memory_limit from $CURRENT_VALUE to $SET_VALUE failed" 1>&2
+			return 1
+		fi
+	fi
+	return $ret
+}
+
+check_installer() {
+	local CURRENT_VALUE=`grep enable_installer /mod/etc/$DAEMON/config/config.inc.php | cut -d' ' -f3 | tr -d "';"`
+	if [ "$CURRENT_VALUE" = "true" ]; then
+		return 1
+	else
+		return 0
+	fi 
+}
+
+set_installer() {
+	local STRING=`grep enable_installer /mod/etc/$DAEMON/config/config.inc.php`
+	local CURRENT_VALUE=`grep enable_installer /mod/etc/$DAEMON/config/config.inc.php | cut -d' ' -f3 | tr -d "';"`
+	if [ "$CURRENT_VALUE" != "$1" ]; then
+		ed_edit "$STRING" "\$config['enable_installer'] = $1;" /mod/etc/$DAEMON/config/config.inc.php > /dev/null
+	fi 
+}
+
+populate_roundcube() {
+	wget --no-check-certificate -P ${ROUNDCUBEMAIL_LOCATION} https://github.com/roundcube/roundcubemail/releases/download/${ROUNDCUBEMAIL_VERSION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}.tar.gz && \
+	tar -C ${ROUNDCUBEMAIL_LOCATION} -zxvf ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}.tar.gz
+	rm -f ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}.tar.gz 
+	mkdir ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/data ||:
+}
+
+changeownership_roundcube() {
+	chgrp thttp ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/temp
+	chgrp thttp ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/logs
+	chgrp -R thttp ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/data
+	chmod 770 -R ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/temp/ 
+	chmod 770 -R ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/logs/
+	chmod 770 -R ${ROUNDCUBEMAIL_LOCATION}/roundcubemail-${ROUNDCUBEMAIL_VERSION}/data/
+}
+
+config() {
+	echo $! > /var/run/rc.${DAEMON}.pid
+	. /mod/etc/conf/apache2.cfg
+	
+	if [ ! -e /tmp/flash/${DAEMON}/config.inc.php ]; then
+		echo -n "Creating $DAEMON configuration ... "
+		cat /mod/etc/default.${DAEMON}/config.inc.php.default > /tmp/flash/${DAEMON}/config.inc.php
+	fi
+	if [ -z "${ROUNDCUBEMAIL_LOCATION}" ]; then
+		echo "Warning[$DAEMON]: location is not set" 1>&2
+		return 1
+	elif [ ! -e ${ROUNDCUBEMAIL_LOCATION} ]; then
+		mkdir -p ${ROUNDCUBEMAIL_LOCATION}
+	fi
+	if [ ! -e ${ROUNDCUBEMAIL_LOCATION}/${DAEMON}-${ROUNDCUBEMAIL_VERSION}/config ]; then
+		if [ ${ROUNDCUBEMAIL_DOWNLOADER} = 'yes' ]; then
+			echo "Info[$DAEMON]: populate roundcube location"
+			populate_roundcube
+			changeownership_roundcube
+		else 
+			echo "Warning[$DAEMON]: Need to populate roundcube location, enable download in cgi!"
+			return 1
+		fi
+	fi
+	if [ -e ${ROUNDCUBEMAIL_LOCATION}/${DAEMON}-${ROUNDCUBEMAIL_VERSION}/config ]; then
+		changeownership_roundcube
+		if [ ! -e /mod/etc/$DAEMON/config/. ]; then
+		    ln -s ${ROUNDCUBEMAIL_LOCATION}/${DAEMON}-${ROUNDCUBEMAIL_VERSION}/* /mod/etc/$DAEMON/
+		    ln -s ${ROUNDCUBEMAIL_LOCATION}/${DAEMON}-${ROUNDCUBEMAIL_VERSION}/.htaccess /mod/etc/$DAEMON/.htaccess
+		fi
+		[ -e /tmp/flash/${DAEMON}/config.inc.php -a ! -e /mod/etc/$DAEMON/config/config.inc.php ] && ln -s /tmp/flash/${DAEMON}/config.inc.php /mod/etc/$DAEMON/config/config.inc.php
+		check_and_change_parameters
+		local ret=$?
+		if [ ${ROUNDCUBEMAIL_DOWNLOADER} = 'yes' -o $ret -eq 2 ]; then
+			modconf set ${DAEMON} ROUNDCUBEMAIL_DOWNLOADER='no'
+			modconf set ${DAEMON} ROUNDCUBEMAIL_INSTALLED='yes'
+			modconf save ${DAEMON}
+			modsave flash
+		fi
+		echo 'done.'
+	else
+		echo "Error[$DAEMON]: location empty ... setup failed" 1>&2
+		return 1
+	fi
+	if [ "$ROUNDCUBEMAIL_INSTALLER_ENABLED" = "yes" ]; then
+		check_installer
+		local installer_enabled=$?
+		if [ "$ROUNDCUBEMAIL_INSTALLER_STATE" = "idle" ] && [ $installer_enabled -eq 0 ]; then
+			set_installer 'true'
+			check_installer
+			installer_enabled=$?
+			if [ $installer_enabled -eq 1 ]; then
+				modconf set ${DAEMON} ROUNDCUBEMAIL_INSTALLER_STATE='started'
+				modconf save ${DAEMON}
+				modsave flash
+			fi
+		elif [ "$ROUNDCUBEMAIL_INSTALLER_STATE" = "idle" ] && [ $installer_enabled -eq 1 ]; then
+			modconf set ${DAEMON} ROUNDCUBEMAIL_INSTALLER_STATE='started'
+			modconf save ${DAEMON}
+			modsave flash
+		elif [ "$ROUNDCUBEMAIL_INSTALLER_STATE" = "started" ] && [ $installer_enabled -eq 0 -o "$ROUNDCUBEMAIL_DISABLE_INSTALLER" = "yes" ]; then
+				if [ $installer_enabled -eq 1 ]; then
+					set_installer 'false'
+					check_installer
+					installer_enabled=$?
+				fi
+				if [ $installer_enabled -eq 0 ]; then
+					modconf set ${DAEMON} ROUNDCUBEMAIL_INSTALLER_STATE='idle'
+					modconf set ${DAEMON} ROUNDCUBEMAIL_INSTALLER_ENABLED='no'
+					modconf save ${DAEMON}
+					modsave flash
+				fi
+		fi
+	fi
+
+	[ -e /var/run/rc.$DAEMON.pid ] && rm -f /var/run/rc.$DAEMON.pid
+	
+	if [ ! $(grep -se '^\*\.php\:' /mod/etc/webcfg.conf) ]; then
+		echo "Warning[$DAEMON]: php ist not configured in /mod/etc/webcfg.conf"
+	fi
+}
+
+trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 1 2 3 15
+case $1 in
+	""|load)
+		cleanup
+		
+		modreg cgi $DAEMON 'roundcubemail'
+		modreg daemon --hide $DAEMON
+		modreg file $DAEMON config 'roundcubemails: configuration' 1 "config_inc_php"
+
+		mkdir -p /mod/etc/${DAEMON}/
+		mkdir -p /tmp/flash/${DAEMON}/
+		config
+		;;
+	unload)
+		modunreg file $DAEMON
+		modunreg cgi $DAEMON
+		modunreg daemon $DAEMON
+		;;
+	config)
+		config
+		;;
+	start)
+		echo nothing to $1 for $0
+		;;
+	stop)
+		echo nothing to $1 for $0
+		;;
+	*)
+		echo "Usage: $0 [load|unload|config]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0
