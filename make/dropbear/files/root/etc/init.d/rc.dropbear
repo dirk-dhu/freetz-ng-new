@@ -31,6 +31,36 @@ pre_config() {
 	fi
 }
 
+update_option() {
+	local userid do_save=false
+	if [ -n "$DROPBEAR_LOGINONLYASUSER" ]; then
+		userid=`cat /etc/passwd | grep -s '^'"$DROPBEAR_LOGINONLYASUSER" | cut -d: -f3 | uniq`
+		if [ -z "$userid" ]; then
+			echo "Error[$DAEMON]: userid for $DROPBEAR_LOGINONLYASUSER not found - run 'adduser $DROPBEAR_LOGINONLYASUSER'" 1>&2
+			exit 1
+		elif cat /etc/shadow | grep -q '^'$DROPBEAR_LOGINONLYASUSER':[*!]:' && cat /etc/passwd | grep -q '^'$DROPBEAR_LOGINONLYASUSER'::'; then
+			echo "Error[$DAEMON]: for $DROPBEAR_LOGINONLYASUSER no password set - run 'passwd $DROPBEAR_LOGINONLYASUSER'" 1>&2
+			exit 1
+		else
+			if [ -z "$DROPBEAR_LOGINONLYUSERID" ]; then
+				do_save=true
+			elif [ "$DROPBEAR_LOGINONLYUSERID" != "$userid" ]; then
+				do_save=true
+			fi
+			DROPBEAR_OPTIONS=" -U $userid $DROPBEAR_OPTIONS"
+		fi
+	elif [ -n "$DROPBEAR_LOGINONLYUSERID" ]; then
+		userid=''
+		do_save=true
+	fi
+	if $do_save; then
+		echo -n " ... Saving userid=$userid ... "
+		modconf set ${DAEMON} DROPBEAR_LOGINONLYUSERID=$userid
+		modconf save ${DAEMON}
+		modsave flash
+	fi
+}
+
 start() {
 	if [ "$DROPBEAR_PWDAUTH" = "yes" ]; then
 		if cat /etc/shadow | grep -q '^root:[*!]:'; then
@@ -57,6 +87,8 @@ case $1 in
 		modreg cgi 'dropbear' 'Dropbear'
 		modreg daemon $DAEMON
 
+		update_option
+
 		modlib_start $DROPBEAR_ENABLED
 		;;
 	unload)
@@ -65,6 +97,8 @@ case $1 in
 		modlib_stop
 		;;
 	start)
+		update_option
+
 		modlib_start
 		;;
 	stop)
