@@ -58,6 +58,19 @@ endmenu
 menu "PHP features"
 depends on FREETZ_PACKAGE_PHP
 
+config FREETZ_PACKAGE_PHP_WITH_APACHE2
+	bool "build php APACHE2 module"
+	depends on FREETZ_PACKAGE_PHP
+	default n
+	help
+		This option enables the PHP support for APACHE2
+
+config FREETZ_PACKAGE_PHP_WITH_CLI
+	bool "build with CLI support"
+	default n
+	help
+		This option enables the CLI support for PHP
+
 config FREETZ_PACKAGE_PHP_WITH_CURL
 	bool "build with CURL support"
 	select FREETZ_LIB_libcurl if ! FREETZ_PACKAGE_PHP_STATIC
@@ -109,11 +122,25 @@ config FREETZ_PACKAGE_PHP_WITH_LIBICONV
 		than supported by libc (ISO-8859-1 and UTF-8 only) or your application
 		relies on libiconv specific features like TRANSLIT, IGNORE, etc.
 
+#config FREETZ_PACKAGE_PHP_WITH_INTL
+#	bool "build with INTL support"
+#	select FREETZ_LIB_libintl if ! FREETZ_PACKAGE_PHP_STATIC
+#	default n
+#	help
+#		This option enables the INTL support for PHP
+
 config FREETZ_PACKAGE_PHP_WITH_JSON
 	bool "build with JSON support"
 	default n
 	help
 		This option enables the JSON support for PHP
+
+config FREETZ_PACKAGE_PHP_WITH_MCRYPT
+	bool "build with MCRYPT support"
+	select FREETZ_LIB_libmcrypt if ! FREETZ_PACKAGE_PHP_STATIC
+	default n
+	help
+		This option enables the MCRYPT support for PHP
 
 config FREETZ_PACKAGE_PHP_WITH_MEMORY_LIMIT
 	bool "build with MEMORY_LIMIT support"

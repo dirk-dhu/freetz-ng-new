@@ -1,0 +1,38 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,3 +406,7 @@
+ Include @rel_sysconfdir@/extra/proxy-html.conf
+ </IfModule>
++
++# Add access rules for fhem proxy location
++Include @rel_sysconfdir@/extra/httpd-proxy-fhem.conf
++
+ 
+--- docs/conf/extra/httpd-proxy-fhem.conf	2018-04-15 23:16:25.831537400 +0200
++++ docs/conf/extra/httpd-proxy-fhem.conf	2018-04-20 21:40:25.340233908 +0200
+@@ -0,0 +1,24 @@
++<Location /fhem>
++   RewriteEngine On
++   RewriteCond %{HTTP:Upgrade} =websocket [NC]
++   RewriteRule /fhem(.*)           ws://127.0.0.1:8086/fhem$1 [P,L]
++   RewriteCond %{HTTP:Upgrade} !=websocket [NC]
++   RewriteRule /fhem(.*)           http://127.0.0.1:8086/fhem$1 [P,L]
++
++   # ProxyPass/ProxyPassReverse redirects HTTP requests to local URL
++   ProxyPass http://127.0.0.1:8086/fhem
++   ProxyPassReverse http://127.0.0.1:8086/fhem
++
++   # ProxyHTMLURLMap adapt links of HTML/JavaScript sources
++   ProxyHTMLURLMap /        /fhem/
++   ProxyHTMLURLMap /fhem/     /fhem/
++   #AllowOverride None
++   # Access control for valid users belonging to group fhem
++   # for this directory (add the user to group fhem)
++   AuthMerging Or
++   <RequireAll>
++     Require group fhem
++     Require valid-user
++   </RequireAll>
++</Location>
++
