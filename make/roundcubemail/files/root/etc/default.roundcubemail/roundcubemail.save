@@ -1,0 +1,7 @@
+apply_changes() {
+[ "$1" == "start" ] && /mod/etc/init.d/rc.roundcubemail config
+}
+
+rc_status() { :; }
+
+pkg_post_save() { :; }

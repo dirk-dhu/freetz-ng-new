@@ -1,0 +1,13 @@
+roundcubemail Freetz package
+   __  _   __  __ ___ __
+  |__ |_) |__ |__  |   /
+  |   |\  |__ |__  |  /_
+
+Copyright (C) 2014 Dirk H <dirk at dhu.homeip.net>
+
+This is a package for Freetz: http://www.freetz.org/
+
+roundcubemail sources are available here:
+http://roundcube.net/download/
+
+This package derives its ideas from the phpxmail package.
