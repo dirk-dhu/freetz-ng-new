@@ -1,0 +1,14 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+@@ -115,3 +115,5 @@
++LoadModule ssl_module lib/apache2/mod_ssl.so
++LoadModule socache_shmcb_module lib/apache2/mod_socache_shmcb.so
+ @@LoadModule@@
+ 
+ <IfModule unixd_module>
+@@ -429,3 +429,3 @@
+ # Secure (SSL/TLS) connections
+-#Include @rel_sysconfdir@/extra/httpd-ssl.conf
++Include @rel_sysconfdir@/extra/httpd-ssl.conf
+ #
+

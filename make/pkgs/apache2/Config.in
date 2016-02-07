@@ -11,6 +11,10 @@ config FREETZ_PACKAGE_APACHE2
 	select FREETZ_LIB_libssl          if ! FREETZ_PACKAGE_APACHE2_STATIC && FREETZ_PACKAGE_APACHE2_SSL
 	select FREETZ_LIB_libxml2         if ! FREETZ_PACKAGE_APACHE2_STATIC && FREETZ_PACKAGE_APACHE2_LIBXML
 	select FREETZ_LIB_libxml2_WITH_HTML if FREETZ_PACKAGE_APACHE2_LIBXML
+	select FREETZ_PACKAGE_PHP_WITH_APACHE2     if FREETZ_PACKAGE_APACHE2_PHP_MOD
+	select FREETZ_PACKAGE_APACHE2_MPM_PREFORK  if FREETZ_PACKAGE_APACHE2_PHP_MOD
+	select FREETZ_PACKAGE_APACHE2_MPM_WORKER   if ! FREETZ_PACKAGE_APACHE2_PHP_MOD
+	select FREETZ_PACKAGE_APACHE2_LIBXML       if FREETZ_PACKAGE_APACHE2_PROXY
 	default n
 	help
 		The Apache httpd server
@@ -42,6 +46,91 @@ if FREETZ_PACKAGE_APACHE2
 		default n
 		help
 			Enables the SSL module. Requires openssl.
+
+	config FREETZ_PACKAGE_APACHE2_PHP_MOD
+		bool "Enable PHP Module"
+		depends on FREETZ_PACKAGE_APACHE2
+		default n
+ 		help
+			Enables the PHP module. Requires php5 module.
+
+	choice
+	depends on FREETZ_PACKAGE_APACHE2_PHP_MOD
+		prompt "config_mpm"
+		default FREETZ_PACKAGE_APACHE2_MPM_PREFORK if FREETZ_PACKAGE_APACHE2_PHP_MOD
+		default FREETZ_PACKAGE_APACHE2_MPM_WORKER
+
+		config FREETZ_PACKAGE_APACHE2_MPM_PREFORK
+			bool "Prefork"
+	#
+	#	config FREETZ_PACKAGE_APACHE2_MPM_WORKER
+	#		bool "Worker"
+	endchoice
+
+	config FREETZ_PACKAGE_APACHE2_MPM
+		depends on FREETZ_PACKAGE_APACHE2
+		string
+		default "prefork" if FREETZ_PACKAGE_APACHE2_MPM_PREFORK
+		default "worker"  if FREETZ_PACKAGE_APACHE2_MPM_WORKER
+
+	config FREETZ_PACKAGE_APACHE2_SMALL
+		bool "Enable configuration with small memory foot print"
+		depends on FREETZ_PACKAGE_APACHE2
+		default y
+		help
+			Changes number of threads and workers in mpm configuration file.
+
+	config FREETZ_PACKAGE_APACHE2_PROXY
+		bool "Enable configuration as freetz proxy"
+		depends on FREETZ_PACKAGE_APACHE2
+		select FREETZ_PACKAGE_APACHE2_LIBXML
+		default n
+		help
+			Adds configuration in order that apache works as freetz proxy.
+
+	config FREETZ_PACKAGE_APACHE2_WITH_MYCONFIG
+		bool "Enable additional configuration accessable via web interface"
+		depends on FREETZ_PACKAGE_APACHE2
+		default n
+		help
+			Provides additional configuration file, which is accessible via
+			freetz web interface to override external access rights and
+			other configuration itmes.
+
+	config FREETZ_PACKAGE_APACHE2_SSL
+		bool "Enable SSL"
+		depends on FREETZ_PACKAGE_APACHE2
+		default n
+		help
+			Enables the SSL module. Requires openssl.
+
+	config FREETZ_PACKAGE_APACHE2_SSL_WITH_CERT
+		depends on FREETZ_PACKAGE_APACHE2_SSL
+		bool "Create self signed certificate"
+		default n
+		help
+			Creates self signed certificate. Needs the domain name of
+			of the web server to be entered.
+
+		config FREETZ_PACKAGE_APACHE2_SSL_CERT_USE_DOMAINNAME
+			depends on FREETZ_PACKAGE_APACHE2_SSL_WITH_CERT
+			string "enter domain name"
+			default "fritz.box"
+
+	config FREETZ_PACKAGE_APACHE2_SSL_WITH_SSLPORT
+		depends on FREETZ_PACKAGE_APACHE2_SSL
+		string "enter ssl port"
+		default "443"
+		help
+		    Change ssl port to different port, 
+		    might be changed in conjunction with SSLH package.
+
+	config FREETZ_PACKAGE_APACHE2_LIBXML
+		bool "Enable libxml dependent modules"
+		depends on FREETZ_PACKAGE_APACHE2
+		default n
+		help
+			Enables libxml dependent modules. Requires libxml2.
 
 	config FREETZ_PACKAGE_APACHE2_LIBXML
 		bool "Enable libxml dependent modules"

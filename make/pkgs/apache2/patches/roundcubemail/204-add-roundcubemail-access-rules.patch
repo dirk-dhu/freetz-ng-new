@@ -1,0 +1,38 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,3 +406,7 @@
+ Include @rel_sysconfdir@/extra/proxy-html.conf
+ </IfModule>
++
++# Add access rules for roundecubemail webmail directory
++Include @rel_sysconfdir@/extra/httpd-roundecubemail.conf
++
+ 
+--- docs/conf/extra/httpd-roundecubemail.conf
++++ docs/conf/extra/httpd-roundecubemail.conf
+@@ -0,0 +1,24 @@
++Alias /webmail /mod/etc/roundcubemail
++<Directory /mod/etc/roundcubemail>
++  Options +FollowSymLinks -Indexes
++  AllowOverride None
++  # All access controls and authentication are disabled
++  # in this directory
++  Require all granted
++</Directory>
++
++<Directory /mod/etc/roundcubemail/config>
++  Require all denied
++</Directory>
++
++<Directory /mod/etc/roundcubemail/temp>
++  Require all denied
++</Directory>
++
++<Directory /mod/etc/roundcubemail/logs>
++  Require all denied
++</Directory>
++
++<Directory /mod/etc/roundcubemail/data>
++  Require all denied
++</Directory>

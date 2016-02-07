@@ -1,0 +1,24 @@
+--- docs/conf/httpd.conf.in
++++ docs/conf/httpd.conf.in
+
+@@ -406,3 +406,7 @@
+ Include @rel_sysconfdir@/extra/proxy-html.conf
+ </IfModule>
++
++# Add access rules for wfrog web directory
++Include @rel_sysconfdir@/extra/httpd-wfrog.conf
++
+ 
+--- docs/conf/extra/httpd-wfrog.conf
++++ docs/conf/extra/httpd-wfrog.conf
+@@ -0,0 +1,9 @@
++Alias /weather /var/mod/etc/wfrog/www
++Alias /wetter /var/mod/etc/wfrog/www
++<Directory /var/mod/etc/wfrog>
++  Options +FollowSymLinks +Indexes
++  AllowOverride None
++  # All access controls and authentication are disabled
++  # in this directory
++  Require all granted
++</Directory>
+
