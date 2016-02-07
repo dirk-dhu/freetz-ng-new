@@ -1,0 +1,9 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	usr/lib/cgi-bin/roundcubemail.cgi
+	etc/default.roundcubemail/config_inc_php.def
+}

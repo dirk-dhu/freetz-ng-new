@@ -935,6 +935,7 @@ Latest changes
     * python-usb 1.0.0b2
     * python-yaml 3.11
     * python-yEnc 0.4.0
+    * roundcubemail 1.0.9
     * serf 1.3.9
     * ScanButton 0.2.3.cvs20090713
     * speex 1.2rc1
