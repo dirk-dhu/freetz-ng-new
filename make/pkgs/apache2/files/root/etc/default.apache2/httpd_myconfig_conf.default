@@ -1,0 +1,57 @@
+# local site config
+<Directory />
+  # Access from internal network and prepare basic authentication,
+  # if seperately enabled
+  Require ip 192.168.178
+  AuthMerging Or
+  AuthName 'Login needed.'
+  AuthType Basic
+  AuthBasicProvider file
+  AuthUserFile /var/mod/etc/apache2/.htpasswd
+  AuthGroupFile /var/mod/etc/apache2/.htgroup
+</Directory>
+
+<Location />
+  # Access from internal network and prepare basic authentication,
+  # if seperately enabled
+  Require ip 192.168.178
+  AuthMerging Or
+  AuthName 'Login needed.'
+  AuthType Basic
+  AuthBasicProvider file
+  AuthUserFile /var/mod/etc/apache2/.htpasswd
+  AuthGroupFile /var/mod/etc/apache2/.htgroup
+</Location>
+
+<Directory /mod/usr/share/apache2/htdocs>
+  # All access is disabled, authentication access conrol is commented
+  # for this directory
+  AuthMerging Or
+  <RequireAny>
+    Require all denied
+    #Require valid-user
+  </RequireAny>
+</Directory>
+
+### Following rules are added to remind you that default rules may have to be altered
+### for the case that according freetz package is installed
+## external access is granted for this directory
+#<Directory /mod/etc/roundcubemail>
+#  AuthMerging Or
+#</Directory>
+
+## external access is granted for this directory
+#<Directory /var/mod/etc/wfrog/www>
+#  AuthMerging Or
+#</Directory>
+
+## need to add user to apache2-group linknx for external access
+#<Directory /usr/mww/linknx>
+#  AuthMerging Or
+#</Directory>
+
+## need to add user to apache2-group admin for external access
+#<Location /freetz>
+#  AuthMerging Or
+#</Location>
+

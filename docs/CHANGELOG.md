@@ -590,6 +590,7 @@ Latest changes
     * libcap 2.24
     * libdvbcsa 1.1.0
     * libgsm-1.0.13
+    * libmcrypt 2.5.8
     * libmnl 1.0.4
     * libnettle 3.6
     * liblz4 1.9.3

@@ -1,0 +1,13 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+        etc/init.d/rc.apache2
+        etc/default.apache2/httpd_myconfig_conf.def
+        etc/default.apache2/httpd_htgroup_file.def
+        etc/default.apache2/httpd_crt.def
+        etc/default.apache2/httpd_key.def
+        usr/lib/cgi-bin/apache2.cgi
+}

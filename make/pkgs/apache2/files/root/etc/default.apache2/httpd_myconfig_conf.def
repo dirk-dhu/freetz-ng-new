@@ -1,0 +1,10 @@
+CAPTION='httpd_myconfig.conf'
+DESCRIPTION='$(lang de:"Konfigurationsbeschreibung: " en:"Description of Configuration: ")<a target=blank href=http://httpd.apache.org/docs/2.4/configuring.html>http://httpd.apache.org/docs/2.4/configuring.html</a>'
+
+CONFIG_FILE='/tmp/flash/apache2/httpd_myconfig.conf'
+CONFIG_SAVE='modsave flash; /mod/etc/init.d/rc.apache2 restart'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+
