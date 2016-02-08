@@ -1,0 +1,2 @@
+59	23	1	*	*	. /mod/etc/default.tar/crond.cfg; /usr/bin/backup.sh     > $CROND_LOG_NAME && rm $CROND_LOG_NAME || eval $TAR_CROND_LOG_CMD
+59	23	2-31	*	*	. /mod/etc/default.tar/crond.cfg; /usr/bin/backup.sh -i  > $CROND_LOG_NAME && rm $CROND_LOG_NAME || eval $TAR_CROND_LOG_CMD 
