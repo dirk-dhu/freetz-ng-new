@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -n "$TAR_ENABLED" ] && echo "modify crond job"
