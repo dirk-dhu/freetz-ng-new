@@ -1,0 +1,24 @@
+config FREETZ_PACKAGE_TAR_CGI
+	bool "TAR BACKUP CGI 0.1"
+	select FREETZ_BUSYBOX_CUT
+	select FREETZ_BUSYBOX_TR
+	select FREETZ_BUSYBOX_SED
+	select FREETZ_BUSYBOX_FEATURE_IFCONFIG_BROADCAST_PLUS
+	default n
+	help
+		Web configuration interface to backup your data using tar. 
+		Which directories are archived or which files are left out 
+		can be done using regular expressions
+		Freetz web interface to configure your settings.
+
+config FREETZ_PACKAGE_TAR_CGI_WITH_GNUTAR
+	depends on FREETZ_PACKAGE_TAR_CGI
+	bool "Verify archive with the original files of the file system."
+	default n
+	select FREETZ_PACKAGE_TAR
+
+config FREETZ_PACKAGE_TAR_CGI_WITH_GNUGZIP
+	depends on FREETZ_PACKAGE_TAR_CGI
+	bool "Check file integrity of the compressed archive."
+	default n
+	select FREETZ_PACKAGE_GZIP

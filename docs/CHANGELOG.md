@@ -580,6 +580,7 @@ Latest changes
     * E-MailRelay 1.9
     * getdns 1.5.2
     * gptfdisk 1.0.1
+    * gzip 1.6
     * hdparm 9.58
     * iksemel 1.5-git
     * iperf 3.7
@@ -627,6 +628,8 @@ Latest changes
     * vermagic 1ac45e08d4-git
     * wireguard-tools 1.0.20200827
     * wireguard-linux-compat 1.0.20201112
+    * tar 1.28
+    * tar-cgi 0.1 (backup cgi) 
     * wfrog 0.8.2+svn953
     * ws28xx master
     * xz 5.2.4
