@@ -1,0 +1,39 @@
+#!/bin/sh
+
+DAEMON=tar
+DAEMON_BIN=backup-$DAEMON
+DAEMON_LONG_NAME="tar backup webinterface"
+DAEMON_CONFIG=/mod/etc/backup-${DAEMON}.conf
+PID_FILE=/var/run/backup-${DAEMON}.pid
+. /etc/init.d/modlibrc
+
+config() {
+	modlib_config backup-${DAEMON}
+}
+
+case $1 in
+	""|load)
+		modreg cgi 'tar' 'TAR (Backup)'
+		;;
+	unload)
+		modunreg cgi 'tar'
+		;;
+	start)
+		modlib_start
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0
