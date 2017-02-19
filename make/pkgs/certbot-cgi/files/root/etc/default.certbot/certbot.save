@@ -1,0 +1,10 @@
+#!/bin/sh
+apply_changes() {
+	. /mod/etc/conf/certbot.cfg
+	if [ "${CERTBOT_STARTONCE}" = "yes" ] && [ "$1" = "start" ]; then
+	  /mod/etc/init.d/rc.certbot once_cert
+	  . /mod/etc/conf/certbot.cfg
+	fi
+}
+
+rc_status() { :; }

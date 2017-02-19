@@ -1,4 +1,4 @@
-$(call PKG_INIT_BIN, 0.13.1)
+$(call PKG_INIT_BIN, 17.3.0)
 $(PKG)_SOURCE:=pyOpenSSL-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=ba06ec710414f6dfe5566ec24c81882547c3e6fc48458d64315b73a0d5142fdb
 $(PKG)_SITE:=https://pypi.python.org/packages/source/p/pyOpenSSL

@@ -12,7 +12,3 @@
 +    from setuptools import setup, find_packages
 +
  
-@@ -44,3 +44,2 @@
-     install_requires=['future'],
--    setup_requires=['pytest-runner'],
-     tests_require=['pytest'],
