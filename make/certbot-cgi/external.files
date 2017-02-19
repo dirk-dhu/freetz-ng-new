@@ -1,0 +1,2 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_CERTBOT_CGI" == "y" ] && EXTERNAL_FILES+=" /etc/init.d/rc.certbot /usr/lib/cgi-bin/certbot.cgi /etc/cron.d/certbot.monthly"
+[ "$EXTERNAL_FREETZ_PACKAGE_CERTBOT_CGI" == "y" -a "$EXTERNAL_SUBDIRS" == "y" ] && EXTERNAL_FILES+=" /usr/lib/certbot"

@@ -1,0 +1,58 @@
+#!/bin/sh
+
+
+CERTBOT_TEMP_DNS_CONFIG=/tmp/certbot_dns_auth_config.conf
+EXTERNAL_IP=`curl -s -H 'Content-Type: text/xml; charset="utf-8"' -H 'SOAPAction: urn:schemas-upnp-org:service:WANIPConnection:1#GetExternalIPAddress' --data-binary '<?xml version="1.0" encoding="utf-8"?><s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/" s:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"><s:Body><u:GetExternalIPAddress xmlns:u="urn:schemas-upnp-org:service:WANIPConnection:1" /></s:Body></s:Envelope>'   http://127.0.0.1:49000/igdupnp/control/WANIPConn1 | grep -Eo "\<[[:digit:]]{1,3}(\.[[:digit:]]{1,3}){3}\>"`
+
+if [ -z "$EXTERNAL_IP" ]; then
+  echo "[ERROR]: CERTBOT DNS-01-CONFIG: UPnP restriction, can not rerieve GetExternalIPAddress, will use local address"
+  EXTERNAL_IP=127.0.0.1
+fi
+
+if [ -e /mod/etc/conf/certbot.cfg ]; then
+  . /mod/etc/conf/certbot.cfg
+fi
+
+
+dnsmasq_auth_config()
+{
+  echo "domain-needed"
+  echo "bogus-priv"
+  echo "no-resolv"
+  echo "no-hosts"
+  echo "no-dhcp-interface="
+  echo "server=$(echo 'servercfg.dns1' | ar7cfgctl -s)"
+  echo "server=$(echo 'servercfg.dns2' | ar7cfgctl -s)"
+  echo "#listen-address=$(ifconfig lan | sed -rn 's/.*inet addr:(.*) Bcast.*/\1/p')"
+  echo "port=$dns_01_port"
+  echo "address=/$CERTBOT_DOMAIN/$EXTERNAL_IP"
+  echo "address=/_acme-challenge.$CERTBOT_DOMAIN/$EXTERNAL_IP"
+  echo "local=/$CERTBOT_DOMAIN/$EXTERNAL_IP"
+  echo "local=/_acme-challenge.$CERTBOT_DOMAIN/$EXTERNAL_IP"
+  echo "domain=$CERTBOT_DOMAIN"
+  echo "domain=_acme-challenge.$CERTBOT_DOMAIN"
+  echo "cname=_acme-challenge.$CERTBOT_DOMAIN,$CERTBOT_DOMAIN"
+  echo "txt-record=_acme-challenge.$CERTBOT_DOMAIN.,$CERTBOT_VALIDATION"
+  echo ""
+  echo "log-facility=/tmp/dnsmasq.log"
+  echo "log-queries"
+  echo "log-async=50"
+  echo "auth-server=$CERTBOT_DOMAIN,dsl"
+  echo "auth-zone=$CERTBOT_DOMAIN,$EXTERNAL_IP/32"
+  echo "auth-zone=_acme-challenge.$CERTBOT_DOMAIN,$EXTERNAL_IP/32"
+}
+
+start_dns()
+{
+  if [ ! -e $CERTBOT_TEMP_DNS_CONFIG ]; then
+    dnsmasq_auth_config > $CERTBOT_TEMP_DNS_CONFIG
+  fi
+}
+
+start_dns
+
+/usr/sbin/dnsmasq -C /tmp/certbot_dns_auth_config.conf --pid-file=/tmp/dnsmasq.pid
+#/usr/local/src/dnsmasq-2.78/src/dnsmasq -C /tmp/certbot_dns_auth_config.conf --pid-file=/tmp/dnsmasq.pid
+
+echo "dnsmasq started for $EXTERNAL_IP , check portforwarding from 53->$dns_01_port and entry txt-record=_acme-challenge.$CERTBOT_DOMAIN,$CERTBOT_VALIDATION"
+sleep 15

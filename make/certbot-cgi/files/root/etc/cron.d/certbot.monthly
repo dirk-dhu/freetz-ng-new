@@ -1,0 +1,1 @@
+59	3	15	*	*	. /mod/etc/default.certbot/crond.cfg; /mod/etc/init.d/rc.certbot renew_cert     > $CROND_LOG_NAME 2>&1 && rm $CROND_LOG_NAME || ( [ -f /var/log/letsencrypt/letsencrypt.log ] && cat /var/log/letsencrypt/letsencrypt.log >> $CROND_LOG_NAME; eval $CERTBOT_CROND_LOG_CMD )

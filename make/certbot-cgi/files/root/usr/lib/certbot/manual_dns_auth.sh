@@ -1,0 +1,1 @@
+/tmp/flash/certbot/manual_dns_auth.sh

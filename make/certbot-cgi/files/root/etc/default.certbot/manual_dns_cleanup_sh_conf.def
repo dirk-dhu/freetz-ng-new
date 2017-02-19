@@ -1,0 +1,10 @@
+CAPTION='manual_dns_cleanup.sh'
+DESCRIPTION='Manual dns cleanup shell scirpt: <a target=blank href=https://community.letsencrypt.org/t/certbot-dns-challenge-guide/33216>Doku-Link</a>'
+
+CONFIG_FILE='/tmp/flash/certbot/manual_dns_cleanup.sh'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+
