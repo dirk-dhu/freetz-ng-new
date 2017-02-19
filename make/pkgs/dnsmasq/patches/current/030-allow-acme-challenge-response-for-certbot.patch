@@ -1,0 +1,76 @@
+--- src/auth.c	2017-10-02 15:13:51.000000000 +0200
++++ src/auth.c	2018-03-10 23:02:05.152972358 +0100
+@@ -378,6 +378,25 @@
+          }
+       }
+ 
++      for (txt = daemon->txt; txt; txt = txt->next) {
++             extern char acme[60];
++             acme[16] = 0;
++             strncat( acme, name, sizeof(acme)-16);
++       if (txt->class == C_IN && (rc = hostname_issubdomain(acme, txt->name)))
++         {
++           nxdomain = 0;
++           if (rc == 2 && qtype == T_TXT)
++             {
++               found = 1;
++               log_query(F_CONFIG | F_RRNAME, name, NULL, "<TXT>", 0);
++               if (add_resource_record(header, limit, &trunc, nameoffset, &ansp, daemon->auth_ttl,
++                                       NULL, T_TXT, C_IN, "t", txt->len, txt->txt))
++                 anscount++;
++             }
++         }
++      }
++
++
+        for (na = daemon->naptr; na; na = na->next)
+ 	 if ((rc = hostname_issubdomain(name, na->name)))
+ 	   {
+--- src/rfc1035.c	2017-10-02 15:13:51.000000000 +0200
++++ src/rfc1035.c	2018-03-10 22:39:36.684611088 +0100
+@@ -1241,3 +1241,5 @@
+ }
+ 
++char acme[60] = {'_','a','c','m','e','-','c','h','a','l','l','e','n','g','e','.',0};
++
+ /* return zero if we can't answer from cache, or packet size if we can */
+@@ -1306,6 +1307,39 @@
+ 	  struct txt_record *t;
+ 	  for(t = daemon->txt; t ; t = t->next)
+ 	    {
++	      acme[16] = 0;
++	      strncat( acme, name, sizeof(acme)-16);
++	      if (t->class == qclass && hostname_isequal(acme, t->name))
++		{
++		  ans = 1;
++		  if (!dryrun)
++		    {
++		      unsigned long ttl = (daemon->local_ttl!=0)?daemon->local_ttl:daemon->auth_ttl;
++		      int ok = 1;
++		      log_query(F_CONFIG | F_RRNAME, acme, NULL, "<TXT>", 0);
++#ifndef NO_ID
++		      /* Dynamically generate stat record */
++		      if (t->stat != 0)
++			{
++			  ttl = 0;
++			  if (!cache_make_stat(t))
++			    ok = 0;
++			}
++#endif
++		      if (ok && add_resource_record(header, limit, &trunc, nameoffset, &ansp,
++					      daemon->auth_ttl, &nameoffset,
++					      T_CNAME, C_IN, "d", acme))
++			anscount++;
++		      if (ok && add_resource_record(header, limit, &trunc, nameoffset, &ansp,
++						    ttl, NULL,
++						    T_TXT, t->class, "t", t->len, t->txt))
++			anscount++;
++
++		    }
++		}
++	    }
++	  for(t = daemon->txt; t ; t = t->next)
++	    {
+ 	      if (t->class == qclass && hostname_isequal(name, t->name))
+ 		{
+ 		  ans = 1;

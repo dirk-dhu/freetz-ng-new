@@ -20,8 +20,9 @@
 +    from setuptools.command.install import install
 +    from setuptools.command.test import test
  
-@@ -62,4 +61,3 @@
- else:
-     requirements.append("cffi>=1.4.1")
--    setup_requirements.append("cffi>=1.4.1")
+@@ -50,4 +52,2 @@
+             "upgrade PyPy to use this library."
+         )
+-else:
+-    setup_requirements.append("cffi>=1.7")
  

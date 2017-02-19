@@ -576,6 +576,7 @@ Latest changes
     * jansson 2.7
     * jq 1.6
     * LCD4linux 91cfbc2-git
+    * letsencrypt (certbot script) 1.0
     * libavmacl2 (taken from AVM's 7490.06.30 open-source package)
     * libcap 2.24
     * libdvbcsa 1.1.0

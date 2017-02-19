@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.0.1)
-$(PKG)_SOURCE:=$($(PKG)_VERSION).tar.gz
-$(PKG)_SOURCE_MD5:=56898a8035a5540674a5b5de66c3153a
+$(call PKG_INIT_BIN, 1.2.0)
+$(PKG)_SOURCE:=v$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE_MD5:=86e79262934693dd050d60441e4baf7b
 $(PKG)_SITE:=https://github.com/certbot/josepy/archive
 
 $(PKG)_DIR:=$($(PKG)_SOURCE_DIR)/$($(PKG)_VERSION)
