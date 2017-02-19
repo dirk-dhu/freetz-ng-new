@@ -1,0 +1,256 @@
+#!/bin/sh
+
+DAEMON=certbot
+DAEMON_LONG_NAME="certbot ssl certificate update domain"
+PID_FILE=/var/run/${DAEMON}.pid
+
+CERTBOT_CMD_OPTS="--agree-tos --non-interactive --text"
+CERTBOT_CMD_TEST_OPTS="--staging"
+CERTBOT_MANUAL_AUTH_DNS_CMDS=/usr/lib/certbot/manual_dns_auth.sh
+CERTBOT_MANUAL_CLEANUP_DNS_CMDS=/usr/lib/certbot/manual_dns_cleanup.sh
+CERTBOT_MANUAL_AUTH_DNS_CONF=/mod/etc/default.certbot/manual_dns_auth_sh_conf
+CERTBOT_MANUAL_CLEANUP_DNS_CONF=/mod/etc/default.certbot/manual_dns_cleanup_sh_conf
+CERTBOT_DNS_PORT=15353
+CERTBOT_HTTP_PORT=8081
+
+
+. /etc/init.d/modlibrc
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+
+config() {
+	echo $! > /var/run/rc.${DAEMON}.pid
+	echo -n "Config ${DAEMON}"
+	
+	modlib_config certbot
+
+	echo -n "...done"
+	
+}
+
+save_certbot_files() {
+	if [ ! -e ${CERTBOT_CERTS}/../archive ] ; then
+	  mkdir -p ${CERTBOT_CERTS}/../archive
+	fi
+	cat ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CERTPATH})  > ${CERTBOT_CERTS}/../archive/$(basename ${CERTBOT_CERTPATH})
+	cat ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_FULLCHAINPATH}) > ${CERTBOT_CERTS}/../archive/$(basename ${CERTBOT_FULLCHAINPATH})
+	cat ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CHAINPATH}) > ${CERTBOT_CERTS}/../archive/$(basename ${CERTBOT_CHAINPATH})
+	cat ${CERTBOT_CERTPATH}  > ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CERTPATH})
+	cat ${CERTBOT_FULLCHAINPATH} > ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_FULLCHAINPATH})
+	cat ${CERTBOT_CHAINPATH} > ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CHAINPATH})
+	rm -f ${CERTBOT_CERTPATH} ${CERTBOT_FULLCHAINPATH} ${CERTBOT_CHAINPATH}
+	#tar -czf /tmp/flash/${DAEMON}/${DAEMON}.tar.gz archive accounts/`basename ${CERTBOT_CERTS}/../accounts/acme-v*` -C ${CERTBOT_CERTS}/..
+	tar -czf /tmp/flash/${DAEMON}/${DAEMON}.tar.gz accounts/`basename ${CERTBOT_CERTS}/../accounts/acme-v*` -C ${CERTBOT_CERTS}/..
+}
+
+start() {
+	trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 0 1 2 3 15
+	echo -n "Preparing ${DAEMON_LONG_NAME} ... "
+	
+	if [ ! -e ${CERTBOT_FLASH} ]; then
+	  mkdir -p ${CERTBOT_FLASH}
+	fi
+	if [ ! -e ${CERTBOT_CERTS}/${CERTBOT_DOMAIN} ]; then
+	  mkdir -p ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}
+	fi
+	if [ -e /tmp/flash/${DAEMON}/${DAEMON}.tar.gz ] && [ ! -e ${CERTBOT_CERTS}/../accounts ]; then
+	  tar -xzf /tmp/flash/${DAEMON}/${DAEMON}.tar.gz -C ${CERTBOT_CERTS}/..
+	fi
+	if [ ! -e ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) ]; then
+	  touch ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH})
+	fi
+	if [ ! -e ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CERTPATH}) ]; then
+	  ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_CERTPATH}) ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CERTPATH})
+	fi
+	if [ ! -e ${CERTBOT_FLASH}/$(basename ${CERTBOT_FULLCHAINPATH}) ]; then
+	  touch ${CERTBOT_FLASH}/$(basename ${CERTBOT_FULLCHAINPATH})
+	fi
+	if [ ! -e ${CERTBOT_FLASH}/server.key ]; then
+	  cat ${CERTBOT_DEFAULT}/ssl/server.key > ${CERTBOT_FLASH}/server.key
+	fi
+	if [ ! -e ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_FULLCHAINPATH}) ]; then
+	  ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_FULLCHAINPATH}) ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_FULLCHAINPATH})
+	fi
+	if [ ! -e ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) ]; then
+	  touch ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH})
+	fi
+	if [ ! -e ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CHAINPATH}) ]; then
+	  ln -s ${CERTBOT_FLASH}/$(basename ${CERTBOT_CHAINPATH}) ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/$(basename ${CERTBOT_CHAINPATH})
+	fi
+	if [ ! -e ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/privkey.pem ]; then
+	  ln -s ${CERTBOT_FLASH}/server.key ${CERTBOT_CERTS}/${CERTBOT_DOMAIN}/privkey.pem
+	fi
+	
+	if [ "$FREETZ_PACKAGE_CERTBOT_CGI_WITH_DNS_CHALLENGE" = 'y' ]; then
+	  local save=0
+	  if [ ! -e /tmp/flash/${DAEMON}/`basename ${CERTBOT_MANUAL_AUTH_DNS_CMDS}` ]; then
+	    cat ${CERTBOT_MANUAL_AUTH_DNS_CONF} > /tmp/flash/${DAEMON}/`basename ${CERTBOT_MANUAL_AUTH_DNS_CMDS}`
+	    chmod a+x /tmp/flash/${DAEMON}/`basename ${CERTBOT_MANUAL_AUTH_DNS_CMDS}`
+	    save=1
+	  fi
+	  if [ ! -e /tmp/flash/${DAEMON}/`basename ${CERTBOT_MANUAL_CLEANUP_DNS_CMDS}` ]; then
+	    cat ${CERTBOT_MANUAL_CLEANUP_DNS_CONF} > /tmp/flash/${DAEMON}/`basename ${CERTBOT_MANUAL_CLEANUP_DNS_CMDS}`
+	    chmod a+x /tmp/flash/${DAEMON}/`basename ${CERTBOT_MANUAL_CLEANUP_DNS_CMDS}`
+	    save=1
+	  fi
+	  if [ $save -eq 1 ]; then
+	    modsave flash
+	  fi
+	fi
+	
+	#echo CERTBOT_DOMAIN=${CERTBOT_DOMAIN}
+	#echo CERTBOT_MAILNAME=${CERTBOT_MAILNAME}
+	#echo CERTBOT_COUNTRY=${CERTBOT_COUNTRY}
+	#echo CERTBOT_STATE=${CERTBOT_STATE}
+	#echo CERTBOT_STARTONCE=${CERTBOT_STARTONCE}
+	#echo CERTBOT_CHALLENGE=${CERTBOT_CHALLENGE}
+	
+	echo "done."
+}
+
+run_certbot () {
+	local CERTBOT_ADDITIONAL_ARGS="$1"
+	local CERTBOT_CHALLENGE_ARGS="$2"
+	local CERTBOT_PRE_HOOK_CMD=
+	local CERTBOT_POST_HOOK_CMD=
+	local CERTBOT_MANUAL_HOOK_CMDS=
+	local need_save=0
+	local retval
+	local CERTBOT_PORT_OPT
+	local CERTBOT_MODE=--standalone
+	echo ${CERTBOT_CHALLENGE} | grep -qs tls\-alpn
+	retval=$?
+	if [ $retval -eq 0 -a -e /mod/etc/conf/apache2.cfg ]; then
+	  . /mod/etc/conf/apache2.cfg
+	  if [ $APACHE2_ENABLED = 'yes' ]; then
+	    CERTBOT_PRE_HOOK_CMD="/mod/etc/init.d/rc.apache2 stop"
+	    CERTBOT_POST_HOOK_CMD="/mod/etc/init.d/rc.apache2 start"
+	    CERTBOT_PORT_OPT="--${CERTBOT_CHALLENGE}-port ${CERTBOT_SSLPORT}"
+	  fi
+	  if [ -n ${CERTBOT_SSLPORT} ]; then
+	      CERTBOT_SSL_PORT="${CERTBOT_SSLPORT}"
+	  fi
+	fi
+	
+	if [ "${CERTBOT_TEST}" = 'no' ]; then
+	  CERTBOT_CMD_TEST_OPTS=""
+	fi
+	echo ${CERTBOT_CHALLENGE} | grep -qs dns
+	retval=$?
+	if [ $retval -eq 0 -a -e ${CERTBOT_MANUAL_AUTH_DNS_CMDS} ]; then
+	  CERTBOT_MANUAL_HOOK_CMDS="--manual-auth-hook ${CERTBOT_MANUAL_AUTH_DNS_CMDS}"
+	  CERTBOT_MODE="--manual --manual-public-ip-logging-ok"
+	  if [ -e ${CERTBOT_MANUAL_CELANUP_DNS_CMDS} ]; then
+	    CERTBOT_MANUAL_HOOK_CMDS="${CERTBOT_MANUAL_HOOK_CMDS} --manual-cleanup-hook ${CERTBOT_MANUAL_CLEANUP_DNS_CMDS}"
+	  fi
+	  if [ -n ${CERTBOT_DNSPORT} ]; then
+	      CERTBOT_DNS_PORT="${CERTBOT_DNSPORT}"
+	  fi
+	  CERTBOT_PORT_OPT=
+	  export dns_01_port=${CERTBOT_DNS_PORT}
+	fi
+	echo ${CERTBOT_CHALLENGE} | grep -qs http
+	retval=$?
+	if [ $retval -eq 0 ]; then
+	  if [ -e /mod/etc/conf/apache2.cfg ]; then
+	    . /mod/etc/conf/apache2.cfg
+	    if [ $APACHE2_ENABLED = 'yes' ]; then
+	      CERTBOT_PRE_HOOK_CMD="/mod/etc/init.d/rc.apache2 stop"
+	      CERTBOT_POST_HOOK_CMD="/mod/etc/init.d/rc.apache2 start"
+	      CERTBOT_HTTP_PORT="${APACHE2_PORT}"
+	    fi
+	  fi
+	  if [ -n ${CERTBOT_HTTPPORT} ]; then
+	      CERTBOT_HTTP_PORT="${CERTBOT_HTTPPORT}"
+	  fi
+	  CERTBOT_PORT_OPT="--${CERTBOT_CHALLENGE}-port ${CERTBOT_HTTP_PORT}"
+	  export http_01_port=${CERTBOT_HTTP_PORT}
+	fi
+	if echo "$CERTBOT_ADDITIONAL_ARGS" | grep -sq \\-\\-keep ; then
+	  echo "... renew certs ..."
+	else
+	  echo "... create certs ..."
+	fi
+	if [ -e ${CERTBOT_CERTPATH} ]; then
+	  mv -f ${CERTBOT_CERTPATH} ${CERTBOT_CERTPATH}.save
+	fi
+	local CERTBOT_CERTONLY_CMD_OPTS="certonly --csr ${CERTBOT_DEFAULT}/ssl/server.der ${CERTBOT_MODE} ${CERTBOT_PORT_OPT} --preferred-challenges ${CERTBOT_CHALLENGE} -d ${CERTBOT_DOMAIN} --email ${CERTBOT_MAILNAME}@${CERTBOT_DOMAIN} --cert-path ${CERTBOT_CERTPATH} --fullchain-path ${CERTBOT_FULLCHAINPATH} --chain-path ${CERTBOT_CHAINPATH}"
+	${CERTBOT_PRE_HOOK_CMD}
+	echo /usr/bin/certbot ${CERTBOT_CERTONLY_CMD_OPTS} ${CERTBOT_CMD_OPTS} ${CERTBOT_CMD_TEST_OPTS} $CERTBOT_ADDITIONAL_ARGS ${CERTBOT_MANUAL_HOOK_CMDS}
+	/usr/bin/certbot ${CERTBOT_CERTONLY_CMD_OPTS} ${CERTBOT_CMD_OPTS} ${CERTBOT_CMD_TEST_OPTS} $CERTBOT_ADDITIONAL_ARGS ${CERTBOT_MANUAL_HOOK_CMDS}
+	${CERTBOT_POST_HOOK_CMD}
+	if [ -e ${CERTBOT_CERTPATH} ] && [ -e ${CERTBOT_CHAINPATH} ]; then
+		save_certbot_files
+		#if echo "$CERTBOT_ADDITIONAL_ARGS" | grep -sq \\-\\-renew ; then
+		cat ${CERTBOT_DEFAULT}/ssl/server.key > ${CERTBOT_FLASH}/server.key
+		#fi
+		need_save=1
+	fi
+	if [ ! -e ${CERTBOT_CERTPATH} ] && [ -e ${CERTBOT_CERTPATH}.save ]; then
+	  mv ${CERTBOT_CERTPATH}.save ${CERTBOT_CERTPATH}
+	elif [ -e ${CERTBOT_CERTPATH} ] && [ -e ${CERTBOT_CERTPATH}.save ]; then
+	  rm -f ${CERTBOT_CERTPATH}.save	
+	fi
+	if [ "${CERTBOT_STARTONCE}" = "yes" ]; then
+		modconf set ${DAEMON} CERTBOT_STARTONCE='no'
+		need_save=1
+	fi
+	if [ $need_save -eq 1 ]; then
+		modsave flash
+	fi
+}
+
+once_cert () {
+	local CERTBOT_ADDITIONAL_ARGS=--renew-by-default
+	run_certbot $CERTBOT_ADDITIONAL_ARGS
+}
+
+renew_cert () {
+	# certbot renew command
+	# reset botton in certbot cgi
+	local CERTBOT_ADDITIONAL_ARGS=--keep-until-expiring
+	run_certbot $CERTBOT_ADDITIONAL_ARGS
+}
+
+trap "rm -f /var/run/rc.$DAEMON.pid; exit 255" 0 1 2 3 15
+case "$1" in
+	""|load)
+		modreg cgi ${DAEMON} 'Certbot'
+		if [ "$FREETZ_PACKAGE_CERTBOT_CGI_WITH_DNS_CHALLENGE" = 'y' ]; then
+		  modreg file ${DAEMON} manual_dns_auth 'manual_dns_auth.sh' 1 "manual_dns_auth_sh_conf"
+		  modreg file ${DAEMON} manual_dns_cleanup 'manual_dns_cleanup.sh' 1 "manual_dns_cleanup_sh_conf"
+		fi
+
+		modlib_start $CERTBOT_ENABLED
+		;;
+	unload)
+		modunreg cgi  ${DAEMON}
+		modunreg file ${DAEMON}
+		modlib_stop
+		;;
+	start)
+		modlib_start
+		;;
+	once_cert)
+		echo "${DAEMON} request certificate once ..."
+		once_cert
+		;;
+	renew_cert)
+		echo "${DAEMON} renew certificate ..."
+		renew_cert
+		;;
+	stop)
+		modlib_stop
+		;;
+	restart)
+		modlib_restart
+		;;
+	status)
+		modlib_status
+		;;
+	*)
+		echo "Usage: $0 [load|unload|start|stop|restart|reload|once_cert|renew_cert|status]" 1>&2
+		exit 1
+		;;
+esac
+
+exit 0

@@ -9,6 +9,7 @@ config FREETZ_PACKAGE_PYTHON_CRYPTOGRAPHY
 	select FREETZ_PACKAGE_PYTHON_IPADDRESS
 	select FREETZ_PACKAGE_PYTHON_IDNA
 	select FREETZ_PACKAGE_PYTHON_MOD_SSL
+	select FREETZ_PACKAGE_PYTHON_ASN1CRYPTO
 	default n
 	help
 		cryptography is a package which provides 

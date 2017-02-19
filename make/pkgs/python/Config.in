@@ -372,6 +372,9 @@ if FREETZ_PACKAGE_PYTHON
         source "make/pkgs/python-zopecomponent/Config.in"
         source "make/pkgs/python-zopeevent/Config.in"
         source "make/pkgs/python-zopeinterface/Config.in"
+        source "make/pkgs/python-asn1crypto/Config.in"
+        source "make/pkgs/python-distro/Config.in"
+        source "make/pkgs/python-requeststoolbelt/Config.in"
     endmenu
 
 endif # FREETZ_PACKAGE_PYTHON

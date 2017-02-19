@@ -1,4 +1,4 @@
-$(call PKG_INIT_BIN, b8d72d8)
+$(call PKG_INIT_BIN, 4b098cd)
 $(PKG)_SOURCE:=parsedatetime-$($(PKG)_VERSION).tar.gz
 $(PKG)_SITE:=git@https://github.com/bear/parsedatetime.git
 $(PKG)_HASH:=X

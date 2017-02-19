@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PYTHON_SETUPTOOLS
-	bool "setuptools 28.5.0"
+	bool "setuptools 39.0.1"
 	depends on FREETZ_PACKAGE_PYTHON
 	default n
 	help
