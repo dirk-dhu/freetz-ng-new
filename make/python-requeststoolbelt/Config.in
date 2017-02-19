@@ -1,0 +1,7 @@
+config FREETZ_PACKAGE_PYTHON_REQUESTSTOOLBELT
+	bool "request-toolbelt 0.9.1"
+	depends on FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_REQUESTS
+	default n
+	help
+		Requests Toolbelt is a collection of utilities for python-requsts

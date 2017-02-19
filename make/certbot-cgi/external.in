@@ -1,0 +1,9 @@
+config EXTERNAL_FREETZ_PACKAGE_CERTBOT_CGI
+	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_CERTBOT_CGI
+	bool "certbot-cgi"
+	default n
+	help
+		externals the following file(s):
+		 /etc/init.d/rc.certbot
+		 /usr/lib/cgi-bin/certbot.cgi
+		 /usr/lib/certbot

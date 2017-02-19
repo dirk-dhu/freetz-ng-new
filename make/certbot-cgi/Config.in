@@ -1,0 +1,45 @@
+config FREETZ_PACKAGE_CERTBOT_CGI
+	bool "Certbot service 1.0.0"
+	select FREETZ_PACKAGE_PYTHON
+	select FREETZ_PACKAGE_PYTHON_CERTBOT
+	default n
+	help
+		The certbot configuration CGI with monthly crond
+
+
+	config FREETZ_PACKAGE_CERTBOT_CGI_WITH_DOMAINNAME
+		depends on FREETZ_PACKAGE_CERTBOT_CGI
+		string "enter domain name"
+		default "fritz.box"
+
+	config FREETZ_PACKAGE_CERTBOT_CGI_WITH_MAILNAME
+		depends on FREETZ_PACKAGE_CERTBOT_CGI
+		string "enter mail user name"
+		default "webmaster"
+
+	config FREETZ_PACKAGE_CERTBOT_CGI_WITH_COUNTRY
+		depends on FREETZ_PACKAGE_CERTBOT_CGI
+		string "enter country name"
+		default "DE"
+
+	config FREETZ_PACKAGE_CERTBOT_CGI_WITH_STATE
+		depends on FREETZ_PACKAGE_CERTBOT_CGI
+		string "enter state name"
+		default ""
+
+	config FREETZ_PACKAGE_CERTBOT_CGI_WITH_HTTP_CHALLENGE
+		depends on FREETZ_PACKAGE_CERTBOT_CGI
+		bool "support tls-alpn-01, http-01 challenge"
+		default ""
+
+	config FREETZ_PACKAGE_CERTBOT_CGI_WITH_DNS_CHALLENGE
+		depends on FREETZ_PACKAGE_CERTBOT_CGI
+		depends on FREETZ_PACKAGE_DNSMASQ
+		bool "suppport dns-01 challenge"
+		default ""
+		help
+			Certbot manual dns hooks are provided,
+			an example to spawn a local dns server instance 
+			is provided which assume that there is a public dns zone record
+			pointing to the _acme-challenge.<DOMAIN> address
+			

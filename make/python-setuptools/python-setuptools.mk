@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 5af3d09)
+$(call PKG_INIT_BIN, 76f1da9)
 $(PKG)_SOURCE:=setuptools-$($(PKG)_VERSION).tar.gz
 $(PKG)_SITE:=git@https://github.com/pypa/setuptools.git
-$(PKG)_VERSION_ALT:=28.5.0
+$(PKG)_VERSION_ALT:=39.0.1
 
 $(PKG)_DIR:=$($(PKG)_SOURCE_DIR)/setuptools-$($(PKG)_VERSION)
 

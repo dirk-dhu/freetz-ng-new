@@ -1,0 +1,8 @@
+config FREETZ_PACKAGE_PYTHON_ASN1CRYPTO
+	bool "asn1crypto 0.24.0"
+	depends on FREETZ_PACKAGE_PYTHON
+	default n
+	help
+		A fast, pure Python library for 
+		parsing and serializing ASN.1 
+		structures.

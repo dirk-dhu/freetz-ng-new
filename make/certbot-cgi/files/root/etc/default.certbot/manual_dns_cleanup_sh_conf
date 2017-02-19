@@ -1,0 +1,7 @@
+#!/bin/sh
+
+[ ! -e /tmp/dnsmasq.pid ] || kill $(cat /tmp/dnsmasq.pid) 2> /dev/null
+sleep 1
+[ ! -e /tmp/dnsmasq.pid ] || kill -9 $(cat /tmp/dnsmasq.pid) 2> /dev/null
+rm -f /tmp/dnsmasq.pid
+rm -f /tmp/certbot_dns_auth_config.conf

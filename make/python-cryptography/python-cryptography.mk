@@ -1,4 +1,4 @@
-$(call PKG_INIT_BIN, 21ac453)
+$(call PKG_INIT_BIN, ed5a771)
 $(PKG)_SOURCE:=cryptography-$($(PKG)_VERSION).tar.gz
 $(PKG)_SITE:=git@https://github.com/pyca/cryptography.git
 

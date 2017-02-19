@@ -1,0 +1,10 @@
+CAPTION='manual_dns_auth.sh'
+DESCRIPTION='Manual dns auth shell scirpt: <a target=blank href=https://community.letsencrypt.org/t/certbot-dns-challenge-guide/33216>Doku-Link</a>'
+
+CONFIG_FILE='/tmp/flash/certbot/manual_dns_auth.sh'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+
