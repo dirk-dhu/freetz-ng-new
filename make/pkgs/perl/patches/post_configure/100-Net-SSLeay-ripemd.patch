@@ -1,0 +1,7 @@
+--- cpan/Net-SSLeay/SSLeay.xs	2017-12-09 04:21:56.789662794 +0100
++++ cpan/Net-SSLeay/SSLeay.xs   2017-12-09 04:22:39.465677260 +0100
+@@ -181,3 +181,3 @@
+ #if OPENSSL_VERSION_NUMBER >= 0x00905000L
+-#include <openssl/ripemd.h>
++#include <ripemd/ripemd.h>
+ #endif
