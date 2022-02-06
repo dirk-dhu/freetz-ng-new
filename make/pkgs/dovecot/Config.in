@@ -7,8 +7,8 @@ config FREETZ_PACKAGE_DOVECOT
 		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IKS  || \
 		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_VR9  || \
 		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
-    select FREETZ_LIB_libcrypt                if FREETZ_PACKAGE_DOVECOT && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-    select FREETZ_LIB_libcrypto               if FREETZ_PACKAGE_DOVECOT
+	select FREETZ_LIB_libcrypt                if FREETZ_PACKAGE_DOVECOT && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libcrypto               if FREETZ_PACKAGE_DOVECOT
 	select FREETZ_LIB_libssl                  if FREETZ_PACKAGE_DOVECOT
 	select FREETZ_LIB_libcrypto_WITH_ZLIB     if FREETZ_PACKAGE_DOVECOT
 	select FREETZ_BUSYBOX_ED                  if FREETZ_PACKAGE_DOVECOT
@@ -22,6 +22,7 @@ config FREETZ_PACKAGE_DOVECOT
 		Linux/UNIX-like systems.
 		Works with XMail together and can be used with a webmail
 		interface as roundcubemail.
+		(needs uclibc 1.0.15, because of doveconf panic in memmpool-system.c)
 
 config FREETZ_PACKAGE_DOVECOT_SYSLOG
 	bool "syslog"
