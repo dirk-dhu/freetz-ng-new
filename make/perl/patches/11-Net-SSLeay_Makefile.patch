@@ -11,6 +11,6 @@
 +WriteMakefile(
 +    'NAME'             => 'Net::SSLeay',
 +    'VERSION_FROM'     => 'lib/Net/SSLeay.pm',
-+    'INC'              => '-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include',
++    'INC'              => '-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include -I$(OPENSSL_RIPEMD_H_DIR) -UOPENSSL_NO_RIPEMD',
 +    'LIBS'             => ['-L$(TARGET_TOOLCHAIN_STAGING_DIR)/lib -lssl -lcrypto -lcrypt32 -lz'],
 +);
