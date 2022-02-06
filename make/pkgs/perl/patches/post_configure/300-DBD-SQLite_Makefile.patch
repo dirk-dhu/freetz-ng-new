@@ -1,0 +1,28 @@
+--- cpan/DBD-SQLite/Makefile.PL	2017-12-09 04:21:56.789662794 +0100
++++ cpan/DBD-SQLite/Makefile.PL   2017-12-09 04:22:39.465677260 +0100
+@@ -62,4 +61,3 @@
+ if ( $@ or DBI->VERSION < $DBI_required ) {
+ 	print "DBI $DBI_required is required to configure this module; please install it or upgrade your CPAN/CPANPLUS shell.\n";
+-	exit(0);
+ }
+@@ -331,3 +330,2 @@
+ 		'File::Spec'    => (WINLIKE ? '3.27' : '0.82'),
+-		'DBI'           => $DBI_required,
+ 		'Test::More'    => '0.47', # Test::NoWarnings
+@@ -358,3 +357,2 @@
+ 				'File::Spec'          => '0.82',
+-				'DBI'                 => $DBI_required,
+ 			},
+@@ -367,3 +366,2 @@
+ 				'Tie::Hash' => 0,
+-				'DBI'       => $DBI_required,
+ 		'Scalar::Util' => 0,
+@@ -406,7 +402,3 @@
+ sub postamble {
+-	require DBI;
+-	require DBI::DBD;
++	my $postamble;
+-	my $postamble = eval {
+-		DBI::DBD::dbd_postamble(@_)
+-	};
+     if (-e 'sqlite3.c' && -e 'sqlite3.h' && -e 'sqlite3ext.h') {
