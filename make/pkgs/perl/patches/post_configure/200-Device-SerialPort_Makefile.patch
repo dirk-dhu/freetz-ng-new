@@ -1,0 +1,9 @@
+--- cpan/Device-SerialPort/Makefile.PL	2017-12-09 04:21:56.789662794 +0100
++++ cpan/Device-SerialPort/Makefile.PL   2017-12-09 04:22:39.465677260 +0100
+@@ -135,4 +135,4 @@
+ # Prepare config.h
+ print "Running ./configure ...\n";
+-system("./configure");
++system("./configure --host=$(HOST)");
+ if ($? != 0) {
+

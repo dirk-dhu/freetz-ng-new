@@ -15,6 +15,12 @@ if FREETZ_PACKAGE_PERL
 			warnings.pm warnings/register.pm strict.pm constant.pm vars.pm
 			Exporter.pm Exporter/Heavy.pm Carp.pm Getopt/Long.pm
 
+    config FREETZ_PACKAGE_PERL_TESTPACK
+		string "perl TESTPACK"
+		default n
+		help
+			Include TESTPACK to test perl and its packages.
+
 	config FREETZ_PACKAGE_PERL_ADDITIONAL_EXTRA_MODULES
 		string "Cpan modules"
 		default ""
@@ -53,17 +59,22 @@ if FREETZ_PACKAGE_PERL
 
 	config FREETZ_PACKAGE_PERL_DBDSQLITE
 		bool "DBD-SQLite"
-		select FREETZ_PACKAGE_SQLITE
-		default y
+		select FREETZ_PACKAGE_PERL_DBI
+		default n
 		help
 			Add DBD-SQLite - Self-contained RDBMS in a DBI Driver.
 
 	config FREETZ_PACKAGE_PERL_DBI
 		bool "DBI"
-		select FREETZ_PACKAGE_SQLITE
 		default y
 		help
 			Add DBI - Database independent interface for Perl.
+
+	config FREETZ_PACKAGE_PERL_DEVICESERIALPORT
+		bool "Device::SerialPort"
+		default y
+		help
+			Device::SerialPort - Linux/POSIX emulation of Win32::SerialPort functions.
 
 	config FREETZ_PACKAGE_PERL_ENCODELOCALE
 		bool "Encode::Locale"
@@ -158,6 +169,18 @@ if FREETZ_PACKAGE_PERL
 		default y
 		help
 			LWP::MediaTypes - guess media type for a file or a URL
+
+	config FREETZ_PACKAGE_PERL_LWPPROTOCOLHTTPS
+		bool "LWP::Protocol::https"
+		default y
+		help
+			LWP::Protocol::https - Provide https support for LWP::UserAgent
+
+	config FREETZ_PACKAGE_PERL_MOZILLACA
+		bool "Mozilla::CA"
+		default y
+		help
+			Mozilla::CA - Mozilla's CA cert bundle in PEM format
 
 	config FREETZ_PACKAGE_PERL_NETHTTP
 		bool "Net::HTTP"
