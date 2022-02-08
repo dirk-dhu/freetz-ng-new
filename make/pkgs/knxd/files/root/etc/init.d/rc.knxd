@@ -29,8 +29,8 @@ start() {
 		echo "ip of knx/eib ip router/gateway for tunneling is not set, start ... failed" 1>&2
 		exit 1
 	fi
-	#modlib_startdaemon $DAEMON $CMDOPTS
-	/sbin/start-stop-daemon -c ${DAEMON_USER} -S -b -x /usr/bin/$DAEMON -N 15 --  -p ${PID_FILE} $CMDOPTS
+	modlib_startdaemon $DAEMON $CMDOPTS
+	#/sbin/start-stop-daemon -c ${DAEMON_USER} -S -b -x /usr/bin/$DAEMON -N 15 --  -p ${PID_FILE} $CMDOPTS
 	
 	echo "done."
 }
