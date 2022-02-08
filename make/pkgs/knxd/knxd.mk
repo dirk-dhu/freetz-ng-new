@@ -1,13 +1,19 @@
 #$(call PKG_INIT_BIN, 70c13f2) # 0.4.17
-$(call PKG_INIT_BIN, 80fae38) # 0.12.15
+#$(call PKG_INIT_BIN, 80fae38) # 0.12.15
+$(call PKG_INIT_BIN, 81b1068) # 0.12.16
+#$(call PKG_INIT_BIN, 98dd112) # 0.14.53
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_SITE:=git://github.com/knxd/knxd.git
 
 $(PKG)_BUILD_PREREQ += git cmake
 $(PKG)_BUILD_PREREQ_HINT := Hint: on Debian-like systems this binary is provided by the git package (sudo apt-get install git cmake)
 $(PKG)_DIR:=$($(PKG)_SOURCE_DIR)/knxd-$($(PKG)_VERSION)
+$(PKG)_TOOLS:=$($(PKG)_DIR)/src/examples/.lib/eibread-cgi ($(PKG)_DIR)/src/examples/.lib/eibwrite-cgi ($(PKG)_DIR)/src/examples/.lib/knxtool
+$(PKG)_LIB:=$($(PKG)_DEST_DIR)/src/client/c/.libs/libeibclient.so.0
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/server/knxd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/knxd
+$(PKG)_TARGET_TOOLS:=$($(PKG)_DEST_DIR)/usr/bin/eibread-cgi $($(PKG)_DEST_DIR)/usr/bin/eibwrite-cgi $($(PKG)_DEST_DIR)/usr/bin/knxtool
+$(PKG)_TARGET_TOOLS_LIB:=$($(PKG)_DEST_DIR)/usr/lib/libeibclient.so.0
 ifeq ($(FREETZ_PACKAGE_PERL),y)
 $(PKG)_TARGET_PERL_CLIENT:= $($(PKG)_DEST_DIR)/usr/lib/perl5/$(FREETZ_PACKAGE_PERL_VERSION)/EIBConnection.pm
 endif
@@ -34,7 +40,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-systemd
 $(PKG)_CONFIGURE_PRE_CMDS += find $(abspath $($(PKG)_DIR)) -name Makefile.in -type f -exec $(SED) -i -r -e 's,^(C|LD|CPP)FLAGS[ \t]*=[ \t]*@\1FLAGS@,& $$$$(EXTRA_\1FLAGS),' \{\} \+;
 $(PKG)_EXTRA_CFLAGS   := -ffunction-sections -fdata-sections -D_GLIBCXX_USE_C99=1
 $(PKG)_EXTRA_CPPFLAGS := -D_GLIBCXX_USE_C99=1 
-$(PKG)_EXTRA_LDFLAGS  := -Wl,--gc-sections -largp
+$(PKG)_EXTRA_LDFLAGS  := -Wl,--gc-sections -largp -L"$(TARGET_TOOLCHAIN_STAGING_DIR)/lib"
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 $(PKG)_CONFIGURE_PRE_CMDS += find $(abspath $($(PKG)_DIR)) -name Makefile.in -exec $(SED) -r -i 's~@PTH_CFLAGS@~-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include~'   \{\} \+;
@@ -57,16 +63,22 @@ $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
-$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+$($(PKG)_BINARY) $($(PKG)_TOOLS) $($(PKG)_LIB): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(KNXD_DIR)  \
 		EXTRA_CFLAGS="$(KNXD_EXTRA_CFLAGS)" \
 		EXTRA_CPPFLAGS="$(KNXD_EXTRA_CFLAGS)" \
 		EXTRA_LDFLAGS="$(KNXD_EXTRA_LDFLAGS)"
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
-	$(SUBMAKE) -C $(KNXD_DIR)/src/server install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))
-	$(SUBMAKE) -C $(KNXD_DIR)/src/tools  install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))
-	$(SUBMAKE) -C $(KNXD_DIR)/src/usb    install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))		
+	$(SUBMAKE) -C $(KNXD_DIR)/src/server   install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))
+	$(SUBMAKE) -C $(KNXD_DIR)/src/tools    install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))
+	$(SUBMAKE) -C $(KNXD_DIR)/src/usb      install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))		
+
+$($(PKG)_TARGET_TOOLS): $($(PKG)_TOOLS)
+	$(SUBMAKE) -C $(KNXD_DIR)/src/examples install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))		
+
+$($(PKG)_TARGET_TOOLS_LIB): $($(PKG)_LIB)
+	$(SUBMAKE) -C $(KNXD_DIR)/src/client/c install-strip DESTDIR=$(abspath $(KNXD_DEST_DIR))	
 
 $($(PKG)_TARGET_PHP_CLIENT) $($(PKG)_TARGET_PERL_CLIENT) $($(PKG)_TARGET_PYTHON_CLIENT): $($(PKG)_BINARY)
 	mkdir -p $(@D); \
@@ -74,7 +86,7 @@ $($(PKG)_TARGET_PHP_CLIENT) $($(PKG)_TARGET_PERL_CLIENT) $($(PKG)_TARGET_PYTHON_
 
 $(pkg):
 
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_TARGET_PHP_CLIENT) $($(PKG)_TARGET_PERL_CLIENT) $($(PKG)_TARGET_PYTHON_CLIENT)
+$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_TARGET_TOOLS) $($(PKG)_TARGET_TOOLS_LIB) $($(PKG)_TARGET_PHP_CLIENT) $($(PKG)_TARGET_PERL_CLIENT) $($(PKG)_TARGET_PYTHON_CLIENT)
 
 $(pkg)-clean:
 	$(RM) $(KNXD_DIR)/.configured
