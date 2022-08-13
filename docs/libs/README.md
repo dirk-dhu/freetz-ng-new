@@ -10,6 +10,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[apr-util: Apache Portable Runtime Utility Library (libaprutil-1.so) 1.6.1](apr-util.md)<a id='apr-util'></a>**<br>
     APR Util is a utilities library implemented on top of APR, providing database access, xml parsing, and other useful functionality.
 
+  * **[argp-standalone: libargp-standalone (libargp.a) 1.3](argp-standalone.md)<a id='argp-standalone'></a>**<br>
+    libargp is a standalone version (static library) of argp (arguments parsing functions) from GLIBC. It was separated off glibc by Niels M.
+
   * **[attr: libattr (libattr.so) 2.4.44](attr.md)<a id='attr'></a>**<br>
     libattr allows to modify extended attributes of files.
 
@@ -80,6 +83,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libatomic (libatomic.so) 1.0.0/1.1.0/1.2.0](libatomic.md)<a id='libatomic'></a>**<br>
     GCC Atomics Library Included in gcc since v4.8, see https://gcc.gnu.org/wiki/Atomic/GCCMM
 
+  * **[libaugeas (libaugeas.so) 1.6.0](libaugeas.md)<a id='libaugeas'></a>**<br>
+    Augeas is a library and command line tool that focuses on the most basic problem in handling Linux configurations programmatically: editing actual configuration files in a controlled manner
+
   * **[libavmacl2 7490.06.30](libavmacl2.md)<a id='libavmacl2'></a>**<br>
 
   * **[libavmhmac (libavmhmac.so) - EXPERIMENTAL 0.2](libavmhmac.md)<a id='libavmhmac'></a>**<br>
@@ -121,6 +127,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libffi (libffi.so) 3.2.1](libffi.md)<a id='libffi'></a>**<br>
     libffi is a library that really only provides the lowest, machine dependent layer of a fully featured foreign function interface. A layer must exist above libffi that handles type conversions for values passed between the two languages. ffi stands for Foreign Function Interface. A foreign function interface is the popular name for the interface that allows code written in one language to call code written in another language.
 
+  * **[libfmt: fmt (libfmt.so) 4.0.0](libfmt.md)<a id='libfmt'></a>**<br>
+    It can be used as a safe alternative to printf or as a fast alternative to IOStreams.
+
   * **[libftdi (libftdi.so) 0.20](libftdi.md)<a id='libftdi'></a>**<br>
     A library (using libusb) to talk to FTDI's FT232BM/245BM, FT2232C/D and FT232/245R type chips including the popular bitbang mode.
 
@@ -150,6 +159,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[libmaxminddb (libmaxminddb.so) 1.6.0](libmaxminddb.md)<a id='libmaxminddb'></a>**<br>
     C library for the MaxMind DB file format. You'll need an additional .mmdb file, put it on storage. Get it here: https://github.com/P3TERX/GeoLite.mmdb/
+
+  * **[libmcrypt (libmcrypt.so) 2.5.8](libmcrypt.md)<a id='libmcrypt'></a>**<br>
+    mcrypt, and the accompanying libmcrypt, are intended to be replacements for the old Unix crypt, except
 
   * **[libmnl (libmnl.so) 1.0.4](libmnl.md)<a id='libmnl'></a>**<br>
     libmnl is a minimalistic user-space library oriented to Netlink developers. There are a lot of common tasks in parsing, validating, constructing of both the Netlink header and TLVs that are repetitive and easy to get wrong. This library aims to provide simple helpers that allows you to re-use code and to avoid re-inventing the wheel.
@@ -284,6 +296,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[protobuf-c: libprotobuf-c (libprotobuf-c.so) 1.1.0](protobuf-c.md)<a id='protobuf-c'></a>**<br>
     Library providing a flexible, efficient, automated mechanism for serializing structured data.
+
+  * **[pthsem: libpthsem (libpthsem.so) 2.0.8](pthsem.md)<a id='pthsem'></a>**<br>
+    GNU pth is a user mode multi threading library. pthsem is a fork, with support for semaphores added. It can be installed parallel to a normal pth and provides a compatibilty layer to compile GNU pth programs with pthsem. The header file is called pthsem.h, the configuration programm pthsem-config and the autoconf macro AC_CHECK_PTHSEM. If references to one of these names are changed, pthsem can be used as an replacement of GNU pth.
 
 ### R
 

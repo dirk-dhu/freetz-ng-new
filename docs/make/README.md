@@ -136,6 +136,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[dehydrated 0.7.0 (letsencrypt)](dehydrated.md)<a id='dehydrated'></a>**<br>
     Dehydrated is a client for signing certificates with an ACME-server (e.g. Let's Encrypt) implemented as a relatively simple (zsh-compatible) bash-script. This client supports both ACME v1 and the new ACME v2 including support for wildcard certificates!
 
+  * **<u>Dev Tools  (binary only)</u><a id='dev-tools'></a>**<br>
+    development tools as binutils and gcc, used from target toolchain.
+
   * **[DigiTemp 3.7.2 (binary only)](digitemp.md)<a id='digitemp'></a>**<br>
     digitemp for 1-wire modules You could use RRDstats for data collection and visualisation
 
@@ -147,6 +150,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **<u>dosfstools 3.0.28 (binary only)</u><a id='dosfstools'></a>**<br>
     utilities to create, check and label MS-DOS FAT filesystems
+
+  * **<u>Dovecot 2.3.18</u><a id='dovecot'></a>**<br>
+    Dovecot is an open source IMAP and POP3 email server for Linux/UNIX-like systems. Works with XMail together and can be used with a webmail interface as roundcubemail. (needs uclibc 1.0.15, because of doveconf panic in memmpool-system.c)
 
   * **[Dropbear 2022.82](dropbear.md)<a id='dropbear'></a>**<br>
     Dropbear SSH server and client Dropbear is a relatively small SSH 2 server and client. It runs on a variety of POSIX-based platforms. Dropbear is open source software, distributed under a MIT-style license. Dropbear is particularly useful for "embedded"-type Linux (or other Unix) systems, such as wireless routers. Features - A small memory footprint suitable for memory-constrained environments - Dropbear can compile to a 110kB statically linked binary with uClibc on x86 (only minimal options selected) - Dropbear server implements X11 forwarding, and authentication-agent forwarding for OpenSSH clients - Can run from inetd or standalone - Compatible with OpenSSH ~/.ssh/authorized_keys public key authentication - The server, client, keygen, and key converter can be compiled into a single binary (a la busybox) - Features can easily be disabled when compiling to save space TCP forwarding support
@@ -170,6 +176,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[e2fsprogs 1.42.13 (binary only)](e2fsprogs.md)<a id='e2fsprogs'></a>**<br>
     This package contains essential ext2, ext3 and ext4 filesystem utilities which consists of e2fsck, mke2fs, debugfs, dumpe2fs, tune2fs, and most of the other core ext2 filesystem utilities. Homepage: http://e2fsprogs.sourceforge.net/
+
+  * **<u>EIBD BCUSDK 0.0.5 (KNX/EIB daemon)</u><a id='eibd'></a>**<br>
+    Free Development Environment for Bus Coupling Units of the European Installation Bus.
 
   * **[emailrelay: E-MailRelay 1.9](emailrelay.md)<a id='emailrelay'></a>**<br>
     E-MailRelay is a simple store-and-forward message transfer agent and proxy server. It runs on Unix-like operating systems (including Linux), and on Windows. When used as proxy server the E-MailRelay program (emailrelay) runs in the background and accepts e-mail from local e-mail client programs (KMail, Outlook etc.) or from the outside world, using the SMTP protocol. As soon as an e-mail message is received it is forwarded on to the next SMTP server for onward delivery. This becomes more useful when you add in your own message processing: as each message is received it can be passed one of your programs for editing, filtering, encrypting etc. When used as a store-and-forward transfer agent E-Mail- Relay runs in two modes: the storage daemon part, and the forwarding agent. The storage daemon waits for incoming mail and stores anything it receives in a spool directory. As a forwarding agent E-MailRelay pulls messages out of the	spool directory and passes them on to a remote server -- perhaps your ISP mail server. E-MailRelay can also run as a POP3 server so that e-mail client programs can read the spooled messages.
@@ -222,6 +231,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[gw6: Gateway6 client 5.1](gw6.md)<a id='gw6'></a>**<br>
     Client to build a tunnel to the ipv6 network (see http://go6.net). The binary will be installed as /usr/sbin/gw6c and CGI frontend will be provided for a simple configuration. A sample can be found in /usr/share/gw6/.
+
+  * **<u>GZIP 1.6 (binary only)</u><a id='gzip'></a>**<br>
+    Gzip utility.
 
 ### H
 
@@ -322,6 +334,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Knockd 0.7](knock.md)<a id='knock'></a>**<br>
     Knockd is a port-knock server. It listens to all traffic on an ethernet (or PPP) interface, looking for special "knock" sequences of port-hits.
 
+  * **<u>KNXD 0.12.16 (KNX/EIB daemon)</u><a id='knxd'></a>**<br>
+    KNX is a very common building automation protocol which runs on dedicated 9600-baud wire as well as IP multicast. knxd is an advanced router/gateway which runs on any Linux computer; it can talk to all known KNX interfaces. This code is a fork of eibd 0.0.5 (from bcusdk)
+
 ### L
 
   * **[LCD4linux 9d4e4b7-git](lcd4linux.md)<a id='lcd4linux'></a>**<br>
@@ -332,6 +347,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[lighttpd 1.4.65](lighttpd.md)<a id='lighttpd'></a>**<br>
     Security, speed, compliance, and flexibility -- all of these describe lighttpd (pron. lighty) which is rapidly redefining efficiency of a webserver; as it is designed and optimized for high performance environments. With a small memory footprint compared to other web-servers, effective management of the cpu-load, and advanced feature set (FastCGI, SCGI, Auth, Output-Compression, URL-Rewriting and many more) lighttpd is the perfect solution for every server that is suffering load problems. In case you want to configure virtual hosts, you may want to consider the package onlinechanged-cgi which allows you to configure multiple DynDNS entries for your box.
+
+  * **<u>Linknx 0.0.1.30 (KNX/EIB automation platform)</u><a id='linknx'></a>**<br>
+    Linknx is only one component of a bigger project. The goal is to get the maximum comfort and flexibility from my KNX domotic system while keeping the smallest possible resource consumtion. The physical access to the KNX bus is ensured by the EIBD daemon.
 
   * **[Lua 5.1.5 (binary only)](lua.md)<a id='lua'></a>**<br>
     Lua Scripting Language. Lua is a powerful light-weight programming language designed for extending applications. Lua is also frequently used as a general-purpose, stand-alone language. Lua is free software. Lua combines simple procedural syntax with powerful data description constructs based on associative arrays and extensible semantics. Lua is dynamically typed, runs by interpreting bytecode for a register-based virtual machine, and has automatic memory management with incremental garbage collection, making it ideal for configuration, scripting, and rapid prototyping. A fundamental concept in the design of Lua is to provide meta-mechanisms for implementing features, instead of providing a host of features directly in the language. For example, although Lua is not a pure object-oriented language, it does provide meta-mechanisms for implementing classes and inheritance. Lua's meta-mechanisms bring an economy of concepts and keep the language small, while allowing the semantics to be extended in unconventional ways. Extensible semantics is a distinguishing feature of Lua. Lua is a language engine that you can embed into your application. This means that, besides syntax and semantics, Lua has an API that allows the application to exchange data with Lua programs and also to extend Lua with C functions. In this sense, Lua can be regarded as a language framework for building domain-specific languages. Lua is implemented as a small library of C functions, written in ANSI C, and compiles unmodified in all known platforms. The implementation goals are simplicity, efficiency, portability, and low embedding cost. The result is a fast language engine with small footprint, making it ideal in embedded systems too.
@@ -511,16 +529,79 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Python 2.7.18</u><a id='python'></a>**<br>
     Python is a remarkably powerful dynamic programming language that is used in a wide variety of application domains. CAUTION: Python adds roughly 4 MB to 15.5 MB (depending on your choice of modules) of uncompressed data to your image. In most cases, it should therefore be externalized.
 
+  * **<u>python-asn1crypto: asn1crypto 0.24.0</u><a id='python-asn1crypto'></a>**<br>
+    A fast, pure Python library for parsing and serializing ASN.1 structures.
+
+  * **<u>python-augeas: augeas 0.5.0</u><a id='python-augeas'></a>**<br>
+    Pure python bindings for augeas http://augeas.net/.
+
+  * **<u>python-backports.ssl_match_hostname: backports.ssl_match_hostname 76440258eb5e</u><a id='python-backports.ssl-match-hostname'></a>**<br>
+
   * **<u>python-bjoern: bjoern 1.3.4</u><a id='python-bjoern'></a>**<br>
     A screamingly fast Python WSGI server written in C.
 
+  * **<u>python-certbot: certbot 1.11.0</u><a id='python-certbot'></a>**<br>
+    certbot is is an easy-to-use client that fetches a certificate from Let’s Encrypt.
+
+  * **<u>python-cffi: cffi 1.8</u><a id='python-cffi'></a>**<br>
+    cffi is a library for testing in Python.
+
   * **<u>python-cheetah: cheetah 2.4.4</u><a id='python-cheetah'></a>**<br>
+    Cheetah is an open source template engine and code generation tool.
+
+  * **<u>python-configargparse: configargparse 11.0</u><a id='python-configargparse'></a>**<br>
+    configargparse is  drop-in replacement for argparse that allows options to also be set via config files and/or environment variables
+
+  * **<u>python-configobj: configobj 5.0.6</u><a id='python-configobj'></a>**<br>
+    Config file reading, writing and validation.
+
+  * **<u>python-cryptography: cryptography 2.1.4</u><a id='python-cryptography'></a>**<br>
+    cryptography is a package which provides cryptographic recipes and primitives to Python developers.
+
+  * **<u>python-distro: distro 1.5.0</u><a id='python-distro'></a>**<br>
+    Distro an OS platform information API
+
+  * **<u>python-enum34: enum34 1.0.4</u><a id='python-enum34'></a>**<br>
+    enum34 is an Python 3.4 Enum backport.
+
+  * **<u>python-future: future 0.15.2</u><a id='python-future'></a>**<br>
+    future is the missing compatibility layer between Python 2 and Python 3. It allows you to use a single, clean Python 3.x-compatible codebase to support both Python 2 and Python 3 with minimal overhead.
+
+  * **<u>python-idna: idna 2.1</u><a id='python-idna'></a>**<br>
+    A library to support the Internationalised Domain Names in Applications (IDNA) protocol.
 
   * **<u>python-imaging-library: Imaging Library 1.1.7</u><a id='python-imaging-library'></a>**<br>
     The Python Imaging Library adds image processing capabilities to the Python interpreter. This library provides extensive file format support, an efficient internal representation, and fairly powerful image processing capabilities.
 
+  * **<u>python-ipaddress: ipaddress 1.0.17</u><a id='python-ipaddress'></a>**<br>
+    Python 3.3+'s ipaddress for Python 2.6, 2.7, 3.2.
+
+  * **<u>python-josepy: josepy 1.2.0</u><a id='python-josepy'></a>**<br>
+    JOSE protocol implementation in Python
+
+  * **<u>python-lxml: lxml 3.4.0</u><a id='python-lxml'></a>**<br>
+    Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API.
+
   * **<u>python-mechanize: mechanize 0.2.5</u><a id='python-mechanize'></a>**<br>
     Stateful programmatic web browsing, after Andy Lester's Perl module WWW::Mechanize.
+
+  * **<u>python-mock: mock release-0.8-maint</u><a id='python-mock'></a>**<br>
+    mock is a library for testing in Python.
+
+  * **<u>python-ndg_httpsclient: ndg-httpsclient 0.4.2</u><a id='python-ndg-httpsclient'></a>**<br>
+    ndg-httpsclient Provides enhanced HTTPS support for httplib and urllib2 using PyOpenSSL.
+
+  * **<u>python-parsedatetime: parsedatetime 2.4</u><a id='python-parsedatetime'></a>**<br>
+    parsedatetime is a library to parse human-readable date/time strings.
+
+  * **<u>python-platformer: platformer 1.0</u><a id='python-platformer'></a>**<br>
+    platformer is a simple and robust way to call a C compiler from Python.
+
+  * **<u>python-pyasn1: pyasn1 0.1.9</u><a id='python-pyasn1'></a>**<br>
+    pyasn1 is an implementation of ASN.1 types and codecs in Python programming language.
+
+  * **<u>python-pycparser: pycparser 2.14</u><a id='python-pycparser'></a>**<br>
+    pycparser is a parser for the C language, written in pure Python.
 
   * **<u>python-pycrypto: pycrypto 2.6.1</u><a id='python-pycrypto'></a>**<br>
     A collection of both secure hash functions (such as MD5 and SHA), and various encryption algorithms (AES, DES, IDEA, RSA, ElGamal, etc.).
@@ -528,8 +609,14 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>python-pycurl: pycurl 7.43.0</u><a id='python-pycurl'></a>**<br>
     PycURL is a Python interface to libcurl. PycURL can be used to fetch objects identified by a URL from a Python program.
 
-  * **<u>python-pyopenssl: pyopenssl 0.13.1</u><a id='python-pyopenssl'></a>**<br>
+  * **<u>python-pygooglechart: pygooglechart 0.3.0</u><a id='python-pygooglechart'></a>**<br>
+    A complete Python wrapper for the Google Chart API.
+
+  * **<u>python-pyopenssl: pyopenssl 17.3.0</u><a id='python-pyopenssl'></a>**<br>
     Python interface to the OpenSSL library.
+
+  * **<u>python-pyrfc3339: pyrfc3339 1.0</u><a id='python-pyrfc3339'></a>**<br>
+    pyrfc3339 parses and generates RFC 3339-compliant timestamps using Python datetime.datetime objects.
 
   * **<u>python-pyrrd: pyrrd 0.1.0</u><a id='python-pyrrd'></a>**<br>
     An Object-Oriented Python Interface for RRDTool.
@@ -537,7 +624,46 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>python-pyserial: pyserial 2.6</u><a id='python-pyserial'></a>**<br>
     Python Serial Port Extension.
 
+  * **<u>python-pythondialog: pythondialog 3.4.0</u><a id='python-pythondialog'></a>**<br>
+    pythondialog is to build dialogs for terminal-based applications.
+
+  * **<u>python-pytz: pytz release_2016.7</u><a id='python-pytz'></a>**<br>
+    pytz brings the Olson tz database into Python.
+
+  * **<u>python-pyusb: pyusb 1.0.0b2</u><a id='python-pyusb'></a>**<br>
+    Easy USB access on Python.
+
+  * **<u>python-pyyaml: pyyaml 3.11</u><a id='python-pyyaml'></a>**<br>
+    YAML parser and emitter for Python.
+
+  * **<u>python-requests: requests 2.11.1</u><a id='python-requests'></a>**<br>
+    Requests is the only Non-GMO HTTP library for Python, safe for human consumption.
+
+  * **<u>python-requeststoolbelt: request-toolbelt 0.9.1</u><a id='python-requeststoolbelt'></a>**<br>
+    Requests Toolbelt is a collection of utilities for python-requsts
+
+  * **<u>python-samsungctl: samsungctl 0.7.1</u><a id='python-samsungctl'></a>**<br>
+    Remote control Samsung televisions via a TCP/IP connection.
+
+  * **<u>python-setuptools: setuptools 39.0.1</u><a id='python-setuptools'></a>**<br>
+    setuptools is a library to setup and explore resources of python packages.
+
+  * **<u>python-six: six 1.11.0</u><a id='python-six'></a>**<br>
+    Python 2 and 3 compatibility utilities.
+
+  * **<u>python-websocket-client: websocket-client 0.47.0</u><a id='python-websocket-client'></a>**<br>
+    WebSocket client for python. hybi13 is supported
+
   * **<u>python-yenc: yEnc 0.4.0</u><a id='python-yenc'></a>**<br>
+
+  * **<u>python-zopecomponent: zopecomponent 4.3.0</u><a id='python-zopecomponent'></a>**<br>
+    This package represents the core of the Zope Component Architecture. Together with the zope.interface package, it provides facilities for defining, registering and looking up components.
+
+  * **<u>python-zopeevent: zopeevent 4.3.2</u><a id='python-zopeevent'></a>**<br>
+    This package is an implementation of “object interfaces” for Python. Interfaces are a mechanism for labeling objects as conforming to a given API or contract.
+
+  * **<u>python-zopeinterface: zopeinterface 4.3.2</u><a id='python-zopeinterface'></a>**<br>
+    This package provides an implementation of “object interfaces” for Python.
 
 ### Q
 
@@ -664,6 +790,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### T
 
+  * **<u>TAR 1.28 (binary only)</u><a id='tar'></a>**<br>
+    Tar utility.
+
   * **[tcpdump 4.1.1/4.99.1 (binary only)](tcpdump.md)<a id='tcpdump'></a>**<br>
     Network monitoring and data acquisition tool
 
@@ -743,6 +872,12 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Virtual tunnel client and server
 
 ### W
+
+  * **<u>wfrog 0.8.2+svn953</u><a id='wfrog'></a>**<br>
+    wfrog is a web-based weather station software with nice charts and many ways to publish them on the web, and much more.
+
+  * **<u>wfrog-ws28xx: ws28xx master</u><a id='wfrog-ws28xx'></a>**<br>
+    Linux driver based on reverse engineering HeavyWeather software for La Crosse Technology WS-2813U-IT (and perhaps WS-28xx series).
 
   * **[Wget GNU 1.21.3 (binary only)](wget.md)<a id='wget'></a>**<br>
     GNU Wget is a free software package for retrieving files using HTTP, HTTPS and FTP, the most widely-used Internet protocols. It is a non-interactive commandline tool, so it may easily be called from scripts, cron jobs, terminals, etc.
@@ -886,6 +1021,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[AVM-rules (deprecated)](avm-rules.md)<a id='avm-rules'></a>**<br>
     Configuration of port forwardings to the FritzBox itself by using voip_forwardrules. Please don't use this package, but AVM-portfw! Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
 
+  * **<u>certbot-cgi: Certbot service 1.0.0</u><a id='certbot'></a>**<br>
+    The certbot configuration CGI with monthly crond
+
   * **<u>Cpmaccfg CGI 1.0</u><a id='cpmaccfg'></a>**<br>
     Configuration front-end to cpmaccfg This frontend shows the current settings of the LAN ports and gives a very simple way to set VLAN, portmode and WLAN assigment. Additional to this, you can set IP addresses for the VLAN interfaces eth0-eth3 if needed.
 
@@ -907,6 +1045,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>ppp-cgi: ppp dial-up-network</u><a id='ppp'></a>**<br>
     Use this package to establish a dun connection
 
+  * **<u>roundcubemail 1.0.9</u><a id='roundcubemail'></a>**<br>
+    Webmail respectively Webmail configuration page. Accessible via the URL http://fritz.box:8081/webmail respetively http://fritz.box:8081/installer, it enables you to acccess mail from an IMAP server (Dovecot). This GUI needs PHP, so it is automaticaly selected, similarly the web server Apache2.
+
   * **[RRDstats for RRDtool](rrdstats.md)<a id='rrdstats'></a>**<br>
     Lets you view graphically various stats of your Freetz Box. Selects BusyBox's 'nice' to save spare resources.
 
@@ -915,6 +1056,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[Syslogd CGI 0.2.3](syslogd-cgi.md)<a id='syslogd'></a>**<br>
     Configuration frontend to syslogd
+
+  * **<u>tar-cgi: TAR BACKUP CGI 0.1</u><a id='tar'></a>**<br>
+    Web configuration interface to backup your data using tar. Which directories are archived or which files are left out can be done using regular expressions Freetz web interface to configure your settings.
 
   * **<u>Transmission CGI 0.0.4</u><a id='transmission'></a>**<br>
     Provides a simple configuration interface for transmission-daemon.
