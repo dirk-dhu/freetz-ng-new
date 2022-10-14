@@ -63,7 +63,6 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.29.image](http://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.29.image)
  - HWR 256: [FRITZ.Box_7530_AX-07.31.image](http://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-07.31.image)
  - HWR 257: [FRITZ.Box_5530-07.29.image](http://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530-07.29.image)
- - HWR 257: [FRITZ.Box_5530-07.30.image](http://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530-07.30.image)
  - HWR 258: [FRITZ.Box_6850_5G-07.30.image](http://download.avm.de/fritzbox/fritzbox-6850-5g/deutschland/fritz.os/FRITZ.Box_6850_5G-07.30.image)
  - HWR 259: [FRITZ.Box_7590_AX-07.31.image](http://download.avm.de/fritzbox/fritzbox-7590-ax/deutschland/fritz.os/FRITZ.Box_7590_AX-07.31.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.31.image](http://download.avm.de/fritzbox/fritzbox-7583-vdsl/deutschland/fritz.os/FRITZ.Box_7583_VDSL-07.31.image)
@@ -127,19 +126,19 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 08.01: [08.01.04.25.avm.de.upd](http://download.avm.de/dect/0801/mesh18/08.01.04.25.avm.de.upd)
  - MHW 08.02: [08.02.04.25.avm.de.upd](http://download.avm.de/dect/0802/mesh18/08.02.04.25.avm.de.upd)
  - MHW 08.03: [08.03.04.25.avm.de.upd](http://download.avm.de/dect/0803/mesh18/08.03.04.25.avm.de.upd)
- - MHW 08.04: [08.04.04.87.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.87.avm.de.upd)
+ - MHW 08.04: [08.04.04.88.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.88.avm.de.upd)
  - MHW 10.01: [34.10.16.16.015.avm.de.upd](http://download.avm.de/dect/1001/Release/34.10.16.16.015.avm.de.upd)
 
 ### Dect-Labor
  - MHW 03.01: [03.01.04.08.avm.de.upd](http://download.avm.de/dect/0301/iq17/03.01.04.08.avm.de.upd)
- - MHW 05.01: [05.01.04.87.avm.de.upd](http://download.avm.de/dect/0501/labor/05.01.04.87.avm.de.upd)
+ - MHW 05.01: [05.01.04.88.avm.de.upd](http://download.avm.de/dect/0501/labor/05.01.04.88.avm.de.upd)
  - MHW 06.04: [06.04.03.54.avm.de.upd](http://download.avm.de/dect/0604/p15/06.04.03.54.avm.de.upd)
  - MHW 07.02: [07.02.04.25.avm.de.upd](http://download.avm.de/dect/0702/move21/07.02.04.25.avm.de.upd)
  - MHW 07.03: [07.03.04.25.avm.de.upd](http://download.avm.de/dect/0703/move21/07.03.04.25.avm.de.upd)
  - MHW 07.04: [07.04.04.25.avm.de.upd](http://download.avm.de/dect/0704/move21/07.04.04.25.avm.de.upd)
- - MHW 08.01: [08.01.04.87.avm.de.upd](http://download.avm.de/dect/0801/labor/08.01.04.87.avm.de.upd)
- - MHW 08.02: [08.02.04.87.avm.de.upd](http://download.avm.de/dect/0802/labor/08.02.04.87.avm.de.upd)
- - MHW 08.03: [08.03.04.87.avm.de.upd](http://download.avm.de/dect/0803/labor/08.03.04.87.avm.de.upd)
+ - MHW 08.01: [08.01.04.88.avm.de.upd](http://download.avm.de/dect/0801/labor/08.01.04.88.avm.de.upd)
+ - MHW 08.02: [08.02.04.88.avm.de.upd](http://download.avm.de/dect/0802/labor/08.02.04.88.avm.de.upd)
+ - MHW 08.03: [08.03.04.88.avm.de.upd](http://download.avm.de/dect/0803/labor/08.03.04.88.avm.de.upd)
 
 ### Dect-Inhaus
  - MHW 05.01: [05.01.04.84.avm.de.upd](http://download.avm.de/dect/0501/labor1/05.01.04.84.avm.de.upd)
