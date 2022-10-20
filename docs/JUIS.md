@@ -128,7 +128,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 08.01: [08.01.04.25.avm.de.upd](http://download.avm.de/dect/0801/mesh18/08.01.04.25.avm.de.upd)
  - MHW 08.02: [08.02.04.25.avm.de.upd](http://download.avm.de/dect/0802/mesh18/08.02.04.25.avm.de.upd)
  - MHW 08.03: [08.03.04.25.avm.de.upd](http://download.avm.de/dect/0803/mesh18/08.03.04.25.avm.de.upd)
- - MHW 08.04: [08.04.04.88.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.88.avm.de.upd)
+ - MHW 08.04: [08.04.04.89.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.89.avm.de.upd)
  - MHW 10.01: [34.10.16.16.015.avm.de.upd](http://download.avm.de/dect/1001/Release/34.10.16.16.015.avm.de.upd)
 
 ### Dect-Labor
