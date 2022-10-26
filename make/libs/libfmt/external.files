@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_LIB_libfmt" == "y" ] && EXTERNAL_FILES+=" ${FREETZ_LIBRARY_DIR}/../libfmt.a ${FREETZ_LIBRARY_DIR}/../include/fmt"

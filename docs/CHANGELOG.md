@@ -65,8 +65,11 @@ Latest changes
    * Dnsmasq 2.80/2.88
    * Dovecot 2.3.19.1
    * Dropbear 2022.83
+   * EIBD BCUSDK 0.0.5
    * HAProxy 2.6.7
    * Knock 0.8
+   * Knxd 0.12.15
+   * Linknx 0.0.1.37
    * Nano 7.0
    * OpenSSH 9.1p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1s/3.0.7
@@ -80,9 +83,12 @@ Latest changes
    * XZ Utils 5.2.9
 
  - Libraries:
+   * argp-standalone 1.3
    * expat 2.5.0
+   * libfmt 4.0.0
    * libidn 1.41
    * libgpg-error 1.46
+   * libpthsem 2.0.8
    * libusb-compat 0.1.8
    * libxml2 2.10.3
    * neon 0.30.2/0.32.4
