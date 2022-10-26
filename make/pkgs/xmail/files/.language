@@ -5,5 +5,7 @@ default
 files
 {
         etc/init.d/rc.xmail
+        etc/default.xmail/server_cert.def
+        etc/default.xmail/server_key.def
         usr/lib/cgi-bin/xmail.cgi
 }

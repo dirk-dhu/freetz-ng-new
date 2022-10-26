@@ -1,0 +1,46 @@
+config FREETZ_PACKAGE_DOVECOT
+	bool "Dovecot 2.3.19.1"
+	depends on \
+		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_UR8  || \
+		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR9  || \
+		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_AR10 || \
+		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IKS  || \
+		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_VR9  || \
+		FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
+    select FREETZ_LIB_libcrypt                if FREETZ_PACKAGE_DOVECOT && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+    select FREETZ_LIB_libcrypto               if FREETZ_PACKAGE_DOVECOT
+	select FREETZ_LIB_libssl                  if FREETZ_PACKAGE_DOVECOT
+	select FREETZ_LIB_libcrypto_WITH_ZLIB     if FREETZ_PACKAGE_DOVECOT
+	select FREETZ_BUSYBOX_ED                  if FREETZ_PACKAGE_DOVECOT
+	select FREETZ_BUSYBOX_START_STOP_DAEMON   if FREETZ_PACKAGE_DOVECOT
+	select FREETZ_PACKAGE_DOVECOT_FOR_XMAIL   if FREETZ_PACKAGE_XMAIL
+	select FREETZ_BUSYBOX_SYSLOGD             if FREETZ_PACKAGE_DOVECOT_SYSLOG
+	select FREETZ_PACKAGE_PHP                 if FREETZ_PACKAGE_DOVECOT_FOR_XMAIL
+	default n
+	help
+		Dovecot is an open source IMAP and POP3 email server for 
+		Linux/UNIX-like systems.
+		Works with XMail together and can be used with a webmail
+		interface as roundcubemail.
+
+config FREETZ_PACKAGE_DOVECOT_SYSLOG
+	bool "syslog"
+	depends on FREETZ_PACKAGE_DOVECOT
+	default y
+	help
+		Infos are logged to syslog.
+
+choice
+depends on FREETZ_PACKAGE_XMAIL
+	prompt "config_for"
+	default FREETZ_PACKAGE_DOVECOT_FOR_XMAIL   if FREETZ_PACKAGE_XMAIL
+
+	config FREETZ_PACKAGE_DOVECOT_FOR_XMAIL
+		bool "xmail"
+endchoice
+
+config FREETZ_PACKAGE_DOVECOT_FOR
+	depends on FREETZ_PACKAGE_DOVECOT
+	string
+	default "xmail"   if FREETZ_PACKAGE_DOVECOT_FOR_XMAIL
+

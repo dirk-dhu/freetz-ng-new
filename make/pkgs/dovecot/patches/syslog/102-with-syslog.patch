@@ -1,0 +1,10 @@
+--- doc/example-config/conf.d/10-logging.conf	2013-11-24 14:37:39.000000000 +0100
++++ doc/example-config/conf.d/10-logging.conf	2014-09-27 01:18:00.000000000 +0200
+@@ -5,6 +5,6 @@
+ # Log file to use for error messages. "syslog" logs to syslog,
+ # /dev/stderr logs to stderr.
+-#log_path = syslog
++log_path = syslog
+ 
+ # Log file to use for informational messages. Defaults to log_path.
+ #info_log_path = 

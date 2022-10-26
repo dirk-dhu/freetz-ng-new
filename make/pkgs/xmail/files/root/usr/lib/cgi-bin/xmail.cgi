@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/lib/libmodcgi.sh
+[ -e /mod/etc/conf/certbot.cfg ] && . /mod/etc/conf/certbot.cfg
 
 XMAIL_SSLSUPPORT= XMAIL_SSLVISIBLE=
 
@@ -9,6 +10,8 @@ XMAIL_SSLSUPPORT= XMAIL_SSLVISIBLE=
 # Check for installed and running PHPXmail
 [ -e /mod/etc/init.d/rc.phpxmail ] && XMAIL_PHPXMAIL=1
 
+check "$XMAIL_ENABLED" yes:auto "*":man
+check "$XMAIL_USECERTBOT" yes:usecertbot "*":xmail
 check "$XMAIL_UNPRIV" yes:unpriv
 check "$XMAIL_SMTP" yes:smtp
 check "$XMAIL_SSMTP" yes:ssmtp
@@ -43,6 +46,21 @@ cat << EOF
 <hr>
 <p style="font-size:10px;">$(lang de:"Bitte &auml;ndern Sie diese Werte nur wenn Sie wissen was Sie tun." en:"Please change these values only if you know what you are doing.")</p>
 <p> $(lang de:"Startparameter" en:"Start parameters"): <input type="text" name="special" size="55" maxlength="255" value="$(html "$XMAIL_SPECIAL")"></p>
+<hr>
+EOF
+if [ "$CERTBOT_ENABLED" = 'yes' ]; then
+cat << EOF
+<input id="c1" type="radio"  name="usecertbot" value="yes"$usecertbot_chk><label for="c1"> $(lang de:"Benutze Certbots SSL Zertifikat" en:"Use Certbot SSL certificate")</label>
+EOF
+else
+cat << EOF
+<input id="c1" type="hidden" name="usecertbot" value="yes"$usecertbot_chk>
+EOF
+fi
+cat << EOF
+<br>
+<input id="c2" type="radio"  name="usecertbot" value="no"$xmail_chk><label for="c2"> $(lang de:"Benutze XMails SSL Zertifikat" en:"Use XMail SSL certificate")</label>
+</p>
 EOF
 sec_end
 
