@@ -1,0 +1,2 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_DOVECOT" == "y" ] && EXTERNAL_FILES+=" /usr/bin/doveconf /usr/bin/doveadm /usr/sbin/dovecot"
+[ "$EXTERNAL_FREETZ_PACKAGE_DOVECOT" == "y" -a "$EXTERNAL_SUBDIRS" == "y" ] && EXTERNAL_FILES+=" /usr/libexec/dovecot /usr/lib/dovecot"

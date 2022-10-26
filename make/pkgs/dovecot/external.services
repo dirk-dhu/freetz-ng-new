@@ -1,0 +1,1 @@
+[ "$EXTERNAL_FREETZ_PACKAGE_DOVECOT" == "y" ] && EXTERNAL_SERVICES+=" dovecot"

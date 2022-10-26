@@ -1,0 +1,10 @@
+CAPTION='server.cert'
+DESCRIPTION='$(lang de:"&Ouml;ffentliches SSL Zertifikat: " en:"Public SSL certificate: ")'
+
+CONFIG_FILE='/tmp/flash/xmail/server.cert'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+

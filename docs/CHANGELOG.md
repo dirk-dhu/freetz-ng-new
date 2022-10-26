@@ -63,6 +63,7 @@ Latest changes
    * Curl 7.86.0
    * dehydrated 0.7.1 (letsencrypt)
    * Dnsmasq 2.80/2.88
+   * Dovecot 2.3.19.1
    * Dropbear 2022.83
    * HAProxy 2.6.7
    * Knock 0.8
@@ -108,6 +109,7 @@ Latest changes
    * Cifsmount 7.0
    * Curl 7.85.0
    * Dnsmasq 2.80/2.87
+   * Dovecot 2.3.19.1
    * expat 2.4.9
    * FFmpeg 5.1.2
    * FreeType 2.12.1
