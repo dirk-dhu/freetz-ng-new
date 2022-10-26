@@ -1,0 +1,10 @@
+languages
+{ de en }
+default
+{ en }
+files
+{
+	usr/lib/cgi-bin/linknx.cgi
+	etc/default.linknx/linknx_xml.def
+	etc/default.linknx/linknx_php.def
+}

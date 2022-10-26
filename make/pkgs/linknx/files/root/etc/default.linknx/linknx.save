@@ -1,0 +1,5 @@
+apply_changes() {
+[ "$1" == "start" ] && /mod/etc/init.d/rc.linknx restart
+}
+
+rc_status() { :; }

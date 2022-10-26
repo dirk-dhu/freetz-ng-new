@@ -1,0 +1,10 @@
+CAPTION='linknx.php'
+DESCRIPTION='$(lang de:"Weitere Hinweise zu dem Visualisierungsbeispiel: " en:"Further reading to visualization example: ")<a target=blank href=http://linknx.sourceforge.net/>http://linknx.sourceforge.net</a>'
+
+CONFIG_FILE='/tmp/flash/linknx/linknx.php'
+CONFIG_SAVE='modsave flash;'
+CONFIG_TYPE='text'
+
+
+TEXT_ROWS=100
+

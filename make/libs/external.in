@@ -1,5 +1,6 @@
 comment "libraries"
 	depends on EXTERNAL_ENABLED
+
 source "make/libs/apr/external.in"
 source "make/libs/apr-util/external.in"
 source "make/libs/libart_lgpl/external.in"
@@ -83,6 +84,7 @@ source "make/libs/polarssl12/external.in"
 source "make/libs/polarssl13/external.in"
 source "make/libs/popt/external.in"
 source "make/libs/protobuf-c/external.in"
+source "make/libs/pthsem/external.in"
 source "make/pkgs/python/external.in.libs"
 source "make/libs/serf/external.in"
 source "make/pkgs/slang/external.in.libs"

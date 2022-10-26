@@ -1,0 +1,7 @@
+config EXTERNAL_FREETZ_LIB_libargp_WITH_STATIC
+	depends on EXTERNAL_ENABLED && FREETZ_LIB_libargp_WITH_STATIC
+	bool "libargp-standalone"
+	default n
+	help
+		externals the following file(s):
+		 /usr/lib/freetz/libargp.a
