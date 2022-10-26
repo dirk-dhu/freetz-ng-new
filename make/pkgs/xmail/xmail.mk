@@ -5,6 +5,8 @@ $(PKG)_SITE:=http://www.xmailserver.org
 ### WEBSITE:=http://www.xmailserver.org/
 ### MANPAGE:=http://www.xmailserver.org/Readme.txt
 
+$(PKG)_STARTLEVEL=91 # before dovecot
+
 $(PKG)_BINARIES := compartment sendmail XMail XMCrypt CtrlClnt MkUsers
 $(PKG)_BINARIES_BUILD_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/lib/MailRoot/bin/%)

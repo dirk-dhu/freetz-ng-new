@@ -359,6 +359,7 @@ Latest changes
    * dehydrated 0.7.1 (letsencrypt)
    * DejaVu Fonts TTF 2.37
    * Dnsmasq 2.80/2.89
+   * Dovecot 2.3.21
    * Dropbear 2022.83
    * Fontconfig 2.14.2
    * getdns 1.7.3
