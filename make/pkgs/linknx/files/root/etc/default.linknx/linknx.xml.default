@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<config>
+<services>
+<knxconnection url="ip:127.0.0.1" />
+<xmlserver type="inet" port="1028"/>
+</services>
+<objects>
+</objects>
+</config>

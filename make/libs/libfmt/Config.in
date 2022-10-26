@@ -1,0 +1,7 @@
+config FREETZ_LIB_libfmt
+	bool "fmt (libfmt.so)"
+	default n
+	help
+		fmt is an open-source formatting library for C++. 
+		It can be used as a safe alternative to printf or 
+		as a fast alternative to IOStreams.

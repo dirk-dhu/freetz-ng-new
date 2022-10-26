@@ -1,0 +1,8 @@
+config FREETZ_LIB_libargp_WITH_STATIC
+	bool "libargp-standalone (libargp.a)"
+	default n
+	help
+		libargp is a standalone version (static library) of argp
+		(arguments parsing functions) from GLIBC.
+		It was separated off glibc by Niels M. 
+

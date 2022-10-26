@@ -361,6 +361,7 @@ Latest changes
    * Dnsmasq 2.80/2.89
    * Dovecot 2.3.21
    * Dropbear 2022.83
+   * EIBD BCUSDK 0.0.5
    * Fontconfig 2.14.2
    * getdns 1.7.3
    * Git 2.40.0
@@ -371,9 +372,11 @@ Latest changes
    * ImageMagick 7.1.0-57
    * jamvm 2.0.0
    * Knock 0.8
+   * Knxd 0.12.15
    * libffi 3.4.4
    * libpcap 1.1.1/1.10.3
    * Lighttpd 1.4.69
+   * Linknx 0.0.1.37
    * Lua 5.1.5/5.4.4
    * Nano 7.2
    * ncurses 6.4
@@ -397,6 +400,7 @@ Latest changes
    * XZ Utils 5.4.1
 
  - Libraries:
+   * argp-standalone 1.3
    * cairo 1.17.8
    * expat 2.5.0
    * fribidi 1.0.12
@@ -409,6 +413,7 @@ Latest changes
    * libgpg-error 1.46
    * libmultid 1.0
    * libpng 1.6.39
+   * libpthsem 2.0.8
    * libusb-compat 0.1.8
    * libxml2 2.10.3
    * mbedTLS 2.7.19/2.28.3

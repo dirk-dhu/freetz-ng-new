@@ -1,0 +1,16 @@
+config FREETZ_PACKAGE_LINKNX
+	bool "Linknx 0.0.1.37 (KNX/EIB automation platform)"
+	select FREETZ_PACKAGE_EIBD
+	select FREETZ_LIB_libstdc__
+	select FREETZ_LIB_libpthsem
+	select FREETZ_LIB_libcurl
+	select FREETZ_BUSYBOX_START_STOP_DAEMON
+	default n
+	help
+		Linknx is only one component of a bigger project. 
+		The goal is to get the maximum comfort and flexibility 
+		from my KNX domotic system while keeping the 
+		smallest possible resource consumtion.
+		The physical access to the KNX bus is ensured by the 
+		EIBD daemon.
+
