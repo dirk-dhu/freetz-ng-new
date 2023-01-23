@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_HTPDATE
-	bool "htpdate 1.3.6"
+	bool "htpdate 1.3.7"
 	select FREETZ_AVMDAEMON_DISABLE_NTP if !FREETZ_PACKAGE_HTPDATE_REMOVE_WEBIF
 	select FREETZ_REMOVE_CHRONYD if !FREETZ_PACKAGE_HTPDATE_REMOVE_WEBIF && FREETZ_AVM_HAS_CHRONYD
 	default n
@@ -14,10 +14,13 @@ config FREETZ_PACKAGE_HTPDATE
 
 		This package automatically removes AVM'S chronyd if necessary.
 
+if FREETZ_PACKAGE_HTPDATE
+
 	config FREETZ_PACKAGE_HTPDATE_REMOVE_WEBIF
 		bool "remove webinterface"
-		depends on FREETZ_PACKAGE_HTPDATE
 		default n
 		help
 			This option removes the webinterface
+
+endif # FREETZ_PACKAGE_HTPDATE
 
