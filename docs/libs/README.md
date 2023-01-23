@@ -41,7 +41,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### G
 
-  * **[gettext: libintl (libintl.so) 0.18.1.1](gettext.md)<a id='gettext'></a>**<br>
+  * **[gettext: libintl (libintl.so) 0.21.1](gettext.md)<a id='gettext'></a>**<br>
     GNU Internationalization library
 
   * **[GLib2 libglib (libglib-2.0.so) 2.32.4](glib2.md)<a id='glib2'></a>**<br>
