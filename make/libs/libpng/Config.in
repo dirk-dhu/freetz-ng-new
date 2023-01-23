@@ -1,4 +1,4 @@
-config FREETZ_LIB_libpng12
+config FREETZ_LIB_libpng16
 	bool "PNG library (libpng.so)"
 	select FREETZ_LIB_libm if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libz

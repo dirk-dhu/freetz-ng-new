@@ -114,6 +114,7 @@ Latest changes
    * libidn 1.41
    * libgpg-error 1.46
    * libmultid 1.0
+   * libpng 1.6.39
    * libusb-compat 0.1.8
    * libxml2 2.10.3
    * mbedTLS 2.7.19/2.28.2

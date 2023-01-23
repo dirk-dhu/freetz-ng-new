@@ -1,12 +1,15 @@
-$(call PKG_INIT_LIB, 1.2.59)
-$(PKG)_LIB_VERSION:=0.59.0
+$(call PKG_INIT_LIB, 1.6.39)
+$(PKG)_LIB_VERSION:=16.39.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=b4635f15b8adccc8ad0934eea485ef59cc4cae24d0f0300a9a941e51974ffcc7
+$(PKG)_HASH:=1f4696ce70b4ee5f85f1e1623dc1229b210029fa4b7aee573df3e2ba7b036937
 $(PKG)_SITE:=@SF/libpng
+### WEBSITE:=http://www.libpng.org/pub/png/libpng.html
+### CHANGES:=https://libpng.sourceforge.io/index.html
+### CVSREPO:=https://github.com/glennrp/libpng
 
-$(PKG)_BINARY:=$($(PKG)_DIR)/.libs/libpng12.so.$($(PKG)_LIB_VERSION)
-$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpng12.so.$($(PKG)_LIB_VERSION)
-$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libpng12.so.$($(PKG)_LIB_VERSION)
+$(PKG)_BINARY:=$($(PKG)_DIR)/.libs/libpng16.so.$($(PKG)_LIB_VERSION)
+$(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpng16.so.$($(PKG)_LIB_VERSION)
+$(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libpng16.so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_DEPENDS_ON += zlib
 
@@ -19,6 +22,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_lib_m_pow=yes # semantic pow is in libm
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -27,13 +31,13 @@ $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(LIBPNG_DIR)
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
-	$(SUBMAKE) -C $(LIBPNG_DIR)\
+	$(SUBMAKE) -C $(LIBPNG_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpng12.la \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libpng12.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/libpng12-config
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpng16.la \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libpng16.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/libpng16-config
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 	$(INSTALL_LIBRARY_STRIP)
@@ -42,13 +46,15 @@ $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
+
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBPNG_DIR) clean
-	$(RM) -r $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpng* \
+	$(RM) -r  \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libpng* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libpng*.pc \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/libpng*-config \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/png*.h \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libpng12 \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libpng16 \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/share/man/man3/libpng*.3 \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/share/man/man5/png.5
 
