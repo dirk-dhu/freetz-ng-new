@@ -90,7 +90,7 @@ Latest changes
    * libpcap 1.1.1/1.10.3
    * Lighttpd 1.4.68
    * Lua 5.1.5/5.4.4
-   * Nano 7.1
+   * Nano 7.2
    * ncurses 6.4
    * ncursesw 6.4
    * OpenSSH 9.1p1
