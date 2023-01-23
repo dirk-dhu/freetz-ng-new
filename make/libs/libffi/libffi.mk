@@ -1,23 +1,28 @@
-$(call PKG_INIT_LIB, 3.2.1)
-$(PKG)_LIB_VERSION:=6.0.4
+$(call PKG_INIT_LIB, 3.4.4)
+$(PKG)_LIB_VERSION:=8.1.2
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=d06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37
-$(PKG)_SITE:=ftp://sourceware.org/pub/libffi
+$(PKG)_HASH:=d66c56ad259a82cf2a9dfc408b32bf5da52371500b84745f7fb8b645712df676
+$(PKG)_SITE:=https://github.com/libffi/libffi/releases/download/v$($(PKG)_VERSION),ftp://sourceware.org/pub/libffi
+### WEBSITE:=http://sourceware.org/libffi
+### CHANGES:=https://github.com/libffi/libffi/releases
+### CVSREPO:=https://github.com/libffi/libffi
 
-$(PKG)_BINARY:=$($(PKG)_DIR)/$(TARGET_GNU_TRIPLET)/.libs/libffi.so.$($(PKG)_LIB_VERSION)
+$(PKG)_BINARY:=$($(PKG)_DIR)/$(FREETZ_TARGET_ARCH_ENDIANNESS_DEPENDENT)-$(FREETZ_TARGET_TRIPLET_VENDOR)-linux-gnu/.libs/libffi.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libffi.so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libffi.so.$($(PKG)_LIB_VERSION)
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
+$(PKG)_CONFIGURE_OPTIONS += --disable-docs
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(LIBFFI_DIR)
+	$(SUBMAKE) -C $(LIBFFI_DIR) all
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 	$(SUBMAKE) -C $(LIBFFI_DIR) \
@@ -33,6 +38,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBFFI_DIR) clean
