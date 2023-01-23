@@ -110,6 +110,7 @@ Latest changes
  - Libraries:
    * expat 2.5.0
    * fontconfig 2.14.1
+   * harfbuzz 6.0.0
    * libctlmgr 1.0
    * libev 4.33
    * libidn 1.41
