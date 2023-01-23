@@ -146,6 +146,7 @@ Latest changes
    * FFmpeg 5.1.2
    * FreeType 2.12.1
    * FUSE 2.9.9
+   * gettext 0.21.1
    * Git 2.38.0
    * GnuTLS 3.7.8
    * HAProxy 2.6.6

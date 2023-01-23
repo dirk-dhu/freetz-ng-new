@@ -1,8 +1,12 @@
-$(call PKG_INIT_LIB, 0.18.1.1)
-$(PKG)_LIB_VERSION:=8.1.1
+$(call PKG_INIT_LIB, 0.21.1)
+$(PKG)_LIB_VERSION:=8.3.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=93ac71a7afa5b70c1b1032516663658c51e653087f42a3fc8044752c026443e9
+$(PKG)_HASH:=e8c3650e1d8cee875c4f355642382c1df83058bd5a11ee8555c0cf276d646d45
 $(PKG)_SITE:=@GNU/$(pkg)
+### WEBSITE:=https://www.gnu.org/software/gettext/
+### MANPAGE:=https://www.gnu.org/software/gettext/manual/index.html
+### CHANGES:=https://ftp.gnu.org/pub/gnu/gettext/
+### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=gettext.git
 
 # we only want libintl
 $(PKG)_BUILD_SUBDIR := gettext-runtime
@@ -13,6 +17,8 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/libintl.so.$($(PKG)_LIB_VERSION)
 
 ifeq ($(strip $(FREETZ_TARGET_UCLIBC_0_9_28)),y)
 $(PKG)_DEPENDS_ON += iconv
+else
+$(PKG)_CONFIGURE_OPTIONS += --without-libiconv-prefix
 endif
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
@@ -35,6 +41,15 @@ $(PKG)_CONFIGURE_OPTIONS += --without-libxml2-prefix
 $(PKG)_CONFIGURE_OPTIONS += --without-libncurses-prefix
 $(PKG)_CONFIGURE_OPTIONS += --without-libtermcap-prefix
 $(PKG)_CONFIGURE_OPTIONS += --without-libxcurses-prefix
+$(PKG)_CONFIGURE_OPTIONS += --without-bison-prefix
+$(PKG)_CONFIGURE_OPTIONS += --without-libcurses-prefix
+$(PKG)_CONFIGURE_OPTIONS += --without-libtextstyle-prefix
+$(PKG)_CONFIGURE_OPTIONS += --without-lispdir-prefix
+$(PKG)_CONFIGURE_OPTIONS += --without-git
+$(PKG)_CONFIGURE_OPTIONS += --without-cvs
+$(PKG)_CONFIGURE_OPTIONS += --without-bzip2
+$(PKG)_CONFIGURE_OPTIONS += --without-xz
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -57,6 +72,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(GETTEXT_DIR)/$(GETTEXT_BUILD_SUBDIR) clean
