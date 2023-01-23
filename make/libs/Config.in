@@ -65,6 +65,7 @@ menu "GLib"
 endmenu ### "GLib"
 
 menu "Graphics & fonts"
+	source "make/libs/fontconfig/Config.in"
 	source "make/libs/freetype/Config.in"
 	source "make/libs/libart_lgpl/Config.in"
 	source "make/libs/libexif/Config.in"
