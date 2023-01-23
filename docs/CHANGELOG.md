@@ -121,6 +121,7 @@ Latest changes
    * mbedTLS 2.7.19/2.28.2
    * neon 0.30.2/0.32.4
    * pcre2 10.42
+   * pixman 0.42.2
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
