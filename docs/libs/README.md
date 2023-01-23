@@ -56,6 +56,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[gsasl: libgsasl (libgsasl.so) 1.10.0](gsasl.md)<a id='gsasl'></a>**<br>
     GNU SASL is an implementation of the Simple Authentication and Security Layer framework and a few common SASL mechanisms. SASL is used by network servers (e.g., IMAP, SMTP, XMPP) to request authentication from clients, and in clients to authenticate against servers.
 
+### H
+
+  * **[HarfBuzz (libharfbuzz.so) 6.0.0](harfbuzz.md)<a id='harfbuzz'></a>**<br>
+    HarfBuzz is a text shaping engine. It primarily supports OpenType, but also Apple Advanced Typography.
+
 ### I
 
   * **[iksemel: libiksemel (libiksemel.so) 1.4.2](iksemel.md)<a id='iksemel'></a>**<br>
