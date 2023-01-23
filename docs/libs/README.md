@@ -272,6 +272,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[pcre2: libpcre2 (libpcre2-8.so) 10.42](pcre2.md)<a id='pcre2'></a>**<br>
     A Perl Compatible Regular Expression library
 
+  * **[Pixman (libpixman-1.so) 0.42.2](pixman.md)<a id='pixman'></a>**<br>
+    Pixman is a low-level software library for pixel manipulation, providing features such as image compositing and trapezoid rasterization.
+
   * **[pjproject2: libpj (libpj.so) 2.2.1](pjproject2.md)<a id='pjproject2'></a>**<br>
 
   * **[pkcs11 2.20](pkcs11.md)<a id='pkcs11'></a>**<br>
