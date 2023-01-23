@@ -18,6 +18,7 @@ git
 glib2-devel
 glibc-devel.i686
 gnutls-devel
+gperf
 ImageMagick
 inet-tools
 inkscape
@@ -63,4 +64,3 @@ wget
 xz
 zlib-devel
 zlib-devel.i686
-gperf

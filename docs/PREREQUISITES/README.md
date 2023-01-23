@@ -49,8 +49,8 @@ sudo dnf -y update && sudo systemctl daemon-reload
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inet-tools \
-  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel gperf ImageMagick \
+  inet-tools inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
   libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
   libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
   patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
@@ -62,8 +62,8 @@ sudo dnf -y install \
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inet-tools \
-  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel gperf ImageMagick \
+  inet-tools inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
   libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
   libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
   patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
@@ -156,7 +156,7 @@ sudo apt-get -y dist-upgrade
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inet-tools inkscape \
+  flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inet-tools inkscape \
   intltool java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
   libc6-dev-i386 libcap-dev libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
   libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
@@ -168,7 +168,7 @@ sudo apt-get -y install \
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick inet-tools inkscape \
+  flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inet-tools inkscape \
   intltool java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
   libc6-dev-i386 libcap-dev libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
   libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
@@ -183,7 +183,7 @@ sudo apt -y install libzstd-dev:i386 sqlite3:i386
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache \
-  cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git graphicsmagick imagemagick \
+  cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick \
   inet-tools inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
   libc6-dev-i386 libcap-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
   libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make ncftp netcat \

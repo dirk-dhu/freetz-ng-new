@@ -18,6 +18,7 @@ gcc
 gcc-multilib
 gettext
 git
+gperf
 graphicsmagick
 imagemagick
 inet-tools
@@ -63,4 +64,3 @@ unzip
 uuid-dev
 wget
 zlib1g-dev
-gperf
