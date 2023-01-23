@@ -39,7 +39,7 @@ if FREETZ_PACKAGE_IMAGEMAGICK
 	config FREETZ_PACKAGE_IMAGEMAGICK_png
 		bool "Support png"
 		default y
-		select FREETZ_LIB_libpng12
+		select FREETZ_LIB_libpng16
 
 	config FREETZ_PACKAGE_IMAGEMAGICK_xml
 		bool "Support xml"

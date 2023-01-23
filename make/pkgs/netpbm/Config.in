@@ -30,7 +30,7 @@ config FREETZ_PACKAGE_NETPBM_JPEGTOPNM
 config FREETZ_PACKAGE_NETPBM_PNGTOPNM
 	bool "Include pngtopnm"
 	depends on FREETZ_PACKAGE_NETPBM
-	select FREETZ_LIB_libpng12
+	select FREETZ_LIB_libpng16
 	select FREETZ_LIB_libz
 	default y
 	help
@@ -47,7 +47,7 @@ config FREETZ_PACKAGE_NETPBM_PNMTOJPEG
 config FREETZ_PACKAGE_NETPBM_PNMTOPNG
 	bool "Include pnmtopng"
 	depends on FREETZ_PACKAGE_NETPBM
-	select FREETZ_LIB_libpng12
+	select FREETZ_LIB_libpng16
 	select FREETZ_LIB_libz
 	default y
 	help
