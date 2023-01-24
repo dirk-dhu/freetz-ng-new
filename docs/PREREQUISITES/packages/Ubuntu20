@@ -44,6 +44,7 @@ libusb-dev
 libxml2-dev
 libzstd-dev
 make
+meson
 ncftp
 netcat
 net-tools
@@ -64,4 +65,3 @@ unzip
 uuid-dev
 wget
 zlib1g-dev
-meson

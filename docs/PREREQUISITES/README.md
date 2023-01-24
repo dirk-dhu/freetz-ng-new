@@ -52,7 +52,7 @@ sudo dnf -y install \
   flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel gperf ImageMagick \
   inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
   libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
-  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl \
+  libzstd-devel.x86_64 make meson ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl \
   openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel \
   rpcgen rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz \
   zlib-devel zlib-devel.i686
@@ -65,7 +65,7 @@ sudo dnf -y install \
   flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel gperf ImageMagick \
   inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
   libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
-  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl \
+  libzstd-devel.x86_64 make meson ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl \
   openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel \
   rpcgen rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz \
   zlib-devel zlib-devel.i686
@@ -159,7 +159,7 @@ sudo apt-get -y install \
   flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inkscape intltool \
   java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
   libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make ncftp \
+  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make meson ncftp \
   netcat-openbsd net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo \
   texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
 ```
@@ -171,9 +171,9 @@ sudo apt-get -y install \
   flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inkscape intltool \
   java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
   libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make ncftp netcat \
-  net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo \
-  tofrodos unar unzip uuid-dev wget zlib1g-dev
+  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make meson ncftp \
+  netcat net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo \
+  texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
 # sqlite-32bit lässt sich mit apt nicht installieren, aber mit apt-get schon. Siehe auch:
 # https://developpaper.com/ubuntu-solves-the-problem-of-libsqlite3-0-dependency-recommended/
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
@@ -186,9 +186,9 @@ sudo apt-get -y install \
   cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick \
   inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 \
   libcap-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
-  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make ncftp netcat net-tools \
-  openssl patch patchutils perl pkg-config pv rsync sqlite3 subversion sudo texinfo tofrodos unar \
-  unzip uuid-dev wget zlib1g-dev
+  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make meson ncftp netcat \
+  net-tools openssl patch patchutils perl pkg-config pv rsync sqlite3 subversion sudo texinfo tofrodos \
+  unar unzip uuid-dev wget zlib1g-dev
 ```
 
  - Ubuntu 15/16 64-Bit:
