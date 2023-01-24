@@ -113,6 +113,7 @@ Latest changes
    * expat 2.5.0
    * fontconfig 2.14.1
    * fribidi 1.0.12
+   * glib2 2.32.4/2.75.2
    * harfbuzz 6.0.0
    * libctlmgr 1.0
    * libev 4.33
