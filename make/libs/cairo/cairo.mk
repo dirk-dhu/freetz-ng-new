@@ -76,8 +76,8 @@ $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo.la
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo*.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo*.la
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 	$(INSTALL_LIBRARY_STRIP)
@@ -90,9 +90,9 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(CAIRO_DIR) clean
 	$(RM) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo.* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/cairo/ \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo.pc
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo*.pc
 
 $(pkg)-uninstall:
 	$(RM) $(CAIRO_TARGET_DIR)/libcairo.so*
