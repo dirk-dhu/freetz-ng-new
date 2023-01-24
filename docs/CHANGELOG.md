@@ -46,6 +46,7 @@ Latest changes
 
  - Build system:
    * Ccache 4.7.4
+   * Meson support
 
  - Host tools:
    * busybox 1.36.0

@@ -64,5 +64,6 @@ source "config/avm/source.in"
 source "config/mod/juis.in"
 source "config/mod/source.in"
 source "config/mod/prefix.in"
+source "config/mod/meson.in"
 source "config/mod/mandatory.in"
 

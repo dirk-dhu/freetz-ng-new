@@ -10,6 +10,9 @@ SUBMAKE=cmd() { $(MAKE_ENV) $(MAKE) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1
 CONFIGURE=conf_cmd() { ./configure $(QUIET) "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
 AUTORECONF=autoreconf -f -i $(SILENT) || { $(call ERROR,1,autoreconf failed) };
 
+SUBMESON=cmd() { $(MAKE_ENV) $(MESON) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
+CONFMESON=meson_cmd() { $(MESON) setup "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
+
 ifeq ($(strip $(FREETZ_TARGET_NLS)),y)
 DISABLE_NLS:=
 else
@@ -141,7 +144,7 @@ endif
 # commands to run before calling configure
 # each command has to be terminated by ';'
 TARGET_CONFIGURE_PRE_CMDS:=
-TARGET_CONFIGURE_PRE_CMDS += $(RM) config.{cache,status};
+TARGET_CONFIGURE_PRE_CMDS += $(RM) config.{cache,status} builddir/;
 
 # setup environment for configure
 TARGET_CONFIGURE_ENV:=
@@ -229,7 +232,7 @@ PKG_EDIT_CONFIG = $(SED) -i -r $(foreach asg,$1,$(call PKG_EDIT_CONFIG__INT1,$(a
 
 # PKG_FIX_LIBTOOL_LA
 #   fix directories is libtool .la files and .pc files
-PKG_FIX_LIBTOOL_LA__INT = -e "s,^($1=)(['$(_DQ)]?)([^'$(_DQ)]*)(\2)$$,\1\2$(TARGET_TOOLCHAIN_STAGING_DIR)\3\4,g"
+PKG_FIX_LIBTOOL_LA__INT = -e "s,^($1=)(['$(_DQ)]?)([^'$(_DQ)]*)(\2)$$,\1\2$(TARGET_TOOLCHAIN_STAGING_DIR)\3\4,g;s,^($1=)(.*)\\$$\{prefix\}(.*),\1\2\3,"
 PKG_FIX_LIBTOOL_LA__INT_DEPENDENCY_LIBS = -e "/^dependency_libs/s,[ \t],  ,g;s,([ '])((/usr)?/lib/[^ /]+[.]la)([ ']),\1$(TARGET_TOOLCHAIN_STAGING_DIR)\2\4,g;s, +, ,g"
 PKG_FIX_LIBTOOL_LA = $(SED) -i -r \
 	$(foreach key,$(if $(strip $1),$(strip $1),libdir includedir prefix exec_prefix),$(call PKG_FIX_LIBTOOL_LA__INT,$(key))) \
@@ -639,6 +642,7 @@ PKG_LOCALSOURCE_PACKAGE+=$(if $($(PKG)_REBUILD_SUBOPTS),$(eval $(PKG_UNPACKED_CH
 
 ### PKG_CONFIGURED: Configure package
 PKG_CONFIGURED_CONFIGURE=$(eval $(PKG_CONFIGURED_CONFIGURE__INT))
+PKG_CONFIGURED_MESON=$(eval $(PKG_CONFIGURED_MESON__INT))
 
 ## Package needs no configuration
 PKG_CONFIGURED_NOP=$(eval $(PKG_CONFIGURED_NOP__INT))

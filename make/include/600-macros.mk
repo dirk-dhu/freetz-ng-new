@@ -187,6 +187,57 @@ $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.build-prereq-checked $($(PKG)_DIR)/.un
 	)
 	@touch $$@
 endef
+## Configure package, using meson
+define PKG_CONFIGURED_MESON__INT
+# Must be first
+$(PKG_CONFIGURED_COMMON__INT)
+$($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.build-prereq-checked $($(PKG)_DIR)/.unpacked
+	@$(call _ECHO,configuring)
+	cat $(INCLUDE_DIR)/meson.cross/$(call qstrip,$(FREETZ_TARGET_UCLIBC_TRIPLET)) > $($(PKG)_DIR)/meson.freetz
+	@sed \
+		-e 's!%FREETZ_TARGET_UCLIBC_TRIPLET%!$(call qstrip,$(FREETZ_TARGET_UCLIBC_TRIPLET))!g' \
+		\
+		-e 's!%FREETZ_TARGET_MESON_FAMILY%!$(call qstrip,$(FREETZ_TARGET_MESON_FAMILY))!' \
+		-e 's!%FREETZ_TARGET_MESON_CPU%!$(call qstrip,$(FREETZ_TARGET_MESON_CPU))!' \
+		-e 's!%FREETZ_TARGET_MESON_ENDIAN%!$(call qstrip,$(FREETZ_TARGET_MESON_ENDIAN))!' \
+		\
+		-e "s!%TARGET_CFLAGS%!$(foreach X,$(TARGET_CFLAGS) $($(PKG)_EXTRA_CFLAGS),'$(X)',)!g" \
+		-e "s!%TARGET_LDFLAGS%!$(foreach X,$(TARGET_LDFLAGS) $($(PKG)_EXTRA_LDFLAGS),'$(X)',)!g" \
+		\
+		-e 's!%TARGET_AR%!$(call qstrip,$(TARGET_AR))!g' \
+		-e 's!%TARGET_AS%!$(call qstrip,$(TARGET_AS))!g' \
+		-e 's!%TARGET_CC%!$(call qstrip,$(TARGET_CC))!g' \
+		-e 's!%TARGET_CC%!$(call qstrip,$(TARGET_CC))!g' \
+		-e 's!%TARGET_CXX%!$(call qstrip,$(TARGET_CXX))!g' \
+		-e 's!%TARGET_CXX%!$(call qstrip,$(TARGET_CXX))!g' \
+		-e 's!%TARGET_LD%!$(call qstrip,$(TARGET_LD))!g' \
+		-e 's!%TARGET_LDCONFIG%!$(call qstrip,$(TARGET_LDCONFIG))!g' \
+		-e 's!%TARGET_NM%!$(call qstrip,$(TARGET_NM))!g' \
+		-e 's!%TARGET_RANLIB%!$(call qstrip,$(TARGET_RANLIB))!g' \
+		-e 's!%TARGET_OBJCOPY%!$(call qstrip,$(TARGET_OBJCOPY))!g' \
+		-e 's!%TARGET_READELF%!$(call qstrip,$(TARGET_READELF))!g' \
+		-e 's!%TARGET_STRIP%!$(call qstrip,$(TARGET_STRIP))!g' \
+		\
+		-e 's!%PKGCONFIG%!$(call qstrip,$(TARGET_MAKE_PATH))/../lib/pkgconfig!g' \
+		-e 's!%PYTHON%!$(call qstrip,$(TOOLS_DIR))/path/cmake!g' \
+		-e 's!%CMAKE%!$(call qstrip,$(TOOLS_DIR))/path/python3!g' \
+		\
+		$(INCLUDE_DIR)/meson.cross/common-linux-uclibc >> $($(PKG)_DIR)/meson.freetz
+#		$(INCLUDE_DIR)/meson.cross/dynamic-linux-uclibc > $($(PKG)_DIR)/meson.freetz
+	($(CONFMESON) \
+		cd $($(PKG)_DIR); \
+		$(if $($($(PKG)_CONFIGURE_DEST)_CONFIGURE_PRE_CMDS),{ $($($(PKG)_CONFIGURE_DEST)_CONFIGURE_PRE_CMDS) } $(SILENT);,) \
+		$(if $($(PKG)_CONFIGURE_PRE_CMDS),{ $($(PKG)_CONFIGURE_PRE_CMDS) } $(SILENT);,) \
+		$(if $(strip $($(PKG)_BUILD_SUBDIR)),cd $(strip $($(PKG)_BUILD_SUBDIR));,) \
+		$($($(PKG)_CONFIGURE_DEST)_CONFIGURE_ENV) \
+		$($(PKG)_CONFIGURE_ENV) \
+		meson_cmd --cross-file meson.freetz builddir . \
+		$($(PKG)_CONFIGURE_OPTIONS) \
+		$(if $(strip $($(PKG)_BUILD_SUBDIR)),&& { cd $(abspath $($(PKG)_DIR)); },) \
+		$(if $($(PKG)_CONFIGURE_POST_CMDS),&& { $($(PKG)_CONFIGURE_POST_CMDS) } $(SILENT),) \
+	)
+	@touch $$@
+endef
 
 
 ## Package needs no configuration
