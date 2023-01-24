@@ -16,6 +16,7 @@ DEFAULT_COLORS="--color SHADEA#ffffff --color SHADEB#ffffff --color BACK#ffffff 
 
 DATE="$(date -R)"
 NICE="$(which nice)"
+RRDTOOL="rrdtool"
 
 [ -n "$_cgi_width" ] && let WIDTH=_cgi_width-145 || let WIDTH=500
 let HEIGHT=$WIDTH*$COLLECTD_DIMENSIONY/$COLLECTD_DIMENSIONX
@@ -27,7 +28,7 @@ interval_text()
 
 graph_apache()
 {
-	$NICE rrdtool graph $2/apache-bytes-$3.png --title "$HOST - Apache traffic last $4" \
+	$NICE $RRDTOOL graph $2/apache-bytes-$3.png --title "$HOST - Apache traffic last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Bytes / second" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -41,7 +42,7 @@ graph_apache()
 
 		display_graph "apache-bytes-$3.png"
 
-	$NICE rrdtool graph $2/apache-requests-$3.png --title "$HOST - Apache requests last $4" \
+	$NICE $RRDTOOL graph $2/apache-requests-$3.png --title "$HOST - Apache requests last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Requests / second" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -58,7 +59,7 @@ graph_apache()
 
 graph_apple_sensors()
 {
-	$NICE rrdtool graph $2/apple_temperature-$3.png --title "$HOST - Temperature last $4" \
+	$NICE $RRDTOOL graph $2/apple_temperature-$3.png --title "$HOST - Temperature last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Degrees [celsius]" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -91,7 +92,7 @@ graph_apple_sensors()
 		GPRINT:cpu:MIN:"%3.0lf%s Min /" \
 		GPRINT:cpu:MAX:"%3.0lf%s Max\n" > /dev/null
 
-	$NICE rrdtool graph $2/apple_fanspeed-$3.png --title "$HOST - Fan speed last $4" \
+	$NICE $RRDTOOL graph $2/apple_fanspeed-$3.png --title "$HOST - Fan speed last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Speed [rpm]" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -111,7 +112,7 @@ graph_apple_sensors()
 graph_contextswitch()
 {
 
-	$NICE rrdtool graph $2/contextswitch-$3.png --title "$HOST - Context switches last $4" \
+	$NICE $RRDTOOL graph $2/contextswitch-$3.png --title "$HOST - Context switches last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Context switches per second" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -130,7 +131,7 @@ graph_cpu()
 {
 	CATEGORIES_COUNT="$(ls $1 | wc -w)"
 	if [  $CATEGORIES_COUNT -eq 4 ]; then
-		$NICE rrdtool graph $2/cpu-$3.png --title "$HOST - CPU usage last $4" \
+		$NICE $RRDTOOL graph $2/cpu-$3.png --title "$HOST - CPU usage last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "CPU Usage [%]" \
 			$DEFAULT_COLORS -l 0 -u 100 -r -W "Generated on: $DATE" \
 			--end now --start end-$3 --font TITLE:10: \
@@ -164,7 +165,7 @@ graph_cpu()
 			GPRINT:total:MAX:"%2.1lf Max\n" > /dev/null
 
 	elif [ $CATEGORIES_COUNT -eq 8 ]; then
-		$NICE rrdtool graph $2/cpu-$3.png --title "$HOST - CPU usage last $4" \
+		$NICE $RRDTOOL graph $2/cpu-$3.png --title "$HOST - CPU usage last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "CPU Usage [%]" \
 			$DEFAULT_COLORS -l 0 -u 100 -r -W "Generated on: $DATE" \
 			--end now --start end-$3 --font TITLE:10: \
@@ -234,7 +235,7 @@ graph_disk_io()
 {
 	DEVICE_NAME="$(basename $1 | sed 's/disk\-\(.*\)/\1/')"
 
-	$NICE rrdtool graph $2/disk_io-$DEVICE_NAME-$3.png --title "$HOST - Disk IO $DEVICE_NAME last $4" \
+	$NICE $RRDTOOL graph $2/disk_io-$DEVICE_NAME-$3.png --title "$HOST - Disk IO $DEVICE_NAME last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Write (-) / Read (+) [bytes/s]" \
 		$DEFAULT_COLORS -W "Generated on: $DATE" --units=si \
 		--end now --start end-$3 --font TITLE:10: \
@@ -266,7 +267,7 @@ graph_df()
 		VOLUME_NAME="${VOLUME#df-}"
 		VOLUME_NAME="${VOLUME_NAME%.rrd}"
 
-		$NICE rrdtool graph $2/df_$VOLUME_NAME-$3.png --title "$HOST - Disk $VOLUME_NAME usage last $4" \
+		$NICE $RRDTOOL graph $2/df_$VOLUME_NAME-$3.png --title "$HOST - Disk $VOLUME_NAME usage last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "Usage [bytes]" \
 			$DEFAULT_COLORS -l 0 -W "Generated on: $DATE" --units=si \
 			--end now --start end-$3 --font TITLE:10: \
@@ -293,7 +294,7 @@ graph_df()
 graph_entropy()
 {
 
-	$NICE rrdtool graph $2/entropy-$3.png --title "Entropy available last $4" \
+	$NICE $RRDTOOL graph $2/entropy-$3.png --title "Entropy available last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Entropy [bytes]" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -310,7 +311,7 @@ graph_entropy()
 
 graph_fritzbox()
 {
-	$NICE rrdtool graph $2/fritzbox_energy-$3.png --title "$HOST - Energy usage last $4" \
+	$NICE $RRDTOOL graph $2/fritzbox_energy-$3.png --title "$HOST - Energy usage last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Usage [%]" \
 		$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE" --base 1024 --units=si  \
 		--end now --start end-$3 --font TITLE:10: \
@@ -364,7 +365,7 @@ graph_fritzbox()
 	do
 		if [ -e "$1/dsl_rates-$mode.rrd" ]; then
 
-			$NICE rrdtool graph $2/dsl_rates-$mode-$3.png --title "$HOST - DSL $mode rates last $4" \
+			$NICE $RRDTOOL graph $2/dsl_rates-$mode-$3.png --title "$HOST - DSL $mode rates last $4" \
 				--width $WIDTH --height $HEIGHT --vertical-label "Rate [bits/s]" \
 				$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE" --units=si  \
 				--end now --start end-$3 --font TITLE:10: \
@@ -402,7 +403,7 @@ graph_fritzbox()
 
 		if [ -e "$1/dsl_errors-$mode.rrd" ]; then
 
-			$NICE rrdtool graph $2/dsl_errors-$mode-$3.png --title "$HOST - DSL $mode errors last $4" \
+			$NICE $RRDTOOL graph $2/dsl_errors-$mode-$3.png --title "$HOST - DSL $mode errors last $4" \
 				--width $WIDTH --height $HEIGHT --vertical-label "Rate [errors/min]" \
 				$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE"  \
 				--end now --start end-$3 --font TITLE:10: \
@@ -426,7 +427,7 @@ graph_fritzbox()
 
 		if [ -e "$1/dsl_line-$mode.rrd" ]; then
 
-			$NICE rrdtool graph $2/dsl_line-$mode-$3.png --title "$HOST - DSL $mode signal quality last $4" \
+			$NICE $RRDTOOL graph $2/dsl_line-$mode-$3.png --title "$HOST - DSL $mode signal quality last $4" \
 				--width $WIDTH --height $HEIGHT --vertical-label "Quality [db]" \
 				$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE"  \
 				--end now --start end-$3 --font TITLE:10: \
@@ -459,7 +460,7 @@ graph_interface()
 		INTERFACE_NAME="${INTERFACE#if_octets-}"
 		INTERFACE_NAME="${INTERFACE_NAME%.rrd}"
 
-		$NICE rrdtool graph $2/interface_$INTERFACE_NAME-$3.png --title "$HOST - Interface $INTERFACE_NAME usage last $4" \
+		$NICE $RRDTOOL graph $2/interface_$INTERFACE_NAME-$3.png --title "$HOST - Interface $INTERFACE_NAME usage last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "Out (-) / In (+) [bytes/s]" \
 			$DEFAULT_COLORS -W "Generated on: $DATE" --units=si \
 			--end now --start end-$3 --font TITLE:10: \
@@ -483,7 +484,7 @@ graph_interface()
 
 		if [ -n "$SHOW_INTERFACE_ERRORS" ]; then
 
-			$NICE rrdtool graph $2/interface_errors_$INTERFACE_NAME-$3.png --title "$HOST - Interface errors $INTERFACE_NAME last $4" \
+			$NICE $RRDTOOL graph $2/interface_errors_$INTERFACE_NAME-$3.png --title "$HOST - Interface errors $INTERFACE_NAME last $4" \
 				--width $WIDTH --height $HEIGHT --vertical-label "Out (-) / In (+) [bytes/s]" \
 				$DEFAULT_COLORS -W "Generated on: $DATE" --units=si \
 				--end now --start end-$3 --font TITLE:10: \
@@ -510,7 +511,7 @@ graph_interface()
 
 graph_load()
 {
-	$NICE rrdtool graph $2/load-$3.png --title "$HOST - Load last $4" \
+	$NICE $RRDTOOL graph $2/load-$3.png --title "$HOST - Load last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Processes in the run queue" \
 		$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE"  \
 		--end now --start end-$3 --font TITLE:10: \
@@ -545,7 +546,7 @@ graph_memory()
 {
 	MAC_MEM="$(ls $1 | grep wired)"
 	if [ -z "$MAC_MEM" ]; then
-		$NICE rrdtool graph $2/memory-$3.png --title "$HOST - Memory usage last $4" \
+		$NICE $RRDTOOL graph $2/memory-$3.png --title "$HOST - Memory usage last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "Memory Usage [bytes]" \
 			$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE" --base 1024 --units=si  \
 			--end now --start end-$3 --font TITLE:10: \
@@ -578,7 +579,7 @@ graph_memory()
 			GPRINT:free:MIN:"%3.0lf%s Min /"  \
 			GPRINT:free:MAX:"%3.0lf%s Max\n" > /dev/null
 	else
-		$NICE rrdtool graph $2/memory-$3.png --title "$HOST - Memory usage last $4" \
+		$NICE $RRDTOOL graph $2/memory-$3.png --title "$HOST - Memory usage last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "Memory Usage [bytes]" \
 			$DEFAULT_COLORS -r -l 0 -W "Generated on: $DATE" --base 1024 --units=si  \
 			--end now --start end-$3 --font TITLE:10: \
@@ -618,7 +619,7 @@ graph_memory()
 graph_mysql()
 {
 	DATABASE="$(basename $1 | sed 's/mysql\-\(.*\)/\1/')"
-	$NICE rrdtool graph "$2/mysql_queries_$DATABASE-$3.png" --title "$HOST - Mysql queries last $4" \
+	$NICE $RRDTOOL graph "$2/mysql_queries_$DATABASE-$3.png" --title "$HOST - Mysql queries last $4" \
 		 --width $WIDTH --height $HEIGHT --vertical-label "Queries / second" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -670,7 +671,7 @@ graph_mysql()
 
 	display_graph "mysql_queries_$DATABASE-$3.png"
 
-	$NICE rrdtool graph "$2/mysql_threads_$DATABASE-$3.png" --title "$HOST - Mysql threads last $4" \
+	$NICE $RRDTOOL graph "$2/mysql_threads_$DATABASE-$3.png" --title "$HOST - Mysql threads last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "threads" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -705,7 +706,7 @@ graph_mysql()
 
 	display_graph "mysql_threads_$DATABASE-$3.png"
 
-        $NICE rrdtool graph "$2/mysql_throughput_$DATABASE-$3.png" --title "$HOST - Mysql throughput last $4" \
+        $NICE $RRDTOOL graph "$2/mysql_throughput_$DATABASE-$3.png" --title "$HOST - Mysql throughput last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Out (-)  In (+) [Bytes/s]" \
 		$DEFAULT_COLORS  -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -737,7 +738,7 @@ graph_ping()
 	do
 		HOST_NAME="$(echo $PINGED_HOST | sed 's/ping\(\-\)\(.*\)\.rrd/\2/')"
 
-		$NICE rrdtool graph "$2/ping_$HOST_NAME-$3.png" --title "$HOST - Ping time $HOST_NAME last $4" \
+		$NICE $RRDTOOL graph "$2/ping_$HOST_NAME-$3.png" --title "$HOST - Ping time $HOST_NAME last $4" \
 			--width $WIDTH --height $HEIGHT --vertical-label "Time [ms]" \
 			$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 			--end now --start end-$3 --font TITLE:10: \
@@ -755,7 +756,7 @@ graph_ping()
 
 graph_swap()
 {
-	$NICE rrdtool graph $2/swap-$3.png --title "$HOST - Swap usage last $4" \
+	$NICE $RRDTOOL graph $2/swap-$3.png --title "$HOST - Swap usage last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Swap [bytes]" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" --units=si \
 		--end now --start end-$3 --font TITLE:10: --base 1024 \
@@ -773,7 +774,7 @@ graph_swap()
 
 graph_uptime()
 {
-	$NICE rrdtool graph $2/uptime-$3.png --title "$HOST - Uptime last $4" \
+	$NICE $RRDTOOL graph $2/uptime-$3.png --title "$HOST - Uptime last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Uptime [days]" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
@@ -792,7 +793,7 @@ graph_uptime()
 
 graph_users()
 {
-	$NICE rrdtool graph $2/users-$3.png --title "$HOST - Users last $4" \
+	$NICE $RRDTOOL graph $2/users-$3.png --title "$HOST - Users last $4" \
 		--width $WIDTH --height $HEIGHT --vertical-label "Users logged in" \
 		$DEFAULT_COLORS -l 0 -r -W "Generated on: $DATE" \
 		--end now --start end-$3 --font TITLE:10: \
