@@ -21,10 +21,13 @@ $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
-$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(LIBFFI_DIR) all
+#$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+$($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
+	$(SUBMAKE) -C $(LIBFFI_DIR) all-recursive
+	touch $@
 
-$($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
+#$($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
+$($(PKG)_STAGING_BINARY): $($(PKG)_DIR)/.compiled
 	$(SUBMAKE) -C $(LIBFFI_DIR) \
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
