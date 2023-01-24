@@ -1,4 +1,5 @@
 [ "$FREETZ_ENFORCE_BRANDING_none" != "y" ] || return 0
+[ "$FREETZ_AVM_VERSION_06_5X_MIN" == "y" ] || return 0
 supported_brandings="$(supported_brandings)"
 firmware_version="$(firmware_version $supported_brandings)"
 
