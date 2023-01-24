@@ -42,6 +42,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[FreeType (freetype.so) 2.12.1](freetype.md)<a id='freetype'></a>**<br>
     FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display servers, font conversion tools, text image generation tools, and many other products as well.
 
+  * **[FriBidi (libfribidi.so) 1.0.12](fribidi.md)<a id='fribidi'></a>**<br>
+    The Free Implementation of the Unicode Bidirectional Algorithm.
+
 ### G
 
   * **[gettext (libintl.so) 0.21.1](gettext.md)<a id='gettext'></a>**<br>
