@@ -57,6 +57,9 @@ config FREETZ_AVM_HAS_WIREGUARD
 config FREETZ_AVM_HAS_AVMCOUNTERD
 	def_bool y
 
+config FREETZ_AVM_HAS_RRDTOOL
+	def_bool y
+
 config FREETZ_AVM_HAS_NEXUS
 	def_bool y
 

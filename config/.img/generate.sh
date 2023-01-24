@@ -694,6 +694,11 @@ determine_() {
 	[ -e "$unpacked/sbin/avmcounterd" ] && X="available" && in_b "FREETZ_AVM_HAS_AVMCOUNTERD"
 	[ $DOSHOW -ge 2 ] && outp "avmcounterd" "$X"
 
+	#RRDTOOL
+	X="%"
+	[ -e "$unpacked/usr/bin/rrdtool" ] && X="available" && in_b "FREETZ_AVM_HAS_RRDTOOL"
+	[ $DOSHOW -ge 2 ] && outp "rrdtool" "$X"
+
 	#WEBSRV
 	X="%"
 	[ -e "$unpacked/sbin/websrv" ] && X="available" && in_b "FREETZ_AVM_HAS_WEBSRV"
