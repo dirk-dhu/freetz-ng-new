@@ -144,7 +144,7 @@ endif
 # commands to run before calling configure
 # each command has to be terminated by ';'
 TARGET_CONFIGURE_PRE_CMDS:=
-TARGET_CONFIGURE_PRE_CMDS += $(RM) config.{cache,status} builddir/;
+TARGET_CONFIGURE_PRE_CMDS += $(RM) -r config.{cache,status} builddir/;
 
 # setup environment for configure
 TARGET_CONFIGURE_ENV:=
