@@ -21,7 +21,6 @@ git
 gperf
 graphicsmagick
 imagemagick
-net-tools
 inkscape
 intltool
 java-wrappers
@@ -47,6 +46,7 @@ libzstd-dev
 make
 ncftp
 netcat
+net-tools
 patch
 patchutils
 perl

@@ -50,12 +50,12 @@ sudo dnf -y update && sudo systemctl daemon-reload
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
   flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel gperf ImageMagick \
-  inet-tools inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
   libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
-  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
-  patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
-  rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz zlib-devel \
-  zlib-devel.i686
+  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl \
+  openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel \
+  rpcgen rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz \
+  zlib-devel zlib-devel.i686
 ```
 
  - Fedora 36 64-Bit:
@@ -63,22 +63,22 @@ sudo dnf -y install \
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
   flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel gperf ImageMagick \
-  inet-tools inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
+  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
   libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
-  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
-  patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
-  rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz zlib-devel \
-  zlib-devel.i686
+  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl \
+  openssl-devel patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel \
+  rpcgen rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz \
+  zlib-devel zlib-devel.i686
 ```
 
  - Fedora 35 64-Bit:
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
-  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inet-tools \
-  inkscape javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 \
-  libglade2-devel libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel \
-  libzstd-devel.x86_64 make ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat openssl openssl-devel \
+  flex gcc gcc-c++ gettext git glib2-devel glibc-devel.i686 gnutls-devel ImageMagick inkscape \
+  javapackages-tools kmod libacl-devel libattr-devel libcap-devel libgcc.i686 libglade2-devel \
+  libstdc++-devel.i686 libstdc++-devel.x86_64 libtool libuuid-devel libxml2-devel libzstd-devel.x86_64 make \
+  ncftp ncurses-devel ncurses-devel.i686 ncurses-term netcat net-tools openssl openssl-devel \
   patch patchutils perl perl-String-CRC32 pkgconfig pv qt5-qtbase-devel readline-devel rpcgen \
   rsync sharutils sqlite-devel sqlite.i686 subversion texinfo unar util-linux wget xz zlib-devel \
   zlib-devel.i686
@@ -156,11 +156,11 @@ sudo apt-get -y dist-upgrade
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inet-tools inkscape \
-  intltool java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
-  libc6-dev-i386 libcap-dev libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
-  libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
-  ncftp netcat-openbsd patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo \
+  flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inkscape intltool \
+  java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
+  libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
+  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make ncftp \
+  netcat-openbsd net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo \
   texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
 ```
 
@@ -168,11 +168,11 @@ sudo apt-get -y install \
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
-  flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inet-tools inkscape \
-  intltool java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
-  libc6-dev-i386 libcap-dev libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
-  libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make \
-  ncftp netcat patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo \
+  flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick inkscape intltool \
+  java-wrappers kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 libcap-dev \
+  libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
+  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make ncftp netcat \
+  net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo \
   tofrodos unar unzip uuid-dev wget zlib1g-dev
 # sqlite-32bit lässt sich mit apt nicht installieren, aber mit apt-get schon. Siehe auch:
 # https://developpaper.com/ubuntu-solves-the-problem-of-libsqlite3-0-dependency-recommended/
@@ -184,9 +184,9 @@ sudo apt -y install libzstd-dev:i386 sqlite3:i386
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache \
   cmake cpio curl ecj flex g++ gawk gcc gcc-multilib gettext git gperf graphicsmagick imagemagick \
-  inet-tools inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev \
-  libc6-dev-i386 libcap-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev \
-  libsqlite3-dev libssl-dev libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make ncftp netcat \
+  inkscape intltool kmod lib32ncurses5-dev lib32stdc++6 lib32z1-dev libacl1-dev libc6-dev-i386 \
+  libcap-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
+  libssl-dev libstring-crc32-perl libtool-bin libusb-dev libzstd-dev make ncftp netcat net-tools \
   openssl patch patchutils perl pkg-config pv rsync sqlite3 subversion sudo texinfo tofrodos unar \
   unzip uuid-dev wget zlib1g-dev
 ```

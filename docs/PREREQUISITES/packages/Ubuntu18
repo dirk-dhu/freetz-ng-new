@@ -22,7 +22,6 @@ git
 gperf
 graphicsmagick
 imagemagick
-net-tools
 inkscape
 intltool
 kmod
@@ -45,6 +44,7 @@ libzstd-dev
 make
 ncftp
 netcat
+net-tools
 openssl
 patch
 patchutils
