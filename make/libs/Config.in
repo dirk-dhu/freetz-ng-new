@@ -66,6 +66,7 @@ menu "GLib"
 endmenu ### "GLib"
 
 menu "Graphics & fonts"
+	source "make/libs/cairo/Config.in"
 	source "make/libs/fontconfig/Config.in"
 	source "make/libs/freetype/Config.in"
 	source "make/libs/harfbuzz/Config.in"

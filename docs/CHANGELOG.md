@@ -108,6 +108,7 @@ Latest changes
    * XZ Utils 5.4.1
 
  - Libraries:
+   * cairo 1.17.4
    * expat 2.5.0
    * fontconfig 2.14.1
    * fribidi 1.0.12
