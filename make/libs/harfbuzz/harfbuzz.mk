@@ -48,8 +48,8 @@ $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz.la
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz*.pc \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz*.la
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 	$(INSTALL_LIBRARY_STRIP)
@@ -62,9 +62,9 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(HARFBUZZ_DIR) clean
 	$(RM) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz.* \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/harfbuzz/ \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz.pc
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz*.pc
 
 $(pkg)-uninstall:
 	$(RM) $(HARFBUZZ_TARGET_DIR)/libharfbuzz.so*
