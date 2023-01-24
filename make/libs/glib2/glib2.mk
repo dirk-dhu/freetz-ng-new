@@ -10,6 +10,7 @@ $(PKG)_SITE:=https://download.gnome.org/sources/glib/$(call GET_MAJOR_VERSION,$(
 ### MANPAGE:=https://docs.gtk.org/glib/
 ### CHANGES:=https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS
 ### CVSREPO:=https://gitlab.gnome.org/GNOME/glib
+### VERSION:2.32.4/2.75.2
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libglib_2_VERSION_ABANDON),abandon,current)
 
