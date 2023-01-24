@@ -1,4 +1,4 @@
-# RRDtool 1.2.30 (binary only)
+# RRDtool 1.2.30/1.8.0 (binary only)
  - Homepage: [https://www.rrdtool.org](https://www.rrdtool.org)
  - Manpage: [https://oss.oetiker.ch/rrdtool/doc](https://oss.oetiker.ch/rrdtool/doc)
  - Changelog: [https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES](https://github.com/oetiker/rrdtool-1.x/blob/master/CHANGES)
