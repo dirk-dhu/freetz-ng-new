@@ -19,7 +19,7 @@ glib2-devel
 glibc-devel.i686
 gnutls-devel
 ImageMagick
-inet-tools
+net-tools
 inkscape
 javapackages-tools
 kmod

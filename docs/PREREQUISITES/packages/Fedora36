@@ -20,7 +20,7 @@ glibc-devel.i686
 gnutls-devel
 gperf
 ImageMagick
-inet-tools
+net-tools
 inkscape
 javapackages-tools
 kmod
