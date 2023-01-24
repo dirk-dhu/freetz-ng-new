@@ -18,6 +18,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bluez-libs (libbluetooth.so) 2.25](bluez-libs.md)<a id='bluez-libs'></a>**<br>
     The overall goal of the bluez project is to make an implementation of the Bluetooth wireless standards specifications for Linux.
 
+### C
+
+  * **[Cairo (libcairo.so) 1.17.4](cairo.md)<a id='cairo'></a>**<br>
+    Cairo is a 2D graphics library with support for multiple output devices. Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
+
 ### D
 
   * **[db: Berkeley DB library (libdb.so) 4.8.30](db.md)<a id='db'></a>**<br>
