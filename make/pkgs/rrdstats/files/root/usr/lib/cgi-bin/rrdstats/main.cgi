@@ -6,6 +6,8 @@
 . /mod/etc/conf/rrdstats.cfg
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
+RRDTOOL="rrdtool"
+
 DATESTRING=$(date -R)
 [ -n "$_cgi_width" ] && let WIDTH=_cgi_width-145 || let WIDTH=500
 GROUP_PERIOD="$(cgi_param group | tr -d .)"
@@ -67,7 +69,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/cpu_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				[ "$RRDSTATS_CPU100PERC" = "yes" ] && CPU100PERC=" -u 100 -r "
-				$_NICE rrdtool graph                             \
+				$_NICE $RRDTOOL graph                            \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                 \
 				--title "$TITLE"                                 \
 				--start now-$PERIODE                             \
@@ -101,7 +103,7 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/mem_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				let RAM=$(grep MemTotal /proc/meminfo | tr -s [:blank:] " " | cut -d " " -f 2)*1024
-				$_NICE rrdtool graph                                                \
+				$_NICE $RRDTOOL graph                                               \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                                    \
 				--title "$TITLE"                                                    \
 				--start now-$PERIODE -u $RAM -r -l 0 $LAZY                          \
@@ -145,7 +147,7 @@ generate_graph() {
 		upt)
 			FILE=$RRDSTATS_RRDDATA/upt_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                      \
+				$_NICE $RRDTOOL graph                                     \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                          \
 				--title "$TITLE"                                          \
 				--start -1-$PERIODE -l 0 -r                               \
@@ -188,7 +190,7 @@ generate_graph() {
 					GPRINT:$sourceitem:LAST:%3.0lf\n       \
 					"
 				done
-				$_NICE rrdtool graph                                      \
+				$_NICE $RRDTOOL graph                                     \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                          \
 				--title "$TITLE"                                          \
 				--start -1-$PERIODE -l 0 -u 100 -r                        \
@@ -205,7 +207,7 @@ generate_graph() {
 		temp)
 			FILE=$RRDSTATS_RRDDATA/temp_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                        \
+				$_NICE $RRDTOOL graph                                       \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                            \
 				--title "$TITLE"                                            \
 				--start -1-$PERIODE -l 0 -r                                 \
@@ -286,7 +288,7 @@ generate_graph() {
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
 
-				$_NICE rrdtool graph                                     \
+				$_NICE $RRDTOOL graph                                    \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
@@ -328,7 +330,7 @@ generate_graph() {
 						GPRINT:rxsn$count:MAX:%4.1lf\t/ \
 						GPRINT:rxsn$count:LAST:%4.1lf\n "
 				done
-				$_NICE rrdtool graph                                     \
+				$_NICE $RRDTOOL graph                                    \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
@@ -366,7 +368,7 @@ generate_graph() {
 						GPRINT:rxdb$count:MAX:%4.1lf\t/ \
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
-				$_NICE rrdtool graph                                     \
+				$_NICE $RRDTOOL graph                                    \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
@@ -414,7 +416,7 @@ generate_graph() {
 						GPRINT:txfq$count:LAST:%4.1lf\n "
 				done
 
-				$_NICE rrdtool graph                                     \
+				$_NICE $RRDTOOL graph                                    \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
@@ -435,7 +437,7 @@ generate_graph() {
 		epc1)
 			FILE=$RRDSTATS_RRDDATA/epc_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                   \
+				$_NICE $RRDTOOL graph                                  \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                       \
 				--title "$TITLE"                                       \
 				--start now-$PERIODE                                   \
@@ -474,7 +476,7 @@ generate_graph() {
 						GPRINT:rxfq$count:MAX:%3.0lf\t/ \
 						GPRINT:rxfq$count:LAST:%3.0lf\n "
 				done
-				$_NICE rrdtool graph                                                   \
+				$_NICE $RRDTOOL graph                                                  \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                                       \
 				--title "$TITLE"                                                       \
 				--start now-$PERIODE                                                   \
@@ -492,7 +494,7 @@ generate_graph() {
 		thg0)
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                     \
+				$_NICE $RRDTOOL graph                                    \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
@@ -535,7 +537,7 @@ generate_graph() {
 		thg1)
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                   \
+				$_NICE $RRDTOOL graph                                  \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                       \
 				--title "$TITLE"                                       \
 				--start now-$PERIODE                                   \
@@ -556,7 +558,7 @@ generate_graph() {
 		thg2)
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                    \
+				$_NICE $RRDTOOL graph                                   \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                        \
 				--title "$TITLE"                                        \
 				--start now-$PERIODE                                    \
@@ -578,7 +580,7 @@ generate_graph() {
 		thg3)
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                      \
+				$_NICE $RRDTOOL graph                                     \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                          \
 				--title "$TITLE"                                          \
 				--start now-$PERIODE                                      \
@@ -600,7 +602,7 @@ generate_graph() {
 		arris0)
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                     \
+				$_NICE $RRDTOOL graph                                    \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
@@ -643,7 +645,7 @@ generate_graph() {
 		arris1)
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                   \
+				$_NICE $RRDTOOL graph                                  \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                       \
 				--title "$TITLE"                                       \
 				--start now-$PERIODE                                   \
@@ -664,7 +666,7 @@ generate_graph() {
 		arris2)
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                    \
+				$_NICE $RRDTOOL graph                                   \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                        \
 				--title "$TITLE"                                        \
 				--start now-$PERIODE                                    \
@@ -686,7 +688,7 @@ generate_graph() {
 		arris3)
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                      \
+				$_NICE $RRDTOOL graph                                     \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                          \
 				--title "$TITLE"                                          \
 				--start now-$PERIODE                                      \
@@ -733,7 +735,7 @@ generate_graph() {
 		swap)
 			FILE=$RRDSTATS_RRDDATA/mem_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                              \
+				$_NICE $RRDTOOL graph                                             \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                                  \
 				--title "$TITLE"                                                  \
 				--start -1-$PERIODE -l 0 -u 100 -r                                \
@@ -800,7 +802,7 @@ generate_graph() {
 
 			FILE=$RRDSTATS_RRDDATA/$1_$RRDSTATS_INTERVAL-$DISK.rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                           \
+				$_NICE $RRDTOOL graph                                          \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                               \
 				--title "$TITLE"                                               \
 				--start -1-$PERIODE $LOGARITHMIC $LAZY $MAXIMALBW              \
@@ -877,7 +879,7 @@ generate_graph() {
 
 			FILE=$RRDSTATS_RRDDATA/$1_$RRDSTATS_INTERVAL-$(echo $IF | sed 's/\:/_/g').rrd
 			if [ -e $FILE ]; then
-				$_NICE rrdtool graph                                         \
+				$_NICE $RRDTOOL graph                                        \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png                             \
 				--title "$TITLE"                                             \
 				--start -1-$PERIODE $LOGARITHMIC $LAZY $MAXIMALBW            \
@@ -937,7 +939,7 @@ generate_graph() {
 				let _SENSOR_CUR=_SENSOR_CUR+1
 			done
 			if [ -n "$_SENSOR_GEN" ]; then
-				$_NICE rrdtool graph                 \
+				$_NICE $RRDTOOL graph                \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png     \
 				--title "$TITLE"                     \
 				--start now-$PERIODE                 \
@@ -1065,7 +1067,7 @@ generate_graph() {
 				done
 			fi
 			if [ -n "$_SENSOR_GEN" ]; then
-				$_NICE rrdtool graph                 \
+				$_NICE $RRDTOOL graph                \
 				$RRDSTATS_RRDTEMP/$IMAGENAME.png     \
 				--title "$TITLE"                     \
 				--start now-$PERIODE                 \
@@ -1197,7 +1199,7 @@ csl_graph() {
 		#LINE2:rpn_MAX$GREY
 		#LINE2:rpn_MIN$GREEN
 
-		$_NICE rrdtool graph                                     \
+		$_NICE $RRDTOOL graph                                    \
 		$RRDSTATS_RRDTEMP/$IMAGENAME.png                         \
 		--title "$TITLE"                                         \
 		--start now-$PERIODE -l 0 $MAXSPEEDP -r                  \

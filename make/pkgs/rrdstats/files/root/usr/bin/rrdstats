@@ -6,6 +6,7 @@
 . /mod/etc/conf/rrdstats.cfg
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
+RRDTOOL="rrdtool"
 _NICE=$(which nice)
 _SENSOR_CNF=/tmp/flash/rrdstats/digitemp.conf
 _SENSOR_HEX=$(grep "^ROM " $_SENSOR_CNF 2>/dev/null | sed 's/^ROM [0-9]*//g;s/ 0x//g')
@@ -19,7 +20,7 @@ detect_wget() {
 collect_cpu() {
 	NAMEPREFIX=cpu_$RRDSTATS_INTERVAL
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:user:COUNTER:600:0:100 \
 			DS:nice:COUNTER:600:0:100 \
@@ -33,13 +34,13 @@ collect_cpu() {
 			RRA:AVERAGE:0.5:360:2920
 	fi
 	cpudata=$(grep '^cpu ' /proc/stat 2>/dev/null | awk '{print "N:"$2":"$3":"$4":"$6+$7":"$5;}')
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $cpudata --template user:nice:syst:wait:idle
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $cpudata --template user:nice:syst:wait:idle
 }
 
 collect_mem() {
 	NAMEPREFIX=mem_$RRDSTATS_INTERVAL
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:used:GAUGE:600:0:5000000000 \
 			DS:free:GAUGE:600:0:5000000000 \
@@ -65,13 +66,13 @@ collect_mem() {
 			used=total-(free+buff+cached)
 			swap=swaptotal-swapfree
 		print "N:" used ":" free ":" buff ":" cached ":" swap ":" swaptotal ":" swapfree}' /proc/meminfo)
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $memdata --template used:free:buff:cached:swap:swaptotal:swapfree
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $memdata --template used:free:buff:cached:swap:swaptotal:swapfree
 }
 
 collect_upt() {
 	NAMEPREFIX=upt_$RRDSTATS_INTERVAL
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:uptime:GAUGE:600:0:99999 \
 			RRA:MAX:0.1:1:576 \
@@ -85,7 +86,7 @@ collect_upt() {
 	uM=$(( ($uX-$uH*60)*100/60 ))
 	case $uM in ?) uM=0$uM ;; esac
 	uptdata=N:$uH.$uM
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $uptdata --template uptime
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $uptdata --template uptime
 }
 
 collect_pow() {
@@ -94,7 +95,7 @@ collect_pow() {
 		for sourceitem in $RRDSTATS_POWER_CFG; do
 			local datasources="$datasources DS:$sourceitem:GAUGE:600:0:100"
 		done
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			$datasources \
 			RRA:MAX:0.1:1:576 \
@@ -107,13 +108,13 @@ collect_pow() {
 		local powdat="$powdat:$(ctlmgr_ctl r power status/rate_${sourceitem}act 2>/dev/null)"
 		local powtpl="$powtpl:${sourceitem}"
 	done
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd N${powdat} --template ${powtpl:1}
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd N${powdat} --template ${powtpl:1}
 }
 
 collect_temp() {
 	NAMEPREFIX=temp_$RRDSTATS_INTERVAL
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:temperature:GAUGE:600:0:100 \
 			RRA:MAX:0.1:1:576 \
@@ -125,7 +126,7 @@ collect_temp() {
 	uT="$(ctlmgr_ctl r power status/act_temperature 2>/dev/null)"
 	[ $uT -gt 0 2>/dev/null ] || return
 	tempdata=N:$uT
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $tempdata --template temperature
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $tempdata --template temperature
 }
 
 collect_diskio() {
@@ -150,7 +151,7 @@ collect_diskio() {
 	if ( cat /proc/diskstats | grep -E "$DISK " >/dev/null 2>&1 ); then
 		NAMEPREFIX=diskio$1_$RRDSTATS_INTERVAL-$DISK
 		if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-			rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+			$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 				--step $RRDSTATS_INTERVAL \
 				DS:read:DERIVE:600:0:U \
 				DS:write:DERIVE:600:0:U \
@@ -170,7 +171,7 @@ collect_diskio() {
 			wB=$(($(echo $io | cut -d : -f2) * 512))
 			diskiodata=N:$rB:$wB
 			[ -z "$diskiodata" ] && diskiodata="N:0:0"
-		$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $diskiodata --template read:write
+		$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $diskiodata --template read:write
 	else
 		return
 	fi
@@ -179,7 +180,7 @@ collect_diskio() {
 collect_thg() {
 	NAMEPREFIX=thg_$RRDSTATS_INTERVAL
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:rx:GAUGE:600:-100:150 \
 			DS:sn:GAUGE:600:-100:150 \
@@ -206,7 +207,7 @@ collect_thg() {
 		uptdatIS=:$($WGET http://192.168.100.1/InitialScan.htm -O - -q -T 2 | grep -E "mCmInfoDsFreq1|mCmInfoUsId1" | sed 's/.*ue="//;s/".*//;s/000000/:/' | tr -d "\n")
 		templateADD=:up:if:uc
 	fi
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $uptdatBL$uptdatUP$uptdatIS --template rx:sn:tx:ip$templateADD
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $uptdatBL$uptdatUP$uptdatIS --template rx:sn:tx:ip$templateADD
 }
 
 collect_dvb() {
@@ -222,7 +223,7 @@ collect_dvb() {
 			let count++
 			local dvbTX="$dvbTX DS:txdb$count:GAUGE:600:0:99"
 		done
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			$dvbRX \
 			$dvbTX \
@@ -295,7 +296,7 @@ collect_dvb() {
 
 
 	[ $updateD = N ] && return
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $updateD --template $updateT
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $updateD --template $updateT
 }
 
 collect_epc_100609() {
@@ -311,7 +312,7 @@ collect_epc_100609() {
 			let count++
 			local epcTX="$epcTX DS:txfq$count:GAUGE:600:9:99 DS:txdb$count:GAUGE:600:0:99"
 		done
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			$epcRX \
 			$epcTX \
@@ -354,7 +355,7 @@ collect_epc_100609() {
 		local datUP=:$tH.$tM
 		local tplUP=:up
 	fi
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $updateD$datUP --template $updateT$tplUP
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $updateD$datUP --template $updateT$tplUP
 }
 
 collect_epc_120225() {
@@ -370,7 +371,7 @@ collect_epc_120225() {
 			let count++
 			local epcTX="$epcTX DS:txfq$count:GAUGE:600:9:99 DS:txdb$count:GAUGE:600:0:99"
 		done
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			$epcRX \
 			$epcTX \
@@ -415,13 +416,13 @@ collect_epc_120225() {
 #			local tplUP=:up
 #		fi
 #	fi
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $updateD$datUP --template $updateT$tplUP
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $updateD$datUP --template $updateT$tplUP
 }
 
 collect_arristm() {
 	NAMEPREFIX=arris_$RRDSTATS_INTERVAL
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:rx:GAUGE:600:-100:150 \
 			DS:sn:GAUGE:600:-100:150 \
@@ -451,7 +452,7 @@ collect_arristm() {
 		uptdatIS=$(echo "$inpData" | grep -E "MHz" | sed 's/ MHz.*//;s/ *<.*>/:/' | tr -d '\n')
 		templateADD=:up:if:uf
 	fi
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $uptdatBL$uptdatUP$uptdatIS --template rx:sn:tx:ip$templateADD
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $uptdatBL$uptdatUP$uptdatIS --template rx:sn:tx:ip$templateADD
 }
 
 collect_net() {
@@ -475,7 +476,7 @@ collect_net() {
 	esac
 	NAMEPREFIX=if$1_$RRDSTATS_INTERVAL-$(echo $IF | sed 's/\:/_/g')
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:in:DERIVE:600:0:12500000 \
 			DS:out:DERIVE:600:0:12500000 \
@@ -487,7 +488,7 @@ collect_net() {
 	fi
 	netdata=$(ifconfig $IF | sed '/bytes/!d;s/.*RX bytes/N/;s/ .*TX bytes//;s/ .*//')
 	[ -z "$netdata" ] && netdata="N:0:0"
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $netdata --template in:out
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd $netdata --template in:out
 }
 
 revers() {
@@ -507,7 +508,7 @@ collect_csl_sub() {
 	local _CURRENT_FRQ=${1}000000
 	NAMEPREFIX=csl_${RRDSTATS_INTERVAL}-$_CURRENT_FRQ
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:load:GAUGE:600:0:U \
 			RRA:MIN:0.5:1:576    RRA:AVERAGE:0.5:1:576    RRA:MAX:0.5:1:576    \
@@ -538,7 +539,7 @@ collect_csl_sub() {
 	if [ -n "$val" ]; then
 		# kbit->mbit, round, 1 decimal ...
 		val=$( printf %.1f $(awk "BEGIN{print $val/1024}") )
-		[ ${val%.*} -lt 99 ] && $_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd "N:$val" --template load
+		[ ${val%.*} -lt 99 ] && $_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd "N:$val" --template load
 	else
 		echo "$(date) $_CURRENT_FRQ READFAIL" >> /var/log/rrdstats_csl.log
 	fi
@@ -558,7 +559,7 @@ collect_one() {
 collect_one_sub() {
 	NAMEPREFIX=one_${RRDSTATS_INTERVAL}-$2_$_SENSOR_UOM
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:temp:GAUGE:600:-67:257 \
 			RRA:MIN:0.5:1:576    RRA:AVERAGE:0.5:1:576    RRA:MAX:0.5:1:576    \
@@ -581,7 +582,7 @@ collect_one_sub() {
 		echo "$_CURRENT;$onedata;" >> $RRDSTATS_RRDDATA/one_00-$2_$_SENSOR_UOM.cvs
 		[ "$RRDSTATS_DIGITEMP85" = "yes" -a "$onedata" = "$_SENSOR_ERR" ] && return
 		[ "$RRDSTATS_DIGITEMP_A" = "yes" ] && one_alert $onedata $2
-		$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd "N:$onedata" --template temp
+		$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd "N:$onedata" --template temp
 	fi
 }
 
@@ -642,7 +643,7 @@ collect_aha() {
 collect_aha_sub() {
 	NAMEPREFIX=aha_${RRDSTATS_INTERVAL}-${1//:/}
 	if [ ! -e $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd ]; then
-		rrdtool create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
+		$RRDTOOL create $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd \
 			--step $RRDSTATS_INTERVAL \
 			DS:volt:GAUGE:600:215:250 \
 			DS:kilo:COUNTER:600:0:U \
@@ -665,7 +666,7 @@ collect_aha_sub() {
 	[ -z "$7" ] && local fact=NaN || local fact="$(echo  000$7 | sed  's/...$/.&/g')"
 	[ "$RRDSTATS_AHA_ALERT" = "yes" ] && aha_alert $1 $watt $volt $kilo $grad $curr $fact
 	aha_data="$volt:$kilo:$grad:$curr:$fact"
-	$_NICE rrdtool update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd "N:$aha_data" --template volt:kilo:grad:curr:fact
+	$_NICE $RRDTOOL update $RRDSTATS_RRDDATA/$NAMEPREFIX.rrd "N:$aha_data" --template volt:kilo:grad:curr:fact
 }
 
 aha_alert() {
