@@ -64,3 +64,4 @@ wget
 xz
 zlib-devel
 zlib-devel.i686
+meson
