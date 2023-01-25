@@ -15,6 +15,7 @@ $(PKG)_LIBS_BUILD_DIR   := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_DIR)/builddir/pango
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
 $(PKG)_LIBS_TARGET_DIR  := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_TARGET_DIR)/%)
 
+$(PKG)_HOST_DEPENDS_ON += meson-host
 $(PKG)_DEPENDS_ON += glib2 harfbuzz fribidi fontconfig freetype cairo
 
 $(PKG)_CONFIGURE_OPTIONS += -D gtk_doc=false
