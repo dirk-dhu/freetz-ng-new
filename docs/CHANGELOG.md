@@ -52,6 +52,7 @@ Latest changes
    * busybox 1.36.0
    * fakeroot 1.30.1
    * fastjar 0.98
+   * gperf 3.1
    * kconfig 6.1
    * meson 1.0.0
    * mklibs 0.1.45
