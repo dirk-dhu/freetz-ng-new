@@ -19,7 +19,6 @@ gcc
 gcc-multilib
 gettext
 git
-gperf
 graphicsmagick
 imagemagick
 inkscape

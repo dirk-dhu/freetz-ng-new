@@ -18,7 +18,6 @@ git
 glib2-devel
 glibc-devel.i686
 gnutls-devel
-gperf
 ImageMagick
 inkscape
 javapackages-tools
