@@ -39,7 +39,7 @@ start() {
 	else
 		$DAEMON_BIN -v 2>/dev/null
 		exitval=$?
-	else
+	fi
 	unset LD_PRELOAD
 	sleep 1
 	[ -f /tmp/flash/mod/multid.start ] && . /tmp/flash/mod/multid.start
