@@ -51,9 +51,14 @@ RED_D=#CC3118
 ORANGE_D=#CC7016
 BLACK=#000000
 GREY=#7F7F7F
-NBSP="$(echo -e '\240')"
 AUML="$(echo -e '\344')"
-GRAD="$(echo -ne '\260')"
+if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
+	NBSP="$(echo -e  '\240')"
+	GRAD="$(echo -en '\260')"
+else
+	NBSP="$(echo -e  '\xC2\xA0')"
+	GRAD="$(echo -en '\xC2\xB0')"
+fi
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
 _NICE=$(which nice)
 DEFAULT_COLORS="--color SHADEA#ffffff --color SHADEB#ffffff --color BACK#ffffff --color CANVAS#eeeeee80"
