@@ -11,6 +11,7 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/lib$(pkg).so.$($(PKG)_LIB_VERSION)
 
+$(PKG)_HOST_DEPENDS_ON += gperf-host
 $(PKG)_DEPENDS_ON += freetype libxml2 zlib
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-nls
