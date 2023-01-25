@@ -58,7 +58,7 @@ Latest changes
    * mklibs 0.1.45
    * ncurses 6.4
    * ninja 1.11.1
-   * precompiled host-tools 2023-01-18
+   * precompiled host-tools 2023-01-25
    * prelink 20130503
    * pseudo 1.9.0 oe-core c9670c2
    * python 3.11.1
