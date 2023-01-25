@@ -179,7 +179,7 @@ endif
 # kconfig checks them in its .mk-file to be able to disable items always
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 ifneq ($(NO_PREREQ_CHECK),y)
-ifneq (OK,$(shell $(CHECK_PREREQ_TOOL check) >&2 && echo OK))
+ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) check >&2 && echo OK))
 $(error Some build prerequisites are missing! See '.prerequisites' for why. Please install the missing packages with 'tools/prerequisites install'. See https://freetz-ng.github.io/freetz-ng/PREREQUISITES for installation hints)
 endif
 endif
