@@ -53,6 +53,7 @@ Latest changes
    * fakeroot 1.30.1
    * fastjar 0.98
    * kconfig 6.1
+   * meson 1.0.0
    * mklibs 0.1.45
    * ncurses 6.4
    * ninja 1.11.1
