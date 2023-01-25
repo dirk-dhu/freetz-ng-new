@@ -30,7 +30,6 @@ program     libtool
 program     libtoolize             FREETZ_PACKAGE_GNTPSEND
 program     lsdiff                 FREETZ_SHOW_DEVELOPER
 program     md5sum
-program     meson               or FREETZ_LIB_libglib_2 FREETZ_LIB_libpango_1
 program     mktemp
 program     nc                     FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 program     openssl             or FREETZ_FWMOD_VALIDATE FREETZ_FWMOD_SIGN

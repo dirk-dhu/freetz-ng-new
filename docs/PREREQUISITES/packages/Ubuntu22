@@ -44,7 +44,6 @@ libusb-dev
 libxml2-dev
 libzstd-dev
 make
-meson
 ncftp
 netcat-openbsd
 net-tools

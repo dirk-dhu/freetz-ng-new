@@ -42,7 +42,6 @@ libtool-bin
 libusb-dev
 libzstd-dev
 make
-meson
 ncftp
 netcat
 net-tools
