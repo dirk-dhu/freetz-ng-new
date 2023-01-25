@@ -70,6 +70,7 @@ $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
 else
 $(PKG)_LIBS_BUILD_DIR := $(join $($(PKG)_LIBNAMES_SHORT:%=$($(PKG)_DIR)/builddir/%/),$($(PKG)_LIBNAMES_LONG))
+$(PKG)_HOST_DEPENDS_ON += meson-host
 $(PKG)_DEPENDS_ON += pcre2 libffi gettext zlib
 
 #$(PKG)_CONFIGURE_OPTIONS += -D iconv=libc
