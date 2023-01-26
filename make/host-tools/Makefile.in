@@ -25,6 +25,7 @@ TOOLS_TARXZBUNDLE:=tools-host
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
 TOOLS_CONDITIONAL+=avm-rle-host
+TOOLS_CONDITIONAL+=cmake-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
 TOOLS_CONDITIONAL+=gmp-host
@@ -60,6 +61,9 @@ TOOLS_BUILD_LOCAL+=gmp-host
 TOOLS_BUILD_LOCAL+=kconfig-host
 TOOLS_BUILD_LOCAL+=mpc-host
 TOOLS_BUILD_LOCAL+=mpfr-host
+
+# to much libs and no $CMAKE_ROOT
+TOOLS_BUILD_LOCAL+=cmake-host
 
 # until next host-tools update
 #TOOLS_BUILD_LOCAL+=...

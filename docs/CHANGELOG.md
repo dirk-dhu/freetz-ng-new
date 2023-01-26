@@ -51,6 +51,7 @@ Latest changes
 
  - Host tools:
    * busybox 1.36.0
+   * cmake 3.25.2
    * fakeroot 1.30.1
    * fastjar 0.98
    * gperf 3.1
