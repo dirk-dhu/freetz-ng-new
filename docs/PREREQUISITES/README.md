@@ -161,7 +161,7 @@ sudo apt-get -y install \
   libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
   libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make ncftp \
   netcat-openbsd net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo \
-  texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
+  texinfo tofrodos unar unzip uuid-dev wget zip zlib1g-dev
 ```
 
  - Ubuntu 20 64-Bit:
@@ -173,7 +173,7 @@ sudo apt-get -y install \
   libelf-dev libglib2.0-dev libgnutls28-dev libncurses5-dev libreadline-dev libsqlite3-dev \
   libssl-dev libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make ncftp netcat \
   net-tools patch patchutils perl pkg-config pv rsync sharutils sqlite3 subversion sudo texinfo \
-  tofrodos unar unzip uuid-dev wget zlib1g-dev
+  tofrodos unar unzip uuid-dev wget zip zlib1g-dev
 # sqlite-32bit lässt sich mit apt nicht installieren, aber mit apt-get schon. Siehe auch:
 # https://developpaper.com/ubuntu-solves-the-problem-of-libsqlite3-0-dependency-recommended/
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
