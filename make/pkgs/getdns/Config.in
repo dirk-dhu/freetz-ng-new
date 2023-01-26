@@ -2,7 +2,7 @@ comment "getdns (not available, needs OpenSSL 1.0 or newer)"
 	depends on !FREETZ_OPENSSL_VERSION_1_MIN
 
 config FREETZ_PACKAGE_GETDNS
-	bool "getdns 1.5.2"
+	bool "getdns 1.7.3"
 	depends on FREETZ_OPENSSL_VERSION_1_MIN
 	select FREETZ_LIB_libcrypto
 	select FREETZ_LIB_libcrypto_WITH_EC
@@ -18,9 +18,12 @@ config FREETZ_PACKAGE_GETDNS
 		DNS queries sent from a client machine (desktop or laptop)
 		to a DNS Privacy resolver increasing end user privacy.
 
+if FREETZ_PACKAGE_GETDNS
+
 	config FREETZ_PACKAGE_GETDNS_CA_BUNDLE
 		bool "Select CA-bundle"
-		depends on FREETZ_PACKAGE_GETDNS
 		default y
 		select FREETZ_PACKAGE_CA_BUNDLE
+
+endif # FREETZ_PACKAGE_GETDNS
 

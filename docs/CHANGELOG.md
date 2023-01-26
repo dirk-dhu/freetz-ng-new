@@ -86,6 +86,7 @@ Latest changes
    * DejaVu Fonts TTF 2.37
    * Dnsmasq 2.80/2.88
    * Dropbear 2022.83
+   * getdns 1.7.3
    * Git 2.39.1
    * HAProxy 2.6.8
    * htpdate 1.3.7

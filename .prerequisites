@@ -6,7 +6,7 @@ program     bc                     FREETZ_AVM_VERSION_07_1X_MIN
 program     bison
 program     bunzip2
 program     bzip2
-program     cmake                  FREETZ_TOOLCHAIN_CCACHE
+program     cmake               or FREETZ_TOOLCHAIN_CCACHE FREETZ_PACKAGE_GETDNS
 program     cpio                   FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 program     dd                     FREETZ_PACKAGE_SUNDTEK
 program     depmod                 FREETZ_AVM_VERSION_07_2X_MIN
