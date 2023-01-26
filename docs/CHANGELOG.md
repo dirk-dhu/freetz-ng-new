@@ -46,6 +46,7 @@ Latest changes
 
  - Build system:
    * Ccache 4.7.4
+   * Cmake support
    * Meson support
 
  - Host tools:

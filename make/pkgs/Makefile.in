@@ -7,10 +7,11 @@ endif
 
 SUBMAKE1=cmd() { $(MAKE_ENV) $(MAKE1) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
 SUBMAKE=cmd() { $(MAKE_ENV) $(MAKE) $(QUIET) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
-CONFIGURE=conf_cmd() { ./configure $(QUIET) "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
-AUTORECONF=autoreconf -f -i $(SILENT) || { $(call ERROR,1,autoreconf failed) };
-
 SUBMESON=cmd() { $(MAKE_ENV) $(MESON) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
+
+AUTORECONF=autoreconf -f -i $(SILENT) || { $(call ERROR,1,autoreconf failed) };
+CONFIGURE=conf_cmd() { ./configure $(QUIET) "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
+CONFCMAKE=cmake_cmd() { $(MAKE_ENV) $(CMAKE) "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
 CONFMESON=meson_cmd() { $(MESON) setup "$$$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } };
 
 ifeq ($(strip $(FREETZ_TARGET_NLS)),y)
@@ -144,7 +145,7 @@ endif
 # commands to run before calling configure
 # each command has to be terminated by ';'
 TARGET_CONFIGURE_PRE_CMDS:=
-TARGET_CONFIGURE_PRE_CMDS += $(RM) -r config.{cache,status} builddir/;
+TARGET_CONFIGURE_PRE_CMDS += $(RM) -r config.{cache,status} CMakeCache.txt builddir/;
 
 # setup environment for configure
 TARGET_CONFIGURE_ENV:=
@@ -642,6 +643,7 @@ PKG_LOCALSOURCE_PACKAGE+=$(if $($(PKG)_REBUILD_SUBOPTS),$(eval $(PKG_UNPACKED_CH
 
 ### PKG_CONFIGURED: Configure package
 PKG_CONFIGURED_CONFIGURE=$(eval $(PKG_CONFIGURED_CONFIGURE__INT))
+PKG_CONFIGURED_CMAKE=$(eval $(PKG_CONFIGURED_CMAKE__INT))
 PKG_CONFIGURED_MESON=$(eval $(PKG_CONFIGURED_MESON__INT))
 
 ## Package needs no configuration

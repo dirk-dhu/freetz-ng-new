@@ -187,6 +187,28 @@ $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.build-prereq-checked $($(PKG)_DIR)/.un
 	)
 	@touch $$@
 endef
+
+## Configure package, using cmake
+define PKG_CONFIGURED_CMAKE__INT
+# Must be first
+$(PKG_CONFIGURED_COMMON__INT)
+$($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.build-prereq-checked $($(PKG)_DIR)/.unpacked
+	@$(call _ECHO,configuring)
+	($(CONFCMAKE) \
+		cd $($(PKG)_DIR); \
+		$(if $($($(PKG)_CONFIGURE_DEST)_CONFIGURE_PRE_CMDS),{ $($($(PKG)_CONFIGURE_DEST)_CONFIGURE_PRE_CMDS) } $(SILENT);,) \
+		$(if $($(PKG)_CONFIGURE_PRE_CMDS),{ $($(PKG)_CONFIGURE_PRE_CMDS) } $(SILENT);,) \
+		$(if $(strip $($(PKG)_BUILD_SUBDIR)),cd $(strip $($(PKG)_BUILD_SUBDIR));,) \
+		$($($(PKG)_CONFIGURE_DEST)_CONFIGURE_ENV) \
+		$($(PKG)_CONFIGURE_ENV) \
+		cmake_cmd . \
+		$($(PKG)_CONFIGURE_OPTIONS) \
+		$(if $(strip $($(PKG)_BUILD_SUBDIR)),&& { cd $(abspath $($(PKG)_DIR)); },) \
+		$(if $($(PKG)_CONFIGURE_POST_CMDS),&& { $($(PKG)_CONFIGURE_POST_CMDS) } $(SILENT),) \
+	)
+	@touch $$@
+endef
+
 ## Configure package, using meson
 define PKG_CONFIGURED_MESON__INT
 # Must be first
