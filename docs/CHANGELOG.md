@@ -107,7 +107,7 @@ Latest changes
    * Swiss File Knife 1.9.8.2
    * strace 4.9/5.0/6.1
    * SQLite 3.40.1
-   * tcpdump 4.1.1/4.99.2
+   * tcpdump 4.1.1/4.99.3
    * Tor 0.4.7.13
    * Unbound 1.17.1
    * XZ Utils 5.4.1
