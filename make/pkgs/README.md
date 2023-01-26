@@ -183,6 +183,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Zertifikat erstellen](../../docs/make/dehydrated.md#zertifikat-erstellen)
      - [Zertifikat benutzen](../../docs/make/dehydrated.md#zertifikat-benutzen)
 
+  * **[DejaVu Fonts TTF 2.37 (binary only)](../../docs/make/dejavu-fonts-ttf.md)<a id='dejavu-fonts-ttf'></a>**<br>
+    The DejaVu fonts are a font family based on the Vera Fonts. Its purpose is to provide a wider range of characters while maintaining the original look and feel through the process of collaborative development
+
   * **[DigiTemp 3.7.2 (binary only)](../../docs/make/digitemp.md)<a id='digitemp'></a>**<br>
     digitemp for 1-wire modules You could use RRDstats for data collection and visualisation
      - [**Was ist digitemp?**](../../docs/make/digitemp.md#was-ist-digitemp)

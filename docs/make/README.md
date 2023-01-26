@@ -136,6 +136,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[dehydrated 0.7.1 (letsencrypt)](dehydrated.md)<a id='dehydrated'></a>**<br>
     Dehydrated is a client for signing certificates with an ACME-server (e.g. Let's Encrypt) implemented as a relatively simple (zsh-compatible) bash-script. This client supports both ACME v1 and the new ACME v2 including support for wildcard certificates!
 
+  * **[DejaVu Fonts TTF 2.37 (binary only)](dejavu-fonts-ttf.md)<a id='dejavu-fonts-ttf'></a>**<br>
+    The DejaVu fonts are a font family based on the Vera Fonts. Its purpose is to provide a wider range of characters while maintaining the original look and feel through the process of collaborative development
+
   * **[DigiTemp 3.7.2 (binary only)](digitemp.md)<a id='digitemp'></a>**<br>
     digitemp for 1-wire modules You could use RRDstats for data collection and visualisation
 
