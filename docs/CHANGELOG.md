@@ -82,6 +82,7 @@ Latest changes
    * classpath 0.99
    * Curl 7.87.0
    * dehydrated 0.7.1 (letsencrypt)
+   * DejaVu Fonts TTF 2.37
    * Dnsmasq 2.80/2.88
    * Dropbear 2022.83
    * Git 2.39.1
