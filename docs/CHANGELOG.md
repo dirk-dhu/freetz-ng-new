@@ -74,7 +74,7 @@ Latest changes
 
  - Packages:
    * ACME.sh 3.0.5 (letsencrypt)
-   * BIND 9.11.37/9.16.36
+   * BIND 9.11.37/9.16.37
    * BIRD 1.6.8
    * BusyBox 1.36.0
    * CA-bundle 2023-01-10
