@@ -20,7 +20,7 @@ $($(PKG)_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 	$(TOOLS_SUBCMAKE) \
 		-B $(NINJA_HOST_BUILD_DIR) \
 		-S $(NINJA_HOST_DIR)
-	touch -c $@
+	@touch $@
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	$(TOOLS_SUBCMAKE) \
