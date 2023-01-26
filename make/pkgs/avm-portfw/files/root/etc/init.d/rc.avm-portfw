@@ -14,7 +14,7 @@ apply() {
 	[ "$H" == "-1" ] && H="$(grep -n internet_out_nat_rules_enabled $TMP | sed 's/:.*//')" || C="$(tail -n $(( $L - $H )) $TMP | grep -m1 -n ';' | sed 's/:.*//')"
 	T="$(( $L - $H - $C ))"
 
-	[ $L -gt 0 -a $H -gt 0 -a $T -gt 0 -a $C -ge 0 2>/dev/null ] || F='1'
+	[ $L -gt 0 -a $H -gt 0 -a $T -gt 0 -a $C -ge 0 ] 2>/dev/null || F='1'
 	[ -z "$(echo "$AVM_PORTFW_TCP$AVM_PORTFW_UDP" | sed 's/[+: 0-9]//g')" ] || F='2'
 	if [ -n "$F" ]; then
 		rm $TMP

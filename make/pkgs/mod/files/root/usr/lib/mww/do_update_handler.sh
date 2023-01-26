@@ -208,9 +208,9 @@ case $result in
 	*) result_txt="$(lang de:"unbekannter Fehlercode" en:"unknown error code")" ;;
 esac
 
-[ $result -ne 1 2>/dev/null ] && rebootbox=false;
+[ $result -ne 1 ] 2>/dev/null && rebootbox=false;
 
-[ $result -le 1 2>/dev/null ] && color=green || color=red
+[ $result -le 1 ] 2>/dev/null && color=green || color=red
 
 status "done" "$(lang \
   de:"R&uuml;ckgabewert des Installationsskripts" \

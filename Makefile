@@ -232,7 +232,7 @@ $(info You have no CPU with AVX2 support, precompiled (download) host-tools auto
 endif
 endif
 # check debian for <11
-ifeq ($([ "$(sed 's/\..*//' /etc/debian_version 2>/dev/null)" -lt 11 2>/dev/null ] && echo n),n)
+ifeq ($([ "$(sed 's/\..*//' /etc/debian_version 2>/dev/null)" -lt 11 ] 2>/dev/null && echo n),n)
 ifeq ($(FREETZ_DOWNLOAD_TOOLCHAIN),y)
 DLCHG:=$(shell echo 'y' ; sed 's/^\# FREETZ_BUILD_TOOLCHAIN .*/FREETZ_BUILD_TOOLCHAIN=y/' -i $(TOPDIR)/.config)
 DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_DOWNLOAD_TOOLCHAIN=.*/\# FREETZ_DOWNLOAD_TOOLCHAIN is not set/' -i $(TOPDIR)/.config)

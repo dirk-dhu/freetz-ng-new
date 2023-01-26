@@ -49,7 +49,7 @@ if [ "$DOENC" != "on" ]; then
 	tar cz -C "$OUTER_DIR" "${INNER_DIR##*/}/"                                                  > "$OUTER_DIR/settings.tgz" \
 	  || fail "$(lang de:"Fehler beim Erzeugen der Datei" en:"Erron on creating file")"
 else
-	[ "$(openssl version | sed -rn 's/^OpenSSL ([0-9])\.([0-9])\..*/\1\2/p')" -lt 11 2>/dev/null ] && SSLOPT='-md sha256' || SSLOPT='-pbkdf2'
+	[ "$(openssl version | sed -rn 's/^OpenSSL ([0-9])\.([0-9])\..*/\1\2/p')" -lt 11 ] 2>/dev/null && SSLOPT='-md sha256' || SSLOPT='-pbkdf2'
 	tar cz -C "$OUTER_DIR" "${INNER_DIR##*/}/" | openssl enc -e -aes256 $SSLOPT -pass env:SICPW > "$OUTER_DIR/settings.tgz.crypted" \
 	  || fail "$(lang de:"Fehler beim Verschl&uuml;sseln der Datei" en:"Erron on encrypting file")"
 	# Add environment (to decode password strings)

@@ -465,7 +465,7 @@ modlib_add_httpd_symlink() {
 #    1: false
 modlib_check_supervisor() {
 	local NAME XPID="$PPID"
-	while [ "$NAME" != "supervisor" -a $XPID -gt 1 2>/dev/null ]; do
+	while [ "$NAME" != "supervisor" -a $XPID -gt 1 ] 2>/dev/null; do
 		NAME="$(sed -n 's/^Name:[\t ]*//p' /proc/$XPID/status 2>/dev/null)"
 		XPID="$(sed -n 's/^PPid:[\t ]*//p' /proc/$XPID/status 2>/dev/null)"
 	done

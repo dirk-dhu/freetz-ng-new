@@ -17,7 +17,7 @@ if [ -z "$BUILDTYPE" -o "$BUILDTYPE" == "1" -o "$FREETZ_TYPE_ALIEN_HARDWARE" == 
 	VER="$(echo ${VER} | sed 's/\.//;s/^0*//')"
 	VER="$(echo 0$(( $VER - $TMP )) | sed -r 's/.*(..)(..)$/\1.\2/')"
 fi
-if [ "$REV" -gt 0 2>/dev/null ]; then
+if [ "$REV" -gt 0 ] 2>/dev/null; then
 	while [ "${#TMP}" != "3" ]; do TMP="$(echo $(( RANDOM % 10 ))$(( RANDOM % 10 ))$(( RANDOM % 10 )) | sed 's/[^0-9]//')"; done
 	REV="$(( ${REV:0:$(( ${#REV} - 3 ))} - 1 ))$TMP"
 fi

@@ -223,7 +223,7 @@ docmd() {
 		cmd="$((cmd+dec))"
 	fi
 
-	[ "$cmd" -gt 1 2>/dev/null ] && cmd="sethkrtsoll&param=$cmd"
+	[ "$cmd" -gt 1 ] 2>/dev/null && cmd="sethkrtsoll&param=$cmd"
 	echo -n "Executing '$cmd' for '$(ain2label $1)' ... "
 	old_sid
 	set_web "$ain" "$cmd"

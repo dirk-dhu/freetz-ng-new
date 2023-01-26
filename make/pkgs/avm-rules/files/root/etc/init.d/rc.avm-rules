@@ -14,7 +14,7 @@ apply() {
 	N="$(grep -n voip_forwardrules $TMP | sed 's/:.*//')"
 	C="$(tail -n $(( $L - $N +1 )) $TMP | grep -m1 -n ';' | sed 's/:.*//')"
 
-	[ $L -gt 0 -a $N -gt 0 -a $C -gt 0 2>/dev/null ] || F='1'
+	[ $L -gt 0 -a $N -gt 0 -a $C -gt 0 ] 2>/dev/null || F='1'
 	[ -n "$(echo "$AVM_RULES_TCP$AVM_RULES_UDP" | sed 's/[+: 0-9]//g')" ] && F='2'
 	[ "$AVM_RULES_SIP" != "yes" -a -z "${AVM_RULES_TCP/ /}${AVM_RULES_UDP/ /}" ] && F='3'
 	if [ -n "$F" ]; then

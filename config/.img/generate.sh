@@ -439,7 +439,7 @@ determine_() {
 	#ANNEX_SELECT (avme is ignored by patch, just for consolodation)
 	X="$(grep -c "get_annex_checked" "$unpacked/usr/www/avm/internet/dsl_line_settings.lua" 2>/dev/null)"
 	[ -z "$X" ] && X="$(grep -c "get_annex_checked" "$unpacked/usr/www/avme/internet/dsl_line_settings.lua" 2>/dev/null)"
-	[ "$X" -gt 1 2>/dev/null ] && X="available" || X="%"
+	[ "$X" -gt 1 ] 2>/dev/null && X="available" || X="%"
 	[ "$X" == "available" ] && in_b "FREETZ_AVM_HAS_ANNEX_SELECTION"
 	[ $DOSHOW -ge 2 ] && outp "annsel" "$X"
 
@@ -884,7 +884,7 @@ determine_() {
 	#if [ "${X:0:1}" == "3" ]; then
 	#	P=RAMSIZE
 	#	X="$(sed -rn "s/^export CONFIG_$P=\"?([^\"]*)\"?.*$/\1/p" "$unpacked/etc/init.d/rc.conf" | head -n1)"
-	#	[ "$X" -gt 0 2>/dev/null ] || X="%"
+	#	[ "$X" -gt 0 ] 2>/dev/null || X="%"
 	#	in_s "FREETZ_AVM_PROP_${P^^}" "$X"
 	#	[ $DOSHOW -ge 2 ] && outp "${P,,}" "$X"
 	#fi

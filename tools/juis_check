@@ -134,8 +134,8 @@ main() {
 			[ -n "$Buildnumber" ] && Version="$Version-$Buildnumber"
 		fi
 		if [ -z "$Version" ]; then
-			if [ "$HW" -ge 150 2>/dev/null ]; then
-				if [ "$HW" -lt 248 2>/dev/null ]; then
+			if [ "$HW" -ge 150 ] 2>/dev/null; then
+				if [ "$HW" -lt 248 ] 2>/dev/null; then
 					Version="$(( $HW - 72 ))"
 				else
 					Version="$HW"

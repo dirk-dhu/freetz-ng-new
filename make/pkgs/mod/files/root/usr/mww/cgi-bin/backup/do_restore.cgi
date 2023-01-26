@@ -70,8 +70,8 @@ if [ "$FAILURE" != "y" ] && [ -s "$OUTER_DIR/settings.tgz.crypted" -o -s "$OUTER
 	echo "$(lang de:"Pr&uuml;fe OpenSSL" en:"Checking OpenSSL") ..."
 	[ -x "$(which openssl)" ] || fail "$(lang de:"FEHLER: OpenSSL ist nicht installiert" en:"ERROR: OpenSSL is not installed")."
 	SSLV="$(openssl version | sed -rn 's/^OpenSSL ([0-9])\.([0-9])\..*/\1\2/p')"
-	[ "$SSLV" -lt 11 2>/dev/null ] && F1ST='-md sha256' && S2ND='-pbkdf2'
-	[ "$SSLV" -ge 11 2>/dev/null ] && S2ND='-md sha256' && F1ST='-pbkdf2'
+	[ "$SSLV" -lt 11 ] 2>/dev/null && F1ST='-md sha256' && S2ND='-pbkdf2'
+	[ "$SSLV" -ge 11 ] 2>/dev/null && S2ND='-md sha256' && F1ST='-pbkdf2'
 	okay
 fi
 

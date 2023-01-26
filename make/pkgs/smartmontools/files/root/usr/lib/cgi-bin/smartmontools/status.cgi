@@ -43,17 +43,17 @@ for DEVICE in $DEVICES; do
 	[ -n "$FIRM" ] && FIRM=" ($FIRM)"
 	echo "<tr><td>$NAME$FIRM</td><td>$SIZE</td></tr>"
 	[ -n "$SMART" ] && echo "<tr><td>$(lang de:"Zustand" en:"Health")</td><td>$SMART</td></tr>"
-	[ $WLC -gt 0 2>/dev/null ] && echo "<tr><td>$(lang de:"Restgesundheit" en:"Wear leveling")</td><td>$(( 100-$WLC ))&#037;</td></tr>"
-	[ $TGC -gt 0 2>/dev/null ] && echo "<tr><td>$(lang de:"Temperatur" en:"Termperature")</td><td>$TGC &deg;C</td></tr>"
-	[ $POH -gt 0 2>/dev/null ] && echo "<tr><td>$(lang de:"Laufzeit" en:"Power-on")</td><td>$(($POH/24)) $(lang de:"Tage" en:"days")</td></tr>"
-	if [ $PCC -gt 0 2>/dev/null ]; then
-		if [ $SSC -gt 0 2>/dev/null ]; then
+	[ $WLC -gt 0 ] 2>/dev/null && echo "<tr><td>$(lang de:"Restgesundheit" en:"Wear leveling")</td><td>$(( 100-$WLC ))&#037;</td></tr>"
+	[ $TGC -gt 0 ] 2>/dev/null && echo "<tr><td>$(lang de:"Temperatur" en:"Termperature")</td><td>$TGC &deg;C</td></tr>"
+	[ $POH -gt 0 ] 2>/dev/null && echo "<tr><td>$(lang de:"Laufzeit" en:"Power-on")</td><td>$(($POH/24)) $(lang de:"Tage" en:"days")</td></tr>"
+	if [ $PCC -gt 0 ] 2>/dev/null; then
+		if [ $SSC -gt 0 ] 2>/dev/null; then
 			echo "<tr><td>$(lang de:"Einschalt- / Anlaufvorg&auml;nge" en:"Power cycles / spinups")</td><td>$PCC / $SSC</td></tr>"
 		else
 			echo "<tr><td>$(lang de:"Einschaltvorg&auml;nge" en:"Power cycles")</td><td>$PCC</td></tr>"
 		fi
 	else
-		[ $SSC -gt 0 2>/dev/null ] && echo "<tr><td>$(lang de:"Anlaufvorg&auml;nge" en:"Spinups")</td><td>$SSC</td></tr>"
+		[ $SSC -gt 0 ] 2>/dev/null && echo "<tr><td>$(lang de:"Anlaufvorg&auml;nge" en:"Spinups")</td><td>$SSC</td></tr>"
 	fi
 	echo "</tr>"
 	echo "</table>"

@@ -531,7 +531,7 @@ while [ $# -ge 1 ]; do
 			;;
 		(-ram)
 			[ -z "$2" -o "$2" != "${2#\-}" ] && usage
-			[ "$2" -ge 0 2>/dev/null ] && FULLSIZE="0x$(printf '%.8x' "$(( $2 * 1048576 ))")"
+			[ "$2" -ge 0 ] 2>/dev/null && FULLSIZE="0x$(printf '%.8x' "$(( $2 * 1048576 ))")"
 			[ -z "$FULLSIZE" ] && echo "Invalid value for ram size" && usage
 			shift
 			;;
