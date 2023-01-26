@@ -52,6 +52,7 @@ ORANGE_D=#CC7016
 BLACK=#000000
 GREY=#7F7F7F
 AUML="$(echo -e '\344')"
+GRD="$(echo -en '\260')"
 if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
 	NBSP="$(echo -e  '\240')"
 	GRAD="$(echo -en '\260')"
@@ -162,7 +163,7 @@ generate_graph() {
 				-W "Generated on: $DATESTRING"                            \
 				                                                          \
 				DEF:uptime=$FILE:uptime:MAX                               \
-                                                                          \
+                                                                                          \
 				AREA:uptime$YELLOW:"Uptime (min/avg/max/cur)[hours]\:   " \
 				GPRINT:uptime:MIN:"%3.2lf /"                              \
 				GPRINT:uptime:AVERAGE:"%3.2lf /"                          \
@@ -175,24 +176,24 @@ generate_graph() {
 			if [ -e $FILE ]; then
 				for sourceitem in $RRDSTATS_POWER_CFG; do
 					case $sourceitem in
-						sum)		DCOL=$DARKRED  ; DNAME="Gesamtsystem"    ;;
-						system)		DCOL=$LBLUE    ; DNAME="Hauptprozessor"  ;;
-						wlan)		DCOL=$PURPLE   ; DNAME="Funknetzwerk"    ;;
-						dsp)		DCOL=$BLUE     ; DNAME="Signalprozessor" ;;
-						ab)		DCOL=$YELLOW   ; DNAME="Analogtelefonie" ;;
-						usbhost)	DCOL=$GREEN    ; DNAME="USB-System"      ;;
-						eth)		DCOL=$ORANGE_D ; DNAME="Kabelnetzwerk"   ;;
-						dect)		DCOL=$LBLUE    ; DNAME="Funktelefonie"   ;;
-						battcharge)	DCOL=$BLACK    ; DNAME="Akkuladung"      ;;
-						lte)            DCOL=$BLACK    ; DNAME="LTE-Funkmodul"   ;;
-						*)		DCOL=$BLACK    ; DNAME="$sourceitem"     ;;
+						sum)		DCOL=$DARKRED  ; DNAME="Gesamtsystem$NBSP$NBSP$NBSP"          ;;
+						system)		DCOL=$LBLUE    ; DNAME="Hauptprozessor$NBSP"                  ;;
+						wlan)		DCOL=$PURPLE   ; DNAME="Funknetzwerk$NBSP$NBSP$NBSP"          ;;
+						dsp)		DCOL=$BLUE     ; DNAME="Signalprozessor"                      ;;
+						ab)		DCOL=$YELLOW   ; DNAME="Analogtelefonie"                      ;;
+						usbhost)	DCOL=$GREEN    ; DNAME="USB-System$NBSP$NBSP$NBSP$NBSP$NBSP"  ;;
+						eth)		DCOL=$ORANGE_D ; DNAME="Kabelnetzwerk$NBSP$NBSP"              ;;
+						dect)		DCOL=$LBLUE    ; DNAME="Funktelefonie$NBSP$NBSP"              ;;
+						battcharge)	DCOL=$BLACK    ; DNAME="Akkuladung$NBSP$NBSP$NBSP$NBSP$NBSP"  ;;
+						lte)            DCOL=$BLACK    ; DNAME="LTE-Funkmodul$NBSP$NBSP"              ;;
+						*)		DCOL=$BLACK    ; DNAME="$sourceitem"                          ;;
 					esac
 					local DSDEFS="$DSDEFS DEF:$sourceitem=$FILE:$sourceitem:MAX"
-					local LINE3S="$LINE3S LINE3:$sourceitem$DCOL:$DNAME\t$NBSP(min/avg/max/cur)\t\t \
-					GPRINT:$sourceitem:MIN:%3.0lf\t/       \
-					GPRINT:$sourceitem:AVERAGE:%3.0lf\t/   \
-					GPRINT:$sourceitem:MAX:%3.0lf\t\t      \
-					GPRINT:$sourceitem:LAST:%3.0lf\n       \
+					local LINE3S="$LINE3S LINE3:$sourceitem$DCOL:$DNAME$NBSP$NBSP(min/avg/max/cur)\:\t \
+					GPRINT:$sourceitem:MIN:%3.0lf%%$NBSP/       \
+					GPRINT:$sourceitem:AVERAGE:%3.0lf%%$NBSP/   \
+					GPRINT:$sourceitem:MAX:%3.0lf%%$NBSP/       \
+					GPRINT:$sourceitem:LAST:%3.0lf%%\n          \
 					"
 				done
 				$_NICE $RRDTOOL graph                                     \
@@ -200,7 +201,7 @@ generate_graph() {
 				--title "$TITLE"                                          \
 				--start -1-$PERIODE -l 0 -u 100 -r                        \
 				--width $WIDTH --height $HEIGHT $LAZY                     \
-				--vertical-label "Prozent" -X 1                           \
+				--vertical-label "Energieverbrauch [%]" -X 1              \
 				$DEFAULT_COLORS                                           \
 				-W "Generated on: $DATESTRING"                            \
 				                                                          \
@@ -346,7 +347,7 @@ generate_graph() {
 				$LAZY                                                    \
 				-A                                                       \
 				-W "Generated on: $DATESTRING"                           \
-								                                         \
+								                         \
 				$DS_DEF                                                  \
 				$GPRINT                                                  \
 				                                                         > /dev/null 2>&1
@@ -382,10 +383,10 @@ generate_graph() {
 				$DEFAULT_COLORS                                          \
 				$LAZY                                                    \
 				-W "Generated on: $DATESTRING"                           \
-								                                         \
+								                         \
 				$DS_DEF                                                  \
 				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t   -------------------------------\n" \
-				$GPRINT                                                   \
+				$GPRINT                                                  \
 				LINE:-2$GREY:"Downstream SIG Optimum 64-QAM\: -2 dBmV\t   -------------------------------\n" \
 				                                                                       > /dev/null 2>&1
 			fi
@@ -490,7 +491,7 @@ generate_graph() {
 				$DEFAULT_COLORS                                                        \
 				$LAZY                                                                  \
 				-W "Generated on: $DATESTRING"                                         \
-								                                                       \
+								                                       \
 				$DS_DEF                                                                \
 				$GPRINT                                                                \
 				                                                                       > /dev/null 2>&1
@@ -907,7 +908,7 @@ generate_graph() {
 				GPRINT:out:MIN:"%3.0lf%s /"                                  \
 				GPRINT:out:AVERAGE:"%3.0lf%s /"                              \
 				GPRINT:out:MAX:"%3.0lf%s /"                                  \
-				GPRINT:out:LAST:"%3.0lf%s"                                   > /dev/null
+				GPRINT:out:LAST:"%3.0lf%s\n"                                 > /dev/null
 			fi
 			;;
 
@@ -978,8 +979,8 @@ generate_graph() {
 			IMAGENAME=$IMAGENAME$pdev
 			if [ -n "$pdev" ]; then
 				case $pdev in
-					s) V1="blnd"; V2="watt" ; C1=$RED; C2=$BLUE ; D1="Blindleistung"; D2="Wirkleistung" ; D3="Scheinmaximum" ;;
-					w) V1="watt"; V2="blnd" ; C1=$BLUE; C2=$RED ; D1="Wirkleistung"; D2="Blindleistung" ; D3="Wirkmaximum" ; RPN=",fact_max,*" ;;
+					s) V1="blnd"; V2="watt" ; C1=$RED; C2=$BLUE ; D1="Blindleistung\t"; D2="Wirkleistung\t" ; D3="Scheinmaximum\t" ;;
+					w) V1="watt"; V2="blnd" ; C1=$BLUE; C2=$RED ; D1="Wirkleistung\t"; D2="Blindleistung\t" ; D3="Wirkmaximum\t" ; RPN=",fact_max,*" ;;
 				esac
 				_CURRENT_HEX=$5
 				FILE=$RRDSTATS_RRDDATA/aha_${RRDSTATS_INTERVAL}-${_CURRENT_HEX//:/}.rrd
@@ -988,35 +989,35 @@ generate_graph() {
 					[ -z "$_ALIAS" ] && _ALIAS=$_CURRENT_HEX
 					_SENSOR_GEN=" $_SENSOR_GEN \
 						DEF:volt=$FILE:volt:AVERAGE \
-						DEF:curr=$FILE:curr:AVERAGE  \
+						DEF:curr=$FILE:curr:AVERAGE \
 						DEF:fact=$FILE:fact:AVERAGE \
 						DEF:volt_max=$FILE:volt:MAX \
-						DEF:curr_max=$FILE:curr:MAX  \
-						DEF:fact_max=$FILE:fact:MAX  \
+						DEF:curr_max=$FILE:curr:MAX \
+						DEF:fact_max=$FILE:fact:MAX \
 						CDEF:sein_max=volt_max,curr_max,*$RPN \
 						CDEF:sein=volt,curr,* \
 						CDEF:watt=sein,fact,* \
 						CDEF:blnd=sein,watt,- \
-						AREA:$V1$C1:$D1\t(min/avg/max/cur)$NBSP \
-						GPRINT:$V1:MIN:\t%8.${DECMAL}lf \
-						GPRINT:$V1:AVERAGE:%8.${DECMAL}lf \
-						GPRINT:$V1:MAX:%8.${DECMAL}lf \
-						GPRINT:$V1:LAST:\t%8.${DECMAL}lf\n \
-						AREA:$V2$C2:$D2\t(min/avg/max/cur)$NBSP:STACK \
-						GPRINT:$V2:MIN:\t%8.${DECMAL}lf \
-						GPRINT:$V2:AVERAGE:%8.${DECMAL}lf \
-						GPRINT:$V2:MAX:%8.${DECMAL}lf \
-						GPRINT:$V2:LAST:\t%8.${DECMAL}lf\n \
-						COMMENT:$NBSP${NBSP}Scheinleistung\t(min/avg/max/cur)$NBSP \
-						GPRINT:sein:MIN:\t%8.${DECMAL}lf \
-						GPRINT:sein:AVERAGE:%8.${DECMAL}lf \
-						GPRINT:sein:MAX:%8.${DECMAL}lf \
-						GPRINT:sein:LAST:\t%8.${DECMAL}lf\n \
-						LINE1:sein_max$BLACK:$D3\t(min/avg/max/cur)$NBSP \
-						GPRINT:sein_max:MIN:\t%8.${DECMAL}lf \
-						GPRINT:sein_max:AVERAGE:%8.${DECMAL}lf \
-						GPRINT:sein_max:MAX:%8.${DECMAL}lf \
-						GPRINT:sein_max:LAST:\t%8.${DECMAL}lf\n "
+						AREA:$V1$C1:$D1\t(min/avg/max/cur)\:$NBSP \
+						GPRINT:$V1:MIN:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:$V1:AVERAGE:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:$V1:MAX:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:$V1:LAST:%5.${DECMAL}lf\n \
+						AREA:$V2$C2:$D2\t(min/avg/max/cur)\:$NBSP:STACK \
+						GPRINT:$V2:MIN:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:$V2:AVERAGE:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:$V2:MAX:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:$V2:LAST:%5.${DECMAL}lf\n \
+						COMMENT:$NBSP${NBSP}Scheinleistung\t(min/avg/max/cur)\:$NBSP \
+						GPRINT:sein:MIN:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:sein:AVERAGE:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:sein:MAX:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:sein:LAST:%5.${DECMAL}lf\n \
+						LINE1:sein_max$BLACK:$D3\t(min/avg/max/cur)\:$NBSP \
+						GPRINT:sein_max:MIN:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:sein_max:AVERAGE:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:sein_max:MAX:%5.${DECMAL}lf$NBSP/ \
+						GPRINT:sein_max:LAST:%5.${DECMAL}lf\n "
 				fi
 			else
 				_SENSOR_HEX=$(sed -rn 's/\|.*//p'  /tmp/flash/rrdstats/smarthome.alias 2>/dev/null)
@@ -1062,11 +1063,11 @@ generate_graph() {
 
 						_SENSOR_GEN=" $_SENSOR_GEN \
 							$_SOURCE \
-							LINE3:$kind$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}\t(min/avg/max/cur)$NBSP \
-							GPRINT:$kind$_SENSOR_CUR:MIN:\t%8.${DECMAL}lf \
-							GPRINT:$kind$_SENSOR_CUR:AVERAGE:%8.${DECMAL}lf \
-							GPRINT:$kind$_SENSOR_CUR:MAX:%8.${DECMAL}lf \
-							GPRINT:$kind$_SENSOR_CUR:LAST:\t%8.${DECMAL}lf\n "
+							LINE3:$kind$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}\t(min/avg/max/cur)\:$NBSP \
+							GPRINT:$kind$_SENSOR_CUR:MIN:%5.${DECMAL}lf$NBSP/     \
+							GPRINT:$kind$_SENSOR_CUR:AVERAGE:%5.${DECMAL}lf$NBSP/ \
+							GPRINT:$kind$_SENSOR_CUR:MAX:%5.${DECMAL}lf$NBSP/     \
+							GPRINT:$kind$_SENSOR_CUR:LAST:%5.${DECMAL}lf\n "
 					fi
 					let _SENSOR_CUR=_SENSOR_CUR+1
 				done
@@ -1409,9 +1410,9 @@ EOF
 								soll="$(echo $(( ${tsoll}0 / 2)) | sed 's/.$/,&/g')"
 								[ "$soll" == 126,5 ] && soll="AUS"
 								[ "$soll" == 127,0 ] && soll="EIN"
-								temps=" (${grad%,0}->${soll%,0})"
+								temps=" (${grad%,0}${GRD}C->${soll%,0})"
 							else
-								temps=" (${grad%,0}${GRAD}C)"
+								temps=" (${grad%,0}${GRD}C)"
 							fi
 						else
 							temps=""
