@@ -56,6 +56,7 @@ $(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/harfbuzz"
 $(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/cairo"
 $(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pango-1.0"
 
+$(PKG)_EXCLUDED += usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf
 endif
 
 $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc

@@ -5,5 +5,5 @@ config EXTERNAL_FREETZ_PACKAGE_RRDTOOL
 	help
 		externals the following file(s):
 		 /usr/bin/rrdtool
-		 /usr/share/rrdtool (only if external option "Keep subdirectories" is enabled)
+		 /usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf (only rrdtool 1.2)
 
