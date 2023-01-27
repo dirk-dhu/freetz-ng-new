@@ -133,6 +133,7 @@ Latest changes
    * libxml2 2.10.3
    * mbedTLS 2.7.19/2.28.2
    * neon 0.30.2/0.32.4
+   * openjp2 2.5.0
    * pango 1.50.12
    * pcre2 10.42
    * pixman 0.42.2
