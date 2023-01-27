@@ -41,13 +41,11 @@ $(PKG)_REBUILD_SUBOPTS += $(if $(FREETZ_PACKAGE_OPENVPN_MBEDTLS),FREETZ_LIB_libm
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
-ifneq ($(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON)),y)
 $(PKG)_CONFIGURE_ENV += ac_cv_header_poll_h=no
 $(PKG)_CONFIGURE_ENV += ac_cv_header_sys_epoll_h=no
 $(PKG)_CONFIGURE_ENV += ac_cv_func_epoll_create=no
 $(PKG)_CONFIGURE_ENV += ac_cv_func_strsep=no
 $(PKG)_CONFIGURE_ENV += ac_cv_func_poll=no
-endif
 
 $(PKG)_CONFIGURE_ENV += ac_cv_path_IFCONFIG=/sbin/ifconfig
 $(PKG)_CONFIGURE_ENV += ac_cv_path_IPROUTE=/sbin/ip
