@@ -36,7 +36,6 @@ $(PKG)_CONFIGURE_OPTIONS += --without-x
 $(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/libart-2.0"
 $(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/include/freetype2"
 
-$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_RRDTOOL),usr/bin/rrdtool)
 else
 $(PKG)_DEPENDS_ON += glib2 gettext libpng libxml2 harfbuzz cairo pango
 
@@ -59,6 +58,8 @@ $(PKG)_EXTRA_CPPFLAGS += "-I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/pango-1.0"
 
 $(PKG)_EXCLUDED += usr/share/rrdtool/fonts/DejaVuSansMono-Roman.ttf
 endif
+
+$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_RRDTOOL),usr/bin/rrdtool)
 
 $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
