@@ -268,6 +268,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### O
 
+  * **[openjp2: libopenjp2 (libopenjp2.so) 2.5.0](openjp2.md)<a id='openjp2'></a>**<br>
+    OpenJPEG is an open-source JPEG 2000 codec written in C language. It has been developed in order to promote the use of JPEG 2000, a still-image compression standard from the Joint Photographic Experts Group (JPEG). Since April 2015, it is officially recognized by ISO/IEC and ITU-T as a JPEG 2000 Reference Software.
+
   * **[openjpeg: libopenjpeg (libopenjpeg.so) 1.5.2](openjpeg.md)<a id='openjpeg'></a>**<br>
     JPEG 2000 image compression/decompression library
 
