@@ -21,7 +21,6 @@ if FREETZ_PACKAGE_RRDTOOL
 
 		config FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON
 			bool "1.2.30"
-			depends on !FREETZ_AVM_HAS_RRDTOOL
 			help
 				This version needs about 0,7MB (including all libs).
 

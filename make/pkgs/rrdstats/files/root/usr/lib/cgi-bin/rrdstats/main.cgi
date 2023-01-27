@@ -6,7 +6,7 @@
 . /mod/etc/conf/rrdstats.cfg
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
-RRDTOOL="rrdtool"
+RRDTOOL="rrdtool-freetz"
 
 DATESTRING=$(date -R)
 [ -n "$_cgi_width" ] && let WIDTH=_cgi_width-145 || let WIDTH=500

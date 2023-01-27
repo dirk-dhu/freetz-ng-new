@@ -12,7 +12,7 @@
 [ -n "$COLLECTD_GRAPH_SCRIPT" ] && . $COLLECTD_GRAPH_SCRIPT
 
 HOSTS_DIR=$(cat /tmp/flash/collectd/collectd.conf | sed -e 's/^[ \t]*//' -n -e 's/^DataDir *\"\(.*\)\"/\1/p')
-RRDTOOL=$(which rrdtool)
+RRDTOOL=$(which rrdtool-freetz)
 
 #Error message will be printed later
 if [ -d "$HOSTS_DIR" -a -n "$RRDTOOL" ]; then

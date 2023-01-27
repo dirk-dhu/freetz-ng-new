@@ -16,7 +16,7 @@ DEFAULT_COLORS="--color SHADEA#ffffff --color SHADEB#ffffff --color BACK#ffffff 
 
 DATE="$(date -R)"
 NICE="$(which nice)"
-RRDTOOL="rrdtool"
+RRDTOOL="rrdtool-freetz"
 
 [ -n "$_cgi_width" ] && let WIDTH=_cgi_width-145 || let WIDTH=500
 let HEIGHT=$WIDTH*$COLLECTD_DIMENSIONY/$COLLECTD_DIMENSIONX

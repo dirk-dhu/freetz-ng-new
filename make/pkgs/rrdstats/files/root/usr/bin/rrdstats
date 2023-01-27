@@ -6,7 +6,7 @@
 . /mod/etc/conf/rrdstats.cfg
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
-RRDTOOL="rrdtool"
+RRDTOOL="rrdtool-freetz"
 _NICE=$(which nice)
 _SENSOR_CNF=/tmp/flash/rrdstats/digitemp.conf
 _SENSOR_HEX=$(grep "^ROM " $_SENSOR_CNF 2>/dev/null | sed 's/^ROM [0-9]*//g;s/ 0x//g')
