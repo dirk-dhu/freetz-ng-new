@@ -9,6 +9,7 @@ fi
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 . /usr/lib/libmodcgi.sh
+[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 cginame=${0##*/}
 pkgname=${cginame%%.cgi}
@@ -20,8 +21,9 @@ fi
 
 sec_begin "$(lang de:"Starttyp" en:"Start type")" sec_start
 
+[ "$FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON" == "y" ] && INETDABLE='1' || INETDABLE='0'
 cgi_print_radiogroup_service_starttype \
-	"enabled" "$OPENVPN_ENABLED" "" "" 1
+	"enabled" "$OPENVPN_ENABLED" "" "" $INETDABLE
 
 sec_end
 
