@@ -19,22 +19,23 @@ $(PKG)_CPPFLAGS += $(if $(FREETZ_LIB_libmultid_WITH_LOCAL),-DD_LOCAL)
 $(PKG)_CPPFLAGS += $(if $(FREETZ_LIB_libmultid_WITH_DNS),-DD_DNS)
 $(PKG)_CPPFLAGS += $(if $(FREETZ_LIB_libmultid_WITH_DHCP),-DD_DHCP)
 $(PKG)_CPPFLAGS += $(if $(FREETZ_LIB_libmultid_WITH_LLMNR),-DD_LLMNR)
-$(PKG)_CPPFLAGS += $(if $(FREETZ_AVM_PROP_LIBC_GLIBC),-DD_GLIBC)
-$(PKG)_CPPFLAGS += $(if $(FREETZ_AVM_PROP_LIBC_MUSL),-DD_MUSL)
-$(PKG)_CPPFLAGS += $(if $(FREETZ_AVM_PROP_LIBC_UCLIBC),-DD_UCLIBC)
+$(PKG)_CPPFLAGS += -DLIBC_LOCATION='\"/lib/$(call qstrip,$(FREETZ_AVM_HAS_LIBC_FILE))\"'
 
 
 $(PKG_LOCALSOURCE_PACKAGE)
 $(PKG_CONFIGURED_NOP)
 
-$($(PKG)_BINARY): $($(PKG)_DIR)/.configured
+$($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(LIBMULTID_DIR) \
 		CC="$(TARGET_CC)" \
 		CFLAGS="$(TARGET_CFLAGS)" \
 		CPPFLAGS="$(strip $(LIBMULTID_CPPFLAGS))" \
 		LIB_VERSION="$(LIBMULTID_VERSION)" \
 		all
-	$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/patchelf --remove-rpath $@
+	patchelf --remove-rpath "$(LIBMULTID_BINARY)"
+	@touch "$@"
+
+$($(PKG)_BINARY): $($(PKG)_DIR)/.compiled
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_LIBRARY_STRIP)

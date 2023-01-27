@@ -23,17 +23,7 @@
 #define xstr(s) str(s)
 #define str(s) #s
 
-#ifndef LIBC_LOCATION
-#if defined(D_UCLIBC)
-#define LIBC_LOCATION "/lib/libc.so." xstr(__UCLIBC_MAJOR__)
-#endif
-#if defined(D_MUSL)
-#define LIBC_LOCATION "/lib/libc.so"
-#endif
-#if defined(D_GLIBC)
-#define LIBC_LOCATION "/lib/libc.so.6"
-#endif
-#endif
+// #define LIBC_LOCATION "/lib/libc.so." xstr(__UCLIBC_MAJOR__)
 
 #ifdef DEBUG
 static void debug_printf(char *fmt, ...) {

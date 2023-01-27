@@ -261,6 +261,13 @@ config FREETZ_AVM_HAS_MULTID_LEASES_FORMAT_V2
 	default y
 	depends on FREETZ_AVM_VERSION_05_2X_MIN
 
+config FREETZ_AVM_HAS_LIBC_FILE
+	string
+	default "libc.so"    if FREETZ_AVM_PROP_LIBC_MUSL
+	default "libc.so.0"  if FREETZ_AVM_PROP_LIBC_UCLIBC && FREETZ_TARGET_UCLIBC_0
+	default "libc.so.1"  if FREETZ_AVM_PROP_LIBC_UCLIBC && FREETZ_TARGET_UCLIBC_1
+	default "libc.so.6"  if FREETZ_AVM_PROP_LIBC_GLIBC
+
 config FREETZ_AVM_HAS_AVMMULTID_PRELOAD
 	bool
 	default y
