@@ -2,7 +2,7 @@ $(call PKG_INIT_BIN, 1.9.8)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=051e6b81d9da348f19de906b6696882978d8b2c360b01d5447c5d4664aefe40c
 $(PKG)_SITE:=@SF/swissfileknife
-# ### VERSION:=1.9.8.2
+### VERSION:=1.9.8.2
 ### WEBSITE:=http://stahlworks.com/dev/swiss-file-knife.html
 ### CHANGES:=http://stahlworks.com/dev/?tool=sfkver
 
