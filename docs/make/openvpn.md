@@ -1,6 +1,6 @@
-# OpenVPN 2.4.12/2.5.8
+# OpenVPN 2.4.12/2.6.0
  - Homepage: [https://openvpn.net/community-downloads/](https://openvpn.net/community-downloads/)
- - Changelog: [https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25](https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25)
+ - Changelog: [https://github.com/OpenVPN/openvpn/blob/master/Changes.rst](https://github.com/OpenVPN/openvpn/blob/master/Changes.rst)
  - Repository: [https://github.com/OpenVPN/openvpn](https://github.com/OpenVPN/openvpn)
  - Package: [master/make/pkgs/openvpn/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/openvpn/)
 
