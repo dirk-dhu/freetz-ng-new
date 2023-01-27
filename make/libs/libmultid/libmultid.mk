@@ -33,6 +33,7 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 		LIB_VERSION="$(LIBMULTID_VERSION)" \
 		all
 	patchelf --remove-rpath "$(LIBMULTID_BINARY)"
+	patchelf --replace-needed "libc.so.0" "$(call qstrip,$(FREETZ_AVM_HAS_LIBC_FILE))" "$(LIBMULTID_BINARY)"
 	@touch "$@"
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.compiled
