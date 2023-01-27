@@ -1,11 +1,11 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON),2.4.12,2.5.8))
-$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH_ABANDON:=7426b99b2058b942552af2680ee58546fbf63712992557328bd0014093aa7da4
-$(PKG)_HASH_CURRENT:=2bbd0026469902037ee6499b68283d5ab36c74e36cae3112082cfdf6c77a0c57
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON),2.4.12,2.6.0))
+$(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH_ABANDON:=66952d9c95490e5875f04c9f8fa313b5e816d1b7b4d6cda3fb2ff749ad405dee
+$(PKG)_HASH_CURRENT:=ebec933263c9850ef6f7ce125e2f22214be60b1cbb8ccff18892643fe083ae8f
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openvpn.net/downloads/releases
 ### WEBSITE:=https://openvpn.net/community-downloads/
-### CHANGES:=https://community.openvpn.net/openvpn/wiki/ChangesInOpenvpn25
+### CHANGES:=https://github.com/OpenVPN/openvpn/blob/master/Changes.rst
 ### CVSREPO:=https://github.com/OpenVPN/openvpn
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON),abandon,current)

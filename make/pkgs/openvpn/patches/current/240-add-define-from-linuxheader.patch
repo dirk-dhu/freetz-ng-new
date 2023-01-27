@@ -13,9 +13,9 @@
  
 --- src/openvpn/networking_sitnl.c
 +++ src/openvpn/networking_sitnl.c
-@@ -56,6 +56,10 @@
- #define NLMSG_TAIL(nmsg) \
-     ((struct rtattr *)(((uint8_t *)(nmsg)) + NLMSG_ALIGN((nmsg)->nlmsg_len)))
+@@ -69,6 +69,10 @@
+         _nest->rta_len = (void *)NLMSG_TAIL(_msg) - (void *)_nest;  \
+     }
  
 +#ifndef ETH_ALEN
 +#define ETH_ALEN        6               /* Octets in one ethernet addr   */
