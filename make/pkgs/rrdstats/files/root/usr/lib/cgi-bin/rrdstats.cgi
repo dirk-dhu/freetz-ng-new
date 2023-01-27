@@ -147,10 +147,10 @@ $(lang de:"Graphen immer neu generieren (not lazy)" en:"Always generate new grap
 EOF
 [ "$RRDSTATS_POWER_ENB" == "yes" ] && cat << EOF
 <p>$(lang de:"Diese Verbraucher &uuml;berwachen" en:"Observe these consumers"):&nbsp;<input type="text" name="power_cfg" size="45" maxlength="255" value="$(html "$RRDSTATS_POWER_CFG")">
-EOF
 for x in $(ctlmgr_ctl -v u power 2>/dev/null | sed -rn 's/.*rate_(.*)act=.*/\1/p'); do PIT="$PIT $x=$(ctlmgr_ctl r power status/rate_${x}act 2>/dev/null)"; done
 [ -n "$PIT" ] && echo "<br /><font size='-2'>$(lang de:"Verf&uuml;gabr" en:"Available"): $PIT</font>"
 echo "</p>"
+EOF
 
 
 if [ "$FREETZ_PACKAGE_RRDSTATS_TEMPERATURE_SENSOR" == "y" ]; then
