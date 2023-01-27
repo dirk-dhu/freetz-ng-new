@@ -34,6 +34,19 @@ while [ $# -gt 0 ]; do
 done
 [ -z "$ALL_GRAPHS" ] && ALL_GRAPHS="mainpage"
 
+if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
+	NBSP="$(echo -e  '\240')"
+	GRAD="$(echo -en '\260')"
+	IMAGETYPE='png'
+	GRAPHARGS=''
+	HTMLWIDTH=''
+else
+	NBSP="$(echo -e  '\xC2\xA0')"
+	GRAD="$(echo -en '\xC2\xB0')"
+	IMAGETYPE='svg'
+	GRAPHARGS='--imgformat SVG --disable-rrdtool-tag'
+	HTMLWIDTH="width=\"$(( $WIDTH + 100 ))\""
+fi
 let HEIGHT=$WIDTH*$RRDSTATS_DIMENSIONY/$RRDSTATS_DIMENSIONX
 PERIODE="24h"
 RED=#EA644A
@@ -53,17 +66,6 @@ BLACK=#000000
 GREY=#7F7F7F
 AUML="$(echo -e '\344')"
 GRD="$(echo -en '\260')"
-if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
-	NBSP="$(echo -e  '\240')"
-	GRAD="$(echo -en '\260')"
-	IMAGETYPE='png'
-	GRAPHARGS=''
-else
-	NBSP="$(echo -e  '\xC2\xA0')"
-	GRAD="$(echo -en '\xC2\xB0')"
-	IMAGETYPE='png'
-	GRAPHARGS='--disable-rrdtool-tag'
-fi
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
 _NICE=$(which nice)
 DEFAULT_COLORS="--color SHADEA#ffffff --color SHADEB#ffffff --color BACK#ffffff --color CANVAS#eeeeee80"
@@ -1253,7 +1255,7 @@ gen_main() {
 	sec_begin "$FNAME"
 	generate_graph "$SNAME" "$CURRENT_PERIOD" "$SNAME" "" $GROUP $5
 	echo "<center><a href=\"$SCRIPT_NAME?graph=$SNAME$GROUP_URL\" class=\"image\">"
-	echo "<img src=\"/statpix/$SNAME$GROUP$5.$IMAGETYPE$NOCACHE\" alt=\"$FNAME stats for last $LAPSE\" border=\"0\" />"
+	echo "<img src=\"/statpix/$SNAME$GROUP$5.$IMAGETYPE$NOCACHE\" alt=\"$FNAME stats for last $LAPSE\" border=\"0\" $HTMLWIDTH />"
 	echo "</a></center>"
 	sec_end
 }
@@ -1327,7 +1329,7 @@ graphit() {
 				sec_begin "last $periodnn"
 				generate_graph "$graph" "$periodG" "$graph-$period" "" $GROUP_PERIOD
 				echo "<center><a href=\"$SCRIPT_NAME\" class=\"image\">"
-				echo "<img src=\"/statpix/$graph-$period$GROUP_PERIOD$(cgi_param pdev | tr -d .).$IMAGETYPE$NOCACHE\" alt=\"$heading stats for last $periodnn\" border=\"0\" />"
+				echo "<img src=\"/statpix/$graph-$period$GROUP_PERIOD$(cgi_param pdev | tr -d .).$IMAGETYPE$NOCACHE\" alt=\"$heading stats for last $periodnn\" border=\"0\" $HTMLWIDTH />"
 				echo "</a></center>"
 				sec_end
 			done
