@@ -23,6 +23,7 @@ check "$RRDSTATS_END_BACKUP" yes:b_stop "*":b_start
 check "$RRDSTATS_START_RESTORE" yes:start_restore
 check "$RRDSTATS_DELBACKUP"  yes:delbackup
 check "$RRDSTATS_TOBITAG" yes:tobitag
+check "$RRDSTATS_SHOWFRAME" yes:showframe
 check "$RRDSTATS_DARKMODE" yes:darkmode
 check "$RRDSTATS_CPU100PERC" yes:cpu100perc
 check "$RRDSTATS_UPTIME_ENB" yes:uptime_enb
@@ -145,6 +146,10 @@ cat << EOF
 EOF
 fi
 cat << EOF
+<p>
+<input type="hidden" name="showframe" value="no">
+<input id="sf" type="checkbox" name="showframe" value="yes"$showframe_chk>
+<label for="sf">$(lang de:"Zeichne einen Rahmen um die Graphen" en:"Draw a frame around the graphs")</label></p>
 <p>
 <input type="hidden" name="darkmode" value="no">
 <input id="dm" type="checkbox" name="darkmode" value="yes"$darkmode_chk>
