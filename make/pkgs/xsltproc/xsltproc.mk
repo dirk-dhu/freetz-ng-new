@@ -1,7 +1,11 @@
 $(call PKG_INIT_BIN, 1.1.37)
 $(PKG)_SOURCE:=libxslt-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=3a4b27dc8027ccd6146725950336f1ec520928f320f144eb5fa7990ae6123ab4
-$(PKG)_SITE:=ftp://xmlsoft.org/libxslt
+$(PKG)_SITE:=https://download.gnome.org/sources/libxslt/$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)),ftp://xmlsoft.org/libxslt
+### WEBSITE:=http://www.xmlsoft.org/libxslt/index.html
+### MANPAGE:=https://gitlab.gnome.org/GNOME/libxslt/wikis/home
+### CHANGES:=https://gitlab.gnome.org/GNOME/libxslt/blob/master/NEWS
+### CVSREPO:=https://gitlab.gnome.org/GNOME/libxslt
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/$(pkg)$(if $(FREETZ_PACKAGE_XSLTPROC_STATIC),,/.libs)/$(pkg)
 $(PKG)_BINARY_TARGET_DIR := $($(PKG)_DEST_DIR)/usr/bin/$(pkg)
@@ -26,6 +30,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-python=no
 $(PKG)_CONFIGURE_OPTIONS += --with-crypto=no
 $(PKG)_CONFIGURE_OPTIONS += --with-debugger=no
 $(PKG)_CONFIGURE_OPTIONS += --with-debug=no
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -54,6 +59,7 @@ $($(PKG)_LIBS_TARGET_DIR): $($(PKG)_TARGET_LIBDIR)/%: $(TARGET_TOOLCHAIN_STAGING
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARY_TARGET_DIR) $($(PKG)_LIBS_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(XSLTPROC_DIR) clean
