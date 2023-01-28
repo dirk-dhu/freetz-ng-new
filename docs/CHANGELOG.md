@@ -87,6 +87,7 @@ Latest changes
    * DejaVu Fonts TTF 2.37
    * Dnsmasq 2.80/2.88
    * Dropbear 2022.83
+   * Fontconfig 2.14.1
    * getdns 1.7.3
    * Git 2.39.1
    * HAProxy 2.6.8
@@ -120,7 +121,6 @@ Latest changes
  - Libraries:
    * cairo 1.17.4
    * expat 2.5.0
-   * fontconfig 2.14.1
    * fribidi 1.0.12
    * glib2 2.32.4/2.75.2
    * harfbuzz 6.0.0
