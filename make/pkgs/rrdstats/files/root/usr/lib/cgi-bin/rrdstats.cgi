@@ -141,13 +141,13 @@ cat << EOF
 <input type="hidden" name="tobitag" value="no">
 <input id="tt" type="checkbox" name="tobitag" value="yes"$tobitag_chk>
 <label for="tt">$(lang de:"Zeige den Namen des Authors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
+EOF
+fi
+cat << EOF
 <p>
 <input type="hidden" name="darkmode" value="no">
 <input id="dm" type="checkbox" name="darkmode" value="yes"$darkmode_chk>
 <label for="dm">$(lang de:"Aktiviere Dark-Mode f&uuml;r die Graphen" en:"Enable dark-mode for the graphs")</label></p>
-EOF
-fi
-cat << EOF
 <p>
 <input type="hidden" name="cpu100perc" value="no">
 <input id="c1" type="checkbox" name="cpu100perc" value="yes"$cpu100perc_chk>
