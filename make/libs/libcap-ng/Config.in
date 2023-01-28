@@ -8,6 +8,7 @@ config FREETZ_LIB_libcap_ng
 
 config FREETZ_LIB_libdrop_ambient
 	bool "libdrop_ambient (libdrop_ambient.so)"
+	depends on FREETZ_KERNEL_VERSION_4_4_MIN
 	default n
 	help
 		This library can be used via LD_PRELOAD to force an application

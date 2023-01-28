@@ -7,11 +7,12 @@ $(PKG)_SITE:=https://people.redhat.com/sgrubb/libcap-ng
 ### CHANGES:=https://people.redhat.com/sgrubb/libcap-ng/ChangeLog
 ### CVSREPO:=https://github.com/stevegrubb/libcap-ng
 
-$(PKG)_LIBNAMES_SHORT   := libcap-ng libdrop_ambient
+$(PKG)_LIBNAMES_SHORT   := libcap-ng $(if $(FREETZ_KERNEL_VERSION_4_4_MIN),libdrop_ambient)
 $(PKG)_LIBNAMES_LONG    := $($(PKG)_LIBNAMES_SHORT:%=%.so.$($(PKG)_LIB_VERSION))
 $(PKG)_LIBS_BUILD_DIR   := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_DIR)/src/.libs/%)
 $(PKG)_LIBS_STAGING_DIR := $($(PKG)_LIBNAMES_LONG:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%)
 $(PKG)_LIBS_TARGET_DIR  := $($(PKG)_LIBNAMES_LONG:%=$($(PKG)_TARGET_DIR)/%)
+$(PKG)_LA_STAGING_DIR   := $($(PKG)_LIBNAMES_SHORT:%=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%.la)
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
 
@@ -36,8 +37,7 @@ $($(PKG)_LIBS_STAGING_DIR): $($(PKG)_LIBS_BUILD_DIR)
 		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
 		install
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcap-ng.la \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libdrop_ambient.la \
+		$(LIBCAP_NG_LA_STAGING_DIR) \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/libcap-ng.pc
 
 $($(PKG)_LIBS_TARGET_DIR): $($(PKG)_TARGET_DIR)/%: $(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/%
@@ -49,7 +49,7 @@ $(pkg)-precompiled: $($(PKG)_LIBS_TARGET_DIR)
 
 
 $(pkg)-clean:
-	-$(SUBMAKE) -C $(PANGO_DIR) clean
+	-$(SUBMAKE) -C $(LIBCAP_NG_DIR) clean
 	$(RM) \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcap-ng.* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libdrop_ambient.* \
@@ -58,6 +58,6 @@ $(pkg)-clean:
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/share/man/man3/capng_*.3
 
 $(pkg)-uninstall:
-	$(RM) $(PANGO_TARGET_DIR)/libcap-ng.so* $(PANGO_TARGET_DIR)/libdrop_ambient.so*
+	$(RM) $(LIBCAP_NG_TARGET_DIR)/libcap-ng.so* $(LIBCAP_NG_TARGET_DIR)/libdrop_ambient.so*
 
 $(PKG_FINISH)
