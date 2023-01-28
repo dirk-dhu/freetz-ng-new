@@ -41,9 +41,6 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[FLAC (libFLAC.so) 1.3.2](flac.md)<a id='flac'></a>**<br>
     Free Lossless Audio Codec library.
 
-  * **[Fontconfig (libfontconfig.so) 2.14.1](fontconfig.md)<a id='fontconfig'></a>**<br>
-    Fontconfig is a library for configuring and customizing font access.
-
   * **[FreeType (freetype.so) 2.12.1](freetype.md)<a id='freetype'></a>**<br>
     FreeType 2 is a software font engine that is designed to be small, efficient, highly customizable, and portable while capable of producing high-quality output (glyph images). It can be used in graphics libraries, display servers, font conversion tools, text image generation tools, and many other products as well.
 
