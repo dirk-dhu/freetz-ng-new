@@ -21,7 +21,7 @@ fi
 
 sec_begin "$(lang de:"Starttyp" en:"Start type")" sec_start
 
-[ "$FREETZ_PACKAGE_OPENVPN_VERSION_ABANDON" == "y" ] && INETDABLE='1' || INETDABLE='0'
+[ "$FREETZ_PACKAGE_OPENVPN_WITH_INETDABLE" == "y" ] && INETDABLE='1' || INETDABLE='0'
 cgi_print_radiogroup_service_starttype \
 	"enabled" "$OPENVPN_ENABLED" "" "" $INETDABLE
 

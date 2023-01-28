@@ -105,7 +105,7 @@ Latest changes
    * ncursesw 6.4
    * OpenSSH 9.1p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1s/3.0.7
-   * OpenVPN 2.4.12/2.6.0
+   * OpenVPN 2.4.12/2.5.8/2.6.0
    * PCSC-lite 1.9.9
    * RPCBind 1.2.6
    * RRDtool 1.2.30/1.8.0
