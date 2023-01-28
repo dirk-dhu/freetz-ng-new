@@ -69,7 +69,9 @@ AUML="$(echo -e '\344')"
 GRD="$(echo -en '\260')"
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
 _NICE=$(which nice)
-DEFAULT_COLORS="--color SHADEA#ffffff --color SHADEB#ffffff --color BACK#ffffff --color CANVAS#eeeeee80"
+[ "$RRDSTATS_DARKMODE" != "yes" ] \
+  && DEFAULT_COLORS="-c SHADEA#ffffff -c SHADEB#ffffff  -c BACK#ffffff -c CANVAS#eeeeee80" \
+  || DEFAULT_COLORS="-c SHADEA#000000 -c SHADEB#555555  -c BACK#333333 -c CANVAS#222222  -c FONT#DDDDDD  -c GRID#AAAAAA77 -c MGRID#AAAAAA77  -c AXIS#00000000 -c ARROW#00000000  -c FRAME#111111"
 
 generate_graph() {
 	TITLE=""

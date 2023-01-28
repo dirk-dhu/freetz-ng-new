@@ -23,6 +23,7 @@ check "$RRDSTATS_END_BACKUP" yes:b_stop "*":b_start
 check "$RRDSTATS_START_RESTORE" yes:start_restore
 check "$RRDSTATS_DELBACKUP"  yes:delbackup
 check "$RRDSTATS_TOBITAG" yes:tobitag
+check "$RRDSTATS_DARKMODE" yes:darkmode
 check "$RRDSTATS_CPU100PERC" yes:cpu100perc
 check "$RRDSTATS_UPTIME_ENB" yes:uptime_enb
 check "$RRDSTATS_POWER_ENB" yes:power_enb
@@ -140,6 +141,10 @@ cat << EOF
 <input type="hidden" name="tobitag" value="no">
 <input id="tt" type="checkbox" name="tobitag" value="yes"$tobitag_chk>
 <label for="tt">$(lang de:"Zeige den Namen des Authors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
+<p>
+<input type="hidden" name="darkmode" value="no">
+<input id="dm" type="checkbox" name="darkmode" value="yes"$darkmode_chk>
+<label for="dm">$(lang de:"Aktiviere Dark-Mode f&uuml;r die Graphen" en:"Enable dark-mode for the graphs")</label></p>
 EOF
 fi
 cat << EOF
