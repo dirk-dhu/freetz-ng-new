@@ -114,6 +114,7 @@ Latest changes
    * tcpdump 4.1.1/4.99.3
    * Tor 0.4.7.13
    * Unbound 1.17.1
+   * xsltproc 1.1.37
    * XZ Utils 5.4.1
 
  - Libraries:
@@ -748,7 +749,7 @@ Latest changes
     * libusb1 1.0.23/1.0.24
     * libvorbis 1.3.5
     * libxml 2.9.9
-    * libxslt/xsltproc 1.1.37
+    * libxslt/xsltproc 1.1.33
     * lighttpd 1.4.57
     * lsof 4.89
     * ltrace 0.7.91-git
