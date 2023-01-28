@@ -2,7 +2,7 @@
 
 . /usr/lib/libmodcgi.sh
 
-cgi --width=$RRDSTATS_ALTWIDTH
+cgi --width=$(modconf value RRDSTATS_ALTWIDTH rrdstats)
 cgi_begin "RRDstats"
 
 source /usr/lib/cgi-bin/rrdstats/stats.cgi

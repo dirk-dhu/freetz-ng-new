@@ -117,7 +117,7 @@ cat << EOF
 <p>$(lang de:"Tempor&auml;res Verzeichnis" en:"Temporary folder"):&nbsp;<input type="text" name="rrdtemp" size="45" maxlength="255" value="$(html "$RRDSTATS_RRDTEMP")"></p>
 <p>$(lang de:"Persistentes Verzeichnis" en:"Persistent folder"):&nbsp;<input type="text" name="rrddata" size="45" maxlength="255" value="$(html "$RRDSTATS_RRDDATA")"></p>
 <p>$(lang de:"Aufzeichnungsintervall in Sekunden" en:"Log interval in seconds"):&nbsp;<input type="text" name="interval" size="3" maxlength="9" value="$(html "$RRDSTATS_INTERVAL")"></p>
-<p>$(lang de:""Breite der zus&auml;tzlichen Webserver" en:"Width of additional webservers"):&nbsp;<input type="text" name="altwidth" size="4" maxlength="4" value="$(html "$RRDSTATS_ALTWIDTH")"></p>
+<p>$(lang de:"Breite der zus&auml;tzlichen Webserver" en:"Width of additional webservers"):&nbsp;<input type="text" name="altwidth" size="4" maxlength="4" value="$(html "$RRDSTATS_ALTWIDTH")"></p>
 <p>
 $(lang de:"Dimensionsverh&auml;ltnis der Graphen" en:"Graph dimensions ratio"):
 <input type="text" name="dimensionx" size="3" maxlength="9" value="$(html "$RRDSTATS_DIMENSIONX")">
