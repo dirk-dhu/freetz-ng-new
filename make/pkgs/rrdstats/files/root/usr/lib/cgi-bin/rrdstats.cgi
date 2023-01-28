@@ -22,6 +22,7 @@ check "$RRDSTATS_SAVEBACKUP" yes:savebackup
 check "$RRDSTATS_END_BACKUP" yes:b_stop "*":b_start
 check "$RRDSTATS_START_RESTORE" yes:start_restore
 check "$RRDSTATS_DELBACKUP"  yes:delbackup
+check "$RRDSTATS_TOBITAG" yes:tobitag
 check "$RRDSTATS_CPU100PERC" yes:cpu100perc
 check "$RRDSTATS_UPTIME_ENB" yes:uptime_enb
 check "$RRDSTATS_POWER_ENB" yes:power_enb
@@ -132,6 +133,16 @@ $(lang de:"Graphen immer neu generieren (not lazy)" en:"Always generate new grap
 <input type="hidden" name="notlazys" value="no">
 <input id="l2" type="checkbox" name="notlazys" value="yes"$notlazys_chk><label for="l2">$(lang de:"Unterseiten" en:"Sub-pages")</label>
 </p>
+EOF
+if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT" == "y" ]; then
+cat << EOF
+<p>
+<input type="hidden" name="tobitag" value="no">
+<input id="tt" type="checkbox" name="tobitag" value="yes"$tobitag_chk>
+<label for="tt">$(lang de:"Zeige den Namen des Authors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
+EOF
+fi
+cat << EOF
 <p>
 <input type="hidden" name="cpu100perc" value="no">
 <input id="c1" type="checkbox" name="cpu100perc" value="yes"$cpu100perc_chk>

@@ -44,7 +44,8 @@ else
 	NBSP="$(echo -e  '\xC2\xA0')"
 	GRAD="$(echo -en '\xC2\xB0')"
 	IMAGETYPE='svg'
-	GRAPHARGS='--imgformat SVG --disable-rrdtool-tag'
+	GRAPHARGS='--imgformat SVG'
+	[ "$RRDSTATS_TOBITAG" != "yes" ] && GRAPHARGS="$GRAPHARGS --disable-rrdtool-tag"
 	HTMLWIDTH="width=\"$(( $WIDTH + 100 ))\""
 fi
 let HEIGHT=$WIDTH*$RRDSTATS_DIMENSIONY/$RRDSTATS_DIMENSIONX
