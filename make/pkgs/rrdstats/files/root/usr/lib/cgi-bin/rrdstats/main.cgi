@@ -39,6 +39,7 @@ if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
 	GRAD="$(echo -en '\260')"
 	IMAGETYPE='png'
 	GRAPHARGS=''
+	[ "$RRDSTATS_TOBITAG" != "yes" ] && GRAPHARGS="$GRAPHARGS --disable-rrdtool-tag"
 	HTMLWIDTH=''
 else
 	NBSP="$(echo -e  '\xC2\xA0')"
