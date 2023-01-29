@@ -4,7 +4,7 @@ Only in openvpn-2.5_beta1.old/src/openvpn: socket.c.orig
 diff -u -r -x .DS_Store openvpn-2.5_beta1.old/src/openvpn/socket.h openvpn-2.5_beta1.new/src/openvpn/socket.h
 --- openvpn-2.5_beta1.old/src/openvpn/socket.h	2020-08-16 11:57:17.000000000 -0400
 +++ openvpn-2.5_beta1.new/src/openvpn/socket.h	2020-08-16 11:57:17.000000000 -0400
-@@ -249,6 +249,10 @@
+@@ -246,6 +246,10 @@
  #endif
  };
  
@@ -15,7 +15,7 @@ diff -u -r -x .DS_Store openvpn-2.5_beta1.old/src/openvpn/socket.h openvpn-2.5_b
  /*
   * Some Posix/Win32 differences.
   */
-@@ -1049,30 +1053,56 @@
+@@ -1056,36 +1060,62 @@
  static inline int
  link_socket_read(struct link_socket *sock,
                   struct buffer *buf,
@@ -26,7 +26,13 @@ diff -u -r -x .DS_Store openvpn-2.5_beta1.old/src/openvpn/socket.h openvpn-2.5_b
 +                 int xormasklen)
  {
 +    int res;
-     if (proto_is_udp(sock->info.proto)) /* unified UDPv4 and UDPv6 */
+ #ifdef _WIN32
+     if (proto_is_udp(sock->info.proto) || sock->dco_installed)
+ #else
+     if (proto_is_udp(sock->info.proto))
+ #endif
+     /* unified UDPv4 and UDPv6, for DCO the kernel
+      * will strip the length header */
      {
 -        int res;
  
@@ -40,7 +46,7 @@ diff -u -r -x .DS_Store openvpn-2.5_beta1.old/src/openvpn/socket.h openvpn-2.5_b
      else if (proto_is_tcp(sock->info.proto)) /* unified TCPv4 and TCPv6 */
      {
          /* from address was returned by accept */
-         addr_copy_sa(&from->dest, &sock->info.lsa->actual.dest);
+         from->dest = sock->info.lsa->actual.dest;
 -        return link_socket_read_tcp(sock, buf);
 +        res = link_socket_read_tcp(sock, buf);
      }
@@ -76,7 +82,7 @@ diff -u -r -x .DS_Store openvpn-2.5_beta1.old/src/openvpn/socket.h openvpn-2.5_b
  }
  
  /*
-@@ -1163,8 +1193,34 @@
+@@ -1177,8 +1207,34 @@
  static inline int
  link_socket_write(struct link_socket *sock,
                    struct buffer *buf,
@@ -109,6 +115,6 @@ diff -u -r -x .DS_Store openvpn-2.5_beta1.old/src/openvpn/socket.h openvpn-2.5_b
 +            ASSERT (0);
 +            return -1; /* NOTREACHED */
 +    }
-     if (proto_is_udp(sock->info.proto)) /* unified UDPv4 and UDPv6 */
+     if (proto_is_udp(sock->info.proto) || sock->dco_installed)
      {
-         return link_socket_write_udp(sock, buf, to);
+         /* unified UDPv4 and UDPv6 and DCO (kernel adds size header) */

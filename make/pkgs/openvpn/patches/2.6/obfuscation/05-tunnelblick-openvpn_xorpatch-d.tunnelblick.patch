@@ -1,8 +1,8 @@
 --- src/openvpn/socket.c
 +++ src/openvpn/socket.c
-@@ -55,6 +55,56 @@
-     IPv6_TCP_HEADER_SIZE,
- };
+@@ -61,6 +61,56 @@
+     }
+ }
  
 +int buffer_mask(struct buffer *buf, const char *mask, int xormasklen)
 +{
@@ -55,5 +55,5 @@
 +}
 +
  /*
-  * Convert sockflags/getaddr_flags into getaddr_flags
+  * Functions related to the translation of DNS names to IP addresses.
   */
