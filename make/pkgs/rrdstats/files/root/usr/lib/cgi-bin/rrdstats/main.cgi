@@ -39,14 +39,12 @@ if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_ABANDON" == "y" ]; then
 	GRAD="$(echo -en '\260')"
 	IMAGETYPE='png'
 	GRAPHARGS=''
-	[ "$RRDSTATS_TOBITAG" != "yes" ] && GRAPHARGS="$GRAPHARGS --disable-rrdtool-tag"
 	HTMLWIDTH=''
 else
 	NBSP="$(echo -e  '\xC2\xA0')"
 	GRAD="$(echo -en '\xC2\xB0')"
 	IMAGETYPE='svg'
 	GRAPHARGS='--imgformat SVG'
-	[ "$RRDSTATS_TOBITAG" != "yes" ] && GRAPHARGS="$GRAPHARGS --disable-rrdtool-tag"
 	HTMLWIDTH="width=\"$(( $WIDTH + 100 ))\""
 fi
 let HEIGHT=$WIDTH*$RRDSTATS_DIMENSIONY/$RRDSTATS_DIMENSIONX
@@ -71,9 +69,17 @@ GRD="$(echo -en '\260')"
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
 _NICE=$(which nice)
 [ "$RRDSTATS_DARKMODE" != "yes" ] \
-  && DEFAULT_COLORS="-c SHADEA#cccccc -c SHADEB#7f7f7f -c BACK#ffffff -c CANVAS#eeeeee80" \
-  || DEFAULT_COLORS="-c SHADEA#181818 -c SHADEB#555555 -c BACK#333333 -c CANVAS#222222 -c FONT#DDDDDD -c GRID#AAAAAA77 -c MGRID#AAAAAA77 -c AXIS#00000000 -c ARROW#00000000 -c FRAME#111111"
+  && DEFAULT_COLORS="-c SHADEA#cccccc -c SHADEB#7f7f7f  -c BACK#ffffff -c CANVAS#eeeeee80" \
+  || DEFAULT_COLORS="-c SHADEA#181818 -c SHADEB#555555  -c BACK#333333 -c CANVAS#222222  -c FONT#DDDDDD  -c GRID#AAAAAA77 -c MGRID#AAAAAA77  -c AXIS#00000000 -c ARROW#00000000  -c FRAME#111111"
 [ "$RRDSTATS_SHOWFRAME" != "yes" ] && DEFAULT_COLORS="$DEFAULT_COLORS --border 0"
+[ "$RRDSTATS_TOBITAG" != "yes" ] && GRAPHARGS="$GRAPHARGS --disable-rrdtool-tag"
+
+len15() {
+	local x="$*"
+	while [ "${#x}" -lt 15 ]; do x="$x "; done
+	echo -n "${x// /$NBSP}"
+}
+mamc='\t\t   min         avg        max        cur\n'
 
 generate_graph() {
 	TITLE=""
@@ -86,100 +92,106 @@ generate_graph() {
 			FILE=$RRDSTATS_RRDDATA/cpu_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				[ "$RRDSTATS_CPU100PERC" = "yes" ] && CPU100PERC=" -u 100 -r "
-				$_NICE $RRDTOOL graph $GRAPHARGS                 \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE          \
-				--title "$TITLE"                                 \
-				--start now-$PERIODE                             \
-				--width $WIDTH --height $HEIGHT                  \
-				--vertical-label "CPU usage [%]"                 \
-				$DEFAULT_COLORS                                  \
-				-l 0 $CPU100PERC $LAZY                           \
-				-W "Generated on: $DATESTRING"                   \
-				                                                 \
-				DEF:user=$FILE:user:AVERAGE                      \
-				DEF:nice=$FILE:nice:AVERAGE                      \
-				DEF:syst=$FILE:syst:AVERAGE                      \
-				DEF:wait=$FILE:wait:AVERAGE                      \
-				DEF:idle=$FILE:idle:AVERAGE                      \
-				CDEF:cpu=user,nice,syst,wait,+,+,+               \
-				                                                 \
-				AREA:wait$RED:"CPU wait"                         \
-				AREA:syst$GREEN:"CPU system":STACK               \
-				AREA:nice$YELLOW:"CPU nice":STACK                \
-				AREA:user$BLUE:"CPU user\n":STACK                \
-				                                                 \
-				LINE1:cpu$BLACK                                  \
-				COMMENT:"Averaged CPU usage (min/avg/max/cur)\:" \
-				GPRINT:cpu:MIN:"%2.1lf%% /"                      \
-				GPRINT:cpu:AVERAGE:"%2.1lf%% /"                  \
-				GPRINT:cpu:MAX:"%2.1lf%% /"                      \
-				GPRINT:cpu:LAST:"%2.1lf%%\n"                     > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS                           \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                    \
+				--title "$TITLE"                                           \
+				--start now-$PERIODE                                       \
+				--width $WIDTH --height $HEIGHT                            \
+				--vertical-label "CPU usage [percent]"                     \
+				$DEFAULT_COLORS                                            \
+				-l 0 $CPU100PERC $LAZY                                     \
+				-W "Generated on: $DATESTRING"                             \
+				                                                           \
+				DEF:user=$FILE:user:AVERAGE                                \
+				DEF:nice=$FILE:nice:AVERAGE                                \
+				DEF:syst=$FILE:syst:AVERAGE                                \
+				DEF:wait=$FILE:wait:AVERAGE                                \
+				DEF:idle=$FILE:idle:AVERAGE                                \
+				CDEF:cpu=user,nice,syst,wait,+,+,+                         \
+				                                                           \
+				AREA:wait$RED:"CPU wait\t"                                 \
+				AREA:syst$GREEN:"CPU system\t":STACK                       \
+				AREA:nice$YELLOW:"CPU nice\t":STACK                        \
+				AREA:user$BLUE:"CPU user\n":STACK                          \
+				                                                           \
+				COMMENT:"\t\t$mamc"                                        \
+				                                                           \
+				LINE1:cpu$BLACK                                            \
+				COMMENT:"CPU usage\t[percent]\:\t"                         \
+				GPRINT:cpu:MIN:"%2.1lf%s\t/"                               \
+				GPRINT:cpu:AVERAGE:"%2.1lf%s\t/"                           \
+				GPRINT:cpu:MAX:"%2.1lf%s\t/"                               \
+				GPRINT:cpu:LAST:"%2.1lf%s\n"                               > /dev/null
 			fi
 			;;
 		mem)
 			FILE=$RRDSTATS_RRDDATA/mem_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				let RAM=$(grep MemTotal /proc/meminfo | tr -s [:blank:] " " | cut -d " " -f 2)*1024
-				$_NICE $RRDTOOL graph $GRAPHARGS                                    \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                             \
-				--title "$TITLE"                                                    \
-				--start now-$PERIODE -u $RAM -r -l 0 $LAZY                          \
-				--width $WIDTH --height $HEIGHT                                     \
-				--vertical-label "allocation [bytes]"                               \
-				$DEFAULT_COLORS                                                     \
-				--base 1024 --units=si                                              \
-				-W "Generated on: $DATESTRING"                                      \
-				                                                                    \
-				DEF:used=$FILE:used:AVERAGE                                         \
-				DEF:buff=$FILE:buff:AVERAGE                                         \
-				DEF:cached=$FILE:cached:AVERAGE                                     \
-				DEF:free=$FILE:free:AVERAGE                                         \
-				                                                                    \
-				AREA:used$RED:"Used memory   (min/avg/max/cur)[bytes]\:"            \
-				LINE1:used$RED_D                                                    \
-				GPRINT:used:MIN:"%3.0lf%s /"                                        \
-				GPRINT:used:AVERAGE:"%3.0lf%s /"                                    \
-				GPRINT:used:MAX:"%3.0lf%s /"                                        \
-				GPRINT:used:LAST:"%3.0lf%s\n"                                       \
-				                                                                    \
-				AREA:buff$BLUE:"Buffer memory (min/avg/max/cur)[bytes]\:":STACK     \
-				GPRINT:buff:MIN:"%3.0lf%s /"                                        \
-				GPRINT:buff:AVERAGE:"%3.0lf%s /"                                    \
-				GPRINT:buff:MAX:"%3.0lf%s /"                                        \
-				GPRINT:buff:LAST:"%3.0lf%s\n"                                       \
-				                                                                    \
-				AREA:cached$YELLOW:"Cache memory  (min/avg/max/cur)[bytes]\:":STACK \
-				GPRINT:cached:MIN:"%3.0lf%s /"                                      \
-				GPRINT:cached:AVERAGE:"%3.0lf%s /"                                  \
-				GPRINT:cached:MAX:"%3.0lf%s /"                                      \
-				GPRINT:cached:LAST:"%3.0lf%s\n"                                     \
-				                                                                    \
-				AREA:free$GREEN:"Free memory   (min/avg/max/cur)[bytes]\:":STACK    \
-				GPRINT:free:MIN:"%3.0lf%s /"                                        \
-				GPRINT:free:AVERAGE:"%3.0lf%s /"                                    \
-				GPRINT:free:MAX:"%3.0lf%s /"                                        \
-				GPRINT:free:LAST:"%3.0lf%s\n"                                       > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS                                       \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                \
+				--title "$TITLE"                                                       \
+				--start now-$PERIODE -u $RAM -r -l 0 $LAZY                             \
+				--width $WIDTH --height $HEIGHT                                        \
+				--vertical-label "Allocation [bytes]"                                  \
+				$DEFAULT_COLORS                                                        \
+				--base 1024 --units=si                                                 \
+				-W "Generated on: $DATESTRING"                                         \
+				                                                                       \
+				COMMENT:"\t\t$mamc"                                                    \
+				                                                                       \
+				DEF:used=$FILE:used:AVERAGE                                            \
+				DEF:buff=$FILE:buff:AVERAGE                                            \
+				DEF:cached=$FILE:cached:AVERAGE                                        \
+				DEF:free=$FILE:free:AVERAGE                                            \
+				                                                                       \
+				AREA:used$RED:"Used memory\t[bytes]\:\t"                               \
+				LINE1:used$RED_D                                                       \
+				GPRINT:used:MIN:"%3.0lf%s\t/"                                          \
+				GPRINT:used:AVERAGE:"%3.0lf%s\t/"                                      \
+				GPRINT:used:MAX:"%3.0lf%s\t/"                                          \
+				GPRINT:used:LAST:"%3.0lf%s\n"                                          \
+				                                                                       \
+				AREA:buff$BLUE:"Buffer memory\t[bytes]\:\t":STACK                      \
+				GPRINT:buff:MIN:"%3.0lf%s\t/"                                          \
+				GPRINT:buff:AVERAGE:"%3.0lf%s\t/"                                      \
+				GPRINT:buff:MAX:"%3.0lf%s\t/"                                          \
+				GPRINT:buff:LAST:"%3.0lf%s\n"                                          \
+				                                                                       \
+				AREA:cached$YELLOW:"Cache memory\t[bytes]\:\t":STACK                   \
+				GPRINT:cached:MIN:"%3.0lf%s\t/"                                        \
+				GPRINT:cached:AVERAGE:"%3.0lf%s\t/"                                    \
+				GPRINT:cached:MAX:"%3.0lf%s\t/"                                        \
+				GPRINT:cached:LAST:"%3.0lf%s\n"                                        \
+				                                                                       \
+				AREA:free$GREEN:"Free memory\t[bytes]\:\t":STACK                       \
+				GPRINT:free:MIN:"%3.0lf%s\t/"                                          \
+				GPRINT:free:AVERAGE:"%3.0lf%s\t/"                                      \
+				GPRINT:free:MAX:"%3.0lf%s\t/"                                          \
+				GPRINT:free:LAST:"%3.0lf%s\n"                                          > /dev/null
 			fi
 			;;
 		upt)
 			FILE=$RRDSTATS_RRDDATA/upt_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                          \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                   \
-				--title "$TITLE"                                          \
-				--start -1-$PERIODE -l 0 -r                               \
-				--width $WIDTH --height $HEIGHT $LAZY                     \
-				--vertical-label "hours" -X 1                             \
-				$DEFAULT_COLORS                                           \
-				-W "Generated on: $DATESTRING"                            \
-				                                                          \
-				DEF:uptime=$FILE:uptime:MAX                               \
-                                                                                          \
-				AREA:uptime$YELLOW:"Uptime (min/avg/max/cur)[hours]\:   " \
-				GPRINT:uptime:MIN:"%3.2lf /"                              \
-				GPRINT:uptime:AVERAGE:"%3.2lf /"                          \
-				GPRINT:uptime:MAX:"%3.2lf /"                              \
-				GPRINT:uptime:LAST:"%3.2lf\n"                             > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS                           \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                    \
+				--title "$TITLE"                                           \
+				--start -1-$PERIODE -l 0 -r                                \
+				--width $WIDTH --height $HEIGHT $LAZY                      \
+				--vertical-label "Uptime [hours]" -X 1                     \
+				$DEFAULT_COLORS                                            \
+				-W "Generated on: $DATESTRING"                             \
+				                                                           \
+				COMMENT:"\t\t$mamc"                                        \
+				                                                           \
+				DEF:uptime=$FILE:uptime:MAX                                \
+				                                                           \
+				AREA:uptime$YELLOW:"Uptime\t[hours]\:\t"                   \
+				GPRINT:uptime:MIN:"%3.2lf\t/"                              \
+				GPRINT:uptime:AVERAGE:"%3.2lf\t/"                          \
+				GPRINT:uptime:MAX:"%3.2lf\t/"                              \
+				GPRINT:uptime:LAST:"%3.2lf\n"                              > /dev/null
 			fi
 			;;
 		pow)
@@ -187,24 +199,24 @@ generate_graph() {
 			if [ -e $FILE ]; then
 				for sourceitem in $RRDSTATS_POWER_CFG; do
 					case $sourceitem in
-						sum)		DCOL=$DARKRED  ; DNAME="Gesamtsystem$NBSP$NBSP$NBSP"          ;;
-						system)		DCOL=$LBLUE    ; DNAME="Hauptprozessor$NBSP"                  ;;
-						wlan)		DCOL=$PURPLE   ; DNAME="Funknetzwerk$NBSP$NBSP$NBSP"          ;;
-						dsp)		DCOL=$BLUE     ; DNAME="Signalprozessor"                      ;;
-						ab)		DCOL=$YELLOW   ; DNAME="Analogtelefonie"                      ;;
-						usbhost)	DCOL=$GREEN    ; DNAME="USB-System$NBSP$NBSP$NBSP$NBSP$NBSP"  ;;
-						eth)		DCOL=$ORANGE_D ; DNAME="Kabelnetzwerk$NBSP$NBSP"              ;;
-						dect)		DCOL=$LBLUE    ; DNAME="Funktelefonie$NBSP$NBSP"              ;;
-						battcharge)	DCOL=$BLACK    ; DNAME="Akkuladung$NBSP$NBSP$NBSP$NBSP$NBSP"  ;;
-						lte)            DCOL=$BLACK    ; DNAME="LTE-Funkmodul$NBSP$NBSP"              ;;
-						*)		DCOL=$BLACK    ; DNAME="$sourceitem"                          ;;
+						sum)		DCOL=$DARKRED  ; DNAME="Gesamtsystem"    ;;
+						system)		DCOL=$LBLUE    ; DNAME="Hauptprozessor"  ;;
+						wlan)		DCOL=$PURPLE   ; DNAME="Funknetzwerk"    ;;
+						dsp)		DCOL=$BLUE     ; DNAME="Signalprozessor" ;;
+						ab)		DCOL=$YELLOW   ; DNAME="Analogtelefonie" ;;
+						usbhost)	DCOL=$GREEN    ; DNAME="USB-System"      ;;
+						eth)		DCOL=$ORANGE_D ; DNAME="Kabelnetzwerk"   ;;
+						dect)		DCOL=$LBLUE    ; DNAME="Funktelefonie"   ;;
+						battcharge)	DCOL=$BLACK    ; DNAME="Akkuladung"      ;;
+						lte)		DCOL=$BLACK    ; DNAME="LTE-Funkmodul"   ;;
+						*)		DCOL=$BLACK    ; DNAME="$sourceitem"     ;;
 					esac
 					local DSDEFS="$DSDEFS DEF:$sourceitem=$FILE:$sourceitem:MAX"
-					local LINE3S="$LINE3S LINE3:$sourceitem$DCOL:$DNAME$NBSP$NBSP(min/avg/max/cur)\:\t \
-					GPRINT:$sourceitem:MIN:%3.0lf%%$NBSP/       \
-					GPRINT:$sourceitem:AVERAGE:%3.0lf%%$NBSP/   \
-					GPRINT:$sourceitem:MAX:%3.0lf%%$NBSP/       \
-					GPRINT:$sourceitem:LAST:%3.0lf%%\n          \
+					local LINE3S="$LINE3S LINE3:$sourceitem$DCOL:$(len15 $DNAME)\t[Prozent]\:\t \
+					GPRINT:$sourceitem:MIN:%3.0lf%s\t/ \
+					GPRINT:$sourceitem:AVERAGE:%3.0lf%s\t/ \
+					GPRINT:$sourceitem:MAX:%3.0lf%s\t/ \
+					GPRINT:$sourceitem:LAST:%3.0lf%s\n \
 					"
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                          \
@@ -212,10 +224,10 @@ generate_graph() {
 				--title "$TITLE"                                          \
 				--start -1-$PERIODE -l 0 -u 100 -r                        \
 				--width $WIDTH --height $HEIGHT $LAZY                     \
-				--vertical-label "Energieverbrauch [%]" -X 1              \
+				--vertical-label "Energieverbrauch [Prozent]" -X 1        \
 				$DEFAULT_COLORS                                           \
 				-W "Generated on: $DATESTRING"                            \
-				                                                          \
+				COMMENT:"\t\t\t$mamc"                                     \
 				$DSDEFS                                                   \
 				$LINE3S                                                   \
 				                                                          > /dev/null
@@ -224,22 +236,24 @@ generate_graph() {
 		temp)
 			FILE=$RRDSTATS_RRDDATA/temp_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                            \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                     \
-				--title "$TITLE"                                            \
-				--start -1-$PERIODE -l 0 -r                                 \
-				--width $WIDTH --height $HEIGHT $LAZY                       \
-				--vertical-label "celsius" -X 1                             \
-				$DEFAULT_COLORS                                             \
-				-W "Generated on: $DATESTRING"                              \
-				                                                            \
-				DEF:temperature=$FILE:temperature:MAX                       \
-				                                                            \
-				AREA:temperature$RED:"Temperature (min/avg/max/cur)\:   "   \
-				GPRINT:temperature:MIN:"%3.0lf /"                           \
-				GPRINT:temperature:AVERAGE:"%3.0lf /"                       \
-				GPRINT:temperature:MAX:"%3.0lf /"                           \
-				GPRINT:temperature:LAST:"%3.0lf\n"                          > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS                                    \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                             \
+				--title "$TITLE"                                                    \
+				--start -1-$PERIODE -l 0 -r                                         \
+				--width $WIDTH --height $HEIGHT $LAZY                               \
+				--vertical-label "Temperature [${GRAD}C]" -X 1                      \
+				$DEFAULT_COLORS                                                     \
+				-W "Generated on: $DATESTRING"                                      \
+				                                                                    \
+				COMMENT:"\t\t$mamc"                                                 \
+				                                                                    \
+				DEF:temperature=$FILE:temperature:MAX                               \
+				                                                                    \
+				AREA:temperature$RED:"Temperature\t[${GRAD}C]\:\t"                  \
+				GPRINT:temperature:MIN:"%3.0lf\t/"                                  \
+				GPRINT:temperature:AVERAGE:"%3.0lf\t/"                              \
+				GPRINT:temperature:MAX:"%3.0lf\t/"                                  \
+				GPRINT:temperature:LAST:"%3.0lf\n"                                  > /dev/null
 			fi
 			;;
 		epc0|dvb)
@@ -269,13 +283,13 @@ generate_graph() {
 #						DEF:txdb$count=$FILE:txdb$count:LAST "
 					COLOR_DB=$GREEN && COLOR_FQ=$RED
 					GPRINT_TXDB="$GPRINT_TXDB \
-						LINE2:txdb$count$COLOR_DB:Upstream${NBSP}SIG${NBSP}#${count}${NBSP}(min/avg/max/cur)[dBmV]\:\t\t \
+						LINE2:txdb$count$COLOR_DB:Upstream${NBSP}SIG\t[dBmV]\:\t\t \
 						GPRINT:txdb$count:MIN:%4.1lf\t/ \
 						GPRINT:txdb$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:txdb$count:MAX:%4.1lf\t/ \
 						GPRINT:txdb$count:LAST:%4.1lf\n "
 #					GPRINT_TXFQ="$GPRINT_TXFQ \
-#						LINE2:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}${NBSP}(min/avg/max/cur)[MHz]\:\t \
+#						LINE2:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\:\t \
 #						GPRINT:txfq$count:MIN:%4.1lf\t/ \
 #						GPRINT:txfq$count:AVERAGE:%4.1lf\t/ \
 #						GPRINT:txfq$count:MAX:%4.1lf\t/ \
@@ -292,38 +306,39 @@ generate_graph() {
 						DEF:rxdb$count=$FILE:rxdb$count:LAST "
 					COLOR_SN=$YELLOW && COLOR_DB=$BLUE
 					GPRINT_RXSN="$GPRINT_RXSN \
-						LINE2:rxsn$count$COLOR_SN:Downstream${NBSP}${MENR}${NBSP}#${count}${NBSP}(min/avg/max/cur)[dB]\:\t\t \
+						LINE2:rxsn$count$COLOR_SN:Downstream${NBSP}${MENR}${NBSP}#${count}\t[dB]\:\t\t \
 						GPRINT:rxsn$count:MIN:%4.1lf\t/ \
 						GPRINT:rxsn$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:rxsn$count:MAX:%4.1lf\t/ \
 						GPRINT:rxsn$count:LAST:%4.1lf\n "
 					GPRINT_RXDB="$GPRINT_RXDB \
-						LINE2:rxdb$count$COLOR_DB:Downstream${NBSP}SIG${NBSP}#${count}${NBSP}(min/avg/max/cur)[dBmV]\:\t\t \
+						LINE2:rxdb$count$COLOR_DB:Downstream${NBSP}SIG${NBSP}#${count}\t[[BmV]\:\t\t \
 						GPRINT:rxdb$count:MIN:%4.1lf\t/ \
 						GPRINT:rxdb$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:rxdb$count:MAX:%4.1lf\t/ \
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
 
-				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
-				--title "$TITLE"                                         \
-				--start now-$PERIODE                                     \
-				--width $WIDTH --height $HEIGHT                          \
-				--vertical-label "values"                                \
-				$DEFAULT_COLORS                                          \
-				$LAZY                                                    \
-				-W "Generated on: $DATESTRING"                           \
-				                                                         \
-				$DS_DEF                                                  \
-				$GPRINT_RXSN                                             \
-				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t\t  --------------------------------\n" \
-				$GPRINT_RXDB                                             \
+				$_NICE $RRDTOOL graph $GRAPHARGS                                                               \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                                        \
+				--title "$TITLE"                                                                               \
+				--start now-$PERIODE                                                                           \
+				--width $WIDTH --height $HEIGHT                                                                \
+				--vertical-label "values"                                                                      \
+				$DEFAULT_COLORS                                                                                \
+				$LAZY                                                                                          \
+				-W "Generated on: $DATESTRING"                                                                 \
+				                                                                                               \
+				COMMENT:"\t\t$mamc"                                                                            \
+				$DS_DEF                                                                                        \
+				$GPRINT_RXSN                                                                                   \
+				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t\t  --------------------------------\n"  \
+				$GPRINT_RXDB                                                                                   \
 				LINE:-2$GREY:"Downstream SIG Optimum 64-QAM\: -2 dBmV\t\t  --------------------------------\n" \
-				$GPRINT_TXDB                                             \
+				$GPRINT_TXDB                                                                                   \
 				LINE:44$GREY:"Upstream SIG Optimum 16-QAM\: 44 dBmV\t\t\t  --------------------------------\n" \
-				$GPRINT_TXFQ                                             \
-				                                                         > /dev/null 2>&1
+				$GPRINT_TXFQ                                                                                   \
+				                                                                                               > /dev/null
 			fi
 			;;
 		epcA)
@@ -341,7 +356,7 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_VAR=$RED
 					[ $COLOR_MOD == 0 ] && COLOR_VAR=$BLUE
 					GPRINT="$GPRINT \
-						LINE3:rxsn$count$COLOR_VAR:Downstream${NBSP}SNR${NBSP}#${count}${NBSP}(min/avg/max/cur)[dB]\:\t \
+						LINE3:rxsn$count$COLOR_VAR:Downstream${NBSP}SNR${NBSP}#${count}\t[dB]\:\t \
 						GPRINT:rxsn$count:MIN:%4.1lf\t/ \
 						GPRINT:rxsn$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:rxsn$count:MAX:%4.1lf\t/ \
@@ -358,10 +373,10 @@ generate_graph() {
 				$LAZY                                                    \
 				-A                                                       \
 				-W "Generated on: $DATESTRING"                           \
-				                                                         \
+				COMMENT:"\t\t$mamc"                                      \
 				$DS_DEF                                                  \
 				$GPRINT                                                  \
-				                                                         > /dev/null 2>&1
+				                                                         > /dev/null
 			fi
 			;;
 		epcB)
@@ -379,27 +394,28 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_VAR=$LRED
 					[ $COLOR_MOD == 0 ] && COLOR_VAR=$LBLUE
 					GPRINT="$GPRINT \
-						LINE3:rxdb$count$COLOR_VAR:Downstream${NBSP}SIG${NBSP}#${count}${NBSP}(min/avg/max/cur)[dBmV]\:\t \
+						LINE3:rxdb$count$COLOR_VAR:Downstream${NBSP}SIG${NBSP}#${count}\t[dBmV]\:\t \
 						GPRINT:rxdb$count:MIN:%4.1lf\t/ \
 						GPRINT:rxdb$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:rxdb$count:MAX:%4.1lf\t/ \
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
-				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
-				--title "$TITLE"                                         \
-				--start now-$PERIODE                                     \
-				--width $WIDTH --height $HEIGHT                          \
-				--vertical-label "values"                                \
-				$DEFAULT_COLORS                                          \
-				$LAZY                                                    \
-				-W "Generated on: $DATESTRING"                           \
-				                                                         \
-				$DS_DEF                                                  \
-				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t   -------------------------------\n" \
-				$GPRINT                                                  \
+				$_NICE $RRDTOOL graph $GRAPHARGS                                                             \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                                      \
+				--title "$TITLE"                                                                             \
+				--start now-$PERIODE                                                                         \
+				--width $WIDTH --height $HEIGHT                                                              \
+				--vertical-label "values"                                                                    \
+				$DEFAULT_COLORS                                                                              \
+				$LAZY                                                                                        \
+				-W "Generated on: $DATESTRING"                                                               \
+				                                                                                             \
+				COMMENT:"\t\t$mamc"                                                                          \
+				$DS_DEF                                                                                      \
+				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t   -------------------------------\n"  \
+				$GPRINT                                                                                      \
 				LINE:-2$GREY:"Downstream SIG Optimum 64-QAM\: -2 dBmV\t   -------------------------------\n" \
-				                                                                       > /dev/null 2>&1
+				                                                                                             > /dev/null
 			fi
 			;;
 		epcC)
@@ -420,56 +436,57 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_DB=$LGREEN  && COLOR_FQ=$LYELLOW
 					[ $COLOR_MOD == 0 ] && COLOR_DB=$LBLUE   && COLOR_FQ=$LRED
 					GPRINT_DB="$GPRINT_DB \
-						LINE3:txdb$count$COLOR_DB:Upstream${NBSP}SIG${NBSP}#${count}${NBSP}(min/avg/max/cur)[dBmV]\:\t\t \
+						LINE3:txdb$count$COLOR_DB:Upstream${NBSP}SIG${NBSP}#${count}\t[dBmV]\:\t\t \
 						GPRINT:txdb$count:MIN:%4.1lf\t/ \
 						GPRINT:txdb$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:txdb$count:MAX:%4.1lf\t/ \
 						GPRINT:txdb$count:LAST:%4.1lf\n "
 					GPRINT_FQ="$GPRINT_FQ \
-						LINE3:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}${NBSP}(min/avg/max/cur)[MHz]\:\t \
+						LINE3:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\:\t \
 						GPRINT:txfq$count:MIN:%4.1lf\t/ \
 						GPRINT:txfq$count:AVERAGE:%4.1lf\t/ \
 						GPRINT:txfq$count:MAX:%4.1lf\t/ \
 						GPRINT:txfq$count:LAST:%4.1lf\n "
 				done
 
-				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
-				--title "$TITLE"                                         \
-				--start now-$PERIODE                                     \
-				--width $WIDTH --height $HEIGHT                          \
-				--vertical-label "values"                                \
-				$DEFAULT_COLORS                                          \
-				$LAZY                                                    \
-				-Y                                                       \
-				-W "Generated on: $DATESTRING"                           \
-				                                                         \
-				$DS_DEF                                                  \
-				$GPRINT_FQ                                               \
-				$GPRINT_DB                                               \
+				$_NICE $RRDTOOL graph $GRAPHARGS                                                               \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                                                        \
+				--title "$TITLE"                                                                               \
+				--start now-$PERIODE                                                                           \
+				--width $WIDTH --height $HEIGHT                                                                \
+				--vertical-label "values"                                                                      \
+				$DEFAULT_COLORS                                                                                \
+				$LAZY                                                                                          \
+				-Y                                                                                             \
+				-W "Generated on: $DATESTRING"                                                                 \
+				                                                                                               \
+				COMMENT:"\t\t$mamc"                                                                            \
+				$DS_DEF                                                                                        \
+				$GPRINT_FQ                                                                                     \
+				$GPRINT_DB                                                                                     \
 				LINE:44$GREY:"Upstream SIG Optimum 16-QAM\: 44 dBmV\t\t\t  --------------------------------\n" \
-				                                                         > /dev/null 2>&1
+				                                                                                               > /dev/null
 			fi
 			;;
 		epc1)
 			FILE=$RRDSTATS_RRDDATA/epc_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                       \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                \
-				--title "$TITLE"                                       \
-				--start now-$PERIODE                                   \
-				--width $WIDTH --height $HEIGHT                        \
-				--vertical-label "hours"                               \
-				$DEFAULT_COLORS                                        \
-				-l 0 $LAZY                                             \
-				-W "Generated on: $DATESTRING"                         \
-				                                                       \
-				DEF:up=$FILE:up:LAST                                   \
-				                                                       \
-				AREA:up$YELLOW:"System Uptime (avg/max/cur)[hours]\: " \
-				GPRINT:up:AVERAGE:"%3.2lf /"                           \
-				GPRINT:up:MAX:"%3.2lf /"                               \
-				GPRINT:up:LAST:"%3.2lf\n"                              > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS                         \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+				--title "$TITLE"                                         \
+				--start now-$PERIODE                                     \
+				--width $WIDTH --height $HEIGHT                          \
+				--vertical-label "hours"                                 \
+				$DEFAULT_COLORS                                          \
+				-l 0 $LAZY                                               \
+				-W "Generated on: $DATESTRING"                           \
+				                                                         \
+				DEF:up=$FILE:up:LAST                                     \
+				                                                         \
+				AREA:up$YELLOW:"System Uptime (avg/max/cur) [hours]\:\t" \
+				GPRINT:up:AVERAGE:"%3.2lf\t/"                            \
+				GPRINT:up:MAX:"%3.2lf\t/"                                \
+				GPRINT:up:LAST:"%3.2lf\n"                                > /dev/null
 			fi
 			;;
 		epc2)
@@ -487,7 +504,7 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_VAR=$RED
 					[ $COLOR_MOD == 0 ] && COLOR_VAR=$BLUE
 					GPRINT="$GPRINT \
-						LINE3:rxfq$count$COLOR_VAR:Downstream${NBSP}Frequency${NBSP}#${count}${NBSP}(min/avg/max/cur)[MHz]\:\t\
+						LINE3:rxfq$count$COLOR_VAR:Downstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\:\t\
 						GPRINT:rxfq$count:MIN:%3.0lf\t/ \
 						GPRINT:rxfq$count:AVERAGE:%3.0lf\t/ \
 						GPRINT:rxfq$count:MAX:%3.0lf\t/ \
@@ -502,99 +519,14 @@ generate_graph() {
 				$DEFAULT_COLORS                                                        \
 				$LAZY                                                                  \
 				-W "Generated on: $DATESTRING"                                         \
-								                                       \
+				                                                                       \
+				COMMENT:"\t\t$mamc"                                                    \
 				$DS_DEF                                                                \
 				$GPRINT                                                                \
-				                                                                       > /dev/null 2>&1
+				                                                                       > /dev/null
 			fi
 			;;
 		thg0)
-			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
-			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                         \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
-				--title "$TITLE"                                         \
-				--start now-$PERIODE                                     \
-				--width $WIDTH --height $HEIGHT                          \
-				--vertical-label "values"                                \
-				$DEFAULT_COLORS                                          \
-				$LAZY                                                    \
-				-W "Generated on: $DATESTRING"                           \
-				                                                         \
-				DEF:rx=$FILE:rx:LAST                                     \
-				DEF:sn=$FILE:sn:LAST                                     \
-				DEF:tx=$FILE:tx:LAST                                     \
-				DEF:ip=$FILE:ip:LAST                                     \
-				                                                         \
-				LINE3:tx$GREEN:"Upstream    (min/avg/max/cur)[dBmV]\: "  \
-				GPRINT:tx:MIN:" %5.1lf%s"                                \
-				GPRINT:tx:AVERAGE:"\t%5.1lf%s"                           \
-				GPRINT:tx:MAX:"\t%5.1lf%s"                               \
-				GPRINT:tx:LAST:"\t%5.1lf%s\n"                            \
-				                                                         \
-				LINE3:sn$YELLOW:"S-N Ratio   (min/avg/max/cur)[dB]\:   " \
-				GPRINT:sn:MIN:" %3.0lf%s  "                              \
-				GPRINT:sn:AVERAGE:"\t%3.0lf%s  "                         \
-				GPRINT:sn:MAX:"\t%3.0lf%s  "                             \
-				GPRINT:sn:LAST:"\t%3.0lf%s  \n"                          \
-				                                                         \
-				LINE3:rx$RED:"Downstream  (min/avg/max/cur)[dBmV]\: "    \
-				GPRINT:rx:MIN:" %5.1lf%s"                                \
-				GPRINT:rx:AVERAGE:"\t%5.1lf%s"                           \
-				GPRINT:rx:MAX:"\t%5.1lf%s"                               \
-				GPRINT:rx:LAST:"\t%5.1lf%s\n"                            \
-				                                                         \
-				LINE3:ip$BLUE:"Computers   (min/avg/max/cur)[count]\:"   \
-				GPRINT:ip:MIN:" %3.0lf%s  "                              \
-				GPRINT:ip:AVERAGE:"\t%3.0lf%s  "                         \
-				GPRINT:ip:MAX:"\t%3.0lf%s  "                             \
-				GPRINT:ip:LAST:"\t%3.0lf%s  \n"                          > /dev/null
-			fi
-			;;
-		thg1)
-			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
-			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                       \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                \
-				--title "$TITLE"                                       \
-				--start now-$PERIODE                                   \
-				--width $WIDTH --height $HEIGHT                        \
-				--vertical-label "hours"                               \
-				$DEFAULT_COLORS                                        \
-				-l 0 $LAZY                                             \
-				-W "Generated on: $DATESTRING"                         \
-				                                                       \
-				DEF:up=$FILE:up:LAST                                   \
-				                                                       \
-				AREA:up$YELLOW:"System Uptime (avg/max/cur)[hours]\: " \
-				GPRINT:up:AVERAGE:"%3.2lf /"                           \
-				GPRINT:up:MAX:"%3.2lf /"                               \
-				GPRINT:up:LAST:"%3.2lf\n"                              > /dev/null
-			fi
-			;;
-		thg2)
-			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
-			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                        \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                 \
-				--title "$TITLE"                                        \
-				--start now-$PERIODE                                    \
-				--width $WIDTH --height $HEIGHT                         \
-				--vertical-label "MHz"                                  \
-				$DEFAULT_COLORS                                         \
-				$LAZY                                                   \
-				-W "Generated on: $DATESTRING"                          \
-				                                                        \
-				DEF:if=$FILE:if:LAST                                    \
-				                                                        \
-				LINE3:if$GREEN:"Downstream Frequency (min/avg/max/cur)[MHz]\: " \
-				GPRINT:if:MIN:"%3.0lf /"                                \
-				GPRINT:if:AVERAGE:"%3.0lf /"                            \
-				GPRINT:if:MAX:"%3.0lf /"                                \
-				GPRINT:if:LAST:"%3.0lf\n"                               > /dev/null
-			fi
-			;;
-		thg3)
 			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                          \
@@ -602,21 +534,158 @@ generate_graph() {
 				--title "$TITLE"                                          \
 				--start now-$PERIODE                                      \
 				--width $WIDTH --height $HEIGHT                           \
-				--vertical-label "ID"                                     \
+				--vertical-label "values"                                 \
 				$DEFAULT_COLORS                                           \
-				-l 0 -u 5 $LAZY                                           \
+				$LAZY                                                     \
 				-W "Generated on: $DATESTRING"                            \
 				                                                          \
-				DEF:uc=$FILE:uc:LAST                                      \
+				DEF:rx=$FILE:rx:LAST                                      \
+				DEF:sn=$FILE:sn:LAST                                      \
+				DEF:tx=$FILE:tx:LAST                                      \
+				DEF:ip=$FILE:ip:LAST                                      \
 				                                                          \
-				LINE3:uc$BLUE:"Upstream Channel (min/avg/max/cur)[ID]\: " \
-				GPRINT:uc:MIN:"%3.0lf   /"                                \
-				GPRINT:uc:AVERAGE:"%3.0lf   /"                            \
-				GPRINT:uc:MAX:"%3.0lf   /"                                \
-				GPRINT:uc:LAST:"%3.0lf\n"                                 > /dev/null
+				COMMENT:"\t\t$mamc"                                       \
+				                                                          \
+				LINE3:tx$GREEN:"Upstream\t[dBmV]\:\t"                     \
+				GPRINT:tx:MIN:"%5.1lf%s\t/"                               \
+				GPRINT:tx:AVERAGE:"%5.1lf%s\t/"                           \
+				GPRINT:tx:MAX:"%5.1lf%s\t/"                               \
+				GPRINT:tx:LAST:"%5.1lf%s\n"                               \
+				                                                          \
+				LINE3:sn$YELLOW:"S-N Ratio\t[dB]\:\t"                     \
+				GPRINT:sn:MIN:"%3.0lf%s\t/"                               \
+				GPRINT:sn:AVERAGE:"%3.0lf%s\t/"                           \
+				GPRINT:sn:MAX:"%3.0lf%s\t/"                               \
+				GPRINT:sn:LAST:"%3.0lf%s\n"                               \
+				                                                          \
+				LINE3:rx$RED:"Downstream\t[dBmV]\:\t"                     \
+				GPRINT:rx:MIN:"%5.1lf%s\t/"                               \
+				GPRINT:rx:AVERAGE:"%5.1lf%s\t/"                           \
+				GPRINT:rx:MAX:"%5.1lf%s\t/"                               \
+				GPRINT:rx:LAST:"%5.1lf%s\n"                               \
+				                                                          \
+				LINE3:ip$BLUE:"Computers\t[count]\:\t"                    \
+				GPRINT:ip:MIN:"%3.0lf%s\t/"                               \
+				GPRINT:ip:AVERAGE:"%3.0lf%s\t/"                           \
+				GPRINT:ip:MAX:"%3.0lf%s\t/"                               \
+				GPRINT:ip:LAST:"%3.0lf%s\n"                               > /dev/null
+			fi
+			;;
+		thg1)
+			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
+			if [ -e $FILE ]; then
+				$_NICE $RRDTOOL graph $GRAPHARGS                         \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                  \
+				--title "$TITLE"                                         \
+				--start now-$PERIODE                                     \
+				--width $WIDTH --height $HEIGHT                          \
+				--vertical-label "hours"                                 \
+				$DEFAULT_COLORS                                          \
+				-l 0 $LAZY                                               \
+				-W "Generated on: $DATESTRING"                           \
+				                                                         \
+				DEF:up=$FILE:up:LAST                                     \
+				                                                         \
+				AREA:up$YELLOW:"System Uptime (avg/max/cur) [hours]\:\t" \
+				GPRINT:up:AVERAGE:"%3.2lf\t/"                            \
+				GPRINT:up:MAX:"%3.2lf\t/"                                \
+				GPRINT:up:LAST:"%3.2lf\n"                                > /dev/null
+			fi
+			;;
+		thg2)
+			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
+			if [ -e $FILE ]; then
+				$_NICE $RRDTOOL graph $GRAPHARGS                                  \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                           \
+				--title "$TITLE"                                                  \
+				--start now-$PERIODE                                              \
+				--width $WIDTH --height $HEIGHT                                   \
+				--vertical-label "MHz"                                            \
+				$DEFAULT_COLORS                                                   \
+				$LAZY                                                             \
+				-W "Generated on: $DATESTRING"                                    \
+				                                                                  \
+				COMMENT:"\t\t$mamc"                                               \
+				                                                                  \
+				DEF:if=$FILE:if:LAST                                              \
+				                                                                  \
+				LINE3:if$GREEN:"Downstream Frequency\t[MHz]\:\t"                  \
+				GPRINT:if:MIN:"%3.0lf\t/"                                         \
+				GPRINT:if:AVERAGE:"%3.0lf\t/"                                     \
+				GPRINT:if:MAX:"%3.0lf\t/"                                         \
+				GPRINT:if:LAST:"%3.0lf\n"                               > /dev/null
+			fi
+			;;
+		thg3)
+			FILE=$RRDSTATS_RRDDATA/thg_$RRDSTATS_INTERVAL.rrd
+			if [ -e $FILE ]; then
+				$_NICE $RRDTOOL graph $GRAPHARGS                            \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                     \
+				--title "$TITLE"                                            \
+				--start now-$PERIODE                                        \
+				--width $WIDTH --height $HEIGHT                             \
+				--vertical-label "ID"                                       \
+				$DEFAULT_COLORS                                             \
+				-l 0 -u 5 $LAZY                                             \
+				-W "Generated on: $DATESTRING"                              \
+				                                                            \
+				COMMENT:"\t\t$mamc"                                         \
+				                                                            \
+				DEF:uc=$FILE:uc:LAST                                        \
+				                                                            \
+				LINE3:uc$BLUE:"Upstream Channel\t[ID]\:\t"                  \
+				GPRINT:uc:MIN:"%3.0lf\t/"                                   \
+				GPRINT:uc:AVERAGE:"%3.0lf\t/"                               \
+				GPRINT:uc:MAX:"%3.0lf\t/"                                   \
+				GPRINT:uc:LAST:"%3.0lf\n"                                   > /dev/null
 			fi
 			;;
 		arris0)
+			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
+			if [ -e $FILE ]; then
+				$_NICE $RRDTOOL graph $GRAPHARGS                          \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                   \
+				--title "$TITLE"                                          \
+				--start now-$PERIODE                                      \
+				--width $WIDTH --height $HEIGHT                           \
+				--vertical-label "values"                                 \
+				$DEFAULT_COLORS                                           \
+				$LAZY                                                     \
+				-W "Generated on: $DATESTRING"                            \
+				                                                          \
+				COMMENT:"\t\t$mamc"                                       \
+				                                                          \
+				DEF:rx=$FILE:rx:LAST                                      \
+				DEF:sn=$FILE:sn:LAST                                      \
+				DEF:tx=$FILE:tx:LAST                                      \
+				DEF:ip=$FILE:ip:LAST                                      \
+				                                                          \
+				LINE3:tx$GREEN:"Upstream\t[dBmV]\:\t"                     \
+				GPRINT:tx:MIN:"%3.0lf\t/"                                 \
+				GPRINT:tx:AVERAGE:"%3.0lf\t/"                             \
+				GPRINT:tx:MAX:"%3.0lf\t/"                                 \
+				GPRINT:tx:LAST:"%3.0lf\n"                                 \
+				                                                          \
+				LINE3:sn$YELLOW:"S-N Ratio\t[dB]\:\t"                     \
+				GPRINT:sn:MIN:"%3.0lf\t/"                                 \
+				GPRINT:sn:AVERAGE:"%3.0lf\t/"                             \
+				GPRINT:sn:MAX:"%3.0lf\t/"                                 \
+				GPRINT:sn:LAST:"%3.0lf\n"                                 \
+				                                                          \
+				LINE3:rx$RED:"Downstream\t[dBmV]\:\t"                     \
+				GPRINT:rx:MIN:"%3.0lf\t/"                                 \
+				GPRINT:rx:AVERAGE:"%3.0lf\t/"                             \
+				GPRINT:rx:MAX:"%3.0lf\t/"                                 \
+				GPRINT:rx:LAST:"%3.0lf\n"                                 \
+				                                                          \
+				LINE3:ip$BLUE:"Computers\t[count]\:\t"                    \
+				GPRINT:ip:MIN:"%3.0lf\t/"                                 \
+				GPRINT:ip:AVERAGE:"%3.0lf\t/"                             \
+				GPRINT:ip:MAX:"%3.0lf\t/"                                 \
+				GPRINT:ip:LAST:"%3.0lf\n"                                 > /dev/null
+			fi
+			;;
+		arris1)
 			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
 				$_NICE $RRDTOOL graph $GRAPHARGS                         \
@@ -624,60 +693,17 @@ generate_graph() {
 				--title "$TITLE"                                         \
 				--start now-$PERIODE                                     \
 				--width $WIDTH --height $HEIGHT                          \
-				--vertical-label "values"                                \
+				--vertical-label "hours"                                 \
 				$DEFAULT_COLORS                                          \
-				$LAZY                                                    \
+				-l 0 $LAZY                                               \
 				-W "Generated on: $DATESTRING"                           \
 				                                                         \
-				DEF:rx=$FILE:rx:LAST                                     \
-				DEF:sn=$FILE:sn:LAST                                     \
-				DEF:tx=$FILE:tx:LAST                                     \
-				DEF:ip=$FILE:ip:LAST                                     \
+				DEF:up=$FILE:up:LAST                                     \
 				                                                         \
-				LINE3:tx$GREEN:"Upstream   (min/avg/max/cur)[dBmV]\:"    \
-				GPRINT:tx:MIN:"%3.0lf /"                                 \
-				GPRINT:tx:AVERAGE:"%3.0lf /"                             \
-				GPRINT:tx:MAX:"%3.0lf /"                                 \
-				GPRINT:tx:LAST:"%3.0lf\n"                                \
-				                                                         \
-				LINE3:sn$YELLOW:"S-N Ratio    (min/avg/max/cur)[dB]\:"   \
-				GPRINT:sn:MIN:"%3.0lf /"                                 \
-				GPRINT:sn:AVERAGE:"%3.0lf /"                             \
-				GPRINT:sn:MAX:"%3.0lf /"                                 \
-				GPRINT:sn:LAST:"%3.0lf\n"                                \
-				                                                         \
-				LINE3:rx$RED:"Downstream (min/avg/max/cur)[dBmV]\:"      \
-				GPRINT:rx:MIN:"%3.0lf /"                                 \
-				GPRINT:rx:AVERAGE:"%3.0lf /"                             \
-				GPRINT:rx:MAX:"%3.0lf /"                                 \
-				GPRINT:rx:LAST:"%3.0lf\n"                                \
-				                                                         \
-				LINE3:ip$BLUE:"Computers (min/avg/max/cur)[count]\:"     \
-				GPRINT:ip:MIN:"%3.0lf /"                                 \
-				GPRINT:ip:AVERAGE:"%3.0lf /"                             \
-				GPRINT:ip:MAX:"%3.0lf /"                                 \
-				GPRINT:ip:LAST:"%3.0lf\n"                                > /dev/null
-			fi
-			;;
-		arris1)
-			FILE=$RRDSTATS_RRDDATA/arris_$RRDSTATS_INTERVAL.rrd
-			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                       \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                \
-				--title "$TITLE"                                       \
-				--start now-$PERIODE                                   \
-				--width $WIDTH --height $HEIGHT                        \
-				--vertical-label "hours"                               \
-				$DEFAULT_COLORS                                        \
-				-l 0 $LAZY                                             \
-				-W "Generated on: $DATESTRING"                         \
-				                                                       \
-				DEF:up=$FILE:up:LAST                                   \
-				                                                       \
-				AREA:up$YELLOW:"System Uptime (avg/max/cur)[hours]\:"  \
-				GPRINT:up:AVERAGE:"%3.2lf /"                           \
-				GPRINT:up:MAX:"%3.2lf /"                               \
-				GPRINT:up:LAST:"%3.2lf\n"                              > /dev/null
+				AREA:up$YELLOW:"System Uptime (avg/max/cur) [hours]\:\t" \
+				GPRINT:up:AVERAGE:"%3.2lf\t/"                            \
+				GPRINT:up:MAX:"%3.2lf\t/"                                \
+				GPRINT:up:LAST:"%3.2lf\n"                                > /dev/null
 			fi
 			;;
 		arris2)
@@ -693,12 +719,14 @@ generate_graph() {
 				$LAZY                                                   \
 				-W "Generated on: $DATESTRING"                          \
 				                                                        \
+				COMMENT:"\t\t$mamc"                                     \
+				                                                        \
 				DEF:if=$FILE:if:LAST                                    \
 				                                                        \
-				LINE3:if$GREEN:"Downstream Freq (min/avg/max/cur)[MHz]\:" \
-				GPRINT:if:MIN:"%5.1lf /"                                \
-				GPRINT:if:AVERAGE:"%5.1lf /"                            \
-				GPRINT:if:MAX:"%5.1lf /"                                \
+				LINE3:if$GREEN:"Downstream Freq\t[MHz]\:\t"             \
+				GPRINT:if:MIN:"%5.1lf\t/"                               \
+				GPRINT:if:AVERAGE:"%5.1lf\t/"                           \
+				GPRINT:if:MAX:"%5.1lf\t/"                               \
 				GPRINT:if:LAST:"%5.1lf\n"                               > /dev/null
 			fi
 			;;
@@ -715,12 +743,14 @@ generate_graph() {
 				$LAZY                                                     \
 				-W "Generated on: $DATESTRING"                            \
 				                                                          \
+				COMMENT:"\t\t$mamc"                                       \
+				                                                          \
 				DEF:uf=$FILE:uf:LAST                                      \
 				                                                          \
-				LINE3:uf$BLUE:"Upstream Freq (min/avg/max/cur)[MHz]\:"    \
-				GPRINT:uf:MIN:"%5.1lf /"                                  \
-				GPRINT:uf:AVERAGE:"%5.1lf /"                              \
-				GPRINT:uf:MAX:"%5.1lf /"                                  \
+				LINE3:uf$BLUE:"Upstream Freq\t[MHz]\:\t"                  \
+				GPRINT:uf:MIN:"%5.1lf\t/"                                 \
+				GPRINT:uf:AVERAGE:"%5.1lf\t/"                             \
+				GPRINT:uf:MAX:"%5.1lf\t/"                                 \
 				GPRINT:uf:LAST:"%5.1lf\n"                                 > /dev/null
 			fi
 			;;
@@ -752,32 +782,34 @@ generate_graph() {
 		swap)
 			FILE=$RRDSTATS_RRDDATA/mem_$RRDSTATS_INTERVAL.rrd
 			if [ -e $FILE ]; then
-				$_NICE $RRDTOOL graph $GRAPHARGS                                  \
-				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                           \
-				--title "$TITLE"                                                  \
-				--start -1-$PERIODE -l 0 -u 100 -r                                \
-				--width $WIDTH --height $HEIGHT	$LAZY                             \
-				--vertical-label "Swap usage [%]"                                 \
-				$DEFAULT_COLORS                                                   \
-				-W "Generated on: $DATESTRING"                                    \
-				                                                                  \
-				DEF:total=$FILE:swaptotal:AVERAGE                                 \
-				DEF:free=$FILE:swapfree:AVERAGE                                   \
-				CDEF:used=total,free,-                                            \
-				CDEF:usedpct=100,used,total,/,*                                   \
-				CDEF:freepct=100,free,total,/,*                                   \
-				                                                                  \
-				AREA:usedpct#0000FF:"Used swap     (min/avg/max/cur)\:    "       \
-				GPRINT:usedpct:MIN:"%5.1lf%% /"                                   \
-				GPRINT:usedpct:AVERAGE:"%5.1lf%% /"                               \
-				GPRINT:usedpct:MAX:"%5.1lf%% /"                                   \
-				GPRINT:usedpct:LAST:"%5.1lf%%\n"                                  \
-				                                                                  \
-				AREA:freepct#00FF00:"Free swap     (min/avg/max/cur)\:    ":STACK \
-				GPRINT:freepct:MIN:"%5.1lf%% /"                                   \
-				GPRINT:freepct:AVERAGE:"%5.1lf%% /"                               \
-				GPRINT:freepct:MAX:"%5.1lf%% /"                                   \
-				GPRINT:freepct:LAST:"%5.1lf%%\n"                                  > /dev/null
+				$_NICE $RRDTOOL graph $GRAPHARGS                                      \
+				$RRDSTATS_RRDTEMP/$IMAGENAME.$IMAGETYPE                               \
+				--title "$TITLE"                                                      \
+				--start -1-$PERIODE -l 0 -u 100 -r                                    \
+				--width $WIDTH --height $HEIGHT	$LAZY                                 \
+				--vertical-label "Swap usage [percentage]"                            \
+				$DEFAULT_COLORS                                                       \
+				-W "Generated on: $DATESTRING"                                        \
+				                                                                      \
+				COMMENT:"\t\t$mamc"                                                   \
+				                                                                      \
+				DEF:total=$FILE:swaptotal:AVERAGE                                     \
+				DEF:free=$FILE:swapfree:AVERAGE                                       \
+				CDEF:used=total,free,-                                                \
+				CDEF:usedpct=100,used,total,/,*                                       \
+				CDEF:freepct=100,free,total,/,*                                       \
+				                                                                      \
+				AREA:usedpct#0000FF:"Used swap\t[percent]\:\t"                        \
+				GPRINT:usedpct:MIN:"%5.1lf%s\t/"                                      \
+				GPRINT:usedpct:AVERAGE:"%5.1lf%s\t/"                                  \
+				GPRINT:usedpct:MAX:"%5.1lf%s\t/"                                      \
+				GPRINT:usedpct:LAST:"%5.1lf%s\n"                                      \
+				                                                                      \
+				AREA:freepct#00FF00:"Free swap\t[percent]\:\t":STACK                  \
+				GPRINT:freepct:MIN:"%5.1lf%s\t/"                                      \
+				GPRINT:freepct:AVERAGE:"%5.1lf%s\t/"                                  \
+				GPRINT:freepct:MAX:"%5.1lf%s\t/"                                      \
+				GPRINT:freepct:LAST:"%5.1lf%s\n"                                      > /dev/null
 			fi
 			;;
 		diskio1|diskio2|diskio3|diskio4)
@@ -824,7 +856,7 @@ generate_graph() {
 				--title "$TITLE"                                               \
 				--start -1-$PERIODE $LOGARITHMIC $LAZY $MAXIMALBW              \
 				--width $WIDTH --height $HEIGHT                                \
-				--vertical-label "bytes/s"                                     \
+				--vertical-label "Throughput [bytes/s]"                        \
 				$DEFAULT_COLORS                                                \
 				--units=si                                                     \
 				-W "Generated on: $DATESTRING"                                 \
@@ -832,16 +864,17 @@ generate_graph() {
 				DEF:read=$FILE:read:AVERAGE                                    \
 				DEF:write=$FILE:write:AVERAGE                                  \
 				                                                               \
-				AREA:read$GREEN:"Read        (min/avg/max/cur)[bytes/s]\:"     \
-				GPRINT:read:MIN:"%3.0lf%s /"                                   \
-				GPRINT:read:AVERAGE:"%3.0lf%s /"                               \
-				GPRINT:read:MAX:"%3.0lf%s /"                                   \
+				COMMENT:"\t\t$mamc"                                            \
+				AREA:read$GREEN:"Read\t\t[bytes/s]\:\t"                        \
+				GPRINT:read:MIN:"%3.0lf%s\t/"                                  \
+				GPRINT:read:AVERAGE:"%3.0lf%s\t/"                              \
+				GPRINT:read:MAX:"%3.0lf%s\t/"                                  \
 				GPRINT:read:LAST:"%3.0lf%s\n"                                  \
 				                                                               \
-				AREA:write#0000FF80:"Write       (min/avg/max/cur)[bytes/s]\:" \
-				GPRINT:write:MIN:"%3.0lf%s /"                                  \
-				GPRINT:write:AVERAGE:"%3.0lf%s /"                              \
-				GPRINT:write:MAX:"%3.0lf%s /"                                  \
+				AREA:write#0000FF80:"Write\t\t[bytes/s]\:\t"                   \
+				GPRINT:write:MIN:"%3.0lf%s\t/"                                 \
+				GPRINT:write:AVERAGE:"%3.0lf%s\t/"                             \
+				GPRINT:write:MAX:"%3.0lf%s\t/"                                 \
 				GPRINT:write:LAST:"%3.0lf%s\n"                                 > /dev/null
 			fi
 			;;
@@ -906,19 +939,21 @@ generate_graph() {
 				--units=si                                                   \
 				-W "Generated on: $DATESTRING"                               \
 				                                                             \
+				COMMENT:"\t\t$mamc"                                          \
+				                                                             \
 				DEF:in=$FILE:$NET_RX:AVERAGE                                 \
 				DEF:out=$FILE:$NET_TX:AVERAGE                                \
 				                                                             \
-				AREA:in$GREEN:"Incoming    (min/avg/max/cur)[bytes/s]\:"     \
-				GPRINT:in:MIN:"%3.0lf%s /"                                   \
-				GPRINT:in:AVERAGE:"%3.0lf%s /"                               \
-				GPRINT:in:MAX:"%3.0lf%s /"                                   \
+				AREA:in$GREEN:"Incoming\t[bytes/s]\:\t"                      \
+				GPRINT:in:MIN:"%3.0lf%s\t/"                                  \
+				GPRINT:in:AVERAGE:"%3.0lf%s\t/"                              \
+				GPRINT:in:MAX:"%3.0lf%s\t/"                                  \
 				GPRINT:in:LAST:"%3.0lf%s\n"                                  \
 				                                                             \
-				AREA:out#0000FF80:"Outgoing    (min/avg/max/cur)[bytes/s]\:" \
-				GPRINT:out:MIN:"%3.0lf%s /"                                  \
-				GPRINT:out:AVERAGE:"%3.0lf%s /"                              \
-				GPRINT:out:MAX:"%3.0lf%s /"                                  \
+				AREA:out#0000FF80:"Outgoing\t[bytes/s]\:\t"                  \
+				GPRINT:out:MIN:"%3.0lf%s\t/"                                 \
+				GPRINT:out:AVERAGE:"%3.0lf%s\t/"                             \
+				GPRINT:out:MAX:"%3.0lf%s\t/"                                 \
 				GPRINT:out:LAST:"%3.0lf%s\n"                                 > /dev/null
 			fi
 			;;
@@ -947,7 +982,7 @@ generate_graph() {
 					[ -z "$_COLOR" ] && _COLOR="#999999"
 					_SENSOR_GEN=" $_SENSOR_GEN \
 					 DEF:temp$_SENSOR_CUR=$FILE:temp:AVERAGE \
-					 LINE3:temp$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}$NBSP(min/avg/max/cur)[${GRAD}${_SENSOR_UOM:0:1}] \
+					 LINE3:temp$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}\t[${GRAD}${_SENSOR_UOM:0:1}] \
 					 GPRINT:temp$_SENSOR_CUR:MIN:\t%8.3lf \
 					 GPRINT:temp$_SENSOR_CUR:AVERAGE:%8.3lf \
 					 GPRINT:temp$_SENSOR_CUR:MAX:%8.3lf \
@@ -966,6 +1001,7 @@ generate_graph() {
 				--slope-mode HRULE:0#000000              \
 				$LAZY $_SENSOR_LOW                       \
 				-W "Generated on: $DATESTRING"           \
+				COMMENT:"\t\t$mamc"                      \
 				$_SENSOR_GEN                             > /dev/null
 			fi
 			;;
@@ -973,12 +1009,12 @@ generate_graph() {
 			kind=${1#aha_}
 			DECMAL=1
 			case $kind in
-				pdev|watt|sein|blnd)	DESCR="Watt" ; RANGE="-l 0" ;;
-				volt)			DESCR="Volt" ; RANGE="-l 215 -u 245" ;;
-				kilo)			DESCR="Wh" ; DECMAL=3 ;;
-				grad)			DESCR="${GRAD}C" ;;
-				curr)			DESCR="Ampere" ; RANGE="-l 0 -u 1" ; DECMAL=2 ;;
-				fact)			DESCR="Wirkfaktor" ; RANGE="-l 0 -u 1" ; DECMAL=3 ;;
+				pdev|watt|sein|blnd)	DNAME="Leistung";        DESCR="Watt"; RANGE="-l 0" ;;
+				volt)			DNAME="Spannung";        DESCR="Volt"; RANGE="-l 215 -u 245" ;;
+				kilo)			DNAME="Energie";         DESCR="Wh"; DECMAL=3 ;;
+				grad)			DNAME="Temperatur";      DESCR="${GRAD}C" ;;
+				curr)			DNAME="Stromstärke";     DESCR="Ampere"; RANGE="-l 0 -u 1"; DECMAL=2 ;;
+				fact)			DNAME="Leistungsfaktor"; DESCR="Wirkfaktor"; RANGE="-l 0 -u 1"; DECMAL=3 ;;
 			esac
 
 			_SENSOR_GEN=""
@@ -1009,25 +1045,25 @@ generate_graph() {
 						CDEF:sein=volt,curr,* \
 						CDEF:watt=sein,fact,* \
 						CDEF:blnd=sein,watt,- \
-						AREA:$V1$C1:$D1\t(min/avg/max/cur)\:$NBSP \
-						GPRINT:$V1:MIN:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:$V1:AVERAGE:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:$V1:MAX:%5.${DECMAL}lf$NBSP/ \
+						AREA:$V1$C1:$D1\t[$DESCR]\:\t \
+						GPRINT:$V1:MIN:%5.${DECMAL}lf\t/ \
+						GPRINT:$V1:AVERAGE:%5.${DECMAL}lf\t/ \
+						GPRINT:$V1:MAX:%5.${DECMAL}lf\t/ \
 						GPRINT:$V1:LAST:%5.${DECMAL}lf\n \
-						AREA:$V2$C2:$D2\t(min/avg/max/cur)\:$NBSP:STACK \
-						GPRINT:$V2:MIN:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:$V2:AVERAGE:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:$V2:MAX:%5.${DECMAL}lf$NBSP/ \
+						AREA:$V2$C2:$D2\t[$DESCR]\:\t:STACK \
+						GPRINT:$V2:MIN:%5.${DECMAL}lf\t/ \
+						GPRINT:$V2:AVERAGE:%5.${DECMAL}lf\t/ \
+						GPRINT:$V2:MAX:%5.${DECMAL}lf\t/ \
 						GPRINT:$V2:LAST:%5.${DECMAL}lf\n \
-						COMMENT:$NBSP${NBSP}Scheinleistung\t(min/avg/max/cur)\:$NBSP \
-						GPRINT:sein:MIN:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:sein:AVERAGE:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:sein:MAX:%5.${DECMAL}lf$NBSP/ \
+						COMMENT:$NBSP${NBSP}Scheinleistung\t[$DESCR]\:\t \
+						GPRINT:sein:MIN:%5.${DECMAL}lf\t/ \
+						GPRINT:sein:AVERAGE:%5.${DECMAL}lf\t/ \
+						GPRINT:sein:MAX:%5.${DECMAL}lf\t/ \
 						GPRINT:sein:LAST:%5.${DECMAL}lf\n \
-						LINE1:sein_max$BLACK:$D3\t(min/avg/max/cur)\:$NBSP \
-						GPRINT:sein_max:MIN:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:sein_max:AVERAGE:%5.${DECMAL}lf$NBSP/ \
-						GPRINT:sein_max:MAX:%5.${DECMAL}lf$NBSP/ \
+						LINE1:sein_max$BLACK:$D3\t[$DESCR]\:\t \
+						GPRINT:sein_max:MIN:%5.${DECMAL}lf\t/ \
+						GPRINT:sein_max:AVERAGE:%5.${DECMAL}lf\t/ \
+						GPRINT:sein_max:MAX:%5.${DECMAL}lf\t/ \
 						GPRINT:sein_max:LAST:%5.${DECMAL}lf\n "
 				fi
 			else
@@ -1074,10 +1110,10 @@ generate_graph() {
 
 						_SENSOR_GEN=" $_SENSOR_GEN \
 							$_SOURCE \
-							LINE3:$kind$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}\t(min/avg/max/cur)\:$NBSP \
-							GPRINT:$kind$_SENSOR_CUR:MIN:%5.${DECMAL}lf$NBSP/     \
-							GPRINT:$kind$_SENSOR_CUR:AVERAGE:%5.${DECMAL}lf$NBSP/ \
-							GPRINT:$kind$_SENSOR_CUR:MAX:%5.${DECMAL}lf$NBSP/     \
+							LINE3:$kind$_SENSOR_CUR$_COLOR:$(len15 $_ALIAS)\t[$DESCR]\:\t \
+							GPRINT:$kind$_SENSOR_CUR:MIN:%5.${DECMAL}lf\t/ \
+							GPRINT:$kind$_SENSOR_CUR:AVERAGE:%5.${DECMAL}lf\t/ \
+							GPRINT:$kind$_SENSOR_CUR:MAX:%5.${DECMAL}lf\t/ \
 							GPRINT:$kind$_SENSOR_CUR:LAST:%5.${DECMAL}lf\n "
 					fi
 					let _SENSOR_CUR=_SENSOR_CUR+1
@@ -1089,11 +1125,12 @@ generate_graph() {
 				--title "$TITLE"                         \
 				--start now-$PERIODE                     \
 				--width $WIDTH --height $HEIGHT          \
-				--vertical-label "$DESCR"                \
+				--vertical-label "$DNAME [$DESCR]"       \
 				$DEFAULT_COLORS                          \
 				--slope-mode HRULE:0#000000              \
 				$LAZY  $RANGE                            \
 				-W "Generated on: $DATESTRING"           \
+				COMMENT:"\t\t$mamc"                      \
 				$_SENSOR_GEN                             > /dev/null
 			fi
 			;;
@@ -1166,7 +1203,7 @@ csl_graph() {
 			[ $COLOR_MOD == 16 ] && COLOR_VAR=#ff0033
 
 			GPRINT="$GPRINT \
-			AREA:loadAVG$count$COLOR_VAR:$_CURRENT_FRQ${NBSP}MHz${NBSP}(min/avg/max/cur)${NBSP}[MBit/s]\:\t$STACK \
+			AREA:loadAVG$count$COLOR_VAR:$_CURRENT_FRQ${NBSP}MHz\t[MBit/s]\:\t$STACK \
 			GPRINT:loadMIN$count:MIN:%4.1lf\t/ \
 			GPRINT:loadAVG$count:AVERAGE:%4.1lf\t/ \
 			GPRINT:loadMAX$count:MAX:%4.1lf\t/ \
@@ -1208,7 +1245,7 @@ csl_graph() {
 		CDEF:rpn_TOP=rpn_MAX,rpn_MAX,UNKN,IF \
 		$SHADE \
 		LINE1:rpn_TOP$BLACK \
-		COMMENT:${NBSP}${NBSP}Summary${NBSP}(min/avg/max/cur)${NBSP}[MBit/s]\:\t \
+		COMMENT:${NBSP}${NBSP}Summary\t[MBit/s]\:\t \
 		GPRINT:rpn_MIN:MIN:%4.1lf\t/ \
 		GPRINT:rpn_AVG:AVERAGE:%4.1lf\t/ \
 		GPRINT:rpn_MAX:MAX:%4.1lf\t/ \
@@ -1228,8 +1265,9 @@ csl_graph() {
 		-A                                                       \
 		-W "Generated on: $DATESTRING"                           \
 		                                                         \
+		COMMENT:"\t\t$mamc"                                      \
 		$DS_DEF $GPRINT $OVERALL $TOPVALUE                       \
-		                                                         > /dev/null 2>&1
+		                                                         > /dev/null
 	fi
 }
 
