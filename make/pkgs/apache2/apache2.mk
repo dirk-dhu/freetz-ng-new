@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 2.4.54)
+$(call PKG_INIT_BIN, 2.4.55)
 $(PKG)_SOURCE:=httpd-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=eb397feeefccaf254f8d45de3768d9d68e8e73851c49afd5b7176d1ecf80c340
+$(PKG)_HASH:=11d6ba19e36c0b93ca62e47e6ffc2d2f2884942694bce0f23f39c71bdc5f69ac
 $(PKG)_SITE:=@APACHE/httpd
 ### WEBSITE:=https://httpd.apache.org/
 ### MANPAGE:=https://httpd.apache.org/docs/2.4/
@@ -76,6 +76,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-lua
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_APACHE2_LIBXML),--enable-xml2enc --enable-proxy-html,--disable-xml2enc --disable-proxy-html)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_APACHE2_COMPILEINMODS),--enable-mods-static=all --disable-so,--enable-mods-shared=all --enable-so)
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -114,6 +115,7 @@ $($(PKG)_APXS_SCRIPT_STAGING_DIR): $($(PKG)_APXS_SCRIPT)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_APXS_SCRIPT_STAGING_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(APACHE2_DIR) clean
