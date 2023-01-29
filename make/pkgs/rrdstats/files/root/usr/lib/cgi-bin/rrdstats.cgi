@@ -136,16 +136,10 @@ $(lang de:"Graphen immer neu generieren (not lazy)" en:"Always generate new grap
 <input type="hidden" name="notlazys" value="no">
 <input id="l2" type="checkbox" name="notlazys" value="yes"$notlazys_chk><label for="l2">$(lang de:"Unterseiten" en:"Sub-pages")</label>
 </p>
-EOF
-if [ "$FREETZ_PACKAGE_RRDTOOL_VERSION_CURRENT" == "y" ]; then
-cat << EOF
 <p>
 <input type="hidden" name="tobitag" value="no">
 <input id="tt" type="checkbox" name="tobitag" value="yes"$tobitag_chk>
 <label for="tt">$(lang de:"Zeige den Namen des Autors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
-EOF
-fi
-cat << EOF
 <p>
 <input type="hidden" name="showframe" value="no">
 <input id="sf" type="checkbox" name="showframe" value="yes"$showframe_chk>
