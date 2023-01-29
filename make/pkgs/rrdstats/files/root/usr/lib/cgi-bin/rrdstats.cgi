@@ -142,7 +142,7 @@ cat << EOF
 <p>
 <input type="hidden" name="tobitag" value="no">
 <input id="tt" type="checkbox" name="tobitag" value="yes"$tobitag_chk>
-<label for="tt">$(lang de:"Zeige den Namen des Authors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
+<label for="tt">$(lang de:"Zeige den Namen des Autors von rrdtool auf allen Graphen" en:"Show the name of the author of rrdtool on all graphs")</label></p>
 EOF
 fi
 cat << EOF
