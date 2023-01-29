@@ -71,8 +71,8 @@ GRD="$(echo -en '\260')"
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
 _NICE=$(which nice)
 [ "$RRDSTATS_DARKMODE" != "yes" ] \
-  && DEFAULT_COLORS="-c SHADEA#ffffff -c SHADEB#ffffff  -c BACK#ffffff -c CANVAS#eeeeee80" \
-  || DEFAULT_COLORS="-c SHADEA#181818 -c SHADEB#555555  -c BACK#333333 -c CANVAS#222222  -c FONT#DDDDDD  -c GRID#AAAAAA77 -c MGRID#AAAAAA77  -c AXIS#00000000 -c ARROW#00000000  -c FRAME#111111"
+  && DEFAULT_COLORS="-c SHADEA#cccccc -c SHADEB#7f7f7f -c BACK#ffffff -c CANVAS#eeeeee80" \
+  || DEFAULT_COLORS="-c SHADEA#181818 -c SHADEB#555555 -c BACK#333333 -c CANVAS#222222 -c FONT#DDDDDD -c GRID#AAAAAA77 -c MGRID#AAAAAA77 -c AXIS#00000000 -c ARROW#00000000 -c FRAME#111111"
 [ "$RRDSTATS_SHOWFRAME" != "yes" ] && DEFAULT_COLORS="$DEFAULT_COLORS --border 0"
 
 generate_graph() {
