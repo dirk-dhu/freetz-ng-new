@@ -143,6 +143,10 @@ Latest changes
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
+[//]: # ( ############################################################################# )
+[//]: # (            Do not edit below this line! Update only 'DEVEL' above.            )
+[//]: # ( ############################################################################# )
+
 ### ng22100
 
  - Known problems:
