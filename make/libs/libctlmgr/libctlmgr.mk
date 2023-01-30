@@ -26,8 +26,9 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 		CPPFLAGS="$(strip $(LIBCTLMGR_CPPFLAGS))" \
 		LIB_VERSION="$(LIBCTLMGR_VERSION)" \
 		all
-	patchelf --remove-rpath "$(LIBCTLMGR_BINARY)"
-	patchelf --replace-needed "libc.so.0" "$(call qstrip,$(FREETZ_AVM_HAS_LIBC_FILE))" "$(LIBCTLMGR_BINARY)"
+	[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" == "y" ] \
+	  && patchelf --remove-rpath "$(LIBCTLMGR_BINARY)" \
+	  && patchelf --replace-needed "libc.so.0" "$(call qstrip,$(FREETZ_AVM_HAS_LIBC_FILE))" "$(LIBCTLMGR_BINARY)"
 	@touch "$@"
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.compiled
