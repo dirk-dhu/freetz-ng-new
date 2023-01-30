@@ -17,7 +17,7 @@ https://github.com/NixOS/patchelf/commit/15f02b0f7a2721062a89d545d9f3696499f0d8d
 +++ src/Makefile.am
 @@ -1,4 +1,4 @@
 -AM_CXXFLAGS = -Wall -std=c++17 -D_FILE_OFFSET_BITS=64
-+AM_CXXFLAGS = -Wall -std=c++14 -D_FILE_OFFSET_BITS=64
++AM_CXXFLAGS = -Wall -std=c++11 -D_FILE_OFFSET_BITS=64
  
  if WITH_ASAN
  AM_CXXFLAGS += -fsanitize=address -fsanitize-address-use-after-scope
@@ -28,7 +28,7 @@ https://github.com/NixOS/patchelf/commit/15f02b0f7a2721062a89d545d9f3696499f0d8d
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
 -AM_CXXFLAGS = -Wall -std=c++17 -D_FILE_OFFSET_BITS=64 $(am__append_1) \
-+AM_CXXFLAGS = -Wall -std=c++14 -D_FILE_OFFSET_BITS=64 $(am__append_1) \
++AM_CXXFLAGS = -Wall -std=c++11 -D_FILE_OFFSET_BITS=64 $(am__append_1) \
  	$(am__append_2) $(am__append_3) $(am__append_4)
  SAN_FLAGS = -fno-optimize-sibling-calls -fno-omit-frame-pointer
  patchelf_SOURCES = patchelf.cc elf.h patchelf.h

@@ -799,6 +799,21 @@ config FREETZ_TARGET_TOOLCHAIN
 
 comment "Host-tools options ----------------------------------"
 
+choice
+	prompt "Patchelf compatibility" if !FREETZ_HOSTTOOLS_DOWNLOAD
+		default FREETZ_TOOLS_PATCHELF_VERSION_CURRENT
+
+	config FREETZ_TOOLS_PATCHELF_VERSION_ABANDON
+		bool "gcc 5"
+		depends on !FREETZ_HOSTTOOLS_DOWNLOAD
+		help
+			For usage with old Ubuntu 14
+
+	config FREETZ_TOOLS_PATCHELF_VERSION_CURRENT
+		bool "gcc 7"
+
+endchoice
+
 config FREETZ_TOOLS_UBOOT_STATIC
 	bool "Build U-Boot with static OpenSSL"
 	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
