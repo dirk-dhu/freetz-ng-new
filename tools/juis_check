@@ -30,7 +30,7 @@ Parameters:
 
 Variables:
 	On Fritzbox no variables are needed and missing will be read from the device.
-	On Computer the hardware-recision "HW" is mandatory and for very old (HWR<150) devices you have to set (at least the "Major" part of) "Version".
+	On Computer the hardware-revision "HW" is mandatory and for very old (HWR<150) devices you have to set (at least the "Major" part of) "Version".
 	With Dect: The hardware number "DHW" is mandatory additional, the software version "DSW" and type "DTP" are optional.
 
 	Name		Default if not set      Comment
