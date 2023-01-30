@@ -116,6 +116,7 @@ Latest changes
    * tcpdump 4.1.1/4.99.3
    * Tor 0.4.7.13
    * Unbound 1.17.1
+   * UnRAR 6.1.7/6.2.5
    * xsltproc 1.1.37
    * XZ Utils 5.4.1
 
@@ -279,7 +280,7 @@ Latest changes
    * Tor 0.4.7.8
    * uClibc-ng 1.0.41
    * Unbound 1.16.0
-   * UnRAR 6.1.7/6.2.5
+   * UnRAR 6.1.7
    * Vim 8.2.5052
    * Wget GNU 1.21.3
 
