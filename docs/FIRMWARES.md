@@ -18,6 +18,7 @@ Currently supported devices and firmwares
  * [Fritz!Box Fon WLAN (75xx)](#fritzbox-fon-wlan-75xx)
  * [Fritz!Powerline](#fritzpowerline)
  * [Fritz!Repeater](#fritzrepeater)
+ * [Fritz!Smart](#fritzsmart)
  * [T-Com derivatives](#t-com-derivatives)
  * [Alice derivatives](#alice-derivatives)
 
@@ -523,6 +524,11 @@ Currently supported devices and firmwares
 * __Fritz!Repeater 6000__
   - 253.07.30 rev98407 {ALL} [PSQ19P2NL4]
   - 253.07.39 rev00000 {ALL} [MOVE21] (Labor)
+
+### Fritz!Smart
+
+* __Fritz!Smart Gateway (UNTESTED)__
+  - 265.07.39 rev102540 {ALL} [MOVE21] (Inhaus)
 
 ### T-Com derivatives
 

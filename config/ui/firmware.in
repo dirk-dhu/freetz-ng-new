@@ -590,6 +590,15 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCAARMv8
 		bool "6000"
 
+
+	comment "Smart"
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
+
+	config FREETZ_TYPE_GATE
+		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
+		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCAARMv8
+		bool "Gateway - UNTESTED"
+
 endchoice # "Hardware type" #
 
 ###
@@ -855,7 +864,8 @@ config FREETZ_TYPE_FIRMWARE_UNTESTED
 		FREETZ_TYPE_6842 || \
 		FREETZ_TYPE_6850_4G || \
 		FREETZ_TYPE_6850_5G || \
-		FREETZ_TYPE_7582
+		FREETZ_TYPE_7582 || \
+		FREETZ_TYPE_GATE
 
 ###
 ### Alien firmware

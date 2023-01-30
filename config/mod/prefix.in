@@ -100,6 +100,7 @@ config FREETZ_TYPE_PREFIX
 	default "7583_VDSL"         if FREETZ_TYPE_7584
 	default "7590"              if FREETZ_TYPE_7590
 	default "7590_AX"           if FREETZ_TYPE_7599
+	default "Gateway"           if FREETZ_TYPE_GATE
 	default "W501V"             if FREETZ_TYPE_W501V
 
 
