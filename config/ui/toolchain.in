@@ -799,7 +799,7 @@ config FREETZ_TARGET_TOOLCHAIN
 
 comment "Host-tools options ----------------------------------"
 
-config FREETZ_UBOOT_STATIC
+config FREETZ_TOOLS_UBOOT_STATIC
 	bool "Build U-Boot with static OpenSSL"
 	depends on !FREETZ_HOSTTOOLS_DOWNLOAD
 	default n
