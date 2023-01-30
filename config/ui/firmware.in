@@ -64,6 +64,7 @@ choice
 		select FREETZ_AVM_SOURCE_r7203
 		bool "Speedport W501V"
 
+
 	comment "LAN"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_0N1
 
@@ -71,6 +72,7 @@ choice
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_0N1
 		select FREETZ_AVM_SOURCE_04_57
 		bool "2170"
+
 
 	comment "WLAN"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_0N1 || FREETZ_SERIES_2N3 || FREETZ_SERIES_4N5
@@ -130,6 +132,7 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_VR9
 		bool "3490"
 
+
 	comment "WAN"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 
@@ -147,6 +150,7 @@ choice
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCAARMv8
 		bool "4060"
+
 
 	comment "Fon"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_0N1
@@ -177,6 +181,7 @@ choice
 		select FREETZ_AVM_SOURCE_04_67
 		bool "5140"
 
+
 	comment "Fiber"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 
@@ -203,6 +208,7 @@ choice
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_QCAARMv8
 		bool "5590"
+
 
 	comment "Cable"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
@@ -236,6 +242,7 @@ choice
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_4N5
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_PUMA7
 		bool "6690"
+
 
 	comment "LTE"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_2N3 || FREETZ_SERIES_4N5
@@ -500,6 +507,7 @@ choice
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_GRX5
 		bool "7590 AX"
 
+
 	comment "Powerline"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 
@@ -527,6 +535,7 @@ choice
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
 		select FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_IPQ40xx
 		bool "1260 v2 - UNTESTED"
+
 
 	comment "Repeater"
 		depends on FREETZ_SERIES_ALL || FREETZ_SERIES_EXT
