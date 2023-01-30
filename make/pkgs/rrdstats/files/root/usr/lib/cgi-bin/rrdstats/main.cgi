@@ -64,6 +64,7 @@ RED_D=#CC3118
 ORANGE_D=#CC7016
 BLACK=#000000
 GREY=#7F7F7F
+MAXIM=#ADF235
 AUML="$(echo -e '\344')"
 GRD="$(echo -en '\260')"
 NOCACHE="?nocache=$(date -Iseconds | sed 's/T/_/g;s/+.*$//g;s/:/-/g')"
@@ -79,7 +80,10 @@ len15() {
 	while [ "${#x}" -lt 15 ]; do x="$x "; done
 	echo -n "${x// /$NBSP}"
 }
-mamc='\t\t   min         avg        max        cur\n'
+mamc() {
+	len15 "  ${1:+[$1]}"
+	echo -n '\t\t   min        avg       max       cur\n'
+}
 
 generate_graph() {
 	TITLE=""
@@ -114,13 +118,13 @@ generate_graph() {
 				AREA:nice$YELLOW:"CPU nice\t":STACK                        \
 				AREA:user$BLUE:"CPU user\n":STACK                          \
 				                                                           \
-				COMMENT:"\t\t$mamc"                                        \
+				COMMENT:"$(mamc "percent")"                                \
 				                                                           \
 				LINE1:cpu$BLACK                                            \
-				COMMENT:"CPU usage\t[percent]\:\t"                         \
-				GPRINT:cpu:MIN:"%2.1lf%s\t/"                               \
-				GPRINT:cpu:AVERAGE:"%2.1lf%s\t/"                           \
-				GPRINT:cpu:MAX:"%2.1lf%s\t/"                               \
+				COMMENT:"CPU usage\t\t"                                    \
+				GPRINT:cpu:MIN:"%2.1lf%s\t"                                \
+				GPRINT:cpu:AVERAGE:"%2.1lf%s\t"                            \
+				GPRINT:cpu:MAX:"%2.1lf%s\t"                                \
 				GPRINT:cpu:LAST:"%2.1lf%s\n"                               > /dev/null
 			fi
 			;;
@@ -138,36 +142,36 @@ generate_graph() {
 				--base 1024 --units=si                                                 \
 				-W "Generated on: $DATESTRING"                                         \
 				                                                                       \
-				COMMENT:"\t\t$mamc"                                                    \
+				COMMENT:"$(mamc "bytes")"                                              \
 				                                                                       \
 				DEF:used=$FILE:used:AVERAGE                                            \
 				DEF:buff=$FILE:buff:AVERAGE                                            \
 				DEF:cached=$FILE:cached:AVERAGE                                        \
 				DEF:free=$FILE:free:AVERAGE                                            \
 				                                                                       \
-				AREA:used$RED:"Used memory\t[bytes]\:\t"                               \
+				AREA:used$RED:"Used memory\t\t"                                        \
 				LINE1:used$RED_D                                                       \
-				GPRINT:used:MIN:"%3.0lf%s\t/"                                          \
-				GPRINT:used:AVERAGE:"%3.0lf%s\t/"                                      \
-				GPRINT:used:MAX:"%3.0lf%s\t/"                                          \
+				GPRINT:used:MIN:"%3.0lf%s\t"                                           \
+				GPRINT:used:AVERAGE:"%3.0lf%s\t"                                       \
+				GPRINT:used:MAX:"%3.0lf%s\t"                                           \
 				GPRINT:used:LAST:"%3.0lf%s\n"                                          \
 				                                                                       \
-				AREA:buff$BLUE:"Buffer memory\t[bytes]\:\t":STACK                      \
-				GPRINT:buff:MIN:"%3.0lf%s\t/"                                          \
-				GPRINT:buff:AVERAGE:"%3.0lf%s\t/"                                      \
-				GPRINT:buff:MAX:"%3.0lf%s\t/"                                          \
+				AREA:buff$BLUE:"Buffer memory\t\t":STACK                               \
+				GPRINT:buff:MIN:"%3.0lf%s\t"                                           \
+				GPRINT:buff:AVERAGE:"%3.0lf%s\t"                                       \
+				GPRINT:buff:MAX:"%3.0lf%s\t"                                           \
 				GPRINT:buff:LAST:"%3.0lf%s\n"                                          \
 				                                                                       \
-				AREA:cached$YELLOW:"Cache memory\t[bytes]\:\t":STACK                   \
-				GPRINT:cached:MIN:"%3.0lf%s\t/"                                        \
-				GPRINT:cached:AVERAGE:"%3.0lf%s\t/"                                    \
-				GPRINT:cached:MAX:"%3.0lf%s\t/"                                        \
+				AREA:cached$YELLOW:"Cache memory\t\t":STACK                            \
+				GPRINT:cached:MIN:"%3.0lf%s\t"                                         \
+				GPRINT:cached:AVERAGE:"%3.0lf%s\t"                                     \
+				GPRINT:cached:MAX:"%3.0lf%s\t"                                         \
 				GPRINT:cached:LAST:"%3.0lf%s\n"                                        \
 				                                                                       \
-				AREA:free$GREEN:"Free memory\t[bytes]\:\t":STACK                       \
-				GPRINT:free:MIN:"%3.0lf%s\t/"                                          \
-				GPRINT:free:AVERAGE:"%3.0lf%s\t/"                                      \
-				GPRINT:free:MAX:"%3.0lf%s\t/"                                          \
+				AREA:free$GREEN:"Free memory\t\t":STACK                                \
+				GPRINT:free:MIN:"%3.0lf%s\t"                                           \
+				GPRINT:free:AVERAGE:"%3.0lf%s\t"                                       \
+				GPRINT:free:MAX:"%3.0lf%s\t"                                           \
 				GPRINT:free:LAST:"%3.0lf%s\n"                                          > /dev/null
 			fi
 			;;
@@ -183,14 +187,14 @@ generate_graph() {
 				$DEFAULT_COLORS                                            \
 				-W "Generated on: $DATESTRING"                             \
 				                                                           \
-				COMMENT:"\t\t$mamc"                                        \
+				COMMENT:"$(mamc "hours")"                                  \
 				                                                           \
 				DEF:uptime=$FILE:uptime:MAX                                \
 				                                                           \
-				AREA:uptime$YELLOW:"Uptime\t[hours]\:\t"                   \
-				GPRINT:uptime:MIN:"%3.2lf\t/"                              \
-				GPRINT:uptime:AVERAGE:"%3.2lf\t/"                          \
-				GPRINT:uptime:MAX:"%3.2lf\t/"                              \
+				AREA:uptime$YELLOW:"Uptime\t\t"                            \
+				GPRINT:uptime:MIN:"%3.2lf\t"                               \
+				GPRINT:uptime:AVERAGE:"%3.2lf\t"                           \
+				GPRINT:uptime:MAX:"%3.2lf\t"                               \
 				GPRINT:uptime:LAST:"%3.2lf\n"                              > /dev/null
 			fi
 			;;
@@ -212,10 +216,10 @@ generate_graph() {
 						*)		DCOL=$BLACK    ; DNAME="$sourceitem"     ;;
 					esac
 					local DSDEFS="$DSDEFS DEF:$sourceitem=$FILE:$sourceitem:MAX"
-					local LINE3S="$LINE3S LINE3:$sourceitem$DCOL:$(len15 $DNAME)\t[Prozent]\:\t \
-					GPRINT:$sourceitem:MIN:%3.0lf%s\t/ \
-					GPRINT:$sourceitem:AVERAGE:%3.0lf%s\t/ \
-					GPRINT:$sourceitem:MAX:%3.0lf%s\t/ \
+					local LINE3S="$LINE3S LINE3:$sourceitem$DCOL:$(len15 $DNAME)\t \
+					GPRINT:$sourceitem:MIN:%3.0lf%s\t \
+					GPRINT:$sourceitem:AVERAGE:%3.0lf%s\t \
+					GPRINT:$sourceitem:MAX:%3.0lf%s\t \
 					GPRINT:$sourceitem:LAST:%3.0lf%s\n \
 					"
 				done
@@ -227,7 +231,7 @@ generate_graph() {
 				--vertical-label "Energieverbrauch [Prozent]" -X 1        \
 				$DEFAULT_COLORS                                           \
 				-W "Generated on: $DATESTRING"                            \
-				COMMENT:"\t\t\t$mamc"                                     \
+				COMMENT:"$(mamc "Prozent")"                               \
 				$DSDEFS                                                   \
 				$LINE3S                                                   \
 				                                                          > /dev/null
@@ -245,14 +249,14 @@ generate_graph() {
 				$DEFAULT_COLORS                                                     \
 				-W "Generated on: $DATESTRING"                                      \
 				                                                                    \
-				COMMENT:"\t\t$mamc"                                                 \
+				COMMENT:"$(mamc "${GRAD}C")"                                        \
 				                                                                    \
 				DEF:temperature=$FILE:temperature:MAX                               \
 				                                                                    \
-				AREA:temperature$RED:"Temperature\t[${GRAD}C]\:\t"                  \
-				GPRINT:temperature:MIN:"%3.0lf\t/"                                  \
-				GPRINT:temperature:AVERAGE:"%3.0lf\t/"                              \
-				GPRINT:temperature:MAX:"%3.0lf\t/"                                  \
+				AREA:temperature$RED:"Temperature\t\t"                              \
+				GPRINT:temperature:MIN:"%3.0lf\t"                                   \
+				GPRINT:temperature:AVERAGE:"%3.0lf\t"                               \
+				GPRINT:temperature:MAX:"%3.0lf\t"                                   \
 				GPRINT:temperature:LAST:"%3.0lf\n"                                  > /dev/null
 			fi
 			;;
@@ -283,16 +287,16 @@ generate_graph() {
 #						DEF:txdb$count=$FILE:txdb$count:LAST "
 					COLOR_DB=$GREEN && COLOR_FQ=$RED
 					GPRINT_TXDB="$GPRINT_TXDB \
-						LINE2:txdb$count$COLOR_DB:Upstream${NBSP}SIG\t[dBmV]\:\t\t \
-						GPRINT:txdb$count:MIN:%4.1lf\t/ \
-						GPRINT:txdb$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:txdb$count:MAX:%4.1lf\t/ \
+						LINE2:txdb$count$COLOR_DB:Upstream${NBSP}SIG\t[dBmV]\:\t \
+						GPRINT:txdb$count:MIN:%4.1lf\t \
+						GPRINT:txdb$count:AVERAGE:%4.1lf\t \
+						GPRINT:txdb$count:MAX:%4.1lf\t \
 						GPRINT:txdb$count:LAST:%4.1lf\n "
 #					GPRINT_TXFQ="$GPRINT_TXFQ \
-#						LINE2:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\:\t \
-#						GPRINT:txfq$count:MIN:%4.1lf\t/ \
-#						GPRINT:txfq$count:AVERAGE:%4.1lf\t/ \
-#						GPRINT:txfq$count:MAX:%4.1lf\t/ \
+#						LINE2:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\t \
+#						GPRINT:txfq$count:MIN:%4.1lf\t \
+#						GPRINT:txfq$count:AVERAGE:%4.1lf\t \
+#						GPRINT:txfq$count:MAX:%4.1lf\t \
 #						GPRINT:txfq$count:LAST:%4.1lf\n "
 				done
 
@@ -307,15 +311,15 @@ generate_graph() {
 					COLOR_SN=$YELLOW && COLOR_DB=$BLUE
 					GPRINT_RXSN="$GPRINT_RXSN \
 						LINE2:rxsn$count$COLOR_SN:Downstream${NBSP}${MENR}${NBSP}#${count}\t[dB]\:\t\t \
-						GPRINT:rxsn$count:MIN:%4.1lf\t/ \
-						GPRINT:rxsn$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:rxsn$count:MAX:%4.1lf\t/ \
+						GPRINT:rxsn$count:MIN:%4.1lf\t \
+						GPRINT:rxsn$count:AVERAGE:%4.1lf\t \
+						GPRINT:rxsn$count:MAX:%4.1lf\t \
 						GPRINT:rxsn$count:LAST:%4.1lf\n "
 					GPRINT_RXDB="$GPRINT_RXDB \
 						LINE2:rxdb$count$COLOR_DB:Downstream${NBSP}SIG${NBSP}#${count}\t[[BmV]\:\t\t \
-						GPRINT:rxdb$count:MIN:%4.1lf\t/ \
-						GPRINT:rxdb$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:rxdb$count:MAX:%4.1lf\t/ \
+						GPRINT:rxdb$count:MIN:%4.1lf\t \
+						GPRINT:rxdb$count:AVERAGE:%4.1lf\t \
+						GPRINT:rxdb$count:MAX:%4.1lf\t \
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
 
@@ -329,7 +333,7 @@ generate_graph() {
 				$LAZY                                                                                          \
 				-W "Generated on: $DATESTRING"                                                                 \
 				                                                                                               \
-				COMMENT:"\t\t$mamc"                                                                            \
+				COMMENT:"$(mamc "values")"                                                                     \
 				$DS_DEF                                                                                        \
 				$GPRINT_RXSN                                                                                   \
 				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t\t  --------------------------------\n"  \
@@ -356,10 +360,10 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_VAR=$RED
 					[ $COLOR_MOD == 0 ] && COLOR_VAR=$BLUE
 					GPRINT="$GPRINT \
-						LINE3:rxsn$count$COLOR_VAR:Downstream${NBSP}SNR${NBSP}#${count}\t[dB]\:\t \
-						GPRINT:rxsn$count:MIN:%4.1lf\t/ \
-						GPRINT:rxsn$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:rxsn$count:MAX:%4.1lf\t/ \
+						LINE3:rxsn$count$COLOR_VAR:Downstream${NBSP}SNR${NBSP}#${count}\t[dB]\t \
+						GPRINT:rxsn$count:MIN:%4.1lf\t \
+						GPRINT:rxsn$count:AVERAGE:%4.1lf\t \
+						GPRINT:rxsn$count:MAX:%4.1lf\t \
 						GPRINT:rxsn$count:LAST:%4.1lf\n "
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                         \
@@ -373,7 +377,8 @@ generate_graph() {
 				$LAZY                                                    \
 				-A                                                       \
 				-W "Generated on: $DATESTRING"                           \
-				COMMENT:"\t\t$mamc"                                      \
+				                                                         \
+				COMMENT:"$(mamc "values")"                               \
 				$DS_DEF                                                  \
 				$GPRINT                                                  \
 				                                                         > /dev/null
@@ -394,10 +399,10 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_VAR=$LRED
 					[ $COLOR_MOD == 0 ] && COLOR_VAR=$LBLUE
 					GPRINT="$GPRINT \
-						LINE3:rxdb$count$COLOR_VAR:Downstream${NBSP}SIG${NBSP}#${count}\t[dBmV]\:\t \
-						GPRINT:rxdb$count:MIN:%4.1lf\t/ \
-						GPRINT:rxdb$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:rxdb$count:MAX:%4.1lf\t/ \
+						LINE3:rxdb$count$COLOR_VAR:Downstream${NBSP}SIG${NBSP}#${count}\t[dBmV]\t \
+						GPRINT:rxdb$count:MIN:%4.1lf\t \
+						GPRINT:rxdb$count:AVERAGE:%4.1lf\t \
+						GPRINT:rxdb$count:MAX:%4.1lf\t \
 						GPRINT:rxdb$count:LAST:%4.1lf\n "
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                                                             \
@@ -410,7 +415,7 @@ generate_graph() {
 				$LAZY                                                                                        \
 				-W "Generated on: $DATESTRING"                                                               \
 				                                                                                             \
-				COMMENT:"\t\t$mamc"                                                                          \
+				COMMENT:"$(mamc "values")"                                                                   \
 				$DS_DEF                                                                                      \
 				LINE:4$GREY:"Downstream SIG Optimum 256-QAM\: 4 dBmV\t   -------------------------------\n"  \
 				$GPRINT                                                                                      \
@@ -436,16 +441,16 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_DB=$LGREEN  && COLOR_FQ=$LYELLOW
 					[ $COLOR_MOD == 0 ] && COLOR_DB=$LBLUE   && COLOR_FQ=$LRED
 					GPRINT_DB="$GPRINT_DB \
-						LINE3:txdb$count$COLOR_DB:Upstream${NBSP}SIG${NBSP}#${count}\t[dBmV]\:\t\t \
-						GPRINT:txdb$count:MIN:%4.1lf\t/ \
-						GPRINT:txdb$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:txdb$count:MAX:%4.1lf\t/ \
+						LINE3:txdb$count$COLOR_DB:Upstream${NBSP}SIG${NBSP}#${count}\t[dBmV]\t\t \
+						GPRINT:txdb$count:MIN:%4.1lf\t \
+						GPRINT:txdb$count:AVERAGE:%4.1lf\t \
+						GPRINT:txdb$count:MAX:%4.1lf\t \
 						GPRINT:txdb$count:LAST:%4.1lf\n "
 					GPRINT_FQ="$GPRINT_FQ \
-						LINE3:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\:\t \
-						GPRINT:txfq$count:MIN:%4.1lf\t/ \
-						GPRINT:txfq$count:AVERAGE:%4.1lf\t/ \
-						GPRINT:txfq$count:MAX:%4.1lf\t/ \
+						LINE3:txfq$count$COLOR_FQ:Upstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\t \
+						GPRINT:txfq$count:MIN:%4.1lf\t \
+						GPRINT:txfq$count:AVERAGE:%4.1lf\t \
+						GPRINT:txfq$count:MAX:%4.1lf\t \
 						GPRINT:txfq$count:LAST:%4.1lf\n "
 				done
 
@@ -460,7 +465,7 @@ generate_graph() {
 				-Y                                                                                             \
 				-W "Generated on: $DATESTRING"                                                                 \
 				                                                                                               \
-				COMMENT:"\t\t$mamc"                                                                            \
+				COMMENT:"$(mamc "values")"                                                                     \
 				$DS_DEF                                                                                        \
 				$GPRINT_FQ                                                                                     \
 				$GPRINT_DB                                                                                     \
@@ -481,11 +486,14 @@ generate_graph() {
 				-l 0 $LAZY                                               \
 				-W "Generated on: $DATESTRING"                           \
 				                                                         \
+				COMMENT:"$(mamc "hours")"                                \
+				                                                         \
 				DEF:up=$FILE:up:LAST                                     \
 				                                                         \
-				AREA:up$YELLOW:"System Uptime (avg/max/cur) [hours]\:\t" \
-				GPRINT:up:AVERAGE:"%3.2lf\t/"                            \
-				GPRINT:up:MAX:"%3.2lf\t/"                                \
+				AREA:up$YELLOW:"Uptimet"                                 \
+				GPRINT:up:MIN:"%3.2lf\t"                                 \
+				GPRINT:up:AVERAGE:"%3.2lf\t"                             \
+				GPRINT:up:MAX:"%3.2lf\t"                                 \
 				GPRINT:up:LAST:"%3.2lf\n"                                > /dev/null
 			fi
 			;;
@@ -504,10 +512,10 @@ generate_graph() {
 					[ $COLOR_MOD == 3 ] && COLOR_VAR=$RED
 					[ $COLOR_MOD == 0 ] && COLOR_VAR=$BLUE
 					GPRINT="$GPRINT \
-						LINE3:rxfq$count$COLOR_VAR:Downstream${NBSP}Frequency${NBSP}#${count}\t[MHz]\:\t\
-						GPRINT:rxfq$count:MIN:%3.0lf\t/ \
-						GPRINT:rxfq$count:AVERAGE:%3.0lf\t/ \
-						GPRINT:rxfq$count:MAX:%3.0lf\t/ \
+						LINE3:rxfq$count$COLOR_VAR:Downstream${NBSP}Frequency${NBSP}#${count}\t\
+						GPRINT:rxfq$count:MIN:%3.0lf\t \
+						GPRINT:rxfq$count:AVERAGE:%3.0lf\t \
+						GPRINT:rxfq$count:MAX:%3.0lf\t \
 						GPRINT:rxfq$count:LAST:%3.0lf\n "
 				done
 				$_NICE $RRDTOOL graph $GRAPHARGS                                       \
@@ -520,7 +528,7 @@ generate_graph() {
 				$LAZY                                                                  \
 				-W "Generated on: $DATESTRING"                                         \
 				                                                                       \
-				COMMENT:"\t\t$mamc"                                                    \
+				COMMENT:"$(mamc "MHz")"                                                \
 				$DS_DEF                                                                \
 				$GPRINT                                                                \
 				                                                                       > /dev/null
@@ -544,30 +552,30 @@ generate_graph() {
 				DEF:tx=$FILE:tx:LAST                                      \
 				DEF:ip=$FILE:ip:LAST                                      \
 				                                                          \
-				COMMENT:"\t\t$mamc"                                       \
+				COMMENT:"$(mamc "values")"                                \
 				                                                          \
-				LINE3:tx$GREEN:"Upstream\t[dBmV]\:\t"                     \
-				GPRINT:tx:MIN:"%5.1lf%s\t/"                               \
-				GPRINT:tx:AVERAGE:"%5.1lf%s\t/"                           \
-				GPRINT:tx:MAX:"%5.1lf%s\t/"                               \
+				LINE3:tx$GREEN:"Upstream\t[dBmV]\t"                       \
+				GPRINT:tx:MIN:"%5.1lf%s\t"                                \
+				GPRINT:tx:AVERAGE:"%5.1lf%s\t"                            \
+				GPRINT:tx:MAX:"%5.1lf%s\t"                                \
 				GPRINT:tx:LAST:"%5.1lf%s\n"                               \
 				                                                          \
-				LINE3:sn$YELLOW:"S-N Ratio\t[dB]\:\t"                     \
-				GPRINT:sn:MIN:"%3.0lf%s\t/"                               \
-				GPRINT:sn:AVERAGE:"%3.0lf%s\t/"                           \
-				GPRINT:sn:MAX:"%3.0lf%s\t/"                               \
+				LINE3:sn$YELLOW:"S-N Ratio\t[dB]\t"                       \
+				GPRINT:sn:MIN:"%3.0lf%s\t"                                \
+				GPRINT:sn:AVERAGE:"%3.0lf%s\t"                            \
+				GPRINT:sn:MAX:"%3.0lf%s\t"                                \
 				GPRINT:sn:LAST:"%3.0lf%s\n"                               \
 				                                                          \
-				LINE3:rx$RED:"Downstream\t[dBmV]\:\t"                     \
-				GPRINT:rx:MIN:"%5.1lf%s\t/"                               \
-				GPRINT:rx:AVERAGE:"%5.1lf%s\t/"                           \
-				GPRINT:rx:MAX:"%5.1lf%s\t/"                               \
+				LINE3:rx$RED:"Downstream\t[dBmV]\t"                       \
+				GPRINT:rx:MIN:"%5.1lf%s\t"                                \
+				GPRINT:rx:AVERAGE:"%5.1lf%s\t"                            \
+				GPRINT:rx:MAX:"%5.1lf%s\t"                                \
 				GPRINT:rx:LAST:"%5.1lf%s\n"                               \
 				                                                          \
-				LINE3:ip$BLUE:"Computers\t[count]\:\t"                    \
-				GPRINT:ip:MIN:"%3.0lf%s\t/"                               \
-				GPRINT:ip:AVERAGE:"%3.0lf%s\t/"                           \
-				GPRINT:ip:MAX:"%3.0lf%s\t/"                               \
+				LINE3:ip$BLUE:"Computers\t[count]\t"                      \
+				GPRINT:ip:MIN:"%3.0lf%s\t"                                \
+				GPRINT:ip:AVERAGE:"%3.0lf%s\t"                            \
+				GPRINT:ip:MAX:"%3.0lf%s\t"                                \
 				GPRINT:ip:LAST:"%3.0lf%s\n"                               > /dev/null
 			fi
 			;;
@@ -584,11 +592,14 @@ generate_graph() {
 				-l 0 $LAZY                                               \
 				-W "Generated on: $DATESTRING"                           \
 				                                                         \
+				COMMENT:"$(mamc "hours")"                                \
+				                                                         \
 				DEF:up=$FILE:up:LAST                                     \
 				                                                         \
-				AREA:up$YELLOW:"System Uptime (avg/max/cur) [hours]\:\t" \
-				GPRINT:up:AVERAGE:"%3.2lf\t/"                            \
-				GPRINT:up:MAX:"%3.2lf\t/"                                \
+				AREA:up$YELLOW:"System Uptime\t\t"                       \
+				GPRINT:up:MIN:"%3.2lf\t"                                 \
+				GPRINT:up:AVERAGE:"%3.2lf\t"                             \
+				GPRINT:up:MAX:"%3.2lf\t"                                 \
 				GPRINT:up:LAST:"%3.2lf\n"                                > /dev/null
 			fi
 			;;
@@ -605,14 +616,14 @@ generate_graph() {
 				$LAZY                                                             \
 				-W "Generated on: $DATESTRING"                                    \
 				                                                                  \
-				COMMENT:"\t\t$mamc"                                               \
+				COMMENT:"$(mamc "MHz")"                                           \
 				                                                                  \
 				DEF:if=$FILE:if:LAST                                              \
 				                                                                  \
-				LINE3:if$GREEN:"Downstream Frequency\t[MHz]\:\t"                  \
-				GPRINT:if:MIN:"%3.0lf\t/"                                         \
-				GPRINT:if:AVERAGE:"%3.0lf\t/"                                     \
-				GPRINT:if:MAX:"%3.0lf\t/"                                         \
+				LINE3:if$GREEN:"Downstream Frequency\t"                           \
+				GPRINT:if:MIN:"%3.0lf\t"                                          \
+				GPRINT:if:AVERAGE:"%3.0lf\t"                                      \
+				GPRINT:if:MAX:"%3.0lf\t"                                          \
 				GPRINT:if:LAST:"%3.0lf\n"                               > /dev/null
 			fi
 			;;
@@ -629,14 +640,14 @@ generate_graph() {
 				-l 0 -u 5 $LAZY                                             \
 				-W "Generated on: $DATESTRING"                              \
 				                                                            \
-				COMMENT:"\t\t$mamc"                                         \
+				COMMENT:"$(mamc "ID")"                                      \
 				                                                            \
 				DEF:uc=$FILE:uc:LAST                                        \
 				                                                            \
-				LINE3:uc$BLUE:"Upstream Channel\t[ID]\:\t"                  \
-				GPRINT:uc:MIN:"%3.0lf\t/"                                   \
-				GPRINT:uc:AVERAGE:"%3.0lf\t/"                               \
-				GPRINT:uc:MAX:"%3.0lf\t/"                                   \
+				LINE3:uc$BLUE:"Upstream Channel\t"                          \
+				GPRINT:uc:MIN:"%3.0lf\t"                                    \
+				GPRINT:uc:AVERAGE:"%3.0lf\t"                                \
+				GPRINT:uc:MAX:"%3.0lf\t"                                    \
 				GPRINT:uc:LAST:"%3.0lf\n"                                   > /dev/null
 			fi
 			;;
@@ -653,35 +664,35 @@ generate_graph() {
 				$LAZY                                                     \
 				-W "Generated on: $DATESTRING"                            \
 				                                                          \
-				COMMENT:"\t\t$mamc"                                       \
+				COMMENT:"$(mamc "values")"                                \
 				                                                          \
 				DEF:rx=$FILE:rx:LAST                                      \
 				DEF:sn=$FILE:sn:LAST                                      \
 				DEF:tx=$FILE:tx:LAST                                      \
 				DEF:ip=$FILE:ip:LAST                                      \
 				                                                          \
-				LINE3:tx$GREEN:"Upstream\t[dBmV]\:\t"                     \
-				GPRINT:tx:MIN:"%3.0lf\t/"                                 \
-				GPRINT:tx:AVERAGE:"%3.0lf\t/"                             \
-				GPRINT:tx:MAX:"%3.0lf\t/"                                 \
+				LINE3:tx$GREEN:"Upstream\t[dBmV]\t"                       \
+				GPRINT:tx:MIN:"%3.0lf\t"                                  \
+				GPRINT:tx:AVERAGE:"%3.0lf\t"                              \
+				GPRINT:tx:MAX:"%3.0lf\t"                                  \
 				GPRINT:tx:LAST:"%3.0lf\n"                                 \
 				                                                          \
-				LINE3:sn$YELLOW:"S-N Ratio\t[dB]\:\t"                     \
-				GPRINT:sn:MIN:"%3.0lf\t/"                                 \
-				GPRINT:sn:AVERAGE:"%3.0lf\t/"                             \
-				GPRINT:sn:MAX:"%3.0lf\t/"                                 \
+				LINE3:sn$YELLOW:"S-N Ratio\t[dB]\t"                       \
+				GPRINT:sn:MIN:"%3.0lf\t"                                  \
+				GPRINT:sn:AVERAGE:"%3.0lf\t"                              \
+				GPRINT:sn:MAX:"%3.0lf\t"                                  \
 				GPRINT:sn:LAST:"%3.0lf\n"                                 \
 				                                                          \
-				LINE3:rx$RED:"Downstream\t[dBmV]\:\t"                     \
-				GPRINT:rx:MIN:"%3.0lf\t/"                                 \
-				GPRINT:rx:AVERAGE:"%3.0lf\t/"                             \
-				GPRINT:rx:MAX:"%3.0lf\t/"                                 \
+				LINE3:rx$RED:"Downstream\t[dBmV]\t"                       \
+				GPRINT:rx:MIN:"%3.0lf\t"                                  \
+				GPRINT:rx:AVERAGE:"%3.0lf\t"                              \
+				GPRINT:rx:MAX:"%3.0lf\t"                                  \
 				GPRINT:rx:LAST:"%3.0lf\n"                                 \
 				                                                          \
-				LINE3:ip$BLUE:"Computers\t[count]\:\t"                    \
-				GPRINT:ip:MIN:"%3.0lf\t/"                                 \
-				GPRINT:ip:AVERAGE:"%3.0lf\t/"                             \
-				GPRINT:ip:MAX:"%3.0lf\t/"                                 \
+				LINE3:ip$BLUE:"Computers\t[count]\t"                      \
+				GPRINT:ip:MIN:"%3.0lf\t"                                  \
+				GPRINT:ip:AVERAGE:"%3.0lf\t"                              \
+				GPRINT:ip:MAX:"%3.0lf\t"                                  \
 				GPRINT:ip:LAST:"%3.0lf\n"                                 > /dev/null
 			fi
 			;;
@@ -698,11 +709,14 @@ generate_graph() {
 				-l 0 $LAZY                                               \
 				-W "Generated on: $DATESTRING"                           \
 				                                                         \
+				COMMENT:"$(mamc "hours")"                                \
+				                                                         \
 				DEF:up=$FILE:up:LAST                                     \
 				                                                         \
-				AREA:up$YELLOW:"System Uptime (avg/max/cur) [hours]\:\t" \
-				GPRINT:up:AVERAGE:"%3.2lf\t/"                            \
-				GPRINT:up:MAX:"%3.2lf\t/"                                \
+				AREA:up$YELLOW:"Uptime\t\t"                              \
+				GPRINT:up:MAX:"%3.2lf\t"                                 \
+				GPRINT:up:AVERAGE:"%3.2lf\t"                             \
+				GPRINT:up:MAX:"%3.2lf\t"                                 \
 				GPRINT:up:LAST:"%3.2lf\n"                                > /dev/null
 			fi
 			;;
@@ -719,14 +733,14 @@ generate_graph() {
 				$LAZY                                                   \
 				-W "Generated on: $DATESTRING"                          \
 				                                                        \
-				COMMENT:"\t\t$mamc"                                     \
+				COMMENT:"$(mamc "MHz")"                                 \
 				                                                        \
 				DEF:if=$FILE:if:LAST                                    \
 				                                                        \
-				LINE3:if$GREEN:"Downstream Freq\t[MHz]\:\t"             \
-				GPRINT:if:MIN:"%5.1lf\t/"                               \
-				GPRINT:if:AVERAGE:"%5.1lf\t/"                           \
-				GPRINT:if:MAX:"%5.1lf\t/"                               \
+				LINE3:if$GREEN:"Downstream Freq\t\t"                    \
+				GPRINT:if:MIN:"%5.1lf\t"                                \
+				GPRINT:if:AVERAGE:"%5.1lf\t"                            \
+				GPRINT:if:MAX:"%5.1lf\t"                                \
 				GPRINT:if:LAST:"%5.1lf\n"                               > /dev/null
 			fi
 			;;
@@ -743,14 +757,14 @@ generate_graph() {
 				$LAZY                                                     \
 				-W "Generated on: $DATESTRING"                            \
 				                                                          \
-				COMMENT:"\t\t$mamc"                                       \
+				COMMENT:"$(mamc "MHz")"                                   \
 				                                                          \
 				DEF:uf=$FILE:uf:LAST                                      \
 				                                                          \
-				LINE3:uf$BLUE:"Upstream Freq\t[MHz]\:\t"                  \
-				GPRINT:uf:MIN:"%5.1lf\t/"                                 \
-				GPRINT:uf:AVERAGE:"%5.1lf\t/"                             \
-				GPRINT:uf:MAX:"%5.1lf\t/"                                 \
+				LINE3:uf$BLUE:"Upstream Freq\t\t"                         \
+				GPRINT:uf:MIN:"%5.1lf\t"                                  \
+				GPRINT:uf:AVERAGE:"%5.1lf\t"                              \
+				GPRINT:uf:MAX:"%5.1lf\t"                                  \
 				GPRINT:uf:LAST:"%5.1lf\n"                                 > /dev/null
 			fi
 			;;
@@ -787,11 +801,11 @@ generate_graph() {
 				--title "$TITLE"                                                      \
 				--start -1-$PERIODE -l 0 -u 100 -r                                    \
 				--width $WIDTH --height $HEIGHT	$LAZY                                 \
-				--vertical-label "Swap usage [percentage]"                            \
+				--vertical-label "Swap usage [percent]"                               \
 				$DEFAULT_COLORS                                                       \
 				-W "Generated on: $DATESTRING"                                        \
 				                                                                      \
-				COMMENT:"\t\t$mamc"                                                   \
+				COMMENT:"$(mamc "percent")"                                           \
 				                                                                      \
 				DEF:total=$FILE:swaptotal:AVERAGE                                     \
 				DEF:free=$FILE:swapfree:AVERAGE                                       \
@@ -799,16 +813,16 @@ generate_graph() {
 				CDEF:usedpct=100,used,total,/,*                                       \
 				CDEF:freepct=100,free,total,/,*                                       \
 				                                                                      \
-				AREA:usedpct#0000FF:"Used swap\t[percent]\:\t"                        \
-				GPRINT:usedpct:MIN:"%5.1lf%s\t/"                                      \
-				GPRINT:usedpct:AVERAGE:"%5.1lf%s\t/"                                  \
-				GPRINT:usedpct:MAX:"%5.1lf%s\t/"                                      \
+				AREA:usedpct#0000FF:"Used swap\t\t"                                   \
+				GPRINT:usedpct:MIN:"%5.1lf%s\t"                                       \
+				GPRINT:usedpct:AVERAGE:"%5.1lf%s\t"                                   \
+				GPRINT:usedpct:MAX:"%5.1lf%s\t"                                       \
 				GPRINT:usedpct:LAST:"%5.1lf%s\n"                                      \
 				                                                                      \
-				AREA:freepct#00FF00:"Free swap\t[percent]\:\t":STACK                  \
-				GPRINT:freepct:MIN:"%5.1lf%s\t/"                                      \
-				GPRINT:freepct:AVERAGE:"%5.1lf%s\t/"                                  \
-				GPRINT:freepct:MAX:"%5.1lf%s\t/"                                      \
+				AREA:freepct#00FF00:"Free swap\t\t":STACK                             \
+				GPRINT:freepct:MIN:"%5.1lf%s\t"                                       \
+				GPRINT:freepct:AVERAGE:"%5.1lf%s\t"                                   \
+				GPRINT:freepct:MAX:"%5.1lf%s\t"                                       \
 				GPRINT:freepct:LAST:"%5.1lf%s\n"                                      > /dev/null
 			fi
 			;;
@@ -864,17 +878,18 @@ generate_graph() {
 				DEF:read=$FILE:read:AVERAGE                                    \
 				DEF:write=$FILE:write:AVERAGE                                  \
 				                                                               \
-				COMMENT:"\t\t$mamc"                                            \
-				AREA:read$GREEN:"Read\t\t[bytes/s]\:\t"                        \
-				GPRINT:read:MIN:"%3.0lf%s\t/"                                  \
-				GPRINT:read:AVERAGE:"%3.0lf%s\t/"                              \
-				GPRINT:read:MAX:"%3.0lf%s\t/"                                  \
+				COMMENT:"$(mamc "bytes/s")"                                    \
+				                                                               \
+				AREA:read$GREEN:"Read\t\t\t"                                   \
+				GPRINT:read:MIN:"%3.0lf%s\t"                                   \
+				GPRINT:read:AVERAGE:"%3.0lf%s\t"                               \
+				GPRINT:read:MAX:"%3.0lf%s\t"                                   \
 				GPRINT:read:LAST:"%3.0lf%s\n"                                  \
 				                                                               \
-				AREA:write#0000FF80:"Write\t\t[bytes/s]\:\t"                   \
-				GPRINT:write:MIN:"%3.0lf%s\t/"                                 \
-				GPRINT:write:AVERAGE:"%3.0lf%s\t/"                             \
-				GPRINT:write:MAX:"%3.0lf%s\t/"                                 \
+				AREA:write#0000FF80:"Write\t\t\t"                              \
+				GPRINT:write:MIN:"%3.0lf%s\t"                                  \
+				GPRINT:write:AVERAGE:"%3.0lf%s\t"                              \
+				GPRINT:write:MAX:"%3.0lf%s\t"                                  \
 				GPRINT:write:LAST:"%3.0lf%s\n"                                 > /dev/null
 			fi
 			;;
@@ -939,21 +954,21 @@ generate_graph() {
 				--units=si                                                   \
 				-W "Generated on: $DATESTRING"                               \
 				                                                             \
-				COMMENT:"\t\t$mamc"                                          \
+				COMMENT:"$(mamc "bytes/s")"                                  \
 				                                                             \
 				DEF:in=$FILE:$NET_RX:AVERAGE                                 \
 				DEF:out=$FILE:$NET_TX:AVERAGE                                \
 				                                                             \
-				AREA:in$GREEN:"Incoming\t[bytes/s]\:\t"                      \
-				GPRINT:in:MIN:"%3.0lf%s\t/"                                  \
-				GPRINT:in:AVERAGE:"%3.0lf%s\t/"                              \
-				GPRINT:in:MAX:"%3.0lf%s\t/"                                  \
+				AREA:in$GREEN:"Incoming\t\t"                                 \
+				GPRINT:in:MIN:"%3.0lf%s\t"                                   \
+				GPRINT:in:AVERAGE:"%3.0lf%s\t"                               \
+				GPRINT:in:MAX:"%3.0lf%s\t"                                   \
 				GPRINT:in:LAST:"%3.0lf%s\n"                                  \
 				                                                             \
-				AREA:out#0000FF80:"Outgoing\t[bytes/s]\:\t"                  \
-				GPRINT:out:MIN:"%3.0lf%s\t/"                                 \
-				GPRINT:out:AVERAGE:"%3.0lf%s\t/"                             \
-				GPRINT:out:MAX:"%3.0lf%s\t/"                                 \
+				AREA:out#0000FF80:"Outgoing\t\t"                             \
+				GPRINT:out:MIN:"%3.0lf%s\t"                                  \
+				GPRINT:out:AVERAGE:"%3.0lf%s\t"                              \
+				GPRINT:out:MAX:"%3.0lf%s\t"                                  \
 				GPRINT:out:LAST:"%3.0lf%s\n"                                 > /dev/null
 			fi
 			;;
@@ -982,11 +997,11 @@ generate_graph() {
 					[ -z "$_COLOR" ] && _COLOR="#999999"
 					_SENSOR_GEN=" $_SENSOR_GEN \
 					 DEF:temp$_SENSOR_CUR=$FILE:temp:AVERAGE \
-					 LINE3:temp$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}\t[${GRAD}${_SENSOR_UOM:0:1}] \
-					 GPRINT:temp$_SENSOR_CUR:MIN:\t%8.3lf \
-					 GPRINT:temp$_SENSOR_CUR:AVERAGE:%8.3lf \
-					 GPRINT:temp$_SENSOR_CUR:MAX:%8.3lf \
-					 GPRINT:temp$_SENSOR_CUR:LAST:\t%8.3lf\n "
+					 LINE3:temp$_SENSOR_CUR$_COLOR:${_ALIAS// /$NBSP}\t\t \
+					 GPRINT:temp$_SENSOR_CUR:MIN:%8.3lf\t \
+					 GPRINT:temp$_SENSOR_CUR:AVERAGE:%8.3lf\t \
+					 GPRINT:temp$_SENSOR_CUR:MAX:%8.3lf\t \
+					 GPRINT:temp$_SENSOR_CUR:LAST:%8.3lf\n "
 				fi
 				let _SENSOR_CUR=_SENSOR_CUR+1
 			done
@@ -996,12 +1011,12 @@ generate_graph() {
 				--title "$TITLE"                         \
 				--start now-$PERIODE                     \
 				--width $WIDTH --height $HEIGHT          \
-				--vertical-label "Grad $_SENSOR_UOM"     \
+				--vertical-label "${GRAD}$_SENSOR_UOM"   \
 				$DEFAULT_COLORS                          \
 				--slope-mode HRULE:0#000000              \
 				$LAZY $_SENSOR_LOW                       \
 				-W "Generated on: $DATESTRING"           \
-				COMMENT:"\t\t$mamc"                      \
+				COMMENT:"$(mamc "${GRAD}$_SENSOR_UOM")"  \
 				$_SENSOR_GEN                             > /dev/null
 			fi
 			;;
@@ -1045,25 +1060,25 @@ generate_graph() {
 						CDEF:sein=volt,curr,* \
 						CDEF:watt=sein,fact,* \
 						CDEF:blnd=sein,watt,- \
-						AREA:$V1$C1:$D1\t[$DESCR]\:\t \
-						GPRINT:$V1:MIN:%5.${DECMAL}lf\t/ \
-						GPRINT:$V1:AVERAGE:%5.${DECMAL}lf\t/ \
-						GPRINT:$V1:MAX:%5.${DECMAL}lf\t/ \
+						AREA:$V1$C1:$D1\t \
+						GPRINT:$V1:MIN:%5.${DECMAL}lf\t \
+						GPRINT:$V1:AVERAGE:%5.${DECMAL}lf\t \
+						GPRINT:$V1:MAX:%5.${DECMAL}lf\t \
 						GPRINT:$V1:LAST:%5.${DECMAL}lf\n \
-						AREA:$V2$C2:$D2\t[$DESCR]\:\t:STACK \
-						GPRINT:$V2:MIN:%5.${DECMAL}lf\t/ \
-						GPRINT:$V2:AVERAGE:%5.${DECMAL}lf\t/ \
-						GPRINT:$V2:MAX:%5.${DECMAL}lf\t/ \
+						AREA:$V2$C2:$D2\t:STACK \
+						GPRINT:$V2:MIN:%5.${DECMAL}lf\t \
+						GPRINT:$V2:AVERAGE:%5.${DECMAL}lf\t \
+						GPRINT:$V2:MAX:%5.${DECMAL}lf\t \
 						GPRINT:$V2:LAST:%5.${DECMAL}lf\n \
-						COMMENT:$NBSP${NBSP}Scheinleistung\t[$DESCR]\:\t \
-						GPRINT:sein:MIN:%5.${DECMAL}lf\t/ \
-						GPRINT:sein:AVERAGE:%5.${DECMAL}lf\t/ \
-						GPRINT:sein:MAX:%5.${DECMAL}lf\t/ \
+						COMMENT:$NBSP${NBSP}Scheinleistung\t \
+						GPRINT:sein:MIN:%5.${DECMAL}lf\t \
+						GPRINT:sein:AVERAGE:%5.${DECMAL}lf\t \
+						GPRINT:sein:MAX:%5.${DECMAL}lf\t \
 						GPRINT:sein:LAST:%5.${DECMAL}lf\n \
-						LINE1:sein_max$BLACK:$D3\t[$DESCR]\:\t \
-						GPRINT:sein_max:MIN:%5.${DECMAL}lf\t/ \
-						GPRINT:sein_max:AVERAGE:%5.${DECMAL}lf\t/ \
-						GPRINT:sein_max:MAX:%5.${DECMAL}lf\t/ \
+						LINE1:sein_max$MAXIM:$D3\t \
+						GPRINT:sein_max:MIN:%5.${DECMAL}lf\t \
+						GPRINT:sein_max:AVERAGE:%5.${DECMAL}lf\t \
+						GPRINT:sein_max:MAX:%5.${DECMAL}lf\t \
 						GPRINT:sein_max:LAST:%5.${DECMAL}lf\n "
 				fi
 			else
@@ -1110,10 +1125,10 @@ generate_graph() {
 
 						_SENSOR_GEN=" $_SENSOR_GEN \
 							$_SOURCE \
-							LINE3:$kind$_SENSOR_CUR$_COLOR:$(len15 $_ALIAS)\t[$DESCR]\:\t \
-							GPRINT:$kind$_SENSOR_CUR:MIN:%5.${DECMAL}lf\t/ \
-							GPRINT:$kind$_SENSOR_CUR:AVERAGE:%5.${DECMAL}lf\t/ \
-							GPRINT:$kind$_SENSOR_CUR:MAX:%5.${DECMAL}lf\t/ \
+							LINE3:$kind$_SENSOR_CUR$_COLOR:$(len15 $_ALIAS)\t \
+							GPRINT:$kind$_SENSOR_CUR:MIN:%5.${DECMAL}lf\t \
+							GPRINT:$kind$_SENSOR_CUR:AVERAGE:%5.${DECMAL}lf\t \
+							GPRINT:$kind$_SENSOR_CUR:MAX:%5.${DECMAL}lf\t \
 							GPRINT:$kind$_SENSOR_CUR:LAST:%5.${DECMAL}lf\n "
 					fi
 					let _SENSOR_CUR=_SENSOR_CUR+1
@@ -1130,7 +1145,7 @@ generate_graph() {
 				--slope-mode HRULE:0#000000              \
 				$LAZY  $RANGE                            \
 				-W "Generated on: $DATESTRING"           \
-				COMMENT:"\t\t$mamc"                      \
+				COMMENT:"$(mamc "$DESCR")"               \
 				$_SENSOR_GEN                             > /dev/null
 			fi
 			;;
@@ -1203,10 +1218,10 @@ csl_graph() {
 			[ $COLOR_MOD == 16 ] && COLOR_VAR=#ff0033
 
 			GPRINT="$GPRINT \
-			AREA:loadAVG$count$COLOR_VAR:$_CURRENT_FRQ${NBSP}MHz\t[MBit/s]\:\t$STACK \
-			GPRINT:loadMIN$count:MIN:%4.1lf\t/ \
-			GPRINT:loadAVG$count:AVERAGE:%4.1lf\t/ \
-			GPRINT:loadMAX$count:MAX:%4.1lf\t/ \
+			AREA:loadAVG$count$COLOR_VAR:$_CURRENT_FRQ${NBSP}MHz\t\t$STACK \
+			GPRINT:loadMIN$count:MIN:%4.1lf\t \
+			GPRINT:loadAVG$count:AVERAGE:%4.1lf\t \
+			GPRINT:loadMAX$count:MAX:%4.1lf\t \
 			GPRINT:loadAVG$count:LAST:%4.1lf\n "
 			[ -z "$STACK" ] && STACK=":STACK"
 		fi
@@ -1245,10 +1260,10 @@ csl_graph() {
 		CDEF:rpn_TOP=rpn_MAX,rpn_MAX,UNKN,IF \
 		$SHADE \
 		LINE1:rpn_TOP$BLACK \
-		COMMENT:${NBSP}${NBSP}Summary\t[MBit/s]\:\t \
-		GPRINT:rpn_MIN:MIN:%4.1lf\t/ \
-		GPRINT:rpn_AVG:AVERAGE:%4.1lf\t/ \
-		GPRINT:rpn_MAX:MAX:%4.1lf\t/ \
+		COMMENT:${NBSP}${NBSP}Summary\t\t \
+		GPRINT:rpn_MIN:MIN:%4.1lf\t \
+		GPRINT:rpn_AVG:AVERAGE:%4.1lf\t \
+		GPRINT:rpn_MAX:MAX:%4.1lf\t \
 		GPRINT:rpn_AVG:LAST:%4.1lf\n "
 		#LINE2:rpn_MAX$GREY
 		#LINE2:rpn_MIN$GREEN
@@ -1265,7 +1280,7 @@ csl_graph() {
 		-A                                                       \
 		-W "Generated on: $DATESTRING"                           \
 		                                                         \
-		COMMENT:"\t\t$mamc"                                      \
+		COMMENT:"$(mamc "MBit/s")"                               \
 		$DS_DEF $GPRINT $OVERALL $TOPVALUE                       \
 		                                                         > /dev/null
 	fi
@@ -1530,3 +1545,4 @@ EOF
 for single_graph in $ALL_GRAPHS; do
 	graphit $single_graph
 done
+
