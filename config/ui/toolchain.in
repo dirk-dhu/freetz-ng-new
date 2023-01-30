@@ -807,6 +807,12 @@ config FREETZ_UBOOT_STATIC
 		Used for precompiled dl-tools. You need to
 		have a installed libssl.a and libctypto.a
 
+config FREETZ_TOOLS_KCONFIG_BUTTONS
+	bool "No load+save buttons in menuconfig"
+	default n
+	help
+		Only select+exit+help buttons at bottom.
+
 choice
 	prompt "Root emulator"
 	default FREETZ_ROOTEMU_PSEUDO
