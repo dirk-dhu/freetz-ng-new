@@ -319,8 +319,8 @@ endef
 
 define INSTALL_BINARY_STRIP
 $(INSTALL_FILE) \
-[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" == "y" ] && $(TOOLS_DIR)/patchelf --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 $@ || true; \
-$(TARGET_STRIP) $@;
+$(TARGET_STRIP) $@; \
+[ "$(FREETZ_SEPARATE_AVM_UCLIBC)" != "y" ] || patchelf --set-interpreter $(FREETZ_LIBRARY_DIR)/ld-uClibc.so.1 $@ ;
 endef
 define INSTALL_LIBRARY__INT
 chmod 755 $<; \
