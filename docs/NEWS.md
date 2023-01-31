@@ -1,5 +1,11 @@
 # NEWS
 
+ * __[2023-01-31](#2023-01-31)__<a id='2023-01-31'></a><br>
+   Im `menuconfig` gibt es jetzt die neue Option `FREETZ_ANCIENT_SYSTEM` für die Liebhaber antiker Linuxsystme<br>
+   wie Ubuntu 14. Durch diese Option werden Dinge deaktivert die mit Sicherheit nicht funktionieren werden. Es<br>
+   gibt dennoch keine Funktionsgarantie füe diese veralteten Systeme.<br>
+   Siehe [d5e0121d](https://github.com/Freetz-NG/freetz-ng/commit/d5e0121d94c7835e44fb9c83f8f1dc291f6a6bb7)<br>
+
  * __[2023-01-14](#2023-01-14)__<a id='2023-01-14'></a><br>
    Mit `tools/prerequisites` können alle nötigen Packages für das laufende Linux angezeigt und installiert werden.<br>
    Es werden die Packages verwendet die auch unter [PREREQUISITES](https://freetz-ng.github.io/freetz-ng/PREREQUISITES) zu sehen sind<br>
