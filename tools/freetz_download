@@ -291,14 +291,24 @@ if [ -n "$URLs" ]; then
 			elif [ ${url:0:4} == "@AVM" ]; then
 				subpath=${url/@AVM\//}
 				sites[(( num_sites++ ))]=https://download.avm.de/fritzbox/$subpath
-				sites[(( num_sites++ ))]=https://download.avm.de/archive/fritz.box/$subpath
 				sites[(( num_sites++ ))]=https://download.avm.de/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/fritzwlan/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/fritzpowerline/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/fritzsmart/$subpath
 				sites[(( num_sites++ ))]=https://avm.de/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21NL1/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/labor/MOVE21/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21NL1/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/MOVE21/$subpath
+#				sites[(( num_sites++ ))]=https://download.avm.de/inhaus/WU22PSQ19/$subpath
+				sites[(( num_sites++ ))]=https://download.avm.de/archive/fritz.box/$subpath
+				sites[(( num_sites++ ))]=https://service.avm.de/downloads/downgrade/$subpath
+				sites[(( num_sites++ ))]=https://service.avm.de/downloads/zwischenupdate/$subpath
 				sites[(( num_sites++ ))]=https://service.avm.de/downloads/$subpath
 				sites[(( num_sites++ ))]=https://www.avm.de/de/Service/Service-Portale/$subpath
-				sites[(( num_sites++ ))]=ftp://ftp.avm.de/fritzbox/$subpath
-				sites[(( num_sites++ ))]=ftp://ftp.avm.de/archive/fritz.box/$subpath
-				sites[(( num_sites++ ))]=ftp://ftp.avm.de/$subpath
+#				sites[(( num_sites++ ))]=ftp://ftp.avm.de/fritzbox/$subpath
+#				sites[(( num_sites++ ))]=ftp://ftp.avm.de/$subpath
+#				sites[(( num_sites++ ))]=ftp://ftp.avm.de/archive/fritz.box/$subpath
 			elif [ ${url:0:4} == "@GNU" ]; then
 				subpath=${url/@GNU\//}
 				sites[(( num_sites++ ))]=https://ftpmirror.gnu.org/$subpath # automatically chooses a nearby and up-to-date mirror
