@@ -1,6 +1,17 @@
 menu "Build system options"
 	visible if FREETZ_SHOW_EXPERT
 
+	config FREETZ_ANCIENT_SYSTEM
+		bool "My linux got not updates since many years"
+		default n
+		help
+			Your linux system is older than your turtle? You like ancient
+			software very much? With many well known bugs and even more
+			security problems? You don't have a system with installed
+			gcc7? Because the current version 12 is just a number?
+			Then select this option to get a tast of the last century
+			and get rid of some achievements of the last decade.
+
 	config FREETZ_MENUCONFIG_REVISION
 		bool "Show revision info in menuconfig"
 		default y
