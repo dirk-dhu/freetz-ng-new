@@ -94,6 +94,7 @@ CHECK_PREREQ_TOOL:=$(TOOLS_DIR)/prerequisites
 GENERATE_IN_TOOL:=$(TOOLS_DIR)/genin
 TAR:=$(TOOLS_DIR)/tar-gnu
 SED:=sed
+PATCHELF:=patchelf
 PYTHON3=python3
 MESON=meson
 CMAKE=cmake
