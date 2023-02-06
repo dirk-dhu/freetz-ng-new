@@ -94,6 +94,7 @@ Latest changes
    * getdns 1.7.3
    * Git 2.39.1
    * HAProxy 2.6.8
+   * htop 1.0.3/2.3.2
    * htpdate 1.3.7
    * IGMPproxy 0.4
    * ImageMagick 7.1.0-57
