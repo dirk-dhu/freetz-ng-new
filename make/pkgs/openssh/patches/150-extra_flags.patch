@@ -47,7 +47,7 @@
  	arc4random_uniform.o \
 --- openbsd-compat/regress/Makefile.in
 +++ openbsd-compat/regress/Makefile.in
-@@ -6,12 +6,12 @@
+@@ -6,13 +6,13 @@
  VPATH=@srcdir@
  CC=@CC@
  LD=@LD@
@@ -56,7 +56,8 @@
  CPPFLAGS=-I. -I.. -I../.. -I$(srcdir) -I$(srcdir)/.. -I$(srcdir)/../.. @CPPFLAGS@ @DEFS@
  EXEEXT=@EXEEXT@
  LIBCOMPAT=../libopenbsd-compat.a
- LIBS=@LIBS@
+ LIBSSH=../../libssh.a
+ LIBS=@LIBS@ @CHANNELLIBS@
 -LDFLAGS=@LDFLAGS@ $(LIBCOMPAT)
 +LDFLAGS=@LDFLAGS@ $(EXTRA_LDFLAGS) $(LIBCOMPAT)
  
