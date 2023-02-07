@@ -33,16 +33,15 @@ Wie kann ich Freetz-NG unterstützen?
     - Die Patchdatei erstellen: `git format-patch origin/HEAD`
     - Alle lokalen Veränderungen wieder löschen `git reset --hard  origin/HEAD`
  * __[Package bump](#package-bump)__<a id='package-bump'></a><br>
-   Minimale Schritte um die Version eines Packages zu aktualisieren:
+   Minimale Schritte um die Version eines Packages/Library zu aktualisieren:
     - Changelog lesen, es kann sich etwas geändert haben das beachtet werden muss.
-    - Hinweis: Libraries befinden sich nicht in ```make/$PKG/``` sondern: ```make/libs/$PKG/```
+    - Hinweis: Libraries befinden sich nicht in ```make/pkgs/$PKG/``` sondern: ```make/libs/$PKG/```
     - Die Datei ```docs/CHANGELOG.md``` anpassen.
-    - Die Version in ```make/$PKG/Config.in``` anpassen.
-    - Die Version in ```make/$PKG/$PKG.mk``` anpassen.
-    - Die Prüfsumme in ```make/$PKG/$PKG.mk``` anpassen.
-    - Falls der Dateiname die Version enthält, ```make/$PKG/external.*``` anpassen.
-    - Vorhandene Patches in ```make/$PKG/patches/``` aktualisieren durch<br>
-      ausführen von: ```make $PKG-autofix```
+    - Die Version in ```make/pkgs/$PKG/Config.in``` anpassen.
+    - Die Version in ```make/pkgs/$PKG/$PKG.mk``` anpassen.
+    - Die Prüfsumme in ```make/pkgs/$PKG/$PKG.mk``` anpassen.
+    - Falls der Dateiname die Version enthält, ```make/pkgs/$PKG/external.*``` anpassen.
+    - Vorhandene Patches in ```make/pkgs/$PKG/patches/``` aktualisieren durch ausführen von: ```make $PKG-autofix```
     - Compilieren testen mit: ```make $PKG-recompile```
     - Am besten noch auf eine Fritzbox flashen und testen.
  * __[Wiki](#wiki)__<a id='wiki'></a><br>
