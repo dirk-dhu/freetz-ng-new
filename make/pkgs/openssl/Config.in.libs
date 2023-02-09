@@ -59,6 +59,7 @@ choice
 
 	config FREETZ_OPENSSL_VERSION_1
 		bool "1.0.2 - DEPRECATED"
+		depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_OPENSSL_VERSION_2
 		bool "1.1.1"
