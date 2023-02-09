@@ -65,7 +65,7 @@ Latest changes
    * precompiled host-tools 2023-01-30
    * prelink 20130503
    * pseudo 1.9.0 oe-core c9670c2
-   * python 3.11.1
+   * python 3.11.2
    * sed 4.9
    * sfk 1.9.8.2
    * u-boot 2023.01
