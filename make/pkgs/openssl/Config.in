@@ -27,7 +27,7 @@ if FREETZ_PACKAGE_OPENSSL
 			depends on FREETZ_OPENSSL_VERSION_2
 
 		config FREETZ_PACKAGE_OPENSSL_VERSION_3
-			bool "3.0 - EXPERIMENTAL"
+			bool "3.0"
 			depends on FREETZ_OPENSSL_VERSION_3
 
 	endchoice
