@@ -62,7 +62,7 @@ Latest changes
    * ncurses 6.4
    * ninja 1.11.1
    * patchelf 0.14.5/0.17.2
-   * precompiled host-tools 2023-01-30
+   * precompiled host-tools 2023-02-09
    * prelink 20130503
    * pseudo 1.9.0 oe-core c9670c2
    * python 3.11.2
