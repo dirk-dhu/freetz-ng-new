@@ -125,7 +125,7 @@ Latest changes
    * XZ Utils 5.4.1
 
  - Libraries:
-   * cairo 1.17.4
+   * cairo 1.17.8
    * expat 2.5.0
    * fribidi 1.0.12
    * glib2 2.32.4/2.75.2

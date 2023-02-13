@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.17.4)
-$(PKG)_LIB_VERSION:=2.11704.0
+$(call PKG_INIT_LIB, 1.17.8)
+$(PKG)_LIB_VERSION:=2.11708.0
 $(PKG)_SOURCE:=cairo-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=74b24c1ed436bbe87499179a3b27c43f4143b8676d8ad237a6fa787401959705
+$(PKG)_HASH:=5b10c8892d1b58d70d3f0ba5b47863a061262fa56b9dc7944161f8c8b783bc64
 $(PKG)_SITE:=https://www.cairographics.org/releases,https://cairographics.org/snapshots
 ### WEBSITE:=https://www.cairographics.org/
 ### MANPAGE:=https://www.cairographics.org/documentation/
@@ -13,71 +13,45 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/$($(PKG)_LIBNAME_LONG)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME_LONG)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME_LONG)
 
+$(PKG)_HOST_DEPENDS_ON += meson-host
 $(PKG)_DEPENDS_ON += pixman fontconfig freetype libpng zlib
 
-$(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc
-$(PKG)_CONFIGURE_OPTIONS += --disable-atomic
-$(PKG)_CONFIGURE_OPTIONS += --disable-gcov
-$(PKG)_CONFIGURE_OPTIONS += --disable-valgrind
-$(PKG)_CONFIGURE_OPTIONS += --enable-xlib=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-xlib-xrender=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-xcb=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-xlib-xcb=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-xcb-shm=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-qt=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-quartz=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-quartz-font=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-quartz-image=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-win32=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-win32-font=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-os2=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-beos=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-drm=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-gallium=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-png=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-gl=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-glesv2=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-glesv3=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-cogl=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-directfb=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-vg=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-egl=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-glx=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-wgl=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-script=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-ft=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-fc=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-ps=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-pdf=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-svg=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-test-surfaces=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-tee=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-xml=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-pthread=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-gobject=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-full-testing=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-trace=no
-$(PKG)_CONFIGURE_OPTIONS += --enable-interpreter=yes
-$(PKG)_CONFIGURE_OPTIONS += --enable-symbol-lookup=no
-$(PKG)_CONFIGURE_OPTIONS += --disable-some-floating-point
-$(PKG)_CONFIGURE_OPTIONS += --without-x
-$(PKG)_CONFIGURE_OPTIONS += --without-gallium
+$(PKG)_CONFIGURE_OPTIONS += -Dbuildtype=release
+$(PKG)_CONFIGURE_OPTIONS += -Ddwrite=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dfontconfig=enabled
+$(PKG)_CONFIGURE_OPTIONS += -Dfreetype=enabled
+$(PKG)_CONFIGURE_OPTIONS += -Dglib=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dgtk2-utils=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dgtk_doc=false
+$(PKG)_CONFIGURE_OPTIONS += -Dpng=enabled
+$(PKG)_CONFIGURE_OPTIONS += -Dquartz=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dspectre=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dsymbol-lookup=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dtee=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dtests=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dxcb=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dxlib=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dxlib-xcb=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dxml=disabled
+$(PKG)_CONFIGURE_OPTIONS += -Dzlib=disabled
 
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-$(PKG_CONFIGURED_CONFIGURE)
+$(PKG_CONFIGURED_MESON)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(CAIRO_DIR)
+	$(SUBMESON) compile \
+		-C $(CAIRO_DIR)/builddir/
+#meson	$(MESON) configure $(CAIRO_DIR)/builddir/
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
-	$(SUBMAKE) -C $(CAIRO_DIR) \
-		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
-		install
+	$(SUBMESON) install \
+		--destdir "$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		-C $(CAIRO_DIR)/builddir/
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo*.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo*.la
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/cairo*.pc
+#meson		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libcairo*.la
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 	$(INSTALL_LIBRARY_STRIP)
