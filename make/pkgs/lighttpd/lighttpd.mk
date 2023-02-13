@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.4.68)
+$(call PKG_INIT_BIN, 1.4.69)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=e56f37ae52b63e1ada4d76ce78005affb6e56eea2f6bdb0ce17d6d36e9583384
+$(PKG)_HASH:=16ac8db95e719629ba61949b99f8a26feba946a81d185215b28379bb4116b0b4
 $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### WEBSITE:=https://www.lighttpd.net/
 ### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki

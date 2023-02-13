@@ -103,7 +103,7 @@ Latest changes
    * Knock 0.8
    * libffi 3.4.4
    * libpcap 1.1.1/1.10.3
-   * Lighttpd 1.4.68
+   * Lighttpd 1.4.69
    * Lua 5.1.5/5.4.4
    * Nano 7.2
    * ncurses 6.4
