@@ -1,4 +1,4 @@
-# Cairo (libcairo.so) 1.17.4
+# Cairo (libcairo.so) 1.17.8
  - Homepage: [https://www.cairographics.org/](https://www.cairographics.org/)
  - Manpage: [https://www.cairographics.org/documentation/](https://www.cairographics.org/documentation/)
  - Changelog: [https://www.cairographics.org/news/](https://www.cairographics.org/news/)

@@ -20,7 +20,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### C
 
-  * **[Cairo (libcairo.so) 1.17.4](cairo.md)<a id='cairo'></a>**<br>
+  * **[Cairo (libcairo.so) 1.17.8](cairo.md)<a id='cairo'></a>**<br>
     Cairo is a 2D graphics library with support for multiple output devices. Cairo is designed to produce consistent output on all output media while taking advantage of display hardware acceleration when available.
 
 ### D
