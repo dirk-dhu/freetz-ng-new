@@ -55,6 +55,7 @@ Latest changes
    * cmake 3.25.2
    * fakeroot 1.31
    * fastjar 0.98
+   * genext2fs 1.5.0-3b99f4a4
    * gperf 3.1
    * kconfig 6.1
    * meson 1.0.0

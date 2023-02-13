@@ -1,14 +1,16 @@
-$(call TOOLS_INIT, 4c1cc9468980448ca3e86db1cbe9600a4a084f5e)
+$(call TOOLS_INIT, 3b99f4a43f612b9ee74bbf24ca9890606295313f)
 $(PKG)_SOURCE:=genext2fs-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=a59f657ce6d12013d7343c7b84928723f0b8dec4a89e9542802c1257dce26ba6
+$(PKG)_HASH:=2721c9e131324994ed6c001bfd0d4f176be437592aacf52644e06781a3952598
 $(PKG)_SITE:=git@https://github.com/bestouff/genext2fs.git
-# see http://genext2fs.cvs.sourceforge.net/viewvc/genext2fs/genext2fs/genext2fs.c?view=log for more info
-#$(PKG)_VERSION:=20131004
-#$(PKG)_HASH:=492052c02f774fa15e8d2dc0a49d0749d97ababbaf40ac7d3e93eda99b6fc777
-#$(PKG)_SITE:=cvs@pserver:anonymous@genext2fs.cvs.sourceforge.net:/cvsroot/genext2fs
+### VERSION:=1.5.0-3b99f4a4
+### WEBSITE:=https://genext2fs.sourceforge.net/
+### MANPAGE:=https://sourceforge.net/projects/genext2fs/
+### CHANGES:=https://github.com/bestouff/genext2fs/tags
+### CVSREPO:=https://github.com/bestouff/genext2fs
 
-$(PKG)_PATCH_POST_CMDS := mv configure.in configure.ac;
-$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
+$(PKG)_CONFIGURE_PRE_CMDS += ./autogen.sh;
+$(PKG)_CONFIGURE_OPTIONS += --program-prefix=""
+$(PKG)_CONFIGURE_OPTIONS += --program-suffix=""
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)
 
 
@@ -17,7 +19,7 @@ $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/genext2fs: $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(GENEXT2FS_HOST_DIR) all
+	$(TOOLS_SUBMAKE) CC="$(TOOLS_CC)" CXX="$(TOOLS_CXX)" CFLAGS="$(TOOLS_CFLAGS)" LDFLAGS="$(TOOLS_LDFLAGS)" -C $(GENEXT2FS_HOST_DIR) all
 	touch -c $@
 
 $(pkg)-test: $($(PKG)_DIR)/.tests-passed
