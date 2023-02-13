@@ -80,7 +80,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox-4020/{other,deutschland}/fritz.os"                                                          if FREETZ_TYPE_4020
 	#
-	default "@AVM/fritzbox-4040/{other,deutschland}/fritz.os"                                                          if FREETZ_TYPE_4040
+	default "@AVM/fritzbox-4040/{other,deutschland}/fritz.os,@AVM/4040"                                                if FREETZ_TYPE_4040
 	#
 	default "@AVM/fritzbox-4060/{other,deutschland}/fritz.os,@AVM/4060"                                                if FREETZ_TYPE_4060
 	#
