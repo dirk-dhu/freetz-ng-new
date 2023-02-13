@@ -129,7 +129,7 @@ Latest changes
    * expat 2.5.0
    * fribidi 1.0.12
    * glib2 2.32.4/2.75.2
-   * harfbuzz 6.0.0
+   * harfbuzz 7.0.0
    * libcap-ng 0.8.3
    * libctlmgr 1.0
    * libev 4.33
