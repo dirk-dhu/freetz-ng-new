@@ -53,6 +53,7 @@ jobs:
 
       - name: generate
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ACTIONS_FWDLURL: ${{ secrets.ACTIONS_FWDLURL }}
         run: |
           export LANG=en_US.utf8

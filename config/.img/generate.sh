@@ -112,7 +112,13 @@ unpack_() {
 	line="$1"
 	file="${line%% *}"
 	image="$IMAGES/$file"
-	[ -n "$ACTIONS_FWDLURL" ] && echo "SAVING       $file" && wget -q "${ACTIONS_FWDLURL}$file" -O $image >/dev/null 2>&1 && rmdl='y'
+	if [ ! -s "${image}" ] && [ -n "$GITHUB_TOKEN" ]; then
+		echo "SAVING       $file"
+		ASSID="$(curl -s -H "Authorization: token $GITHUB_TOKEN" "https://api.github.com/repos/Freetz-NG/images/releases/tags/firmware" | grep -B7 "\"$file\"" | sed -n 's/ *"id": *//p')"
+		curl -sLo $image -H "Authorization: token $GITHUB_TOKEN" -H "Accept: application/octet-stream" "https://api.github.com/repos/Freetz-NG/images/releases/assets/${ASSID%,}"
+		rmdl='y'
+	fi
+	[ ! -s "${image}" ] && [ -n "$ACTIONS_FWDLURL" ] && echo "SAVING       $file" && wget -q "${ACTIONS_FWDLURL}$file" -O $image >/dev/null 2>&1 && rmdl='y'
 	[ ! -s "${image}" ] && image="$HOME/Desktop/$file"
 	[ ! -s "${image}" ] && echo "MISSED       ${image##*/}" && die && return 1
 	dirname="$UNPACK/${line%.image*}"
