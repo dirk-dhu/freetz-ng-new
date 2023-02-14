@@ -9,6 +9,7 @@ on:
       - 'docs/FIRMWARES.md'
   workflow_dispatch:
 
+
 jobs:
   build:
     container:
@@ -53,7 +54,7 @@ jobs:
 
       - name: generate
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
           ACTIONS_FWDLURL: ${{ secrets.ACTIONS_FWDLURL }}
         run: |
           export LANG=en_US.utf8
