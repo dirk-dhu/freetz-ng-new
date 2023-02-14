@@ -9,7 +9,6 @@ on:
       - 'docs/FIRMWARES.md'
   workflow_dispatch:
 
-
 jobs:
   build:
     container:
