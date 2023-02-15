@@ -86,7 +86,7 @@ Latest changes
    * CA-bundle 2023-01-10
    * CCID 1.5.1
    * classpath 0.99
-   * Curl 7.87.0
+   * Curl 7.88.0
    * dehydrated 0.7.1 (letsencrypt)
    * DejaVu Fonts TTF 2.37
    * Dnsmasq 2.80/2.89
