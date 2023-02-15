@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.9.11p3)
+$(call PKG_INIT_BIN, 1.9.13)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=4687e7d2f56721708f59cca2e1352c056cb23de526c22725615a42bb094f1f70
+$(PKG)_HASH:=3f55455b46edb0a129d925dcc39972f12f7c7fb78d0ccab6017ee16c8177e436
 $(PKG)_SITE:=https://www.sudo.ws/dist
 ### WEBSITE:=https://www.sudo.ws/
 ### MANPAGE:=https://www.sudo.ws/docs/man/sudoers.man/
@@ -16,6 +16,22 @@ $(PKG)_LIBS_TARGET_DIR:=$($(PKG)_LIBS:%=$($(PKG)_DEST_LIBDIR)/%)
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
+$(PKG)_CONFIGURE_OPTIONS += --disable-log-server
+$(PKG)_CONFIGURE_OPTIONS += --disable-log-client
+$(PKG)_CONFIGURE_OPTIONS += --without-bsm-audit
+$(PKG)_CONFIGURE_OPTIONS += --without-linux-audit 
+$(PKG)_CONFIGURE_OPTIONS += --without-solaris-audit
+$(PKG)_CONFIGURE_OPTIONS += --without-sssd
+$(PKG)_CONFIGURE_OPTIONS += --without-SecurID
+$(PKG)_CONFIGURE_OPTIONS += --without-fwtk
+$(PKG)_CONFIGURE_OPTIONS += --without-kerb5
+$(PKG)_CONFIGURE_OPTIONS += --without-AFS
+$(PKG)_CONFIGURE_OPTIONS += --without-DCE
+$(PKG)_CONFIGURE_OPTIONS += --without-sendmail
+$(PKG)_CONFIGURE_OPTIONS += --without-nsswitch
+$(PKG)_CONFIGURE_OPTIONS += --without-selinux
+$(PKG)_CONFIGURE_OPTIONS += --without-apparmor
+$(PKG)_CONFIGURE_OPTIONS += --without-pam-login
 $(PKG)_CONFIGURE_OPTIONS += --without-lecture
 $(PKG)_CONFIGURE_OPTIONS += --without-pam
 $(PKG)_CONFIGURE_OPTIONS += --without-sendmail
