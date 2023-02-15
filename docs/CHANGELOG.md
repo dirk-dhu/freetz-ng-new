@@ -256,7 +256,7 @@ Latest changes
    * LCD4linux 9d4e4b7-git
    * lighttpd 1.4.65
    * ltrace 0.7.3checkpoint1-git
-   * mc (Midnight Commander) 4.8.28
+   * mc (Midnight Commander) 4.8.29
    * mini-snmpd 1.6
    * MTR 0.80/0.95
    * Nano 6.3
