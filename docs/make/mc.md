@@ -1,4 +1,4 @@
-# mc (Midnight Commander) 4.8.28 (binary only)
+# mc (Midnight Commander) 4.8.29 (binary only)
  - Homepage: [http://midnight-commander.org/](http://midnight-commander.org/)
  - Manpage: [http://midnight-commander.org/wiki/doc](http://midnight-commander.org/wiki/doc)
  - Changelog: [https://github.com/MidnightCommander/mc/blob/master/doc/NEWS](https://github.com/MidnightCommander/mc/blob/master/doc/NEWS)
