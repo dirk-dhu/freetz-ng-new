@@ -93,7 +93,7 @@ Latest changes
    * Dropbear 2022.83
    * Fontconfig 2.14.1
    * getdns 1.7.3
-   * Git 2.39.1
+   * Git 2.39.2
    * HAProxy 2.6.8
    * htop 1.0.3/2.3.2
    * htpdate 1.3.7
