@@ -6,9 +6,9 @@ Es gibt 3 Wege ein Firmware auf eine Fritzbox zu installieren:
  * __AVM Webinterface__:<br>
    Es können alle AVM und Freetz Images installiert werden - gilt ab etwa Fritzos 6.5 nicht mehr.<br>
    Seitdem prüft AVM die Signatur der hochgeladenen Datei. Diese Signatur kann nur von AVM erstellt werden und es werden keine modifizierten Images akzeptiert.<br>
-   Falls man bereits ein __SELBST__ signiertes Freetz Image (default) installiert hat enthält dises einen zusätzlichen Signaturkey und es können mit dem __GLEICHEN__ Key signierte Images installiert werden.<br>
+   Falls man bereits ein __SELBST__ signiertes (default) Freetz Image installiert hat enthält dieses einen zusätzlichen Signaturkey und es können mit dem __GLEICHEN__ Key signierte Images installiert werden.<br>
  * __Freetz Webinterface__:<br>
-   Es können alle AVM und Freetz Images installiert werden, es gibt keine Signaturprüfung. Ein Downgrade ist auch möglich.<br>
+   Es können alle AVM und Freetz Images installiert werden, es gibt keine Signaturprüfung. Ein Downgrade ist möglich, wenn auch NICHT empfohlen.<br>
  * __Bootloader/Urlader/ADAM2/ADAM/EVA/FTP__:<br>
    Es können alle AVM und Freetz Images installiert werden, es gibt keine Signaturprüfung. Je nach Gerät muss die korrekte Methode genutzt werden<br>
 
