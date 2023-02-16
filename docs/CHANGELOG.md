@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23020](#ng23020)
   * [ng22100](#ng22100)
   * [ng22070](#ng22070)
   * [ng22040](#ng22040)
@@ -41,6 +42,15 @@ Latest changes
 <br>
 
 ### devel
+
+ - Packages:
+
+ - Libraries:
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23020
 
  - Known problems:
    * Loading build kernel modules may work or do not. You'll notice.
@@ -147,7 +157,7 @@ Latest changes
    * pixman 0.42.2
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23020/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng22100
 

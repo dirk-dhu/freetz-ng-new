@@ -1,5 +1,12 @@
 # NEWS
 
+ * __[2023-02-16](#2023-02-16)__<a id='2023-02-16'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23020` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng23020](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng23020)<br>
+
  * __[2023-01-31](#2023-01-31)__<a id='2023-01-31'></a><br>
    Im `menuconfig` gibt es jetzt die neue Option `FREETZ_ANCIENT_SYSTEM` für die Liebhaber antiker Linuxsystme<br>
    wie Ubuntu 14. Durch diese Option werden Dinge deaktivert die mit Sicherheit nicht funktionieren werden. Es<br>
