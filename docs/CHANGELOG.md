@@ -266,7 +266,7 @@ Latest changes
    * OpenVPN 2.4.12/2.5.7
    * PCSC-lite 1.9.8
    * pcre2 10.40
-   * Privoxy 3.0.33
+   * Privoxy 3.0.34
    * radvd 1.9.3/2.19
    * ser2net 3.5.4
    * Smartmontools 7.3
