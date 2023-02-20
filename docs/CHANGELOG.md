@@ -44,6 +44,7 @@ Latest changes
 ### devel
 
  - Packages:
+   * Curl 7.88.1
    * OpenVPN 2.4.12/2.5.9/2.6.0
    * Sudo 1.9.13p1
 
