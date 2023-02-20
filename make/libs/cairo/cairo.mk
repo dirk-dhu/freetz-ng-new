@@ -9,7 +9,7 @@ $(PKG)_SITE:=https://www.cairographics.org/releases,https://cairographics.org/sn
 
 $(PKG)_LIBNAME_SHORT:=$(pkg)
 $(PKG)_LIBNAME_LONG:=$($(PKG)_LIBNAME_SHORT:%=lib%.so.$($(PKG)_LIB_VERSION))
-$(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/$($(PKG)_LIBNAME_LONG)
+$(PKG)_BINARY:=$($(PKG)_DIR)/builddir/src/$($(PKG)_LIBNAME_LONG)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME_LONG)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME_LONG)
 
