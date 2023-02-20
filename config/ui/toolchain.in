@@ -802,18 +802,20 @@ config FREETZ_TARGET_TOOLCHAIN
 comment "Host-tools options ----------------------------------"
 
 choice
-	prompt "Patchelf compatibility" if !FREETZ_HOSTTOOLS_DOWNLOAD
+	prompt "Patchelf version" if !FREETZ_HOSTTOOLS_DOWNLOAD
 		default FREETZ_TOOLS_PATCHELF_VERSION_CURRENT
 
 	config FREETZ_TOOLS_PATCHELF_VERSION_ABANDON
-		bool "gcc 5"
+		bool "old"
 		depends on !FREETZ_HOSTTOOLS_DOWNLOAD
 		help
 			For usage with old Ubuntu 14
 
 	config FREETZ_TOOLS_PATCHELF_VERSION_CURRENT
-		bool "gcc 7"
+		bool "new"
 		depends on !FREETZ_ANCIENT_SYSTEM
+		help
+			Requires at least gcc v7
 
 endchoice
 
