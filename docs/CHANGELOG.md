@@ -45,6 +45,7 @@ Latest changes
 
  - Packages:
    * OpenVPN 2.4.12/2.5.9/2.6.0
+   * Sudo 1.9.13p1
 
  - Libraries:
 
