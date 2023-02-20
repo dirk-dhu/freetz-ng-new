@@ -1,8 +1,8 @@
 --- linux-4.9/.kernelvariables
 +++ linux-4.9/.kernelvariables
-@@ -28,7 +28,6 @@
+@@ -26,7 +26,6 @@
  
- EXTRA_CFLAGS = $(ADD_FILE_PID)
+ EXTRA_CFLAGS = 
  
 -export AVM_KCONFIG_CONFIG = ../linux/avm/conf/linux-4.9.atomp7
  
