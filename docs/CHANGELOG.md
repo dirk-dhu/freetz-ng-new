@@ -46,6 +46,7 @@ Latest changes
  - Host tools:
    * kconfig 6.2
    * patchelf 0.14.5/0.15.0
+   * precompiled host-tools 2023-02-20
 
  - Packages:
    * Curl 7.88.1
