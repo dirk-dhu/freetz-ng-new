@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 2.14.1)
+$(call PKG_INIT_BIN, 2.14.2)
 $(PKG)_LIB_VERSION:=1.12.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=298e883f6e11d2c5e6d53c8a8394de58d563902cfab934e6be12fb5a5f361ef0
+$(PKG)_HASH:=dba695b57bce15023d2ceedef82062c2b925e51f5d4cc4aef736cf13f60a468b
 $(PKG)_SITE:=https://www.freedesktop.org/software/fontconfig/release
 ### WEBSITE:=https://www.freedesktop.org/wiki/Software/fontconfig/
 ### CHANGES:=https://gitlab.freedesktop.org/fontconfig/fontconfig/tags
