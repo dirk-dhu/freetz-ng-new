@@ -188,7 +188,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[FFmpeg 5.1.2](ffmpeg.md)<a id='ffmpeg'></a>**<br>
     FFmpeg is a complete, cross-platform solution to record, convert and stream audio and video.
 
-  * **[Fontconfig 2.14.1 (binary only)](fontconfig.md)<a id='fontconfig'></a>**<br>
+  * **[Fontconfig 2.14.2 (binary only)](fontconfig.md)<a id='fontconfig'></a>**<br>
     Fontconfig is a library for configuring and customizing font access. This package adds /etc/fontsfonts.conf
 
   * **[fortune 1.2](fortune.md)<a id='fortune'></a>**<br>
