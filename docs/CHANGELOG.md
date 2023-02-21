@@ -48,6 +48,9 @@ Latest changes
    * patchelf 0.14.5/0.15.0
    * precompiled host-tools 2023-02-20
 
+ - Patches:
+   * Various Fritzos 7.5 related changes
+
  - Packages:
    * Curl 7.88.1
    * Fontconfig 2.14.2

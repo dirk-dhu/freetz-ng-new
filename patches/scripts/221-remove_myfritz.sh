@@ -23,6 +23,9 @@ if [ "$FREETZ_AVM_HAS_ONLY_LUA" != "y" ]; then
 	modsed "$((linkbox_row-8)),$((linkbox_row+18))d" $linkbox_file
 	modsed '/.*class="sm_link_bold" href=".myfritz.*/d' "${HTML_SPEC_MOD_DIR}/menus/menu2.html"
 	modsed 's/\(setvariable var:showmyfritz \)./\10/g' ${HTML_SPEC_MOD_DIR}/menus/menu2_internet.html
+else
+	# entfernt Overview > "Täglich im Blick mit MyFRITZ!"-Link
+	[ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] && modsed 's/{?7160:468?}/ /' "${HTML_LANG_MOD_DIR}/home/home.js"
 fi
 
 # patch FRITZ!NAS UI
