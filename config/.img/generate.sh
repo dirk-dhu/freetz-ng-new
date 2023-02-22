@@ -671,10 +671,15 @@ determine_() {
 	[ $DOSHOW -ge 2 ] && outp "nqcs" "$X"
 
 
+	#CTLMGR_CTL
+	X="%"
+	[ -e "$unpacked/usr/bin/ctlmgr_ctl" ] && X="available" && in_b "FREETZ_AVM_HAS_CTLMGR_CTL"
+	[ $DOSHOW -ge 2 ] && outp "ctlmgr_ctl" "$X"
+
 	#DSL_CONTROL
 	X="%"
 	[ -e "$unpacked/usr/sbin/dsl_control" -o -e "$unpacked/usr/sbin/vr10/dsl_control" ] && X="available" && in_b "FREETZ_AVM_HAS_DSL_CONTROL"
-	[ $DOSHOW -ge 2 ] && outp "dslctl" "$X"
+	[ $DOSHOW -ge 2 ] && outp "dsl_control" "$X"
 
 	#SHOWDSLDSTAT
 	X="%"
