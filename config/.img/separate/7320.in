@@ -97,6 +97,9 @@ config FREETZ_AVM_HAS_TC
 config FREETZ_AVM_HAS_SAMBA_SMBD
 	def_bool y
 
+config FREETZ_AVM_HAS_CTLMGR_CTL
+	def_bool y
+
 config FREETZ_AVM_HAS_DSL_CONTROL
 	def_bool y
 

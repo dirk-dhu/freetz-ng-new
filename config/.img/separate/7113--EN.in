@@ -36,6 +36,9 @@ config FREETZ_AVM_HAS_LANGUAGE_it
 config FREETZ_AVM_HAS_TC
 	def_bool y
 
+config FREETZ_AVM_HAS_CTLMGR_CTL
+	def_bool y
+
 config FREETZ_AVM_PROP_UCLIBC_0_9_29
 	def_bool y
 

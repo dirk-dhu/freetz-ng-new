@@ -18,6 +18,9 @@ config FREETZ_AVM_HAS_BRANDING_avm
 config FREETZ_AVM_HAS_CHRONYD
 	def_bool y
 
+config FREETZ_AVM_HAS_CTLMGR_CTL
+	def_bool y
+
 config FREETZ_AVM_HAS_DDNSD
 	def_bool y
 

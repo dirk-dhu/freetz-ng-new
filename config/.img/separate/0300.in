@@ -1,5 +1,8 @@
 if FREETZ_TYPE_0300
 
+config FREETZ_AVM_HAS_CTLMGR_CTL
+	def_bool y
+
 config FREETZ_AVM_HAS_INETD
 	def_bool y
 
