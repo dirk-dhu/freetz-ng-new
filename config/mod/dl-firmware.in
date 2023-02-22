@@ -331,7 +331,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Repeater_3000-07.29.image"                                              if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_25
 	default "FRITZ.Repeater_3000-07.39-101160-Labor.image"                                 if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
-	default "FRITZ.Repeater_3000_AX-07.41-101080-Inhaus.image"                             if FREETZ_TYPE_3009 && FREETZ_TYPE_FIRMWARE_07_5X_INHAUS
+	default "FRITZ.Repeater_3000_AX-07.41-103437-Labor.image"                              if FREETZ_TYPE_3009 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "fritz.box_wlan_3030.21.04.34.image"                                           if FREETZ_TYPE_3030
 	#
@@ -716,6 +716,7 @@ config FREETZ_DL_SOURCE_CONTAINER
 	#
 	default "fritz-repeater-1200AX-labor-101162.zip"  if FREETZ_TYPE_1209
 	default "fritz-repeater-3000-labor-101160.zip"    if FREETZ_TYPE_3000
+	default "fritz-repeater-3000AX-labor-103437.zip"  if FREETZ_TYPE_3009
 	default "fritzbox-4040-labor-101165.zip"          if FREETZ_TYPE_4040
 	default "fritzbox-4060-labor-101546.zip"          if FREETZ_TYPE_4060
 	default "fritzbox-5530-fiber-labor-102667.zip"    if FREETZ_TYPE_5530
