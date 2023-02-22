@@ -62,6 +62,7 @@ _cgi_location() {
 				system)    "$out" "/cgi-bin/system.cgi" ;;
 				backup)    "$out" "/cgi-bin/backup/index.cgi" ;;
 				update)    "$out" "/cgi-bin/update/firmware.cgi" ;;
+				uimods)    "$out" "/cgi-bin/uimods.cgi" ;;
 				support)   "$out" "/cgi-bin/support/index.cgi" ;;
 				freetz)    "$out" "/cgi-bin/freetz.cgi" ;;
 				extras)    "$out" "/cgi-bin/extra.cgi" ;;

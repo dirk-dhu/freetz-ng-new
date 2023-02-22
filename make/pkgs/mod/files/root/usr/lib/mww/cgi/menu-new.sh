@@ -12,7 +12,7 @@ _cgi_submenu() {
 	local id=$1
 	case $id in
 		status*|daemons) sub=status ;;
-		system|avmwif_*|rudi_*|firmware_*|backup_*|support_*|freetz) sub=system ;;
+		system|avmwif_*|rudi_*|firmware_*|backup_*|uimods|support_*|freetz) sub=system ;;
 		*:*) sub=${id#*:}; sub="pkg:${sub%%:*}" ;;
 	esac
 	echo "$sub"
@@ -192,6 +192,9 @@ new_menu_prepare() {
 EOF
 		[ -d /usr/mww/cgi-bin/update ] && cat << EOF
 <li><a id="firmware_update" href="$(href mod update)">$(lang de:"Firmware-Update" en:"Firmware update")</a></li>
+EOF
+		[ -x /usr/mww/cgi-bin/uimods.cgi ] && cat << EOF
+<li><a id="uimods" href="/cgi-bin/uimods.cgi">$(lang de:"FOS UI-Module" en:"FOS UI-Modules")</a></li>
 EOF
 		cat << EOF
 <li><a id="support_file" href="/cgi-bin/support/index.cgi">$(lang de:"Supportdatei erstellen" en:"Create support file")</a></li>
