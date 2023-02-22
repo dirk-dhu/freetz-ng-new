@@ -58,6 +58,7 @@ Latest changes
    * Sudo 1.9.13p1
 
  - Libraries:
+   * glib2 2.32.4/2.75.3
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
