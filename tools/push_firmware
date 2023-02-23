@@ -108,6 +108,8 @@ function push_fw() {
 		echo -e " * FREESIZE=$FREESIZE\t (~$(($FREESIZE/1024/1024)) MB)"
 		echo -e " * MTDSTART=$MTDSTART"
 		echo -e
+
+		FILESIZE="0x$(printf '%.4x' $(( $FILESIZE )) )"
 	fi
 
 	if [ ! $ISSINGLE ]; then
