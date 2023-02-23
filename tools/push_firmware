@@ -353,7 +353,7 @@ prepare_image() {
 			FITV=''
 		elif echo "$FITV" | grep -q 'mtdram=rootfs_ram,'; then
 			echo -e "Error: it is not known how to flash a fit-boot image with 'rootfs_ram' method yet." >&2
-			echo -e "Error: run a recovery.exe and get a capture by wireguard or tcpdump to add it." >&2
+			echo -e "Error: run a recovery.exe and get a capture by wireshark or tcpdump to add it." >&2
 			echo -e "Error: meanwhile install an older firmware and flash this one by the web interface.\n" >&2
 			read -rsn1 -t2 v
 			[ "$v" != "v" ] && exit 1
