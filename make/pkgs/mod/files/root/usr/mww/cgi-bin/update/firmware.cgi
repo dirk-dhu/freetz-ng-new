@@ -10,10 +10,10 @@ cat << EOF
 <script type="text/javascript">
 function CheckInput(form) {
 	file_selector=form.elements[0];
-	radio_stop=form.elements[1];
-	radio_semistop=form.elements[2];
-	radio_nostop=form.elements[3];
-	downgrade=form.elements[4];
+	downgrade=form.elements[1];
+	radio_stop=form.elements[2];
+	radio_semistop=form.elements[3];
+	radio_nostop=form.elements[4];
 	delete_jffs2=form.elements[5];
 
 	if (file_selector.value=="") {
@@ -53,16 +53,16 @@ function CheckInput(form) {
 	<input type=file size=50 id="fw_file">
 	</p>
 	<p>
+	<input type="checkbox" name="downgrade" id="downgrade" value="yes">
+	<label for="downgrade">$(lang de:"Downgrade auf &auml;ltere Version zulassen" en:"Allow downgrade to older version")</label>
+	</p>
+	<p>
 	<input type="radio" name="do_prepare" id="stop_avm" value="stop_avm">
 	<label for="stop_avm">$(lang de:"AVM-Dienste stoppen (bei Speichermangel)" en:"Stop AVM services (less memory available)")</label><br>
 	<input type="radio" name="do_prepare" id="semistop_avm" value="semistop_avm">
 	<label for="semistop_avm">$(lang de:"Einen Teil der AVM-Dienste stoppen (bei Remote-Update)" en:"Stop some of the AVM services (remote firmware update)")</label><br>
 	<input type="radio" name="do_prepare" id="nostop_avm" value="nostop_avm" checked>
 	<label for="nostop_avm">$(lang de:"AVM-Dienste nicht stoppen (bei gen&uuml;gend Speicher bzw. Pseudo-Update ohne Reboot)" en:"Do not stop any AVM services (sufficient memory available or pseudo update without reboot)")</label>
-	</p>
-	<p>
-	<input type="checkbox" name="downgrade" id="downgrade" value="yes">
-	<label for="downgrade">$(lang de:"Downgrade auf &auml;ltere Version zulassen" en:"Allow downgrade to older version")</label>
 	</p>
 EOF
 
