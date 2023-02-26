@@ -96,7 +96,7 @@ install_requisite() {
 	[ -z "$OSV" ] && OSV="$(detect_linux)"
 	[ -z "$OSV" ] && echo 'Can not detect you Linux version, set it manually'&& list_linux  && exit 1
 
-	[ ! -e "$PACKAGES/${OSV##*/}" ] && echo "Unsupported, file for you Linux version not found: ${OSV##*/}" && list_linux && exit 1
+	[ ! -e "$PACKAGES/${OSV##*/}" ] && echo "Unsupported, file for your Linux version not found: ${OSV##*/}" && list_linux && exit 1
 
 	vals="$(sed 's/[\t ]*#.*//g' "$PACKAGES/${OSV##*/}" | sort | tr '\n' ' ' | sed 's/^ *//;s/  */ /g;s/ *$//')"
 	echo -e "\nPackages for '${OSV##*/}':\n$vals\n"
