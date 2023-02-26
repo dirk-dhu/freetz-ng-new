@@ -84,7 +84,7 @@ makefile_internal() {
 
 detect_linux() {
 	NAME="$(sed -rn 's/^NAME=//p' /etc/os-release 2>/dev/null)"
-	NAME="$(echo $NAME | sed 's/"//g;s/ .*//;s/\..*//')"
+	NAME="$(echo $NAME | sed 's/"//g;s/ *Linux *//;s/ .*//;s/\..*//')"
 	VERSION="$(sed -rn 's/^VERSION=//p' /etc/os-release 2>/dev/null)"
 	VERSION="$(echo $VERSION | sed 's/"//g;s/ .*//;s/\..*//')"
 	echo "$NAME$VERSION"
