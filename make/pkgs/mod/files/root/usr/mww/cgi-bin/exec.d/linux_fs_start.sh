@@ -8,7 +8,7 @@ FWLAYOUT=''
 
 case "$FWLAYOUT" in
 	5)	# UIMG
-		. /var/env.mod.daemon
+		. /var/env.cache
 		LFS_LIVE="$(sed -n 's/^linux_fs_start[ \t]*//p' /proc/sys/urlader/environment)"
 		[ -z "$LFS_LIVE" ] && LFS_LIVE=0
 		LFS_DEAD="$(( ($LFS_LIVE+1) %2 ))"
