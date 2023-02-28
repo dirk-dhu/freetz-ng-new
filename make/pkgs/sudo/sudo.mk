@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.9.13p1)
+$(call PKG_INIT_BIN, 1.9.13p2)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=672a3b83ace56b5fa12c7d89da771d75f5ae4472bec92791fbb98c2dd853bd43
+$(PKG)_HASH:=df2004fde4c1033b1fdca339958e0ec633d393d604fcff9d1513abef1f94574d
 $(PKG)_SITE:=https://www.sudo.ws/dist
 ### WEBSITE:=https://www.sudo.ws/
 ### MANPAGE:=https://www.sudo.ws/docs/man/sudoers.man/
