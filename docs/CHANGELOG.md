@@ -55,6 +55,7 @@ Latest changes
    * Curl 7.88.1
    * Fontconfig 2.14.2
    * OpenVPN 2.4.12/2.5.9/2.6.0
+   * strace 4.9/5.0/6.2
    * Sudo 1.9.13p2
 
  - Libraries:
