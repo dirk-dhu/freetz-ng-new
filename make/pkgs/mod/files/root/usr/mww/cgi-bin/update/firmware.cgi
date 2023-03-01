@@ -20,21 +20,18 @@ function CheckInput(form) {
 		alert("$(lang de:"Keine Firmware-Datei angegeben!" en:"No firmware file provided!")");
 		return false;
 	}
-	if (radio_stop.checked) {
+
+	if      (radio_stop && radio_stop.checked)
 		file_selector.name="stop_avm";
-	}
-	else if (radio_semistop.checked) {
+	else if (radio_semistop && radio_semistop.checked)
 		file_selector.name="semistop_avm";
-	}
-	else {
+	else
 		file_selector.name="nostop_avm";
-	}
-	if (downgrade.checked) {
+
+	if (downgrade && downgrade.checked)
 		file_selector.name += ":downgrade";
-	}
-	if (delete_jffs2.checked) {
+	if (delete_jffs2 && delete_jffs2.checked)
 		file_selector.name += ":delete_jffs2";
-	}
 
 	return true;
 }
