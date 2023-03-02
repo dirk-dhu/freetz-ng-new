@@ -46,7 +46,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzwlan/fritzrepeater-2400/{other,deutschland}/fritz.os"                                           if FREETZ_TYPE_2400
 	#
-	default "@AVM/fritzwlan/fritzrepeater-3000/{other,deutschland}/fritz.os"                                           if FREETZ_TYPE_3000
+	default "@AVM/fritzwlan/fritzrepeater-3000/{other,deutschland}/fritz.os,@AVM/3000"                                 if FREETZ_TYPE_3000
 	#
 	default "@AVM/fritzwlan/fritzrepeater-3000-ax/{other,deutschland}/fritz.os"                                        if FREETZ_TYPE_3009
 	#
@@ -329,7 +329,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Repeater_3000-07.14.image"                                              if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Repeater_3000-07.21.image"                                              if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Repeater_3000-07.29.image"                                              if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_25
-	default "FRITZ.Repeater_3000-07.39-101160-Labor.image"                                 if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
+	default "FRITZ.Repeater_3000-07.50.image"                                              if FREETZ_TYPE_3000 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Repeater_3000_AX-07.41-Release.image"                                   if FREETZ_TYPE_3009 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
@@ -716,7 +716,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	depends                                           on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
 	default "fritz-repeater-1200AX-labor-101162.zip"  if FREETZ_TYPE_1209
-	default "fritz-repeater-3000-labor-101160.zip"    if FREETZ_TYPE_3000
 	default "fritzbox-4040-labor-101165.zip"          if FREETZ_TYPE_4040
 	default "fritzbox-4060-labor-101546.zip"          if FREETZ_TYPE_4060
 	default "fritzbox-5530-fiber-labor-102667.zip"    if FREETZ_TYPE_5530
