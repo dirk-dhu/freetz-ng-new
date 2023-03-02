@@ -1,10 +1,12 @@
 #!/bin/bash
 # generates docs/PREREQUISITES/README.md
-MDPWD="$(dirname $(realpath $0))"
+SCRIPT="$(readlink -f $0)"
+PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
+PREREQ="$PARENT/docs/PREREQUISITES"
 LIMIT=80
 
-cat "$MDPWD/template.md" > "$MDPWD/README.md"
-for x in "$MDPWD/packages/"*; do
+cat "$PREREQ/template.md" > "$PREREQ/README.md"
+for x in "$PARENT/tools/.prerequisites/"*; do
 	sort -u -o "$x" "$x"
 	vals="\\\\\n "
 	c=0
@@ -13,6 +15,6 @@ for x in "$MDPWD/packages/"*; do
 		[ $c -gt $LIMIT ] && c=0 && vals="$vals \\\\\n "
 		vals="$vals $v"
 	done
-	sed -i "s!%%${x##*/}%%!${vals% }!" "$MDPWD/README.md"
+	sed -i "s!%%${x##*/}%%!${vals% }!" "$PREREQ/README.md"
 done
 
