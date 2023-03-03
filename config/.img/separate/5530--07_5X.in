@@ -4,12 +4,6 @@ config FREETZ_AVM_PROP_NAME
 	string
 	default "FRITZ!Box 5530 Fiber"
 
-config FREETZ_AVM_PROP_ALL_REGIONS
-	def_bool y
-
-config FREETZ_AVM_HAS_BRANDING_avme
-	def_bool y
-
 config FREETZ_AVM_HAS_WIREGUARD
 	def_bool y
 
