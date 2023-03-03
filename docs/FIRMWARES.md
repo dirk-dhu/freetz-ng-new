@@ -201,7 +201,6 @@ Currently supported devices and firmwares
   - 123.06.34 rev36874 {GER}
 
 * __Fritz!Box 6850 LTE (UNTESTED)__
-  - 262.07.21 rev82687 {ALL} [PSQ19]
   - 262.07.29 rev92911 {ALL} [PSQ19P2NL4]
   - 262.07.39 rev00000 {ALL} [MOVE21] (Labor)
 * __Fritz!Box 6850 5G (UNTESTED)__
@@ -212,7 +211,6 @@ Currently supported devices and firmwares
   - 162.06.87 rev59283 {ALL}
   - 162.07.03 rev68723 {ALL}
   - 162.07.13 rev73668 {ALL} [MESH18 NL3]
-  - 162.07.21 rev82271 {ALL} [PSQ19]
   - 162.07.29 rev93213 {ALL} [PSQ19P2NL4]
   - 162.07.39 rev00000 {ALL} [MOVE21] (Labor)
 
