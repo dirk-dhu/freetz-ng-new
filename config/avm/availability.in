@@ -354,10 +354,6 @@ config FREETZ_AVM_HAS_FIRMWARE_07_1X
 		))
 
 
-config FREETZ_AVM_HAS_FIRMWARE_07_2X
-	bool
-
-
 config FREETZ_AVM_HAS_FIRMWARE_07_25
 	bool
 	default y
