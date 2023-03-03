@@ -480,7 +480,7 @@ Currently supported devices and firmwares
   - 157.07.29 rev93269 {ALL} [PSQ19P2NL4]
 * __Fritz!Powerline 1260 v2 (UNTESTED)__
   - 249.07.29 rev93271 {ALL} [PSQ19P2NL4]
-  - 249.07.39 rev101040 {ALL} [MOVE21] (Inhaus)
+  - 249.07.39 rev102248 {ALL} [MOVE21] (Inhaus)
 
 ### Fritz!Repeater
 
