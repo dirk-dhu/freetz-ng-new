@@ -43,7 +43,7 @@ $(DL_DIR)/$(KERNEL_AVMDIFF_SOURCE): | $(DL_DIR)
 # options have changed. The safest way to achieve this is by starting over
 # with the source directory.
 kernel-unpacked: $(KERNEL_DIR)/.unpacked
-$(KERNEL_DIR)/.unpacked: $(DL_DIR)/$(KERNEL_VANILLA_SOURCE) $(if $(FREETZ_REPLACE_SOURCE_AVAILABLE),$(DL_DIR)/$(KERNEL_AVMDIFF_SOURCE)) | $(UNPACK_TARBALL_PREREQUISITES) gcc-kernel
+$(KERNEL_DIR)/.unpacked: $(DL_DIR)/$(KERNEL_VANILLA_SOURCE) $(if $(FREETZ_KERNEL_AVMDIFF_AVAILABLE),$(DL_DIR)/$(KERNEL_AVMDIFF_SOURCE)) | $(UNPACK_TARBALL_PREREQUISITES) gcc-kernel
 	@echo "Using kernel version: $(call qstrip,$(FREETZ_KERNEL_VERSION))" $(SILENT)
 	$(RM) -r $(KERNEL_DIR)
 	mkdir -p $(KERNEL_SOURCE_DIR)
@@ -51,7 +51,7 @@ $(KERNEL_DIR)/.unpacked: $(DL_DIR)/$(KERNEL_VANILLA_SOURCE) $(if $(FREETZ_REPLAC
 	@$(call UNPACK_TARBALL,$(DL_DIR)/$(KERNEL_VANILLA_SOURCE),$(KERNEL_SOURCE_DIR),1)
 	@$(call _ECHO,patching,$(KERNEL_ECHO_TYPE))
 	@echo "" $(SILENT)
-ifeq ($(strip $(FREETZ_REPLACE_SOURCE_AVAILABLE)),y)
+ifeq ($(strip $(FREETZ_KERNEL_AVMDIFF_AVAILABLE)),y)
 	@echo "#vanilla to avm patch: $(DL_DIR)/$(KERNEL_AVMDIFF_SOURCE)" $(SILENT)
 	@$(call APPLY_PATCHES,$(DL_DIR),$(KERNEL_SOURCE_DIR),$(KERNEL_AVMDIFF_SOURCE),/dev/null)
 	@echo "#vanilla to avm fixes" $(SILENT)

@@ -30,14 +30,12 @@ config FREETZ_REPLACE_KERNEL_AVAILABLE
 # "kernel version used by Freetz" == "kernel version used by AVM"
 config FREETZ_REPLACE_MODULE_AVAILABLE
 	bool
-	depends on !(FREETZ_SYSTEM_TYPE_BCM63138)                                 # no kernel 4.1.38 sources for 7581/7582 integrated
-	depends on FREETZ_REPLACE_SOURCE_AVAILABLE
+	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	default y
 	help
-		Select this if only source code from a previous firmware version is available for your box.
-		Note: Loading of the modules built by Freetz may work or may not! Ask fritzbox_info@avm.de!
+		Disable modules here if avm sources for a kernel version are outdated and incompatible for a newer fos.
 
-config FREETZ_REPLACE_SOURCE_AVAILABLE
+config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	bool
 	depends on ! FREETZ_KERNEL_VERSION_4_1_38                                      # 07_1X-stable 7581/7582
 	depends on !(FREETZ_KERNEL_VERSION_4_4_271  && !FREETZ_AVM_SOURCE_7530_07_50)  # 07_5X-inhaus 3000/6850_4G/6850_5G + 2400 + 3009
@@ -45,5 +43,5 @@ config FREETZ_REPLACE_SOURCE_AVAILABLE
 	depends on ! FREETZ_KERNEL_VERSION_4_19_183                                    # 07_5X-inhaus 7539
 	default y
 	help
-		No avm sources at all of this kernel version, so unpatched vanilla is used. Ask fritzbox_info@avm.de!
+		There are no avm sources at all of this kernel version and thus no avmdiff, so unpatched vanilla is used.
 
