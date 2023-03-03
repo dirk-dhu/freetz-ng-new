@@ -472,7 +472,6 @@ Currently supported devices and firmwares
 * __Fritz!Powerline 1260E__
   - 157.07.01 rev63181 {ALL}
   - 157.07.12 rev70670 {ALL} [MESH18 NL2]
-  - 157.07.21 rev84898 {ALL} [PSQ19]
   - 157.07.29 rev93269 {ALL} [PSQ19P2NL4]
   - 157.07.39 rev102245 {ALL} [MOVE21] (Inhaus)
 * __Fritz!Powerline 1260 v2 (UNTESTED)__
@@ -500,12 +499,10 @@ Currently supported devices and firmwares
   - 134.06.50 rev33858 {ALL}
   - 134.07.01 rev63070 {ALL}
   - 134.07.12 rev70775 {ALL} [MESH18 NL2]
-  - 134.07.21 rev83664 {ALL} [PSQ19]
   - 134.07.30 rev101517 {ALL} [WU22 PSQ19]
 
 * __Fritz!Repeater 1200__
   - 172.07.14 rev73941 {ALL} [MESH18 NL4]
-  - 172.07.21 rev83014 {ALL} [PSQ19]
   - 172.07.29 rev93267 {ALL} [PSQ19P2NL4]
   - 172.07.50 rev103742 {ALL} [MOVE21]
 * __Fritz!Repeater 1200 AX__
@@ -513,13 +510,11 @@ Currently supported devices and firmwares
   - 268.07.39 rev00000 {ALL} [MOVE21] (Labor)
 * __Fritz!Repeater 2400__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
-  - 169.07.21 rev83013 {ALL} [PSQ19]
   - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
   - 169.07.50 rev102232 {ALL} [MOVE21]
 * __Fritz!Repeater 3000__
   - 174.07.04 rev66458 {ALL}
   - 174.07.14 rev73940 {ALL} [MESH18 NL4]
-  - 174.07.21 rev83015 {ALL} [PSQ19]
   - 174.07.29 rev93268 {ALL} [PSQ19P2NL4]
   - 174.07.50 rev103744 {ALL} [MOVE21]
 * __Fritz!Repeater 3000 AX (UNTESTED)__
