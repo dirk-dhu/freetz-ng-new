@@ -109,21 +109,17 @@ config FREETZ_DL_SITE
 	default "@AVM/firmware/6490/78434061"                                                                              if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_06_8X
 	default "@AVM/firmware/6490/59088767"                                                                              if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "@AVM/firmware/6490/758467098"                                                                             if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "@AVM/firmware/6490/9764886654"                                                                            if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "@AVM/fritzbox-6490-cable/{deutschland,other}/fritz.os"                                                    if FREETZ_TYPE_6490
 	#
 	default "@AVM/firmware/6590/89043528"                                                                              if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_06_8X
 	default "@AVM/firmware/6590/67447023"                                                                              if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "@AVM/firmware/6590/89754687"                                                                              if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "@AVM/firmware/6590/54904304"                                                                              if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "@AVM/fritzbox-6590-cable/{deutschland,other}/fritz.os"                                                    if FREETZ_TYPE_6590
 	#
 	default "@AVM/firmware/6591/213215464"                                                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "@AVM/firmware/6591/8548751392"                                                                            if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "@AVM/fritzbox-6591-cable/{deutschland,other}/fritz.os,@AVM/6591Cable"                                     if FREETZ_TYPE_6591
 	#
 	default "@AVM/firmware/6660/89746785"                                                                              if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "@AVM/firmware/6660/4424247314"                                                                            if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "@AVM/fritzbox-6660-cable/{deutschland,other}/fritz.os"                                                    if FREETZ_TYPE_6660
 	#
 	default "@AVM/fritzbox-6690-cable/{deutschland,other}/fritz.os,@AVM/FRITZ%21Box%206690%20Cable/other/fritz.os"     if FREETZ_TYPE_6690
@@ -422,25 +418,21 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_6490_Cable.de-en-es-it-fr-pl.141.06.87.image"                       if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_6490_Cable.de-en-es-it-fr-pl.141.07.02.image"                       if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Box_6490_Cable-07.12.image"                                             if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "FRITZ.Box_6490_Cable-07.20.image"                                             if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6490_Cable-07.29.image"                                             if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_25
 	default "FRITZ.Box_6490_Cable-07.39-101216-LabBETA.image"                              if FREETZ_TYPE_6490 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "FRITZ.Box_6590_Cable.de-en-es-it-fr-pl.148.06.87.image"                       if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_6590_Cable.de-en-es-it-fr-pl.148.07.02.image"                       if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Box_6590_Cable-07.12.image"                                             if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "FRITZ.Box_6590_Cable-07.20.image"                                             if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6590_Cable-07.29.image"                                             if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_25
 	default "FRITZ.Box_6590_Cable-07.39-101217-LabBETA.image"                              if FREETZ_TYPE_6590 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "FRITZ.Box_6591_Cable-07.04.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Box_6591_Cable-07.13.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "FRITZ.Box_6591_Cable-07.22.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6591_Cable-07.29.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_25
 	default "FRITZ.Box_6591_Cable-07.50.image"                                             if FREETZ_TYPE_6591 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_6660_Cable-07.15.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_1X
-	default "FRITZ.Box_6660_Cable-07.24.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6660_Cable-07.29.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_25
 	default "FRITZ.Box_6660_Cable-07.39-101167-Labor.image"                                if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#

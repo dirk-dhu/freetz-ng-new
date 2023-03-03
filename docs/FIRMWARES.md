@@ -152,7 +152,6 @@ Currently supported devices and firmwares
   - 141.06.87 rev48327 {GER}
   - 141.07.02 rev65390 {GER}
   - 141.07.12 rev71697 {GER} [MESH18 NL2]
-  - 141.07.20 rev81091 {GER} [PSQ19]
   - 141.07.29 rev92215 {GER} [PSQ19P2NL4]
   - 141.07.39 rev00000 {GER} [MOVE21] (Labor)
 
@@ -160,17 +159,14 @@ Currently supported devices and firmwares
   - 148.06.87 rev48411 {GER}
   - 148.07.02 rev65392 {GER}
   - 148.07.12 rev72225 {GER} [MESH18 NL2]
-  - 148.07.20 rev81094 {GER} [PSQ19]
   - 148.07.29 rev92219 {GER} [PSQ19P2NL4]
   - 148.07.39 rev00000 {GER} [MOVE21] (Labor)
 * __Fritz!Box 6591 Cable__
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
-  - 161.07.22 rev84582 {GER} [PSQ19]
   - 161.07.29 rev92035 {GER} [PSQ19P2NL4]
   - 161.07.50 rev103103 {GER} [MOVE21]
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
-  - 252.07.24 rev85910 {GER} [PSQ19]
   - 252.07.29 rev92037 {GER} [PSQ19P2NL4]
   - 252.07.39 rev00000 {GER} [MOVE21] (Labor)
 * __Fritz!Box 6690 Cable__
