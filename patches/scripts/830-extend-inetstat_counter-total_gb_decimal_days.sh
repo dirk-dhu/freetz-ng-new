@@ -3,8 +3,8 @@ echo1 "patching online counter"
 
 if [ "$FREETZ_AVM_VERSION_07_5X_MIN" == "y" ] ; then
 	PVER="07_5X"
-elif [ "$FREETZ_AVM_VERSION_07_25_MIN" == "y" ] ; then
-	PVER="07_25"
+elif [ "$FREETZ_AVM_VERSION_07_2X_MIN" == "y" ] ; then
+	PVER="07_2X"
 elif [ "$FREETZ_AVM_VERSION_07_0X_MIN" == "y" ] ; then
 	PVER="07_0X"
 elif [ "$FREETZ_AVM_VERSION_06_8X_MIN" == "y" ] ; then

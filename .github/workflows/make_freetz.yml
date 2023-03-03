@@ -54,7 +54,7 @@ jobs:
       - name: config
         run: |
           truncate -s0 .config
-          for x in  TYPE_7490 TYPE_FIRMWARE_07_25 TYPE_FIRMWARE_DETECT_LATEST; do echo "FREETZ_$x=y"  >> .config; done
+          for x in  TYPE_7490 TYPE_FIRMWARE_07_2X TYPE_FIRMWARE_DETECT_LATEST; do echo "FREETZ_$x=y"  >> .config; done
           for x in  PACKAGE_LDD PACKAGE_STRACE                               ; do echo "FREETZ_$x=y"  >> .config; done
           for x in  PACKAGE_DROPBEAR                              ; do echo "# FREETZ_$x is not set"  >> .config; done
           echo '# FREETZ_TOOLCHAIN_CCACHE is not set'                                                 >> .config

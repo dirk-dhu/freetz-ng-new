@@ -47,7 +47,6 @@ config FREETZ_BUSYBOX__MANDATORY
 	select FREETZ_BUSYBOX__MANDATORY_06_5X if FREETZ_AVM_VERSION_06_5X_MIN
 	select FREETZ_BUSYBOX__MANDATORY_07_0X if FREETZ_AVM_VERSION_07_0X_MIN
 	select FREETZ_BUSYBOX__MANDATORY_07_2X if FREETZ_AVM_VERSION_07_2X_MIN
-	select FREETZ_BUSYBOX__MANDATORY_07_25 if FREETZ_AVM_VERSION_07_25_MIN
 	select FREETZ_BUSYBOX_ADDGROUP
 	select FREETZ_BUSYBOX_ADDUSER
 	select FREETZ_BUSYBOX_ASH_ALIAS
@@ -535,18 +534,12 @@ config FREETZ_BUSYBOX__MANDATORY_07_2X
 	select FREETZ_BUSYBOX_ASH_BASH_NOT_FOUND_HOOK          if !FREETZ_BUSYBOX__VERSION_V127
 	select FREETZ_BUSYBOX_FEATURE_SH_READ_FRAC             if !FREETZ_BUSYBOX__VERSION_V127
 	select FREETZ_BUSYBOX_FEATURE_SH_HISTFILESIZE
-	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.20 and up)
-
-config FREETZ_BUSYBOX__MANDATORY_07_25
-	bool # mandatory (since Fritz!OS 7.25)"
-	depends on FREETZ_AVM_VERSION_07_25_MIN
 	select FREETZ_BUSYBOX_CHRT
 	select FREETZ_BUSYBOX_NETCAT
 	select FREETZ_BUSYBOX_TCPSVD
 	select FREETZ_BUSYBOX_TIMEOUT
 	help
-		Selects everything Freetz needs to run properly (with Fritz!OS 7.25 and up)
+		Selects everything Freetz needs to run properly (with Fritz!OS 7.20 and up)
 
 #config FREETZ_BUSYBOX__NOEXEC_NOFORK_OPTIMIZATIONS
 #	bool "enable NOEXEC/NOFORK performance optimizations"

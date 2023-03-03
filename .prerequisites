@@ -38,7 +38,7 @@ program     pkg-config
 program     readlink
 program     realpath
 program     rpcgen                 FREETZ_PACKAGE_NFS_UTILS FREETZ_PACKAGE_AUTOFS
-program     rsync                  FREETZ_AVM_VERSION_07_25_MIN
+program     rsync                  FREETZ_AVM_VERSION_07_2X_MIN
 program     sed
 program     sha256sum
 program     sort
