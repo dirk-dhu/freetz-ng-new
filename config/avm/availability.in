@@ -356,11 +356,6 @@ config FREETZ_AVM_HAS_FIRMWARE_07_1X
 
 config FREETZ_AVM_HAS_FIRMWARE_07_2X
 	bool
-	default y
-	depends on \
-		( FREETZ_TYPE_LANG_DE && ( \
-			FREETZ_TYPE_5530 \
-		))
 
 
 config FREETZ_AVM_HAS_FIRMWARE_07_25
