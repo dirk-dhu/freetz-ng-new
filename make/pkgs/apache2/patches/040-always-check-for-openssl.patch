@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -28196,7 +28196,7 @@
+@@ -28193,7 +28193,7 @@
  
    { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for OpenSSL" >&5
  printf %s "checking for OpenSSL... " >&6; }

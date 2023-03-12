@@ -52,6 +52,7 @@ Latest changes
    * Various Fritzos 7.5 related changes
 
  - Packages:
+   * Apache2 2.4.56
    * Curl 7.88.1
    * Fontconfig 2.14.2
    * HAProxy 2.6.9
