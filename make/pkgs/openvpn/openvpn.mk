@@ -85,7 +85,7 @@ $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_OPENSSL),--with-crypto
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_MBEDTLS),--with-crypto-library=mbedtls)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_USE_IPROUTE),--enable-iproute2)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_ENABLE_SMALL),--enable-small,--disable-small)
-ifneq ($(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)),y)
+ifeq ($(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)),y)
 $(PKG)_CONFIGURE_OPTIONS += --disable-dco
 endif
 
