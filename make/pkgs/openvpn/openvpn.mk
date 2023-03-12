@@ -75,7 +75,6 @@ $(PKG)_EXTRA_LDFLAGS += $(if $(FREETZ_PACKAGE_OPENVPN_STATIC),-all-static)
 $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc/openvpn
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZO),--enable-lzo,--disable-lzo)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_WITH_LZ4),--enable-lz4,--disable-lz4)
-$(PKG)_CONFIGURE_OPTIONS += --disable-dco
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
 $(PKG)_CONFIGURE_OPTIONS += --disable-multihome
 $(PKG)_CONFIGURE_OPTIONS += --disable-plugins
@@ -86,6 +85,9 @@ $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_OPENSSL),--with-crypto
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_MBEDTLS),--with-crypto-library=mbedtls)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_USE_IPROUTE),--enable-iproute2)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_PACKAGE_OPENVPN_ENABLE_SMALL),--enable-small,--disable-small)
+ifneq ($(strip $(FREETZ_PACKAGE_OPENVPN_VERSION_26)),y)
+$(PKG)_CONFIGURE_OPTIONS += --disable-dco
+endif
 
 
 $(PKG_SOURCE_DOWNLOAD)
