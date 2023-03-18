@@ -57,6 +57,7 @@ Latest changes
    * Curl 7.88.1
    * Fontconfig 2.14.2
    * HAProxy 2.6.9
+   * OpenSSH 9.3p1
    * OpenVPN 2.4.12/2.5.9/2.6.1
    * SQLite 3.41.1
    * strace 4.9/5.0/6.2
