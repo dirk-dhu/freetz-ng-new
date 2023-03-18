@@ -45,7 +45,7 @@ Verfügbare Scripte und Tools zum Flashen über den Bootloader:
     - [eva_tools](https://www.yourfritz.de/desc-eva) aus [YourFritz](https://github.com/PeterPawn/YourFritz/tree/main/eva_tools) für Windows/PowerShell<br>
       Vorsicht: Dieses Script kann kein Image flashen, sondern nur das soganannte <br>`inmemory`-Zwischenformat. Siehe dazu `tools/image2inmemory`
 
- * Gen 6: __fit-boot__<a id='fit'></a><br>
+ * Gen 6: __fit-boot__<a id='fit'></a> / fitimg<br>
    Neueste Fritzboxen wie 7530 AX & 5530
     - `tools/push_firmware` von Freetz-NG
     - [fit_tools](https://github.com/PeterPawn/YourFritz/tree/main/fit_tools) von YourFritz,
