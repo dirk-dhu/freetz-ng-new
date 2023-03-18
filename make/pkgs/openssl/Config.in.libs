@@ -49,7 +49,7 @@ choice
 		 - Supported until 2023-09-11, Long Term Support (LTS) version
 
 		Version 3.0:
-		 - Supported until 2026-09-07
+		 - Supported until 2026-09-07, Long Term Support (LTS) version
 
 		See https://www.openssl.org/policies/releasestrat.html
 
