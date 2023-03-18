@@ -4,7 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
-  * [ng23020](#ng23020)
+  * [ng23030](#ng23030)
   * [ng22100](#ng22100)
   * [ng22070](#ng22070)
   * [ng22040](#ng22040)
@@ -43,36 +43,14 @@ Latest changes
 
 ### devel
 
- - Host tools:
-   * kconfig 6.2
-   * patchelf 0.14.5/0.15.0
-   * precompiled host-tools 2023-02-20
-
- - Patches:
-   * Various Fritzos 7.5 related changes
-
  - Packages:
-   * Apache2 2.4.56
-   * BIND 9.11.37/9.16.38
-   * Curl 7.88.1
-   * Fontconfig 2.14.2
-   * Git 2.40.0
-   * HAProxy 2.6.9
-   * OpenSSH 9.3p1
-   * OpenVPN 2.4.12/2.5.9/2.6.1
-   * SQLite 3.41.1
-   * strace 4.9/5.0/6.2
-   * Stunnel 5.69
-   * Sudo 1.9.13p3
-   * UnRAR 6.1.7/6.2.6
 
  - Libraries:
-   * glib2 2.32.4/2.75.3
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
-### ng23020
+### ng23030
 
  - Known problems:
    * Loading build kernel modules may work or do not. You'll notice.
@@ -89,13 +67,13 @@ Latest changes
    * fastjar 0.98
    * genext2fs 1.5.0-3b99f4a4
    * gperf 3.1
-   * kconfig 6.1
+   * kconfig 6.2
    * meson 1.0.0
    * mklibs 0.1.45
    * ncurses 6.4
    * ninja 1.11.1
-   * patchelf 0.14.5/0.17.2
-   * precompiled host-tools 2023-02-13
+   * patchelf 0.14.5/0.15.0
+   * precompiled host-tools 2023-02-20
    * prelink 20130503
    * pseudo 1.9.0 oe-core c9670c2
    * python 3.11.2
@@ -111,22 +89,22 @@ Latest changes
 
  - Packages:
    * ACME.sh 3.0.5 (letsencrypt)
-   * Apache2 2.4.55
-   * BIND 9.11.37/9.16.37
+   * Apache2 2.4.56
+   * BIND 9.11.37/9.16.38
    * BIRD 1.6.8
    * BusyBox 1.36.0
    * CA-bundle 2023-01-10
    * CCID 1.5.1
    * classpath 0.99
-   * Curl 7.88.0
+   * Curl 7.88.1
    * dehydrated 0.7.1 (letsencrypt)
    * DejaVu Fonts TTF 2.37
    * Dnsmasq 2.80/2.89
    * Dropbear 2022.83
-   * Fontconfig 2.14.1
+   * Fontconfig 2.14.2
    * getdns 1.7.3
-   * Git 2.39.2
-   * HAProxy 2.6.8
+   * Git 2.40.0
+   * HAProxy 2.6.9
    * htop 1.0.3/2.3.2
    * htpdate 1.3.7
    * IGMPproxy 0.4
@@ -140,19 +118,21 @@ Latest changes
    * Nano 7.2
    * ncurses 6.4
    * ncursesw 6.4
-   * OpenSSH 9.2p1
+   * OpenSSH 9.3p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1t/3.0.8
-   * OpenVPN 2.4.12/2.5.8/2.6.0
+   * OpenVPN 2.4.12/2.5.9/2.6.1
    * PCSC-lite 1.9.9
    * RPCBind 1.2.6
    * RRDtool 1.2.30/1.8.0
    * Swiss File Knife 1.9.8.2
-   * strace 4.9/5.0/6.1
-   * SQLite 3.40.1
+   * strace 4.9/5.0/6.2
+   * SQLite 3.41.1
+   * Stunnel 5.69
+   * Sudo 1.9.13p3
    * tcpdump 4.1.1/4.99.3
    * Tor 0.4.7.13
    * Unbound 1.17.1
-   * UnRAR 6.1.7/6.2.5
+   * UnRAR 6.1.7/6.2.6
    * xsltproc 1.1.37
    * XZ Utils 5.4.1
 
@@ -160,7 +140,7 @@ Latest changes
    * cairo 1.17.8
    * expat 2.5.0
    * fribidi 1.0.12
-   * glib2 2.32.4/2.75.2
+   * glib2 2.32.4/2.75.3
    * harfbuzz 7.0.0
    * libcap-ng 0.8.3
    * libctlmgr 1.0
@@ -179,7 +159,7 @@ Latest changes
    * pixman 0.42.2
 
  - Firmware updates:
-   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23020/docs/FIRMWARES.md) for the list of supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23030/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng22100
 
