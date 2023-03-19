@@ -1,11 +1,13 @@
 ---
 name: 'Bug report'
 about: 'Create a bug report'
-title: ''
+title: 'This will be automatically closed'
 labels: ''
 assignees: ''
 
 ---
+
+Issues are no longer accepted, please create a pull-request!
 
  - §1 Write in german or english
  - §2 Attach your .config after renaming to config.txt

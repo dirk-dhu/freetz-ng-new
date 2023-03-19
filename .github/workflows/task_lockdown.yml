@@ -1,0 +1,35 @@
+name: task_lockdown
+
+on:
+  issues:
+    types: opened
+  workflow_dispatch:
+
+
+
+
+
+permissions:
+  issues: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: github.repository == 'freetz-ng/freetz-ng'
+
+    steps:
+
+      - name: lockdown
+        uses: dessant/repo-lockdown@v3
+        with:
+          github-token: ${{ github.token }}
+          exclude-issue-labels: 'task,bug'
+          issue-labels: ''
+          issue-comment: 'There is nobody to process your issue.'
+          skip-closed-issue-comment: false
+          close-issue: true
+          lock-issue: true
+          issue-lock-reason: ''
+          log-output: true
+          process-only: 'issues'
+
