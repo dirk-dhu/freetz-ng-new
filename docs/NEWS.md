@@ -1,5 +1,18 @@
 # NEWS
 
+ * __[2023-03-19](#2023-03-19)__<a id='2023-03-19'></a><br>
+   Es gibt ab sofort keine Issues-Sektion mehr, die Diskussionen inklusive beliebter Wishlist bleiben geöffnet.<br>
+   Offenbar besteht der Anspruch dass irgend jemand Probleme für andere behebt sobald ein Issue erstellt wurde.<br>
+   So eine Person existiert bei Freetz-NG nicht! Damit niemand traurig sein muss wurden die Issues deaktiviert<br>
+   bis sich jemand findet der dies übernehmen möchte.<br>
+   Daher ist das neue Vorgehen ab jetzt:<br>
+    - Jemand findet ein schlimmes Problem<br>
+    - Dieser sucht die Ursache dafür<br>
+    - Und behebt das Problem<br>
+    - Ein Pull-Request wird erstellt<br>
+   
+   Wem dies nicht gefällt darf das Problem gern für sich behalten.<br>
+
  * __[2023-03-18](#2023-03-18)__<a id='2023-03-18'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23030` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
