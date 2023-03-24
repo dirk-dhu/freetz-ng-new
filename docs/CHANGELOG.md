@@ -47,6 +47,7 @@ Latest changes
    * HAProxy 2.6.10
 
  - Libraries:
+   * CCID 1.5.2
    * pango 1.50.14
    * SQLite 3.41.2
 

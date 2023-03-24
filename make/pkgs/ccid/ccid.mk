@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.5.1)
+$(call PKG_INIT_BIN, 1.5.2)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=e7a78c398ec0d617a4f98bac70d5b64f78689284dd0ae87d4692e2857f117377
+$(PKG)_HASH:=13934487e6f8b48f699a16d367cc7a1af7a3ca874de721ac6e9633beb86e7219
 $(PKG)_SITE:=https://ccid.apdu.fr/files
 ### WEBSITE:=https://ccid.apdu.fr/
 ### MANPAGE:=https://salsa.debian.org/rousseau/CCID/blob/master/README.md
