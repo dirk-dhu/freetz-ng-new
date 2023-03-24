@@ -43,6 +43,9 @@ Latest changes
 
 ### devel
 
+ - Build system:
+   * Ccache 4.7.5
+
  - Host tools:
    * xz 5.4.2
 
