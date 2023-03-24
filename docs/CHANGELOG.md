@@ -46,6 +46,7 @@ Latest changes
  - Packages:
 
  - Libraries:
+   * pango 1.50.14
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
