@@ -43,6 +43,9 @@ Latest changes
 
 ### devel
 
+ - Host tools:
+   * xz 5.4.2
+
  - Packages:
    * HAProxy 2.6.10
    * XZ Utils 5.4.2
