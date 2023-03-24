@@ -48,6 +48,7 @@ Latest changes
 
  - Libraries:
    * CCID 1.5.2
+   * Curl 8.0.1
    * OpenVPN 2.4.12/2.5.9/2.6.2
    * pango 1.50.14
    * SQLite 3.41.2
