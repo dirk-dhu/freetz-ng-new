@@ -48,6 +48,7 @@ Latest changes
 
  - Libraries:
    * pango 1.50.14
+   * SQLite 3.41.2
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
