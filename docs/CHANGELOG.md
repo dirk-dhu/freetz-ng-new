@@ -45,6 +45,7 @@ Latest changes
 
  - Packages:
    * HAProxy 2.6.10
+   * XZ Utils 5.4.2
 
  - Libraries:
    * CCID 1.5.2
