@@ -44,6 +44,7 @@ Latest changes
 ### devel
 
  - Packages:
+   * HAProxy 2.6.10
 
  - Libraries:
    * pango 1.50.14
