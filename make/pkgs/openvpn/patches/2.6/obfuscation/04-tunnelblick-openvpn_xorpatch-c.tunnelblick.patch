@@ -1,7 +1,6 @@
-diff -u -r -x .DS_Store openvpn-2.6.0.old/src/openvpn/options.h openvpn-2.6.0.new/src/openvpn/options.h
---- openvpn-2.6.0.old/src/openvpn/options.h	2023-02-07 17:53:58.000000000 -0500
-+++ openvpn-2.6.0.new/src/openvpn/options.h	2023-02-07 17:53:58.000000000 -0500
-@@ -112,6 +112,9 @@
+--- src/openvpn/options.h
++++ src/openvpn/options.h
+@@ -110,6 +110,9 @@
      int connect_retry_seconds;
      int connect_retry_seconds_max;
      int connect_timeout;
