@@ -132,7 +132,7 @@ sudo apt -y install \
 ### Ubuntu
 
  - Deutsche Tastaturbelegung:<br>
-Siehe [ubuntu.com: LanguageSupport](https://help.ubuntu.com/community/LanguageSupport)
+Siehe [ubuntu.com: LocaleConf](https://help.ubuntu.com/community/LocaleConf)
 ```
 sudo apt-get -y install console-data && sudo locale-gen de_DE && sudo dpkg-reconfigure console-data && exit
 ```
