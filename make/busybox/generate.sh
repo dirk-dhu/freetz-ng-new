@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # Generates a Config.in(.busybox) of Busybox for Freetz
 BBDIR="$(dirname $(readlink -f $0))"
 [ -z "$1" ] && rm -f $BBDIR/*.?_?? && for x in $(sed -rn 's/^\$\(PKG\)_HASH_([0-9\.]{6}*):=.*/\1/p' $BBDIR/busybox.mk); do $0 $x; done && exit
