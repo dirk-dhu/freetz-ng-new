@@ -5637,7 +5637,7 @@
 --- linux-2.6.13/fs/mini_fo/mini_fo-merge
 +++ linux-2.6.13/fs/mini_fo/mini_fo-merge
 @@ -0,0 +1,180 @@
-+#!/bin/bash
++#! /usr/bin/env bash
 +#
 +# Copyright (C) 2005 Markus Klotzbuecher <mk@creamnet.de>
 +# This program is free software; you can redistribute it and/or
@@ -5820,7 +5820,7 @@
 --- linux-2.6.13/fs/mini_fo/mini_fo-overlay
 +++ linux-2.6.13/fs/mini_fo/mini_fo-overlay
 @@ -0,0 +1,130 @@
-+#!/bin/bash
++#! /usr/bin/env bash
 +#
 +# Copyright (C) 2005 Markus Klotzbuecher <mk@creamnet.de>
 +# This program is free software; you can redistribute it and/or
