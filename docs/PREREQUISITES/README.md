@@ -12,6 +12,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
 
 ### Problematische Distributionen
  - Gentoo
+ - NixOS
 
 ### Alle anderen Distributionen
 ... sind ungetestet und können funktionieren oder auch nicht. Dies hängt stark von den Fähigkeiten des Bedieners ab.
