@@ -184,7 +184,7 @@ endif
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
 ifneq ($(NO_PREREQ_CHECK),y)
 ifneq (OK,$(shell $(CHECK_PREREQ_TOOL) check >&2 && echo OK))
-$(error Some prerequisites are missing! Install the missing packages with 'tools/prerequisites install' or see https://freetz-ng.github.io/freetz-ng/PREREQUISITES for hints. Or check '.prerequisites' for why)
+$(error Some prerequisites are missing! Install the missing packages with 'tools/prerequisites install' or check https://freetz-ng.github.io/freetz-ng/PREREQUISITES for hints. See '.prerequisites' for why)
 endif
 endif
 endif
