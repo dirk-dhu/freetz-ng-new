@@ -4,7 +4,7 @@
  EXTRAVERSION = .10
  NAME = Erotic Pickled Herring
  
-+SHELL := /bin/bash
++SHELL := bash
 +
  # *DOCUMENTATION*
  # To see a list of typical targets execute "make help"

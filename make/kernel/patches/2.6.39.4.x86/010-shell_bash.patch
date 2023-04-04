@@ -4,7 +4,7 @@
  EXTRAVERSION = .4
  NAME = Flesh-Eating Bats with Fangs
  
-+SHELL := /bin/bash
++SHELL := bash
 +
  # *DOCUMENTATION*
  # To see a list of typical targets execute "make help"
