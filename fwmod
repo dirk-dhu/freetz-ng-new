@@ -54,7 +54,7 @@ SELF="$(basename "$0")"
 [ $# -eq 0 ] && usage && exit 0
 
 # Backup command line parameters [$0..$n] to save them from getopts eating them
-# away, because we need them again later for the recursive fakerooted call.
+# away, because we need them again later for the recursive fakeroot/pseudo call.
 for ((i=0; i<=$#; i++)); do
 	CMDLINE_ORIG[i]="${!i}"
 done
@@ -326,9 +326,9 @@ validate_signature() {
 [ $DO_VALIDATE -eq 1 -a $(($DO_UNPACK + $DO_MOD + $DO_PACK + $DO_ZIP)) -eq 0 ] && validate_signature "$DO_VALIDATE" "$FIRMWARE" "$FIRMWARE_PUB" && exit 0
 
 
-#######################################
-## Initialise fakeroot incl. caching ##
-#######################################
+##############################################
+## Initialise fakeroot/pseudo incl. caching ##
+##############################################
 
 # Create id string based on MD5 hashes of firmware images
 FIRMWARE_MD5="$("$MD5SUM" "$FIRMWARE" | cut -d ' ' -f 1)"
@@ -338,12 +338,12 @@ FIRMWARE_MD5="$("$MD5SUM" "$FIRMWARE" | cut -d ' ' -f 1)"
 FAKEROOT_CACHE_DIR="$ABS_BASE_DIR/.fakeroot-cache"
 [ "$FREETZ_ROOTEMU_FAKEROOT" != 'y' ] && FAKEROOT_CACHE_DB="$FAKEROOT_CACHE_DIR/files.db" || FAKEROOT_CACHE_DB="$FAKEROOT_CACHE_DIR/fakeroot.cvs"
 
-# Are we in a fakeroot context?
+# Are we in a fakeroot/pseudo context?
 if [ -n "$FWMOD_RECURSIVE" ] && [ $UID -eq 0 ]; then
-	# Yes -> fakeroot is active
-	# Make sure fakeroot call came from ourselves so we can assume the cache settings to be correct
+	# Yes -> fakeroot/pseudo is active
+	# Make sure fakeroot/pseudo call came from ourselves so we can assume the cache settings to be correct
 	if [ $((FWMOD_RECURSIVE)) -eq 0 ] || [ "$SELF" != "$(sed -nr 's/^Name:[[:blank:]]+(.*)/\1/p' /proc/$FWMOD_RECURSIVE/status)" ]; then
-		error 1 "$SELF must not run in a fakeroot environment"
+		error 1 "$SELF must not run in a fakeroot/pseudo environment"
 	fi
 	# Has current combination of firmware already been unpacked?
 	if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" == "$FIRMWARE_MD5" ]; then
@@ -356,7 +356,7 @@ if [ -n "$FWMOD_RECURSIVE" ] && [ $UID -eq 0 ]; then
 		DO_UNPACK=1
 	fi
 else
-	# No -> fakeroot is inactive
+	# No -> fakeroot/pseudo is inactive
 	if [ "$(cat "$UNPACKED_FILE" 2>/dev/null)" != "$FIRMWARE_MD5" ]; then
 		# Dont keep old databases on a new unpack
 		mkdir -p "$FAKEROOT_CACHE_DIR"
@@ -383,7 +383,7 @@ else
 	# -- Copy file system to target folder (NFS root, maybe USB root) --
 	# ------------------------------------------------------------------
 
-	# This cannot be done in the pack/zip section (needs real sudo, not fakeroot)
+	# This cannot be done in the pack/zip section (needs real sudo, not fakeroot/pseudo)
 	if [ "$COPY_FS_DIR" ]; then
 		echo0 "copying root file system to directory $COPY_FS_DIR"
 		rootfs_archive="$(cat "${DIR}/.rootfs_archive")" ||
