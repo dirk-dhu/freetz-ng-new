@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates docs/patches/README.md
 MDPWD="$(dirname $(realpath $0))"
 INPWD="$MDPWD/../../config/ui"

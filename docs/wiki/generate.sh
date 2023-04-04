@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates docs/wiki/README.md and docs/wiki/*/README.md
 MYPWD="$(dirname $(realpath $0))"
 

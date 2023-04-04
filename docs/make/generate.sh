@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates docs/make/README.md and make/README.md (subs)
 MDPWD="$(dirname $(realpath $0))"
 INPWD="$MDPWD/../../make/pkgs"

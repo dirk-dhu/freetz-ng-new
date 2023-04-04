@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates docs/PREREQUISITES/README.md
 SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"

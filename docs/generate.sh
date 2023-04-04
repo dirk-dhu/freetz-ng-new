@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates everything with docs/*/generate.sh
 MYPWD="$(dirname $(realpath $0))"
 

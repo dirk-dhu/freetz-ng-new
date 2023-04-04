@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates thumbnails of docs/screenshots/* to docs/README/*_md.*
 MYPWD="$(dirname $(realpath $0))"
 

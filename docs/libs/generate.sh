@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # generates docs/libs/README.md
 MDPWD="$(dirname $(realpath $0))"
 INPWD="$MDPWD/../../make/libs"
