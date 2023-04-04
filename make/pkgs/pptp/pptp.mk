@@ -1,9 +1,13 @@
-$(call PKG_INIT_BIN,1.7.2)
+$(call PKG_INIT_BIN, 1.7.2)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=e98ae0065d2a39fa3131654ff28cb7070e996f668ed6d0e7d9a445b8d37694bc
 $(PKG)_SITE:=@SF/pptpclient
 $(PKG)_BINARY:=$($(PKG)_DIR)/pptp
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/pptp
+### WEBSITE:=https://sourceforge.net/projects/pptpclient/
+### CHANGES:=https://sourceforge.net/projects/pptpclient/files/pptp/
+### CVSREPO:=https://sourceforge.net/p/pptpclient/git/ci/master/tree/
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -20,6 +24,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(PPTP_DIR) clean
