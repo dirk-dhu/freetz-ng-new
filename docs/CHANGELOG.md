@@ -51,6 +51,7 @@ Latest changes
 
  - Packages:
    * HAProxy 2.6.10
+   * iPerf3 3.13
    * XZ Utils 5.4.2
 
  - Libraries:

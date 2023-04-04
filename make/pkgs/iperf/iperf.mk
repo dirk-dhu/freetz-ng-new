@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 3.12)
+$(call PKG_INIT_BIN, 3.13)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_SITE:=https://downloads.es.net/pub/iperf
-$(PKG)_HASH:=72034ecfb6a7d6d67e384e19fb6efff3236ca4f7ed4c518d7db649c447e1ffd6
+$(PKG)_HASH:=bee427aeb13d6a2ee22073f23261f63712d82befaa83ac8cb4db5da4c2bdc865
 ### WEBSITE:=https://iperf.fr/
 ### MANPAGE:=https://iperf.fr/iperf-doc.php
 ### CHANGES:=https://github.com/esnet/iperf/tags
