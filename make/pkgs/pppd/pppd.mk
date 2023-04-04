@@ -3,6 +3,10 @@ $(PKG)_SOURCE:=ppp-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=02e0a3dd3e4799e33103f70ec7df75348c8540966ee7c948e4ed8a42bbccfb30
 $(PKG)_SITE:=@SAMBA/ppp
 $(PKG)_STARTLEVEL=81
+### WEBSITE:=https://ppp.samba.org/
+### MANPAGE:=https://ppp.samba.org/documentation.html
+### CHANGES:=https://github.com/ppp-project/ppp/releases
+### CVSREPO:=https://git.ozlabs.org/?p=ppp.git
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/pppd/pppd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/pppd
@@ -29,6 +33,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_OPENSSL_SHLIB_VERSION
 $(PKG)_DEPENDS_ON += openssl
 endif
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -45,6 +50,7 @@ $($(PKG)_CHAT_TARGET_BINARY): $($(PKG)_CHAT_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $(if $(FREETZ_PACKAGE_PPPD_CHAT),$($(PKG)_CHAT_TARGET_BINARY))
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) $(PPPD_MAKE_OPTS) clean
