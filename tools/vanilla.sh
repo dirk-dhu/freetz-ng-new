@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 [ "$(echo $USER | sha256sum)" != "804d5ac72a104f79eb8b3d4f537ed05207b711f717f4378008486749473ba70f  -" ] && echo "You dont want this" && exit 1
 GITDIR="$HOME/freetz-ng"
 DL_DIR="$HOME/.freetz-dl"

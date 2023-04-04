@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 #
 # Uncompress LZMA-packed firmware kernel.

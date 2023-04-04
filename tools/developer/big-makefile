@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Simulate make for the given target(s) (can also be empty), printing the
 # resulting "big makefile" to stdout.

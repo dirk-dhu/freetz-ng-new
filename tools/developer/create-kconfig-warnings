@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # If $1 is an integer >= 0, assign it to <rounds>, otherwise default to 50
 # Trick: use 0 to just print a report of previously existing logs again

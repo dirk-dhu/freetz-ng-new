@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # packs host-tools to dl/tools-VERSION.tar.xz in ~5min
 #Arg $1: <VERSION>
 

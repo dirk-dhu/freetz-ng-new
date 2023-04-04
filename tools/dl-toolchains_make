@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # packs toolchains to dl/*freetz-VERSION-shared-glibc.tar.lzma in 20-25min each
 #Arg $1: <VERSION>
 #Arg $2: <new|old|all|FREETZ_TYPE_...>

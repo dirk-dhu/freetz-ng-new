@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 # shows hashes of toolchains in dl/*freetz-VERSION-shared-glibc.tar.lzma
 #Arg $1: <VERSION>
 #Arg $2: <new|old|all>

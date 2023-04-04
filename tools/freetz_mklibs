@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 freetz_mklibs() {
 	local HOST_TOOLS_DIR="${FREETZ_BASE_DIR}/tools/build"

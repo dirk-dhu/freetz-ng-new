@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 MYPWD="$(dirname $(realpath $0))"
 
 help() {

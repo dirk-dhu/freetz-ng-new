@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 mod_base="."
 fw_base="build/original/filesystem"

@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 PKGDIR=make/pkgs
 CFILE=$PKGDIR/Config.in.generated

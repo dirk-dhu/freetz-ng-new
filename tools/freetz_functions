@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # removes dependencies for (deleted) supervisor service "$1.service"
 supervisor_remove_dependency() {

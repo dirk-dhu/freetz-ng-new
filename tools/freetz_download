@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Download Freetz packages from a randomly chosen mirror server. There is
 # an empty input field for a user-defined server in 'menuconfig'. Additionally,

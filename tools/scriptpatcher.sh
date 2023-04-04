@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 usage() {
 	local err_arg=255
