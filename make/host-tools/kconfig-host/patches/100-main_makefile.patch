@@ -30,7 +30,7 @@ it that way for Freetz.
 +export srctree objtree
 +
 +CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
-+	  else if [ -x /bin/bash ]; then echo /bin/bash; \
++	  else if command -v bash >/dev/null; then command -v bash; \
 +	  else echo sh; fi ; fi)
 +
 +HOSTCC       = gcc
