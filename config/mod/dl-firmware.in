@@ -428,7 +428,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_6660_Cable-07.15.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_6660_Cable-07.29.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6660_Cable-07.39-101167-Labor.image"                                if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
+	default "FRITZ.Box_6660_Cable-07.50.image"                                             if FREETZ_TYPE_6660 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_6690_Cable-07.29.image"                                             if FREETZ_TYPE_6690 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6690_Cable-07.50.image"                                             if FREETZ_TYPE_6690 && FREETZ_TYPE_FIRMWARE_07_5X
@@ -701,7 +701,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritz-repeater-6000-labor-101161.zip"    if FREETZ_TYPE_6000
 	default "fritzbox-6490-labor-101216.zip"          if FREETZ_TYPE_6490
 	default "fritzbox-6590-labor-101217.zip"          if FREETZ_TYPE_6590
-	default "fritzbox-6660-labor-101167.zip"          if FREETZ_TYPE_6660
 	default "fritzbox-6850_lte-labor-99732.zip"       if FREETZ_TYPE_6850_4G
 	default "fritzbox-6850_5g-labor-99728.zip"        if FREETZ_TYPE_6850_5G
 	default "fritzbox-6890_lte-labor-103467.zip"      if FREETZ_TYPE_6890
