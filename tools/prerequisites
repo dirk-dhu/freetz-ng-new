@@ -15,6 +15,9 @@ check_requisite() {
 		program)
 			[ -x "$(command -v $1)" ]
 			;;
+		binary)
+			[ -x "$1" ]
+			;;
 		lib)
 			ldconfig -p | grep -Eq "^[[:space:]]*$1(\.[01])* "
 			;;
@@ -40,6 +43,9 @@ failed_requisite() {
 			;;
 		program)
 			echo "ERROR: The program '$1' was not found in path"
+			;;
+		binary)
+			echo "ERROR: The exeutabe binary '$1' was not found"
 			;;
 		lib)
 			echo "ERROR: The library '$1' was not found in /etc/ld.so.cache"
