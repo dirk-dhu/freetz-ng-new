@@ -1,7 +1,10 @@
-$(call PKG_INIT_BIN,1.4.0)
+$(call PKG_INIT_BIN, 1.4.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=8fcd8b8a42de2af59e9fe8cbaa9f894045c977f4d038bbd6346a8522bb7f06c0
 $(PKG)_SITE:=@SF/poptop
+### WEBSITE:=https://sourceforge.net/projects/poptop/
+### CHANGES:=https://sourceforge.net/projects/poptop/files/pptpd/
+### CVSREPO:=https://sourceforge.net/p/poptop/git/ci/master/tree/
 
 $(PKG)_BINARIES:=bcrelay pptpctrl pptpd
 $(PKG)_BINARIES_BUILD_DIR:=$($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
@@ -18,6 +21,7 @@ $(PKG)_AC_VARIABLES := lib_c_gettext lib_intl_gettext header_libintl_h
 $(PKG)_CONFIGURE_ENV += $(foreach variable,$($(PKG)_AC_VARIABLES),ac_cv_$(variable)=no)
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-bcrelay
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -39,6 +43,7 @@ $($(PKG)_PLUGINS_TARGET_DIR): $($(PKG)_DEST_DIR)/usr/lib/pptpd/%: $($(PKG)_DIR)/
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_PLUGINS_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(PPTPD_DIR) clean
