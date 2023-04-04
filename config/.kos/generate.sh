@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 #by cuma, 2020
 
 SCRIPT="$(readlink -f $0)"

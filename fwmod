@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Freetz script to modify AVM FRITZ!Box and OEM firmware images
 #

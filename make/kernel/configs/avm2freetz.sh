@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 #
 # this script is intended to be used for (semi-)automatic conversion of AVM kernel .config to the Freetz one

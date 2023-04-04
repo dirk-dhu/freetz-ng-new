@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 #by cuma, 2019
 
 # this generates config/.img/*.in

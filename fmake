@@ -1,4 +1,4 @@
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Author: Alexander Kriegisch (http://scrum-master.de)
 
@@ -53,7 +53,7 @@ EOF
 fmake_post_sample()
 {
 cat << 'EOF'
-#!/bin/bash
+#! /usr/bin/env bash
 
 # Send e-mail with build info, using SendEmail lightweight Perl client
 # Debian package name: sendemail
