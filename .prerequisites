@@ -2,6 +2,7 @@ program     aclocal                FREETZ_PACKAGE_GNTPSEND
 program     autoconf
 program     automake
 program     autoreconf
+program     bash
 program     bc                     FREETZ_AVM_VERSION_07_1X_MIN
 program     bison
 program     bunzip2
@@ -10,6 +11,7 @@ program     cmake               or FREETZ_TOOLCHAIN_CCACHE FREETZ_PACKAGE_GETDNS
 program     cpio                   FREETZ_AVM_PROP_INNER_FILESYSTEM_TYPE_CPIO
 program     dd                     FREETZ_PACKAGE_SUNDTEK
 program     depmod                 FREETZ_AVM_VERSION_07_2X_MIN
+program     env
 program     file
 program     filterdiff             FREETZ_SHOW_DEVELOPER
 program     find
