@@ -675,7 +675,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
   * **[ppp: Point-to-Point](../../docs/make/ppp.md)<a id='ppp'></a>**<br>
 
-  * **<u>pppd 2.4.7</u><a id='pppd'></a>**<br>
+  * **[pppd 2.4.7](../../docs/make/pppd.md)<a id='pppd'></a>**<br>
     An implementation of the Point-to-point protocol. http://www.samba.org/ppp/
 
   * **[pptp 1.7.2](../../docs/make/pptp.md)<a id='pptp'></a>**<br>
