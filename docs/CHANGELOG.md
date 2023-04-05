@@ -44,7 +44,7 @@ Latest changes
 ### devel
 
  - Build system:
-   * Ccache 4.7.5
+   * Ccache 4.8
 
  - Host tools:
    * python 3.11.3
