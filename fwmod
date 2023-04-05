@@ -342,7 +342,7 @@ FAKEROOT_CACHE_DIR="$ABS_BASE_DIR/.fakeroot-cache"
 if [ -n "$FWMOD_RECURSIVE" ] && [ $UID -eq 0 ]; then
 	# Yes -> fakeroot/pseudo is active
 	# Make sure fakeroot/pseudo call came from ourselves so we can assume the cache settings to be correct
-	if [ $((FWMOD_RECURSIVE)) -eq 0 ] || [ "$SELF" != "$(sed -nr 's/^Name:[[:blank:]]+(.*)/\1/p' /proc/$FWMOD_RECURSIVE/status)" ]; then
+	if [ $((FWMOD_RECURSIVE)) -eq 0 ] || [ "./$SELF" != "$(cat /proc/$FWMOD_RECURSIVE/cmdline | tr '\0' '\n' | sed -n 2p)" ]; then
 		error 1 "$SELF must not run in a fakeroot/pseudo environment"
 	fi
 	# Has current combination of firmware already been unpacked?
