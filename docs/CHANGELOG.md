@@ -45,6 +45,7 @@ Latest changes
 
  - Build system:
    * Ccache 4.8
+   * uClibc-ng 1.0.43
 
  - Host tools:
    * precompiled host-tools 2023-04-06
