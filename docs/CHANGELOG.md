@@ -47,6 +47,7 @@ Latest changes
    * Ccache 4.8
 
  - Host tools:
+   * precompiled host-tools 2023-04-06
    * python 3.11.3
    * xz 5.4.2
 
