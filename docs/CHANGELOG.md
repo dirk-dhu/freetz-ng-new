@@ -47,6 +47,7 @@ Latest changes
    * Ccache 4.7.5
 
  - Host tools:
+   * python 3.11.3
    * xz 5.4.2
 
  - Packages:
