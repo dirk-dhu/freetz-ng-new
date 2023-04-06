@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
-
+set -x
 # Download Freetz packages from a randomly chosen mirror server. There is
 # an empty input field for a user-defined server in 'menuconfig'. Additionally,
 # another download source maybe specified on the command line as $3. $2 is the name
