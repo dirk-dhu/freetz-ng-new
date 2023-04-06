@@ -49,6 +49,7 @@ Latest changes
 
  - Host tools:
    * precompiled host-tools 2023-04-06
+   * precompiled toolchains r21480
    * python 3.11.3
    * xz 5.4.2
 
