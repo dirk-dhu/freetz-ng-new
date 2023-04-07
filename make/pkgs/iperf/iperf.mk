@@ -1,12 +1,15 @@
-$(call PKG_INIT_BIN, 3.13)
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_IPERF_VERSION_ABANDON),3.3,3.13))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
+$(PKG)_HASH_ABANDON:=6f596271251056bffc11bbb8f17d4244ad9a7d4a317c2459fdbb853ae51284d8
+$(PKG)_HASH_CURRENT:=bee427aeb13d6a2ee22073f23261f63712d82befaa83ac8cb4db5da4c2bdc865
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_IPERF_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://downloads.es.net/pub/iperf
-$(PKG)_HASH:=bee427aeb13d6a2ee22073f23261f63712d82befaa83ac8cb4db5da4c2bdc865
 ### WEBSITE:=https://iperf.fr/
 ### MANPAGE:=https://iperf.fr/iperf-doc.php
 ### CHANGES:=https://github.com/esnet/iperf/tags
 ### CVSREPO:=https://github.com/esnet/iperf
 
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_IPERF_VERSION_ABANDON),abandon,current)
 $(PKG)_PATCH_POST_CMDS += $(call PKG_ADD_EXTRA_FLAGS,LDFLAGS|LIBS)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/iperf3
