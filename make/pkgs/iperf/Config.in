@@ -16,14 +16,14 @@ if FREETZ_PACKAGE_IPERF
 
 		config FREETZ_PACKAGE_IPERF_VERSION_ABANDON
 			bool "3.3"
-			depends on (FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
+			depends on !FREETZ_TARGET_IPV6_SUPPORT || (FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 			help
 				Version 3.3 is the last with IPv4-only support.
 				Also this version is compatible with old uClibc.
 
 		config FREETZ_PACKAGE_IPERF_VERSION_CURRENT
 			bool "3.13"
-			depends on !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
+			depends on FREETZ_TARGET_IPV6_SUPPORT && !(FREETZ_TARGET_UCLIBC_0_9_28 || FREETZ_TARGET_UCLIBC_0_9_29)
 
 	endchoice
 
