@@ -107,7 +107,7 @@ Latest changes
 
  - Packages:
    * ACME.sh 3.0.5 (letsencrypt)
-   * Apache2 2.4.56
+   * Apache2 2.4.57
    * BIND 9.11.37/9.16.38
    * BIRD 1.6.8
    * BusyBox 1.36.0
