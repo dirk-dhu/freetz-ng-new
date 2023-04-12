@@ -53,6 +53,9 @@ Latest changes
    * python 3.11.3
    * xz 5.4.2
 
+ - Patches:
+   * patch VLAN: re-enables vlan config of voip in ata-mode
+
  - Packages:
    * CCID 1.5.2
    * Curl 8.0.1
