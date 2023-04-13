@@ -8,7 +8,7 @@ $(PKG)_HASH:=$($(PKG)_HASH_$(subst .,,$($(PKG)_MAJOR_VERSION)))
 $(PKG)_SITE:=https://swupdate.openvpn.net/community/releases,https://build.openvpn.net/downloads/releases
 ### WEBSITE:=https://openvpn.net/community-downloads/
 ### MANPAGE:=https://community.openvpn.net/openvpn/wiki
-### CHANGES:=https://github.com/OpenVPN/openvpn/blob/master/Changes.rst
+### CHANGES:=https://github.com/OpenVPN/openvpn/blob/release/2.6/Changes.rst
 ### CVSREPO:=https://github.com/OpenVPN/openvpn
 
 $(PKG)_CONDITIONAL_PATCHES+=$($(PKG)_MAJOR_VERSION)
