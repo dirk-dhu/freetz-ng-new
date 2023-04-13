@@ -213,7 +213,7 @@ Latest changes
    * iPerf3 3.12
    * jpeg 9e
    * libattr 2.5.1
-   * libcap 2.49/2.66
+   * libcap 2.49/2.68
    * liblz4 1.9.4
    * libmaxminddb 1.7.1
    * libnettle 3.8.1
