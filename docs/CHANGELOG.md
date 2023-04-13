@@ -65,6 +65,7 @@ Latest changes
    * XZ Utils 5.4.2
 
  - Libraries:
+   * libcap 2.49/2.68
    * pango 1.50.14
    * SQLite 3.41.2
 
@@ -213,7 +214,7 @@ Latest changes
    * iPerf3 3.12
    * jpeg 9e
    * libattr 2.5.1
-   * libcap 2.49/2.68
+   * libcap 2.49/2.66
    * liblz4 1.9.4
    * libmaxminddb 1.7.1
    * libnettle 3.8.1
