@@ -140,7 +140,7 @@ Currently supported devices and firmwares
   - 257.07.50 rev104375 {ALL} [MOVE21]
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
-  - 272.07.39 rev103612 {ALL} [MOVE21] (Labor)
+  - 272.07.50 rev104740 {ALL} [MOVE21]
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 
