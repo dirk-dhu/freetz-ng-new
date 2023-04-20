@@ -7,7 +7,7 @@ on:
       - '.github/workflows/generate_juis.yml'
       - 'docs/juis/generate.sh'
   schedule:
-    - cron: '00 16 * * 1-5'
+    - cron: '30 11,15 * * 1-5'
   workflow_dispatch:
 
 jobs:
@@ -39,6 +39,13 @@ jobs:
           umask 0022
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
+
+      - name: cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.freetz-juis
+          key: ${{ github.workflow }}
 
       - name: generate
         run: |

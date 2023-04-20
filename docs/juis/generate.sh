@@ -3,6 +3,7 @@
 SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 TOOLS="$PARENT/tools"
+CACHE="$HOME/.freetz-juis"
 
 
 #rel
@@ -54,6 +55,22 @@ read="$(head -c4 bpjm.out | xxd -p)"
 calc="$(crc32 <( tail -c +$((1 + 4)) bpjm.out ))"
 [ "$read" != "$calc" ] && comp="mismatch $read/$calc" || comp="$read"
 sed -i "s/.*=/$comp=/" bpjm
+
+
+#cache
+TEMPS="$(mktemp -d)"
+OLD="$TEMPS/old"
+NEW="$TEMPS/new"
+mkdir -p "$CACHE" "$OLD" "$NEW"
+for x in fos-xxx fos-rel fos-dwn fos-lab fos-inh  dect-rel dect-lab dect-inh; do
+	cat "$CACHE/$x" > "$OLD/$x" 2>/dev/null
+	cat        "$x" > "$NEW/$x" 2>/dev/null
+	for hw in $(sort -u "$OLD/$x" "$NEW/$x" | sed -n 's/=.*/=/p' | uniq); do
+		sort -u "$OLD/$x" "$NEW/$x" | grep "^$hw" | tail -n1
+	done > "$CACHE/$x"
+	ln -s -f "$CACHE/$x" $x
+done
+rm -rf "$TEMPS"
 
 
 #gen
