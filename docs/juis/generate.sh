@@ -3,7 +3,7 @@
 SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 TOOLS="$PARENT/tools"
-CACHE="$HOME/.freetz-juis"
+CACHE="/tmp/.freetz-juis"
 CRAP_FILTER="5382169925"
 
 
