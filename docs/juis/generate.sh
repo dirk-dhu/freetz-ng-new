@@ -4,6 +4,7 @@ SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 TOOLS="$PARENT/tools"
 CACHE="$HOME/.freetz-juis"
+CRAP_FILTER="5382169925"
 
 
 #rel
@@ -66,7 +67,7 @@ for x in fos-xxx fos-rel fos-dwn fos-lab fos-inh  dect-rel dect-lab dect-inh; do
 	cat "$CACHE/$x" > "$OLD/$x" 2>/dev/null
 	cat        "$x" > "$NEW/$x" 2>/dev/null
 	for hw in $(sort -u "$OLD/$x" "$NEW/$x" | sed -n 's/=.*/=/p' | uniq); do
-		sort -u "$OLD/$x" "$NEW/$x" | grep "^$hw" | tail -n1
+		sort -u "$OLD/$x" "$NEW/$x" | grep "^$hw" | grep -vE "$CRAP_FILTER" | tail -n1
 	done > "$CACHE/$x"
 	ln -s -f "$CACHE/$x" $x
 done
