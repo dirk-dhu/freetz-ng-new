@@ -66,6 +66,7 @@ Latest changes
    * XZ Utils 5.4.2
 
  - Libraries:
+   * harfbuzz 7.1.0
    * libcap 2.49/2.68
    * libxml2 2.10.4
    * pango 1.50.14
