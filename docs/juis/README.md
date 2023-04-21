@@ -59,6 +59,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 247: [FRITZ.Box_7520-07.50.image](http://download.avm.de/fritzbox/fritzbox-7520/deutschland/fritz.os/FRITZ.Box_7520-07.50.image)
  - HWR 249: [FRITZ.Powerline_1260.249.07.29.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260/deutschland/fritz.os/FRITZ.Powerline_1260.249.07.29.image)
  - HWR 252: [FRITZ.Box_6660_Cable-07.50.image](http://download.avm.de/fritzbox/fritzbox-6660-cable/deutschland/fritz.os/FRITZ.Box_6660_Cable-07.50.image)
+ - HWR 253: [FRITZ.Repeater_6000-07.30.image](http://download.avm.de/fritzwlan/fritzrepeater-6000/deutschland/fritz.os/FRITZ.Repeater_6000-07.30.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.29.image](http://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.29.image)
  - HWR 256: [FRITZ.Box_7530_AX-07.31.image](http://download.avm.de/fritzbox/fritzbox-7530-ax/deutschland/fritz.os/FRITZ.Box_7530_AX-07.31.image)
  - HWR 257: [FRITZ.Box_5530-07.50.image](http://download.avm.de/fritzbox/fritzbox-5530-fiber/deutschland/fritz.os/FRITZ.Box_5530-07.50.image)
@@ -79,6 +80,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 ### FOS-Labor
  - HWR 213: [FRITZ.Box_6490_Cable-07.51-103497-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6490Cable/FRITZ.Box_6490_Cable-07.51-103497-LabBETA.image)
  - HWR 220: [FRITZ.Box_6590_Cable-07.51-103499-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6590Cable/FRITZ.Box_6590_Cable-07.51-103499-LabBETA.image)
+ - HWR 226: [FRITZ.Box_7590-07.51-104509-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7590/FRITZ.Box_7590-07.51-104509-LabBETA.image)
  - HWR 227: [FRITZ.Box_4040-07.51-103858-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/4040/FRITZ.Box_4040-07.51-103858-LabBETA.image)
  - HWR 233: [FRITZ.Box_6591_Cable-07.51-104537-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6591Cable/FRITZ.Box_6591_Cable-07.51-104537-LabBETA.image)
  - HWR 234: [FRITZ.Box_6890_LTE-07.51-103467-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-103467-LabBETA.image)
