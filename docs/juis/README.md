@@ -127,7 +127,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
  - HWR 261: [FRITZ.Box_4060-07.51-104808-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/4060/FRITZ.Box_4060-07.51-104808-Inhaus.image)
  - HWR 262: [FRITZ.Box_6850_LTE-07.51-104832-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/6850LTE/FRITZ.Box_6850_LTE-07.51-104832-Inhaus.image)
- - HWR 263: [FRITZ.Repeater_600-07.39-104769-Inhaus.image](http://download.avm.de/inhaus/MOVE21/600/FRITZ.Repeater_600-07.39-104769-Inhaus.image)
+ - HWR 263: [FRITZ.Repeater_600v2-07.39-104769-Inhaus.image](http://download.avm.de/inhaus/MOVE21/600v2/FRITZ.Repeater_600v2-07.39-104769-Inhaus.image)
  - HWR 268: [FRITZ.Repeater_1200_AX-07.39-104770-Inhaus.image](http://download.avm.de/inhaus/MOVE21/1200AX/FRITZ.Repeater_1200_AX-07.39-104770-Inhaus.image)
  - HWR 270: [FRITZ.Repeater_3000_AX-07.41-104771-Inhaus.image](http://download.avm.de/inhaus/MOVE21/3000AX/FRITZ.Repeater_3000_AX-07.41-104771-Inhaus.image)
  - HWR 271: [FRITZ.Box_7510-07.51-104838-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7510/FRITZ.Box_7510-07.51-104838-Inhaus.image)
