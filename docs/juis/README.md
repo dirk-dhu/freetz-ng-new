@@ -86,7 +86,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 234: [FRITZ.Box_6890_LTE-07.51-103467-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-103467-LabBETA.image)
  - HWR 236: [FRITZ.Box_7530-07.51-104920-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7530/FRITZ.Box_7530-07.51-104920-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
- - HWR 247: [FRITZ.Box_7520-07.51-104540-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520/FRITZ.Box_7520-07.51-104540-LabBETA.image)
+ - HWR 247: [FRITZ.Box_7520-07.51-104946-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520/FRITZ.Box_7520-07.51-104946-LabBETA.image)
  - HWR 252: [FRITZ.Box_6660_Cable-07.51-104538-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6660Cable/FRITZ.Box_6660_Cable-07.51-104538-LabBETA.image)
  - HWR 253: [FRITZ.Repeater_6000-07.39-104705-LabBETA.image](http://download.avm.de/labor/MOVE21/6000/FRITZ.Repeater_6000-07.39-104705-LabBETA.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.51-103464-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6820v3LTE/FRITZ.Box_6820v3_LTE-07.51-103464-LabBETA.image)
@@ -99,9 +99,9 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 262: [FRITZ.Box_6850_LTE-07.51-103466-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6850LTE/FRITZ.Box_6850_LTE-07.51-103466-LabBETA.image)
  - HWR 267: [FRITZ.Box_6690_Cable-07.51-104539-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6690Cable/FRITZ.Box_6690_Cable-07.51-104539-LabBETA.image)
  - HWR 268: [FRITZ.Repeater_1200_AX-07.39-104706-LabBETA.image](http://download.avm.de/labor/MOVE21/1200AX/FRITZ.Repeater_1200_AX-07.39-104706-LabBETA.image)
- - HWR 271: [FRITZ.Box_7510-07.51-104542-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7510/FRITZ.Box_7510-07.51-104542-LabBETA.image)
+ - HWR 271: [FRITZ.Box_7510-07.51-104945-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7510/FRITZ.Box_7510-07.51-104945-LabBETA.image)
  - HWR 272: [FRITZ.Box_5590_Fiber-07.39-104326-LabBETA.image](http://download.avm.de/labor/MOVE21/5590Fiber/FRITZ.Box_5590_Fiber-07.39-104326-LabBETA.image)
- - HWR 276: [FRITZ.Box_7520_B-07.51-104541-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-104541-LabBETA.image)
+ - HWR 276: [FRITZ.Box_7520_B-07.51-104947-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-104947-LabBETA.image)
 
 ### FOS-Inhaus
  - HWR 185: [FRITZ.Box_7490-07.51-104836-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7490/FRITZ.Box_7490-07.51-104836-Inhaus.image)
@@ -155,7 +155,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 08.01: [08.01.04.67.avm.de.upd](http://download.avm.de/dect/0801/psq19p2/08.01.04.67.avm.de.upd)
  - MHW 08.02: [08.02.04.67.avm.de.upd](http://download.avm.de/dect/0802/psq19p2/08.02.04.67.avm.de.upd)
  - MHW 08.03: [08.03.04.67.avm.de.upd](http://download.avm.de/dect/0803/psq19p2/08.03.04.67.avm.de.upd)
- - MHW 08.04: [08.04.04.92.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.92.avm.de.upd)
+ - MHW 08.04: [08.04.04.93.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.93.avm.de.upd)
  - MHW 10.01: [34.10.16.16.015.avm.de.upd](http://download.avm.de/dect/1001/Release/34.10.16.16.015.avm.de.upd)
 
 ### Dect-Labor
@@ -166,10 +166,12 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 07.03: [07.03.04.25.avm.de.upd](http://download.avm.de/dect/0703/move21/07.03.04.25.avm.de.upd)
  - MHW 07.04: [07.04.04.25.avm.de.upd](http://download.avm.de/dect/0704/move21/07.04.04.25.avm.de.upd)
  - MHW 08.01: [08.01.04.91.avm.de.upd](http://download.avm.de/dect/0801/labor/08.01.04.91.avm.de.upd)
- - MHW 08.02: [08.02.04.91.avm.de.upd](http://download.avm.de/dect/0802/labor/08.02.04.91.avm.de.upd)
- - MHW 08.03: [08.03.04.91.avm.de.upd](http://download.avm.de/dect/0803/labor/08.03.04.91.avm.de.upd)
+ - MHW 08.02: [08.02.04.93.avm.de.upd](http://download.avm.de/dect/0802/labor1/08.02.04.93.avm.de.upd)
+ - MHW 08.03: [08.03.04.93.avm.de.upd](http://download.avm.de/dect/0803/labor1/08.03.04.93.avm.de.upd)
 
 ### Dect-Inhaus
+ - MHW 08.02: [08.02.04.91.avm.de.upd](http://download.avm.de/dect/0802/labor/08.02.04.91.avm.de.upd)
+ - MHW 08.03: [08.03.04.91.avm.de.upd](http://download.avm.de/dect/0803/labor/08.03.04.91.avm.de.upd)
 
 ### BPjM
  - CRC 6520e73e: [bpjm_20230327_bpjm-modul_04_23.txt.data](http://download.avm.de/bpjm/222451/bpjm_20230327_bpjm-modul_04_23.txt.data)
