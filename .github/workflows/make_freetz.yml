@@ -43,13 +43,6 @@ jobs:
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
 
-      - name: load_hash
-        id: load_hash
-        if: always()
-        run: |
-          export HASH="$(git log --pretty=onelin -1 -- . | sed 's/ .*//')"
-          [ -n "$HASH" ] && echo "hash=$HASH" >> $GITHUB_OUTPUT || exit 1
-          echo "################################################################" && bash -c "echo HASH=$HASH"
       - name: load_cache
         uses: actions/cache/restore@v3
         if: always()
@@ -57,7 +50,7 @@ jobs:
           path: |
             dl/*
             !dl/fw/*
-          key: ${{ github.workflow }}--${{ steps.load_hash.outputs.hash }}
+          key: ${{ github.workflow }}
 
       - name: config
         run: |
@@ -136,13 +129,13 @@ jobs:
           artifactErrorsFailBuild: true
           draft: true
 
-      - name: save_hash
-        id: save_hash
-        if: always()
+      - name: clear_cache
+        env:
+          ACTIONS_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
         run: |
-          export HASH="$(git log --pretty=onelin -1 -- . | sed 's/ .*//')"
-          [ -n "$HASH" ] && echo "hash=$HASH" >> $GITHUB_OUTPUT || exit 1
-          echo "################################################################" && bash -c "echo HASH=$HASH"
+          ASSETS="$(curl -s  -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/Freetz-NG/freetz-ng/actions/caches")"
+          ASSID="$(echo "$ASSETS" | grep -B7 '"key": *"make_freetz"' | sed -rn 's/ *"id": *([^,]*),*/\1/p')"
+          curl -sL -X DELETE -H "Accept: application/vnd.github+json"  -H "Authorization: Bearer $ACTIONS_TOKEN"  -H "X-GitHub-Api-Version: 2022-11-28"  "https://api.github.com/repos/Freetz-NG/freetz-ng/actions/caches/$ASSID" && echo "Deleted ASSID=$ASSID ..." || true
       - name: save_cache
         uses: actions/cache/save@v3
         if: always()
@@ -150,6 +143,6 @@ jobs:
           path: |
             dl/*
             !dl/fw/*
-          key: ${{ github.workflow }}--${{ steps.save_hash.outputs.hash }}
+          key: ${{ github.workflow }}
 
 
