@@ -43,13 +43,21 @@ jobs:
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
 
-      - name: cache
-        uses: actions/cache@v3
+      - name: load_hash
+        id: load_hash
+        if: always()
+        run: |
+          export HASH="$(git log --pretty=onelin -1 -- . | sed 's/ .*//')"
+          [ -n "$HASH" ] && echo "hash=$HASH" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo HASH=$HASH"
+      - name: load_cache
+        uses: actions/cache/restore@v3
+        if: always()
         with:
           path: |
             dl/*
             !dl/fw/*
-          key: ${{ github.workflow }}
+          key: ${{ github.workflow }}--${{ steps.load_hash.outputs.hash }}
 
       - name: config
         run: |
@@ -127,5 +135,21 @@ jobs:
           replacesArtifacts: false
           artifactErrorsFailBuild: true
           draft: true
+
+      - name: save_hash
+        id: save_hash
+        if: always()
+        run: |
+          export HASH="$(git log --pretty=onelin -1 -- . | sed 's/ .*//')"
+          [ -n "$HASH" ] && echo "hash=$HASH" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo HASH=$HASH"
+      - name: save_cache
+        uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: |
+            dl/*
+            !dl/fw/*
+          key: ${{ github.workflow }}--${{ steps.save_hash.outputs.hash }}
 
 
