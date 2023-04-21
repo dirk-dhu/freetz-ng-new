@@ -7,7 +7,7 @@ on:
       - '.github/workflows/generate_juis.yml'
       - 'docs/juis/generate.sh'
   schedule:
-    - cron: '30 11,15 * * 1-5'
+    - cron: '30 11,13,15 * * 1-5'
   workflow_dispatch:
 
 jobs:
@@ -40,12 +40,20 @@ jobs:
           git config --global --add safe.directory $GITHUB_WORKSPACE
           git clone https://github-actions:$GITHUB_TOKEN@${GITHUB_SERVER_URL##*/}/$GITHUB_REPOSITORY.git $GITHUB_WORKSPACE --branch $GITHUB_REF_NAME
 
-      - name: cache
-        uses: actions/cache@v3
+      - name: load_hash
+        id: load_hash
+        if: always()
+        run: |
+          export HASH="$(git log --pretty=onelin -1 -- docs/juis/README.md | sed 's/ .*//')"
+          [ -n "$HASH" ] && echo "hash=$HASH" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo HASH=$HASH"
+      - name: load_cache
+        uses: actions/cache/restore@v3
+        if: always()
         with:
           path: |
             /tmp/.freetz-juis
-          key: ${{ github.workflow }}
+          key: ${{ github.workflow }}--${{ steps.load_hash.outputs.hash }}
 
       - name: generate
         run: |
@@ -65,5 +73,20 @@ jobs:
           git diff --cached --quiet && exit 0 || git commit -m "juis: automatic update"
           git config --local credential.helper '!x() { echo "password=$GITHUB_TOKEN"; };x'
           git push origin $GITHUB_REF_NAME
+
+      - name: save_hash
+        id: save_hash
+        if: always()
+        run: |
+          export HASH="$(git log --pretty=onelin -1 -- docs/juis/README.md | sed 's/ .*//')"
+          [ -n "$HASH" ] && echo "hash=$HASH" >> $GITHUB_OUTPUT || exit 1
+          echo "################################################################" && bash -c "echo HASH=$HASH"
+      - name: save_cache
+        uses: actions/cache/save@v3
+        if: always()
+        with:
+          path: |
+            /tmp/.freetz-juis
+          key: ${{ github.workflow }}--${{ steps.save_hash.outputs.hash }}
 
 
