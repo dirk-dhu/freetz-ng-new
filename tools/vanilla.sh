@@ -148,7 +148,7 @@ cat <<'EOX'
         vanilla4avm - creates avmdiff file from vanilla kernel 4 avm sources
         generate_vanilla - initial used to create avmdiff from tiny kernel pack files
 
-        Add kernel source, create avmdiff:
+        Add kernel source, create avmdiff (example: 7590 07.50):
         Unpack avm sources
         mkdir -p ~/vanilla
         ln -sf $(realpath sources/kernel) ~/vanilla/avm
@@ -162,7 +162,8 @@ cat <<'EOX'
         add make/kernel/configs/avm/config-*-7590_07.50
         add make/kernel/configs/freetz/config-*-7590_07.50
         make sure the kernel version exists in config/avm/kernel.in
-        check if avms .config matches with provided sources
+        enable kernel (modules) in config/mod/source.in
+        check if avms .config matches with provided sources (unlikely)
 
 EOX
 }
