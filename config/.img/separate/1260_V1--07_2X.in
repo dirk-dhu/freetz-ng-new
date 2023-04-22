@@ -1,5 +1,8 @@
 if FREETZ_TYPE_1260_V1 && FREETZ_AVM_VERSION_07_2X
 
+config FREETZ_AVM_HAS_SVCTL
+	def_bool y
+
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 

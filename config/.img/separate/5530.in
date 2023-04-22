@@ -114,6 +114,9 @@ config FREETZ_AVM_HAS_SHOWDSLDSTAT
 config FREETZ_AVM_HAS_SIGNATURE
 	def_bool y
 
+config FREETZ_AVM_HAS_SVCTL
+	def_bool y
+
 config FREETZ_AVM_HAS_TAM
 	def_bool y
 
