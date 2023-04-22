@@ -4,7 +4,7 @@ ARG BUILD_USER=builduser
 RUN \
     apt-get -y update && apt-get -y upgrade && apt-get -y dist-upgrade \
  && DEBIAN_FRONTEND=noninteractive apt-get -y install \
-    git bash locales imagemagick netcat curl bsdmainutils xxd libarchive-zip-perl \
+    git bash locales imagemagick netcat curl bsdmainutils xxd libarchive-zip-perl wget \
  && DEBIAN_FRONTEND=noninteractive apt-get -y clean \
  && rm -rf /var/lib/apt/lists/* \
  && locale-gen en_US.utf8 && locale-gen de_DE.UTF-8 && update-locale \
