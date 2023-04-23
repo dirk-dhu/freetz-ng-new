@@ -17,6 +17,10 @@ Why the [ADDONS](ADDONS.md) of the "Digitale Elite" are not supported here.
 [Patches](patches/README.md)<br>
 [Themes](themes/README.md)<br>
 
+### Generated
+[Juis](juis/README.md)<br>
+[Osp](osp/README.md)<br>
+
 ### Timeline
 [GitHub](https://github.com/Freetz-NG/freetz-ng/commits/master)<br>
 [GitLab](https://gitlab.com/Freetz-NG/freetz-ng/commits/master) (Mirror)<br>
