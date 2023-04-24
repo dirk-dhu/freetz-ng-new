@@ -48,6 +48,7 @@ Latest changes
    * uClibc-ng 1.0.43
 
  - Host tools:
+   * kconfig 6.3
    * precompiled host-tools 2023-04-06
    * precompiled toolchains r21480
    * python 3.11.3
