@@ -104,7 +104,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 276: [FRITZ.Box_7520_B-07.51-104947-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-104947-LabBETA.image)
 
 ### FOS-Inhaus
- - HWR 185: [FRITZ.Box_7490-07.51-104836-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7490/FRITZ.Box_7490-07.51-104836-Inhaus.image)
+ - HWR 185: [FRITZ.Box_7490-07.51-105026-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7490/FRITZ.Box_7490-07.51-105026-Inhaus.image)
  - HWR 206: [FRITZ.Box_WLAN_Repeater_1750E-07.29-100772-Inhaus.image](http://download.avm.de/inhaus/WU22PSQ19/1750E/FRITZ.Box_WLAN_Repeater_1750E-07.29-100772-Inhaus.image)
  - HWR 214: [FRITZ.Box_6820_LTE-07.51-103209-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/6820LTE/FRITZ.Box_6820_LTE-07.51-103209-Inhaus.image)
  - HWR 226: [FRITZ.Box_7590-07.51-105042-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7590/FRITZ.Box_7590-07.51-105042-Inhaus.image)
