@@ -33,7 +33,14 @@ echo -e ' - Vorsicht: AVM interpretiert den Mindestzeitraum in der GPL als Maxim
 echo -e ' - Vorsicht: Auch löscht AVM gerne spontan Konglomerate, diese daher bitte lokal sichern!'
 echo -e ' - Diese Liste ist weder vollständig, korrekt noch aktuell.'
 echo -e "$CATS" | grep -v ^$ | while read c cat; do
-  echo -e "\n### $cat" ; sed -rn "s,^https://osp.avm.de/$c/,,p" osp | while read -s x; do y="${x//%20/ }"; echo " - ${y%/*}/[${y##*/}](https://osp.avm.de/$c/${x})"; done; done
+	echo -e "\n### $cat"
+	sed -rn "s,^https://osp.avm.de/$c/,,p" osp | while read -s line; do
+		new="${line%%/*}"
+		[ "$old" != "$new" ] && echo " * $new/" && old="$new"
+		file="${line#$new/}"
+		echo "   - [${file//%20/ }](https://osp.avm.de/$c/$line)"
+	done
+done
 ) | sed 's/_-/-/' > $PARENT/docs/osp/README.md
 
 #tmp
