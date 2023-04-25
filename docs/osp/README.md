@@ -364,6 +364,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzbox-7583-vdsl/
    - [source-files-FRITZ.Box_7583_VDSL-grx5-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7583-vdsl/source-files-FRITZ.Box_7583_VDSL-grx5-07.50.tar.gz)
  * fritzbox-7590/
+   - [source-files-FRITZ.Box_7590-grx5-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590/source-files-FRITZ.Box_7590-grx5-07.29.tar.gz)
    - [source-files-FRITZ.Box_7590-grx5-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590/source-files-FRITZ.Box_7590-grx5-07.50.tar.gz)
  * fritzbox-7590-ax/
    - [source-files-FRITZ.Box_7590_AX-grx5-07.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7590-ax/source-files-FRITZ.Box_7590_AX-grx5-07.50.tar.gz)
@@ -371,11 +372,6 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 ### FritzPowerline
  * fritzpowerline-1240e/
    - [source-files-FRITZ.Powerline_1240E-hbee-07.14.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1240e/source-files-FRITZ.Powerline_1240E-hbee-07.14.tar.gz)
- * fritzpowerline-1260/
-   - [source-files-FRITZ.Powerline_1260-cortexa9-07.29.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260/source-files-FRITZ.Powerline_1260-cortexa9-07.29.tar.gz)
- * fritzpowerline-1260e/
-   - [Source 1260E.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260e/Source%201260E.tar.gz)
-   - [source-files-FRITZ.Powerline_1260E-cortexa9-07.29.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260e/source-files-FRITZ.Powerline_1260E-cortexa9-07.29.tar.gz)
  * fritzpowerline-540e/
    - [source-files-FRITZ.Powerline_540E-wasp-07.14.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-540e/source-files-FRITZ.Powerline_540E-wasp-07.14.tar.gz)
 
