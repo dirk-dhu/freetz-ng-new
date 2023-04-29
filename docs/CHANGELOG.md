@@ -54,6 +54,9 @@ Latest changes
    * python 3.11.3
    * xz 5.4.2
 
+ - AVM sources:
+   * 5590 7.50 - 4.4.271
+
  - Patches:
    * patch VLAN: re-enables vlan config of voip in ata-mode
 
