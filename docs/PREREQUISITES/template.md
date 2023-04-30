@@ -46,7 +46,7 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 37 64-Bit:
+ - Fedora 37/38 64-Bit:
 ```
 sudo dnf -y install %%Fedora37%%
 ```
@@ -113,12 +113,12 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 22 64-Bit:
+ - Ubuntu 22/23 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu22%%
 ```
 
- - Ubuntu 20 64-Bit:
+ - Ubuntu 20/21 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu20%%
 # sqlite-32bit lässt sich mit apt nicht installieren, aber mit apt-get schon. Siehe auch:
@@ -126,12 +126,12 @@ sudo apt-get -y install %%Ubuntu20%%
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
 ```
 
- - Ubuntu 18 64-Bit:
+ - Ubuntu 18/19 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu18%%
 ```
 
- - Ubuntu 15/16 64-Bit:
+ - Ubuntu 15/16/17 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu15%%
 ```
