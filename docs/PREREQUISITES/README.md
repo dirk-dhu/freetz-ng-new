@@ -46,7 +46,7 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 37 64-Bit:
+ - Fedora 37/38 64-Bit:
 ```
 sudo dnf -y install \
   autoconf automake bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel \
@@ -153,7 +153,7 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 22 64-Bit:
+ - Ubuntu 22/23 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
@@ -165,7 +165,7 @@ sudo apt-get -y install \
   texinfo tofrodos unar unzip uuid-dev wget zip zlib1g-dev
 ```
 
- - Ubuntu 20 64-Bit:
+ - Ubuntu 20/21 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 ccache cmake cpio curl ecj \
@@ -180,7 +180,7 @@ sudo apt-get -y install \
 sudo apt -y install libzstd-dev:i386 sqlite3:i386
 ```
 
- - Ubuntu 18 64-Bit:
+ - Ubuntu 18/19 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils build-essential bzip2 ccache \
@@ -192,7 +192,7 @@ sudo apt-get -y install \
   zlib1g-dev
 ```
 
- - Ubuntu 15/16 64-Bit:
+ - Ubuntu 15/16/17 64-Bit:
 ```
 sudo apt-get -y install \
   autoconf automake autopoint bc binutils bison bsdmainutils bzip2 cpio ecj flex g++ gawk gcc \
