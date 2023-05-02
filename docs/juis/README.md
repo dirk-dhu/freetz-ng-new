@@ -104,14 +104,14 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 276: [FRITZ.Box_7520_B-07.51-105112-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-105112-LabBETA.image)
 
 ### FOS-Inhaus
- - HWR 185: [FRITZ.Box_7490-07.51-105026-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7490/FRITZ.Box_7490-07.51-105026-Inhaus.image)
+ - HWR 185: [FRITZ.Box_7490-07.51-105185-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7490/FRITZ.Box_7490-07.51-105185-Inhaus.image)
  - HWR 206: [FRITZ.Box_WLAN_Repeater_1750E-07.29-100772-Inhaus.image](http://download.avm.de/inhaus/WU22PSQ19/1750E/FRITZ.Box_WLAN_Repeater_1750E-07.29-100772-Inhaus.image)
  - HWR 214: [FRITZ.Box_6820_LTE-07.51-103209-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/6820LTE/FRITZ.Box_6820_LTE-07.51-103209-Inhaus.image)
- - HWR 226: [FRITZ.Box_7590-07.51-105042-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7590/FRITZ.Box_7590-07.51-105042-Inhaus.image)
+ - HWR 226: [FRITZ.Box_7590-07.51-105201-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7590/FRITZ.Box_7590-07.51-105201-Inhaus.image)
  - HWR 227: [FRITZ.Box_4040-07.51-105002-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/4040/FRITZ.Box_4040-07.51-105002-Inhaus.image)
  - HWR 229: [FRITZ.Powerline_1260E-07.39-104990-Inhaus.image](http://download.avm.de/inhaus/MOVE21/1260E/FRITZ.Powerline_1260E-07.39-104990-Inhaus.image)
  - HWR 234: [FRITZ.Box_6890_LTE-07.51-105024-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-105024-Inhaus.image)
- - HWR 236: [FRITZ.Box_7530-07.51-105034-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7530/FRITZ.Box_7530-07.51-105034-Inhaus.image)
+ - HWR 236: [FRITZ.Box_7530-07.51-105193-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7530/FRITZ.Box_7530-07.51-105193-Inhaus.image)
  - HWR 240: [FRITZ.Repeater_600-07.39-104767-Inhaus.image](http://download.avm.de/inhaus/MOVE21/600/FRITZ.Repeater_600-07.39-104767-Inhaus.image)
  - HWR 241: [FRITZ.Repeater_2400-07.50-104599-Inhaus.image](http://download.avm.de/inhaus/MOVE21/2400/FRITZ.Repeater_2400-07.50-104599-Inhaus.image)
  - HWR 244: [FRITZ.Repeater_1200-07.39-103682-Inhaus.image](http://download.avm.de/inhaus/MOVE21/1200/FRITZ.Repeater_1200-07.39-103682-Inhaus.image)
@@ -123,14 +123,14 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 256: [FRITZ.Box_7530_AX-07.51-104971-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7530AX/FRITZ.Box_7530_AX-07.51-104971-Inhaus.image)
  - HWR 257: [FRITZ.Box_5530_Fiber-07.51-105006-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/5530Fiber/FRITZ.Box_5530_Fiber-07.51-105006-Inhaus.image)
  - HWR 258: [FRITZ.Box_6850_5G-07.51-105123-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/68505G/FRITZ.Box_6850_5G-07.51-105123-Inhaus.image)
- - HWR 259: [FRITZ.Box_7590_AX-07.51-105044-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7590AX/FRITZ.Box_7590_AX-07.51-105044-Inhaus.image)
+ - HWR 259: [FRITZ.Box_7590_AX-07.51-105203-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7590AX/FRITZ.Box_7590_AX-07.51-105203-Inhaus.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
  - HWR 261: [FRITZ.Box_4060-07.51-105004-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/4060/FRITZ.Box_4060-07.51-105004-Inhaus.image)
  - HWR 262: [FRITZ.Box_6850_LTE-07.51-105022-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/6850LTE/FRITZ.Box_6850_LTE-07.51-105022-Inhaus.image)
  - HWR 263: [FRITZ.Repeater_600v2-07.39-104769-Inhaus.image](http://download.avm.de/inhaus/MOVE21/600v2/FRITZ.Repeater_600v2-07.39-104769-Inhaus.image)
  - HWR 268: [FRITZ.Repeater_1200_AX-07.39-104770-Inhaus.image](http://download.avm.de/inhaus/MOVE21/1200AX/FRITZ.Repeater_1200_AX-07.39-104770-Inhaus.image)
  - HWR 270: [FRITZ.Repeater_3000_AX-07.41-104771-Inhaus.image](http://download.avm.de/inhaus/MOVE21/3000AX/FRITZ.Repeater_3000_AX-07.41-104771-Inhaus.image)
- - HWR 271: [FRITZ.Box_7510-07.51-105028-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7510/FRITZ.Box_7510-07.51-105028-Inhaus.image)
+ - HWR 271: [FRITZ.Box_7510-07.51-105187-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7510/FRITZ.Box_7510-07.51-105187-Inhaus.image)
  - HWR 272: [FRITZ.Box_5590_Fiber-07.39-104224-Inhaus.image](http://download.avm.de/inhaus/MOVE21/5590Fiber/FRITZ.Box_5590_Fiber-07.39-104224-Inhaus.image)
  - HWR 276: [FRITZ.Box_7520_B-07.51-105032-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-105032-Inhaus.image)
 
@@ -175,4 +175,4 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 08.03: [08.03.04.91.avm.de.upd](http://download.avm.de/dect/0803/labor/08.03.04.91.avm.de.upd)
 
 ### BPjM
- - CRC 6520e73e: [bpjm_20230327_bpjm-modul_04_23.txt.data](http://download.avm.de/bpjm/222451/bpjm_20230327_bpjm-modul_04_23.txt.data)
+ - CRC 62fead61: [bpjm_20230502_bpjm-modul_05_23.txt.data](http://download.avm.de/bpjm/223903/bpjm_20230502_bpjm-modul_05_23.txt.data)
