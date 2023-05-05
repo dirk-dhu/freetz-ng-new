@@ -55,6 +55,7 @@ Latest changes
    * xz 5.4.2
 
  - AVM sources:
+   * 5530 7.50 - 4.9.276
    * 5590 7.50 - 4.4.271
 
  - Patches:
