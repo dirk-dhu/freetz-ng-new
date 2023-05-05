@@ -68,7 +68,7 @@ stop() {
 
 reload() {
 	local ret
-	if [ -x "$(which svctl)" ]; then
+	if [ "$FREETZ_AVM_HAS_SVCTL" == "y" ]; then
 		msgsend -a $DAEMON reload
 		ret=$?
 	else
