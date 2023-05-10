@@ -91,7 +91,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 253: [FRITZ.Repeater_6000-07.39-104705-LabBETA.image](http://download.avm.de/labor/MOVE21/6000/FRITZ.Repeater_6000-07.39-104705-LabBETA.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.51-105250-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6820v3LTE/FRITZ.Box_6820v3_LTE-07.51-105250-LabBETA.image)
  - HWR 256: [FRITZ.Box_7530_AX-07.51-105318-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7530AX/FRITZ.Box_7530_AX-07.51-105318-LabBETA.image)
- - HWR 257: [FRITZ.Box_5530_Fiber-07.39-103872-LabBETA.image](http://download.avm.de/labor/MOVE21/5530Fiber/FRITZ.Box_5530_Fiber-07.39-103872-LabBETA.image)
+ - HWR 257: [FRITZ.Box_5530_Fiber-07.51-105311-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/5530Fiber/FRITZ.Box_5530_Fiber-07.51-105311-LabBETA.image)
  - HWR 258: [FRITZ.Box_6850_5G-07.51-105255-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/68505G/FRITZ.Box_6850_5G-07.51-105255-LabBETA.image)
  - HWR 259: [FRITZ.Box_7590_AX-07.51-105301-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7590AX/FRITZ.Box_7590_AX-07.51-105301-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
@@ -100,7 +100,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 267: [FRITZ.Box_6690_Cable-07.51-105297-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6690Cable/FRITZ.Box_6690_Cable-07.51-105297-LabBETA.image)
  - HWR 268: [FRITZ.Repeater_1200_AX-07.39-104706-LabBETA.image](http://download.avm.de/labor/MOVE21/1200AX/FRITZ.Repeater_1200_AX-07.39-104706-LabBETA.image)
  - HWR 271: [FRITZ.Box_7510-07.51-105264-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7510/FRITZ.Box_7510-07.51-105264-LabBETA.image)
- - HWR 272: [FRITZ.Box_5590_Fiber-07.39-104326-LabBETA.image](http://download.avm.de/labor/MOVE21/5590Fiber/FRITZ.Box_5590_Fiber-07.39-104326-LabBETA.image)
+ - HWR 272: [FRITZ.Box_5590_Fiber-07.51-105310-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/5590Fiber/FRITZ.Box_5590_Fiber-07.51-105310-LabBETA.image)
  - HWR 276: [FRITZ.Box_7520_B-07.51-105285-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-105285-LabBETA.image)
 
 ### FOS-Inhaus
