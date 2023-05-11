@@ -159,7 +159,7 @@ if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 		echo "}"
 		out=""
 		[ -n "$virtsrv" ] && out="url.access-deny = ( \"\" )"
-		if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_REDIRECT" = "y" -a "$LIGHTTPD_SSLREDIRECT" = "yes" ]; then
+		if [ "$LIGHTTPD_SSLREDIRECT" = "yes" ]; then
 			echo 'server.modules += ( "mod_redirect" )'
 			[ "$LIGHTTPD_SSLPORT" != "443" ] && REDIRECT_PORT_SUFFIX=":$LIGHTTPD_SSLPORT" || REDIRECT_PORT_SUFFIX=""
 			out="url.redirect = ( \"^/(.*)\" => \"https://%1${REDIRECT_PORT_SUFFIX}/\$1\" )"
