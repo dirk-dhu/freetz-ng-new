@@ -8,7 +8,7 @@ virthost_conf() {
 #$1 string of input-tag name-attribute
 #$2 variable containing current value to display in input field
 #$3 name to display
-if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_EVHOST" = "y" -a "$LIGHTTPD_VIRTHOST" = "yes" ]; then
+if [ "$LIGHTTPD_VIRTHOST" = "yes" ]; then
 cat << EOF
 <p style="font-size:10px;">$(lang de:"In folgender Box werden die virtuellen Hostnamen angegeben, f&uuml;r welche die Konfiguration bez&uuml;glich $3 gilt. Es k&ouml;nnen entweder der vollst&auml;ndige Hostname oder ein regul&auml;rer Ausdruck f&uuml;r mehrere Hostnamen verwendet werden. Mehrere Werte k&ouml;nnen angegeben werden, in dem diese mit Leerzeichen getrennt werden. Wenn die Konfiguration generell f&uuml;r alle virtuellen Hosts gelten soll, ist die Box leer zu lassen." en:"Please specify the virtual hosts the configuration of $3 applies to in the following box. You can either provide a full qualified domain name or a regular expression to match multiple host names. When supplying multiple values, please separate them using a space character. In case the configuration applies to all virtual hosts, leave the box empty.")</p>
 <p> $(lang de:"Virtuelle Hosts" en:"Virtual hosts"): <input type="text" name="$1" size="30" maxlength="255" value="$(html "$2")"></p>
@@ -68,18 +68,12 @@ EOF
 sec_end
 
 sec_begin "$(lang de:"Virtuelle Hosts" en:"Virtual Hosts")"
-if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_EVHOST" = "y" ]; then
 cat << EOF
 <p><input type="hidden" name="virthost" value="no">
 <input id="b9" type="checkbox" name="virthost" value="yes"$virthost_chk><label for="b9"> $(lang de:"Virtuelle Hosts aktivieren" en:"Activate virtual hosts")</label></p>
 <p style="font-size:10px;">$(lang de:"Das Verzeichnis der Daten (Document Root) der virtuellen Hosts setzt sich zusammen aus dem Verzeichnis der Daten (Document Root) welches oben angegeben wurde plus der Erweiterung welche im Folgenden gew&auml;hlt wird (&lt;docroot&gt;/&lt;extension&gt;). Falls das Datenverzeichnis mit der gew&auml;hlten Extension existiert, wird dieses Verzeichnis als Datenverzeichnis des virtuellen Hosts verwendet. Falls dieses Verzeichnis nicht existiert, wird das oben gew&auml;hlte Datenverzeichnis plus \"/default/\" als Datenverzeichnis verwendet. Dies bedeutet, dass bei aktivieren virtuellen Hosts das oben gew&auml;hlte Datenverzeichnis nicht mehr direkt verwendet wird.<br />lighttpd wird nur starten, wenn bei aktivierten virtuellen Hosts das default/ Datenverzeichnis existiert.<br />ACHTUNG: &Uuml;berlege genau, welche Option die richtige ist, vor allem im Zusammenspiel mit Zugriffskontrolle oder SSL (zum Beispiel kann die Zugriffskontrolle, welche nur f&uuml;r einen virtuellen Host konfiguriert wurde, einfach ausgehebelt werden, wenn du die Option \"%3\" w&auml;hlst und einen DNS Namen domain.topleveldomain auf deine Box zeigen l&auml;sst)! Meist ist die Option \"%3.%0\" f&uuml;r den gesamten Hostnamen die richtige.<br />F&uuml;r Informationen bez&uuml;glich der erlauben Konfigurationsoptionen siehe <a href=http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModEVhost>hier</a>." en:"The document root of the virtual host is defined by combining the above configured document root plus the extension selected as follows (&lt;docroot&gt;/&lt;extension&gt;). If the directory for the virtual host does not exist, the above configured document root extended with \"/default/\" is used as document root. This also means that with activated virtual host support, the above configured document root will not be used directly any more.<br />lighttpd will only start if the the default/ document root exists.<br />ATTENTION: be careful to select the right option (e.g. configuration of virtual hosts where one host is access-protected, the access check is easily circumvented when selecting only \"%3\" and having an DNS entry of domainname.topleveldomain)! In most cases, you want to select the option \"%3.%0\".<br />For details on the allowed configuration, please see <a href=http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:ModEVhost>here</a>.")</p>
 <p> $(lang de:"Datenverzeichnis-Erweiterung" en:"Document root directory extension"): <input type="text" name="virthosttype" size="10" maxlength="20" value="$(html "$LIGHTTPD_VIRTHOSTTYPE")"></p>
 EOF
-else
-cat << EOF
-<p style="font-size:10px;">$(lang de:"Virtuelle Hosts k&ouml;nnen nicht konfiguriert werden - mod_evhost.so nicht vorhanden." en:"Virtual hosts support cannot be configured - mod_evhost.so unavailable.")</p>
-EOF
-fi
 sec_end
 
 sec_begin "$(lang de:"Erlaube Auflistung des Verzeichnisinhalts" en:"Allow listing of directory contents")"

@@ -25,7 +25,7 @@ fi
 
 virthost_conf() {
 #$1, $2 and $3 are the same as in encloseWithHTTPHost
-if [ -n "$1" -a "$FREETZ_PACKAGE_LIGHTTPD_MOD_EVHOST" = "y" -a "$LIGHTTPD_VIRTHOST" = "yes" ]; then
+if [ -n "$1" -a "$LIGHTTPD_VIRTHOST" = "yes" ]; then
 	encloseWithHTTPHost "$@"
 else
 	echo -e "$2"
@@ -149,7 +149,7 @@ if [ "$LIGHTTPD_SSLENABLE" = "enable" ]; then
 	[ "$LIGHTTPD_SSLENABLE" == "enable" ] && echo 'server.modules += ( "mod_openssl" )'
 	if [ "$LIGHTTPD_SSLADDITIONAL" = "yes" ]; then
 		virtsrv=""
-		if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_EVHOST" = "y" -a "$LIGHTTPD_VIRTHOST" = "yes" ]; then
+		if [ "$LIGHTTPD_VIRTHOST" = "yes" ]; then
 			virtsrv=${LIGHTTPD_SSLVIRT// /|}
 		fi
 		echo "\$SERVER[\"socket\"] == \":$LIGHTTPD_SSLPORT\" {"
@@ -367,7 +367,7 @@ if [ "$LIGHTTPD_CHROOT" = "yes" ]; then
 	docroot="/websites"
 	[ "$LIGHTTPD_VIRTHOST" = "yes" ] && mkdir -p "$LIGHTTPD_DOCROOT/websites/default"
 fi
-if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_EVHOST" = "y" -a "$LIGHTTPD_VIRTHOST" = "yes" ]; then
+if [ "$LIGHTTPD_VIRTHOST" = "yes" ]; then
 cat << EOF
 server.modules += ( "mod_evhost" )
 evhost.path-pattern = "$docroot/$LIGHTTPD_VIRTHOSTTYPE/"
