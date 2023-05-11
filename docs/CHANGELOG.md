@@ -73,6 +73,7 @@ Latest changes
 
  - Libraries:
    * FreeType 2.13.0
+   * glib2 2.32.4/2.75.4
    * harfbuzz 7.3.0
    * libcap 2.49/2.68
    * libpcap 1.1.1/1.10.4
