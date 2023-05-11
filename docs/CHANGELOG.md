@@ -72,6 +72,7 @@ Latest changes
    * XZ Utils 5.4.2
 
  - Libraries:
+   * FreeType 2.13.0
    * harfbuzz 7.1.0
    * libcap 2.49/2.68
    * libpcap 1.1.1/1.10.4
