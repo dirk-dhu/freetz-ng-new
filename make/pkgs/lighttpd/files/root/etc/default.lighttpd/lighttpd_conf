@@ -321,8 +321,8 @@ genFastcgiServer() {
 uniqTokens() { echo $@ | tr " " "\n" | sort -u; }
 appendToList() { echo $@; }
 
-[ "$LIGHTTPD_MODFASTCGIPHP" = "yes" -a "$FREETZ_PACKAGE_LIGHTTPD_MOD_FASTCGI" = "y" ] && _php=true || _php=false
-[ "$LIGHTTPD_MODFASTCGIRUBY" = "yes" -a "$FREETZ_PACKAGE_LIGHTTPD_MOD_FASTCGI" = "y" ] && _ruby=true || _ruby=false
+[ "$LIGHTTPD_MODFASTCGIPHP" = "yes" ] && _php=true || _php=false
+[ "$LIGHTTPD_MODFASTCGIRUBY" = "yes" ] && _ruby=true || _ruby=false
 if $_php || $_ruby ; then
 cat << EOF
 server.modules += ( "mod_fastcgi" )

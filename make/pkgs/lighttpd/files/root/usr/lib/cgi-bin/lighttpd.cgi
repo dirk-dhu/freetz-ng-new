@@ -177,7 +177,7 @@ cat << EOF
 <p style="font-size:10px;">$(lang de:"CGI Unterst&uuml;tzung kann nicht konfiguriert werden - mod_cgi.so nicht vorhanden." en:"CGI support cannot be configured - mod_cgi.so unavailable.")</p>
 EOF
 fi
-if [ "$FREETZ_PACKAGE_LIGHTTPD_MOD_FASTCGI" = "y" ]; then
+
 cat << EOF
 <p><input type="hidden" name="modfastcgiphp" value="no">
 <input id="b6" type="checkbox" name="modfastcgiphp" value="yes"$modfastcgiphp_chk><label for="b6"> $(lang de:"mod_fastcgi f&uuml;r PHP aktivieren (Dateien *.php ausf&uuml;hrbar)" en:"Activate mod_fastcgi for PHP (files *.php executable)")</label></p>
@@ -221,11 +221,7 @@ cat << EOF
 <p> $(lang de:"Maximale Anzahl der RUBY Prozesse" en:"Maximum number of RUBY processes"): <input type="text" name="modfastcgirubymaxproc" size="2" maxlength="2" value="$(html "$LIGHTTPD_MODFASTCGIRUBYMAXPROC")"></p>
 EOF
 virthost_conf "modfastcgirubyvirt" "$LIGHTTPD_MODFASTCGIRUBYVIRT" "$(lang de:"Aktivierung der RUBY-FastCGI Unterst&uuml;tzung" en:"activation of RUBY FastCGI support")"
-else
-cat << EOF
-<p style="font-size:10px;">$(lang de:"FastCGI Unterst&uuml;tzung kann nicht konfiguriert werden - mod_fastcgi.so nicht vorhanden." en:"FastCGI support cannot be configured - mod_fastcgi.so unavailable.")</p>
-EOF
-fi
+
 sec_end
 
 sec_begin "$(lang de:"Erweiterte Einstellungen" en:"Advanced Options")"
