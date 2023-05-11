@@ -12,7 +12,7 @@
  
      if (socket_connection_reset(c->c2.link_socket, status))
      {
-@@ -1772,7 +1775,7 @@
+@@ -1782,7 +1785,7 @@
                  socks_preprocess_outgoing_link(c, &to_addr, &size_delta);
  
                  /* Send packet */

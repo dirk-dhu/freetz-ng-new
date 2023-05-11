@@ -66,7 +66,7 @@ Latest changes
    * Curl 8.0.1
    * HAProxy 2.6.10
    * iPerf3 3.3/3.13
-   * OpenVPN 2.4.12/2.5.9/2.6.3
+   * OpenVPN 2.4.12/2.5.9/2.6.4
    * strace 4.9/5.0/6.3
    * tcpdump 4.1.1/4.99.4
    * XZ Utils 5.4.2
