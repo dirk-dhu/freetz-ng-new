@@ -1,9 +1,6 @@
 menuconfig FREETZ_PACKAGE_LIGHTTPD
 	bool "Lighttpd 1.4.70"
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_PACKAGE_LIGHTTPD_MOD_ACCESS
-	select FREETZ_PACKAGE_LIGHTTPD_MOD_INDEXFILE
-	select FREETZ_PACKAGE_LIGHTTPD_MOD_STATICFILE
 	select FREETZ_PACKAGE_LIGHTTPD_MOD_DIRLISTING
 	select FREETZ_BUSYBOX_MD5SUM
 	default n
@@ -113,15 +110,6 @@ if FREETZ_PACKAGE_LIGHTTPD
 
 	comment " Modules"
 
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_ACCESS
-		bool "mod_access (required module)"
-		default y
-		help
-			This option adds mod_access.so to the image.
-			This is a required module, it cannot be deselected.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModAccess
-			for more information on this module.
-
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_ACCESSLOG
 		bool "mod_accesslog"
 		default y
@@ -136,14 +124,6 @@ if FREETZ_PACKAGE_LIGHTTPD
 		help
 			This option adds mod_ajp13.so to the image.
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModAjp13
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_ALIAS
-		bool "mod_alias"
-		default y
-		help
-			This option adds mod_alias.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModAlias
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_AUTH
@@ -198,46 +178,12 @@ if FREETZ_PACKAGE_LIGHTTPD
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModDirListing
 			for more information on this module.
 
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_EVHOST
-		bool "mod_evhost"
-		default y
-		help
-			This option adds mod_evhost.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModEVhost
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_EXPIRE
-		bool "mod_expire"
-		default y
-		help
-			This option adds mod_expire.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModExpire
-			for more information on this module.
-
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_EXTFORWARD
 		bool "mod_extforward"
 		default y
 		help
 			This option adds mod_extforward.so to the image.
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModExtForward
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_FASTCGI
-		bool "mod_fastcgi"
-		default y
-		help
-			This option adds mod_fastcgi.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModFastCGI
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_INDEXFILE
-		bool "mod_indexfile (required module)"
-		default y
-		help
-			This option adds mod_indexfile.so to the image.
-			This is a required module, it cannot be deselected.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModIndexFile
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
@@ -274,22 +220,6 @@ if FREETZ_PACKAGE_LIGHTTPD
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModProxy
 			for more information on this module.
 
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_REDIRECT
-		bool "mod_redirect"
-		default y
-		help
-			This option adds mod_redirect.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModRedirect
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_REWRITE
-		bool "mod_rewrite"
-		default y
-		help
-			This option adds mod_rewrite.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModRewrite
-			for more information on this module.
-
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_RRDTOOL
 		bool "mod_rrdtool"
 		select FREETZ_PACKAGE_RRDTOOL
@@ -299,45 +229,12 @@ if FREETZ_PACKAGE_LIGHTTPD
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModRRDTool
 			for more information on this module.
 
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_SCGI
-		bool "mod_scgi"
-		default y
-		help
-			This option adds mod_scgi.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModSCGI
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_SETENV
-		bool "mod_setenv"
-		default y
-		help
-			This option adds mod_setenv.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModSetEnv
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_SIMPLE_VHOST
-		bool "mod_simple_vhost"
-		default y
-		help
-			This option adds mod_simple_vhost.so to the image.
-			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModSimpleVhost
-			for more information on this module.
-
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_SSI
 		bool "mod_ssi"
 		default y
 		help
 			This option adds mod_ssi.so to the image.
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModSSI
-			for more information on this module.
-
-	config FREETZ_PACKAGE_LIGHTTPD_MOD_STATICFILE
-		bool "mod_staticfile (required module)"
-		default y
-		help
-			This option adds mod_staticfile.so to the image.
-			This is a required module, it cannot be deselected.
-			Please see https://redmine.lighttpd.net/projects/1/wiki/
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_STATUS
