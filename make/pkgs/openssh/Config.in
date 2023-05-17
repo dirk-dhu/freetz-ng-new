@@ -4,14 +4,9 @@ comment "OpenSSH (not available, needs OpenSSL 1.0 or newer)"
 config FREETZ_PACKAGE_OPENSSH
 	bool "OpenSSH 9.3p1"
 	depends on FREETZ_OPENSSL_VERSION_1_MIN
-	#
-	select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO && !FREETZ_PACKAGE_OPENSSH_STATIC
 	select FREETZ_LIB_libcrypto_WITH_EC       if !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
-	#
 	select FREETZ_LIB_libcrypt                if !FREETZ_PACKAGE_OPENSSH_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libutil                 if !FREETZ_PACKAGE_OPENSSH_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
-	#
 	default n
 	help
 		OpenSSH is the premier connectivity tool for remote login with the SSH
@@ -33,6 +28,8 @@ if FREETZ_PACKAGE_OPENSSH
 
 	config FREETZ_PACKAGE_OPENSSH_sshd
 		bool "SSH server (sshd)"
+		select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_STATIC && !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
+		select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
 		default n
 
 	comment "SSH client (ssh) (not available, provided by dropbear)"
@@ -40,6 +37,8 @@ if FREETZ_PACKAGE_OPENSSH
 	config FREETZ_PACKAGE_OPENSSH_ssh
 		bool "SSH client (ssh)"
 		depends on !FREETZ_PACKAGE_DROPBEAR || FREETZ_PACKAGE_DROPBEAR_SERVER_ONLY
+		select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_STATIC && !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
+		select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
 		default n
 
 	comment "Secure copy (scp) (not available, provided by dropbear)"
@@ -52,10 +51,11 @@ if FREETZ_PACKAGE_OPENSSH
 
 	config FREETZ_PACKAGE_OPENSSH_CLIENTUTILS
 		bool "Client utilities (ssh-add, ssh-agent)"
+		select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_STATIC && !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
+		select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
 		select FREETZ_PACKAGE_OPENSSH_ssh_add
 		select FREETZ_PACKAGE_OPENSSH_ssh_agent
 		default n
-
 	if FREETZ_PACKAGE_OPENSSH_CLIENTUTILS
 		config FREETZ_PACKAGE_OPENSSH_ssh_add
 			bool
@@ -65,6 +65,8 @@ if FREETZ_PACKAGE_OPENSSH
 
 	config FREETZ_PACKAGE_OPENSSH_KEYUTILS
 		bool "Key utilities (ssh-keygen, ssh-keysign, ssh-keyscan)"
+		select FREETZ_LIB_libcrypto               if !FREETZ_PACKAGE_OPENSSH_STATIC && !FREETZ_PACKAGE_OPENSSH_INTERNAL_CRYPTO
+		select FREETZ_LIB_libz                    if !FREETZ_PACKAGE_OPENSSH_STATIC
 		select FREETZ_PACKAGE_OPENSSH_ssh_keygen
 		select FREETZ_PACKAGE_OPENSSH_ssh_keysign
 		select FREETZ_PACKAGE_OPENSSH_ssh_keyscan
