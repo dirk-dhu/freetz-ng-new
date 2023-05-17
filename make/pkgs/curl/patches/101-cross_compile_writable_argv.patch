@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -25003,7 +25003,9 @@
+@@ -25181,7 +25181,9 @@
       darwin*)
        if test "$cross_compiling" = yes
  then :

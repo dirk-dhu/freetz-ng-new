@@ -63,7 +63,7 @@ Latest changes
 
  - Packages:
    * CCID 1.5.2
-   * Curl 8.0.1
+   * Curl 8.1.0
    * HAProxy 2.6.10
    * iPerf3 3.3/3.13
    * Lighttpd 1.4.70
