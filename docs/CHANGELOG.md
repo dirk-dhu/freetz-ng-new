@@ -44,7 +44,7 @@ Latest changes
 ### devel
 
  - Build system:
-   * Ccache 4.8
+   * Ccache 4.8.1
    * uClibc-ng 1.0.43
 
  - Host tools:
