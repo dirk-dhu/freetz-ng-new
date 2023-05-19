@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN,$(if $(FREETZ_BUSYBOX__VERSION_V127),1.27.2,1.36.0))
+$(call PKG_INIT_BIN,$(if $(FREETZ_BUSYBOX__VERSION_V127),1.27.2,1.36.1))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH_1.27.2:=9d4be516b61e6480f156b11eb42577a13529f75d3383850bb75c50c285de63df
-$(PKG)_HASH_1.36.0:=542750c8af7cb2630e201780b4f99f3dcceeb06f505b479ec68241c1e6af61a5
+$(PKG)_HASH_1.36.1:=b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
 $(PKG)_SITE:=https://www.busybox.net/downloads
 # run make/busybox/generate.sh after bump

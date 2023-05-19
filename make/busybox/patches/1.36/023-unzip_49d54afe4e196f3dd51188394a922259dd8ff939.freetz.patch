@@ -38,8 +38,8 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  //kbuild:lib-$(CONFIG_UNZIP) += unzip.o
  
  //usage:#define unzip_trivial_usage
--//usage:       "[-lnojpq] FILE[.zip] [FILE]... [-x FILE]... [-d DIR]"
-+//usage:       "[-lnojpq] FILE[.zip] [FILE]... [-x FILE]... [-d DIR]" IF_FEATURE_UNZIP_J_NUM(" [-J NUM]")
+-//usage:       "[-lnojpqK] FILE[.zip] [FILE]... [-x FILE]... [-d DIR]"
++//usage:       "[-lnojpqK] FILE[.zip] [FILE]... [-x FILE]... [-d DIR]" IF_FEATURE_UNZIP_J_NUM(" [-J NUM]")
  //usage:#define unzip_full_usage "\n\n"
  //usage:       "Extract FILEs from ZIP archive\n"
  //usage:     "\n	-l	List contents (with -q for short form)"
@@ -52,11 +52,13 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  //usage:     "\n	-p	Write to stdout"
  //usage:     "\n	-t	Test"
  //usage:     "\n	-q	Quiet"
-@@ -494,8 +505,12 @@
+@@ -495,9 +506,13 @@
  		OPT_l = (1 << 0),
  		OPT_x = (1 << 1),
  		OPT_j = (1 << 2),
+-		OPT_K = (1 << 3),
 +		OPT_J_num = (1 << 3),
++		OPT_K = (1 << 4),
  	};
  	unsigned opts;
 +#if ENABLE_FEATURE_UNZIP_J_NUM
@@ -65,17 +67,17 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  	smallint quiet = 0;
  	IF_NOT_FEATURE_UNZIP_CDF(const) smallint verbose = 0;
  	enum { O_PROMPT, O_NEVER, O_ALWAYS };
-@@ -559,7 +574,7 @@
+@@ -561,7 +576,7 @@
  
  	opts = 0;
  	/* '-' makes getopt return 1 for non-options */
--	while ((i = getopt(argc, argv, "-d:lnotpqxjv")) != -1) {
-+	while ((i = getopt(argc, argv, "-d:lnotpqxj" IF_FEATURE_UNZIP_J_NUM("J:") "v")) != -1) {
+-	while ((i = getopt(argc, argv, "-d:lnotpqxjvK")) != -1) {
++	while ((i = getopt(argc, argv, "-d:lnotpqxj" IF_FEATURE_UNZIP_J_NUM("J:") "vK")) != -1) {
  		switch (i) {
  		case 'd':  /* Extract to base directory */
  			base_dir = optarg;
-@@ -602,6 +617,13 @@
- 			opts |= OPT_j;
+@@ -608,6 +623,13 @@
+ 			opts |= OPT_K;
  			break;
  
 +#if ENABLE_FEATURE_UNZIP_J_NUM
@@ -88,7 +90,7 @@ Signed-off-by: Eugene Rudoy <gene.devel@gmail.com>
  		case 1:
  			if (!src_fn) {
  				/* The zip file */
-@@ -916,6 +938,36 @@
+@@ -925,6 +947,36 @@
  		/* Strip paths (after -l: unzip -lj a.zip lists full names) */
  		if (opts & OPT_j)
  			overlapping_strcpy(dst_fn, bb_basename(dst_fn));

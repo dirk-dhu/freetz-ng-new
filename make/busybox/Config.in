@@ -14,7 +14,7 @@ choice
 		depends on FREETZ_KERNEL_VERSION_2_MAX
 
 	config FREETZ_BUSYBOX__VERSION_V136
-		bool "1.36.0"
+		bool "1.36.1"
 		depends on FREETZ_KERNEL_VERSION_3_MIN
 
 endchoice # "BusyBox version" #
@@ -22,7 +22,7 @@ endchoice # "BusyBox version" #
 config FREETZ_BUSYBOX__VERSION_STRING
 	string
 	default "1.27.2" if FREETZ_BUSYBOX__VERSION_V127
-	default "1.36.0" if FREETZ_BUSYBOX__VERSION_V136
+	default "1.36.1" if FREETZ_BUSYBOX__VERSION_V136
 
 config FREETZ_BUSYBOX__RECOMMENDED
 	bool "recommended - DEVELOPER" if FREETZ_SHOW_DEVELOPER

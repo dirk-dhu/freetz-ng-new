@@ -62,6 +62,7 @@ Latest changes
    * patch VLAN: re-enables vlan config of voip in ata-mode
 
  - Packages:
+   * BusyBox 1.36.1
    * CCID 1.5.2
    * Curl 8.1.0
    * HAProxy 2.6.10
