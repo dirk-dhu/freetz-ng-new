@@ -1,4 +1,4 @@
-# libgpg-error: GnuPG error library (libgpg-error.so) 1.46
+# libgpg-error: GnuPG error library (libgpg-error.so) 1.47
  - Homepage: [https://gnupg.org/software/libgpg-error/](https://gnupg.org/software/libgpg-error/)
  - Changelog: [https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob;f=NEWS](https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git;a=blob;f=NEWS)
  - Repository: [https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git](https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgpg-error.git)
