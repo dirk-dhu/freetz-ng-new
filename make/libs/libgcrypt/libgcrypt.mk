@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.10.1)
-$(PKG)_LIB_VERSION:=20.4.1
+$(call PKG_INIT_LIB, 1.10.2)
+$(PKG)_LIB_VERSION:=20.4.2
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=ef14ae546b0084cd84259f61a55e07a38c3b53afc0f546bffcef2f01baffe9de
+$(PKG)_HASH:=3b9c02a004b68c256add99701de00b383accccf37177e0d6c58289664cce0c03
 $(PKG)_SITE:=https://gnupg.org/ftp/gcrypt/libgcrypt,ftp://ftp.gnupg.org/gcrypt/libgcrypt
 ### WEBSITE:=https://gnupg.org/software/libgcrypt/
 ### CHANGES:=https://git.gnupg.org/cgi-bin/gitweb.cgi?p=libgcrypt.git;a=blob;f=NEWS
@@ -31,6 +31,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-digests="$(call LIB_SELECTED_SUBOPTIONS,$($
 $(PKG)_CONFIGURE_OPTIONS += --enable-ciphers="$(call LIB_SELECTED_SUBOPTIONS,$($(PKG)_SYMMETRIC_CIPHERS),WITH_SYMMETRIC_CIPHER)"
 $(PKG)_CONFIGURE_OPTIONS += --enable-pubkey-ciphers="$(call LIB_SELECTED_SUBOPTIONS,$($(PKG)_ASYMMETRIC_CIPHERS),WITH_ASYMMETRIC_CIPHER)"
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -52,6 +53,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBGCRYPT_DIR) clean
