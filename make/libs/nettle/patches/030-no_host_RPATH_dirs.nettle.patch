@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -2871,6 +2871,7 @@
+@@ -2886,6 +2886,7 @@
  RPATH_CANDIDATE_REAL_DIRS=''
  RPATH_CANDIDATE_DIRS=''
  
@@ -8,7 +8,7 @@
  { $as_echo "$as_me:${as_lineno-$LINENO}: result: Searching for libraries" >&5
  $as_echo "Searching for libraries" >&6; }
  
-@@ -2910,6 +2911,7 @@
+@@ -2925,6 +2926,7 @@
  fi
  
  done

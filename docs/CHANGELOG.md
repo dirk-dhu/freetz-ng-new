@@ -81,6 +81,7 @@ Latest changes
    * libcap 2.49/2.69
    * libgcrypt 1.10.2
    * libgpg-error 1.47
+   * libnettle 3.9
    * libpcap 1.1.1/1.10.4
    * libuv 1.45.0
    * libxml2 2.10.4
