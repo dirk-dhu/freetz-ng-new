@@ -78,7 +78,7 @@ Latest changes
    * FreeType 2.13.0
    * glib2 2.32.4/2.76.1
    * harfbuzz 7.3.0
-   * libcap 2.49/2.68
+   * libcap 2.49/2.69
    * libgcrypt 1.10.2
    * libgpg-error 1.47
    * libpcap 1.1.1/1.10.4
