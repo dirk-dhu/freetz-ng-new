@@ -21,7 +21,7 @@ if FREETZ_LIB_libglib_2
 			depends on !FREETZ_SEPARATE_AVM_UCLIBC
 
 		config FREETZ_LIB_libglib_2_VERSION_CURRENT
-			bool "2.76.1"
+			bool "2.76.2"
 			depends on FREETZ_SEPARATE_AVM_UCLIBC
 
 	endchoice

@@ -76,7 +76,7 @@ Latest changes
 
  - Libraries:
    * FreeType 2.13.0
-   * glib2 2.32.4/2.76.1
+   * glib2 2.32.4/2.76.2
    * harfbuzz 7.3.0
    * libcap 2.49/2.69
    * libgcrypt 1.10.2
