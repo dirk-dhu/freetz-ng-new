@@ -53,7 +53,7 @@ Latest changes
    * precompiled host-tools 2023-05-19
    * precompiled toolchains r21480
    * python 3.11.3
-   * xz 5.4.2
+   * xz 5.4.3
 
  - AVM sources:
    * 5530 7.50 - 4.9.276
