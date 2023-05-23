@@ -72,7 +72,7 @@ Latest changes
    * OpenVPN 2.4.12/2.5.9/2.6.4
    * strace 4.9/5.0/6.3
    * tcpdump 4.1.1/4.99.4
-   * XZ Utils 5.4.2
+   * XZ Utils 5.4.3
 
  - Libraries:
    * FreeType 2.13.0
