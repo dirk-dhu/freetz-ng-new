@@ -1,4 +1,4 @@
-# GLib2 libglib (libglib-2.0.so) 2.32.4/2.76.1
+# GLib2 libglib (libglib-2.0.so) 2.32.4/2.76.2
  - Homepage: [https://www.gnu.org/software/libc/](https://www.gnu.org/software/libc/)
  - Manpage: [https://docs.gtk.org/glib/](https://docs.gtk.org/glib/)
  - Changelog: [https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS](https://gitlab.gnome.org/GNOME/glib/blob/main/NEWS)
