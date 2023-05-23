@@ -84,7 +84,7 @@ Latest changes
    * libnettle 3.9
    * libpcap 1.1.1/1.10.4
    * libuv 1.45.0
-   * libxml2 2.10.4
+   * libxml2 2.11.4
    * pango 1.50.14
    * SQLite 3.41.2
 

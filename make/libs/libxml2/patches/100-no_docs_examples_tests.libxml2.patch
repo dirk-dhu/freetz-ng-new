@@ -1,24 +1,33 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -373,7 +373,7 @@
+@@ -92,7 +92,7 @@
+ build_triplet = @build@
+ host_triplet = @host@
+ @WITH_PYTHON_TRUE@am__append_1 = python
+-@WITH_GLOB_TRUE@am__append_2 = fuzz
++@WITH_GLOB_TRUE@am__append_2 = 
+ check_PROGRAMS = runsuite$(EXEEXT) runtest$(EXEEXT) \
+ 	runxmlconf$(EXEEXT) testModule$(EXEEXT) testThreads$(EXEEXT) \
+ 	testapi$(EXEEXT) testchar$(EXEEXT) testdict$(EXEEXT) \
+@@ -398,7 +398,7 @@
      n|no|NO) false;; \
      *) (install-info --version) >/dev/null 2>&1;; \
    esac
--DATA = $(cmake_DATA) $(examples_DATA) $(m4data_DATA) \
-+DATA =                                               \
- 	$(nodist_pkgconfig_DATA)
+-DATA = $(cmake_DATA) $(dist_m4data_DATA) $(examples_DATA) \
++DATA =                                                    \
+ 	$(pkgconfig_DATA)
  RECURSIVE_CLEAN_TARGETS = mostlyclean-recursive clean-recursive	\
    distclean-recursive maintainer-clean-recursive
-@@ -677,7 +677,7 @@
+@@ -681,7 +681,7 @@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
  ACLOCAL_AMFLAGS = -I m4
--SUBDIRS = include . doc example fuzz xstc $(am__append_1)
-+SUBDIRS = include .                  xstc $(am__append_1)
+-SUBDIRS = include . doc example xstc $(am__append_1) $(am__append_2)
++SUBDIRS = include .             xstc $(am__append_1) $(am__append_2)
  DIST_SUBDIRS = include . doc example fuzz python xstc
  AM_CPPFLAGS = -I$(top_builddir)/include -I$(srcdir)/include -DSYSCONFDIR='"$(sysconfdir)"'
- AM_CFLAGS = $(EXTRA_CFLAGS)
-@@ -1906,7 +1906,7 @@
+ bin_SCRIPTS = xml2-config
+@@ -1913,7 +1913,7 @@
  	$(MAKE) $(AM_MAKEFLAGS) $(check_PROGRAMS)
  	$(MAKE) $(AM_MAKEFLAGS) check-local
  check: check-recursive
@@ -27,21 +36,21 @@
  		config.h
  install-binPROGRAMS: install-libLTLIBRARIES
  
-@@ -2033,14 +2033,14 @@
+@@ -2039,14 +2039,14 @@
  
  info-am:
  
--install-data-am: install-cmakeDATA install-examplesDATA \
--	install-m4dataDATA install-nodist_pkgconfigDATA
+-install-data-am: install-cmakeDATA install-dist_m4dataDATA \
+-	install-examplesDATA install-pkgconfigDATA
 +install-data-am: \
-+	install-nodist_pkgconfigDATA
++	install-pkgconfigDATA
  
  install-dvi: install-dvi-recursive
  
  install-dvi-am:
  
--install-exec-am: install-binPROGRAMS install-libLTLIBRARIES \
-+install-exec-am: install-libLTLIBRARIES \
- 	install-nodist_binSCRIPTS
+-install-exec-am: install-binPROGRAMS install-binSCRIPTS \
++install-exec-am: install-binSCRIPTS \
+ 	install-libLTLIBRARIES
  
  install-html: install-html-recursive
