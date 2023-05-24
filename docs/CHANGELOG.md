@@ -50,6 +50,7 @@ Latest changes
  - Host tools:
    * busybox 1.36.1
    * kconfig 6.3
+   * meson 1.1.0
    * precompiled host-tools 2023-05-19
    * precompiled toolchains r21480
    * python 3.11.3
