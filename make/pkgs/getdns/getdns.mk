@@ -10,6 +10,7 @@ $(PKG)_SITE:=https://getdnsapi.net/dist,https://getdnsapi.net/releases/getdns-$(
 $(PKG)_BINARY:=$($(PKG)_DIR)/stubby/stubby
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/stubby
 
+$(PKG)_DEPENDS_ON += cmake-host
 $(PKG)_DEPENDS_ON += openssl
 $(PKG)_DEPENDS_ON += yaml
 

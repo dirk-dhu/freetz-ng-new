@@ -25,7 +25,6 @@ TOOLS_TARXZBUNDLE:=tools-host
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
 TOOLS_CONDITIONAL+=avm-rle-host
-TOOLS_CONDITIONAL+=cmake-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
 TOOLS_CONDITIONAL+=gmp-host
@@ -40,6 +39,7 @@ TOOLS_CONDITIONAL+=python2-host
 TOOLS_CONDITIONAL+=python3-host
 TOOLS_CONDITIONAL+=scons-host
 TOOLS_CONDITIONAL+=xdelta-host
+TOOLS_CONDITIONAL+=$(if $(FREETZ_TOOLCHAIN_CCACHE),,cmake-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_STRIP_LIBRARIES),,mklibs-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_SHARE_terminfo),,ncurses-host)
 TOOLS_CONDITIONAL+=$(if $(FREETZ_ROOTEMU_FAKEROOT),,fakeroot-host)
