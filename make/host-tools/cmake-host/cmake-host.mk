@@ -26,12 +26,7 @@ $(PKG)_DEPENDS_ON+=ninja-host
 $(PKG)_CONFIGURE_OPTIONS +=  --generator=Ninja
 $(PKG)_CONFIGURE_OPTIONS +=  --enable-ccache
 $(PKG)_CONFIGURE_OPTIONS +=  --no-qt-gui
-$(PKG)_CONFIGURE_OPTIONS +=  --system-curl
-$(PKG)_CONFIGURE_OPTIONS +=  --system-expat
-$(PKG)_CONFIGURE_OPTIONS +=  --system-zlib
-$(PKG)_CONFIGURE_OPTIONS +=  --system-bzip2
-$(PKG)_CONFIGURE_OPTIONS +=  --system-liblzma
-$(PKG)_CONFIGURE_OPTIONS +=  --system-zstd
+$(PKG)_CONFIGURE_OPTIONS +=  --no-system-libs
 $(PKG)_CONFIGURE_OPTIONS +=  --prefix=$($(PKG)_INSTALL)
 
 
