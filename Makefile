@@ -98,13 +98,11 @@ PATCHELF:=patchelf
 PYTHON3=python3
 MESON=meson
 CMAKE=cmake
-NINJA1=ninja
+NINJA=ninja
 MAKE1=make
 ifeq ($(FREETZ_JLEVEL),0)
-NINJA=ninja -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
 MAKE=make -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
 else
-NINJA=ninja -j$(FREETZ_JLEVEL)
 MAKE=make -j$(FREETZ_JLEVEL)
 endif
 
