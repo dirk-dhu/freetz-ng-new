@@ -57,7 +57,6 @@ TOOLS_CONDITIONAL+=$(if $(FREETZ_PATCH_MODFS_BOOT_MANAGER),,yf-bootmanager-host)
 
 # tools not in dl-archive
 TOOLS_BUILD_LOCAL:=$(TOOLS_TARXZBUNDLE)
-TOOLS_BUILD_LOCAL+=cmake-host
 TOOLS_BUILD_LOCAL+=gmp-host
 TOOLS_BUILD_LOCAL+=kconfig-host
 TOOLS_BUILD_LOCAL+=mpc-host
