@@ -108,20 +108,11 @@ Hier kann man noch Optionen (de)aktivieren:
 
 ### Weiterführende Threads im IPPF
 
-[Zweiten OnlineSpeicher einbinden Webdav davfs2.conf,
-davfs2.secrets und
-mtab](http://www.ip-phone-forum.de/showthread.php?t=225316)[WebDav
-und
-SSL](http://www.ip-phone-forum.de/showthread.php?t=179968)
-[WebDAV und
-http://mediacenter.gmx.net](http://www.ip-phone-forum.de/showthread.php?t=217572)
-[[erledigt] freetz-dev-3306: davfs2_1.conf statt
-davfs2.conf + ...secrets
-failed](http://www.ip-phone-forum.de/showthread.php?t=191646)
-[[gelöst] WebDAV: davfs2_1.conf <>
-davfs2.conf](http://www.ip-phone-forum.de/showthread.php?t=186260)
-[[gelöst] WebDAV-zu-Mountpoint für die
-Fritz!Box](http://www.ip-phone-forum.de/showthread.php?t=115302)
-[[gelöst] WebDAV-zu-Netzwerklaufwerk-Umsetzung auf der
-Fritzbox](http://www.ip-phone-forum.de/showthread.php?t=114558)
+ - [Zweiten OnlineSpeicher einbinden Webdav davfs2.conf, davfs2.secrets und mtab](http://www.ip-phone-forum.de/showthread.php?t=225316)
+ - [WebDav und SSL](http://www.ip-phone-forum.de/showthread.php?t=179968)
+ - [WebDAV und http://mediacenter.gmx.net](http://www.ip-phone-forum.de/showthread.php?t=217572)
+ - [freetz-dev-3306: davfs2_1.conf statt davfs2.conf + ...secrets failed](http://www.ip-phone-forum.de/showthread.php?t=191646)
+ - [WebDAV: davfs2_1.conf <> davfs2.conf](http://www.ip-phone-forum.de/showthread.php?t=186260)
+ - [WebDAV-zu-Mountpoint für die Fritz!Box](http://www.ip-phone-forum.de/showthread.php?t=115302)
+ - [WebDAV-zu-Netzwerklaufwerk-Umsetzung auf der Fritzbox](http://www.ip-phone-forum.de/showthread.php?t=114558)
 
