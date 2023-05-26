@@ -1,4 +1,4 @@
-# davfs 1.5.2/1.6.1
+# davfs 1.5.2/1.7.0
  - Homepage: [https://savannah.nongnu.org/projects/davfs2](https://savannah.nongnu.org/projects/davfs2)
  - Manpage: [https://linux.die.net/man/5/davfs2.conf](https://linux.die.net/man/5/davfs2.conf)
  - Changelog: [https://git.savannah.nongnu.org/cgit/davfs2.git/refs/](https://git.savannah.nongnu.org/cgit/davfs2.git/refs/)
