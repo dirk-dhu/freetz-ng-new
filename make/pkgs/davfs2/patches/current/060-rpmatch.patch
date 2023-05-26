@@ -1,6 +1,6 @@
 --- src/webdav.c
 +++ src/webdav.c
-@@ -2045,7 +2045,7 @@
+@@ -2041,7 +2041,7 @@
              len = getline(&s, &n, stdin);
              if (len < 0)
                  abort();
@@ -8,4 +8,4 @@
 +            if (*s == 'y' || *s == 'Y')
                  ret = 0;
              free(s);
-     } 
+     }

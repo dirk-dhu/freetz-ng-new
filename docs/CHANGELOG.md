@@ -68,6 +68,7 @@ Latest changes
    * BusyBox 1.36.1
    * CCID 1.5.2
    * Curl 8.1.1
+   * davfs2 1.5.2/1.7.0
    * HAProxy 2.6.10
    * iPerf3 3.3/3.13
    * Lighttpd 1.4.70
