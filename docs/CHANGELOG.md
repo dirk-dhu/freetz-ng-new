@@ -71,7 +71,7 @@ Latest changes
    * davfs2 1.5.2/1.7.0
    * HAProxy 2.6.10
    * iPerf3 3.3/3.13
-   * Lighttpd 1.4.70
+   * Lighttpd 1.4.71
    * OpenVPN 2.4.12/2.5.9/2.6.4
    * strace 4.9/5.0/6.3
    * tcpdump 4.1.1/4.99.4

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.4.70)
+$(call PKG_INIT_BIN, 1.4.71)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=921ebe1cf4b6b9897e03779ab7a23a31f4ba40a1abe2067525c33cd3ce61fe85
+$(PKG)_HASH:=b8b6915da20396fdc354df3324d5e440169b2e5ea7859e3a775213841325afac
 $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### WEBSITE:=https://www.lighttpd.net/
 ### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki
@@ -18,6 +18,7 @@ $(PKG)_MODULES_ALL := \
 	deflate dirlisting \
 	extforward \
 	gnutls \
+	h2 \
 	magnet maxminddb mbedtls \
 	nss \
 	openssl \

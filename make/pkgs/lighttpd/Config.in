@@ -1,7 +1,6 @@
 menuconfig FREETZ_PACKAGE_LIGHTTPD
-	bool "Lighttpd 1.4.70"
+	bool "Lighttpd 1.4.71"
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
-	select FREETZ_PACKAGE_LIGHTTPD_MOD_DIRLISTING
 	select FREETZ_BUSYBOX_MD5SUM
 	default n
 	help
@@ -171,7 +170,7 @@ if FREETZ_PACKAGE_LIGHTTPD
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_DIRLISTING
-		bool "mod_dirlisting (required module)"
+		bool "mod_dirlisting"
 		default y
 		help
 			This option adds mod_dirlisting.so to the image.
@@ -184,6 +183,14 @@ if FREETZ_PACKAGE_LIGHTTPD
 		help
 			This option adds mod_extforward.so to the image.
 			Please see https://redmine.lighttpd.net/wiki/1/Docs:ModExtForward
+			for more information on this module.
+
+	config FREETZ_PACKAGE_LIGHTTPD_MOD_H2
+		bool "mod_h2"
+		default n
+		help
+			This option adds mod_h2.so to the image.
+			Please see https://redmine.lighttpd.net/wiki/1/Docs
 			for more information on this module.
 
 	config FREETZ_PACKAGE_LIGHTTPD_MOD_MAXMINDDB
