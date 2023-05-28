@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23030](#ng23050)
   * [ng23030](#ng23030)
   * [ng22100](#ng22100)
   * [ng22070](#ng22070)
@@ -42,6 +43,11 @@ Latest changes
 <br>
 
 ### devel
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23050
 
  - Build system:
    * Ccache 4.8.1
@@ -92,7 +98,7 @@ Latest changes
    * SQLite 3.41.2
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23050/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23030
 

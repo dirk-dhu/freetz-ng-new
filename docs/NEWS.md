@@ -1,5 +1,12 @@
 # NEWS
 
+ * __[2023-05-28](#2023-05-28)__<a id='2023-05-28'></a><br>
+   Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23050` erstellt.<br>
+   Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
+   darin keine Dateiberechtigungen enthalten sind! In der `.tar.gz` fehlt mindestens die Versionsinformation.<br>
+   Stattdessen sollte ein Tag wie in der [README](https://github.com/Freetz-NG/freetz-ng#or-clone-a-single-tag) beschrieben mit git ausgecheckt werden.<br>
+   Siehe [ng23050](https://github.com/Freetz-NG/freetz-ng/releases/tag/ng23050)<br>
+
  * __[2023-03-19](#2023-03-19)__<a id='2023-03-19'></a><br>
    Es gibt ab sofort keine Issues-Sektion mehr, die Diskussionen inklusive beliebter Wishlist bleiben geöffnet.<br>
    Offenbar besteht der Anspruch dass irgend jemand Probleme für andere behebt sobald ein Issue erstellt wurde.<br>
