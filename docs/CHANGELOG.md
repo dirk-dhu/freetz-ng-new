@@ -4,7 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
-  * [ng23030](#ng23050)
+  * [ng23050](#ng23050)
   * [ng23030](#ng23030)
   * [ng22100](#ng22100)
   * [ng22070](#ng22070)
