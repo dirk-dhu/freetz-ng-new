@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_AVM_GCC_4_MAX),2.7.19,2.28.3))
+$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_4_MAX),2.7.19,2.28.3))
 $(PKG)_SOURCE:=mbedtls-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=3da12b1cebe1a25da8365d5349f67db514aefcaa75e26082d7cb2fa3ce9608aa
 $(PKG)_HASH_CURRENT:=1a21008fc93e7bdce2cb40a8f2d7c7b4034d9160035382c29cf91af8f96f2cd9
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_AVM_GCC_4_MAX),ABANDON,CURRENT))
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_TARGET_GCC_4_MAX),ABANDON,CURRENT))
 $(PKG)_SITE:=https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/download
 ### VERSION:=2.7.19/2.28.3
 ### WEBSITE:=https://www.trustedfirmware.org/projects/mbed-tls/
@@ -10,7 +10,7 @@ $(PKG)_SITE:=https://github.com/ARMmbed/mbedtls/archive,https://tls.mbed.org/dow
 ### CHANGES:=https://github.com/Mbed-TLS/mbedtls/releases
 ### CVSREPO:=https://github.com/Mbed-TLS/mbedtls
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_AVM_GCC_4_MAX),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TARGET_GCC_4_MAX),abandon,current)
 
 $(PKG)_LIBNAMES_SHORT      := crypto tls x509
 
@@ -25,7 +25,7 @@ $(PKG)_LIBS_A_STAGING_DIR  := $($(PKG)_LIBNAMES_A:%=$(TARGET_TOOLCHAIN_STAGING_D
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libmbedcrypto_WITH_BLOWFISH
 $(PKG)_REBUILD_SUBOPTS += FREETZ_LIB_libmbedcrypto_WITH_GENRSA
-$(PKG)_REBUILD_SUBOPTS += FREETZ_AVM_GCC_4_MAX
+$(PKG)_REBUILD_SUBOPTS += FREETZ_TARGET_GCC_4_MAX
 
 # disable some features to reduce library size
 $(PKG)_FEATURES_TO_DISABLE += MBEDTLS_SELF_TEST
