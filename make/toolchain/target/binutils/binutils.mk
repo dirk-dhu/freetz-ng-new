@@ -44,7 +44,7 @@ $(BINUTILS_DIR1)/.configured: $(BINUTILS_DIR)/.unpacked
 	mkdir -p $(BINUTILS_DIR1)
 	(cd $(BINUTILS_DIR1); $(RM) config.cache; \
 		CC="$(TOOLCHAIN_HOSTCC)" \
-		CFLAGS="$(TOOLCHAIN_HOST_CFLAGS)" \
+		CFLAGS="$(TOOLCHAIN_HOST_TARGET_CFLAGS)" \
 		$(BINUTILS_DIR)/configure \
 		--prefix=$(TARGET_TOOLCHAIN_PREFIX) \
 		--with-sysroot=$(TARGET_TOOLCHAIN_SYSROOT) \
@@ -100,7 +100,7 @@ $(BINUTILS_DIR2)/.configured: $(BINUTILS_DIR)/.unpacked
 	@$(call _ECHO,configuring,$(BINUTILS_ECHO_TYPE),$(BINUTILS_ECHO_MAKE),target)
 	mkdir -p $(BINUTILS_DIR2)
 	(cd $(BINUTILS_DIR2); $(RM) config.cache; \
-		CFLAGS_FOR_BUILD="-O2 $(TOOLCHAIN_HOST_CFLAGS)" \
+		CFLAGS_FOR_BUILD="-O2 $(TOOLCHAIN_HOST_TARGET_CFLAGS)" \
 		$(TARGET_CONFIGURE_ENV) \
 		CONFIG_SITE=$(TARGET_SITE) \
 		$(BINUTILS_DIR)/configure \
