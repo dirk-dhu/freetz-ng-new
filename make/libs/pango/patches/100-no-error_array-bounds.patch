@@ -1,0 +1,18 @@
+--- pango-1.50.14/meson.build
++++ pango-1.50.14/meson.build
+@@ -89,7 +89,6 @@
+     '-Wuninitialized',
+     '-Wunused',
+     '-Werror=address',
+-    '-Werror=array-bounds',
+     '-Werror=empty-body',
+     '-Werror=implicit',
+     '-Werror=implicit-fallthrough',
+@@ -132,7 +131,6 @@
+     '-Werror=sequence-point',
+     '-Werror=return-type',
+     '-Werror=trigraphs',
+-    '-Werror=array-bounds',
+     '-Werror=write-strings',
+     '-Werror=address',
+     '-Werror=int-to-pointer-cast',
