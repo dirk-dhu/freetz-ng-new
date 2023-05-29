@@ -162,6 +162,107 @@ choice
 		depends on FREETZ_AVM_GCC_9
 endchoice
 
+###
+### FREETZ_KERNEL_GCC_x_MIN
+###
+
+config FREETZ_KERNEL_GCC_3_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_3_4
+
+config FREETZ_KERNEL_GCC_4_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_4_6_MIN
+
+config FREETZ_KERNEL_GCC_4_6_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_4_6 || \
+		FREETZ_KERNEL_GCC_4_7_MIN
+
+config FREETZ_KERNEL_GCC_4_7_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_4_7 || \
+		FREETZ_KERNEL_GCC_4_8_MIN
+
+config FREETZ_KERNEL_GCC_4_8_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_4_8 || \
+		FREETZ_KERNEL_GCC_5_MIN
+
+config FREETZ_KERNEL_GCC_5_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_5 || \
+		FREETZ_KERNEL_GCC_8_MIN
+
+config FREETZ_KERNEL_GCC_8_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_8 || \
+		FREETZ_KERNEL_GCC_9_MIN
+
+config FREETZ_KERNEL_GCC_9_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_9
+
+###
+### FREETZ_KERNEL_GCC_x_MAX
+###
+
+config FREETZ_KERNEL_GCC_3_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_3_4
+
+config FREETZ_KERNEL_GCC_4_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_4_6 || \
+		FREETZ_KERNEL_GCC_4_7 || \
+		FREETZ_KERNEL_GCC_4_8 || \
+		FREETZ_KERNEL_GCC_3_MAX
+
+config FREETZ_KERNEL_GCC_5_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_4_MAX || \
+		FREETZ_KERNEL_GCC_5
+
+config FREETZ_KERNEL_GCC_8_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_5_MAX || \
+		FREETZ_KERNEL_GCC_8
+
+config FREETZ_KERNEL_GCC_9_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_KERNEL_GCC_8_MAX || \
+		FREETZ_KERNEL_GCC_9
+
+###
+###
+###
+
 config FREETZ_KERNEL_BINUTILS_VERSION
 	string
 	default "2.18"   if FREETZ_KERNEL_BINUTILS_2_18
@@ -426,7 +527,8 @@ endchoice
 config FREETZ_TARGET_GCC_4_MIN
 	bool
 	default y
-	depends on FREETZ_TARGET_GCC_4_6_MIN
+	depends on \
+		FREETZ_TARGET_GCC_4_6_MIN
 
 config FREETZ_TARGET_GCC_4_6_MIN
 	bool
