@@ -2,9 +2,9 @@
 +++ Makefile.am
 @@ -1,6 +1,6 @@
  AUTOMAKE_OPTIONS = foreign nostdinc
- 
--SUBDIRS = src tests docs
+
+-SUBDIRS = src docs
 +SUBDIRS = src
- if BUILD_EXAMPLES
- SUBDIRS += example
+ if ENABLE_TESTS
+ SUBDIRS += tests
  endif

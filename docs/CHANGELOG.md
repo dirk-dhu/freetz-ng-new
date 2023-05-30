@@ -56,6 +56,9 @@ Latest changes
    * Wget GNU 1.21.4
    * xsltproc 1.1.38
 
+ - Libraries:
+   * libssh2 1.11.0
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 

@@ -1,8 +1,13 @@
-$(call PKG_INIT_LIB, 1.10.0)
+$(call PKG_INIT_LIB, 1.11.0)
 $(PKG)_LIB_VERSION:=1.0.1
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=2d64e90f3ded394b91d3a2e774ca203a4179f69aebee03003e5a6fa621e41d51
+$(PKG)_HASH:=3736161e41e2693324deb38c26cfdc3efe6209d634ba4258db1cecff6a5ad461
 $(PKG)_SITE:=https://www.libssh2.org/download
+### WEBSITE:=https://www.libssh2.org/
+### MANPAGE:=https://www.libssh2.org/docs.html
+### CHANGES:=https://github.com/libssh2/libssh2/releases
+### CVSREPO:=https://github.com/libssh2/libssh2
+
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/$(pkg).so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$(pkg).so.$($(PKG)_LIB_VERSION)
@@ -32,6 +37,7 @@ $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
 $(PKG)_CONFIGURE_OPTIONS += --disable-debug
+$(PKG)_CONFIGURE_OPTIONS += --disable-tests
 $(PKG)_CONFIGURE_OPTIONS += --disable-examples-build
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libssh2_WITH_OPENSSL),--with-crypto=openssl --with-libssl-prefix="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr")
