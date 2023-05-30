@@ -1,4 +1,4 @@
-# xsltproc 1.1.37 (binary only)
+# xsltproc 1.1.38 (binary only)
  - Homepage: [http://www.xmlsoft.org/libxslt/index.html](http://www.xmlsoft.org/libxslt/index.html)
  - Manpage: [https://gitlab.gnome.org/GNOME/libxslt/wikis/home](https://gitlab.gnome.org/GNOME/libxslt/wikis/home)
  - Changelog: [https://gitlab.gnome.org/GNOME/libxslt/blob/master/NEWS](https://gitlab.gnome.org/GNOME/libxslt/blob/master/NEWS)
