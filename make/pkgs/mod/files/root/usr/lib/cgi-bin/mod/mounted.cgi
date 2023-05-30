@@ -144,7 +144,7 @@ fi
 
 # /var
 if [ "$MOD_MOUNTED_TEMP" == "yes" -a "$onmain" == "true" ]; then
-	mfilt=$(echo "$MOUNT" | sed -rn 's/^([^ ]+) on (\/var) type ([^ ]*) \(([^)]*)\)$/\3 \4 \1 \2/p')
+	mfilt=$(echo "$MOUNT" | sed -rn 's/^([^ ]+) on (\/var) type ([^ ]*) \(([^)]*)\)$/\3 \4 \1 \2/p' | uniq)
 	if [ -n "$mfilt" ]; then
 		sec_begin "$(lang de:"Tempor&auml;rer Speicher" en:"Temporary storage") (/var)"
 		echo '<table class="mounted">'
