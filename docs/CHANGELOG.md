@@ -44,6 +44,9 @@ Latest changes
 
 ### devel
 
+ - Packages:
+   * Curl 8.1.2
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
