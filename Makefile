@@ -32,12 +32,12 @@ envira:
 ifneq ($(shell umask),$(ENVIRA_UMASK))
 ifneq ($(shell grep -q "$$($(ENVIRA_REV_TOOL))" $(ENVIRA_LAST_REV) 2>/dev/null && echo y),y)
 	@echo -n "Fixing checkout permissions " && \
-	echo -n "." && find .     -maxdepth  0 -type d               | xargs chmod $(ENVIRA_MODE_EXEC) && \
-	echo -n "." && find .     -maxdepth  1 -type f   -executable | xargs chmod $(ENVIRA_MODE_EXEC) && \
-	echo -n "." && find .     -maxdepth  1 -type f ! -executable | xargs chmod $(ENVIRA_MODE_FILE) && \
-	echo -n "." && find $(ENVIRA_CVS_DIRS) -type d               | xargs chmod $(ENVIRA_MODE_EXEC) && \
-	echo -n "." && find $(ENVIRA_CVS_DIRS) -type f   -executable | xargs chmod $(ENVIRA_MODE_EXEC) && \
-	echo -n "." && find $(ENVIRA_CVS_DIRS) -type f ! -executable | xargs chmod $(ENVIRA_MODE_FILE) && \
+	echo -n "." && find .     -maxdepth  0 -type d               -print0 | xargs -0 chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find .     -maxdepth  1 -type f   -executable -print0 | xargs -0 chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find .     -maxdepth  1 -type f ! -executable -print0 | xargs -0 chmod $(ENVIRA_MODE_FILE) && \
+	echo -n "." && find $(ENVIRA_CVS_DIRS) -type d               -print0 | xargs -0 chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find $(ENVIRA_CVS_DIRS) -type f   -executable -print0 | xargs -0 chmod $(ENVIRA_MODE_EXEC) && \
+	echo -n "." && find $(ENVIRA_CVS_DIRS) -type f ! -executable -print0 | xargs -0 chmod $(ENVIRA_MODE_FILE) && \
 	echo " done." && \
 	$(ENVIRA_REV_TOOL) > $(ENVIRA_LAST_REV)
 endif
