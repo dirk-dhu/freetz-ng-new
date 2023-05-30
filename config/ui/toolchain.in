@@ -121,6 +121,7 @@ choice
 		depends on FREETZ_AVM_GCC_9
 		# depends on any kernel version, used by avm for kernel 4.19 only so far
 		depends on FREETZ_KERNEL_BINUTILS_2_36_DEFAULT || (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)
+
 endchoice
 
 choice
@@ -160,6 +161,7 @@ choice
 	config FREETZ_KERNEL_GCC_9
 		bool "gcc-9.3"
 		depends on FREETZ_AVM_GCC_9
+
 endchoice
 
 ###
@@ -475,6 +477,7 @@ choice
 		# depends on all gcc versions
 		# depends on any kernel version
 		depends on FREETZ_TARGET_BINUTILS_2_40_DEFAULT || (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE)
+
 endchoice
 
 choice
@@ -486,38 +489,52 @@ choice
 	default FREETZ_TARGET_GCC_5   if FREETZ_AVM_GCC_5
 	default FREETZ_TARGET_GCC_8   if FREETZ_AVM_GCC_8
 	default FREETZ_TARGET_GCC_9   if FREETZ_AVM_GCC_9
+	default FREETZ_TARGET_GCC_13  if FREETZ_SEPARATE_AVM_UCLIBC
 
 	config FREETZ_TARGET_GCC_4_6
 		bool "gcc-4.6.4"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_4_6_MAX
 
 	config FREETZ_TARGET_GCC_4_7
 		bool "gcc-4.7.4"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_4_7 \
 			|| (FREETZ_AVM_GCC_4_7_MAX && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE))
 
 	config FREETZ_TARGET_GCC_4_8
 		bool "gcc-4.8.5"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_4_8 \
 			|| (FREETZ_AVM_GCC_4_8_MAX && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE))
 
 	config FREETZ_TARGET_GCC_4_9
 		bool "gcc-4.9.4"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_4_9 \
 			|| (FREETZ_AVM_GCC_4_9_MAX && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE))
 
 	config FREETZ_TARGET_GCC_5
 		bool "gcc-5.5"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_5 \
 			|| (FREETZ_AVM_GCC_5_MAX   && (FREETZ_BUILD_TOOLCHAIN || FREETZ_DL_TOOLCHAIN_OVERRIDE))
 
 	config FREETZ_TARGET_GCC_8
 		bool "gcc-8.3"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_8
 
 	config FREETZ_TARGET_GCC_9
 		bool "gcc-9.3"
+#		depends on !FREETZ_SEPARATE_AVM_UCLIBC
 		depends on FREETZ_AVM_GCC_9
+
+	config FREETZ_TARGET_GCC_13
+		bool "gcc-13.1 - DEVELOPER"
+		depends on FREETZ_SEPARATE_AVM_UCLIBC
+		depends on FREETZ_SHOW_DEVELOPER
+
 endchoice
 
 ###
