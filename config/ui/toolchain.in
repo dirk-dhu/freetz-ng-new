@@ -576,7 +576,14 @@ config FREETZ_TARGET_GCC_9_MIN
 	bool
 	default y
 	depends on \
-		FREETZ_TARGET_GCC_9
+		FREETZ_TARGET_GCC_9 || \
+		FREETZ_TARGET_GCC_13_MIN
+
+config FREETZ_TARGET_GCC_13_MIN
+	bool
+	default y
+	depends on \
+		FREETZ_TARGET_GCC_13
 
 ###
 ### FREETZ_TARGET_GCC_x_MAX
@@ -611,6 +618,13 @@ config FREETZ_TARGET_GCC_9_MAX
 	depends on \
 		FREETZ_TARGET_GCC_8_MAX || \
 		FREETZ_TARGET_GCC_9
+
+config FREETZ_TARGET_GCC_13_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_TARGET_GCC_9_MAX || \
+		FREETZ_TARGET_GCC_13
 
 ###
 ###
@@ -719,6 +733,7 @@ config FREETZ_TARGET_BINUTILS_VERSION
 	default "2.26.1"    if FREETZ_TARGET_BINUTILS_2_26
 	default "2.31.1"    if FREETZ_TARGET_BINUTILS_2_31
 	default "2.38"      if FREETZ_TARGET_BINUTILS_2_38
+	default "2.40"      if FREETZ_TARGET_BINUTILS_2_40
 
 config FREETZ_TARGET_GCC_MAJOR_VERSION
 	string
@@ -729,6 +744,7 @@ config FREETZ_TARGET_GCC_MAJOR_VERSION
 	default "5"         if FREETZ_TARGET_GCC_5
 	default "8"         if FREETZ_TARGET_GCC_8
 	default "9"         if FREETZ_TARGET_GCC_9
+	default "13"        if FREETZ_TARGET_GCC_13
 
 config FREETZ_TARGET_GCC_MINOR_VERSION
 	depends on !FREETZ_TARGET_GCC_SNAPSHOT
@@ -740,6 +756,7 @@ config FREETZ_TARGET_GCC_MINOR_VERSION
 	default "5.0"       if FREETZ_TARGET_GCC_5
 	default "3.0"       if FREETZ_TARGET_GCC_8
 	default "3.0"       if FREETZ_TARGET_GCC_9
+	default "1.0"       if FREETZ_TARGET_GCC_13
 
 config FREETZ_TARGET_GCC_VERSION
 	string
@@ -755,6 +772,7 @@ config FREETZ_GNULIBATOMIC_VERSION
 	default "1.1.0"     if FREETZ_TARGET_GCC_5
 	default "1.2.0"     if FREETZ_TARGET_GCC_8
 	default "1.2.0"     if FREETZ_TARGET_GCC_9
+	default "1.2.0"     if FREETZ_TARGET_GCC_13
 
 config FREETZ_GNULIBSTDCXX_VERSION
 	string
@@ -765,6 +783,7 @@ config FREETZ_GNULIBSTDCXX_VERSION
 	default "6.0.21"    if FREETZ_TARGET_GCC_5
 	default "6.0.25"    if FREETZ_TARGET_GCC_8
 	default "6.0.28"    if FREETZ_TARGET_GCC_9
+	default "6.0.31"    if FREETZ_TARGET_GCC_13
 
 config FREETZ_STDCXXLIB
 	string

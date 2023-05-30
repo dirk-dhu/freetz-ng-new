@@ -44,6 +44,10 @@ Latest changes
 
 ### devel
 
+ - Build system:
+   * binutils 2.24.x/2.25.x/2.26.x/2.31.x/2.36.x/2.40.x
+   * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0/13.1.0
+
  - Packages:
    * Curl 8.1.2
 
