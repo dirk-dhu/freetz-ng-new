@@ -1,4 +1,4 @@
-# CA-bundle 2023-01-10
+# CA-bundle 2023-05-30
  - Homepage: [https://www.curl.se/ca](https://www.curl.se/ca)
  - Package: [master/make/pkgs/ca-bundle/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/ca-bundle/)
 
