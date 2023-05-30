@@ -328,20 +328,6 @@ prepare_image() {
 			echo -e "Error: file is not a valid fit-boot image to be written to the device.\n" >&2
 			exit 1
 		fi
-#		FITV="$(tail -c +73 "$fitimage" | $FDTD_TOOL - 2>/dev/null | sed -nr 's/.*"mtdram=/mtdram=/p')"
-		FITV="$(strings "$fitimage" | grep 'mtdram=')"
-		if echo "$FITV" | grep -q 'mtdram=ram-filesystem,'; then
-			FITV=''
-		elif echo "$FITV" | grep -q 'mtdram=rootfs_ram,'; then
-			echo -e "Error: it is not known how to flash a fit-boot image with 'rootfs_ram' method yet." >&2
-			echo -e "Error: run a recovery.exe and get a capture by wireshark or tcpdump to add it." >&2
-			echo -e "Error: meanwhile install an older firmware and flash this one by the web interface.\n" >&2
-			read -rsn1 -t2 v
-			[ "$v" != "v" ] && exit 1
-			FITV="$(echo "$FITV" | sed -rn 's/.*mtdram=rootfs_ram,([0-9A-Fa-fx]*),([0-9A-Fa-fx]*.*)/\1 \2/p')"
-		else
-			FITV=''
-		fi
 	elif [ $ISRAM ]; then
 		tmpdir=$(mktemp -td freetz_XXX) || { echo "Error creating temporary directory."; exit 1; }
 		mtdram1="$tmpdir/ramboot.flash"
