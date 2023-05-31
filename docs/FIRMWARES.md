@@ -445,8 +445,7 @@ Currently supported devices and firmwares
   - 154.07.01 rev61989 {INT}
   - 154.07.13 rev74390 {INT} [MESH18 NL3]
   - 154.07.29 rev92051 {ALL} [PSQ19P2NL4]
-  - 154.07.50 rev101716 {ALL} [MOVE21]
-  - 154.07.51 rev105725 {ALL} [MOVE21NL1] (Labor)
+  - 154.07.55 rev105823 {ALL} [MOVE21NL1]
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.50 rev104313 {ALL} [MOVE21]
