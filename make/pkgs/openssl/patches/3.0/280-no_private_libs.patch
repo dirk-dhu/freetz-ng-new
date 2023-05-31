@@ -1,6 +1,6 @@
 --- Configurations/unix-Makefile.tmpl
 +++ Configurations/unix-Makefile.tmpl
-@@ -1383,8 +1383,7 @@
+@@ -1384,8 +1384,7 @@
  	    echo 'Name: OpenSSL-libcrypto'; \
  	    echo 'Description: OpenSSL cryptography library'; \
  	    echo 'Version: '$(VERSION); \
@@ -10,7 +10,7 @@
  	    echo 'Cflags: -I$${includedir}' ) > libcrypto.pc
  
  libssl.pc:
-@@ -1400,8 +1399,7 @@
+@@ -1401,8 +1400,7 @@
  	    echo 'Name: OpenSSL-libssl'; \
  	    echo 'Description: Secure Sockets Layer and cryptography libraries'; \
  	    echo 'Version: '$(VERSION); \

@@ -1,9 +1,11 @@
 --- Configurations/10-main.conf
 +++ Configurations/10-main.conf
-@@ -1935,4 +1935,65 @@
-         pointer_size     => "64",
-     },
- 
+@@ -1938,5 +1938,66 @@
+         inherit_from     => [ "vms-generic" ],
+         bn_ops           => "SIXTY_FOUR_BIT",
+         pointer_size     => "",
++    },
++
 +    "linux-freetz-arm-asm" => {
 +        inherit_from     => [ "linux-generic32" ],
 +        CC               => "gcc",
@@ -63,6 +65,5 @@
 +        shared_target    => "linux-shared",
 +        shared_cflag     => "-fPIC",
 +        shared_extension => ".so.\$(SHLIB_VERSION_NUMBER)",
-+    },
-+
+     }
  );
