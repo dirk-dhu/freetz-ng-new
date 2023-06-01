@@ -1,5 +1,12 @@
 # NEWS
 
+ * __[2023-06-01](#2023-06-01)__<a id='2023-06-01'></a><br>
+   Für neuere Fritzos Versionen bei denen keine Libraries mehr ersetzt werden, wird nun ausschliesslich gcc 13<br>
+   verwendet. Auf meinem 1 Testgerät mit den Packages und Libraries die ich verwende gab es hierbei keine<br>
+   Probleme. Es ist aber zu erwarten dass das eine oder andere noch angepasst werden muss. Optimalerweise<br>
+   macht dies jeder für die eigenen Software selbst. Ansonste ist der letzte [Tag](https://github.com/Freetz-NG/freetz-ng/tags) anzuraten.<br>
+   Siehe [0973c182](https://github.com/Freetz-NG/freetz-ng/commit/0973c1821106adb3d182513851fdb2b74fb05c7f)<br>
+
  * __[2023-05-28](#2023-05-28)__<a id='2023-05-28'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23050` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
