@@ -28,7 +28,7 @@ $(PKG)_DEFINES += -DVFWPRINTF_WORKAROUND_REQUIRED
 endif
 
 $(PKG)_CFLAGS := $(TARGET_CFLAGS)
-ifeq ($(strip $(FREETZ_PACKAGE_UNRAR_VERSION_CURRENT)),y)
+ifneq ($(strip $(FREETZ_PACKAGE_UNRAR_VERSION_ABANDON)),y)
 $(PKG)_CFLAGS += -std=gnu++11
 endif
 $(PKG)_CFLAGS += -fno-rtti -fno-exceptions
