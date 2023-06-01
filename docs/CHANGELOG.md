@@ -53,7 +53,7 @@ Latest changes
    * Curl 8.1.2
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
    * SQLite 3.42.0
-   * UnRAR 6.1.7/6.2.7
+   * UnRAR 6.1.7/6.2.8
    * Wget GNU 1.21.4
    * xsltproc 1.1.38
 
