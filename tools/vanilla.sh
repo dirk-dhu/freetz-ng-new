@@ -163,6 +163,7 @@ cat <<'EOX'
         add make/kernel/configs/freetz/config-*-7590_07.50
         make sure the kernel version exists in config/avm/kernel.in
         enable kernel (modules) in config/mod/source.in
+        update docs/CHANGELOG.md
         check if avms .config matches with provided sources (unlikely)
 
 EOX
