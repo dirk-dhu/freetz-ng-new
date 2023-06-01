@@ -15,6 +15,7 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_VERSION
 	default "${FREETZ_REAL_DEVELOPER_ONLY__DLTCV}"                                if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
 	#
 #	default "rXXXXX"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
+	default "r21720"                                                              if FREETZ_TARGET_GCC_13
 	default "r21480"
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
@@ -42,6 +43,7 @@ config FREETZ_DL_TARGET_TOOLCHAIN_VERSION
 	default "${FREETZ_REAL_DEVELOPER_ONLY__DLTCV}"                                if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
 	#
 #	default "rXXXXX"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
+	default "r21720"                                                              if FREETZ_TARGET_GCC_13
 	default "r21480"
 
 config FREETZ_DL_TARGET_TOOLCHAIN_HASH
