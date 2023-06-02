@@ -605,14 +605,39 @@ config FREETZ_TARGET_GCC_13_MIN
 ### FREETZ_TARGET_GCC_x_MAX
 ###
 
+config FREETZ_TARGET_GCC_4_6_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_TARGET_GCC_4_6
+
+config FREETZ_TARGET_GCC_4_7_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_TARGET_GCC_4_6_MAX || \
+		FREETZ_TARGET_GCC_4_7
+
+config FREETZ_TARGET_GCC_4_8_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_TARGET_GCC_4_7_MAX || \
+		FREETZ_TARGET_GCC_4_8
+
+config FREETZ_TARGET_GCC_4_9_MAX
+	bool
+	default y
+	depends on \
+		FREETZ_TARGET_GCC_4_8_MAX || \
+		FREETZ_TARGET_GCC_4_9
+
+
 config FREETZ_TARGET_GCC_4_MAX
 	bool
 	default y
 	depends on \
-		FREETZ_TARGET_GCC_4_6 || \
-		FREETZ_TARGET_GCC_4_7 || \
-		FREETZ_TARGET_GCC_4_8 || \
-		FREETZ_TARGET_GCC_4_9
+		FREETZ_TARGET_GCC_4_9_MAX
 
 config FREETZ_TARGET_GCC_5_MAX
 	bool
