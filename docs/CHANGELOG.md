@@ -62,6 +62,7 @@ Latest changes
 
  - Libraries:
    * libssh2 1.11.0
+   * libuv 1.44.2/1.45.0
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
