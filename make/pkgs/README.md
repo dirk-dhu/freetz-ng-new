@@ -644,7 +644,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### P
 
-  * **<u>p7zip 16.02 (binary only)</u><a id='p7zip'></a>**<br>
+  * **[p7zip 16.02 (binary only)](../../docs/make/p7zip.md)<a id='p7zip'></a>**<br>
     7-Zip  is  a  file  archiver  with the highest compression ratio. The program supports 7z (that implements LZMA compression algorithm), ZIP, CAB, ARJ, GZIP, BZIP2, TAR, CPIO, RPM and DEB formats. Compression ratio in the new 7z format is 30-50% better  than ratio in ZIP format.
 
   * **[PCSC-lite 1.9.9 (binary only)](../../docs/make/pcsc-lite.md)<a id='pcsc-lite'></a>**<br>
