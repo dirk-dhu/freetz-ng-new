@@ -52,6 +52,7 @@ Latest changes
    * 7530 7.55 - 4.4.271
 
  - Packages:
+   * BIND 9.11.37/9.16.41
    * CA-bundle 2023-05-30
    * Curl 8.1.2
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
