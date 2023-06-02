@@ -55,6 +55,7 @@ Latest changes
    * BIND 9.11.37/9.16.41
    * CA-bundle 2023-05-30
    * Curl 8.1.2
+   * Git 2.41.0
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
    * SQLite 3.42.0
    * UnRAR 6.1.7/6.2.8
