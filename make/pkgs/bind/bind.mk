@@ -5,8 +5,8 @@ $(PKG)_HASH_CURRENT:=71904366aa1e04e2075c79a8906b92af936e3bfa4d7e8df5fd964fcf9e9
 $(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_BIND_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.isc.org/isc/bind9/$($(PKG)_VERSION)
 ### WEBSITE:=https://www.isc.org/bind/
-### MANPAGE:=https://bind9.readthedocs.io/en/v9_16/
-### CHANGES:=https://bind9.readthedocs.io/en/v9_16/notes.html
+### MANPAGE:=https://bind9.readthedocs.io/en/
+### CHANGES:=https://downloads.isc.org/isc/bind9/cur/9.16/
 ### CVSREPO:=https://gitlab.isc.org/isc-projects/bind9/
 
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
