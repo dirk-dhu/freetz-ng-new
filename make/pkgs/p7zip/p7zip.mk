@@ -2,6 +2,9 @@ $(call PKG_INIT_BIN, 16.02)
 $(PKG)_SOURCE:=$(pkg)_$($(PKG)_VERSION)_src_all.tar.bz2
 $(PKG)_HASH:=5eb20ac0e2944f6cb9c2d51dd6c4518941c185347d4089ea89087ffdd6e2341f
 $(PKG)_SITE:=@SF/$(pkg)
+### WEBSITE:=https://p7zip.sourceforge.net/
+### MANPAGE:=https://sourceforge.net/p/p7zip/discussion/
+### CHANGES:=https://sourceforge.net/projects/p7zip/files/p7zip/
 
 $(PKG)_BINARY := $($(PKG)_DIR)/bin/7z
 $(PKG)_TARGET_BINARY := $($(PKG)_DEST_DIR)/usr/bin/7z
@@ -11,6 +14,7 @@ $(PKG)_LIB_TARGET_DIR := $($(PKG)_LIB:%=$($(PKG)_DEST_DIR)/usr/lib/p7zip/%)
 $(PKG)_CODECS := Rar.so
 $(PKG)_CODECS_DIR := $($(PKG)_CODECS:%=$($(PKG)_DIR)/bin/Codecs/%)
 $(PKG)_CODECS_TARGET_DIR := $($(PKG)_CODECS:%=$($(PKG)_DEST_DIR)/usr/lib/p7zip/Codecs/%)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -36,6 +40,7 @@ $($(PKG)_CODECS_TARGET_DIR): $($(PKG)_CODECS_DIR)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_LIB_TARGET_DIR) $($(PKG)_CODECS_TARGET_DIR) $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(P7ZIP_DIR) -f makefile clean
