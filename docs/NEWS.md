@@ -1,5 +1,20 @@
 # NEWS
 
+ * __[2023-06-04](#2023-06-04)__<a id='2023-06-04'></a><br>
+   Diese Woche hat AVM für die ersten beiden Geräte Fritzos 7.55 freigegeben und nur je 1 Tag später die<br>
+   dazugehörigen Sourcecodekonglomerate veröffentlicht. Die schier unglaubliche Geschwindigkeit die AVM<br>
+   hier erreichte hat natürlich einen hohen Preis, beide Konglomerate gehören qualitativ zu den schlechtesten.<br>
+   "Normalerweise" passt nur die Kernelkonfiguration nicht zum Kernelsourcecode, hier allerdings:<br>
+    - `source-files-FRITZ.Box_7590-grx5-07.55.tar.gz`: Mit Fritzos 7.55 wird eine neuere Kernelversion<br>
+      als in 7.50 verwendet, im Konglomerat ist aber noch die Konfiguration für die alte Version enthalten.<br>
+    - `source-files-FRITZ.Box_7530-cortexa9-07.55.tar.gz`: Immerhin passt die Kernelversion, vermutlich<br>
+      weil sich diese nicht geändert hat. Allerdings gibt es nicht auflösbare Symbole, die Quellen passen also<br>
+      nicht zur Firmware. Die alten 7.50 Quellen passen mutmasslich besser.<br>
+   
+   Oder kurz: Unbrauchbarer Mist.<br>
+   Wenn es genügend Beschwerden an fritzbox_info@avm.de gibt, wird es vielleicht ein Updategeben. Allerdings<br>
+   nur wenn es bis dahin keine "Labor" gibt, bei diesen missachtet AVM bis auf wenige Ausnahmen die GPL.<br>
+
  * __[2023-06-01](#2023-06-01)__<a id='2023-06-01'></a><br>
    Für neuere Fritzos Versionen bei denen keine Libraries mehr ersetzt werden, wird nun ausschliesslich gcc 13<br>
    verwendet. Auf meinem 1 Testgerät mit den Packages und Libraries die ich verwende gab es hierbei keine<br>
