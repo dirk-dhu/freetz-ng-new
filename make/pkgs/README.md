@@ -994,7 +994,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Vim 9.0.0049 (binary only)](../../docs/make/vim.md)<a id='vim'></a>**<br>
     An improved version of VI
 
-  * **<u>vnstat 1.17 (binary only)</u><a id='vnstat'></a>**<br>
+  * **<u>vnstat 1.18 (binary only)</u><a id='vnstat'></a>**<br>
     vnStat is a console-based network traffic monitor. It keeps a log of hourly, daily and monthly network traffic for the selected interface(s). However, it isn't a packet sniffer. The traffic information is analyzed from the proc(5) filesystem. That way vnStat can be used even without root permissions. WWW: http://humdi.net/vnstat/
 
   * **[Vpnc 0.5.3](../../docs/make/vpnc.md)<a id='vpnc'></a>**<br>
