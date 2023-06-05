@@ -2,6 +2,10 @@ $(call PKG_INIT_BIN, 1.18)
 $(PKG)_SOURCE:=vnstat-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=d7193592b9e7445fa5cbe8af7d3b39982f165ee8fc58041ff41f509b37c687d5
 $(PKG)_SITE:=http://humdi.net/vnstat
+### WEBSITE:=https://humdi.net/vnstat/
+### MANPAGE:=https://humdi.net/vnstat/man/1.18/
+### CHANGES:=https://github.com/vergoh/vnstat/releases
+### CVSREPO:=https://github.com/vergoh/vnstat
 
 $(PKG)_BINARIES_ALL := vnstat vnstatd vnstati
 $(PKG)_BINARIES := $(filter-out $(if $(FREETZ_PACKAGE_VNSTAT_DAEMON),,vnstatd) $(if $(FREETZ_PACKAGE_VNSTAT_IMAGE),,vnstati),$($(PKG)_BINARIES_ALL))
@@ -10,6 +14,7 @@ $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DEST_DIR)/usr/bin/%)
 $(PKG)_EXCLUDED += $(patsubst %,$($(PKG)_DEST_DIR)/usr/bin/%,$(filter-out $($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL)))
 
 $(PKG)_DEPENDS_ON += libgd
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -24,6 +29,7 @@ $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_DEST_DIR)/usr/bin/%: $($(PKG)_DIR)/%
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(VNSTAT_DIR) clean
