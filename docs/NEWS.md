@@ -1,5 +1,13 @@
 # NEWS
 
+ * __[2023-06-09](#2023-06-09)__<a id='2023-06-09'></a><br>
+   Diese Woche hat AVM für die ersten Geräte Fritzos 7.56 freigegeben, nachdem aufgefallen ist dass lediglich 1<br>
+   der 2 neuen Features nutzbar war. Die neuen 7.56 Sourcecodekonglomerate gibt es auch schon und für 7590 ac<br>
+   und 7590 ax welche die gloreiche Tradition des 7.55 Konglomerates fortsetzen und wiederum eine falsche<br>
+   Kernelkonfiguration für eine alte Kernelversion enthalten. Die 3 Verzeichnise der Kernelsourcen sind zu 100%<br>
+   identisch und nach wie vor unbrauchbar.<br>
+   Immerhin gibt es bei der 7530 keine unauflösbare Symbole mehr.<br>
+
  * __[2023-06-04](#2023-06-04)__<a id='2023-06-04'></a><br>
    Diese Woche hat AVM für die ersten beiden Geräte Fritzos 7.55 freigegeben und nur je 1 Tag später die<br>
    dazugehörigen Sourcecodekonglomerate veröffentlicht. Die schier unglaubliche Geschwindigkeit die AVM<br>
