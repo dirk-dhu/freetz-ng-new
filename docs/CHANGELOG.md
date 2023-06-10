@@ -52,6 +52,7 @@ Latest changes
    * 7530 7.56 - 4.4.271
 
  - Packages:
+   * ACME.sh 3.0.6 (letsencrypt)
    * BIND 9.11.37/9.16.41
    * CA-bundle 2023-05-30
    * Curl 8.1.2
