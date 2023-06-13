@@ -31,6 +31,7 @@ config FREETZ_REPLACE_KERNEL_AVAILABLE
 config FREETZ_REPLACE_MODULE_AVAILABLE
 	bool
 	depends on FREETZ_KERNEL_AVMDIFF_AVAILABLE
+	depends on !(FREETZ_TYPE_6690 && FREETZ_AVM_VERSION_07_5X_MIN)                                                                                   # 07_56-release 6690
 	default y
 	help
 		Disable modules here if avm sources for a kernel version are outdated and incompatible for a newer fos.
