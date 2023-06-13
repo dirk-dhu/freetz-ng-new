@@ -62,6 +62,7 @@ Latest changes
    * Curl 8.1.2
    * Git 2.41.0
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
+   * OpenVPN 2.4.12/2.5.9/2.6.5
    * SQLite 3.42.0
    * UnRAR 6.1.7/6.2.8
    * vnstat 1.18
