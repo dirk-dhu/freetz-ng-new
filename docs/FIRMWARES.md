@@ -172,8 +172,7 @@ Currently supported devices and firmwares
   - 252.07.56 rev106343 {GER} [MOVE21NL1]
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
-  - 267.07.50 rev102488 {GER} [MOVE21]
-  - 267.07.51 rev105562 {GER} [MOVE21NL1] (Labor)
+  - 267.07.56 rev106308 {GER} [MOVE21NL1]
 
 ### Fritz!Box LTE (68xx)
 
