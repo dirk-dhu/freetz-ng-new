@@ -386,7 +386,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 ### FritzWlan
  * fritzrepeater-1200/
    - [source-files-FRITZ.Repeater_1200-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200/source-files-FRITZ.Repeater_1200-07.27.tar.gz)
-   - [sources-files-fritzrepeater1200-07.21.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200/sources-files-fritzrepeater1200-07.21.tar.gz)
+   - [source-files-FRITZ.Repeater_1200-07.50.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200/source-files-FRITZ.Repeater_1200-07.50.tar.gz)
  * fritzrepeater-1200-ax/
    - [source-files-FRITZ.Repeater_1200_AX-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200-ax/source-files-FRITZ.Repeater_1200_AX-07.30.tar.gz)
  * fritzrepeater-2400/
