@@ -397,8 +397,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzrepeater-6000/
    - [source-files-FRITZ.Repeater_6000-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.30.tar.gz)
  * fritzwlan-repeater-1750e/
+   - [source-files-FRITZ.Box_WLAN_Repeater_1750E-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-1750e/source-files-FRITZ.Box_WLAN_Repeater_1750E-07.30.tar.gz)
    - [source-files-FRITZ.Repeater_1750E-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-1750e/source-files-FRITZ.Repeater_1750E-07.27.tar.gz)
-   - [sources-files_FRITZ_Repeater_1750E-7.20.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-1750e/sources-files_FRITZ_Repeater_1750E-7.20.tar.gz)
  * fritzwlan-repeater-300e/
    - [FRITZ_WLAN_Repeater_300E_source_files.06.30.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-300e/FRITZ_WLAN_Repeater_300E_source_files.06.30.tar.gz)
  * fritzwlan-repeater-310/
