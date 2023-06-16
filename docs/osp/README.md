@@ -380,6 +380,10 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 ### FritzPowerline
  * fritzpowerline-1240e/
    - [source-files-FRITZ.Powerline_1240E-hbee-07.14.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1240e/source-files-FRITZ.Powerline_1240E-hbee-07.14.tar.gz)
+ * fritzpowerline-1260/
+   - [source-files-FRITZ.Powerline_1260-cortexa9-07.50.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260/source-files-FRITZ.Powerline_1260-cortexa9-07.50.tar.gz)
+ * fritzpowerline-1260e/
+   - [source-files-FRITZ.Powerline_1260E-cortexa9-07.50.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260e/source-files-FRITZ.Powerline_1260E-cortexa9-07.50.tar.gz)
  * fritzpowerline-540e/
    - [source-files-FRITZ.Powerline_540E-wasp-07.14.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-540e/source-files-FRITZ.Powerline_540E-wasp-07.14.tar.gz)
 
@@ -391,9 +395,10 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Repeater_1200_AX-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200-ax/source-files-FRITZ.Repeater_1200_AX-07.30.tar.gz)
  * fritzrepeater-2400/
    - [source-files-FRITZ.Repeater_2400-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-2400/source-files-FRITZ.Repeater_2400-07.27.tar.gz)
+   - [source-files-FRITZ.Repeater_2400-07.50.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-2400/source-files-FRITZ.Repeater_2400-07.50.tar.gz)
  * fritzrepeater-3000/
    - [source-files-FRITZ.Repeater_3000-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-07.27.tar.gz)
-   - [source-files-FRITZ.Repeater_6000-qcaarmv8-07.28.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_6000-qcaarmv8-07.28.tar.gz)
+   - [source-files-FRITZ.Repeater_3000-07.50.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-07.50.tar.gz)
  * fritzrepeater-6000/
    - [source-files-FRITZ.Repeater_6000-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.30.tar.gz)
  * fritzwlan-repeater-1750e/
