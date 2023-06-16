@@ -1,16 +1,16 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_4_8_MAX),1.44.2,1.45.0))
+$(call PKG_INIT_LIB, $(if $(FREETZ_TARGET_GCC_5),1.44.2,1.45.0))
 $(PKG)_SHLIB_VERSION:=1.0.0
 $(PKG)_SOURCE:=$(pkg)-v$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=ccfcdc968c55673c6526d8270a9c8655a806ea92468afcbcabc2b16040f03cb4
 $(PKG)_HASH_CURRENT:=f5b07f65a1e8166e47983a7ed1f42fae0bee08f7458142170c37332fc676a748
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_TARGET_GCC_4_8_MAX),ABANDON,CURRENT))
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_TARGET_GCC_5),ABANDON,CURRENT))
 $(PKG)_SITE:=https://dist.libuv.org/dist/v$($(PKG)_VERSION)
 ### WEBSITE:=https://libuv.org/
 ### MANPAGE:=https://docs.libuv.org/en/v1.x/
 ### CHANGES:=https://github.com/libuv/libuv/releases
 ### CVSREPO:=https://github.com/libuv/libuv
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TARGET_GCC_4_8_MAX),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TARGET_GCC_5),abandon,current)
 
 $(PKG)_LIBNAME=$(pkg).so.$($(PKG)_SHLIB_VERSION)
 $(PKG)_BINARY:=$($(PKG)_DIR)/.libs/$($(PKG)_LIBNAME)
