@@ -1,12 +1,12 @@
---- linux-4.4/arch/arm/Makefile
-+++ linux-4.4/arch/arm/Makefile
-@@ -334,6 +334,9 @@
+--- linux-4.4/arch/mips/Makefile
++++ linux-4.4/arch/mips/Makefile
+@@ -357,6 +357,9 @@
  
- PHONY += bzImage $(BOOT_TARGETS) $(INSTALL_TARGETS)
+ all:	$(all-y)
  
-+vmlinux.eva_pad: Image FORCE
-+	cp $(boot)/$< $(boot)/$@
++vmlinux.eva_pad: vmlinux.bin FORCE
++	cp arch/mips/boot/$< arch/mips/boot/$@
 +
- bootpImage uImage: zImage
- zImage: Image
- 
+ # boot
+ $(boot-y): $(vmlinux-32) FORCE
+ 	$(Q)$(MAKE) $(build)=arch/mips/boot VMLINUX=$(vmlinux-32) \
