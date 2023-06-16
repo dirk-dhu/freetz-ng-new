@@ -151,19 +151,21 @@ cat <<'EOX'
         Add kernel source, create avmdiff (example: 7590 07.50):
         Unpack avm sources
         mkdir -p ~/vanilla
+        rm -rf ~/vanilla/avm
         ln -sf $(realpath sources/kernel) ~/vanilla/avm
         ~/freetz-ng/tools/vanilla.sh vanilla4avm "" "" "7590_07.50"
-        upload ~/vanilla/pxz/*.patch.xz
         add hash to config/mod/dl-kernel.in
+        upload ~/vanilla/pxz/*.patch.xz
+        update docs/CHANGELOG.md
+        make sure the kernel version exists in config/avm/kernel.in
         add "7590_07.50" to config/avm/source.in
         get config name: grep KCONFIG sources/kernel/linux*/.kernelvariables
-        add make/kernel/patches/*/7590_07.50/
-        add make/busybox/avm/07.50-7590--busybox.config.*
-        add make/kernel/configs/avm/config-*-7590_07.50
         add make/kernel/configs/freetz/config-*-7590_07.50
-        make sure the kernel version exists in config/avm/kernel.in
+        add make/kernel/configs/avm/config-*-7590_07.50
+        add make/busybox/avm/07.50-7590--busybox.config.*
+        add make/kernel/patches/*/7590_07.50/
         enable kernel (modules) in config/mod/source.in
-        update docs/CHANGELOG.md
+        verify skb_put_data in make/pkgs/wireguard-linux-compat/Config.in
         check if avms .config matches with provided sources (unlikely)
 
 EOX
