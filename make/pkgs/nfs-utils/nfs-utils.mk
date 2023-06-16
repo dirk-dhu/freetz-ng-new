@@ -33,9 +33,11 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-mount
 $(PKG)_CONFIGURE_OPTIONS += --disable-gss
 $(PKG)_CONFIGURE_OPTIONS += --disable-uuid
 
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
 ifneq ($(strip $(FREETZ_TARGET_UCLIBC_SUPPORTS_rpc)),y)
 $(PKG)_CFLAGS += -I$(TARGET_TOOLCHAIN_STAGING_DIR)/include/tirpc
 endif
+$(PKG)_CFLAGS += -fcommon
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -43,7 +45,7 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
 	$(SUBMAKE) -C $(NFS_UTILS_DIR) \
-		CFLAGS="$(TARGET_CFLAGS) $(NFS_UTILS_CFLAGS)"
+		CFLAGS="$(NFS_UTILS_CFLAGS)"
 
 $(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/sbin)))
 
