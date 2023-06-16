@@ -1,4 +1,4 @@
-# libuv (libuv.so) $(if $(FREETZ_TARGET_GCC_4_8_MAX),1.44.2,1.45.0)
+# libuv (libuv.so) $(if $(FREETZ_TARGET_GCC_5),1.44.2,1.45.0)
  - Homepage: [https://libuv.org/](https://libuv.org/)
  - Manpage: [https://docs.libuv.org/en/v1.x/](https://docs.libuv.org/en/v1.x/)
  - Changelog: [https://github.com/libuv/libuv/releases](https://github.com/libuv/libuv/releases)
