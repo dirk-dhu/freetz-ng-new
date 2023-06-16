@@ -98,6 +98,7 @@ Latest changes
    * 2400 7.50 - 4.4.271
    * 5530 7.50 - 4.9.276
    * 5590 7.50 - 4.4.271
+   * 7590 7.56 - 4.9.325
 
  - Patches:
    * patch VLAN: re-enables vlan config of voip in ata-mode
