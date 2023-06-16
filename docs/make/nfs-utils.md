@@ -1,4 +1,8 @@
 # nfs-utils 1.3.4 (binary only)
+ - Homepage: [https://sourceforge.net/projects/nfs/](https://sourceforge.net/projects/nfs/)
+ - Manpage: [https://www.linux-nfs.org/](https://www.linux-nfs.org/)
+ - Changelog: [https://sourceforge.net/projects/nfs/files/nfs-utils/](https://sourceforge.net/projects/nfs/files/nfs-utils/)
+ - Repository: [http://git.linux-nfs.org/?p=steved/nfs-utils.git](http://git.linux-nfs.org/?p=steved/nfs-utils.git)
  - Package: [master/make/pkgs/nfs-utils/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nfs-utils/)
 
 Die NFS-Utils erweitern Freetz um einen NFS Server inklusive
