@@ -1,4 +1,4 @@
-# nettle: libnettle (libnettle.so) 3.9
+# nettle: libnettle (libnettle.so) 3.9.1
  - Homepage: [https://www.lysator.liu.se/~nisse/nettle/](https://www.lysator.liu.se/~nisse/nettle/)
  - Manpage: [https://www.lysator.liu.se/~nisse/nettle/nettle.html](https://www.lysator.liu.se/~nisse/nettle/nettle.html)
  - Changelog: [https://git.lysator.liu.se/nettle/nettle/blob/master/ChangeLog](https://git.lysator.liu.se/nettle/nettle/blob/master/ChangeLog)
