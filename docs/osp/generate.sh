@@ -45,4 +45,5 @@ done
 
 #tmp
 rm -f osp
+rmdir osp.avm.de/*/* osp.avm.de/* osp.avm.de/ 2>/dev/null
 
