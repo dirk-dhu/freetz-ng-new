@@ -1,6 +1,6 @@
 --- scripts/kconfig/lxdialog/menubox.c
 +++ scripts/kconfig/lxdialog/menubox.c
-@@ -147,8 +147,6 @@
+@@ -139,8 +139,6 @@
  	print_button(win, "Select", y, x, selected == 0);
  	print_button(win, " Exit ", y, x + 12, selected == 1);
  	print_button(win, " Help ", y, x + 24, selected == 2);
@@ -9,7 +9,7 @@
  
  	wmove(win, y, x + 1 + 12 * selected);
  	wrefresh(win);
-@@ -362,7 +360,7 @@
+@@ -354,7 +352,7 @@
  		case TAB:
  		case KEY_RIGHT:
  			button = ((key == KEY_LEFT ? --button : ++button) < 0)

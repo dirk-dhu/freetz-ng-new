@@ -50,6 +50,7 @@ Latest changes
    * gcc 3.4.6/4.6.4/4.7.4/4.8.5/5.5.0/8.3.0/9.3.0/13.1.0
 
  - Host tools:
+   * kconfig 6.4
    * python 3.11.4
 
  - AVM sources:
