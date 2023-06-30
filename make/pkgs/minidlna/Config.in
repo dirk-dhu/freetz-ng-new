@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_MINIDLNA
-	bool "minidlna 1.3.2"
+	bool "minidlna 1.3.3"
 	select FREETZ_LIB_libpthread  if !FREETZ_PACKAGE_MINIDLNA_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libavcodec  if !FREETZ_PACKAGE_MINIDLNA_STATIC
 	select FREETZ_LIB_libavformat if !FREETZ_PACKAGE_MINIDLNA_STATIC
@@ -21,24 +21,26 @@ config FREETZ_PACKAGE_MINIDLNA
 		The MiniDLNA daemon is an UPnP-A/V and DLNA service which
 		serves multimedia content to compatible clients on the network.
 
-choice
-	depends on FREETZ_PACKAGE_MINIDLNA
-	prompt "language"
-	default FREETZ_PACKAGE_MINIDLNA_LANG_DE if FREETZ_LANG_DE
-	default FREETZ_PACKAGE_MINIDLNA_LANG_EN
+if FREETZ_PACKAGE_MINIDLNA
 
-	config FREETZ_PACKAGE_MINIDLNA_LANG_EN
-		bool "English"
+	choice
+		prompt "language"
+		default FREETZ_PACKAGE_MINIDLNA_LANG_DE if FREETZ_LANG_DE
+		default FREETZ_PACKAGE_MINIDLNA_LANG_EN
 
-	config FREETZ_PACKAGE_MINIDLNA_LANG_DE
-		bool "German"
-endchoice
+		config FREETZ_PACKAGE_MINIDLNA_LANG_EN
+			bool "English"
 
-config FREETZ_PACKAGE_MINIDLNA_STATIC
-	bool "Link statically"
-	depends on FREETZ_PACKAGE_MINIDLNA
-	default n
-	help
-		Activating this switch causes all libraries
-		minidlna depends on to be linked in statically.
+		config FREETZ_PACKAGE_MINIDLNA_LANG_DE
+			bool "German"
+	endchoice
+
+	config FREETZ_PACKAGE_MINIDLNA_STATIC
+		bool "Link statically"
+		default n
+		help
+			Activating this switch causes all libraries
+			minidlna depends on to be linked in statically.
+
+endif # FREETZ_PACKAGE_MINIDLNA
 

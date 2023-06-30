@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.3.2)
+$(call PKG_INIT_BIN, 1.3.3)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=222ce45a1a60c3ce3de17527955d38e5ff7a4592d61db39577e6bf88e0ae1cb0
+$(PKG)_HASH:=39026c6d4a139b9180192d1c37225aa3376fdf4f1a74d7debbdbb693d996afa4
 $(PKG)_SITE:=@SF/minidlna
 ### WEBSITE:=https://sourceforge.net/projects/minidlna/
 ### MANPAGE:=https://manpages.debian.org/testing/minidlna/minidlnad.1.en.html
@@ -47,6 +47,7 @@ $(PKG)_EXTRA_LIBS += -ldl
 $(PKG)_EXTRA_LIBS += -lavcodec -lavutil $(if $(FREETZ_TARGET_UCLIBC_0_9_28),-liconv) $(if $(FREETZ_PACKAGE_FFMPEG_DECODER_libopenjpeg),-lopenjpeg) -lz -lm -lpthread
 endif
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -64,6 +65,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(MINIDLNA_DIR) clean

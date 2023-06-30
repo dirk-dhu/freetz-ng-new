@@ -1,6 +1,6 @@
 --- Makefile.in
 +++ Makefile.in
-@@ -449,7 +449,7 @@
+@@ -451,7 +451,7 @@
  	@LIBEXIF_LIBS@ \
  	@LIBINTL@ \
  	@LIBICONV@ \
@@ -9,7 +9,7 @@
  
  testupnpdescgen_SOURCES = testupnpdescgen.c upnpdescgen.c
  testupnpdescgen_LDADD = \
-@@ -459,7 +459,7 @@
+@@ -461,7 +461,7 @@
  	@LIBAVFORMAT_LIBS@ \
  	@LIBAVUTIL_LIBS@ \
  	@LIBEXIF_LIBS@ \
