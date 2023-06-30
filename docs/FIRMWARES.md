@@ -524,7 +524,7 @@ Currently supported devices and firmwares
 ### Fritz!Smart
 
 * __Fritz!Smart Gateway__
-  - 265.07.52 rev104250 {ALL} [MOVE21NL1]
+  - 265.07.54 rev106830 {ALL} [MOVE21NL1]
 
 ### T-Com derivatives
 
