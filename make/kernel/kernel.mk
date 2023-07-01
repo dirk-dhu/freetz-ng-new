@@ -159,7 +159,8 @@ ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 else
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig
 endif
-	touch $@
+	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	touch $(KERNEL_DIR)/.configured
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
