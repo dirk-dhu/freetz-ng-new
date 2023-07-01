@@ -160,7 +160,7 @@ else
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig
 endif
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $@
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
@@ -247,20 +247,20 @@ kernel-help: $(KERNEL_DIR)/.unpacked
 kernel-menuconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) menuconfig
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
 
 kernel-xconfig: $(KERNEL_DIR)/.configured
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) xconfig
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
 
 kernel-oldconfig: $(KERNEL_DIR)/.configured
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
 
 kernel-olddefconfig: $(KERNEL_DIR)/.configured
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	touch $(KERNEL_DIR)/.configured
+	touch $<
 
 kernel-source: $(KERNEL_DIR)/.unpacked
 
