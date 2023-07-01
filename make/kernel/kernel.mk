@@ -257,6 +257,10 @@ kernel-oldconfig: $(KERNEL_DIR)/.configured
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
 	touch $(KERNEL_DIR)/.configured
 
+kernel-olddefconfig: $(KERNEL_DIR)/.configured
+	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
+	touch $(KERNEL_DIR)/.configured
+
 kernel-source: $(KERNEL_DIR)/.unpacked
 
 
@@ -267,7 +271,11 @@ kernel-mrproper:
 	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE)
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) mrproper
 	-cp -f $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
+ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 	-$(SUBMAKE) kernel-oldconfig
+else
+	-$(SUBMAKE) kernel-olddefconfig
+endif
 
 kernel-dirclean:
 	$(RM) -r $(KERNEL_DIR)
@@ -279,5 +287,5 @@ kernel-dirclean:
 kernel-distclean: kernel-dirclean
 
 
-.PHONY: kernel-unpacked kernel-configured kernel-modules kernel-menuconfig kernel-oldconfig target-toolchain-kernel-headers
+.PHONY: kernel-unpacked kernel-configured kernel-modules kernel-menuconfig kernel-oldconfig kernel-olddefconfig target-toolchain-kernel-headers
 
