@@ -151,6 +151,12 @@ endif
 	ln -s linux-$(KERNEL_VERSION_MAJOR) $(KERNEL_DIR)/linux
 	touch $@
 
+kernel-configured-gen: $(KERNEL_DIR)/.configured
+kernel-configured-del:
+	-rm -f $(KERNEL_DIR)/.configured
+kernel-configured-rebuild: kernel-configured-del kernel-configured-gen
+.PHONY: kernel-configured-gen kernel-configured-del kernel-configured-rebuild
+
 $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
 	$(call _ECHO,configuring,$(KERNEL_ECHO_TYPE))
 	cp $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
