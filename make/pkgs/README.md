@@ -1033,7 +1033,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Wake on LAN WebInterface(wol-cgi)](../../docs/make/wol.md#wake-on-lan-webinterfacewol-cgi)
      - [Konfiguration auf der Fritzbox](../../docs/make/wol.md#konfiguration-auf-der-fritzbox)
 
-  * **[wput 0.6.1 (binary only)](../../docs/make/wput.md)<a id='wput'></a>**<br>
+  * **[wput 0.6.2 (binary only)](../../docs/make/wput.md)<a id='wput'></a>**<br>
     Wput is a command-line ftp-client that looks like wget but instead of downloading, uploads files or whole directories to remote ftp-servers.
 
 ### X

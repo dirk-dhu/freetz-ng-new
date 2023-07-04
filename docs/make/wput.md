@@ -1,4 +1,4 @@
-# wput 0.6.1 (binary only)
+# wput 0.6.2 (binary only)
  - Homepage: [https://wput.sourceforge.net/](https://wput.sourceforge.net/)
  - Manpage: [https://linux.die.net/man/1/wput](https://linux.die.net/man/1/wput)
  - Changelog: [https://sourceforge.net/projects/wput/files/wput/](https://sourceforge.net/projects/wput/files/wput/)

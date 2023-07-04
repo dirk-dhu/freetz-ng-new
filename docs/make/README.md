@@ -762,7 +762,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[WOL 0.7.1 (binary only)](wol.md)<a id='wol'></a>**<br>
     Simple Wake-On-Lan utility to wake up Magic-Packet-compliant hardware.
 
-  * **[wput 0.6.1 (binary only)](wput.md)<a id='wput'></a>**<br>
+  * **[wput 0.6.2 (binary only)](wput.md)<a id='wput'></a>**<br>
     Wput is a command-line ftp-client that looks like wget but instead of downloading, uploads files or whole directories to remote ftp-servers.
 
 ### X
