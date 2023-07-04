@@ -157,8 +157,10 @@ kernel-configured-del:
 kernel-configured-rebuild: kernel-configured-del kernel-configured-gen
 .PHONY: kernel-configured-gen kernel-configured-del kernel-configured-rebuild
 
+ifeq ($(strip $(FREETZ_MODULES_KOON)),y)
 # Force kernel rebuild if the user changed the selected modules in freetz-config and they should be automatically be enable in kernel-config.
-$(shell grep '^FREETZ_MODULE_' $(TOPDIR)/.config | diff -du  --label "old" --label "new" "$(KERNEL_DIR)/.configured" - >/dev/null 2>&1 || $(RM) "$(KERNEL_DIR)/.configured" >/dev/null 2>&1)
+$(shell grep '^FREETZ_MODULE_' $(TOPDIR)/.config | diff -du --label "old" --label "new" "$(KERNEL_DIR)/.configured" - >/dev/null 2>&1 || $(RM) "$(KERNEL_DIR)/.configured" >/dev/null 2>&1)
+endif
 
 $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
 	$(call _ECHO,configuring,$(KERNEL_ECHO_TYPE))
