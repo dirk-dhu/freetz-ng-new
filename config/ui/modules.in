@@ -6,6 +6,19 @@ menu "Kernel modules"
 	visible if FREETZ_SHOW_EXPERT
 	depends on FREETZ_REPLACE_MODULE_AVAILABLE
 
+config FREETZ_MODULES_KOON
+	bool "Enable .ko-on - EXPERIMANTAL"
+	default y
+	help
+		Automatically enables modules in avm's kernel-.config
+		 - There is currently no change hook and you have to
+		   rebuild the config with you selection by:
+		   make kernel-configured-rebuild
+		 - Maybe the kernel could no longer be build due to
+		   avm hacks, the related module has to be fixed or
+		   disabled.
+		 - Unknown symbols are possible due to avm's hacks.
+
 config FREETZ_MODULES_OWN
 	string "Own Modules"
 	default ""
