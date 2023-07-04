@@ -24,8 +24,6 @@ $(eval $(call DEFINE_DL_SOURCE_VARS))
 $(eval $(call DEFINE_DL_SOURCE_VARS,2))
 $(eval $(call DEFINE_DL_SOURCE_VARS,3))
 
-DL_SOURCE_ID=$(shell echo $(DL_SOURCE_LOCAL) | tools/imagename2id)
-
 
 
 DL_IMAGE:=
