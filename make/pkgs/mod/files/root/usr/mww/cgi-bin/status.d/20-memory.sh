@@ -56,6 +56,10 @@ if [ "$MOD_MOUNTED_TFFS" == "yes" ]; then
 	percent=$(grep '^fill=' /proc/tffs)
 	percent=${percent#fill=}
 	let tffs_size="0x$(awk '/tffs/ { print $2; exit }' /proc/mtd)/1024"
+	if [ -z "$tffs_size" ]; then  # Puma7
+		mmcp="$(sed -rn 's!.*block2mtd: /dev/!!p' /proc/mtd)"
+		[ -n "$mmcp" ] && tffs_size="$(grep "${mmcp//\"/}$" /proc/partitions | awk '{ print $3; exit }')"
+	fi
 	let tffs_used="tffs_size*percent/100"
 	let tffs_free="tffs_size - tffs_used"
 	echo "<div>$tffs_used kB $(lang de:"von" en:"of") $tffs_size kB $(lang de:"belegt" en:"used"), $tffs_free kB $(lang de:"frei" en:"free")</div>"
