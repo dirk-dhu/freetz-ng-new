@@ -11,9 +11,6 @@ config FREETZ_MODULES_KOON
 	default y
 	help
 		Automatically enables modules in avm's kernel-.config
-		 - There is currently no change hook and you have to
-		   rebuild the config with you selection by:
-		   make kernel-configured-rebuild
 		 - Maybe the kernel could no longer be build due to
 		   avm hacks, the related module has to be fixed or
 		   disabled.
