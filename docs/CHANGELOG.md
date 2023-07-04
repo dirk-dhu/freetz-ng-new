@@ -78,6 +78,7 @@ Latest changes
    * UnRAR 6.1.7/6.2.8
    * vnstat 1.18
    * Wget GNU 1.21.4
+   * wput 0.6.2
    * xsltproc 1.1.38
 
  - Libraries:

@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 0.6.1)
+$(call PKG_INIT_BIN, 0.6.2)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tgz
-$(PKG)_HASH:=67125acab1d520e5d2a0429cd9cf7fc379987f30d5bbed0b0e97b92b554fcc13
+$(PKG)_HASH:=229d8bb7d045ca1f54d68de23f1bc8016690dc0027a16586712594fbc7fad8c7
 $(PKG)_SITE:=@SF/wput
 ### WEBSITE:=https://wput.sourceforge.net/
 ### MANPAGE:=https://linux.die.net/man/1/wput
