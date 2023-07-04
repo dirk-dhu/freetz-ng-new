@@ -526,5 +526,7 @@ config FREETZ_AVM_KERNEL_CONFIG_AREA_SIZE
 config FREETZ_AVM_KERNEL_CONFIG_AREA_KNOWN
 	bool
 	default y
-	depends on FREETZ_KERNEL_VERSION_3_10_MIN && !FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0
+	depends on !FREETZ_KERNEL_VERSION_2				# kernel v2: unavailable
+	depends on !FREETZ_AVM_PROP_KERNEL_CONFIG_AREA_SIZE_0		# kernel v3: undetectable
+	depends on FREETZ_KERNEL_VERSION_3_MAX				# kernel v4: unsupported
 
