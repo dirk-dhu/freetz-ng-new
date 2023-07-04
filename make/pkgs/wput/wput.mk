@@ -8,12 +8,17 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/wput
 
 $(PKG)_CONFIGURE_OPTIONS += --without-ssl
 
+$(PKG)_CFLAGS := $(TARGET_CFLAGS)
+$(PKG)_CFLAGS += -fcommon
+
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(WPUT_DIR)
+	$(SUBMAKE) -C $(WPUT_DIR) \
+		CFLAGS="$(WPUT_CFLAGS)"
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 	$(INSTALL_BINARY_STRIP)
@@ -21,6 +26,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(WPUT_DIR) clean
