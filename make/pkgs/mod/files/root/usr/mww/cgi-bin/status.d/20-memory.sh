@@ -65,5 +65,19 @@ if [ "$MOD_MOUNTED_TFFS" == "yes" ]; then
 	echo "<div>$tffs_used kB $(lang de:"von" en:"of") $tffs_size kB $(lang de:"belegt" en:"used"), $tffs_free kB $(lang de:"frei" en:"free")</div>"
 	stat_bar $percent
 	sec_end
+
+# NVRAM
+	if [ -d "/nvram" ]; then
+		sec_begin "$(lang de:"Flash-Speicher" en:"Flash memory") (NVRAM)"
+		nvram_df="$(df /nvram 2>/dev/null | tail -n1)"
+		nvram_size="$(echo "$nvram_df" | awk '{ print $2; exit }')"
+		nvram_used="$(echo "$nvram_df" | awk '{ print $3; exit }')"
+		nvram_free="$(echo "$nvram_df" | awk '{ print $4; exit }')"
+		nvram_perc="$(echo "$nvram_df" | awk '{ print $5; exit }')"
+		echo "<div>$nvram_used kB $(lang de:"von" en:"of") $nvram_size kB $(lang de:"belegt" en:"used"), $nvram_free kB $(lang de:"frei" en:"free")</div>"
+		stat_bar ${nvram_perc/%}
+		sec_end
+	fi
+
 fi
 
