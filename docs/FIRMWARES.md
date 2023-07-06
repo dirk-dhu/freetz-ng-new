@@ -515,8 +515,7 @@ Currently supported devices and firmwares
   - 174.07.50 rev103744 {ALL} [MOVE21]
   - 174.07.51 rev105215 {ALL} [MOVE21NL1] (Inhaus)
 * __Fritz!Repeater 3000 AX (UNTESTED)__
-  - 270.07.41 rev100749 {ALL} [MOVE21]
-  - 270.07.51 rev105531 {ALL} [MOVE21NL1] (Labor)
+  - 270.07.56 rev106866 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 6000__
   - 253.07.30 rev98407 {ALL} [PSQ19P2NL4]
   - 253.07.51 rev105528 {ALL} [MOVE21NL1] (Labor)
