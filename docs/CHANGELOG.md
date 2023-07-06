@@ -51,6 +51,7 @@ Latest changes
 
  - Host tools:
    * kconfig 6.4
+   * m4 1.4.19
    * python 3.11.4
 
  - AVM sources:
