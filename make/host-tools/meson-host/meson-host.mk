@@ -38,6 +38,6 @@ $(pkg)-dirclean:
 	$(RM) -r $(MESON_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) -r $(MESON_HOST_TARGET_BINARY) $(MESON_HOST_TARGET_EGGDIR)
+	$(RM) -r $(MESON_HOST_TARGET_BINARY)
 
 $(TOOLS_FINISH)
