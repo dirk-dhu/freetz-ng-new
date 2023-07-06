@@ -65,6 +65,7 @@ Latest changes
 
  - Packages:
    * ACME.sh 3.0.6 (letsencrypt)
+   * Bftpd 6.1
    * BIND 9.11.37/9.16.42
    * CA-bundle 2023-05-30
    * Curl 8.1.2
