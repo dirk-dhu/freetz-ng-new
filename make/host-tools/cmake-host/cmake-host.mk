@@ -8,7 +8,7 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
 
-$(PKG)_INSTALL:=$($(PKG)_DIR)/INSTALL
+$(PKG)_INSTALL:=$($(PKG)_DIR)/._INSTALL
 
 $(PKG)_BINARY:=$($(PKG)_INSTALL)/bin/cmake
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/build/bin/cmake
