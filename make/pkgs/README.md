@@ -55,7 +55,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. Bash also incorporates useful features from the Korn and C shells (ksh and csh).(roundabout 540K minimal and 840K full featured)
      - [Bash als Loginshell](../../docs/make/bash.md#bash-als-loginshell)
 
-  * **[Bftpd 3.3](../../docs/make/bftpd.md)<a id='bftpd'></a>**<br>
+  * **[Bftpd 6.1](../../docs/make/bftpd.md)<a id='bftpd'></a>**<br>
     Small FTP Server
      - [Zusätzliche Benutzer einrichten](../../docs/make/bftpd.md#zusätzliche-benutzer-einrichten)
      - [Bestehende (persistente) Benutzer modifizieren](../../docs/make/bftpd.md#bestehende-persistente-benutzer-modifizieren)

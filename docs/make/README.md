@@ -42,7 +42,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[bash 3.2.57 (binary only)](bash.md)<a id='bash'></a>**<br>
     Bash is an sh-compatible command language interpreter that executes commands read from the standard input or from a file. Bash also incorporates useful features from the Korn and C shells (ksh and csh).(roundabout 540K minimal and 840K full featured)
 
-  * **[Bftpd 3.3](bftpd.md)<a id='bftpd'></a>**<br>
+  * **[Bftpd 6.1](bftpd.md)<a id='bftpd'></a>**<br>
     Small FTP Server
 
   * **<u>bfusb: AVM BlueFRITZ! USB stick support (binary only)</u><a id='bfusb'></a>**<br>
