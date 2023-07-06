@@ -406,6 +406,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Repeater_3000_AX-07.41.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-07.41.tar.gz)
  * fritzrepeater-6000/
    - [source-files-FRITZ.Repeater_6000-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.30.tar.gz)
+ * fritzsmart-gateway/
+   - [source-files-FRITZ.Smart_Gateway-maple_lowmem-07.54.tar.gz](https://osp.avm.de/fritzwlan/fritzsmart-gateway/source-files-FRITZ.Smart_Gateway-maple_lowmem-07.54.tar.gz)
  * fritzwlan-repeater-1750e/
    - [source-files-FRITZ.Box_WLAN_Repeater_1750E-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-1750e/source-files-FRITZ.Box_WLAN_Repeater_1750E-07.30.tar.gz)
    - [source-files-FRITZ.Repeater_1750E-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzwlan-repeater-1750e/source-files-FRITZ.Repeater_1750E-07.27.tar.gz)
