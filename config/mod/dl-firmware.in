@@ -646,7 +646,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7583-07.50.image"                                                   if FREETZ_TYPE_7583                        && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_7583_VDSL-07.31.image"                                              if FREETZ_TYPE_7584                        && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_7583_VDSL-07.50.image"                                              if FREETZ_TYPE_7584                        && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_7583_VDSL-07.56.image"                                              if FREETZ_TYPE_7584                        && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_7590.en-de-es-it-fr-pl-nl.154.06.84.image"                          if FREETZ_TYPE_7590 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_7590.en-de-es-it-fr-pl-nl.154.07.01.image"                          if FREETZ_TYPE_7590 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_07_0X
