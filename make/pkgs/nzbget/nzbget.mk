@@ -1,13 +1,16 @@
-$(call PKG_INIT_BIN, 21.1)
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),21.1,21.4-rc1))
+$(PKG)_SOURCE_DOWNLOAD_NAME:=$(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),,v$($(PKG)_VERSION).tar.gz)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION)-src.tar.gz
-$(PKG)_HASH:=4e8fc1beb80dc2af2d6a36a33a33f44dedddd4486002c644f4c4793043072025
-$(PKG)_SITE:=https://github.com/nzbget/nzbget/releases/download/v$($(PKG)_VERSION)
-### WEBSITE:=https://nzbget.net/
-### MANPAGE:=https://nzbget.net/documentation
-### CHANGES:=https://github.com/nzbget/nzbget/releases
-### CVSREPO:=https://github.com/nzbget/nzbget
-
-$(PKG)_PATCH_POST_CMDS += $(call PKG_ADD_EXTRA_FLAGS,(CXX|LD)FLAGS)
+$(PKG)_HASH_ABANDON:=4e8fc1beb80dc2af2d6a36a33a33f44dedddd4486002c644f4c4793043072025
+$(PKG)_HASH_CURRENT:=df33897a7fcecf152d58fb705f61f32df9f6f92a45baf9e41ff29ba231468168
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_SITE_ABANDON:=https://github.com/nzbget/nzbget/releases/download/v$($(PKG)_VERSION)
+$(PKG)_SITE_CURRENT:=https://github.com/nzbget-ng/nzbget/archive/refs/tags
+$(PKG)_SITE:=$($(PKG)_SITE_$(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),ABANDON,CURRENT))
+### WEBSITE:=https://nzbget-ng.github.io/
+### MANPAGE:=https://nzbget-ng.github.io/documentation
+### CHANGES:=https://github.com/nzbget-ng/nzbget/tags
+### CVSREPO:=https://github.com/nzbget-ng/nzbget
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/$(pkg)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/bin/$(pkg)
@@ -17,6 +20,7 @@ $(PKG)_TARGET_WEBUI_DIR:=$($(PKG)_DEST_DIR)/usr/share/nzbget
 $(PKG)_TARGET_NZBGET_CONF:=$($(PKG)_TARGET_WEBUI_DIR)/nzbget.conf
 
 $(PKG)_DEPENDS_ON += libxml2 $(STDCXXLIB) zlib
+$(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),,libcap)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_NZBGET_WITH_CURSES),ncurses)
 $(PKG)_DEPENDS_ON += $(if $(FREETZ_PACKAGE_NZBGET_WITH_TLS),openssl)
 
@@ -25,6 +29,15 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_NZBGET_WITH_CURSES
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_NZBGET_WITH_TLS
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_NZBGET_DISABLE_PAR_CHECK
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_NZBGET_STATIC
+
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON),abandon,current)
+
+$(PKG)_PATCH_POST_CMDS += $(call PKG_ADD_EXTRA_FLAGS,(CXX|LD)FLAGS)
+
+ifneq ($(strip $(FREETZ_PACKAGE_NZBGET_VERSION_ABANDON)),y)
+$(PKG)_CONFIGURE_PRE_CMDS += $(SED) 's/^AC_INIT *(.*/AC_INIT( nzbget, $($(PKG)_VERSION) )/' -i configure.ac;
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
+endif
 
 $(PKG)_CONFIGURE_ENV += LIBPREF="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 

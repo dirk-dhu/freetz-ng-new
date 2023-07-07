@@ -1,6 +1,6 @@
 config EXTERNAL_FREETZ_PACKAGE_NZBGET
 	depends on EXTERNAL_ENABLED && FREETZ_PACKAGE_NZBGET
-	bool "NZBGet"
+	bool "nzbget"
 	default n
 	help
 		externals the following file(s):
