@@ -25,6 +25,7 @@ TOOLS_TARXZBUNDLE:=tools-host
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
 TOOLS_CONDITIONAL+=autoconf-host
+TOOLS_CONDITIONAL+=automake-host
 TOOLS_CONDITIONAL+=avm-rle-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
@@ -67,6 +68,7 @@ TOOLS_BUILD_LOCAL+=mpfr-host
 # until next host-tools update
 #TOOLS_BUILD_LOCAL+=...
 TOOLS_BUILD_LOCAL+=autoconf-host
+TOOLS_BUILD_LOCAL+=automake-host
 TOOLS_BUILD_LOCAL+=m4-host
 
 

@@ -51,6 +51,7 @@ Latest changes
 
  - Host tools:
    * autoconf 2.71
+   * automake 1.16.5
    * kconfig 6.4
    * m4 1.4.19
    * python 3.11.4
