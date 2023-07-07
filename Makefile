@@ -303,6 +303,7 @@ TOOLS_DISTCLEAN:=$(patsubst %,%-distclean,$(TOOLS))
 TOOLS_SOURCE:=$(patsubst %,%-source,$(TOOLS))
 TOOLS_PRECOMPILED:=$(patsubst %,%-precompiled,$(TOOLS))
 TOOLS_RECOMPILE:=$(patsubst %,%-recompile,$(TOOLS))
+TOOLS_FIXHARDCODED:=$(patsubst %,%-fixhardcoded,$(TOOLS))
 TOOLS_AUTOFIX:=$(patsubst %,%-autofix,$(TOOLS))
 
 $(DL_DIR):
@@ -461,6 +462,8 @@ $(filter $(TOOLS_BUILD_LOCAL),$(TOOLS)): % : %-precompiled
 $(patsubst %,%-autofix,$(TOOLS)): %-autofix : %-dirclean
 	$(MAKE) AUTO_FIX_PATCHES=y $*-unpacked
 $(patsubst %,%-recompile,$(TOOLS)): %-recompile : %-dirclean %-precompiled
+
+$(patsubst %,%-fixhardcoded,$(TOOLS)): %-fixhardcoded : 
 
 tools: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_CONDITIONAL),$(TOOLS))
 tools-all: $(DL_DIR) $(SOURCE_DIR_ROOT) $(filter-out $(TOOLS_TARXZBUNDLE),$(TOOLS))
@@ -673,7 +676,7 @@ help:
 .PHONY: all world step $(KCONFIG_TARGETS) config-cache config-cache-clean config-cache-refresh tools recover \
 	config-clean-deps-modules config-clean-deps-libs config-clean-deps-busybox config-clean-deps-terminfo config-clean-deps config-clean-deps-keep-busybox \
 	cacheclean clean dirclean distclean common-cacheclean common-clean common-dirclean common-distclean release \
-	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_AUTOFIX) \
+	$(TOOLS) $(TOOLS_CACHECLEAN) $(TOOLS_CLEAN) $(TOOLS_DIRCLEAN) $(TOOLS_DISTCLEAN) $(TOOLS_SOURCE) $(TOOLS_PRECOMPILED) $(TOOLS_RECOMPILE) $(TOOLS_FIXHARDCODED) $(TOOLS_AUTOFIX) \
 	clear-echo-temporary check-dot-config-uptodateness
 
 endif # Envira
