@@ -2,6 +2,7 @@ config FREETZ_LIB_libcrypto
 	bool "OpenSSL cryptographic library (libcrypto.so)"
 	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libpthread  if FREETZ_TARGET_UCLIBC_HAS_multiple_libs && FREETZ_OPENSSL_VERSION_2_MIN
+	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_3_MIN
 	default n
 	help
 		crypto - OpenSSL cryptographic library
@@ -20,8 +21,9 @@ config FREETZ_LIB_libcrypto
 
 config FREETZ_LIB_libssl
 	bool "OpenSSL SSL/TLS library (libssl.so)"
-	select FREETZ_LIB_libdl if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
+	select FREETZ_LIB_libdl       if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libcrypto
+	select FREETZ_LIB_libatomic   if FREETZ_OPENSSL_VERSION_3_MIN
 	default n
 	help
 		SSL - OpenSSL SSL/TLS library
