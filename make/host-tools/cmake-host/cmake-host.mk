@@ -8,12 +8,12 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
 
-$(PKG)_INSTALL:=$($(PKG)_DIR)/._INSTALL
+$(PKG)_PREFIX:=$($(PKG)_DIR)/._INSTALL
 
-$(PKG)_BINARY:=$($(PKG)_INSTALL)/bin/cmake
+$(PKG)_BINARY:=$($(PKG)_PREFIX)/bin/cmake
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/build/bin/cmake
 
-$(PKG)_SHARE:=$($(PKG)_INSTALL)/share/cmake-$($(PKG)_MAJOR_VERSION)
+$(PKG)_SHARE:=$($(PKG)_PREFIX)/share/cmake-$($(PKG)_MAJOR_VERSION)
 $(PKG)_TARGET_SHARE:=$(TOOLS_DIR)/build/share/cmake-$($(PKG)_MAJOR_VERSION)
 
 $(PKG)_DEPENDS_ON+=ninja-host
@@ -22,7 +22,7 @@ $(PKG)_CONFIGURE_OPTIONS += --generator=Ninja
 $(PKG)_CONFIGURE_OPTIONS += --enable-ccache
 $(PKG)_CONFIGURE_OPTIONS += --no-qt-gui
 $(PKG)_CONFIGURE_OPTIONS += --no-system-libs
-$(PKG)_CONFIGURE_OPTIONS += --prefix=$($(PKG)_INSTALL)
+$(PKG)_CONFIGURE_OPTIONS += --prefix=$($(PKG)_PREFIX)
 $(PKG)_CONFIGURE_OPTIONS += --
 $(PKG)_CONFIGURE_OPTIONS += -DCMAKE_USE_OPENSSL=OFF
 #$(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_USE_STATIC_LIBS=TRUE
