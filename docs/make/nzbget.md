@@ -1,7 +1,7 @@
-# NZBGet 21.1
- - Homepage: [https://nzbget.net/](https://nzbget.net/)
- - Manpage: [https://nzbget.net/documentation](https://nzbget.net/documentation)
- - Changelog: [https://github.com/nzbget/nzbget/releases](https://github.com/nzbget/nzbget/releases)
- - Repository: [https://github.com/nzbget/nzbget](https://github.com/nzbget/nzbget)
+# NZBGet 21.1/21.4-rc1
+ - Homepage: [https://nzbget-ng.github.io/](https://nzbget-ng.github.io/)
+ - Manpage: [https://nzbget-ng.github.io/documentation](https://nzbget-ng.github.io/documentation)
+ - Changelog: [https://github.com/nzbget-ng/nzbget/tags](https://github.com/nzbget-ng/nzbget/tags)
+ - Repository: [https://github.com/nzbget-ng/nzbget](https://github.com/nzbget-ng/nzbget)
  - Package: [master/make/pkgs/nzbget/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/nzbget/)
 
