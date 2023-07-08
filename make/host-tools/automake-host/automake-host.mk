@@ -55,7 +55,16 @@ $($(PKG)_SHARES_TARGET_FLAG): $($(PKG)_INSTALL_DIR)/share/%/.created : $($(PKG)_
 	cp -r "$<" "$(dir $@).."
 	@touch $@
 
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_SHARES_TARGET_FLAG)
+$(pkg)-fixhardcoded: $($(PKG)_FIXHARDCODED)
+$($(PKG)_FIXHARDCODED):
+	@ \
+	[ -d "$(AUTOMAKE_HOST_PREFIX)" ] && x="$(AUTOMAKE_HOST_PREFIX)" || x="/home/freetz/freetz-ng/tools/build"; \
+	sed "s!$$x!$(realpath tools/build/)!g" -i \
+	  $(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
+	  $(patsubst %,%*/*,$(AUTOMAKE_HOST_SHARES_TARGET_DIR))
+	touch $@
+
+$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_SHARES_TARGET_FLAG) $($(PKG)_FIXHARDCODED)
 
 
 $(pkg)-clean:
