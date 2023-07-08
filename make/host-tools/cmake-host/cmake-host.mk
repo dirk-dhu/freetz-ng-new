@@ -1,6 +1,6 @@
 $(call TOOLS_INIT, 3.26.4)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
-$(PKG)_SOURCE:=cmake-$($(PKG)_VERSION).tar.gz
+$(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208
 $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://cmake.org/
@@ -8,21 +8,20 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
 
-$(PKG)_PREFIX:=$($(PKG)_DIR)/._INSTALL
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 
-$(PKG)_BINARY:=$($(PKG)_PREFIX)/bin/cmake
-$(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/build/bin/cmake
-
-$(PKG)_SHARE:=$($(PKG)_PREFIX)/share/cmake-$($(PKG)_MAJOR_VERSION)
-$(PKG)_TARGET_SHARE:=$(TOOLS_DIR)/build/share/cmake-$($(PKG)_MAJOR_VERSION)
+$(PKG)_BINARIES            := ccmake cmake cpack ctest
+$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
+$(PKG)_SHARE_TARGET_DIR    := $($(PKG)_DESTDIR)/share/$(pkg_short)-$($(PKG)_MAJOR_VERSION)
+$(PKG)_DOC_TARGET_DIR      := $($(PKG)_DESTDIR)/doc/$(pkg_short)-$($(PKG)_MAJOR_VERSION)
 
 $(PKG)_DEPENDS_ON+=ninja-host
 
+$(PKG)_CONFIGURE_OPTIONS += --prefix=$(CMAKE_HOST_DESTDIR)
 $(PKG)_CONFIGURE_OPTIONS += --generator=Ninja
 $(PKG)_CONFIGURE_OPTIONS += --enable-ccache
 $(PKG)_CONFIGURE_OPTIONS += --no-qt-gui
 $(PKG)_CONFIGURE_OPTIONS += --no-system-libs
-$(PKG)_CONFIGURE_OPTIONS += --prefix=$($(PKG)_PREFIX)
 $(PKG)_CONFIGURE_OPTIONS += --
 $(PKG)_CONFIGURE_OPTIONS += -DCMAKE_USE_OPENSSL=OFF
 #$(PKG)_CONFIGURE_OPTIONS += -DOPENSSL_USE_STATIC_LIBS=TRUE
@@ -33,23 +32,16 @@ $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
-	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR)
+	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR) all
 	@touch $@
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBNINJA) -C $(CMAKE_HOST_DIR) install
+	@$(RM) -r "$(CMAKE_HOST_DOC_TARGET_DIR)"
+	@rmdir "$(dir $(CMAKE_HOST_DOC_TARGET_DIR))" || true
 	@touch $@
 
-$($(PKG)_BINARY) $($(PKG)_SHARE): $($(PKG)_DIR)/.installed
-
-$($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
-	$(INSTALL_FILE)
-
-$($(PKG)_TARGET_SHARE): $($(PKG)_SHARE)
-	mkdir -p $(dir $(CMAKE_HOST_TARGET_SHARE))
-	cp -r $(CMAKE_HOST_SHARE) $(dir $(CMAKE_HOST_TARGET_SHARE))
-
-$(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_TARGET_SHARE)
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
@@ -60,6 +52,8 @@ $(pkg)-dirclean:
 	$(RM) -r $(CMAKE_HOST_DIR)
 
 $(pkg)-distclean: $(pkg)-dirclean
-	$(RM) -r $(CMAKE_HOST_TARGET_BINARY) $(CMAKE_HOST_TARGET_SHARE)
+	$(RM) -r \
+		$(CMAKE_HOST_BINARIES_TARGET_DIR) \
+		$(CMAKE_HOST_SHARE_TARGET_DIR)
 
 $(TOOLS_FINISH)
