@@ -50,16 +50,18 @@ $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_INSTALL_DIR)/%: $($(PKG)_DIR)/bin/%
 $($(PKG)_TARGET_SHARE)/.created: $($(PKG)_SHARE)
 	mkdir -p $(dir $(AUTOCONF_HOST_TARGET_SHARE))
 	cp -r $(AUTOCONF_HOST_SHARE) $(dir $(AUTOCONF_HOST_TARGET_SHARE))
-	$(AUTOCONF_HOST_FIXHARDCODED)
 	@touch $@
 
-$(pkg)-fixhardcoded:
-	$(AUTOCONF_HOST_FIXHARDCODED)
-define $(PKG)_FIXHARDCODED
-	sed -i "s#^\(args: --prepend-include\) .*#\1 '$$(dirname $$(realpath $(AUTOCONF_HOST_TARGET_SHARE)/autom4te.cfg))'#g" "$(AUTOCONF_HOST_TARGET_SHARE)/autom4te.cfg" 2>/dev/null || true
-endef
+$(pkg)-fixhardcoded: $($(PKG)_FIXHARDCODED)
+$($(PKG)_FIXHARDCODED):
+	@ \
+	[ -d "$(AUTOCONF_HOST_PREFIX)" ] && x="$(AUTOCONF_HOST_PREFIX)" || x="/home/freetz/freetz-ng/tools/build"; \
+	sed "s!$$x!$(realpath tools/build/)!g" -i \
+	  $(AUTOCONF_HOST_BINARIES_TARGET_DIR) \
+	  $(AUTOCONF_HOST_TARGET_SHARE)/autom4te.cfg
+	touch $@
 
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_TARGET_SHARE)/.created
+$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_TARGET_SHARE)/.created $($(PKG)_FIXHARDCODED)
 
 
 $(pkg)-clean:
