@@ -1,4 +1,5 @@
 $(call TOOLS_INIT, 1.16.5)
+$(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=f01d58cd6d9d77fbdca9eb4bbd5ead1988228fdb73d6f7a201f5f8d6b118b469
 $(PKG)_SITE:=@GNU/$(pkg_short)
@@ -10,7 +11,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 
 $(PKG)_LINKS                 := aclocal automake
-$(PKG)_BINARIES              := $(patsubst %, %-$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)), $($(PKG)_LINKS))
+$(PKG)_BINARIES              := $(patsubst %, %-$($(PKG)_MAJOR_VERSION), $($(PKG)_LINKS))
 $(PKG)_SHARES_FEW            := $($(PKG)_BINARIES)
 $(PKG)_SHARES_ALL            := $($(PKG)_BINARIES) aclocal
 
@@ -34,14 +35,18 @@ $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 
 $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(AUTOMAKE_HOST_DIR) install
+	@rm -f $($(PKG)_LINKS_TARGET_DIR)
 	@touch $@
+
+$($(PKG)_LINKS_TARGET_DIR) : $($(PKG)_DESTDIR)/bin/% : $($(PKG)_DIR)/.installed
+	ln -sf "$(notdir $@)-$(call GET_MAJOR_VERSION,$(AUTOMAKE_HOST_VERSION))" "$@"
 
 $(pkg)-fixhardcoded:
 	@$(SED) -i "s!/home/freetz/freetz-ng/tools/build!$(realpath tools/build/)!g" \
 		$(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
 		$(patsubst %,%*/*,$(AUTOMAKE_HOST_SHARES_TARGET_DIR_FEW))
 
-$(pkg)-precompiled: $($(PKG)_DIR)/.installed
+$(pkg)-precompiled: $($(PKG)_LINKS_TARGET_DIR)
 
 
 $(pkg)-clean:
