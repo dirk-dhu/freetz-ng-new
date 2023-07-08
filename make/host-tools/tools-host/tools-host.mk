@@ -26,10 +26,10 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.unpacked
 	cp -fa $(TOOLS_HOST_DIR)/tools $(FREETZ_BASE_DIR)/
 	touch $@
 
-$($(PKG)_DIR)/.fixhardcoded: | $(patsubst %,%-fixhardcoded,$(TOOLS))
+$($(PKG)_DIR)/.fixhardcoded: $($(PKG)_DIR)/.installed | $(patsubst %,%-fixhardcoded,$(TOOLS))
 	touch $@
 
-$(pkg)-precompiled: $($(PKG)_DIR)/.installed $($(PKG)_DIR)/.fixhardcoded
+$(pkg)-precompiled: $($(PKG)_DIR)/.fixhardcoded
 
 
 $(pkg)-clean:
