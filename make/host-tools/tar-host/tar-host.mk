@@ -3,14 +3,12 @@ $(PKG)_SOURCE:=tar-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=63bebd26879c5e1eea4352f0d03c991f966aeb3ddeb3c7445c902568d5411d28
 $(PKG)_SITE:=@GNU/tar
 
-$(PKG)_PREFIX:=$($(PKG)_DIR)/._INSTALL
-
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/tar
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/tar-gnu
 
 $(PKG)_DEPENDS_ON:=kconfig-host
 
-$(PKG)_CONFIGURE_OPTIONS += --prefix=$($(PKG)_PREFIX)
+$(PKG)_CONFIGURE_OPTIONS += --prefix=/
 $(PKG)_CONFIGURE_OPTIONS += --without-selinux
 $(PKG)_CONFIGURE_OPTIONS += --disable-acl
 
