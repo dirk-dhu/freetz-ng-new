@@ -3,6 +3,10 @@ $(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_GIT),$(call git
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=X
 $(PKG)_SITE:=git@$($(PKG)_GIT_REPOSITORY)
+### WEBSITE:=https://www.pyload.net/
+### MANPAGE:=https://github.com/pyload/pyload/wiki
+### CHANGES:=https://github.com/pyload/pyload/releases
+### CVSREPO:=https://github.com/pyload/pyload/commits/
 
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/opt/pyLoad/pyLoadCore.py
 
@@ -38,6 +42,7 @@ testlinks.txt
 tests
 endef
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
@@ -53,6 +58,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_DIR)/.exclude
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	$(RM) $(PYLOAD_DIR)/.exclude
