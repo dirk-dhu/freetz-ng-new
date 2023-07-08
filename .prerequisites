@@ -1,7 +1,3 @@
-program     aclocal                FREETZ_PACKAGE_GNTPSEND
-program     autoconf
-program     automake
-program     autoreconf
 program     bash
 program     bc                     FREETZ_AVM_VERSION_07_1X_MIN
 program     bison

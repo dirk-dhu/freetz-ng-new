@@ -24,8 +24,6 @@ TOOLS_TARXZBUNDLE:=tools-host
 
 # tools not built by default
 TOOLS_CONDITIONAL:=$(TOOLS_TARXZBUNDLE)
-TOOLS_CONDITIONAL+=autoconf-host
-TOOLS_CONDITIONAL+=automake-host
 TOOLS_CONDITIONAL+=avm-rle-host
 TOOLS_CONDITIONAL+=fastjar-host
 TOOLS_CONDITIONAL+=libdtc-host
@@ -37,7 +35,6 @@ TOOLS_CONDITIONAL+=mpfr-host
 TOOLS_CONDITIONAL+=ninja-host
 TOOLS_CONDITIONAL+=lzma1-host
 TOOLS_CONDITIONAL+=lzma2-host
-TOOLS_CONDITIONAL+=m4-host
 TOOLS_CONDITIONAL+=python2-host
 TOOLS_CONDITIONAL+=python3-host
 TOOLS_CONDITIONAL+=scons-host
