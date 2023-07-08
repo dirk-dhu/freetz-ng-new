@@ -7,26 +7,21 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://ftp.gnu.org/gnu/automake/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/automake.git
 
-$(PKG)_PREFIX:=$($(PKG)_DIR)/._INSTALL
-$(PKG)_INSTALL_DIR := $(TOOLS_DIR)/build
-$(PKG)_VERSION_MAJOR:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 
-$(PKG)_LINKS               := aclocal automake
-$(PKG)_BINARIES            := $(patsubst %, %-$(AUTOMAKE_HOST_VERSION_MAJOR), $($(PKG)_LINKS))
-$(PKG)_SHARES              := $($(PKG)_BINARIES)
+$(PKG)_LINKS                 := aclocal automake
+$(PKG)_BINARIES              := $(patsubst %, %-$(call GET_MAJOR_VERSION,$($(PKG)_VERSION)), $($(PKG)_LINKS))
+$(PKG)_SHARES_FEW            := $($(PKG)_BINARIES)
+$(PKG)_SHARES_ALL            := $($(PKG)_BINARIES) aclocal
 
-$(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
-
-$(PKG)_BINARIES_LINK_DIR   := $($(PKG)_LINKS:%=$($(PKG)_INSTALL_DIR)/bin/%)
-$(PKG)_SHARES_LINK_DIR     := $($(PKG)_LINKS:%=$($(PKG)_INSTALL_DIR)/share/%)
-
-$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_INSTALL_DIR)/bin/%)
-$(PKG)_SHARES_TARGET_DIR   := $($(PKG)_SHARES:%=$($(PKG)_INSTALL_DIR)/share/%/)
-$(PKG)_SHARES_TARGET_FLAG  := $($(PKG)_SHARES:%=$($(PKG)_INSTALL_DIR)/share/%/.created)
+$(PKG)_LINKS_TARGET_DIR      := $($(PKG)_LINKS:%=$($(PKG)_DESTDIR)/bin/%)
+$(PKG)_BINARIES_TARGET_DIR   := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
+$(PKG)_SHARES_TARGET_DIR_FEW := $($(PKG)_SHARES_FEW:%=$($(PKG)_DESTDIR)/share/%/)
+$(PKG)_SHARES_TARGET_DIR_ALL := $($(PKG)_SHARES_ALL:%=$($(PKG)_DESTDIR)/share/%/)
 
 $(PKG)_DEPENDS_ON+=autoconf-host
 
-$(PKG)_CONFIGURE_OPTIONS += --prefix=$($(PKG)_PREFIX)
+$(PKG)_CONFIGURE_OPTIONS += --prefix=$(AUTOCONF_HOST_DESTDIR)
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
@@ -41,30 +36,12 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	$(TOOLS_SUBMAKE) -C $(AUTOMAKE_HOST_DIR) install
 	@touch $@
 
-$($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.installed
+$(pkg)-fixhardcoded:
+	@$(SED) -i "s!/home/freetz/freetz-ng/tools/build!$(realpath tools/build/)!g" \
+		$(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
+		$(patsubst %,%*/*,$(AUTOMAKE_HOST_SHARES_TARGET_DIR_FEW))
 
-$($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_INSTALL_DIR)/bin/%: $($(PKG)_DIR)/bin/%
-	mkdir -p "$(dir $@)"
-	ln -sf "$(notdir $@)" "$(patsubst %-$(AUTOMAKE_HOST_VERSION_MAJOR),%,$@)"
-	chmod +w "$<"
-	$(INSTALL_FILE)
-
-$($(PKG)_SHARES_TARGET_FLAG): $($(PKG)_INSTALL_DIR)/share/%/.created : $($(PKG)_PREFIX)/share/%
-	mkdir -p "$(dir $@)"
-	ln -sf "$(notdir $(patsubst %/.created,%,$@))" "$(patsubst %-$(AUTOMAKE_HOST_VERSION_MAJOR)/,%,$(dir $@))"
-	cp -r "$<" "$(dir $@).."
-	@touch $@
-
-$(pkg)-fixhardcoded: $($(PKG)_FIXHARDCODED)
-$($(PKG)_FIXHARDCODED):
-	@ \
-	[ -d "$(AUTOMAKE_HOST_PREFIX)" ] && x="$(AUTOMAKE_HOST_PREFIX)" || x="/home/freetz/freetz-ng/tools/build"; \
-	sed "s!$$x!$(realpath tools/build/)!g" -i \
-	  $(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
-	  $(patsubst %,%*/*,$(AUTOMAKE_HOST_SHARES_TARGET_DIR))
-	touch $@
-
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_SHARES_TARGET_FLAG) $($(PKG)_FIXHARDCODED)
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
@@ -76,9 +53,8 @@ $(pkg)-dirclean:
 
 $(pkg)-distclean: $(pkg)-dirclean
 	$(RM) -r \
-		$(AUTOMAKE_HOST_BINARIES_LINK_DIR) \
+		$(AUTOMAKE_HOST_LINKS_TARGET_DIR) \
 		$(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
-		$(AUTOMAKE_HOST_SHARES_LINK_DIR) \
-		$(AUTOMAKE_HOST_SHARES_TARGET_DIR)
+		$(AUTOMAKE_HOST_SHARES_TARGET_DIR_ALL)
 
 $(TOOLS_FINISH)
