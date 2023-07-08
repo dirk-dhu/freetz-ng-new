@@ -49,6 +49,7 @@ choice
 
 		Version 1.1.1:
 		 - Supported until 2023-09-11, Long Term Support (LTS) version
+		 - NOT supported by the OpenSSL development team anymore
 
 		Version 3.0:
 		 - Supported until 2026-09-07, Long Term Support (LTS) version
