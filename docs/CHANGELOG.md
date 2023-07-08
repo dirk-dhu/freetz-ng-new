@@ -54,6 +54,7 @@ Latest changes
    * automake 1.16.5
    * kconfig 6.4
    * m4 1.4.19
+   * precompiled host-tools 2023-07-08
    * python 3.11.4
 
  - AVM sources:
