@@ -7,19 +7,15 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://ftp.gnu.org/gnu/autoconf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=autoconf.git
 
-$(PKG)_PREFIX:=$($(PKG)_DIR)/._INSTALL
-$(PKG)_INSTALL_DIR := $(TOOLS_DIR)/build/bin
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 
 $(PKG)_BINARIES            := autoconf autoheader autom4te autoreconf autoscan autoupdate ifnames
-$(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
-$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_INSTALL_DIR)/%)
-
-$(PKG)_SHARE:=$($(PKG)_PREFIX)/share/autoconf
-$(PKG)_TARGET_SHARE:=$(TOOLS_DIR)/build/share/autoconf
+$(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
+$(PKG)_SHARE_TARGET_DIR    := $($(PKG)_DESTDIR)/share/autoconf
 
 $(PKG)_DEPENDS_ON+=m4-host
 
-$(PKG)_CONFIGURE_OPTIONS += --prefix=$($(PKG)_PREFIX)
+$(PKG)_CONFIGURE_OPTIONS += --prefix=$(AUTOCONF_HOST_DESTDIR)
 
 $(PKG)_MAKE_VARS += M4="m4"
 $(PKG)_MAKE_VARS += EMACS="no"
@@ -41,27 +37,12 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 		install
 	@touch $@
 
-$($(PKG)_BINARIES_BUILD_DIR) $($(PKG)_SHARE): $($(PKG)_DIR)/.installed
+$(pkg)-fixhardcoded:
+	@$(SED) -i "s!/home/freetz/freetz-ng/tools/build!$(realpath tools/build/)!g" \
+		$(AUTOCONF_HOST_BINARIES_TARGET_DIR) \
+		$(AUTOCONF_HOST_SHARE_TARGET_DIR)/autom4te.cfg
 
-$($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_INSTALL_DIR)/%: $($(PKG)_DIR)/bin/%
-	chmod +w $<
-	$(INSTALL_FILE)
-
-$($(PKG)_TARGET_SHARE)/.created: $($(PKG)_SHARE)
-	mkdir -p $(dir $(AUTOCONF_HOST_TARGET_SHARE))
-	cp -r $(AUTOCONF_HOST_SHARE) $(dir $(AUTOCONF_HOST_TARGET_SHARE))
-	@touch $@
-
-$(pkg)-fixhardcoded: $($(PKG)_FIXHARDCODED)
-$($(PKG)_FIXHARDCODED):
-	@ \
-	[ -d "$(AUTOCONF_HOST_PREFIX)" ] && x="$(AUTOCONF_HOST_PREFIX)" || x="/home/freetz/freetz-ng/tools/build"; \
-	sed "s!$$x!$(realpath tools/build/)!g" -i \
-	  $(AUTOCONF_HOST_BINARIES_TARGET_DIR) \
-	  $(AUTOCONF_HOST_TARGET_SHARE)/autom4te.cfg
-	touch $@
-
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_TARGET_SHARE)/.created $($(PKG)_FIXHARDCODED)
+$(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
 
 $(pkg)-clean:
@@ -73,13 +54,7 @@ $(pkg)-dirclean:
 
 $(pkg)-distclean: $(pkg)-dirclean
 	$(RM) -r \
-		$(AUTOCONF_HOST_INSTALL_DIR)/autoconf \
-		$(AUTOCONF_HOST_INSTALL_DIR)/autoheader \
-		$(AUTOCONF_HOST_INSTALL_DIR)/autom4te \
-		$(AUTOCONF_HOST_INSTALL_DIR)/autoreconf \
-		$(AUTOCONF_HOST_INSTALL_DIR)/autoscan \
-		$(AUTOCONF_HOST_INSTALL_DIR)/autoupdate \
-		$(AUTOCONF_HOST_INSTALL_DIR)/ifnames \
-		$(AUTOCONF_HOST_TARGET_SHARE)
+		$(AUTOCONF_HOST_BINARIES_TARGET_DIR) \
+		$(AUTOCONF_HOST_SHARE_TARGET_DIR)/
 
 $(TOOLS_FINISH)
