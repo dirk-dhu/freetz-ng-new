@@ -17,11 +17,9 @@ $(PKG)_SHARES              := $($(PKG)_BINARIES)
 
 $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
 
-$(PKG)_LINKS_PREFIX_DIR    := $($(PKG)_LINKS:%=$($(PKG)_PREFIX)/bin/%)
-$(PKG)_BINARIES_PREFIX_DIR := $($(PKG)_BINARIES:%=$($(PKG)_PREFIX)/bin/%)
-$(PKG)_SHARES_PREFIX_DIR   := $($(PKG)_SHARES:%=$($(PKG)_PREFIX)/share/%)
+$(PKG)_BINARIES_LINK_DIR   := $($(PKG)_LINKS:%=$($(PKG)_INSTALL_DIR)/bin/%)
+$(PKG)_SHARES_LINK_DIR     := $($(PKG)_LINKS:%=$($(PKG)_INSTALL_DIR)/share/%)
 
-$(PKG)_LINKS_TARGET_DIR    := $($(PKG)_LINKS:%=$($(PKG)_INSTALL_DIR)/bin/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_INSTALL_DIR)/bin/%)
 $(PKG)_SHARES_TARGET_DIR   := $($(PKG)_SHARES:%=$($(PKG)_INSTALL_DIR)/share/%/)
 $(PKG)_SHARES_TARGET_FLAG  := $($(PKG)_SHARES:%=$($(PKG)_INSTALL_DIR)/share/%/.created)
@@ -46,19 +44,18 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.installed
 
 $($(PKG)_BINARIES_TARGET_DIR): $($(PKG)_INSTALL_DIR)/bin/%: $($(PKG)_DIR)/bin/%
+	mkdir -p "$(dir $@)"
+	ln -sf "$(notdir $@)" "$(patsubst %-$(AUTOMAKE_HOST_VERSION_MAJOR),%,$@)"
 	chmod +w "$<"
 	$(INSTALL_FILE)
 
-$($(PKG)_LINKS_TARGET_DIR): $($(PKG)_INSTALL_DIR)/bin/%: $($(PKG)_INSTALL_DIR)/bin/%-$($(PKG)_VERSION_MAJOR)
-	mkdir -p "$(dir $@)"
-	ln -sf "$(notdir $<)" "$@"
-
 $($(PKG)_SHARES_TARGET_FLAG): $($(PKG)_INSTALL_DIR)/share/%/.created : $($(PKG)_PREFIX)/share/%
 	mkdir -p "$(dir $@)"
+	ln -sf "$(notdir $(patsubst %/.created,%,$@))" "$(patsubst %-$(AUTOMAKE_HOST_VERSION_MAJOR)/,%,$(dir $@))"
 	cp -r "$<" "$(dir $@).."
 	@touch $@
 
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_LINKS_TARGET_DIR) $($(PKG)_SHARES_TARGET_FLAG)
+$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_SHARES_TARGET_FLAG)
 
 
 $(pkg)-clean:
@@ -70,8 +67,9 @@ $(pkg)-dirclean:
 
 $(pkg)-distclean: $(pkg)-dirclean
 	$(RM) -r \
-		$(AUTOMAKE_HOST_LINKS_TARGET_DIR) \
+		$(AUTOMAKE_HOST_BINARIES_LINK_DIR) \
 		$(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
+		$(AUTOMAKE_HOST_SHARES_LINK_DIR) \
 		$(AUTOMAKE_HOST_SHARES_TARGET_DIR)
 
 $(TOOLS_FINISH)
