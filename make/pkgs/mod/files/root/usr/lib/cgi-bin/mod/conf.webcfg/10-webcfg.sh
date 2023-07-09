@@ -1,3 +1,4 @@
+
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
 skins="$(ls /usr/share/skin)"
@@ -57,6 +58,8 @@ $(lang de:"Zus&auml;tzliche Partitionen" en:"Additional partitions"):
 EOF
 
 cgi_print_checkbox "mounted_tffs" "$MOD_MOUNTED_TFFS" "$(lang de:"TFFS" en:"TFFS")"
+[ -d "/nvram" ] && \
+  cgi_print_checkbox "mounted_nvram" "$MOD_MOUNTED_NVRAM" "$(lang de:"NVRAM" en:"NVRAM")"
 df /var/flash/ 2>/dev/null | grep -q ' /var/flash$' && \
   cgi_print_checkbox "mounted_conf" "$MOD_MOUNTED_CONF" "$(lang de:"Konfiguration" en:"Configuartion")"
 cgi_print_checkbox "mounted_temp" "$MOD_MOUNTED_TEMP" "$(lang de:"Tempor&auml;r" en:"Temporary")"
