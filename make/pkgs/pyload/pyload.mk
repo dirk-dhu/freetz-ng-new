@@ -1,8 +1,10 @@
-PYLOAD_GIT_REPOSITORY:=https://github.com/pyload/pyload.git
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_GIT),$(call git-get-latest-revision,$(PYLOAD_GIT_REPOSITORY),stable),v0.4.20))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_PYLOAD_VERSION_ABANDON),v0.4.20,71e861d24f8777f5ae8b4fb138cb1c0fcf50d9c4))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=X
-$(PKG)_SITE:=git@$($(PKG)_GIT_REPOSITORY)
+$(PKG)_HASH_ABANDON:=d017b5ab7ba21db04da6b308a52861255e0bdd3b0809e4a771c1e0ffecabee72
+$(PKG)_HASH_CURRENT:=9b358adf18fcf7bee1be8b34a2a28249173c2deb31905f00c3ac35c04ab0c2e3
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_PACKAGE_PYLOAD_VERSION_ABANDON),ABANDON,CURRENT))
+$(PKG)_SITE:=git@https://github.com/pyload/pyload.git
+### VERSION:=0.4.20/9b358adf
 ### WEBSITE:=https://www.pyload.net/
 ### MANPAGE:=https://github.com/pyload/pyload/wiki
 ### CHANGES:=https://github.com/pyload/pyload/releases
@@ -10,8 +12,7 @@ $(PKG)_SITE:=git@$($(PKG)_GIT_REPOSITORY)
 
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/opt/pyLoad/pyLoadCore.py
 
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_TESTED
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_GIT
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_PACKAGE_PYLOAD_VERSION_ABANDON),abandon,current)
 
 define pyLoad/build/files
 .build-prereq-checked

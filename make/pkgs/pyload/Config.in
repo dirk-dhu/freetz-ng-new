@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PYLOAD
-	bool "pyLoad 0.4.20"
+	bool "pyLoad 0.4.20/9b358adf"
 	select FREETZ_BUSYBOX_START_STOP_DAEMON
 	select FREETZ_PACKAGE_PYTHON
 	select FREETZ_PACKAGE_PYTHON_MOD_CTYPES
@@ -23,21 +23,22 @@ config FREETZ_PACKAGE_PYLOAD
 
 if FREETZ_PACKAGE_PYLOAD
 
-#	choice
-#		prompt "Version"
-#		default FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_TESTED
-#
-#		config FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_TESTED
-#			bool "stable"
-#
-#		config FREETZ_PACKAGE_PYLOAD_VERSION_LATEST_GIT
-#			bool "latest"
-#			help
-#				Note this increases build time by about 2 seconds
-#				since the latest git-revision is determined anew
-#				on each make invocation.
-#
-#	endchoice
+	choice
+		prompt "Version"
+		default FREETZ_PACKAGE_PYLOAD_VERSION_CURRENT
+
+		config FREETZ_PACKAGE_PYLOAD_VERSION_ABANDON
+			bool "0.4.20"
+			help
+				Latest "release" published 02/2020
+
+		config FREETZ_PACKAGE_PYLOAD_VERSION_CURRENT
+			bool "9b358adf"
+			help
+				From the "stable" branch with Python 2 support
+				https://github.com/pyload/pyload/commits/stable
+
+	endchoice
 
 	config FREETZ_PACKAGE_PYLOAD_EXTRACT
 		bool "With unrar and unzip for file unpacking"
