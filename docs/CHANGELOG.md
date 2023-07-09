@@ -66,6 +66,7 @@ Latest changes
    * 6690 7.56 - 4.9.279
    * 7530 7.56 - 4.4.271
    * 7590 7.56 - 4.9.325
+   * GATE 7.54 - 4.4.271
 
  - Packages:
    * ACME.sh 3.0.6 (letsencrypt)
