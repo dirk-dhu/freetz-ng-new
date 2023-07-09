@@ -82,6 +82,7 @@ Latest changes
    * OpenVPN 2.4.12/2.5.9/2.6.5
    * SQLite 3.42.0
    * strace 4.9/5.0/6.4
+   * Transmission 3.00/4.0.3
    * UnRAR 6.1.7/6.2.8
    * vnstat 1.18
    * Wget GNU 1.21.4
