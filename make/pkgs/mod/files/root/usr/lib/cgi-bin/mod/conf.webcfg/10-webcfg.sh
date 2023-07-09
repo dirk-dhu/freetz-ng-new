@@ -1,4 +1,3 @@
-
 [ -r /etc/options.cfg ] && . /etc/options.cfg
 
 skins="$(ls /usr/share/skin)"

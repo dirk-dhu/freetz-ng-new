@@ -68,7 +68,7 @@ if [ "$MOD_MOUNTED_TFFS" == "yes" ]; then
 fi
 
 # NVRAM
-if [ -d "/nvram" ] && [ "$MOD_MOUNTED_TFFS" == "yes" ]; then
+if [ -d "/nvram" ] && [ "$MOD_MOUNTED_NVRAM" == "yes" ]; then
 	sec_begin "$(lang de:"Config-Speicher" en:"Config memory") (NVRAM)"
 	nvram_df="$(df /nvram 2>/dev/null | tail -n1)"
 	nvram_size="$(echo "$nvram_df" | awk '{ print $2; exit }')"
