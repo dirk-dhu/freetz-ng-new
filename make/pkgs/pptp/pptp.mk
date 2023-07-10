@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.7.2)
+$(call PKG_INIT_BIN, 1.10.0)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=e98ae0065d2a39fa3131654ff28cb7070e996f668ed6d0e7d9a445b8d37694bc
+$(PKG)_HASH:=82492db8e487ce73b182ee7f444251d20c44f5c26d6e96c553ec7093aefb5af4
 $(PKG)_SITE:=@SF/pptpclient
 $(PKG)_BINARY:=$($(PKG)_DIR)/pptp
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/pptp

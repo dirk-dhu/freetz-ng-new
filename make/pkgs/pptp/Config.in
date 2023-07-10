@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_PPTP
-	bool "pptp 1.7.2"
+	bool "pptp 1.10.0"
 	depends on FREETZ_PACKAGE_PPP
 	select FREETZ_PACKAGE_PPPD
 	select FREETZ_LIB_libutil if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
