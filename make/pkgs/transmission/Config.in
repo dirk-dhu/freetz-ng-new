@@ -21,9 +21,13 @@ if FREETZ_PACKAGE_TRANSMISSION
 		config FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON
 			bool "3.00"
 
-#		config FREETZ_PACKAGE_TRANSMISSION_VERSION_CURRENT
-#			bool "4.0.3"
-#			help	Libs in Freetz missing: libdeflate &libpsl
+		config FREETZ_PACKAGE_TRANSMISSION_VERSION_CURRENT
+			bool "4.0.3"
+			depends on FREETZ_TARGET_GCC_13_MIN
+			select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
+			select FREETZ_LIB_STDCXXLIB                 if !FREETZ_PACKAGE_TRANSMISSION_STATIC
+			select FREETZ_LIB_libpsl                    if !FREETZ_PACKAGE_TRANSMISSION_STATIC
+			select FREETZ_LIB_libdeflate                if !FREETZ_PACKAGE_TRANSMISSION_STATIC
 
 	endchoice
 
@@ -98,6 +102,7 @@ if FREETZ_PACKAGE_TRANSMISSION
 	config FREETZ_PACKAGE_TRANSMISSION_STATIC
 		bool "Link statically"
 		default n
+		depends on FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON
 		help
 			Build transmission binaries with statically linked libraries.
 
