@@ -93,6 +93,7 @@ Latest changes
    * xsltproc 1.1.38
 
  - Libraries:
+   * libdeflate 1.18
    * libnettle 3.9.1
    * libssh2 1.11.0
    * libuv 1.44.2/1.46.0
