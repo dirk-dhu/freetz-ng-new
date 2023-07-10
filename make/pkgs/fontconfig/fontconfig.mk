@@ -18,8 +18,7 @@ $(PKG)_LIBRARIES_STAGING_DIR:=$($(PKG)_LIBRARIES:%=$(TARGET_TOOLCHAIN_STAGING_DI
 $(PKG)_LIBRARIES_TARGET_DIR:=$($(PKG)_LIBRARIES:%=$($(PKG)_TARGET_LIBDIR)/%)
 
 
-$(PKG)_HOST_DEPENDS_ON += gperf-host
-$(PKG)_DEPENDS_ON += freetype libxml2 zlib
+$(PKG)_DEPENDS_ON += gperf-host freetype libxml2 zlib
 
 $(PKG)_CONFIGURE_OPTIONS += --disable-nls
 $(PKG)_CONFIGURE_OPTIONS += --disable-rpath

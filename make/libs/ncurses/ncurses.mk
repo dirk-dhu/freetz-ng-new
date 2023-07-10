@@ -8,7 +8,7 @@ $(PKG)_SITE:=@GNU/$(pkg)
 ### MANPAGE:=https://invisible-island.net/ncurses/announce.html
 ### CHANGES:=https://invisible-island.net/ncurses/NEWS.html
 
-$(PKG)_HOST_DEPENDS_ON += ncurses-host
+$(PKG)_DEPENDS_ON += ncurses-host
 
 $(PKG)_LIBCONFIG_SHORT := ncurses6-config
 $(PKG)_LIBNAMES_SHORT := ncurses form menu panel

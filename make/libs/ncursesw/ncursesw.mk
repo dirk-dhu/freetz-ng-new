@@ -8,7 +8,7 @@ $(PKG)_SITE:=@GNU/$(pkg)
 
 
 
-$(PKG)_HOST_DEPENDS_ON += ncurses-host
+$(PKG)_DEPENDS_ON += ncurses-host
 
 $(PKG)_LIBCONFIG_SHORT := ncursesw6-config
 $(PKG)_LIBNAMES_SHORT := ncursesw formw menuw panelw

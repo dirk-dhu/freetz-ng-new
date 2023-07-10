@@ -386,9 +386,10 @@ $(PKG)_VERSION:=$(strip $1)
 $(PKG)_BUILD_PREREQ:=
 $(PKG)_BUILD_PREREQ_HINT:=
 $(PKG)_DEPENDS_ON:=
-$(PKG)_HOST_DEPENDS_ON:=
 #
 $(PKG)_REBUILD_SUBOPTS=FREETZ_RPATH
+#
+#
 #
 $(PKG)_SOURCE_DIR:=$(SOURCE_DIR)
 $(PKG)_DIR:=$($(PKG)_SOURCE_DIR)/$(pkg)-$($(PKG)_VERSION)
@@ -540,7 +541,7 @@ endef
 # PKG_FINISH: Finalise packages (general functionality + call to type specifics)
 define PKG_FINISH__INT
 
-$(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN) $($(PKG)_HOST_DEPENDS_ON) $(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON))
+$(pkg)-precompiled--int: $(pkg)-build-prereq $(TOOLCHAIN) $(patsubst %,%-precompiled,$($(PKG)_DEPENDS_ON))
 .PHONY: $(pkg)-precompiled--int
 
 $(pkg)-precompiled:
