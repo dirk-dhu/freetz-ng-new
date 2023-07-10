@@ -496,7 +496,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[pppd 2.4.7](pppd.md)<a id='pppd'></a>**<br>
     An implementation of the Point-to-point protocol. http://www.samba.org/ppp/
 
-  * **[pptp 1.7.2](pptp.md)<a id='pptp'></a>**<br>
+  * **[pptp 1.10.0](pptp.md)<a id='pptp'></a>**<br>
     Linux and FreeBSD client for the proprietary Microsoft Point-to-Point tunneling protocol, PPTP, sponsored by HP.
 
   * **[pptpd 1.4.0](pptpd.md)<a id='pptpd'></a>**<br>
