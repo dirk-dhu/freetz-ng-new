@@ -51,7 +51,12 @@ $(pkg)-distclean: $(pkg)-dirclean
 		$(LIBTOOL_HOST_DESTDIR)/include/ltdl.h \
 		$(LIBTOOL_HOST_DESTDIR)/include/libltdl/ \
 		$(LIBTOOL_HOST_DESTDIR)/share/libtool/ \
-		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/ \
+		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/ltversion.m4 \
+		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/ltoptions.m4 \
+		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/libtool.m4 \
+		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/ltsugar.m4 \
+		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/ltdl.m4 \
+		$(LIBTOOL_HOST_DESTDIR)/share/aclocal/lt~obsolete.m4 \
 		$(LIBTOOL_HOST_DESTDIR)/lib/libltdl.*
 
 $(TOOLS_FINISH)
