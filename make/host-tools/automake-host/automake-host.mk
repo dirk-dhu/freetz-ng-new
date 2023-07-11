@@ -8,7 +8,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://ftp.gnu.org/gnu/automake/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/automake.git
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_LINKS                 := aclocal automake
 $(PKG)_BINARIES              := $(patsubst %, %-$($(PKG)_MAJOR_VERSION), $($(PKG)_LINKS))
@@ -42,7 +42,7 @@ $($(PKG)_LINKS_TARGET_DIR) : $($(PKG)_DESTDIR)/bin/% : $($(PKG)_DIR)/.installed
 	ln -sf "$(notdir $@)-$(call GET_MAJOR_VERSION,$(AUTOMAKE_HOST_VERSION))" "$@"
 
 $(pkg)-fixhardcoded:
-	@$(SED) -i "s!/home/freetz/freetz-ng/tools/build!$(realpath tools/build/)!g" \
+	-@$(SED) -i "s!$(TOOLS_HARDCODED_DIR)!$(AUTOMAKE_HOST_DESTDIR)!g" \
 		$(AUTOMAKE_HOST_BINARIES_TARGET_DIR) \
 		$(patsubst %,%*/*,$(AUTOMAKE_HOST_SHARES_TARGET_DIR_FEW))
 

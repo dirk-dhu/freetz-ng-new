@@ -7,7 +7,7 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://ftp.gnu.org/gnu/autoconf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=autoconf.git
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_BINARIES            := autoconf autoheader autom4te autoreconf autoscan autoupdate ifnames
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
@@ -38,7 +38,7 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 	@touch $@
 
 $(pkg)-fixhardcoded:
-	@$(SED) -i "s!/home/freetz/freetz-ng/tools/build!$(realpath tools/build/)!g" \
+	-@$(SED) -i "s!$(TOOLS_HARDCODED_DIR)!$(AUTOCONF_HOST_DESTDIR)!g" \
 		$(AUTOCONF_HOST_BINARIES_TARGET_DIR) \
 		$(AUTOCONF_HOST_SHARE_TARGET_DIR)/autom4te.cfg
 

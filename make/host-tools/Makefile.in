@@ -11,6 +11,9 @@ HOST_BITNESS:=$(if $(findstring 64,$(shell uname -m)),64,32)
 # on 32-bit systems no special CFLAGS are required, on all other systems use -m32 [ and hope it's supported :-) aarch64 does not :{ ]
 HOST_CFLAGS_FORCE_32BIT_CODE:=$(if $(filter-out 32,$(HOST_BITNESS)),-m32)
 
+# Hardcoded directory of precompiled host-tools
+TOOLS_HARDCODED_DIR:=/home/freetz/freetz-ng/tools/build
+
 TOOLS_SOURCE_DIR:=$(FREETZ_BASE_DIR)/source/host-tools
 HOST_TOOLS_DIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
