@@ -52,6 +52,7 @@ Latest changes
  - Host tools:
    * autoconf 2.71
    * automake 1.16.5
+   * fakeroot 1.32
    * kconfig 6.4
    * m4 1.4.19
    * precompiled host-tools 2023-07-08
