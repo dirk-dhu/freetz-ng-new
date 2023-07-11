@@ -54,6 +54,7 @@ Latest changes
    * automake 1.16.5
    * fakeroot 1.32
    * kconfig 6.4
+   * libtool 2.4.7
    * m4 1.4.19
    * precompiled host-tools 2023-07-08
    * python 3.11.4
