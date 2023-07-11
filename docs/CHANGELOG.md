@@ -56,6 +56,7 @@ Latest changes
    * kconfig 6.4
    * libtool 2.4.7
    * m4 1.4.19
+   * make 4.4.1
    * precompiled host-tools 2023-07-08
    * python 3.11.4
 
