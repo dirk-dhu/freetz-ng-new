@@ -101,7 +101,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox-5590-fiber/{other,deutschland}/fritz.os,@AVM/5590Fiber"                                     if FREETZ_TYPE_5590
 	#
-	default "@AVM/fritzwlan/fritzrepeater-6000/deutschland/fritz.os"                                                   if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_2X
+	default "@AVM/fritzwlan/fritzrepeater-6000/deutschland/fritz.os"                                                   if FREETZ_TYPE_6000
 	#
 	default "@AVM/firmware/6430/65797387"                                                                              if FREETZ_TYPE_6430 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "@AVM/fritzbox-6430-cable/deutschland/fritz.os"                                                            if FREETZ_TYPE_6430
