@@ -33,7 +33,8 @@ $($(PKG)_DIR)/.installed: $($(PKG)_DIR)/.compiled
 
 $(pkg)-fixhardcoded:
 	-@$(SED) -i "s!$(TOOLS_HARDCODED_DIR)!$(LIBTOOL_HOST_DESTDIR)!g" \
-		$(LIBTOOL_HOST_BINARIES_TARGET_DIR)
+		$(LIBTOOL_HOST_BINARIES_TARGET_DIR) \
+		$(LIBTOOL_HOST_DESTDIR)/lib/libltdl.la
 
 $(pkg)-precompiled: $($(PKG)_DIR)/.installed
 
