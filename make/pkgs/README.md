@@ -887,8 +887,8 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [WebIF](../../docs/make/subversion.md#webif)
      - [Konfiguration](../../docs/make/subversion.md#konfiguration)
 
-  * **[Sudo 1.9.13p3 (binary only)](../../docs/make/sudo.md)<a id='sudo'></a>**<br>
-    Sudo (su "do") allows a system administrator to delegate authority to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while providing an audit trail of the commands and their arguments. WWW: http://www.courtesan.com/sudo/
+  * **[Sudo 1.9.14p1 (binary only)](../../docs/make/sudo.md)<a id='sudo'></a>**<br>
+    Sudo (su "do") allows a system administrator to delegate authority to give certain users (or groups of users) the ability to run some (or all) commands as root or another user while providing an audit trail of the commands and their arguments.
 
   * **[Sundtek DVB driver 130210.134617/170310.204343/210803.071224](../../docs/make/sundtek.md)<a id='sundtek'></a>**<br>
     Sundtek closed-source linux driver daemon & client. To use this driver you have to run: export LD_PRELOAD=/usr/lib/libsundtekmediaclient.so
