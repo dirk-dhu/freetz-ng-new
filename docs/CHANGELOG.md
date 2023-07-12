@@ -91,6 +91,7 @@ Latest changes
    * pyLoad 0.4.20/9b358adf
    * SQLite 3.42.0
    * strace 4.9/5.0/6.4
+   * Sudo 1.9.14p1
    * Transmission 3.00/4.0.3
    * UnRAR 6.1.7/6.2.8
    * vnstat 1.18
