@@ -23,7 +23,7 @@ $(TOOLS_CONFIGURED_CONFIGURE)
 
 $($(PKG)_DIR)/.compiled: $($(PKG)_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(LIBTOOL_HOST_DIR) \
-		CFLAGS="$(TOOLS_CFLAGS) -static" \
+		LDFLAGS="$(TOOLS_LDFLAGS) -static" \
 		all
 	@touch $@
 
