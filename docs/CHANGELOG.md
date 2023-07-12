@@ -101,6 +101,7 @@ Latest changes
 
  - Libraries:
    * libdeflate 1.18
+   * glib2 2.32.4/2.76.4
    * libnettle 3.9.1
    * libssh2 1.11.0
    * libuv 1.44.2/1.46.0
