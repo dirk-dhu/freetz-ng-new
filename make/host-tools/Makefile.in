@@ -67,8 +67,6 @@ TOOLS_BUILD_LOCAL+=mpfr-host
 
 # until next host-tools update
 #TOOLS_BUILD_LOCAL+=...
-TOOLS_BUILD_LOCAL+=libtool-host
-TOOLS_BUILD_LOCAL+=make-host
 
 
 TOOLS_SUBPYTHON3=cmd() { $(PYTHON3) "$$@" $(SILENT) || { $(call ERROR,1,$(BUILD_FAIL_MSG)) } }; $(call _ECHO,building) cmd
