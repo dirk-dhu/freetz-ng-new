@@ -39,8 +39,6 @@ $(pkg)-dirclean:
 
 $(pkg)-distclean: $(pkg)-dirclean
 	$(RM) \
-		$(UBOOT_HOST_INSTALL_DIR)/dumpimage \
-		$(UBOOT_HOST_INSTALL_DIR)/fdtgrep \
-		$(UBOOT_HOST_INSTALL_DIR)/mkimage
+		$(UBOOT_HOST_BINARIES_TARGET_DIR)
 
 $(TOOLS_FINISH)
