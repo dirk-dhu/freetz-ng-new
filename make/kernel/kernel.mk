@@ -165,7 +165,7 @@ endif
 $(KERNEL_DIR)/.configured: $(KERNEL_DIR)/.unpacked $(KERNEL_CONFIG_FILE)
 	$(call _ECHO,configuring,$(KERNEL_ECHO_TYPE))
 	cp $(KERNEL_CONFIG_FILE) $(KERNEL_SOURCE_DIR)/.config
-	[ "$(FREETZ_MODULES_KOON)" != "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
+	[ "$(FREETZ_MODULES_KOON)" != "y" -o "${AUTO_FIX_PATCHES}" == "y" ] || $(TOOLS_DIR)/kernel_modules_koon "$(KERNEL_SOURCE_DIR)" $(SILENT)
 ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 	yes '' | make $(KERNEL_COMMON_MAKE_OPTIONS) oldconfig >/dev/null
 else
@@ -224,7 +224,7 @@ endif
 
 
 kernel-autofix: kernel-dirclean
-	$(MAKE) AUTO_FIX_PATCHES=y kernel-unpacked
+	$(MAKE) AUTO_FIX_PATCHES=y $(KERNEL_DIR)/.configured
 kernel-recompile: kernel-dirclean kernel-precompiled
 .PHONY: kernel-autofix kernel-recompile
 
