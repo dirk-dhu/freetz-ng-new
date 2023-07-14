@@ -397,21 +397,23 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 
 ### FritzWlan
  * fritzrepeater-1200/
-   - [source-files-FRITZ.Repeater_1200-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200/source-files-FRITZ.Repeater_1200-07.27.tar.gz)
    - [source-files-FRITZ.Repeater_1200-07.50.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200/source-files-FRITZ.Repeater_1200-07.50.tar.gz)
+   - [source-files-FRITZ.Repeater_1200-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200/source-files-FRITZ.Repeater_1200-07.56.tar.gz)
  * fritzrepeater-1200-ax/
    - [source-files-FRITZ.Repeater_1200_AX-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200-ax/source-files-FRITZ.Repeater_1200_AX-07.30.tar.gz)
    - [source-files-FRITZ.Repeater_1200_AX-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-1200-ax/source-files-FRITZ.Repeater_1200_AX-07.56.tar.gz)
  * fritzrepeater-2400/
-   - [source-files-FRITZ.Repeater_2400-07.27.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-2400/source-files-FRITZ.Repeater_2400-07.27.tar.gz)
    - [source-files-FRITZ.Repeater_2400-07.50.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-2400/source-files-FRITZ.Repeater_2400-07.50.tar.gz)
+   - [source-files-FRITZ.Repeater_2400-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-2400/source-files-FRITZ.Repeater_2400-07.56.tar.gz)
  * fritzrepeater-3000/
    - [source-files-FRITZ.Repeater_3000-07.50.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-07.50.tar.gz)
+   - [source-files-FRITZ.Repeater_3000-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000/source-files-FRITZ.Repeater_3000-07.56.tar.gz)
  * fritzrepeater-3000-ax/
    - [source-files-FRITZ.Repeater_3000_AX-07.41.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-07.41.tar.gz)
    - [source-files-FRITZ.Repeater_3000_AX-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-3000-ax/source-files-FRITZ.Repeater_3000_AX-07.56.tar.gz)
  * fritzrepeater-6000/
    - [source-files-FRITZ.Repeater_6000-07.30.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.30.tar.gz)
+   - [source-files-FRITZ.Repeater_6000-07.56.tar.gz](https://osp.avm.de/fritzwlan/fritzrepeater-6000/source-files-FRITZ.Repeater_6000-07.56.tar.gz)
  * fritzsmart-gateway/
    - [source-files-FRITZ.Smart_Gateway-maple_lowmem-07.54.tar.gz](https://osp.avm.de/fritzwlan/fritzsmart-gateway/source-files-FRITZ.Smart_Gateway-maple_lowmem-07.54.tar.gz)
  * fritzwlan-repeater-1750e/
