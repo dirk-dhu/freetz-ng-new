@@ -37,6 +37,7 @@ config FREETZ_REPLACE_MODULE_AVAILABLE
 
 config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	bool
+	depends on ! FREETZ_KERNEL_AVM_CHAOTIC_PACK
 	depends on ! FREETZ_KERNEL_VERSION_4_1_38                                     # 07_1X-final 7581/7582
 	depends on !(FREETZ_KERNEL_VERSION_4_4_271  && FREETZ_AVM_SOURCE_1750_07_27)  # 07_51-labor 6820
 	depends on !(FREETZ_KERNEL_VERSION_4_4_271  && FREETZ_AVM_SOURCE_4040_07_29)  # 07_51-labor 4040/6850
@@ -44,4 +45,17 @@ config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	default y
 	help
 		There are no avm sources at all of this kernel version and thus no avmdiff, so unpatched vanilla is used.
+
+#		FREETZ_AVM_SOURCE_4060_07_30 || \
+
+config FREETZ_KERNEL_AVM_CHAOTIC_PACK
+	bool
+	depends on \
+		FREETZ_AVM_SOURCE_7581_07_15 || \
+		FREETZ_AVM_SOURCE_7510_07_30 || \
+		FREETZ_AVM_SOURCE_1209_07_30 || \
+		FREETZ_AVM_SOURCE_7539_07_56
+	default y
+	help
+		AVM used the "chaos theory" packing method and so these sources would waste to much time to integrate.
 
