@@ -505,8 +505,7 @@ Currently supported devices and firmwares
 * __Fritz!Repeater 2400__
   - 169.07.12 rev71975 {ALL} [MESH18 NL2]
   - 169.07.29 rev93265 {ALL} [PSQ19P2NL4]
-  - 169.07.50 rev102232 {ALL} [MOVE21]
-  - 169.07.51 rev105213 {ALL} [MOVE21NL1] (Inhaus)
+  - 169.07.56 rev106938 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000__
   - 174.07.04 rev66458 {ALL}
   - 174.07.14 rev73940 {ALL} [MESH18 NL4]

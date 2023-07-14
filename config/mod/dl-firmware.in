@@ -315,8 +315,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Repeater_2400-07.12.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Repeater_2400-07.29.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Repeater_2400-07.50.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Repeater_2400-07.51-105213-Inhaus.image"                                if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_51_INHAUS
+	default "FRITZ.Repeater_2400-07.56.image"                                              if FREETZ_TYPE_2400 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "fritz.box_sl_wlan.09.04.34.image"                                             if FREETZ_TYPE_3020
 	#
