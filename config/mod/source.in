@@ -46,8 +46,6 @@ config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	help
 		There are no avm sources at all of this kernel version and thus no avmdiff, so unpatched vanilla is used.
 
-#		FREETZ_AVM_SOURCE_4060_07_30 || \
-
 config FREETZ_KERNEL_AVM_CHAOTIC_PACK
 	bool
 	depends on \
