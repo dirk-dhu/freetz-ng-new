@@ -402,8 +402,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_5530_Fiber-07.51-105311-LabBETA.image"                              if FREETZ_TYPE_5530 && FREETZ_TYPE_FIRMWARE_07_51_LABOR
 	#
 	default "FRITZ.Box_5590-07.30.image"                                                   if FREETZ_TYPE_5590 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_5590_Fiber-07.50.image"                                             if FREETZ_TYPE_5590 && FREETZ_TYPE_FIRMWARE_07_5X
-	default "FRITZ.Box_5590_Fiber-07.51-105310-LabBETA.image"                              if FREETZ_TYPE_5590 && FREETZ_TYPE_FIRMWARE_07_51_LABOR
+	default "FRITZ.Box_5590_Fiber-07.56.image"                                             if FREETZ_TYPE_5590 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Repeater_6000-07.30.image"                                              if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Repeater_6000-07.56.image"                                              if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_5X
@@ -701,7 +700,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	default "fritzbox-4040-labor-104930.zip"          if FREETZ_TYPE_4040
 	default "fritzbox-4060-labor-105129.zip"          if FREETZ_TYPE_4060
 	default "fritzbox-5530-fiber-labor-105311.zip"    if FREETZ_TYPE_5530
-	default "fritzbox-5590-fiber-labor-105310.zip"    if FREETZ_TYPE_5590
 	default "fritzbox-6490-labor-105260.zip"          if FREETZ_TYPE_6490
 	default "fritzbox-6590-labor-105261.zip"          if FREETZ_TYPE_6590
 	default "fritzbox-6820v2_lte-labor-105253.zip"    if FREETZ_TYPE_6820_V2
