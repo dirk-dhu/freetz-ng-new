@@ -1,5 +1,12 @@
 # NEWS
 
+ * __[2023-07-04](#2023-07-04)__<a id='2023-07-04'></a><br>
+   Für Kernelmodule gibt es die neue ".ko-on"-Option im menuconfig. Diese sorgt dafür dass im Kernel automatisch<br>
+   Module aus Freetz heraus ausgewählt werden. Da nicht alle möglichen Kombinationen geprüft wurden kann es zu<br>
+   Warnungen wegen unbekannte Symbole oder gar Compilierfehlern kommen. Dann sollte `FREETZ_MODULES_KOON`<br>
+   deaktiviert werden und die Module manuell wie vorher im `kernel-menuconfig` konfiguriert werden.<br>
+   Siehe [0196e188](https://github.com/Freetz-NG/freetz-ng/commit/0196e18884a7c48b8e0c79b60ad0eb6da4985d48)<br>
+
  * __[2023-06-09](#2023-06-09)__<a id='2023-06-09'></a><br>
    Diese Woche hat AVM für die ersten Geräte Fritzos 7.56 freigegeben, nachdem aufgefallen ist dass lediglich 1<br>
    der 2 neuen Features nutzbar war. Die neuen 7.56 Sourcecodekonglomerate gibt es auch schon und für 7590 ac<br>
