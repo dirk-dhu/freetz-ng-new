@@ -1,4 +1,4 @@
-# FreeType (freetype.so) 2.13.0
+# FreeType (freetype.so) 2.13.1
  - Homepage: [https://freetype.org](https://freetype.org)
  - Manpage: [https://freetype.org/freetype2/docs/documentation.html](https://freetype.org/freetype2/docs/documentation.html)
  - Changelog: [https://freetype.org/index.html#news](https://freetype.org/index.html#news)
