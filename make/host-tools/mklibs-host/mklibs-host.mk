@@ -10,6 +10,7 @@ $(PKG)_SITE:=http://deb.debian.org/debian/pool/main/m/mklibs
 $(PKG)_DEPENDS_ON+=python3-host
 
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build/bin
+
 $(PKG)_SCRIPT:=$($(PKG)_DIR)/src/mklibs
 $(PKG)_TARGET_SCRIPT:=$($(PKG)_DESTDIR)/mklibs
 $(PKG)_READELF_BINARY:=$($(PKG)_DIR)/src/mklibs-readelf/mklibs-readelf

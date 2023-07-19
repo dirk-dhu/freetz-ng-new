@@ -8,10 +8,11 @@ $(PKG)_SITE:=https://ftp.debian.org/debian/pool/main/f/fakeroot
 ### CHANGES:=https://launchpad.net/debian/+source/fakeroot/+changelog
 ### CVSREPO:=https://github.com/openwrt/openwrt/tree/master/tools/fakeroot/patches
 
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
+
 $(PKG)_MAINARCH_DIR:=$($(PKG)_DIR)/build/arch
 $(PKG)_BIARCH_DIR:=$($(PKG)_DIR)/build/biarch
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 $(PKG)_MAINARCH_LD_PRELOAD_PATH:=$($(PKG)_DESTDIR)/lib
 $(PKG)_BIARCH_LD_PRELOAD_PATH:=$($(PKG)_DESTDIR)/lib32
 $(PKG)_TARGET_SCRIPT:=$($(PKG)_DESTDIR)/bin/fakeroot

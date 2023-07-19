@@ -3,13 +3,13 @@ $(PKG)_SOURCE:=busybox-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=b8cc24c9574d809e7279c3be349795c5d5ceb6fdf19ca709f80cde50e47de314
 $(PKG)_SITE:=https://www.busybox.net/downloads
 
+$(PKG)_DEPENDS_ON:=tar-host
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/busybox
 $(PKG)_TARGET_DIR:=$(TOOLS_DIR)
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/busybox
 
 $(PKG)_CONFIG_FILE:=$($(PKG)_MAKE_DIR)/Config.busybox
-
-$(PKG)_DEPENDS_ON:=tar-host
 
 
 define $(PKG)_CUSTOM_UNPACK

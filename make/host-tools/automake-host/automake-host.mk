@@ -8,6 +8,8 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://ftp.gnu.org/gnu/automake/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/automake.git
 
+$(PKG)_DEPENDS_ON+=autoconf-host
+
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_LINKS                 := aclocal automake
@@ -19,8 +21,6 @@ $(PKG)_LINKS_TARGET_DIR      := $($(PKG)_LINKS:%=$($(PKG)_DESTDIR)/bin/%)
 $(PKG)_BINARIES_TARGET_DIR   := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
 $(PKG)_SHARES_TARGET_DIR_FEW := $($(PKG)_SHARES_FEW:%=$($(PKG)_DESTDIR)/share/%/)
 $(PKG)_SHARES_TARGET_DIR_ALL := $($(PKG)_SHARES_ALL:%=$($(PKG)_DESTDIR)/share/%/)
-
-$(PKG)_DEPENDS_ON+=autoconf-host
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(AUTOCONF_HOST_DESTDIR)
 

@@ -7,12 +7,12 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://mirrors.ocf.berkeley.edu/gnu/libtool/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/libtool.git
 
+$(PKG)_DEPENDS_ON+=autoconf-host
+
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_BINARIES            := libtool libtoolize
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
-
-$(PKG)_DEPENDS_ON+=autoconf-host
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(LIBTOOL_HOST_DESTDIR)
 

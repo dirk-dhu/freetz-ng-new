@@ -4,16 +4,17 @@ $(PKG)_SOURCE:=kconfig-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=56acbc6022f831ecb965090dcfe0e245e671af4584130983c29e02aa4bc088e4
 $(PKG)_SITE:=git_archive@git://repo.or.cz/linux.git,scripts/basic,scripts/kconfig,scripts/Kbuild.include,scripts/Makefile.compiler,scripts/Makefile.build,scripts/Makefile.host,scripts/Makefile.lib,Documentation/kbuild/kconfig-language.rst,Documentation/kbuild/kconfig-macro-language.rst,Documentation/kbuild/kconfig.rst
 
+$(PKG)_DEPENDS_ON:=
+
+$(PKG)_BUILD_PREREQ += bison flex
+$(PKG)_BUILD_PREREQ_HINT := You have to install the bison and flex packages
+
 $(PKG)_TARGET_DIR:=$(TOOLS_DIR)/kconfig
 $(PKG)_TARGET_DEF := conf   mconf
 $(PKG)_TARGET_PRG := conf   mconf      nconf   gconf   gconf.glade qconf
 $(PKG)_TARGET_ARG := config menuconfig nconfig gconfig gconfig     xconfig
 $(PKG)_TARGET_ALL := $(join $(KCONFIG_HOST_TARGET_ARG),$(patsubst %,--%,$(KCONFIG_HOST_TARGET_PRG)))
 
-$(PKG)_BUILD_PREREQ += bison flex
-$(PKG)_BUILD_PREREQ_HINT := You have to install the bison and flex packages
-
-$(PKG)_DEPENDS_ON:=
 
 $(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_TOOLS_KCONFIG_BUTTONS),buttons)
 $(PKG)_REBUILD_SUBOPTS += FREETZ_TOOLS_KCONFIG_BUTTONS

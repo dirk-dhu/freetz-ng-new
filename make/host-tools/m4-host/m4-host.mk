@@ -7,6 +7,8 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=http://ftp.gnu.org/gnu/m4/
 ### CVSREPO:=http://git.savannah.gnu.org/gitweb/?p=m4.git
 
+$(PKG)_DEPENDS_ON+=pkgconf-host
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/m4
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/build/bin/m4
 

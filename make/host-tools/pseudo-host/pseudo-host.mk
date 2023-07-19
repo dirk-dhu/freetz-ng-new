@@ -8,13 +8,14 @@ $(PKG)_SITE:=git@https://git.yoctoproject.org/git/pseudo
 ### CHANGES:=http://git.yoctoproject.org/cgit.cgi/pseudo/log/?h=oe-core
 ### CVSREPO:=http://git.yoctoproject.org/cgit.cgi/pseudo/
 
+$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
+
 $(PKG)_MAINARCH_NAME:=arch
 $(PKG)_BIARCH_NAME:=biarch
 
 $(PKG)_MAINARCH_DIR:=$($(PKG)_DIR)/$($(PKG)_MAINARCH_NAME)
 $(PKG)_BIARCH_DIR:=$($(PKG)_DIR)/$($(PKG)_BIARCH_NAME)
 
-$(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 $(PKG)_MAINARCH_LD_PRELOAD_PATH:=$($(PKG)_DESTDIR)/lib
 $(PKG)_BIARCH_LD_PRELOAD_PATH:=$($(PKG)_DESTDIR)/lib64
 $(PKG)_TARGET_MAINARCH_LIB:=$($(PKG)_MAINARCH_LD_PRELOAD_PATH)/libpseudo.so

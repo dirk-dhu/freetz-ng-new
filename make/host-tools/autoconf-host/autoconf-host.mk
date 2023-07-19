@@ -7,13 +7,13 @@ $(PKG)_SITE:=@GNU/$(pkg_short)
 ### CHANGES:=https://ftp.gnu.org/gnu/autoconf/
 ### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=autoconf.git
 
+$(PKG)_DEPENDS_ON+=m4-host
+
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_BUILD_DIR)
 
 $(PKG)_BINARIES            := autoconf autoheader autom4te autoreconf autoscan autoupdate ifnames
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
 $(PKG)_SHARE_TARGET_DIR    := $($(PKG)_DESTDIR)/share/autoconf
-
-$(PKG)_DEPENDS_ON+=m4-host
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(AUTOCONF_HOST_DESTDIR)
 

@@ -3,9 +3,9 @@ $(PKG)_SOURCE:=scons-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=0b25218ae7b46a967db42f2a53721645b3d42874a65f9552ad16ce26d30f51f2
 $(PKG)_SITE:=@SF/scons
 
-$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/scons
-
 $(PKG)_DEPENDS_ON+=python2-host
+
+$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/scons
 
 
 $(TOOLS_SOURCE_DOWNLOAD)

@@ -7,11 +7,11 @@ $(PKG)_SITE:=https://github.com/mesonbuild/meson/releases/download/$($(PKG)_VERS
 ### CHANGES:=https://github.com/mesonbuild/meson/releases
 ### CVSREPO:=https://github.com/mesonbuild/meson
 
-$(PKG)_BINARY:=$($(PKG)_DIR)/meson.pyz
-$(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/meson
-
 $(PKG)_DEPENDS_ON+=python3-host
 $(PKG)_DEPENDS_ON+=ninja-host
+
+$(PKG)_BINARY:=$($(PKG)_DIR)/meson.pyz
+$(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/meson
 
 
 $(TOOLS_SOURCE_DOWNLOAD)

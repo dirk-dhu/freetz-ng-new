@@ -8,6 +8,8 @@ $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSIO
 ### CHANGES:=https://github.com/Kitware/CMake/releases
 ### CVSREPO:=https://gitlab.kitware.com/cmake/cmake
 
+$(PKG)_DEPENDS_ON+=ninja-host
+
 $(PKG)_DESTDIR:=$(FREETZ_BASE_DIR)/$(TOOLS_DIR)/build
 
 $(PKG)_BINARIES            := ccmake cmake cpack ctest
@@ -15,7 +17,6 @@ $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DESTDIR)/bin/%)
 $(PKG)_SHARE_TARGET_DIR    := $($(PKG)_DESTDIR)/share/$(pkg_short)-$($(PKG)_MAJOR_VERSION)
 $(PKG)_DOC_TARGET_DIR      := $($(PKG)_DESTDIR)/doc/$(pkg_short)-$($(PKG)_MAJOR_VERSION)
 
-$(PKG)_DEPENDS_ON+=ninja-host
 
 $(PKG)_CONFIGURE_OPTIONS += --prefix=$(CMAKE_HOST_DESTDIR)
 $(PKG)_CONFIGURE_OPTIONS += --generator=Ninja
