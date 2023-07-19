@@ -70,6 +70,26 @@
    gibt dennoch keine Funktionsgarantie füe diese veralteten Systeme.<br>
    Siehe [d5e0121d](https://github.com/Freetz-NG/freetz-ng/commit/d5e0121d94c7835e44fb9c83f8f1dc291f6a6bb7)<br>
 
+ * __[2023-01-26](#2023-01-26)__<a id='2023-01-26'></a><br>
+   Es werden die 3 neue Buildsysteme Meson, Ninja und Cmake unterstützt.<br>
+    - Meson<br>
+      Beispiele:
+      [cairo](../make/libs/cairo/cairo.mk) /
+      [glib2](../make/libs/glib2/glib2.mk) /
+      [pango](../make/libs/pango/pango.mk)<br>
+      Siehe [801e7cf7](https://github.com/Freetz-NG/freetz-ng/commit/801e7cf71c630e8ea06d13cefbb96dc2fcff183c)<br>
+    - Ninja<br>
+      Beispiele:
+      [cmake](../make/host-tools/cmake-host/cmake-host.mk)<br>
+      Siehe [947cfa8c](https://github.com/Freetz-NG/freetz-ng/commit/947cfa8cadb0b5f0794e0e8fe8c48ef450e882b2)<br>
+    - Cmake<br>
+      Beispiele:
+      [getdns](../make/pkgs/getdns/getdns.mk) /
+      [openjp2](../make/libs/openjp2/openjp2.mk) /
+      [libdeflate](../make/libs/libdeflate/libdeflate.mk) /
+      [transmission](../make/pkgs/transmission/transmission.mk)<br>
+      Siehe [d8450e6a](https://github.com/Freetz-NG/freetz-ng/commit/d8450e6a234f666a1b1dbd638b7aefd2c75f6085)<br>
+
  * __[2023-01-14](#2023-01-14)__<a id='2023-01-14'></a><br>
    Mit `tools/prerequisites` können alle nötigen Packages für das laufende Linux angezeigt und installiert werden.<br>
    Es werden die Packages verwendet die auch unter [PREREQUISITES](https://freetz-ng.github.io/freetz-ng/PREREQUISITES) zu sehen sind<br>
