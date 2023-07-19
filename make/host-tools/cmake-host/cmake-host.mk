@@ -1,7 +1,7 @@
-$(call TOOLS_INIT, 3.26.4)
+$(call TOOLS_INIT, 3.27.0)
 $(PKG)_MAJOR_VERSION:=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 $(PKG)_SOURCE:=$(pkg_short)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=313b6880c291bd4fe31c0aa51d6e62659282a521e695f30d5cc0d25abbd5c208
+$(PKG)_HASH:=aaeddb6b28b993d0a6e32c88123d728a17561336ab90e0bf45032383564d3cb8
 $(PKG)_SITE:=https://github.com/Kitware/CMake/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://cmake.org/
 ### MANPAGE:=https://cmake.org/cmake/help/latest/
