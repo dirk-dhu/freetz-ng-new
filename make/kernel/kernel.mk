@@ -171,8 +171,7 @@ ifeq ($(strip $(FREETZ_KERNEL_VERSION_2_MAX)),y)
 else
 	$(SUBMAKE) $(KERNEL_COMMON_MAKE_OPTIONS) olddefconfig
 endif
-	-cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && \
-	grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@
+	@cp -f $(KERNEL_SOURCE_DIR)/.config $(KERNEL_CONFIG_FILE) && grep '^FREETZ_MODULE_' $(TOPDIR)/.config > $@ || true
 
 $(KERNEL_DIR)/.prepared: $(KERNEL_DIR)/.configured
 	@$(call _ECHO,preparing,$(KERNEL_ECHO_TYPE))
