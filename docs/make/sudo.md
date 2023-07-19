@@ -1,4 +1,4 @@
-# Sudo 1.9.14p1 (binary only)
+# Sudo 1.9.14p2 (binary only)
  - Homepage: [https://www.sudo.ws/](https://www.sudo.ws/)
  - Manpage: [https://www.sudo.ws/docs/man/sudoers.man/](https://www.sudo.ws/docs/man/sudoers.man/)
  - Changelog: [https://www.sudo.ws/releases/stable/](https://www.sudo.ws/releases/stable/)
