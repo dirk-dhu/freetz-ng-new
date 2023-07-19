@@ -96,7 +96,7 @@ Latest changes
    * SQLite 3.42.0
    * strace 4.9/5.0/6.4
    * Stunnel 5.70
-   * Sudo 1.9.14p1
+   * Sudo 1.9.14p2
    * Transmission 3.00/4.0.3
    * UnRAR 6.1.7/6.2.8
    * vnstat 1.18
