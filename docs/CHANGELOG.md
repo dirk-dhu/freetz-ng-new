@@ -56,6 +56,7 @@ Latest changes
    * kconfig 6.4
    * libtool 2.4.7
    * m4 1.4.19
+   * meson 1.2.0
    * make 4.4.1
    * pkgconf 1.9.5
    * precompiled host-tools 2023-07-12
