@@ -52,7 +52,7 @@ Latest changes
  - Host tools:
    * autoconf 2.71
    * automake 1.16.5
-   * fakeroot 1.32
+   * fakeroot 1.32.1
    * kconfig 6.4
    * libtool 2.4.7
    * m4 1.4.19
