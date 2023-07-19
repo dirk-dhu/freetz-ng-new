@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -18527,7 +18527,7 @@
+@@ -18531,7 +18531,7 @@
        GNU_C)
          #
                          if test "$compiler_num" -ge "295"; then
