@@ -59,7 +59,7 @@ Latest changes
    * meson 1.2.0
    * make 4.4.1
    * pkgconf 1.9.5
-   * precompiled host-tools 2023-07-12
+   * precompiled host-tools 2023-07-20
    * python 3.11.4
    * u-boot 2023.07.02
 
