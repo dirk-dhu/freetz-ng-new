@@ -61,6 +61,7 @@ Latest changes
    * pkgconf 1.9.5
    * precompiled host-tools 2023-07-12
    * python 3.11.4
+   * u-boot 2023.07.02
 
  - AVM sources:
    * 1200 ac 7.50 - 4.4.271
