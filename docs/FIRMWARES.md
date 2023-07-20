@@ -105,7 +105,7 @@ Currently supported devices and firmwares
   - 155.07.56 rev107025 {ALL} [MOVE21NL1]
 * __Fritz!Box 4060__
   - 261.07.30 rev95826 {ALL} [PSQ19P2NL4]
-  - 261.07.51 rev105129 {ALL} [MOVE21NL1] (Labor)
+  - 261.07.56 rev107026 {ALL} [MOVE21NL1]
 
 ### Fritz!Box Fon (50xx/51xx)
 
