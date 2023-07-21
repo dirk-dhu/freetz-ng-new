@@ -38,6 +38,7 @@ TOOLS_CONDITIONAL+=mpfr-host
 TOOLS_CONDITIONAL+=ninja-host
 TOOLS_CONDITIONAL+=lzma1-host
 TOOLS_CONDITIONAL+=lzma2-host
+TOOLS_CONDITIONAL+=openssl-host
 TOOLS_CONDITIONAL+=python2-host
 TOOLS_CONDITIONAL+=python3-host
 TOOLS_CONDITIONAL+=scons-host
@@ -64,6 +65,7 @@ TOOLS_BUILD_LOCAL+=gmp-host
 TOOLS_BUILD_LOCAL+=kconfig-host
 TOOLS_BUILD_LOCAL+=mpc-host
 TOOLS_BUILD_LOCAL+=mpfr-host
+TOOLS_BUILD_LOCAL+=openssl-host
 
 # until next host-tools update
 #TOOLS_BUILD_LOCAL+=...

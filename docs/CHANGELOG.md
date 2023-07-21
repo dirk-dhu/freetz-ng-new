@@ -58,6 +58,7 @@ Latest changes
    * m4 1.4.19
    * meson 1.2.0
    * make 4.4.1
+   * openssl 3.0.9
    * pkgconf 1.9.5
    * precompiled host-tools 2023-07-20
    * python 3.11.4
