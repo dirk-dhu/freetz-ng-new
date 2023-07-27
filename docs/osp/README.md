@@ -342,7 +342,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Box_scrpn_7490-07.19.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_scrpn_7490-07.19.tar.gz)
    - [source-files-FRITZ.Box_scrpn_7490-07.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_scrpn_7490-07.21.tar.gz)
  * fritzbox-7510/
-   - [source-files-FRITZ.Box_7510-maple-07.30.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7510/source-files-FRITZ.Box_7510-maple-07.30.tar.gz)
+   - [source-files-FRITZ.Box_7510-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7510/source-files-FRITZ.Box_7510-07.56.tar.gz)
  * fritzbox-7520/
    - [sources-files-FRITZ.Box_7520-07.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7520/sources-files-FRITZ.Box_7520-07.21.tar.gz)
  * fritzbox-7530/
