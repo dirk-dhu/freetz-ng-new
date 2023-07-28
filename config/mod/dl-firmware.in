@@ -458,16 +458,16 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_6842_LTE.123.06.34.image"                                           if FREETZ_TYPE_6842 && FREETZ_TYPE_FIRMWARE_06_2X
 	#
 	default "FRITZ.Box_6850_LTE-07.29.image"                                               if FREETZ_TYPE_6850_4G && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6850_LTE-07.51-105254-LabBETA.image"                                if FREETZ_TYPE_6850_4G && FREETZ_TYPE_FIRMWARE_07_51_LABOR
+	default "FRITZ.Box_6850_LTE-07.51-105254-LabBETA.image"                                if FREETZ_TYPE_6850_4G && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "FRITZ.Box_6850_5G-07.30.image"                                                if FREETZ_TYPE_6850_5G && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6850_5G-07.51-105255-LabBETA.image"                                 if FREETZ_TYPE_6850_5G && FREETZ_TYPE_FIRMWARE_07_51_LABOR
+	default "FRITZ.Box_6850_5G-07.51-105255-LabBETA.image"                                 if FREETZ_TYPE_6850_5G && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.06.87.image"                      if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_06_8X
 	default "FRITZ.Box_6890_LTE.en-de-es-it-fr-pl-nl.162.07.03.image"                      if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Box_6890_LTE-en-de-es-it-fr-pl-nl-07.13.image"                          if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_6890_LTE-07.29.image"                                               if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6890_LTE-07.51-105257-LabBETA.image"                                if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_07_51_LABOR
+	default "FRITZ.Box_6890_LTE-07.51-105257-LabBETA.image"                                if FREETZ_TYPE_6890 && FREETZ_TYPE_FIRMWARE_07_5X_LABOR
 	#
 	default "fritz.box_fon_wlan_7050.14.04.33.image"                                       if FREETZ_TYPE_7050
 	#
