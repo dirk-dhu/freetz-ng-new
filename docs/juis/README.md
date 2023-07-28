@@ -81,6 +81,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 213: [FRITZ.Box_6490_Cable-07.56.image](http://download.avm.de/fritzbox/fritzbox-6490-cable/deutschland/fritz.os/FRITZ.Box_6490_Cable-07.56.image)
  - HWR 220: [FRITZ.Box_6590_Cable-07.56.image](http://download.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.56.image)
  - HWR 227: [FRITZ.Box_4040-07.51-107023-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/4040/FRITZ.Box_4040-07.51-107023-LabBETA.image)
+ - HWR 229: [FRITZ.Powerline_1260E.157.07.56.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260e/deutschland/fritz.os/FRITZ.Powerline_1260E.157.07.56.image)
  - HWR 234: [FRITZ.Box_6890_LTE-07.51-106700-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-106700-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.51-106682-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6820v3LTE/FRITZ.Box_6820v3_LTE-07.51-106682-LabBETA.image)
