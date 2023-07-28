@@ -443,7 +443,7 @@ config FREETZ_DL_SOURCE
 	#
 	default "FRITZ.Box_6820v2_LTE-de-en-es-it-fr-pl-07.13.image"                           if FREETZ_TYPE_6820_V2 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_6820v2_LTE-07.29.image"                                             if FREETZ_TYPE_6820_V2 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_6820v2_LTE-07.51-105253-LabBETA.image"                              if FREETZ_TYPE_6820_V2 && FREETZ_TYPE_FIRMWARE_07_51_LABOR
+	default "FRITZ.Box_6820v2_LTE-07.56.image"                                             if FREETZ_TYPE_6820_V2 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_6820v3_LTE-07.29.image"                                             if FREETZ_TYPE_6820_V3 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_6820v3_LTE-07.51-105250-LabBETA.image"                              if FREETZ_TYPE_6820_V3 && FREETZ_TYPE_FIRMWARE_07_51_LABOR
@@ -695,7 +695,6 @@ config FREETZ_DL_SOURCE_CONTAINER
 	string "Downloaded container file"                if FREETZ_DL_OVERRIDE
 	depends                                           on FREETZ_TYPE_FIRMWARE_LABOR && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	#
-	default "fritzbox-6820v2_lte-labor-105253.zip"    if FREETZ_TYPE_6820_V2
 	default "fritzbox-6820v3_lte-labor-105250.zip"    if FREETZ_TYPE_6820_V3
 	default "fritzbox-6850_5g-labor-105255.zip"       if FREETZ_TYPE_6850_5G
 	default "fritzbox-6850_lte-labor-105254.zip"      if FREETZ_TYPE_6850_4G
