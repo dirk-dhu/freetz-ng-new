@@ -189,7 +189,7 @@ Currently supported devices and firmwares
   - 142.07.56 rev106802 {INT} [MOVE21NL1]
 * __Fritz!Box 6820 v3 LTE (UNTESTED)__
   - 254.07.29 rev92400 {GER} [PSQ19P2NL4]
-  - 254.07.51 rev105250 {GER} [MOVE21NL1] (Labor)
+  - 254.07.56 rev106803 {GER} [MOVE21NL1]
 
 * __Fritz!Box 6840 LTE__
   - 105.06.30 rev31187 {GER}
