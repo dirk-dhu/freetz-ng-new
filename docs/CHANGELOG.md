@@ -86,7 +86,7 @@ Latest changes
    * Bftpd 6.1
    * BIND 9.11.37/9.16.42
    * CA-bundle 2023-05-30
-   * Curl 8.2.0
+   * Curl 8.2.1
    * Git 2.41.0
    * HAProxy 2.6.14
    * iPerf3 3.3/3.14
