@@ -40,8 +40,8 @@ config FREETZ_KERNEL_AVMDIFF_AVAILABLE
 	depends on ! FREETZ_KERNEL_VERSION_4_1_38                                              # 07_1X-final 7581/7582 (corrupt)
 	depends on !(FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_MAPLE && FREETZ_AVM_VERSION_07_2X_MAX)  # 07_2X-final 7510/1209 (corrupt)
 	depends on !(FREETZ_AVM_SOURCE_FOR_SYSTEM_TYPE_PUMA6 && FREETZ_AVM_VERSION_07_5X_MIN)  # 07_5X-final 6490/6590
-	depends on !(FREETZ_KERNEL_VERSION_4_4_271           && FREETZ_AVM_SOURCE_4040_07_29)  # 07_51-labor 4040/6850
-	depends on !(FREETZ_KERNEL_VERSION_4_4_271           && FREETZ_AVM_SOURCE_1750_07_27)  # 07_51-labor 6820
+	depends on !(FREETZ_KERNEL_VERSION_4_4_271           && FREETZ_AVM_SOURCE_4040_07_29)  # 07_5X-final 4040/6850
+	depends on !(FREETZ_KERNEL_VERSION_4_4_271           && FREETZ_AVM_SOURCE_1750_07_27)  # 07_5X-final 6820
 	depends on ! FREETZ_KERNEL_VERSION_4_19_183                                            # 07_5X-final 7539 (corrupt)
 	default y
 	help
