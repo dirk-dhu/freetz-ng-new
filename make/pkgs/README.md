@@ -836,7 +836,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Slurm 0.3.3 (binary only)</u><a id='slurm'></a>**<br>
     slurm - yet another network load monitor slurm started as a FreeBSD port of the Linux ppp link monitor called pppstatus by Gabriel Montenegro. features: - "realtime" traffic statistics - three graph modes: combined RX and TX and two split views - can monitor any network device - curses ascii graphics
 
-  * **[Smartmontools 7.3](../../docs/make/smartmontools.md)<a id='smartmontools'></a>**<br>
+  * **[Smartmontools 7.4](../../docs/make/smartmontools.md)<a id='smartmontools'></a>**<br>
     Smartmontools contains utility programs (smartctl, smartd) to control/monitor storage systems using the Self-Monitoring, Analysis and Reporting Technology System (S.M.A.R.T.) built into most modern ATA and SCSI disks. It is derived from smartsuite.
 
   * **[smstools3 3.1.21](../../docs/make/smstools3.md)<a id='smstools3'></a>**<br>

@@ -1,4 +1,4 @@
-# Smartmontools 7.3
+# Smartmontools 7.4
  - Homepage: [https://www.smartmontools.org/](https://www.smartmontools.org/)
  - Manpage: [https://www.smartmontools.org/wiki/TocDoc](https://www.smartmontools.org/wiki/TocDoc)
  - Changelog: [https://www.smartmontools.org/browser/trunk/smartmontools/NEWS](https://www.smartmontools.org/browser/trunk/smartmontools/NEWS)
