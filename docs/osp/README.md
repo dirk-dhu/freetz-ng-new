@@ -71,9 +71,11 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Box_4040-07.12.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.12.tar.gz)
    - [source-files-FRITZ.Box_4040-07.14.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.14.tar.gz)
    - [source-files-FRITZ.Box_4040-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.29.tar.gz)
+   - [source-files-FRITZ.Box_4040-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.56.tar.gz)
  * fritzbox-4060/
    - [source-files-FRITZ.Box_4060-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4060/source-files-FRITZ.Box_4060-07.29.tar.gz)
    - [source-files-FRITZ.Box_4060-07.30.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4060/source-files-FRITZ.Box_4060-07.30.tar.gz)
+   - [source-files-FRITZ.Box_4060-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4060/source-files-FRITZ.Box_4060-07.56.tar.gz)
  * fritzbox-5490/
    - [source-files-FRITZ.Box_5490-06.51.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5490/source-files-FRITZ.Box_5490-06.51.tar.gz)
    - [source-files-FRITZ.Box_5490-06.52.tar.gz](https://osp.avm.de/fritzbox/fritzbox-5490/source-files-FRITZ.Box_5490-06.52.tar.gz)
@@ -185,6 +187,10 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [fritz_box_6810_source_files.06.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6810-lte/fritz_box_6810_source_files.06.21.tar.gz)
  * fritzbox-6820-lte/
    - [source-files-FRITZ.Box_6820_LTE-07.13.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte/source-files-FRITZ.Box_6820_LTE-07.13.tar.gz)
+ * fritzbox-6820-lte-v2/
+   - [source-files-FRITZ.Box_6820_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v2/source-files-FRITZ.Box_6820_LTE-07.56.tar.gz)
+ * fritzbox-6820-lte-v3/
+   - [source-files-FRITZ.Box_6820v3_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v3/source-files-FRITZ.Box_6820v3_LTE-07.56.tar.gz)
  * fritzbox-6840-lte/
    - [fritz_box_6840_source_files.05.09.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/fritz_box_6840_source_files.05.09.tar.gz)
    - [fritz_box_6840_source_files.05.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/fritz_box_6840_source_files.05.50.tar.gz)
