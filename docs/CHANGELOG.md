@@ -101,6 +101,7 @@ Latest changes
    * pptp 1.10.0
    * psl 0.21.2
    * pyLoad 0.4.20/9b358adf
+   * Smartmontools 7.4
    * SQLite 3.42.0
    * strace 4.9/5.0/6.4
    * Stunnel 5.70
