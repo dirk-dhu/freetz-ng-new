@@ -58,7 +58,7 @@ echo -e '\n### BPjM #######################################################'
 [ ! -s bpjm ] || curl -sS "$(sed -n 's/.*=//p' bpjm)" -o bpjm.out
 read="$(head -c4 bpjm.out | xxd -p)"
 calc="$($CRC32 <( tail -c +$((1 + 4)) bpjm.out ))"
-[ "$read" != "$calc" ] && comp="mismatch $read/$calc" || comp="$read"
+[ "$read" != "${calc%% *}" ] && comp="mismatch $read/$calc" || comp="$read"
 sed -i "s/.*=/$comp=/" bpjm
 
 
