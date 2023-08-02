@@ -9,7 +9,7 @@ CRAP_FILTER="5382169925"
 
 #crc32
 [ -e "$TOOLS/crc32" ] && CRC32="$TOOLS/crc32" || CRC32="$(which crc32)"
-[  -x "$CRC32" ] && echo "You have to install 'crc32' or run 'make tools' first." && exit 1
+[ ! -x "$CRC32" ] && echo "You have to install 'crc32' or run 'make tools' first." && exit 1
 
 #rel
 echo -e '\n### FOS-Release ################################################'
