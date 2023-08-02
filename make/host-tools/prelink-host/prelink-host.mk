@@ -9,6 +9,8 @@ $(PKG)_SITE:=https://people.redhat.com/jakub/prelink
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/execstack
 $(PKG)_TARGET_BINARY:=$(TOOLS_DIR)/execstack
 
+$(PKG)_CONFIGURE_PRE_CMDS += $(AUTORECONF)
+
 # fakeroot & pseudo cant handle selinux
 $(PKG)_CONFIGURE_ENV += ac_cv_lib_selinux_is_selinux_enabled=no
 
