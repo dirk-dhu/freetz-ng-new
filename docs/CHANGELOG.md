@@ -64,6 +64,7 @@ Latest changes
    * precompiled host-tools 2023-07-20
    * python 3.11.4
    * u-boot 2023.07.02
+   * xz 5.4.4
 
  - AVM sources:
    * 1200 ac 7.50 - 4.4.271
@@ -113,6 +114,7 @@ Latest changes
    * Wget GNU 1.21.4
    * wput 0.6.2
    * xsltproc 1.1.38
+   * XZ Utils 5.4.4
 
  - Libraries:
    * FreeType 2.13.1
