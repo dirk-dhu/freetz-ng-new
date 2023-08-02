@@ -59,7 +59,7 @@ Latest changes
    * m4 1.4.19
    * meson 1.2.0
    * make 4.4.1
-   * openssl 3.0.9
+   * openssl 3.0.10
    * pkgconf 1.9.5
    * precompiled host-tools 2023-07-20
    * python 3.11.4
@@ -96,7 +96,7 @@ Latest changes
    * minidlna 1.3.3
    * NZBGet 21.1/21.4-rc1
    * OpenSSH 9.3p2
-   * OpenSSL 0.9.8zh/1.0.2u/1.1.1u/3.0.9
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1v/3.0.10
    * OpenVPN 2.4.12/2.5.9/2.6.5
    * pptp 1.10.0
    * psl 0.21.2
