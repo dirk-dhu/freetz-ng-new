@@ -61,7 +61,7 @@ Latest changes
    * make 4.4.1
    * openssl 3.0.10
    * pkgconf 1.9.5
-   * precompiled host-tools 2023-07-20
+   * precompiled host-tools 2023-08-02
    * python 3.11.4
    * u-boot 2023.07.02
    * xz 5.4.4
