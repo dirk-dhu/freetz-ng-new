@@ -125,6 +125,7 @@ Latest changes
    * libpng 1.6.40
    * libssh2 1.11.0
    * libuv 1.44.2/1.46.0
+   * mbedTLS 2.7.19/2.28.4
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
