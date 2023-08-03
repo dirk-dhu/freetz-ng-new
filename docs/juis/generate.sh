@@ -9,7 +9,8 @@ CRAP_FILTER="5382169925"
 
 #crc32
 [ -e "$TOOLS/crc32" ] && CRC32="$TOOLS/crc32" || CRC32="$(which crc32)"
-[ ! -x "$CRC32" ] && echo "You have to install 'crc32' or run 'make tools' first." && exit 1
+[ -e "$TOOLS/xxd"   ] && XXD="$TOOLS/xxd"     || XXD="$(which xxd)"
+[ ! -x "$CRC32" -o ! -x "$XXD" ] && echo "You have to install 'crc32' and 'xxd' or run 'make tools' first." && exit 1
 
 #rel
 echo -e '\n### FOS-Release ################################################'
@@ -56,7 +57,7 @@ cat dect-lab | while read -s x; do sed "/\/${x##*/}$/d" -i          dect-inh; do
 echo -e '\n### BPjM #######################################################'
                              env - $TOOLS/juis_check --bpjm HW=252                                    -a       | tee bpjm
 [ ! -s bpjm ] || curl -sS "$(sed -n 's/.*=//p' bpjm)" -o bpjm.out
-read="$(head -c4 bpjm.out | xxd -p)"
+read="$(head -c4 bpjm.out | $XXD -p)"
 calc="$($CRC32 <( tail -c +$((1 + 4)) bpjm.out ))"
 [ "$read" != "${calc%% *}" ] && comp="mismatch $read/$calc" || comp="$read"
 sed -i "s/.*=/$comp=/" bpjm
