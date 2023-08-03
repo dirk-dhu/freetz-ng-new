@@ -120,7 +120,7 @@ Latest changes
    * FreeType 2.13.1
    * libdeflate 1.18
    * glib2 2.32.4/2.76.4
-   * harfbuzz 8.1.0
+   * harfbuzz 8.1.1
    * libnettle 3.9.1
    * libpng 1.6.40
    * libssh2 1.11.0
