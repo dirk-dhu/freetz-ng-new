@@ -80,8 +80,10 @@ rm -rf "$TEMPS"
 
 
 #duplicates
-cat fos-xxx | while read -s x; do sed "/^${x////\\/}$/d" -i fos-inh fos-lab; done
-cat fos-lab | while read -s x; do sed "/^${x////\\/}$/d" -i fos-inh; done
+cat fos-xxx  | while read -s x; do sed "/^${x////\\/}$/d" -i fos-inh  fos-lab  ; done
+cat fos-lab  | while read -s x; do sed "/^${x////\\/}$/d" -i fos-inh           ; done
+cat dect-rel | while read -s x; do sed "/^${x////\\/}$/d" -i dect-inh dect-lab ; done
+cat dect-lab | while read -s x; do sed "/^${x////\\/}$/d" -i dect-inh          ; done
 
 
 #gen
