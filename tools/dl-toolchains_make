@@ -131,7 +131,6 @@ esac
 
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6591    FREETZ_TYPE_FIRMWARE_07_0X"  # SEPARATE
 [ "$new" == "new" ] && dltc "FREETZ_TYPE_6660    FREETZ_TYPE_FIRMWARE_07_1X"  # SEPARATE
-[ "$new" == "new" ] && dltc "FREETZ_TYPE_6660    FREETZ_TYPE_FIRMWARE_07_2X"  # SEPARATE
 
 
 exit 0
