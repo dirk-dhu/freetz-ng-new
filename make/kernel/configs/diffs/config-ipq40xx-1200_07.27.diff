@@ -25,7 +25,7 @@
  CONFIG_FUSE_FS=y
  # CONFIG_CUSE is not set
  # CONFIG_OVERLAY_FS is not set
-@@ -3769,7 +3771,33 @@
+@@ -3769,7 +3771,32 @@
  CONFIG_PSTORE_RAM=y
  # CONFIG_SYSV_FS is not set
  # CONFIG_UFS_FS is not set
@@ -51,7 +51,6 @@
 +# CONFIG_CIFS_UPCALL is not set
 +# CONFIG_CIFS_XATTR is not set
 +# CONFIG_CIFS_DEBUG is not set
-+# CONFIG_CIFS_DEBUG2 is not set
 +# CONFIG_CIFS_DFS_UPCALL is not set
 +# CONFIG_CIFS_SMB2 is not set
 +# CONFIG_NCP_FS is not set
@@ -60,7 +59,7 @@
  CONFIG_NLS=y
  CONFIG_NLS_DEFAULT="iso8859-15"
  CONFIG_NLS_CODEPAGE_437=y
-@@ -4070,7 +4098,7 @@
+@@ -4070,7 +4097,7 @@
  #
  # Hash modes
  #
@@ -69,7 +68,7 @@
  CONFIG_CRYPTO_HMAC=y
  # CONFIG_CRYPTO_XCBC is not set
  # CONFIG_CRYPTO_VMAC is not set
-@@ -4083,7 +4111,7 @@
+@@ -4083,7 +4110,7 @@
  # CONFIG_CRYPTO_CRCT10DIF is not set
  CONFIG_CRYPTO_GHASH=y
  # CONFIG_CRYPTO_POLY1305 is not set

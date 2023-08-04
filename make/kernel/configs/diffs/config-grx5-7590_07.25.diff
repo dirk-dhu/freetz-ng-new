@@ -285,7 +285,7 @@
  CONFIG_GRACE_PERIOD=m
  CONFIG_LOCKD=m
  CONFIG_LOCKD_V4=y
-@@ -3036,7 +3192,13 @@
+@@ -3036,7 +3192,12 @@
  CONFIG_SUNRPC=m
  # CONFIG_SUNRPC_DEBUG is not set
  # CONFIG_CEPH_FS is not set
@@ -295,12 +295,11 @@
 +# CONFIG_CIFS_WEAK_PW_HASH is not set
 +# CONFIG_CIFS_XATTR is not set
 +# CONFIG_CIFS_DEBUG is not set
-+# CONFIG_CIFS_DEBUG2 is not set
 +# CONFIG_CIFS_SMB2 is not set
  # CONFIG_NCP_FS is not set
  # CONFIG_CODA_FS is not set
  # CONFIG_AFS_FS is not set
-@@ -3375,7 +3537,7 @@
+@@ -3375,7 +3536,7 @@
  # CONFIG_CRYPTO_CRCT10DIF is not set
  CONFIG_CRYPTO_GHASH=y
  # CONFIG_CRYPTO_POLY1305 is not set
