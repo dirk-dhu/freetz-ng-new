@@ -7,7 +7,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 
 ### FOS-Release
  - HWR 156: [FRITZ.Box_Fon_WLAN_7390-06.87.image](http://download.avm.de/fritzbox/fritzbox-7390/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7390-06.87.image)
- - HWR 168: [fritz.box_wlan_3270_v3.96.05.54.image](ftp://ftp.avm.de/archive/fritz.box/fritzbox.wlan_3270_v3/firmware/deutsch/fritz.box_wlan_3270_v3.96.05.54.image)
+ - HWR 168: [fritz.box_wlan_3270_v3.96.05.54.image](http://download.avm.de/archive/fritz.box/fritzbox.wlan_3270_v3/firmware/deutsch/fritz.box_wlan_3270_v3.96.05.54.image)
  - HWR 172: [FRITZ.Box_Fon_WLAN_7320-06.34.image](http://ftp.avm.de/archive/fritz.box/fritzbox.fon_wlan_7320/firmware/deutsch/FRITZ.Box_Fon_WLAN_7320-06.34.image)
  - HWR 173: [FRITZ.Box_WLAN_Repeater_300E-06.33.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-300e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_300E-06.33.image)
  - HWR 175: [FRITZ.Box_WLAN_3370-06.55.image](http://ftp.avm.de/archive/fritz.box/fritzbox.wlan_3370/firmware/deutsch/FRITZ.Box_WLAN_3370-06.55.image)
@@ -82,7 +82,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 220: [FRITZ.Box_6590_Cable-07.56.image](http://download.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.56.image)
  - HWR 227: [FRITZ.Box_4040-07.51-107023-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/4040/FRITZ.Box_4040-07.51-107023-LabBETA.image)
  - HWR 229: [FRITZ.Powerline_1260E.157.07.56.image](http://download.avm.de/fritzpowerline/fritzpowerline-1260e/deutschland/fritz.os/FRITZ.Powerline_1260E.157.07.56.image)
- - HWR 234: [FRITZ.Box_6890_LTE-07.51-106700-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-106700-LabBETA.image)
+ - HWR 234: [FRITZ.Box_6890_LTE-07.51-107241-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-107241-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.51-106682-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6820v3LTE/FRITZ.Box_6820v3_LTE-07.51-106682-LabBETA.image)
  - HWR 257: [FRITZ.Box_5530_Fiber-07.51-106819-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/5530Fiber/FRITZ.Box_5530_Fiber-07.51-106819-LabBETA.image)
