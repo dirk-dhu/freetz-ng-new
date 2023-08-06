@@ -27,7 +27,7 @@
  CONFIG_GRACE_PERIOD=m
  CONFIG_LOCKD=m
  CONFIG_LOCKD_V4=y
-@@ -3451,7 +3462,15 @@
+@@ -3451,7 +3462,14 @@
  CONFIG_SUNRPC_BACKCHANNEL=y
  # CONFIG_SUNRPC_DEBUG is not set
  # CONFIG_CEPH_FS is not set
@@ -38,7 +38,6 @@
 +# CONFIG_CIFS_UPCALL is not set
 +# CONFIG_CIFS_XATTR is not set
 +# CONFIG_CIFS_DEBUG is not set
-+# CONFIG_CIFS_DEBUG2 is not set
 +# CONFIG_CIFS_DFS_UPCALL is not set
 +# CONFIG_CIFS_SMB2 is not set
  # CONFIG_NCP_FS is not set

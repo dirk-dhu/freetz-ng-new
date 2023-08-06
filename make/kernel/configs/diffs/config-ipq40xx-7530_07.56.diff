@@ -54,7 +54,7 @@
  # CONFIG_USB_SERIAL_VISOR is not set
  # CONFIG_USB_SERIAL_IPAQ is not set
  # CONFIG_USB_SERIAL_IR is not set
-@@ -3851,7 +3854,32 @@
+@@ -3851,7 +3854,31 @@
  CONFIG_PSTORE_RAM=y
  # CONFIG_SYSV_FS is not set
  # CONFIG_UFS_FS is not set
@@ -79,7 +79,6 @@
 +# CONFIG_CIFS_UPCALL is not set
 +# CONFIG_CIFS_XATTR is not set
 +# CONFIG_CIFS_DEBUG is not set
-+# CONFIG_CIFS_DEBUG2 is not set
 +# CONFIG_CIFS_DFS_UPCALL is not set
 +# CONFIG_CIFS_SMB2 is not set
 +# CONFIG_NCP_FS is not set
@@ -88,7 +87,7 @@
  CONFIG_NLS=y
  CONFIG_NLS_DEFAULT="iso8859-15"
  CONFIG_NLS_CODEPAGE_437=y
-@@ -4154,7 +4182,7 @@
+@@ -4154,7 +4181,7 @@
  #
  # Hash modes
  #
@@ -97,7 +96,7 @@
  CONFIG_CRYPTO_HMAC=y
  # CONFIG_CRYPTO_XCBC is not set
  # CONFIG_CRYPTO_VMAC is not set
-@@ -4167,7 +4195,7 @@
+@@ -4167,7 +4194,7 @@
  # CONFIG_CRYPTO_CRCT10DIF is not set
  CONFIG_CRYPTO_GHASH=y
  # CONFIG_CRYPTO_POLY1305 is not set
