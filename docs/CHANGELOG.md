@@ -63,7 +63,7 @@ Latest changes
    * openssl 3.0.10
    * pkgconf 1.9.5
    * precompiled host-tools 2023-08-02
-   * precompiled toolchains r22182
+   * precompiled toolchains r22199
    * python 3.11.4
    * u-boot 2023.07.02
    * xz 5.4.4
