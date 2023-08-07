@@ -1,4 +1,4 @@
-# uclibc: ld-uClibc (ld-uClibc-x.y.z.so) 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.44
+# uClibc (ld-uClibc-x.y.z.so) 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.44
  - Homepage: [https://uclibc-ng.org/](https://uclibc-ng.org/)
  - Manpage: [https://uclibc-ng.org/docs/](https://uclibc-ng.org/docs/)
  - Changelog: [https://gogs.waldemar-brodkorb.de/oss/uclibc-ng/releases](https://gogs.waldemar-brodkorb.de/oss/uclibc-ng/releases)
