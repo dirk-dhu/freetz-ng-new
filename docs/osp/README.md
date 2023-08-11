@@ -340,6 +340,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Box_7490-vr9-07.27.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_7490-vr9-07.27.tar.gz)
    - [source-files-FRITZ.Box_7490-vr9-07.28.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_7490-vr9-07.28.tar.gz)
    - [source-files-FRITZ.Box_7490-vr9-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_7490-vr9-07.29.tar.gz)
+   - [source-files-FRITZ.Box_7490-vr9-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_7490-vr9-07.56.tar.gz)
    - [source-files-FRITZ.Box_7490_Labor-06.10-27948.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_7490_Labor-06.10-27948.tar.gz)
    - [source-files-FRITZ.Box_7490_Labor-06.98-55294.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_7490_Labor-06.98-55294.tar.gz)
    - [source-files-FRITZ.Box_scrpn_7490-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7490/source-files-FRITZ.Box_scrpn_7490-07.01.tar.gz)
