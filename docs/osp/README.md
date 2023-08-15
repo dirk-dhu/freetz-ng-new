@@ -396,9 +396,9 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzpowerline-1240e/
    - [source-files-FRITZ.Powerline_1240E-hbee-07.14.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1240e/source-files-FRITZ.Powerline_1240E-hbee-07.14.tar.gz)
  * fritzpowerline-1260/
-   - [source-files-FRITZ.Powerline_1260-cortexa9-07.50.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260/source-files-FRITZ.Powerline_1260-cortexa9-07.50.tar.gz)
+   - [source-files-FRITZ.Powerline_1260-cortexa9-07.56.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260/source-files-FRITZ.Powerline_1260-cortexa9-07.56.tar.gz)
  * fritzpowerline-1260e/
-   - [source-files-FRITZ.Powerline_1260E-cortexa9-07.50.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260e/source-files-FRITZ.Powerline_1260E-cortexa9-07.50.tar.gz)
+   - [source-files-FRITZ.Powerline_1260E-cortexa9-07.56.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-1260e/source-files-FRITZ.Powerline_1260E-cortexa9-07.56.tar.gz)
  * fritzpowerline-540e/
    - [source-files-FRITZ.Powerline_540E-wasp-07.14.tar.gz](https://osp.avm.de/fritzpowerline/fritzpowerline-540e/source-files-FRITZ.Powerline_540E-wasp-07.14.tar.gz)
 
