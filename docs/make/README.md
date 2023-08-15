@@ -705,7 +705,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Transmission 3.00/4.0.3 (binary only)](transmission.md)<a id='transmission'></a>**<br>
     If needed, remember to change the base directory as well as the installation directory on the webif.
 
-  * **<u>Tree 1.8.0/2.1.1 (binary only)</u><a id='tree'></a>**<br>
+  * **[Tree 1.8.0/2.1.1 (binary only)](tree.md)<a id='tree'></a>**<br>
     Tree is a recursive directory listing program that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.
 
   * **[trickle 1.07 (binary only)](trickle.md)<a id='trickle'></a>**<br>

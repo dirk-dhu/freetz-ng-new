@@ -961,7 +961,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
      - [Limit memory usage](../../docs/make/transmission.md#limit-memory-usage)
      - [Watchdog](../../docs/make/transmission.md#watchdog)
 
-  * **<u>Tree 1.8.0/2.1.1 (binary only)</u><a id='tree'></a>**<br>
+  * **[Tree 1.8.0/2.1.1 (binary only)](../../docs/make/tree.md)<a id='tree'></a>**<br>
     Tree is a recursive directory listing program that produces a depth indented listing of files, which is colorized ala dircolors if the LS_COLORS environment variable is set and output is to tty.
 
   * **[trickle 1.07 (binary only)](../../docs/make/trickle.md)<a id='trickle'></a>**<br>
