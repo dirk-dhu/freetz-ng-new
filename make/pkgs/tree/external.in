@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_PACKAGE_TREE
 	default n
 	help
 		externals the following file(s):
-		/usr/bin/tree
+		 /usr/bin/tree
 
