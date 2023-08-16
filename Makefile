@@ -351,8 +351,9 @@ include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/busybox.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/kernel.mk)
-PACKAGES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_DOWNLOADABLE))
-PACKAGES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_DOWNLOADABLE))
+
+DOWNLOADABLES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_DOWNLOADABLE))
+DOWNLOADABLES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_DOWNLOADABLE))
 
 TARGETS_CLEAN:=$(patsubst %,%-clean,$(TARGETS))
 TARGETS_DIRCLEAN:=$(patsubst %,%-dirclean,$(TARGETS))
@@ -438,9 +439,9 @@ sources: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(PACKAGES_DIR_ROOT) $(DL
 precompiled: $(DL_DIR) $(FW_IMAGES_DIR) $(SOURCE_DIR_ROOT) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) toolchain-depend \
 	$(LIBS_PRECOMPILED) $(TARGETS_PRECOMPILED) $(PACKAGES_PRECOMPILED)
 
-check-downloads: $(PACKAGES_CHECK_DOWNLOADS)
+check-downloads: $(DOWNLOADABLES_CHECK_DOWNLOADS)
 
-mirror: $(MIRROR_DIR) $(PACKAGES_MIRROR)
+mirror: $(MIRROR_DIR) $(DOWNLOADABLES_MIRROR)
 
 cacheclean: $(TOOLS_CACHECLEAN) common-cacheclean
 clean: $(TARGETS_CLEAN) $(PACKAGES_CLEAN) $(LIBS_CLEAN) $(TOOLCHAIN_CLEAN) $(TOOLS_CLEAN) common-clean
