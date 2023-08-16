@@ -95,7 +95,7 @@ Latest changes
    * CA-bundle 2023-05-30
    * Curl 8.2.1
    * Git 2.41.0
-   * HAProxy 2.6.14
+   * HAProxy 2.6.15
    * iPerf3 3.3/3.14
    * minidlna 1.3.3
    * NZBGet 21.1/21.4-rc1
