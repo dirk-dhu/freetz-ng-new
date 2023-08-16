@@ -206,6 +206,7 @@ endif
 all: step
 world: check-dot-config-uptodateness clear-echo-temporary $(DL_DIR) $(BUILD_DIR) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT) $(TOOLCHAIN_BUILD_DIR)
 
+ALL_PACKAGES_AND_LIBRARIES:=
 NON_LOCALSOURCE_DOWNLOADABLE:=
 KCONFIG_TARGETS:=config menuconfig menuconfig-single nconfig nconfig-single gconfig xconfig oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
 
@@ -346,7 +347,6 @@ include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/Makefile.in)
 
-ALL_PACKAGES:=
 include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/busybox.mk)

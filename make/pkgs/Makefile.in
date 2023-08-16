@@ -379,7 +379,7 @@ PKG_BASENAME:=$(basename $(notdir $(PKG_MAKEFILE)))
 $(if $(strip $1),,$(error Undefined version for PKG_INIT in $(PKG_MAKEFILE)))
 pkg:=$(if $(strip $2),$(strip $2),$(PKG_BASENAME))
 PKG:=$(if $(strip $3),$(strip $3),$(call TOUPPER_NAME,$(pkg)))
-ALL_PACKAGES+=$(pkg)
+ALL_PACKAGES_AND_LIBRARIES+=$(pkg)
 #
 $(PKG)_VERSION:=$(strip $1)
 #
