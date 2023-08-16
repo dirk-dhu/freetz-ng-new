@@ -3,6 +3,11 @@ $(call TOOLS_INIT, 0)
 $(PKG)_DEPENDS_ON+=sfk-host
 $(PKG)_DEPENDS_ON+=libdtc-host
 
+ifeq ($(shell uname -m), aarch64)
+$(PKG)_BUILD_PREREQ := A-32bit-capable-CPU
+$(PKG)_BUILD_PREREQ_HINT := You have to install a cpu which can handle 32-bit code to compile YourFritz-avm_kernel_config
+endif
+
 $(PKG)_BINS:=extract bin2asm
 $(PKG)_BUILD_DIR:=$($(PKG)_BINS:%=$($(PKG)_DIR)/avm_kernel_config.%)
 $(PKG)_TARGET_DIR:=$($(PKG)_BINS:%=$(TOOLS_DIR)/avm_kernel_config.%)
