@@ -37,7 +37,7 @@ endef
 
 ### PKG_SOURCE_DOWNLOAD - download source packages
 define PKG_SOURCE_DOWNLOAD__INT
-NON_LOCALSOURCE_PACKAGES+=$(pkg)
+NON_LOCALSOURCE_DOWNLOADABLE+=$(pkg)
 $(DL_DIR)/$($(PKG)_SOURCE): | $(DL_DIR)
 	$(call _ECHO,downloading)
 	@if [ -e $(MIRROR_DIR)/$($(PKG)_SOURCE) -a ! -e $(DL_DIR)/$($(PKG)_SOURCE) ]; then \

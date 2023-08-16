@@ -206,6 +206,7 @@ endif
 all: step
 world: check-dot-config-uptodateness clear-echo-temporary $(DL_DIR) $(BUILD_DIR) $(KERNEL_TARGET_DIR) $(PACKAGES_DIR_ROOT) $(SOURCE_DIR_ROOT) $(TOOLCHAIN_BUILD_DIR)
 
+NON_LOCALSOURCE_DOWNLOADABLE:=
 KCONFIG_TARGETS:=config menuconfig menuconfig-single nconfig nconfig-single gconfig xconfig oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
 
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
@@ -346,13 +347,12 @@ include $(call sorted-wildcard,$(MAKE_DIR)/busybox/Makefile.in)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/Makefile.in)
 
 ALL_PACKAGES:=
-NON_LOCALSOURCE_PACKAGES:=
 include $(call sorted-wildcard,$(MAKE_DIR)/libs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/pkgs/*/*.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/busybox/busybox.mk)
 include $(call sorted-wildcard,$(MAKE_DIR)/kernel/kernel.mk)
-PACKAGES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_PACKAGES))
-PACKAGES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_PACKAGES))
+PACKAGES_CHECK_DOWNLOADS:=$(patsubst %,%-check-download,$(NON_LOCALSOURCE_DOWNLOADABLE))
+PACKAGES_MIRROR:=$(patsubst %,%-download-mirror,$(NON_LOCALSOURCE_DOWNLOADABLE))
 
 TARGETS_CLEAN:=$(patsubst %,%-clean,$(TARGETS))
 TARGETS_DIRCLEAN:=$(patsubst %,%-dirclean,$(TARGETS))
