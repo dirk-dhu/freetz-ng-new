@@ -61,7 +61,7 @@ Latest changes
    * meson 1.2.1
    * make 4.4.1
    * openssl 3.0.10
-   * pkgconf 1.9.5
+   * pkgconf 2.0.1
    * precompiled host-tools 2023-08-02
    * precompiled toolchains r22199
    * python 3.11.4
