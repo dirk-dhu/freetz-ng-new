@@ -58,7 +58,7 @@ jobs:
       - name: generate
         run: |
           export LANG=en_US.utf8
-          [ "${{ github.workflow }}" != "${{ steps.key.outputs.key }}" ] && c=9 || c=1
+          [ "${{ github.workflow }}" != "${{ steps.key.outputs.key }}" ] && c=5 || c=1
           seq $c | while read x; do docs/juis/generate.sh; done
 
       - name: commit
