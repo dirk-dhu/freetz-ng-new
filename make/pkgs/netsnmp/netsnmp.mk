@@ -1,6 +1,7 @@
-$(call PKG_INIT_BIN, 5.9.3)
+$(call PKG_INIT_BIN, 5.9.4)
+$(PKG)_LIB_VERISON:=40.2.1
 $(PKG)_SOURCE:=net-snmp-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=2097f29b7e1bf3f1300b4bae52fa2308d0bb8d5d3998dbe02f9462a413a2ef0a
+$(PKG)_HASH:=8b4de01391e74e3c7014beb43961a2d6d6fa03acc34280b9585f4930745b0544
 $(PKG)_SITE:=@SF/net-snmp
 ### WEBSITE:=http://www.net-snmp.org/
 ### MANPAGE:=http://www.net-snmp.org/docs/man/
@@ -17,7 +18,6 @@ $(PKG)_APPS_BUILD_DIR   := $(addprefix $($(PKG)_DIR)/apps/.libs/,$($(PKG)_APPS_I
 $(PKG)_APPS_TARGET_DIR  := $(addprefix $($(PKG)_DEST_DIR)/usr/bin/,$($(PKG)_APPS_INCLUDED))
 
 # Libraries
-$(PKG)_LIB_VERISON:=40.2.0
 $(PKG)_LIB_SUFFIX:=so.$($(PKG)_LIB_VERISON)
 $(PKG)_LIBNAMES_SHORT:=snmp snmpagent snmpmibs snmphelpers
 ifneq ($(filter snmptrap%,$(NETSNMP_APPS_INCLUDED)),)

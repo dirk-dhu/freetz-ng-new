@@ -31,6 +31,6 @@ index 4f78df359f..41132b1f5e 100644
  {
 -next:
 +next: ;
- #if HAVE_GETFSSTAT
+ #ifdef HAVE_GETFSSTAT
      if (HRFS_index >= fscount)
          return -1;

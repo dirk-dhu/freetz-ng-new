@@ -1,18 +1,18 @@
 --- configure
 +++ configure
-@@ -18063,6 +18063,7 @@
- done
+@@ -19577,6 +19577,7 @@
+ fi
       #  (Apps)
  #  Not-Used:
 +if test "x$tryopenssl" != "xno"; then
- for ac_header in openssl/des.h  openssl/hmac.h                   openssl/evp.h  security/cryptoki.h
- do :
-   as_ac_Header=`$as_echo "ac_cv_header_$ac_header" | $as_tr_sh`
-@@ -18075,6 +18076,7 @@
+ ac_fn_c_check_header_compile "$LINENO" "openssl/des.h" "ac_cv_header_openssl_des_h" "$ac_includes_default"
+ if test "x$ac_cv_header_openssl_des_h" = xyes
+ then :
+@@ -19602,6 +19603,7 @@
+ 
  fi
  
- done
 +fi
  
- 
  # RPM subdirectory path                   (Agent)
+ if test "x$with_rpm" != "xno"; then

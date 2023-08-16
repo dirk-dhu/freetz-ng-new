@@ -1,17 +1,17 @@
 --- agent/mibgroup/mibII/interfaces.c
 +++ agent/mibgroup/mibII/interfaces.c
-@@ -1579,6 +1579,10 @@
-         struct ifnet   *nnew;
+@@ -1586,6 +1586,10 @@
          char           *stats, *ifstart = line;
+         size_t          len;
  
 +	/* Ignore interfaces with no statistics. */
 +	if (strstr(line, "No statistics available."))
 +	    continue;
 +
-         if (line[strlen(line) - 1] == '\n')
-             line[strlen(line) - 1] = '\0';
- 
-@@ -1611,7 +1615,7 @@
+         len = strlen(line);
+         if (len && line[len - 1] == '\n')
+             line[len - 1] = '\0';
+@@ -1619,7 +1623,7 @@
                                                 &coll) != 5)) {
              if ((scan_line_to_use == scan_line_2_2)
                  && !strstr(line, "No statistics available"))

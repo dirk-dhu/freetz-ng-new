@@ -98,6 +98,7 @@ Latest changes
    * HAProxy 2.6.15
    * iPerf3 3.3/3.14
    * minidlna 1.3.3
+   * Net-SNMP 5.9.4
    * NZBGet 21.1/21.4-rc1
    * OpenSSH 9.4p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1v/3.0.10
