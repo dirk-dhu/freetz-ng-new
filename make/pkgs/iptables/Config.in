@@ -799,7 +799,7 @@ if FREETZ_MODULE_x_tables
 					bool "xt_DSCP.ko"
 					depends on !FREETZ_KERNEL_VERSION_2
 					default n
-					select FREETZ_MODULE_ip6table_mangle if !FREETZ_MODULE_iptable_mangle
+					depends on FREETZ_MODULE_iptable_mangle || FREETZ_MODULE_ip6table_mangle
 					help
 						DSCP/TOS field modification
 
