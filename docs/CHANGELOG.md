@@ -101,7 +101,7 @@ Latest changes
    * NZBGet 21.1/21.4-rc1
    * OpenSSH 9.3p2
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1v/3.0.10
-   * OpenVPN 2.4.12/2.5.9/2.6.5
+   * OpenVPN 2.4.12/2.5.9/2.6.6
    * pptp 1.10.0
    * psl 0.21.2
    * pyLoad 0.4.20/9b358adf
