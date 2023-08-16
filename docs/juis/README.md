@@ -38,6 +38,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 216: [FRITZ.Box_WLAN_Repeater_1160-07.14.image](http://download.avm.de/fritzwlan/fritzwlan-repeater-1160/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.14.image)
  - HWR 218: [FRITZ.Box_7430-07.12.image](http://download.avm.de/firmware/7430/jz76373/9273521133/deutschland/fritz.os/FRITZ.Box_7430-07.12.image)
  - HWR 219: [FRITZ.Box_4020-07.02.image](http://download.avm.de/fritzbox/fritzbox-4020/deutschland/fritz.os/FRITZ.Box_4020-07.02.image)
+ - HWR 220: [FRITZ.Box_6590_Cable-07.56.image](http://download.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.56.image)
  - HWR 221: [FRITZ.Box_7560-07.29.image](http://download.avm.de/fritzbox/fritzbox-7560/deutschland/fritz.os/FRITZ.Box_7560-07.29.image)
  - HWR 222: [FRITZ.Powerline_1240E.150.07.15.image](http://download.avm.de/fritzpowerline/fritzpowerline-1240e/deutschland/fritz.os/FRITZ.Powerline_1240E.150.07.15.image)
  - HWR 223: [FRITZ.Box_5490-07.29.image](http://download.avm.de/fritzbox/fritzbox-5490/other/fritz.os/FRITZ.Box_5490-07.29.image)
@@ -78,7 +79,6 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
 
 ### FOS-Labor
  - HWR 213: [FRITZ.Box_6490_Cable-07.56.image](http://download.avm.de/fritzbox/fritzbox-6490-cable/deutschland/fritz.os/FRITZ.Box_6490_Cable-07.56.image)
- - HWR 220: [FRITZ.Box_6590_Cable-07.56.image](http://download.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.56.image)
  - HWR 234: [FRITZ.Box_6890_LTE-07.51-107241-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6890LTE/FRITZ.Box_6890_LTE-07.51-107241-LabBETA.image)
  - HWR 239: [FRITZ.Box_7583-07.39-103075-LabBETA.image](http://download.avm.de/labor/MOVE21/7583/FRITZ.Box_7583-07.39-103075-LabBETA.image)
  - HWR 254: [FRITZ.Box_6820v3_LTE-07.51-106682-LabBETA.image](http://download.avm.de/labor/MOVE21NL1/6820v3LTE/FRITZ.Box_6820v3_LTE-07.51-106682-LabBETA.image)
