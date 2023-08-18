@@ -131,6 +131,7 @@ Latest changes
    * libssh2 1.11.0
    * libuv 1.44.2/1.46.0
    * mbedTLS 2.7.19/2.28.4
+   * zlib 1.3
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
