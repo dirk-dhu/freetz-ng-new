@@ -117,7 +117,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 268: [FRITZ.Repeater_1200_AX-07.51-106788-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/1200AX/FRITZ.Repeater_1200_AX-07.51-106788-Inhaus.image)
  - HWR 270: [FRITZ.Repeater_3000_AX-07.51-106792-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/3000AX/FRITZ.Repeater_3000_AX-07.51-106792-Inhaus.image)
  - HWR 271: [FRITZ.Box_7510-07.51-106578-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7510/FRITZ.Box_7510-07.51-106578-Inhaus.image)
- - HWR 272: [FRITZ.Box_5590_Fiber-07.51-106776-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/5590Fiber/FRITZ.Box_5590_Fiber-07.51-106776-Inhaus.image)
+ - HWR 272: [FRITZ.Box_5590_Fiber-07.69-107394-Inhaus.image](http://download.avm.de/inhaus/GoFiber23/5590Fiber/FRITZ.Box_5590_Fiber-07.69-107394-Inhaus.image)
  - HWR 276: [FRITZ.Box_7520_B-07.51-106133-Inhaus.image](http://download.avm.de/inhaus/MOVE21NL1/7520B/FRITZ.Box_7520_B-07.51-106133-Inhaus.image)
 
 ### Dect-Release
