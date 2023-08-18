@@ -1,6 +1,6 @@
 --- linux-2.6.39/drivers/net/avm_cpmac/common/avmnet_config.c
 +++ linux-2.6.39/drivers/net/avm_cpmac/common/avmnet_config.c
-@@ -869,6 +869,7 @@
+@@ -860,6 +860,7 @@
      }
  
      AVMNET_INFO("[%s] done\n", __func__ );

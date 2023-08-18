@@ -1,6 +1,6 @@
 --- linux-2.6.39/GNUmakefile
 +++ linux-2.6.39/GNUmakefile
-@@ -22,14 +22,6 @@
+@@ -29,14 +29,6 @@
  endif
  export _kernelvariables_read := 1
  -include $(kernelvariables)
