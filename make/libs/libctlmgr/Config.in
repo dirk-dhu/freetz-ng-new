@@ -11,14 +11,14 @@ if FREETZ_LIB_libctlmgr
 
 	config FREETZ_LIB_libctlmgr_WITH_CHMOD
 		bool
-		depends on ((FREETZ_AVM_VERSION_07_0X_MIN)                                                            ))
+		depends on ((FREETZ_AVM_VERSION_07_0X_MIN)                                                             )
 		default n
 		help
 			Alters chmod() for /var/tmp
 
 	config FREETZ_LIB_libctlmgr_WITH_RENAME
 		bool
-		depends on ((                                 (FREETZ_AVM_VERSION_07_5X_MIN || FREETZ_AVM_HAS_USB_HOST))
+		depends on (                                  (FREETZ_AVM_VERSION_07_5X_MIN || FREETZ_AVM_HAS_USB_HOST))
 		default n
 		help
 			Alters rename() for /etc/passwd
