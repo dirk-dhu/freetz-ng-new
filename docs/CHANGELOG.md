@@ -45,6 +45,9 @@ Latest changes
 
 ### devel
 
+ - Packages:
+   * CA-bundle 2023-08-22
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
