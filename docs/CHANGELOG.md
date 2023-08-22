@@ -49,6 +49,7 @@ Latest changes
    * CA-bundle 2023-08-22
    * mc (Midnight Commander) 4.8.30
    * OpenSSH 9.3p2/9.4p1
+   * PCSC-lite 2.0.0
    * UnRAR 6.1.7/6.2.10
 
  - Firmware updates:
