@@ -47,6 +47,7 @@ Latest changes
 
  - Packages:
    * CA-bundle 2023-08-22
+   * OpenSSH 9.3p2/9.4p1
    * UnRAR 6.1.7/6.2.10
 
  - Firmware updates:
