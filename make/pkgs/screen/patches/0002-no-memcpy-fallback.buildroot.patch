@@ -42,38 +42,41 @@ Signed-off-by: Ricardo Martincoski <ricardo.martincoski@gmail.com>
  /*
 --- configure.ac
 +++ configure.ac
-@@ -1154,7 +1154,7 @@
- AC_CHECKING(fdwalk)
- AC_TRY_LINK([#include <stdlib.h>], [fdwalk(NULL, NULL);],AC_DEFINE(HAVE_FDWALK))
+@@ -1278,7 +1278,7 @@
+     fdwalk(NULL, NULL);
+ ],AC_DEFINE(HAVE_FDWALK))
  
 -AC_CHECKING(whether memcpy/memmove/bcopy handles overlapping arguments)
 +AC_CHECKING(whether memmove/bcopy handles overlapping arguments)
  AC_TRY_RUN([
- main() {
-   char buf[10];
-@@ -1185,22 +1185,6 @@
+ #include <string.h>
+ #include <stdlib.h>
+@@ -1319,25 +1319,6 @@
  }], AC_DEFINE(USEMEMMOVE),,
    AC_NOTE(- skipping check because we are cross compiling; use memmove) AC_DEFINE(USEMEMMOVE))
  
--
 -AC_TRY_RUN([
+-#include <string.h>
+-#include <stdlib.h>
+-
 -#define bcopy(s,d,l) memcpy(d,s,l)
+-
+-int
 -main() {
 -  char buf[10];
 -  strcpy(buf, "abcdefghi");
 -  bcopy(buf, buf + 2, 3);
 -  if (strncmp(buf, "ababcf", 6))
--    exit(1);
+-    return 1;
 -  strcpy(buf, "abcdefghi");
 -  bcopy(buf + 2, buf, 3);
 -  if (strncmp(buf, "cdedef", 6))
--    exit(1);
--  exit(0); /* libc version works properly.  */
+-    return 1;
+-  return 0; /* libc version works properly.  */
 -}], AC_DEFINE(USEMEMCPY),,:)
--
+ 
  AC_SYS_LONG_FILE_NAMES
  
- AC_MSG_CHECKING(for vsprintf)
 --- os.h
 +++ os.h
 @@ -142,12 +142,8 @@

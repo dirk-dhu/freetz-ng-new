@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.9.0)
+$(call PKG_INIT_BIN, 4.9.1)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=f9335281bb4d1538ed078df78a20c2f39d3af9a4e91c57d084271e0289c730f4
+$(PKG)_HASH:=26cef3e3c42571c0d484ad6faf110c5c15091fbf872b06fa7aa4766c7405ac69
 $(PKG)_SITE:=@GNU/$(pkg)
 ### WEBSITE:=https://www.gnu.org/software/screen/
 ### MANPAGE:=https://www.gnu.org/software/screen/manual/
