@@ -47,6 +47,7 @@ Latest changes
 
  - Packages:
    * CA-bundle 2023-08-22
+   * UnRAR 6.1.7/6.2.10
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
