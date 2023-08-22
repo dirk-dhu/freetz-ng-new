@@ -46,6 +46,7 @@ Latest changes
 ### devel
 
  - Packages:
+   * Atop 2.9.0
    * CA-bundle 2023-08-22
    * FFmpeg 5.1.3
    * Git 2.42.0
