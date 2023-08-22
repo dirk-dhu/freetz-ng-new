@@ -4,7 +4,7 @@ $(PKG)_HASH:=b8b6915da20396fdc354df3324d5e440169b2e5ea7859e3a775213841325afac
 $(PKG)_SITE:=https://download.lighttpd.net/lighttpd/releases-1.4.x
 ### WEBSITE:=https://www.lighttpd.net/
 ### MANPAGE:=https://redmine.lighttpd.net/projects/lighttpd/wiki
-### CHANGES:=https://www.lighttpd.net/download/
+### CHANGES:=https://www.lighttpd.net/releases/
 ### CVSREPO:=https://git.lighttpd.net/lighttpd/lighttpd1.4.git
 
 $(PKG)_BINARY_BUILD_DIR := $($(PKG)_DIR)/src/lighttpd
