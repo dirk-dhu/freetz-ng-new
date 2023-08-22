@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 4.8.29)
+$(call PKG_INIT_BIN, 4.8.30)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=01d8a3b94f58180cca5bf17257b5078d1fd6fd27a9b5c0e970ec767549540ad4
+$(PKG)_HASH:=5ebc3cb2144b970c5149fda556c4ad50b78780494696cdf2d14a53204c95c7df
 $(PKG)_SITE:=http://ftp.midnight-commander.org,ftp://ftp.midnight-commander.org/pub/midnightcommander
 ### WEBSITE:=http://midnight-commander.org/
 ### MANPAGE:=http://midnight-commander.org/wiki/doc
@@ -50,6 +50,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-rpath
 $(PKG)_CONFIGURE_OPTIONS += --disable-silent-rules
 $(PKG)_CONFIGURE_OPTIONS += --without-x
 $(PKG)_CONFIGURE_OPTIONS += --without-gpm-mouse
+$(PKG)_CONFIGURE_OPTIONS += --without-pcre2
 $(PKG)_CONFIGURE_OPTIONS += --disable-aspell
 $(PKG)_CONFIGURE_OPTIONS += --disable-doxygen-doc
 $(PKG)_CONFIGURE_OPTIONS += --disable-doxygen-dot

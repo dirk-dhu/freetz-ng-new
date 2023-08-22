@@ -10,7 +10,7 @@
  
 --- misc/Makefile.in
 +++ misc/Makefile.in
-@@ -474,7 +474,7 @@
+@@ -475,7 +475,7 @@
  top_build_prefix = @top_build_prefix@
  top_builddir = @top_builddir@
  top_srcdir = @top_srcdir@
