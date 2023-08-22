@@ -1,7 +1,7 @@
 # Lighttpd 1.4.71
  - Homepage: [https://www.lighttpd.net/](https://www.lighttpd.net/)
  - Manpage: [https://redmine.lighttpd.net/projects/lighttpd/wiki](https://redmine.lighttpd.net/projects/lighttpd/wiki)
- - Changelog: [https://www.lighttpd.net/download/](https://www.lighttpd.net/download/)
+ - Changelog: [https://www.lighttpd.net/releases/](https://www.lighttpd.net/releases/)
  - Repository: [https://git.lighttpd.net/lighttpd/lighttpd1.4.git](https://git.lighttpd.net/lighttpd/lighttpd1.4.git)
  - Package: [master/make/pkgs/lighttpd/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/lighttpd/)
 
