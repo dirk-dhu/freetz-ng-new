@@ -47,6 +47,7 @@ Latest changes
 
  - Packages:
    * CA-bundle 2023-08-22
+   * FFmpeg 5.1.3
    * mc (Midnight Commander) 4.8.30
    * OpenSSH 9.3p2/9.4p1
    * PCSC-lite 2.0.0

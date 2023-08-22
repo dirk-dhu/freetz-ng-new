@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 5.1.2)
+$(call PKG_INIT_BIN, 5.1.3)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=619e706d662c8420859832ddc259cd4d4096a48a2ce1eefd052db9e440eef3dc
+$(PKG)_HASH:=1b113593ff907293be7aed95acdda5e785dd73616d7d4ec90a0f6adbc5a0312e
 $(PKG)_SITE:=https://www.ffmpeg.org/releases
 ### WEBSITE:=https://www.ffmpeg.org/
 ### MANPAGE:=https://www.ffmpeg.org/documentation.html
