@@ -213,7 +213,7 @@ Currently supported devices and firmwares
   - 162.07.03 rev68723 {ALL}
   - 162.07.13 rev73668 {ALL} [MESH18 NL3]
   - 162.07.29 rev93213 {ALL} [PSQ19P2NL4]
-  - 162.07.51 rev105257 {ALL} [MOVE21NL1] (Labor)
+  - 162.07.56 rev107422 {ALL} [MOVE21NL1]
 
 ### Fritz!Box Fon WLAN (70xx)
 
