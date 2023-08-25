@@ -54,6 +54,14 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-mips32r2
 $(PKG)_CONFIGURE_OPTIONS += --disable-mipsdsp
 $(PKG)_CONFIGURE_OPTIONS += --disable-mipsdspr2
 $(PKG)_CONFIGURE_OPTIONS += --disable-mipsfpu
+
+ifeq ($(strip $(FREETZ_TARGET_ARCH_MIPS)),y)
+#$(PKG)_CONFIGURE_OPTIONS += --disable-asm
+$(PKG)_CONFIGURE_OPTIONS += --disable-inline-asm
+# {standard input}:31: Error: opcode not supported on this processor: mips32r2 (mips32r2) `dmult $2,$3'
+# {standard input}:33: Error: opcode not supported on this processor: mips32r2 (mips32r2) `dsrl $2,$2,32'
+endif
+
 $(PKG)_CONFIGURE_OPTIONS += --target-os=linux
 $(PKG)_CONFIGURE_OPTIONS += --prefix="/usr"
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
