@@ -83,7 +83,8 @@ $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.configured
-	$(SUBMAKE1) -C $(NMAP_DIR) $(if $(FREETZ_PACKAGE_NMAP_STATIC),STATIC="-static")
+	$(SUBMAKE1) -C $(NMAP_DIR) \
+		$(if $(FREETZ_PACKAGE_NMAP_STATIC),STATIC="-static")
 
 $(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/bin)))
 
