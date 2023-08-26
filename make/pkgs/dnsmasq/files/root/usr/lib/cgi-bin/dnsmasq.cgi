@@ -20,12 +20,14 @@ check "$DNSMASQ_DHCPHOSTFILE" yes:dhcphostfile
 sec_begin "$(lang de:"Starttyp" en:"Start type")"
 cgi_print_radiogroup_service_starttype "enabled" "$DNSMASQ_ENABLED" "" "" 0
 
+if [ "$FREETZ_AVM_HAS_AVMSERVICES_PRELOAD" != "y" ]; then
 cat << EOF
 <p>
 <input type="hidden" name="wrapper" value="no">
 <input id="wrap1" type="checkbox" name="wrapper" value="yes"$wrapper_chk><label for="wrap1"> $(lang de:"vor multid starten" en:"start before multid")</label><br>
 </p>
 EOF
+fi
 if [ "$FREETZ_AVMDAEMON_DISABLE_DNS" != "y" ]; then
 cat << EOF
 <p>

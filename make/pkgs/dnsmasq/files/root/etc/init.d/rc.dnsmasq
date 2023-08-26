@@ -88,7 +88,7 @@ case $1 in
 		if [ "$1" == "multid" -o "$1" == "rextd" ]; then
 			[ "$DNSMASQ_WRAPPER" != "yes" ] && exit
 		else
-			[ "$DNSMASQ_WRAPPER" == "yes" ] && exit
+			[ "$DNSMASQ_WRAPPER" == "yes" ] && [ "$FREETZ_AVM_HAS_AVMSERVICES_PRELOAD" != "y" ] && exit
 		fi
 
 		modlib_defaults
