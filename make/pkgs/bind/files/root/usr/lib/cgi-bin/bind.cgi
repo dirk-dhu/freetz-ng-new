@@ -8,7 +8,7 @@ check "$BIND_WRAPPER" yes:wrapper
 
 sec_begin "$(lang de:"Starttyp" en:"Start type")"
 cgi_print_radiogroup_service_starttype "enabled" "$BIND_ENABLED" "" "" 0
-if [ "$EXTERNAL_FREETZ_PACKAGE_BIND_NAMED" != "y" ]; then
+if [ "$EXTERNAL_FREETZ_PACKAGE_BIND_NAMED" != "y" ] && [ "$FREETZ_AVM_HAS_AVMSERVICES_PRELOAD" != "y" ]; then
 cat << EOF
 <p>
 <input type="hidden" name="wrapper" value="no">
