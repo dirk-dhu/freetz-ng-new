@@ -55,7 +55,7 @@ case $1 in
 		if [ "$1" == "multid" -o "$1" == "rextd" ]; then
 			[ "$UNBOUND_WRAPPER" != "yes" ] && exit
 		else
-			[ "$UNBOUND_WRAPPER" == "yes" ] && exit
+			[ "$UNBOUND_WRAPPER" == "yes" ] && [ "$FREETZ_AVM_HAS_AVMSERVICES_PRELOAD" != "y" ] && exit
 		fi
 
 		modlib_add_user_and_group nobody
