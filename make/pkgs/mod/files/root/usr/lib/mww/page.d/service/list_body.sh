@@ -2,7 +2,12 @@ SERVICE_REG=/mod/etc/reg/daemon.reg
 SERVICE_PKG=/mod/etc/reg/pkg.reg
 source /usr/lib/mod/service.sh
 
+[ -r /etc/options.cfg ] && . /etc/options.cfg
+
+
 stat_avm() {
+	[ "$FREETZ_AVM_HAS_AVMSERVICES_PRELOAD" == "y" ] && return
+
 	sec_begin "$(lang de:"AVM-Dienste" en:"AVM services")"
 	stat_begin
 
