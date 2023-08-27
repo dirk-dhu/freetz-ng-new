@@ -47,6 +47,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.27.4
+   * python 3.11.5
 
  - Packages:
    * Atop 2.9.0
