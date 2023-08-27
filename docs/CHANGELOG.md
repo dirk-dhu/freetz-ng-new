@@ -45,6 +45,9 @@ Latest changes
 
 ### devel
 
+ - Host tools:
+   * cmake 3.27.4
+
  - Packages:
    * Atop 2.9.0
    * BIND 9.11.37/9.16.43
