@@ -29,9 +29,9 @@
 static void debug_printf(char *fmt, ...) {
 	va_list ap;
 	va_start(ap, fmt);
-	vfprintf(stderr, fmt, ap);
+	vfprintf(stdout, fmt, ap);
 	va_end(ap);
-	fflush(stderr);
+	fflush(stdout);
 }
 #endif
 
@@ -52,27 +52,30 @@ static void _libctlmgr_init (void) {
 	void *libc_handle = dlopen(LIBC_LOCATION, RTLD_LOCAL | RTLD_LAZY);
 #endif
 	if (!libc_handle || NULL != (err = dlerror())) {
-		fprintf(stderr, "ctlmgr: libctlmgr unable to get libc-handle: %s\n", err);
+		fprintf(stderr, "[libctlmgr::_libctlmgr_init()] Unable to get libc-handle: %s\n", err);
 		exit(1);
 	}
 
 	real_rename = dlsym(libc_handle, "rename");
 	if (!real_rename || NULL != (err = dlerror ())) {
-		fprintf(stderr, "ctlmgr: libctlmgr unable to get rename-handle: %s\n", err);
+		fprintf(stderr, "[libctlmgr::_libctlmgr_init()] Unable to get rename-handle: %s\n", err);
 		exit(1);
 	}
 
 	real_chmod = dlsym(libc_handle, "chmod");
 	if (!real_chmod || NULL != (err = dlerror ())) {
-		fprintf(stderr, "ctlmgr: libctlmgr unable to get chmod-handle: %s\n", err);
+		fprintf(stderr, "[libctlmgr::_libctlmgr_init()] Unable to get chmod-handle: %s\n", err);
 		exit(1);
 	}
 
+#ifdef DEBUG
+	debug_printf("[libctlmgr::_libctlmgr_init()] Successfully initialized\n");
+#endif
 }
 
 int rename(const char *old, const char *new) {
 #ifdef DEBUG
-	debug_printf("ctlmgr: rename() %s --> %s ", old, new);
+	debug_printf("[libctlmgr::rename()] %s --> %s ", old, new);
 #endif
 
 #ifdef D_RENAME
@@ -93,7 +96,7 @@ int rename(const char *old, const char *new) {
 
 int chmod(const char *pathname, mode_t mode) {
 #ifdef DEBUG
-	debug_printf("ctlmgr: chmod() %s ", pathname);
+	debug_printf("[libctlmgr::chmod()] %s ", pathname);
 #endif
 
 #ifdef D_CHMOD
