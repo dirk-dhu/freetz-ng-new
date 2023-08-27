@@ -427,7 +427,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[NHIPT Iptables CGI 0.8.3a - EXPERIMENTAL](nhipt.md)<a id='nhipt'></a>**<br>
     New Iptables configuration interface.
 
-  * **[Nmap 4.76/5.51 (binary only)](nmap.md)<a id='nmap'></a>**<br>
+  * **[Nmap 4.76/5.51/7.94 (binary only)](nmap.md)<a id='nmap'></a>**<br>
     Nmap ("Network Mapper") is a free and open source (license) utility for network exploration or security auditing. Many systems and network administrators also find it useful for tasks such as network inventory, managing service upgrade schedules, and monitoring host or service uptime. Nmap uses raw IP packets in novel ways to determine what hosts are available on the network, what services (application name and version) those hosts are offering, what operating systems (and OS versions) they are running, what type of packet filters/firewalls are in use, and dozens of other characteristics. It was designed to rapidly scan large networks, but works fine against single hosts. Nmap runs on all major computer operating systems, and both console and graphical versions are available.
 
   * **<u>noip 2.1.9-1 (binary only)</u><a id='noip'></a>**<br>
