@@ -15,6 +15,10 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_CUSTOM_UDEV_RULES),,etc/default.mod/udev_*.def 
 $(PKG)_EXCLUDED += $(if $(FREETZ_PATCH_FREETZMOUNT),,usr/lib/libmodmount.sh usr/lib/cgi-bin/mod/conf/30-mount.sh)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PATCH_UDEVMOUNT),,usr/lib/libmodudevm.sh usr/lib/cgi-bin/mod/conf/30-udevm.sh)
 
+$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD),usr/bin/wrapper/dsld   etc/init.d/rc.dsld)
+$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD),usr/bin/wrapper/multid etc/init.d/rc.multid)
+$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD),usr/bin/wrapper/rextd  etc/init.d/rc.rextd)
+
 $(PKG)_EXCLUDED += $(if $(FREETZ_TYPE_EXTENDER) ,usr/bin/wrapper/dsld   etc/init.d/rc.dsld)
 $(PKG)_EXCLUDED += $(if $(FREETZ_TYPE_EXTENDER) ,usr/bin/wrapper/multid etc/init.d/rc.multid)
 $(PKG)_EXCLUDED += $(if $(FREETZ_TYPE_EXTENDER),,usr/bin/wrapper/rextd  etc/init.d/rc.rextd)
@@ -33,7 +37,7 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_CTLMGR_CTL),,usr/mww/cgi-bin/uimods.cgi
 $(PKG)_EXCLUDED += usr/mww/cgi-bin/uimods.cgi usr/mww/cgi-bin/exec.d/uimods.sh
 
 $(PKG)_EXCLUDED += $(if $(FREETZ_BUSYBOX_FEATURE_WTMP),,usr/lib/cgi-bin/mod/conf/60-utmp_wtmp.sh)
-$(PKG)_EXCLUDED += $(if $(FREETZ_TARGET_IPV6_SUPPORT),,usr/lib/cgi-bin/mod/conf/90-ipv6.sh)
+$(PKG)_EXCLUDED += $(if $(and $(call not-y,$(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD)),$(FREETZ_TARGET_IPV6_SUPPORT)),,usr/lib/cgi-bin/mod/conf/90-ipv6.sh)
 
 $(PKG)_EXCLUDED += $(if $(FREETZ_STRIP_SCRIPTS),usr/share/abo??.txt)
 $(PKG)_EXCLUDED += $(if $(FREETZ_REMOVE_BOX_INFO),usr/lib/cgi-bin/mod/box_info.cgi)
