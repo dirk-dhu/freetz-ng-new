@@ -60,6 +60,7 @@ Latest changes
    * OpenSSH 9.3p2/9.4p1
    * PCSC-lite 2.0.0
    * Screen 4.9.1
+   * SQLite 3.43.0
    * UnRAR 6.1.7/6.2.10
 
  - Firmware updates:
