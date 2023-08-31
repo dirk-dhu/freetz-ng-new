@@ -56,6 +56,7 @@ List of packages which do not use the default STARTLEVEL 99.
 
  * Misc
     - 90: dbus           (before avahi)
+    - 90: pcsc-lite
     - 90: php            (before lighttpd)
     - 90: sundtek        (before rrdstats)
 

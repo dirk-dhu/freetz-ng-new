@@ -8,6 +8,8 @@ $(PKG)_SITE:=https://pcsclite.apdu.fr/files
 ### CHANGES:=https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog
 ### CVSREPO:=https://salsa.debian.org/rousseau/PCSC
 
+$(PKG)_STARTLEVEL=90
+
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/pcscd
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/pcscd
 
@@ -29,6 +31,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-libudev
 $(PKG)_CONFIGURE_OPTIONS += --disable-libsystemd
 $(PKG)_CONFIGURE_OPTIONS += --enable-embedded
 $(PKG)_CONFIGURE_OPTIONS += --enable-usbdropdir=$(PCSC_LITE_USBDROPDIR)
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -54,6 +57,7 @@ $($(PKG)_TARGET_LIB): $($(PKG)_STAGING_LIB)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY) $($(PKG)_TARGET_LIB)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(PCSC_LITE_DIR) clean
