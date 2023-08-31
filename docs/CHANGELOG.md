@@ -45,6 +45,9 @@ Latest changes
 
 ### devel
 
+ - Build system:
+   * Ccache 4.8.3
+
  - Host tools:
    * cmake 3.27.4
    * kconfig 6.5
