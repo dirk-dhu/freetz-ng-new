@@ -702,7 +702,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Tor 0.4.7.14](tor.md)<a id='tor'></a>**<br>
     The Onion Router Anonymous Internet communication system.
 
-  * **[Transmission 3.00/4.0.3 (binary only)](transmission.md)<a id='transmission'></a>**<br>
+  * **[Transmission 3.00/4.0.4 (binary only)](transmission.md)<a id='transmission'></a>**<br>
     If needed, remember to change the base directory as well as the installation directory on the webif.
 
   * **[Tree 1.8.0/2.1.1 (binary only)](tree.md)<a id='tree'></a>**<br>
