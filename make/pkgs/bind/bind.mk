@@ -61,7 +61,8 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-backtrace
 $(PKG)_CONFIGURE_OPTIONS += --disable-symtable
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 
-$(PKG)_MAKE_FLAGS += EXTRA_CFLAGS="-ffunction-sections -fdata-sections" EXTRA_BINARY_LDFLAGS="-Wl,--gc-sections"
+$(PKG)_MAKE_FLAGS += EXTRA_CFLAGS="-ffunction-sections -fdata-sections"
+$(PKG)_MAKE_FLAGS += EXTRA_BINARY_LDFLAGS="-Wl,--gc-sections"
 
 $(PKG)_EXPORT_LIB_DIR := $(FREETZ_BASE_DIR)/$(BIND_DIR)/_exportlib
 
