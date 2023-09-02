@@ -1,26 +1,28 @@
-$(call PKG_INIT_BIN, $(if $(FREETZ_KERNEL_VERSION_2_MAX),$(if $(FREETZ_KERNEL_VERSION_2_6_13),4.9,5.0),6.4))
+$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_STRACE_VERSION_4),4.9,$(if $(FREETZ_PACKAGE_STRACE_VERSION_5),5.0,6.5)))
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH_4.9:=095bfea5c540b91d297ccac73b21b92fd54a24599fd70395db87ff9eb7fd6f65
-$(PKG)_HASH_5.0:=3b7ad77eb2b81dc6078046a9cc56eed5242b67b63748e7fc28f7c2daf4e647da
-$(PKG)_HASH_6.4:=27987dbac57fdfd260c6db4dc8328df35c95c6867c8a3d4371d59cdcf4eb9238
-$(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
+$(PKG)_HASH_4:=095bfea5c540b91d297ccac73b21b92fd54a24599fd70395db87ff9eb7fd6f65
+$(PKG)_HASH_5:=3b7ad77eb2b81dc6078046a9cc56eed5242b67b63748e7fc28f7c2daf4e647da
+$(PKG)_HASH_6:=dfb051702389e1979a151892b5901afc9e93bbc1c70d84c906ade3224ca91980
+$(PKG)_HASH:=$($(PKG)_HASH_$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1))
 $(PKG)_SITE:=https://www.strace.io/files/$($(PKG)_VERSION),https://github.com/strace/strace/releases/download/v$($(PKG)_VERSION)
 ### WEBSITE:=https://www.strace.io/
 ### MANPAGE:=https://man7.org/linux/man-pages/man1/strace.1.html
 ### CHANGES:=https://github.com/strace/strace/releases
 ### CVSREPO:=https://github.com/strace/strace
 
-$(PKG)_CONDITIONAL_PATCHES+=$($(PKG)_VERSION)
+$(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION),1)
 
 # MIPS definitions for SO_PROTOCOL / SO_DOMAIN in AVM kernel sources for 7390.06.5x-8x
 # differ from that of vanilla sources because of incorrect backport.
 # s. https://github.com/Freetz/freetz/issues/208 for more details
-$(PKG)_REBUILD_SUBOPTS += FREETZ_KERNEL_VERSION
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_STRACE_VERSION_4
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_STRACE_VERSION_5
+$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_STRACE_VERSION_6
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_ADD_EXTRA_FLAGS,(C|CPP)FLAGS)
 $(PKG)_EXTRA_CPPFLAGS += $(if $(and $(FREETZ_SYSTEM_TYPE_IKS),$(FREETZ_AVM_VERSION_06_5X_MIN)),-D_AVM_WRONG_SOCKET_OPTIONS_CODES=1)
 
-$(PKG)_BINARY:=$($(PKG)_DIR)$(if $(FREETZ_KERNEL_VERSION_2_MAX),/,/src/)strace
+$(PKG)_BINARY:=$($(PKG)_DIR)$(if $(FREETZ_PACKAGE_STRACE_VERSION_6),/src/,/)strace
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/sbin/strace
 $(PKG)_CATEGORY:=Debug helpers
 
