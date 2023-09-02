@@ -1,6 +1,7 @@
 #!/bin/sh
 
 . /usr/lib/libmodcgi.sh
+[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 select "$TRANSMISSION_LOGLEVEL" info:loginfo debug:logdebug "*":logerror
 select "$TRANSMISSION_PEERENCRYPTIONMODE" \
@@ -92,7 +93,10 @@ en:"Directory to store new torrents until they're complete:"
 <label for='incompletedir'>$(lang de:"Incomplete-Verzeichnis" en:"Incomplete-Directory"): </label>
 <input type='text' id='incompletedir' name='incompletedir' size='40' maxlength='255' value="$(html "$TRANSMISSION_INCOMPLETEDIR")"><br />
 </p>
+EOF
 
+if [ "$FREETZ_PACKAGE_TRANSMISSION_WITH_FINISHDIR" == "y" ]; then
+cat << EOF
 <p>
 <small>$(lang
 de:"Verschiebe komplett fertige Dateien (gedownloaded und geseedet) in folgendes Verzeichnis:"
@@ -104,7 +108,10 @@ en:"Completely seeded downloads will be moved to the following directory:"
 <label for='finishdir'>$(lang de:"End-Verzeichnis" en:"Finish-Directory"): </label>
 <input type='text' id='finishdir' name='finishdir' size='40' maxlength='255' value="$(html "$TRANSMISSION_FINISHDIR")"><br />
 </p>
+EOF
+fi
 
+cat << EOF
 <p>
 <small>$(lang
 de:"Au&szlig;er beim Basisverzeichnis d&uuml;rfen auch relative Pfade angegeben werden. Die relativen Pfade werden dabei als relativ zum Basisverzeichnis verstanden."
@@ -127,12 +134,18 @@ en:"Don't forget to open this port."
 <label for='peerport'>Peer-Port: </label>
 <input type='text' id='peerport' name='peerport' value="$(html "$TRANSMISSION_PEERPORT")">
 </p>
+EOF
 
+if [ "$FREETZ_PACKAGE_TRANSMISSION_WITH_FINISHDIR" == "y" ]; then
+cat << EOF
 <small>$(lang
 de:"Beim Erreichen der Ratio werden Uploads automatisch gestoppt und in das End-Verzeichnis verschoben (falls angegeben)"
 en:"Seeding torrents will be stopped when they reach this ratio and moved to the finish-directory (if not empty)"
 )</small>
+EOF
+fi
 
+cat << EOF
 <p>
 <label for='ratio'>$(lang de:"Ratio:" en:"Ratio:") </label>
 <input type='text' id='ratio' name='ratio' value="$(html "$TRANSMISSION_RATIO")">

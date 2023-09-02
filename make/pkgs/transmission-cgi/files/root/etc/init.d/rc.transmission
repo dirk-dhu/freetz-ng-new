@@ -37,6 +37,7 @@ stripAllSpaces() {
 
 start() {
 	echo -n 'Starting transmission daemon ... '
+	[ -r /etc/options.cfg ] && . /etc/options.cfg
 
 	TRANSMISSION_BASEDIR=$(trim "$TRANSMISSION_BASEDIR")
 	TRANSMISSION_CONFIGDIR=$(trim "$TRANSMISSION_CONFIGDIR")
@@ -80,13 +81,15 @@ start() {
 		OPTIONS="$OPTIONS --no-incomplete-dir"
 	fi
 
-	if [ -n "$TRANSMISSION_FINISHDIR" ]; then
-		[ ${TRANSMISSION_FINISHDIR:0:1} = "/" ] && FINISHDIR="$TRANSMISSION_FINISHDIR" || FINISHDIR="$TRANSMISSION_BASEDIR$TRANSMISSION_FINISHDIR"
-		checkDirectoryExists "$FINISHDIR"
-		chown -R $USERNAME:$GROUPNAME "$FINISHDIR"
-		OPTIONS="$OPTIONS --finish-dir $FINISHDIR"
-	else
-		OPTIONS="$OPTIONS --no-finish-dir"
+	if [ "$FREETZ_PACKAGE_TRANSMISSION_WITH_FINISHDIR" == "y" ]; then
+		if [ -n "$TRANSMISSION_FINISHDIR" ]; then
+			[ ${TRANSMISSION_FINISHDIR:0:1} = "/" ] && FINISHDIR="$TRANSMISSION_FINISHDIR" || FINISHDIR="$TRANSMISSION_BASEDIR$TRANSMISSION_FINISHDIR"
+			checkDirectoryExists "$FINISHDIR"
+			chown -R $USERNAME:$GROUPNAME "$FINISHDIR"
+			OPTIONS="$OPTIONS --finish-dir $FINISHDIR"
+		else
+			OPTIONS="$OPTIONS --no-finish-dir"
+		fi
 	fi
 
 	chown -R $USERNAME:$GROUPNAME "$CONFIGDIR" "$DOWNLOADDIR"
