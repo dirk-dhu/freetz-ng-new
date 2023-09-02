@@ -31,6 +31,14 @@ if FREETZ_PACKAGE_TRANSMISSION
 
 	endchoice
 
+	config FREETZ_PACKAGE_TRANSMISSION_WITH_FINISHDIR
+		bool "With finish-dir patch"
+		default y
+		depends on FREETZ_PACKAGE_TRANSMISSION_VERSION_ABANDON
+		help
+			Applies the Freetz specific finish-dir patch.
+			If you want it also for v4, you have to fix it by yourself.
+
 	choice
 		prompt "SSL library"
 		help

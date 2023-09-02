@@ -1,5 +1,5 @@
---- daemon/daemon.c
-+++ daemon/daemon.c
+--- daemon/daemon.cc
++++ daemon/daemon.cc
 @@ -105,6 +105,8 @@
      { 'C', "no-watch-dir", "Disable the watch-dir", "C", false, NULL },
      { 941, "incomplete-dir", "Where to store new torrents until they're complete", NULL, true, "<directory>" },
@@ -24,8 +24,8 @@
          case 'd':
              *dump_settings = true;
              break;
---- utils/remote.c
-+++ utils/remote.c
+--- utils/remote.cc
++++ utils/remote.cc
 @@ -271,6 +271,8 @@
      { 963, "blocklist-update", "Blocklist update", NULL, false, NULL },
      { 'c', "incomplete-dir", "Where to store new torrents until they're complete", "c", true, "<dir>" },
@@ -87,8 +87,8 @@
  .It Fl gsr Fl -global-seedratio Ar ratio
  All torrents, unless overridden by a per-torrent setting, should seed until a specific
  .Ar ratio
---- extras/rpc-spec.txt
-+++ extras/rpc-spec.txt
+--- docs/rpc-spec.md
++++ docs/rpc-spec.md
 @@ -500,6 +500,8 @@
     "download-queue-enabled"         | boolean    | if true, limit how many torrents can be downloaded at once
     "dht-enabled"                    | boolean    | true means allow dht in public torrents
@@ -107,8 +107,8 @@
  
  
  5.1.  Upcoming Breakage
---- libtransmission/quark.c
-+++ libtransmission/quark.c
+--- libtransmission/quark.cc
++++ libtransmission/quark.cc
 @@ -408,7 +408,9 @@
      Q("watch-dir"),
      Q("watch-dir-enabled"),
@@ -131,8 +131,8 @@
      TR_N_KEYS
  };
  
---- libtransmission/rpcimpl.c
-+++ libtransmission/rpcimpl.c
+--- libtransmission/rpcimpl.cc
++++ libtransmission/rpcimpl.cc
 @@ -2085,6 +2085,16 @@
          tr_sessionSetIncompleteDirEnabled(session, boolVal);
      }
@@ -164,8 +164,8 @@
      case TR_KEY_pex_enabled:
          tr_variantDictAddBool(d, key, tr_sessionIsPexEnabled(s));
          break;
---- libtransmission/session.c
-+++ libtransmission/session.c
+--- libtransmission/session.cc
++++ libtransmission/session.cc
 @@ -344,6 +344,8 @@
      tr_variantDictAddBool(d, TR_KEY_idle_seeding_limit_enabled, false);
      tr_variantDictAddStr(d, TR_KEY_incomplete_dir, tr_getDefaultDownloadDir());
@@ -272,8 +272,8 @@
  
      char* blocklist_url;
  
---- libtransmission/torrent.c
-+++ libtransmission/torrent.c
+--- libtransmission/torrent.cc
++++ libtransmission/torrent.cc
 @@ -533,6 +533,12 @@
  
          tor->isStopping = true;
