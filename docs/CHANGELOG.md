@@ -70,6 +70,9 @@ Latest changes
    * Transmission 3.00/4.0.4
    * UnRAR 6.1.7/6.2.10
 
+ - Libraries:
+   * glib2 2.32.4/2.76.5
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
