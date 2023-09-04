@@ -22,7 +22,7 @@ echo -n "Content: "
 echo -e "$CATS" | grep -v ^$ | while read c cat; do echo -n "[$cat](#$(echo ${cat,,} | sed 's/ /-/g')) - "; done | sed 's/...$//'
 echo
 echo -e '# Temporär verfügbare Firmware-Dateien auf [download.avm.de/](https://download.avm.de/)'
-echo -e ' - Das Unterverzeichnis archive/ ist nicht enthalten.'
+echo -e ' - Das Unterverzeichnis [archive/](https://download.avm.de/archive/) ist hier nicht enthalten.'
 echo -e ' - Diese Liste ist weder vollständig, korrekt noch aktuell.'
 echo -e "$CATS" | grep -v ^$ | while read c cat; do
 	echo -e "\n### $cat"
