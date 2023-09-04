@@ -37,5 +37,6 @@ done
 
 #tmp
 rm -f dad
-rmdir download.avm.de/*/* download.avm.de/* download.avm.de/ 2>/dev/null
+rmdir download.avm.de/*/*/*/*/* download.avm.de/*/*/*/* download.avm.de/*/*/* download.avm.de/*/* download.avm.de/* download.avm.de/ 2>/dev/null
+exit 0
 
