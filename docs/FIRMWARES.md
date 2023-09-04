@@ -333,7 +333,7 @@ Currently supported devices and firmwares
   - 84.06.06 rev27689 {INT}
   - 84.06.30 rev31156 {INT}
   - 84.06.53 rev34469 {INT}
-  - 84.06.87 rev92938 {INT}
+  - 84.06.88 rev107875 {INT}
 
 ### Fritz!Box Fon WLAN (74xx)
 
