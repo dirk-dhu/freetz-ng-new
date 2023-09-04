@@ -415,7 +415,7 @@ Currently supported devices and firmwares
   - 153.07.12 rev70352 {GER} [MESH18 NL2]
   - 153.07.29 rev92247 {GER} [PSQ19P2NL4]
 * __Fritz!Box Fon WLAN 7581__
-  - 152.07.16 rev93246 {ALL} [WU21 MESH18]
+  - 152.07.17 rev107894 {ALL} [WU21 MESH18]
 * __Fritz!Box Fon WLAN 7582 (UNTESTED)__
   - 156.07.16 rev93247 {ALL} [WU21 MESH18]
 * __Fritz!Box Fon WLAN 7583__
