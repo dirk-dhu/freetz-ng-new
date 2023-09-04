@@ -417,7 +417,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7581__
   - 152.07.17 rev107894 {ALL} [WU21 MESH18]
 * __Fritz!Box Fon WLAN 7582 (UNTESTED)__
-  - 156.07.16 rev93247 {ALL} [WU21 MESH18]
+  - 156.07.17 rev107895 {ALL} [WU21 MESH18]
 * __Fritz!Box Fon WLAN 7583__
   - 167.07.12 rev70707 {GER} [MESH18 NL2]
   - 167.07.15 rev75887 {INT} [MESH18 NL2]
