@@ -340,7 +340,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7412__
   - 137.06.30 rev31572 {GER}
   - 137.06.50 rev32502 {GER}
-  - 137.06.87 rev92248 {GER}
+  - 137.06.88 rev107872 {GER}
   - Alien 7430 {GER} (No wlan!)
 * __Fritz!Box Fon WLAN 7430__
   - 146.06.30 rev32200 {GER}
