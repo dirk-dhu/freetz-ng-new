@@ -726,6 +726,7 @@ function create_LD_PRELOAD_wrapper() {
 }
 
 
+# create preloading environment file
 # $1 - target file
 # $2 - preload lib
 function create_service_environment() {
