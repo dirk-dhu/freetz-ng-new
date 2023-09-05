@@ -211,6 +211,13 @@ NON_LOCALSOURCE_DOWNLOADABLE:=
 KCONFIG_TARGETS:=config menuconfig menuconfig-single nconfig nconfig-single gconfig xconfig oldconfig olddefconfig allnoconfig allyesconfig randconfig listnewconfig config-compress
 
 ifneq ($(findstring menuconfig,$(MAKECMDGOALS)),menuconfig)
+# check cpu for WSL
+ifeq ($(shell uname -r | grep -q -i 'Microsoft' && echo y),y)
+ifeq ($(FREETZ_TOOLCHAIN_CCACHE),y)
+DLCHG:=$(shell echo 'y' ; sed 's/^FREETZ_TOOLCHAIN_CCACHE=.*/\# FREETZ_TOOLCHAIN_CCACHE is not set/' -i $(TOPDIR)/.config)
+$(info You are running WSL, ccache automatically disabled.)
+endif
+endif
 # check cpu for aarch64
 ifeq ($(shell uname -m),aarch64)
 DLCHG:=y
