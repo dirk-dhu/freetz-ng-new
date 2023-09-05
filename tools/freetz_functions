@@ -738,6 +738,58 @@ function is_valid_tarball() {
 #	[ -s "$1" ] && "$TAR" -xf "$1" -O >/dev/null 2>&1
 }
 
+# avm image details
+# Requires	$FILESYSTEM_DIR
+# Requires	$FIRMWARE_DIR
+# Optional	$FREETZ_TYPE_LANG_IT
+# Optional	$FREETZ_TYPE_LANG_A_CH
+# Returns	$SOURCE_IMAGE_DETAILS
+function image_details() {
+	local AVM_FW_PRODUCT
+	local AVM_FW_LANGUAGE
+	#AVM_FW_MAJOR
+	#AVM_FW_VERSION
+	local AVM_FW_LABOR
+	#AVM_FW_REVISION
+	local AVM_FW_DATE
+	local AVM_FW_CYCLE
+	local AVM_FM_REGION
+	#SOURCE_IMAGE_DETAILS
+	#
+	AVM_FW_PRODUCT="$(sed -rn 's/Annex./Annex/;s/export CONFIG_PRODUKT_NAME=".*([0-9]{3}[0-9V].*)"/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf | head -n1)" # 4-digits in /etc/init.d/rc.conf
+	[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/export CONFIG_PRODUKT_NAME="(FRITZ!Box|Speedport|Sinus|Eumex) ([^"]+)"/\2/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf | head -n1 | tr ' ' '-')" # symbolic name in /etc/init.d/rc.conf
+	if [ -e "${FILESYSTEM_DIR}/etc/init.d/rc.init" ]; then
+		# /etc/init.d/rc.init is not available in all firmwares
+		[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/^HW=[0-9]* OEM=all _PRODUKT_NAME=(FRITZ!Box|Speedport|Sinus|Eumex)#//p' ${FILESYSTEM_DIR}/etc/init.d/rc.init | head -n1 | sed 's/#//g;s/Annex.//;s/WLAN/-&/g;s/^$/FritzBox/g')" # symbolic name in /etc/init.d/rc.init
+		[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/^HW=[0-9]* OEM=all _PRODUKT_NAME=([0-9A-Z\#]{4,6}).*/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.init)" # 4-digits in /etc/init.d/rc.init
+	fi
+	[ -z "${AVM_FW_PRODUCT}" ] && AVM_FW_PRODUCT="$(sed -rn 's/export CONFIG_PRODUKT_NAME=.*(Repeater|Powerline|Smart) (.*)"/\2/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # Repeater like 'DVB-C'
+	[ -z "${AVM_FW_PRODUCT}" ] && warn "Failed to determine AVM_FW_PRODUCT, even though this is a cosmetic bug only please report it to the Freetz developers and provide your .config"
+	AVM_FW_PRODUCT="${AVM_FW_PRODUCT%% Edition*}"
+	AVM_FW_PRODUCT="${AVM_FW_PRODUCT% }"
+	AVM_FW_LANGUAGE="$(sed -n 's/^language /_/p' ${FILESYSTEM_DIR}/etc/default.language)" #primary language
+	AVM_FW_LANGUAGE="${AVM_FW_LANGUAGE}$(for x in $(ls ${FILESYSTEM_DIR}/etc/htmltext_??.db 2>/dev/null| sed 's/.*_//g;s/\.db//g'); do [ "_$x" != "${AVM_FW_LANGUAGE}" ] && echo -en "-$x"; done; echo)" # other languages
+	AVM_FW_MAJOR="$(sed -rn 's/^export CONFIG_VERSION_MAJOR="(.*)"/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf | tail -n1)" # newer firmware
+	[ -z "${AVM_FW_MAJOR}" ] && AVM_FW_MAJOR="$(sed -n 's/^HW=[0-9].*VERSION_MAJOR=//p' ${FILESYSTEM_DIR}/etc/init.d/rc.init)" # older firmware
+	AVM_FW_VERSION="$(sed -n 's/^export FIRMWARE_VERSION=.*}[.]//p' ${FILESYSTEM_DIR}/etc/version)" # older firmware
+	[ -z "$AVM_FW_VERSION" ] && AVM_FW_VERSION="$(sed -rn 's/^export CONFIG_VERSION=\"?([^\"]*)\"?/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # newer firmware
+	AVM_FW_LABOR="$(sed -rn 's/^export CONFIG_LABOR_ID_NAME="(.*)"/-\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)"
+	AVM_FW_REVISION="$(sed -n '/--project)$/{N;s/.*echo //p}' ${FILESYSTEM_DIR}/etc/version)" # older firmware
+	[ -z "$AVM_FW_REVISION" ] && AVM_FW_REVISION="$(sed -rn 's/^export CONFIG_SUBVERSION=\"?-?([^\"]*)\"?/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # newer firmware
+	[ -z "$AVM_FW_REVISION" ] && AVM_FW_REVISION="$(sed -rn 's/^export CONFIG_BUILDNUMBER=\"([^\"]*)\"/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # latest firmware
+	AVM_FW_DATE="$(sed -rn 's/^export FIRMWARE_DATE="(.*)"/\1/p' ${FILESYSTEM_DIR}/etc/version)" # older firmware
+	[ -z "$AVM_FW_DATE" ] && AVM_FW_DATE="$(date -d"$(stat -c '%y' ${FILESYSTEM_DIR}/etc/version)" "+%d.%m.%Y %H:%M:%S")" # newer firmware
+	AVM_FW_CYCLE="$(sed -rn 's/^Releasecycle=//p' "${FIRMWARE_DIR}/var/content" 2>/dev/null)"
+	[ -n "$AVM_FW_CYCLE" ] && AVM_FW_CYCLE=" [$AVM_FW_CYCLE]"
+	[ -d ${FILESYSTEM_DIR}/etc/default.*/avm/ ]                                              && AVM_FM_REGION='GER'
+	[ -d ${FILESYSTEM_DIR}/etc/default.*/avme/ ]                                             && AVM_FM_REGION='INT'
+	[ -d ${FILESYSTEM_DIR}/etc/default.*/avme/ -a -d ${FILESYSTEM_DIR}/etc/default.*/avm/ ]  && AVM_FM_REGION='ALL'
+	[ "$FREETZ_TYPE_LANG_IT" == "y" ]                                                        && AVM_FM_REGION='ITA'
+	[ "$FREETZ_TYPE_LANG_A_CH" == "y" ]                                                      && AVM_FM_REGION='ACH'
+	#
+	SOURCE_IMAGE_DETAILS="${AVM_FW_PRODUCT/ /-}${AVM_FW_LANGUAGE} ${AVM_FW_MAJOR}.${AVM_FW_VERSION}${AVM_FW_LABOR} rev${AVM_FW_REVISION} {${AVM_FM_REGION}}${AVM_FW_CYCLE} (${AVM_FW_DATE})"
+}
+
 #
 # get supported brandings by listing directories under /etc/default.${CONFIG_PRODUKT}
 #
