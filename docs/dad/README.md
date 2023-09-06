@@ -89,8 +89,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - switzerland: [FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image](https://download.avm.de/fritzbox/fritzbox-7360-sl/switzerland/fritz.os/FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image)
  * fritzbox-7360-v1/
    - belgium: [FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr.111.06.31.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/belgium/fritz.os/FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr.111.06.31.image)
-   - deutschland: [FRITZ.Box_Fon_WLAN_7360-06.35.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.35.image)
-   - other: [FRITZ.Box_Fon_WLAN_7360-06.33.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/other/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.33.image)
+   - deutschland: [FRITZ.Box_Fon_WLAN_7360-06.36.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.36.image)
+   - other: [FRITZ.Box_Fon_WLAN_7360-06.34.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/other/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.34.image)
  * fritzbox-7360-v2/
    - belgium: [FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr-pl.124.06.52.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/belgium/fritz.os/FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr-pl.124.06.52.image)
    - deutschland: [FRITZ.Box_Fon_WLAN_7360-06.88.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.88.image)
