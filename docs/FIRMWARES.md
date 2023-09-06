@@ -302,7 +302,7 @@ Currently supported devices and firmwares
   - Alien 7390 05.23 {INT}
   - Alien 7390 06.06 {INT}
 * __Fritz!Box Fon WLAN 7360 v1__
-  - 111.06.35 rev38645 {GER}
+  - 111.06.36 rev38788 {GER}
   - 111.06.33 rev38644 {INT}
 * __Fritz!Box Fon WLAN 7360 v2__
   - 124.06.30 rev30889 {GER}
