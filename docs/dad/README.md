@@ -6,8 +6,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 
 ### FritzBox
  * fritzbox-3272/
-   - deutschland: [FRITZ.Box_3272-06.88.image](https://download.avm.de/fritzbox/fritzbox-3272/deutschland/fritz.os/FRITZ.Box_3272-06.88.image)
-   - other: [FRITZ.Box_3272-06.87.image](https://download.avm.de/fritzbox/fritzbox-3272/other/fritz.os/FRITZ.Box_3272-06.87.image)
+   - deutschland: [FRITZ.Box_3272.126.06.89.image](https://download.avm.de/fritzbox/fritzbox-3272/deutschland/fritz.os/FRITZ.Box_3272.126.06.89.image)
+   - other: [FRITZ.Box_3272.en-de-es-it-fr-pl.126.06.88.image](https://download.avm.de/fritzbox/fritzbox-3272/other/fritz.os/FRITZ.Box_3272.en-de-es-it-fr-pl.126.06.88.image)
  * fritzbox-3490/
    - belgium: [FRITZ.Box_3490-07.31.image](https://download.avm.de/fritzbox/fritzbox-3490/belgium/fritz.os/FRITZ.Box_3490-07.31.image)
    - deutschland: [FRITZ.Box_3490-07.31.image](https://download.avm.de/fritzbox/fritzbox-3490/deutschland/fritz.os/FRITZ.Box_3490-07.31.image)
@@ -52,8 +52,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_6690_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
    - other: [FRITZ.Box_6690_Cable-07.57.image](https://download.avm.de/fritzbox/fritzbox-6690-cable/other/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
  * fritzbox-6810-lte/
-   - deutschland: [FRITZ.Box_6810_LTE.108.06.34.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/deutschland/fritz.os/FRITZ.Box_6810_LTE.108.06.34.image)
-   - other: [FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.34.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/other/fritz.os/FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.34.image)
+   - deutschland: [FRITZ.Box_6810_LTE.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/deutschland/fritz.os/FRITZ.Box_6810_LTE.108.06.35.image)
+   - other: [FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/other/fritz.os/FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.35.image)
  * fritzbox-6820-lte/
    - deutschland: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/deutschland/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
    - other: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/other/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
@@ -64,10 +64,10 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_6820v3_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
    - other: [FRITZ.Box_6820v3_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/other/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
  * fritzbox-6840-lte/
-   - deutschland: [FRITZ.Box_6840_LTE.105.06.87.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/deutschland/fritz.os/FRITZ.Box_6840_LTE.105.06.87.image)
-   - other: [FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.87.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/other/fritz.os/FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.87.image)
+   - deutschland: [FRITZ.Box_6840_LTE.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/deutschland/fritz.os/FRITZ.Box_6840_LTE.105.06.88.image)
+   - other: [FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image](https://download.avm.de/fritzbox/fritzbox-6840-lte/other/fritz.os/FRITZ.Box_6840_LTE.en-de-es-it-fr-pl.105.06.88.image)
  * fritzbox-6842-lte/
-   - deutschland: [FRITZ.Box_6842_LTE.123.06.34.image](https://download.avm.de/fritzbox/fritzbox-6842-lte/deutschland/fritz.os/FRITZ.Box_6842_LTE.123.06.34.image)
+   - deutschland: [FRITZ.Box_6842_LTE.123.06.35.image](https://download.avm.de/fritzbox/fritzbox-6842-lte/deutschland/fritz.os/FRITZ.Box_6842_LTE.123.06.35.image)
  * fritzbox-6850-5g/
    - deutschland: [FRITZ.Box_6850_5G-07.57.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/deutschland/fritz.os/FRITZ.Box_6850_5G-07.57.image)
    - other: [FRITZ.Box_6850_5G-07.57.image](https://download.avm.de/fritzbox/fritzbox-6850-5g/other/fritz.os/FRITZ.Box_6850_5G-07.57.image)
@@ -79,13 +79,13 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/deutschland/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
    - other: [FRITZ.Box_6890_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6890-lte/other/fritz.os/FRITZ.Box_6890_LTE-07.57.image)
  * fritzbox-7272/
-   - deutschland: [FRITZ.Box_7272-06.88.image](https://download.avm.de/fritzbox/fritzbox-7272/deutschland/fritz.os/FRITZ.Box_7272-06.88.image)
-   - other: [FRITZ.Box_7272-06.87.image](https://download.avm.de/fritzbox/fritzbox-7272/other/fritz.os/FRITZ.Box_7272-06.87.image)
+   - deutschland: [FRITZ.Box_7272-06.89.image](https://download.avm.de/fritzbox/fritzbox-7272/deutschland/fritz.os/FRITZ.Box_7272-06.89.image)
+   - other: [FRITZ.Box_7272-06.88.image](https://download.avm.de/fritzbox/fritzbox-7272/other/fritz.os/FRITZ.Box_7272-06.88.image)
  * fritzbox-7312/
-   - deutschland: [FRITZ.Box_7312-06.55.image](https://download.avm.de/fritzbox/fritzbox-7312/deutschland/fritz.os/FRITZ.Box_7312-06.55.image)
+   - deutschland: [FRITZ.Box_7312.AnnexB.117.06.56.image](https://download.avm.de/fritzbox/fritzbox-7312/deutschland/fritz.os/FRITZ.Box_7312.AnnexB.117.06.56.image)
  * fritzbox-7360-sl/
-   - deutschland: [FRITZ.Box_Fon_WLAN_7360_SL-06.34.image](https://download.avm.de/fritzbox/fritzbox-7360-sl/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360_SL-06.34.image)
-   - other: [FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image](https://download.avm.de/fritzbox/fritzbox-7360-sl/other/fritz.os/FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image)
+   - deutschland: [FRITZ.Box_Fon_WLAN_7360_SL.AnnexB.109.06.35.image](https://download.avm.de/fritzbox/fritzbox-7360-sl/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360_SL.AnnexB.109.06.35.image)
+   - other: [FRITZ.Box_Fon_WLAN_7360_SL.AnnexB.en-de-es-it-fr.109.06.32.image](https://download.avm.de/fritzbox/fritzbox-7360-sl/other/fritz.os/FRITZ.Box_Fon_WLAN_7360_SL.AnnexB.en-de-es-it-fr.109.06.32.image)
    - switzerland: [FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image](https://download.avm.de/fritzbox/fritzbox-7360-sl/switzerland/fritz.os/FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image)
  * fritzbox-7360-v1/
    - belgium: [FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr.111.06.31.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/belgium/fritz.os/FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr.111.06.31.image)
@@ -98,7 +98,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzbox-7362-sl/
    - deutschland: [FRITZ.Box_7362_SL-07.14.image](https://download.avm.de/fritzbox/fritzbox-7362-sl/deutschland/fritz.os/FRITZ.Box_7362_SL-07.14.image)
  * fritzbox-7369/
-   - other: [FRITZ.Box_7369.en-de-es-it-fr-pl.119.06.32.image](https://download.avm.de/fritzbox/fritzbox-7369/other/fritz.os/FRITZ.Box_7369.en-de-es-it-fr-pl.119.06.32.image)
+   - other: [FRITZ.Box_7369.en-de-es-it-fr-pl.119.06.34.image](https://download.avm.de/fritzbox/fritzbox-7369/other/fritz.os/FRITZ.Box_7369.en-de-es-it-fr-pl.119.06.34.image)
  * fritzbox-7390/
    - deutschland: [FRITZ.Box_Fon_WLAN_7390-06.88.image](https://download.avm.de/fritzbox/fritzbox-7390/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7390-06.88.image)
    - other: [FRITZ.Box_Fon_WLAN_7390-06.88.image](https://download.avm.de/fritzbox/fritzbox-7390/other/fritz.os/FRITZ.Box_Fon_WLAN_7390-06.88.image)
