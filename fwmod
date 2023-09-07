@@ -1630,7 +1630,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 	# Vulnarability 2023-09-04 tr064cgi
 	VUL_tr064cgi='new'
-	for file in libcmapi.so.1.0.0 libwebsrv.so.2.0.0;do
+	for file in libcmapi.so.1.0.0 libwebsrv.so.2.0.0; do
 		[ -f "${FILESYSTEM_DIR}/lib/$file" ] || continue
 		strings "${FILESYSTEM_DIR}/lib/$file" | grep -q 'tr064cgi$'
 		[ $? == "0" ] || VUL_tr064cgi='bug'
