@@ -540,7 +540,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_Fon_WLAN_7360.int.06.88.image/FRITZ.Box_Fon_WLAN_7360-06.88.image"  if FREETZ_TYPE_7360_V2 && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_8X
 	#
 	default "FRITZ.Box_Fon_WLAN_7360_SL.AnnexB.109.06.35.image"                            if FREETZ_TYPE_7360_SL && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_2X
-	default "FRITZ.Box_Fon_WLAN_7360_SL.en-de-es-it-fr.109.06.30.image"                    if FREETZ_TYPE_7360_SL && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_2X
+	default "FRITZ.Box_Fon_WLAN_7360_SL.AnnexB.en-de-es-it-fr.109.06.32.image"             if FREETZ_TYPE_7360_SL && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_2X
 	#
 	default "FRITZ.Box_7362_SL.131.06.30.image"                                            if FREETZ_TYPE_7362 && FREETZ_TYPE_FIRMWARE_06_2X
 	default "FRITZ.Box_7362_SL.131.06.50.image"                                            if FREETZ_TYPE_7362 && FREETZ_TYPE_FIRMWARE_06_5X
