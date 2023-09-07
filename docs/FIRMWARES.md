@@ -182,7 +182,7 @@ Currently supported devices and firmwares
   - 142.06.83 rev43648 {ALL}
   - 142.07.01 rev63482 {GER}
   - 142.07.13 rev73673 {GER} [MESH18 NL3]
-  - 142.07.29 rev92398 {GER} [PSQ19P2NL4]
+  - 142.07.30 rev107859 {GER} [PSQ19P2NL4]
 * __Fritz!Box 6820 v2 LTE__
   - 142.07.13 rev73674 {INT} [MESH18 NL3]
   - 142.07.29 rev92405 {INT} [PSQ19P2NL4]
