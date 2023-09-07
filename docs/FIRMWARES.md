@@ -194,7 +194,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 6840 LTE__
   - 105.06.30 rev31187 {GER}
   - 105.06.50 rev33168 {GER}
-  - 105.06.87 rev94195 {GER}
+  - 105.06.88 rev107986 {GER}
   - 105.06.30 rev31224 {INT}
   - 105.06.50 rev33168 {INT}
   - 105.06.87 rev94196 {INT}
