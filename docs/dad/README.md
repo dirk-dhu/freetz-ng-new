@@ -13,8 +13,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_3490-07.31.image](https://download.avm.de/fritzbox/fritzbox-3490/deutschland/fritz.os/FRITZ.Box_3490-07.31.image)
    - other: [FRITZ.Box_3490-07.31.image](https://download.avm.de/fritzbox/fritzbox-3490/other/fritz.os/FRITZ.Box_3490-07.31.image)
  * fritzbox-4020/
-   - deutschland: [FRITZ.Box_4020-07.02.image](https://download.avm.de/fritzbox/fritzbox-4020/deutschland/fritz.os/FRITZ.Box_4020-07.02.image)
-   - other: [FRITZ.Box_4020-07.02.image](https://download.avm.de/fritzbox/fritzbox-4020/other/fritz.os/FRITZ.Box_4020-07.02.image)
+   - deutschland: [FRITZ.Box_4020.07.03.image](https://download.avm.de/fritzbox/fritzbox-4020/deutschland/fritz.os/FRITZ.Box_4020.07.03.image)
+   - other: [FRITZ.Box_4020.07.03.image](https://download.avm.de/fritzbox/fritzbox-4020/other/fritz.os/FRITZ.Box_4020.07.03.image)
  * fritzbox-4040/
    - deutschland: [FRITZ.Box_4040-07.57.image](https://download.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-07.57.image)
    - other: [FRITZ.Box_4040-07.57.image](https://download.avm.de/fritzbox/fritzbox-4040/other/fritz.os/FRITZ.Box_4040-07.57.image)
@@ -55,11 +55,11 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_6810_LTE.108.06.34.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/deutschland/fritz.os/FRITZ.Box_6810_LTE.108.06.34.image)
    - other: [FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.34.image](https://download.avm.de/fritzbox/fritzbox-6810-lte/other/fritz.os/FRITZ.Box_6810_LTE.en-de-es-it-fr.108.06.34.image)
  * fritzbox-6820-lte/
-   - deutschland: [FRITZ.Box_6820v1_LTE-07.29.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/deutschland/fritz.os/FRITZ.Box_6820v1_LTE-07.29.image)
-   - other: [FRITZ.Box_6820v1_LTE-07.29.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/other/fritz.os/FRITZ.Box_6820v1_LTE-07.29.image)
+   - deutschland: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/deutschland/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
+   - other: [FRITZ.Box_6820v1_LTE-07.30.image](https://download.avm.de/fritzbox/fritzbox-6820-lte/other/fritz.os/FRITZ.Box_6820v1_LTE-07.30.image)
  * fritzbox-6820-lte-v2/
-   - deutschland: [FRITZ.Box_6820v2_LTE-07.56.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/deutschland/fritz.os/FRITZ.Box_6820v2_LTE-07.56.image)
-   - other: [FRITZ.Box_6820v2_LTE-07.56.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/other/fritz.os/FRITZ.Box_6820v2_LTE-07.56.image)
+   - deutschland: [FRITZ.Box_6820v2_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/deutschland/fritz.os/FRITZ.Box_6820v2_LTE-07.57.image)
+   - other: [FRITZ.Box_6820v2_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v2/other/fritz.os/FRITZ.Box_6820v2_LTE-07.57.image)
  * fritzbox-6820-lte-v3/
    - deutschland: [FRITZ.Box_6820v3_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/deutschland/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
    - other: [FRITZ.Box_6820v3_LTE-07.57.image](https://download.avm.de/fritzbox/fritzbox-6820-lte-v3/other/fritz.os/FRITZ.Box_6820v3_LTE-07.57.image)
