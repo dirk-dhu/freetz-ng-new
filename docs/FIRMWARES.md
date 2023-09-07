@@ -197,7 +197,7 @@ Currently supported devices and firmwares
   - 105.06.88 rev107986 {GER}
   - 105.06.30 rev31224 {INT}
   - 105.06.50 rev33168 {INT}
-  - 105.06.87 rev94196 {INT}
+  - 105.06.88 rev107987 {INT}
 * __Fritz!Box 6842 LTE (UNTESTED)__
   - 123.06.34 rev36874 {GER}
 
