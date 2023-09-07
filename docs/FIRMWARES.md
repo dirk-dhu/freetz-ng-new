@@ -176,7 +176,7 @@ Currently supported devices and firmwares
 
 * __Fritz!Box 6810 LTE (UNTESTED)__
   - 108.06.35 rev38809 {GER}
-  - 108.06.34 rev36875 {INT}
+  - 108.06.35 rev38807 {INT}
 
 * __Fritz!Box 6820 v1 LTE__
   - 142.06.83 rev43648 {ALL}
