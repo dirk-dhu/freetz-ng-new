@@ -65,7 +65,7 @@ Currently supported devices and firmwares
   - 126.06.89 rev107963 {GER}
   - 126.06.30 rev31156 {INT}
   - 126.06.52 rev33403 {INT}
-  - 126.06.87 rev93071 {INT}
+  - 126.06.88 rev107978 {INT}
 
 * __Fritz!Box WLAN 3370__
   - 103.06.30 rev30889 {GER}
