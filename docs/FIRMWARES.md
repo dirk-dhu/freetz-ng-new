@@ -199,7 +199,7 @@ Currently supported devices and firmwares
   - 105.06.50 rev33168 {INT}
   - 105.06.88 rev107987 {INT}
 * __Fritz!Box 6842 LTE (UNTESTED)__
-  - 123.06.34 rev36874 {GER}
+  - 123.06.35 rev38809 {GER}
 
 * __Fritz!Box 6850 LTE (UNTESTED)__
   - 262.07.29 rev92911 {ALL} [PSQ19P2NL4]
