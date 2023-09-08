@@ -495,7 +495,7 @@ Currently supported devices and firmwares
 * __Fritz!Repeater 1200__
   - 172.07.14 rev73941 {ALL} [MESH18 NL4]
   - 172.07.29 rev93267 {ALL} [PSQ19P2NL4]
-  - 172.07.56 rev106936 {ALL} [MOVE21NL1]
+  - 172.07.57 rev107845 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 1200 AX__
   - 268.07.30 rev93528 {ALL} [PSQ19P2NL4]
   - 268.07.56 rev106867 {ALL} [MOVE21NL1]
