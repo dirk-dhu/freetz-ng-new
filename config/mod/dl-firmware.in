@@ -599,7 +599,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7520-07.57.image"                                                   if FREETZ_TYPE_7520                        && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_7520_B-07.31.image"                                                 if FREETZ_TYPE_7521                        && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Box_7520_B-07.56.image"                                                 if FREETZ_TYPE_7521                        && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Box_7520_B-07.57.image"                                                 if FREETZ_TYPE_7521                        && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_7530.en-de-es-it-fr-pl-nl.164.07.02.image"                          if (FREETZ_TYPE_7530 || FREETZ_TYPE_7520_7530) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Box_7530.07.13.int.image/FRITZ.Box_7530-07.13.image"                    if (FREETZ_TYPE_7530 || FREETZ_TYPE_7520_7530) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_07_1X
