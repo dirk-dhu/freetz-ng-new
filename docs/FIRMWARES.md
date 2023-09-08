@@ -159,7 +159,7 @@ Currently supported devices and firmwares
   - 148.07.02 rev65392 {GER}
   - 148.07.12 rev72225 {GER} [MESH18 NL2]
   - 148.07.29 rev92219 {GER} [PSQ19P2NL4]
-  - 148.07.56 rev107070 {GER} [MOVE21NL1]
+  - 148.07.57 rev107831 {GER} [MOVE21NL1]
 * __Fritz!Box 6591 Cable__
   - 161.07.13 rev75441 {GER} [MESH18 NL3]
   - 161.07.29 rev92035 {GER} [PSQ19P2NL4]
