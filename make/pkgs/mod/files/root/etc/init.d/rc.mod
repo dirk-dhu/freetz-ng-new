@@ -15,13 +15,28 @@ log() {
 }
 
 
-vulcheck() {
+vulcheck_2014() {
 	[ "$FREETZ_AVM_HAS_CVE_2014_9727" != "y" ] && return
 	# 04.55 is the version of the first firmware with support for remote access (according to AVM)
 	# 27349 is the revision of the first firmware remote access vulnerability has been fixed in
+	# https://vuldb.com/de/?id.75594 CVSS Meta Temp Score 7.1
 	echo "Firmware with remote access vulnerability detected."
 	if [ ! -e /tmp/flash/mod/dont_touch_https ]; then
 		echo "Remote access via https will be disabled. Create /tmp/flash/mod/dont_touch_https if you don't want this behavior."
+		ctlmgr_ctl w remoteman settings/enabled 0 >/dev/null 2>&1
+	fi
+}
+
+vulcheck_2023() {
+	[ "$UPSI_2023_TR064CGI" != "y" ] && return
+	# ZERO info by AVM about vulnerabilty, tr064cgi binary exists since FOS 05.2x
+	# It seems to be safe up to FOS 6.0x (Sep 2015) as 7270 v2+v3 and 7240 got no fix.
+	# Extender with FOS 7.56 (Jun 2023) have no longer a tr064cgi binary, before it is "unused"/save by definition.
+	# https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2023-2262 CVSS Base Score first 7.1, now 7.3
+	# rev38807-svn / rev107809-git is the revision of the first firmware tr064cgi vulnerability has been fixed in
+	echo "Firmware with tr064cgi vulnerability detected."
+	if [ ! -e /tmp/flash/mod/dont_touch_tr064cgi ]; then
+		echo "Remote access via https will be disabled. Create /tmp/flash/mod/dont_touch_tr064cgi if you don't want this behavior."
 		ctlmgr_ctl w remoteman settings/enabled 0 >/dev/null 2>&1
 	fi
 }
@@ -152,7 +167,8 @@ start() {
 		echo " ... done."
 	fi
 
-	vulcheck
+	vulcheck_2014
+	vulcheck_2023
 	utmp_wtmp
 	wlan_up
 	motd
