@@ -167,7 +167,7 @@ Currently supported devices and firmwares
 * __Fritz!Box 6660 Cable__
   - 252.07.15 rev78740 {GER} [6660 FCS]
   - 252.07.29 rev92037 {GER} [PSQ19P2NL4]
-  - 252.07.56 rev106343 {GER} [MOVE21NL1]
+  - 252.07.57 rev107842 {GER} [MOVE21NL1]
 * __Fritz!Box 6690 Cable__
   - 267.07.29 rev92355 {GER} [PSQ19P2NL4]
   - 267.07.56 rev106308 {GER} [MOVE21NL1]
