@@ -1345,6 +1345,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	default "/dev/ttyMSM0"
 endif
 if FREETZ_TYPE_1750 && FREETZ_AVM_VERSION_06_2X
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_3
@@ -1378,6 +1380,8 @@ config FREETZ_AVM_HAS_LANGUAGE_fr
 config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
@@ -1416,6 +1420,8 @@ config FREETZ_AVM_HAS_LANGUAGE_pl
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
@@ -1464,6 +1470,8 @@ config FREETZ_AVM_HAS_LANGUAGE_pl
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
@@ -1564,8 +1572,6 @@ config FREETZ_AVM_HAS_TR069
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
-	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
