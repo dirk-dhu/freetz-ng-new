@@ -195,8 +195,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 
 ### FritzWlan
  * fritzrepeater-1200/
-   - deutschland: [FRITZ.Repeater_1200-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/deutschland/fritz.os/FRITZ.Repeater_1200-07.56.image)
-   - other: [FRITZ.Repeater_1200-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/other/fritz.os/FRITZ.Repeater_1200-07.56.image)
+   - deutschland: [FRITZ.Repeater_1200-07.57.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/deutschland/fritz.os/FRITZ.Repeater_1200-07.57.image)
+   - other: [FRITZ.Repeater_1200-07.57.image](https://download.avm.de/fritzwlan/fritzrepeater-1200/other/fritz.os/FRITZ.Repeater_1200-07.57.image)
  * fritzrepeater-1200-ax/
    - deutschland: [FRITZ.Repeater_1200_AX-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-1200-ax/deutschland/fritz.os/FRITZ.Repeater_1200_AX-07.56.image)
    - other: [FRITZ.Repeater_1200_AX-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-1200-ax/other/fritz.os/FRITZ.Repeater_1200_AX-07.56.image)
@@ -204,8 +204,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Repeater_2400-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-2400/deutschland/fritz.os/FRITZ.Repeater_2400-07.56.image)
    - other: [FRITZ.Repeater_2400-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-2400/other/fritz.os/FRITZ.Repeater_2400-07.56.image)
  * fritzrepeater-3000/
-   - deutschland: [FRITZ.Repeater_3000-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-3000/deutschland/fritz.os/FRITZ.Repeater_3000-07.56.image)
-   - other: [FRITZ.Repeater_3000-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-3000/other/fritz.os/FRITZ.Repeater_3000-07.56.image)
+   - deutschland: [FRITZ.Repeater_3000-07.57.image](https://download.avm.de/fritzwlan/fritzrepeater-3000/deutschland/fritz.os/FRITZ.Repeater_3000-07.57.image)
+   - other: [FRITZ.Repeater_3000-07.57.image](https://download.avm.de/fritzwlan/fritzrepeater-3000/other/fritz.os/FRITZ.Repeater_3000-07.57.image)
  * fritzrepeater-3000-ax/
    - deutschland: [FRITZ.Repeater_3000_AX-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-3000-ax/deutschland/fritz.os/FRITZ.Repeater_3000_AX-07.56.image)
    - other: [FRITZ.Repeater_3000_AX-07.56.image](https://download.avm.de/fritzwlan/fritzrepeater-3000-ax/other/fritz.os/FRITZ.Repeater_3000_AX-07.56.image)
@@ -224,8 +224,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_WLAN_Repeater_1160-07.14.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1160/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.14.image)
    - other: [FRITZ.Box_WLAN_Repeater_1160-07.14.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1160/other/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.14.image)
  * fritzwlan-repeater-1750e/
-   - deutschland: [FRITZ.Repeater_1750E-07.30.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ.Repeater_1750E-07.30.image)
-   - other: [FRITZ.Repeater_1750E-07.30.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/other/fritz.os/FRITZ.Repeater_1750E-07.30.image)
+   - deutschland: [FRITZ.Repeater_1750E-07.31.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ.Repeater_1750E-07.31.image)
+   - other: [FRITZ.Repeater_1750E-07.31.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1750e/other/fritz.os/FRITZ.Repeater_1750E-07.31.image)
  * fritzwlan-repeater-300e/
    - deutschland: [FRITZ.Box_WLAN_Repeater_300E-06.33.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-300e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_300E-06.33.image)
    - other: [FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.33.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-300e/other/fritz.os/FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.33.image)
