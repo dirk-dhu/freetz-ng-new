@@ -396,7 +396,7 @@ Currently supported devices and firmwares
   - 164.07.57 rev107823 {ALL} [MOVE21NL1]
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
-  - 256.07.56 rev106785 {ALL} [MOVE21NL1]
+  - 256.07.57 rev107818 {ALL} [MOVE21NL1]
 * __Fritz!Box Fon WLAN 7560__
   - 149.06.53 rev41227 {GER}
   - 149.06.83 rev43670 {GER}
