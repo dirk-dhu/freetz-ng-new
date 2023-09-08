@@ -24,5 +24,8 @@ config FREETZ_AVM_HAS_LANGUAGE_it
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
 
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+
 endif
 

@@ -4,6 +4,9 @@ config FREETZ_AVM_PROP_NAME
 	string
 	default "FRITZ!Box 5590"
 
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
+
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
 

@@ -442,6 +442,18 @@ determine_() {
 	[ $V -ge 0455 -a $R -lt 27349 ] && in_b "FREETZ_AVM_HAS_${P^^}" && \
 	[ $DOSHOW -ge 2 ] && outp "${P,,}" "YES"
 
+	#UPSI_2023_TR064CGI
+	P='UPSI_2023_TR064CGI'
+	X='new'
+	for file in libcmapi.so.1.0.0 libwebsrv.so.2.0.0; do
+		[ -f "$unpacked/lib/$file" ] || continue
+		strings "$unpacked/lib/$file" | grep -q 'tr064cgi$'
+		[ $? == "0" ] || X='bug'
+	done
+	[ $V -ge 0610 -a -x "$unpacked/usr/www/cgi-bin/tr064cgi" ] || X='old'
+	[ $X == "bug" ] && in_b "FREETZ_AVM_HAS_${P^^}" && \
+	[ $DOSHOW -ge 2 ] && outp "${P,,}" "YES"
+
 
 	#ANNEX_SELECT (avme is ignored by patch, just for consolodation)
 	X="$(grep -c "get_annex_checked" "$unpacked/usr/www/avm/internet/dsl_line_settings.lua" 2>/dev/null)"
