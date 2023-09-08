@@ -425,7 +425,7 @@ Currently supported devices and firmwares
   - 167.07.57 rev107811 {ALL} [MOVE21NL1]
 * __Fritz!Box Fon WLAN 7583 VDSL (UNTESTED)__
   - 260.07.31 rev95688 {ALL} [PSQ19P2NL4]
-  - 260.07.56 rev106783 {ALL} [MOVE21NL1]
+  - 260.07.57 rev107812 {ALL} [MOVE21NL1]
 
 * __Fritz!Box Fon WLAN 7590__
   - 154.06.86 rev45533 {GER}
