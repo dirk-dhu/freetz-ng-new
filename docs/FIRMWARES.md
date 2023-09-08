@@ -439,7 +439,7 @@ Currently supported devices and firmwares
   - 154.07.57 rev107893 {ALL} [MOVE21NL1]
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
-  - 259.07.56 rev106104 {ALL} [MOVE21NL1]
+  - 259.07.57 rev107809 {ALL} [MOVE21NL1]
 
 ### Fritz!Powerline
 
