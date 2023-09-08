@@ -520,7 +520,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_Fon_WLAN_7320-06.34.image"                                          if FREETZ_TYPE_7320 && FREETZ_TYPE_FIRMWARE_06_2X
 	#
 	default "FRITZ.Box_7330.107.06.30.image"                                               if (FREETZ_TYPE_7330_XL || FREETZ_TYPE_7320_7330_XL) && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_2X
-	default "FRITZ.Box_7330-06.55.image"                                                   if (FREETZ_TYPE_7330_XL || FREETZ_TYPE_7320_7330_XL) && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_5X
+	default "FRITZ.Box_7330-06.56.image"                                                   if (FREETZ_TYPE_7330_XL || FREETZ_TYPE_7320_7330_XL) && FREETZ_TYPE_LANG_DE && FREETZ_TYPE_FIRMWARE_06_5X
 	default "FRITZ.Box_7330.en-de-es-it-fr.107.06.30.image"                                if (FREETZ_TYPE_7330_XL || FREETZ_TYPE_7320_7330_XL) && FREETZ_TYPE_LANG_EN && FREETZ_TYPE_FIRMWARE_06_2X
 	#
 	default "FRITZ.Box_7330_SL.116.06.30.image"                                            if (FREETZ_TYPE_7330_SL || FREETZ_TYPE_7320_7330_SL) && FREETZ_TYPE_FIRMWARE_06_2X
