@@ -69,7 +69,7 @@ Currently supported devices and firmwares
 
 * __Fritz!Box WLAN 3370__
   - 103.06.30 rev30889 {GER}
-  - 103.06.55 rev38670 {GER}
+  - 103.06.56 rev38796 {GER}
   - 103.06.30 rev31156 {INT}
   - 103.06.52 rev34161 {INT}
   - Alien 3490 {GER+INT} (No wlan, no usb!)
