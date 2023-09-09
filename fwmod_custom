@@ -3,9 +3,9 @@
 # Custom firmware modifications
 
 # Directories:
-#  ./firmware	- untared firmware
-#  ./filesystem	- unpacked filesystem squashfs
-#  ./kernel	- unpacked kernel & hidden kernel squashfs
+#  build/modified/firmware/	- untared firmware
+#  build/modified/filesystem/	- unpacked filesystem squashfs
+#  build/modified/kernel/	- unpacked kernel & hidden kernel squashfs
 
 all() {
 	dummy=0
@@ -22,6 +22,7 @@ all_no_freetz() {
 	local freetz_base patches_scripts
 	freetz_base=$(dirname "$0")
 	patches_scripts="${freetz_base}/patches/scripts"
+	filesystem_dir="${freetz_base}/build/modified/filesystem"
 
 	# source freetz-helper-functions and freetz .config
 	source "${freetz_base}/tools/freetz_functions"
@@ -29,7 +30,7 @@ all_no_freetz() {
 	source "${freetz_base}/.config"
 
 	# restore telnetd support, still needs the additional "inhaus mode" patch below
-	ln -sf ../../bin/busybox ./filesystem/usr/sbin/telnetd
+	ln -sf ../../bin/busybox ${filesystem_dir}/usr/sbin/telnetd
 
 	########################################################
 	# The mods/patches below need to be enabled by you in  #

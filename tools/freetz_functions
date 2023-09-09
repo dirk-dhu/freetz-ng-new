@@ -567,11 +567,12 @@ invoke_fwmod_custom()
 		$SHELL -n "${BASE_DIR}/$file" || error 1 "syntax error in $file script"
 
 		(
-		  cd "$MOD_DIR" && \
-		  TOOLS_DIR=../../tools \
-		  FILESYSTEM_MOD_DIR=./filesystem \
-		  PATCHES_COND_DIR=../../patches/cond \
-		  ../../$file "$@"
+		  AVM_FW_MAJOR="$AVM_FW_MAJOR" \
+		  AVM_FW_VERSION="$AVM_FW_VERSION" \
+		  TOOLS_DIR="$TOOLS_DIR" \
+		  FILESYSTEM_MOD_DIR="$FILESYSTEM_MOD_DIR" \
+		  PATCHES_COND_DIR="$PATCHES_COND_DIR" \
+		  ./$file "$@"
 		) || error 1 "$file script returned error $?"
 	done
 }
