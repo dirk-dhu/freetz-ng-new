@@ -12,7 +12,7 @@ modsed \
   "^PATH=$wrapath:"
 
 for daemon in dsld multid rextd; do
-	[ -e "${FILESYSTEM_MOD_DIR}$wrapath/$daemon" ] || continue
+#	[ -e "${FILESYSTEM_MOD_DIR}$wrapath/$daemon" ] || continue
 	file="${FILESYSTEM_MOD_DIR}/lib/systemd/system/$daemon.service"
 	[ -e "$file" ] || continue
 
