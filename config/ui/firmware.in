@@ -1128,7 +1128,7 @@ choice
 		bool "Alice IAD 3331"
 		depends on FREETZ_TYPE_7170 && FREETZ_TYPE_LANG_DE
 		select FREETZ_REMOVE_PIGLET_V1 if FREETZ_SHOW_EXPERT
-		select FREETZ_ENFORCE_URLADER_SETTINGS
+		select FREETZ_ENFORCE_URLADER_SETTINGS if FREETZ_AVM_VERSION_07_1X_MAX
 		help
 			Enable this to compile a mod image for Alice IAD 3331 based
 			on a 7170 image.
