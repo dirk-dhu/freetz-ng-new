@@ -1,5 +1,11 @@
 # NEWS
 
+ * __[2023-09-10](#2023-09-10)__<a id='2023-09-10'></a><br>
+   Der Aufruf der `fwmod_custom` Scriptes hat sich geändert, es wird jetzt aus dem Basisverzeichnis des Checkouts<br>
+   heraus aufgerufen. Möglicherweise müssen in bestehenden Scripten die Verzeichnisse mit `build/modified/`<br>
+   erweitert werden, falls nicht die Variable `$FILESYSTEM_MOD_DIR` genuztzt wurde.<br>
+   Siehe [18fe85ca](https://github.com/Freetz-NG/freetz-ng/commit/18fe85caa26194899ed1a5c7baaadc95aa83f1df)<br>
+
  * __[2023-08-20](#2023-08-20)__<a id='2023-08-20'></a><br>
    Es wurde ein neuer [Tag](https://github.com/Freetz-NG/freetz-ng/tags) `ng23080` erstellt.<br>
    Die automatisch angebotene und nicht deaktivierbare `.zip`-Datei darf auf keinen Fall verwendet werden, da<br>
