@@ -92,7 +92,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_Fon_WLAN_7360-06.36.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.36.image)
    - other: [FRITZ.Box_Fon_WLAN_7360-06.34.image](https://download.avm.de/fritzbox/fritzbox-7360-v1/other/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.34.image)
  * fritzbox-7360-v2/
-   - belgium: [FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr-pl.124.06.52.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/belgium/fritz.os/FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr-pl.124.06.52.image)
+   - belgium: [FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr-pl.124.06.53.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/belgium/fritz.os/FRITZ.Box_Fon_WLAN_7360.en-de-es-it-fr-pl.124.06.53.image)
    - deutschland: [FRITZ.Box_Fon_WLAN_7360-06.88.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/deutschland/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.88.image)
    - other: [FRITZ.Box_Fon_WLAN_7360-06.88.image](https://download.avm.de/fritzbox/fritzbox-7360-v2/other/fritz.os/FRITZ.Box_Fon_WLAN_7360-06.88.image)
  * fritzbox-7362-sl/
