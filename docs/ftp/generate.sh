@@ -1,15 +1,15 @@
 #! /usr/bin/env bash
-# generates docs/dad/README.md
+# generates docs/ftp/README.md
 SCRIPT="$(readlink -f $0)"
 PARENT="$(dirname $(dirname ${SCRIPT%/*}))"
 
 
 #get
-LANG=C  wget --spider --recursive --no-verbose --no-parent 'https://ftp.avm.de' 2>&1 | tee dad
-sed -rn 's,.* URL: (.*\.image) 200 OK,\1,p' -i dad
+LANG=C  wget --spider --recursive --no-verbose --no-parent 'https://ftp.avm.de' 2>&1 | tee ftp
+sed -rn 's,.* URL: (.*\.image) 200 OK,\1,p' -i ftp
 
 #cat
-for cat in $(sed 's,^https://ftp.avm.de/,,;s,/.*,,g' dad | uniq); do
+for cat in $(sed 's,^https://ftp.avm.de/,,;s,/.*,,g' ftp | uniq); do
 c="$cat"
 [ "${cat#fritz}" != "$cat" ] && cat="${cat:5}" && cat="Fritz${cat^}"
 [ "$cat" != "archive" ] && CATS="$CATS$c $cat\n"
@@ -26,17 +26,17 @@ echo -e ' - Das Unterverzeichnis [archive/](https://ftp.avm.de/archive/) ist hie
 echo -e ' - Diese Liste ist weder vollständig, korrekt noch aktuell.'
 echo -e "$CATS" | grep -v ^$ | while read c cat; do
 	echo -e "\n### $cat"
-	sed -rn "s,^https://ftp.avm.de/$c/,,p" dad | while read -s line; do
+	sed -rn "s,^https://ftp.avm.de/$c/,,p" ftp | while read -s line; do
 		new="${line%%/*}"
 		[ "$old" != "$new" ] && echo " * $new/" && old="$new"
 		file="${line#$new/}" ; file="${file//\/fritz.os\//:}" ; file="${file//\/recover\//-recover:}" ; kind="${file%%:*}" ; file="${file##*:}"
 		echo "   - ${kind//%20/ }: [${file//%20/ }](https://ftp.avm.de/$c/$line)"
 	done
 done
-) | sed 's/_-/-/' > $PARENT/docs/dad/README.md
+) | sed 's/_-/-/' > $PARENT/docs/ftp/README.md
 
 #tmp
-rm -f dad
+rm -f ftp
 rmdir ftp.avm.de/*/*/*/*/* ftp.avm.de/*/*/*/* ftp.avm.de/*/*/* ftp.avm.de/*/* ftp.avm.de/* ftp.avm.de/ 2>/dev/null
 exit 0
 
