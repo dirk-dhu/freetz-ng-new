@@ -295,7 +295,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Powerline_1260E.157.07.01.image"                                        if FREETZ_TYPE_1260_V1 && FREETZ_TYPE_FIRMWARE_07_0X
 	default "FRITZ.Powerline_1260E.157.07.12.image"                                        if FREETZ_TYPE_1260_V1 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Powerline_1260E.157.07.29.image"                                        if FREETZ_TYPE_1260_V1 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Powerline_1260E.157.07.56.image"                                        if FREETZ_TYPE_1260_V1 && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Powerline_1260E.157.07.57.image"                                        if FREETZ_TYPE_1260_V1 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Powerline_1260.249.07.29-Release.image"                                 if FREETZ_TYPE_1260_V2 && FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Powerline_1260.249.07.56.image"                                         if FREETZ_TYPE_1260_V2 && FREETZ_TYPE_FIRMWARE_07_5X
