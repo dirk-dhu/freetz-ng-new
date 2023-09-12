@@ -62,6 +62,7 @@ Latest changes
    * mc (Midnight Commander) 4.8.30
    * Nmap 4.76/5.51/7.94
    * OpenSSH 9.3p2/9.4p1
+   * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.10
    * PCSC-lite 2.0.0
    * Screen 4.9.1
    * SQLite 3.43.0
