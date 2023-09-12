@@ -1,7 +1,7 @@
-$(call PKG_INIT_BIN, 1.17.1)
-$(PKG)_LIB_VERSION:=8.1.21
+$(call PKG_INIT_BIN, 1.18.0)
+$(PKG)_LIB_VERSION:=8.1.22
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
-$(PKG)_HASH:=ee4085cecce12584e600f3d814a28fa822dfaacec1f94c84bfd67f8a5571a5f4
+$(PKG)_HASH:=3da95490a85cff6420f26fae0b84a49f5112df1bf1b7fc34f8724f02082cb712
 $(PKG)_SITE:=https://www.unbound.net/downloads
 ### WEBSITE:=https://www.unbound.net
 ### MANPAGE:=https://www.unbound.net/documentation/unbound.html

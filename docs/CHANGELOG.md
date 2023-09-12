@@ -69,6 +69,7 @@ Latest changes
    * strace 4.9/5.0/6.5
    * Tor 0.4.8.5
    * Transmission 3.00/4.0.4
+   * Unbound 1.18.0
    * UnRAR 6.1.7/6.2.10
 
  - Libraries:
