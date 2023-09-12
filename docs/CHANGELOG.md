@@ -74,6 +74,7 @@ Latest changes
 
  - Libraries:
    * glib2 2.32.4/2.76.5
+   * harfbuzz 8.2.0
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
