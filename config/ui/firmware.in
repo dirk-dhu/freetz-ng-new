@@ -743,6 +743,12 @@ choice
 
 endchoice # "Firmware version" #
 
+comment " >> This firmware has webcm vulnerability"
+	depends on FREETZ_AVM_HAS_CVE_2014_9727
+
+comment " >> This firmware has tr064cgi vulnerability"
+	depends on FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+
 comment " >> This firmware fits on AVM and AVME devices"
 	depends on FREETZ_AVM_PROP_ALL_REGIONS && !( ( (!FREETZ_AVM_HAS_BRANDING_1und1 || FREETZ_REMOVE_BRANDING_1und1) && FREETZ_REMOVE_BRANDING_avm) || FREETZ_REMOVE_BRANDING_avme)
 
