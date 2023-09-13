@@ -473,7 +473,7 @@ Currently supported devices and firmwares
 
 * __Fritz!WLAN Repeater 300E (UNTESTED)__
   - 101.06.34 rev38815 {GER}
-  - 101.06.33 rev38569 {INT}
+  - 101.06.34 rev38815 {INT}
 * __Fritz!WLAN Repeater 450E__
   - 128.06.51 rev34135 {ALL}
   - 128.06.92 rev47360 {ALL}
