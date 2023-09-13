@@ -57,6 +57,7 @@ Latest changes
    * Atop 2.9.0
    * BIND 9.11.37/9.16.43
    * CA-bundle 2023-08-22
+   * Curl 8.3.0
    * FFmpeg 5.1.3
    * Git 2.42.0
    * mc (Midnight Commander) 4.8.30
