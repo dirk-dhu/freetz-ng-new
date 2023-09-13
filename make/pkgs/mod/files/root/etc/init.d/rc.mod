@@ -29,11 +29,11 @@ vulcheck_2014() {
 
 vulcheck_2023() {
 	[ "$UPSI_2023_TR064CGI" != "y" ] && return
-	# ZERO info by AVM about vulnerabilty, tr064cgi binary exists since FOS 05.2x
-	# It seems to be safe up to FOS 6.0x (Sep 2015) as 7270 v2+v3 and 7240 got no fix.
-	# Extender with FOS 7.56 (Jun 2023) have no longer a tr064cgi binary, before it is "unused"/save by definition.
+	# ZERO info by AVM about vulnerabilty, tr064cgi binary exists since FOS 05.2x. Up to FOS 6.0x (Sep 2015) it seems to be safe as 7270 v2+v3 and 7240 got no fixes.
+	# Now 1 week later also extender get fixes, regardingless of existence of tr064cgi binary. Extender with FOS 7.56 (Jun 2023) have no longer the file.
+	# As Extender without tr064cgi binary get the fixes too, the bug seems to be in arguments handling of avm's own developed closed-source webserver.
 	# https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2023-2262 CVSS Base Score first 7.1, now 7.3
-	# rev38807-svn / rev107809-git is the revision of the first firmware tr064cgi vulnerability has been fixed in
+	# rev38787-svn / rev107809-git is the revision of the first firmware found tr064cgi vulnerability has been fixed in.
 	echo "Firmware with tr064cgi vulnerability detected."
 	if [ ! -e /tmp/flash/mod/dont_touch_tr064cgi ]; then
 		echo "Remote access via https will be disabled. Create /tmp/flash/mod/dont_touch_tr064cgi if you don't want this behavior."

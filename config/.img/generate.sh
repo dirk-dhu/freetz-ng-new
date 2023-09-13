@@ -450,7 +450,7 @@ determine_() {
 		strings "$unpacked/lib/$file" | grep -q 'tr064cgi$'
 		[ $? == "0" ] || X='bug'
 	done
-	[ $V -ge 0610 -a -x "$unpacked/usr/www/cgi-bin/tr064cgi" ] || X='old'
+	[ $V -ge 0620 ] || X='old'
 	[ $X == "bug" ] && in_b "FREETZ_AVM_HAS_${P^^}" && \
 	[ $DOSHOW -ge 2 ] && outp "${P,,}" "YES"
 
