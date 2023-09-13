@@ -189,16 +189,12 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzbox-6810-lte/
    - [fritz_box_6810_source_files.06.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6810-lte/fritz_box_6810_source_files.06.21.tar.gz)
  * fritzbox-6820-lte/
-   - [source-files-FRITZ.Box_6820_LTE-07.13.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte/source-files-FRITZ.Box_6820_LTE-07.13.tar.gz)
+   - [source-files-FRITZ.Box_6820_LTE-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte/source-files-FRITZ.Box_6820_LTE-07.29.tar.gz)
  * fritzbox-6820-lte-v2/
    - [source-files-FRITZ.Box_6820_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v2/source-files-FRITZ.Box_6820_LTE-07.56.tar.gz)
  * fritzbox-6820-lte-v3/
    - [source-files-FRITZ.Box_6820v3_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6820-lte-v3/source-files-FRITZ.Box_6820v3_LTE-07.56.tar.gz)
  * fritzbox-6840-lte/
-   - [fritz_box_6840_source_files.05.09.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/fritz_box_6840_source_files.05.09.tar.gz)
-   - [fritz_box_6840_source_files.05.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/fritz_box_6840_source_files.05.50.tar.gz)
-   - [fritz_box_6840_source_files.06.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/fritz_box_6840_source_files.06.01.tar.gz)
-   - [fritz_box_6840_source_files.06.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/fritz_box_6840_source_files.06.21.tar.gz)
    - [source-files-FRITZ.Box_6840_LTE-06.85.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6840-lte/source-files-FRITZ.Box_6840_LTE-06.85.tar.gz)
  * fritzbox-6842-lte/
    - [fritz_box_6842_source_files.06.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6842-lte/fritz_box_6842_source_files.06.21.tar.gz)
@@ -207,7 +203,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzbox-6850-lte/
    - [source-files-FRITZ.Box_6850_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6850-lte/source-files-FRITZ.Box_6850_LTE-07.56.tar.gz)
  * fritzbox-6890-lte/
-   - [source-files-FRITZ.Box_6890_LTE-grx5-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6890-lte/source-files-FRITZ.Box_6890_LTE-grx5-07.29.tar.gz)
+   - [source-files-FRITZ.Box_6890_LTE-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-6890-lte/source-files-FRITZ.Box_6890_LTE-07.56.tar.gz)
  * fritzbox-7112/
    - [source-files-FRITZ.Box_7112-04.88.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7112/source-files-FRITZ.Box_7112-04.88.tar.gz)
  * fritzbox-7113/
@@ -356,7 +352,9 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzbox-7510/
    - [source-files-FRITZ.Box_7510-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7510/source-files-FRITZ.Box_7510-07.56.tar.gz)
  * fritzbox-7520/
-   - [sources-files-FRITZ.Box_7520-07.21.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7520/sources-files-FRITZ.Box_7520-07.21.tar.gz)
+   - [source-files-FRITZ.Box_7520-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7520/source-files-FRITZ.Box_7520-07.56.tar.gz)
+ * fritzbox-7520-B/
+   - [source-files-FRITZ.Box_7520_B-07.56.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7520-B/source-files-FRITZ.Box_7520_B-07.56.tar.gz)
  * fritzbox-7530/
    - [source-files-FRITZ.Box_7530-cortexa9-07.27.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530/source-files-FRITZ.Box_7530-cortexa9-07.27.tar.gz)
    - [source-files-FRITZ.Box_7530-cortexa9-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7530/source-files-FRITZ.Box_7530-cortexa9-07.29.tar.gz)
