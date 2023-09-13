@@ -451,7 +451,7 @@ Currently supported devices and firmwares
   - 129.07.15 rev108020 {ALL} [WU21 MESH18]
 * __Fritz!Powerline 546E__
   - 118.06.32 rev31507 {GER}
-  - 118.06.50 rev33971 {ALL}
+  - 118.06.51 rev38814 {ALL}
   - 118.06.92 rev47429 {ALL}
   - 118.07.01 rev65031 {ALL}
   - 118.07.15 rev108026 {ALL} [WU21 MESH18]
