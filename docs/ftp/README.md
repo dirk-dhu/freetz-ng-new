@@ -190,7 +190,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - other: [FRITZ.Powerline_540E.129.07.15.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-540e/other/fritz.os/FRITZ.Powerline_540E.129.07.15.image)
  * fritzpowerline-546e/
    - deutschland: [FRITZ.Powerline_546E.118.07.15.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-546e/deutschland/fritz.os/FRITZ.Powerline_546E.118.07.15.image)
-   - other: [FRITZ.Powerline_546E.en-de-es-it-fr-pl.118.06.50.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-546e/other/fritz.os/FRITZ.Powerline_546E.en-de-es-it-fr-pl.118.06.50.image)
+   - other: [FRITZ.Powerline_546E-07.15.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-546e/other/fritz.os/FRITZ.Powerline_546E-07.15.image)
 
 ### FritzWlan
  * fritzrepeater-1200/
@@ -200,8 +200,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Repeater_1200_AX-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200-ax/deutschland/fritz.os/FRITZ.Repeater_1200_AX-07.56.image)
    - other: [FRITZ.Repeater_1200_AX-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200-ax/other/fritz.os/FRITZ.Repeater_1200_AX-07.56.image)
  * fritzrepeater-2400/
-   - deutschland: [FRITZ.Repeater_2400-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-2400/deutschland/fritz.os/FRITZ.Repeater_2400-07.56.image)
-   - other: [FRITZ.Repeater_2400-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-2400/other/fritz.os/FRITZ.Repeater_2400-07.56.image)
+   - deutschland: [FRITZ.Repeater_2400-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-2400/deutschland/fritz.os/FRITZ.Repeater_2400-07.57.image)
+   - other: [FRITZ.Repeater_2400-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-2400/other/fritz.os/FRITZ.Repeater_2400-07.57.image)
  * fritzrepeater-3000/
    - deutschland: [FRITZ.Repeater_3000-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000/deutschland/fritz.os/FRITZ.Repeater_3000-07.57.image)
    - other: [FRITZ.Repeater_3000-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000/other/fritz.os/FRITZ.Repeater_3000-07.57.image)
@@ -226,17 +226,17 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Repeater_1750E-07.31.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-1750e/deutschland/fritz.os/FRITZ.Repeater_1750E-07.31.image)
    - other: [FRITZ.Repeater_1750E-07.31.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-1750e/other/fritz.os/FRITZ.Repeater_1750E-07.31.image)
  * fritzwlan-repeater-300e/
-   - deutschland: [FRITZ.Box_WLAN_Repeater_300E-06.33.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-300e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_300E-06.33.image)
-   - other: [FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.33.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-300e/other/fritz.os/FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.33.image)
+   - deutschland: [FRITZ.Box_WLAN_Repeater_300E-06.34.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-300e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_300E-06.34.image)
+   - other: [FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.34.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-300e/other/fritz.os/FRITZ.Box_WLAN_Repeater_300E.en-de-es-it-fr-pl.101.06.34.image)
  * fritzwlan-repeater-310-a/
-   - deutschland: [FRITZ.Repeater_310-07.15.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-a/deutschland/fritz.os/FRITZ.Repeater_310-07.15.image)
-   - other: [FRITZ.Repeater_310-07.15.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-a/other/fritz.os/FRITZ.Repeater_310-07.15.image)
+   - deutschland: [FRITZ.Repeater_310-07.16.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-a/deutschland/fritz.os/FRITZ.Repeater_310-07.16.image)
+   - other: [FRITZ.Repeater_310-07.16.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-a/other/fritz.os/FRITZ.Repeater_310-07.16.image)
  * fritzwlan-repeater-310-b/
-   - deutschland: [FRITZ.Repeater_310-07.15.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-b/deutschland/fritz.os/FRITZ.Repeater_310_-07.15.image)
-   - other: [FRITZ.Repeater_310-07.15.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-b/other/fritz.os/FRITZ.Repeater_310_-07.15.image)
+   - deutschland: [FRITZ.Repeater_310-07.16.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-b/deutschland/fritz.os/FRITZ.Repeater_310-07.16.image)
+   - other: [FRITZ.Repeater_310-07.16.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-310-b/other/fritz.os/FRITZ.Repeater_310-07.16.image)
  * fritzwlan-repeater-450e/
-   - deutschland: [FRITZ.Box_WLAN_Repeater_450E-07.14.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-450e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.14.image)
-   - other: [FRITZ.Box_WLAN_Repeater_450E-07.14.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-450e/other/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.14.image)
+   - deutschland: [FRITZ.Box_WLAN_Repeater_450E-07.15.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-450e/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.15.image)
+   - other: [FRITZ.Box_WLAN_Repeater_450E-07.15.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-450e/other/fritz.os/FRITZ.Box_WLAN_Repeater_450E-07.15.image)
  * fritzwlan-repeater-dvb-c/
    - deutschland: [FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.02.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.02.image)
    - other: [FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.02.image](https://ftp.avm.de/fritzwlan/fritzwlan-repeater-dvb-c/other/fritz.os/FRITZ.Box_WLAN_Repeater_DVB_C.en-de-es-it-fr-pl.133.07.02.image)
