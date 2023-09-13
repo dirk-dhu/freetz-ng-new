@@ -43,8 +43,6 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
-	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_BE
@@ -77,6 +75,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	default "/dev/ttyS0"
 endif
 if FREETZ_TYPE_0450 && FREETZ_AVM_VERSION_06_5X
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_3
@@ -91,6 +91,8 @@ config FREETZ_AVM_PROP_UCLIBC_0_9_33
 	def_bool y
 endif
 if FREETZ_TYPE_0450 && FREETZ_AVM_VERSION_06_9X
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
 config FREETZ_AVM_HAS_NEXUS
@@ -112,6 +114,8 @@ if FREETZ_TYPE_0450 && FREETZ_AVM_VERSION_07_0X
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
@@ -209,8 +213,6 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
-	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 config FREETZ_AVM_PROP_ALL_REGIONS
@@ -237,6 +239,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	default "/dev/ttyS0"
 endif
 if FREETZ_TYPE_0540 && FREETZ_AVM_VERSION_06_2X
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_3
@@ -271,6 +275,8 @@ config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_3
@@ -304,6 +310,8 @@ config FREETZ_AVM_HAS_LANGUAGE_fr
 config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
@@ -346,6 +354,8 @@ config FREETZ_AVM_HAS_LANGUAGE_pl
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
@@ -449,8 +459,6 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
-	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_BE
@@ -475,6 +483,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	default "/dev/ttyS0"
 endif
 if FREETZ_TYPE_0546 && FREETZ_AVM_VERSION_06_2X
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_3
@@ -543,6 +553,8 @@ config FREETZ_AVM_HAS_LANGUAGE_it
 	def_bool y
 config FREETZ_AVM_HAS_LANGUAGE_pl
 	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
 config FREETZ_AVM_HAS_NEXUS
@@ -584,6 +596,8 @@ config FREETZ_AVM_HAS_LANGUAGE_pl
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_TC
 	def_bool y
@@ -688,8 +702,6 @@ config FREETZ_AVM_HAS_TR069
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
-	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
@@ -949,6 +961,8 @@ config FREETZ_AVM_SERIAL_CONSOLE_DEVICE
 	default "/dev/ttyMSM0"
 endif
 if FREETZ_TYPE_1240 && FREETZ_AVM_VERSION_06_9X
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
+	def_bool y
 config FREETZ_AVM_HAS_RAMZSWAP_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_3
@@ -966,6 +980,8 @@ if FREETZ_TYPE_1240 && FREETZ_AVM_VERSION_07_0X
 config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
+	def_bool y
+config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_MESHD
 	def_bool y
@@ -1058,8 +1074,6 @@ config FREETZ_AVM_HAS_TR069
 config FREETZ_AVM_HAS_TR069_FWUPDATE
 	def_bool y
 config FREETZ_AVM_HAS_UDEV
-	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y

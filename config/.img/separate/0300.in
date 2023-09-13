@@ -30,9 +30,6 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
 
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
-	def_bool y
-
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 
