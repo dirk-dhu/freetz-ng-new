@@ -405,7 +405,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_5590_Fiber-07.58.image"                                             if FREETZ_TYPE_5590 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Repeater_6000-07.30.image"                                              if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_2X
-	default "FRITZ.Repeater_6000-07.56.image"                                              if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Repeater_6000-07.57.image"                                              if FREETZ_TYPE_6000 && FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "FRITZ.Box_6430_Cable-07.12.image"                                             if FREETZ_TYPE_6430 && FREETZ_TYPE_FIRMWARE_07_1X
 	default "FRITZ.Box_6430_Cable-07.30.image"                                             if FREETZ_TYPE_6430 && FREETZ_TYPE_FIRMWARE_07_2X
