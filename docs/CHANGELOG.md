@@ -60,6 +60,7 @@ Latest changes
    * Curl 8.3.0
    * FFmpeg 5.1.3
    * Git 2.42.0
+   * iPerf3 3.3/3.15
    * mc (Midnight Commander) 4.8.30
    * Nmap 4.76/5.51/7.94
    * OpenSSH 9.3p2/9.4p1
