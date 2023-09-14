@@ -509,7 +509,7 @@ Currently supported devices and firmwares
   - 174.07.29 rev93268 {ALL} [PSQ19P2NL4]
   - 174.07.57 rev107846 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 3000 AX (UNTESTED)__
-  - 270.07.56 rev106866 {ALL} [MOVE21NL1]
+  - 270.07.57 rev107839 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 6000__
   - 253.07.30 rev98407 {ALL} [PSQ19P2NL4]
   - 253.07.56 rev106865 {ALL} [MOVE21NL1]
