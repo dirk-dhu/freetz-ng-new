@@ -167,6 +167,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzpowerline-1220e/
    - deutschland: [fritz.powerline_1220E_cm9_2130_01_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/deutschland/fritz.os/fritz.powerline_1220E_cm9_2130_01_tr069_38.image)
    - other: [fritz.powerline_1220E_cm9_2130_01_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/other/fritz.os/fritz.powerline_1220E_cm9_2130_01_tr069_38.image)
+ * fritzpowerline-1240-ax/
+   - deutschland: [FRITZ.Powerline_1240_AX.275.07.57.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1240-ax/deutschland/fritz.os/FRITZ.Powerline_1240_AX.275.07.57.image)
  * fritzpowerline-1240e/
    - deutschland: [FRITZ.Powerline_1240E.150.07.16.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1240e/deutschland/fritz.os/FRITZ.Powerline_1240E.150.07.16.image)
    - other: [FRITZ.Powerline_1240E.150.07.16.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1240e/other/fritz.os/FRITZ.Powerline_1240E.150.07.16.image)
