@@ -460,6 +460,8 @@ Currently supported devices and firmwares
   - 150.06.92 rev47432 {ALL}
   - 150.07.01 rev63180 {ALL}
   - 150.07.16 rev108014 {ALL} [WU22 MESH18]
+* __FRITZ!Powerline 1240 AX (UNTESTED)__
+  - 275.07.57 rev108112 {ALL} [MOVE21NL1]
 * __Fritz!Powerline 1260E__
   - 157.07.01 rev63181 {ALL}
   - 157.07.12 rev70670 {ALL} [MESH18 NL2]
