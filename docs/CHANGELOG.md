@@ -49,7 +49,7 @@ Latest changes
    * Ccache 4.8.3
 
  - Host tools:
-   * cmake 3.27.4
+   * cmake 3.27.5
    * kconfig 6.5
    * python 3.11.5
 
