@@ -444,18 +444,18 @@ determine_() {
 
 	#UPSI_2023_TR064CGI
 	P='UPSI_2023_TR064CGI'
-	X='new'
-	for file in libcmapi.so.1.0.0 libwebsrv.so.2.0.0; do
-		[ -f "$unpacked/lib/$file" ] || continue
-		strings "$unpacked/lib/$file" | grep -q 'tr064cgi$'
-		[ $? == "0" ] || X='bug'
-	done
-	[ $V -ge 0620 ] || X='old'
+	X='fix'
+	strings "$unpacked/lib/libwebsrv.so.2.0.0" 2>/dev/null | grep -q '^tr064cgi$' || X='bug'
+	if [ -f "$unpacked/lib/libcmapi.so.1.0.0" -a -x "$unpacked/usr/www/cgi-bin/tr064cgi" ]; then
+	strings "$unpacked/lib/libcmapi.so.1.0.0" | grep -q '^/cgi-bin/tr064cgi$' || X='bug'
+	fi
+	[ $V -lt 0620 ] && X='old'
+	[ $R -ge 107809 ] && X='new'
 	[ $X == "bug" ] && in_b "FREETZ_AVM_HAS_${P^^}" && \
 	[ $DOSHOW -ge 2 ] && outp "${P,,}" "YES"
 
 
-	#ANNEX_SELECT (avme is ignored by patch, just for consolodation)
+	#ANNEX_SELECT (avme is ignored by patch, just for consolidation)
 	X="$(grep -c "get_annex_checked" "$unpacked/usr/www/avm/internet/dsl_line_settings.lua" 2>/dev/null)"
 	[ -z "$X" ] && X="$(grep -c "get_annex_checked" "$unpacked/usr/www/avme/internet/dsl_line_settings.lua" 2>/dev/null)"
 	[ "$X" -gt 1 ] 2>/dev/null && X="available" || X="%"

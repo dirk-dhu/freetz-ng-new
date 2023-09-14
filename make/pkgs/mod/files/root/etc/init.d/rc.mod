@@ -32,6 +32,7 @@ vulcheck_2023() {
 	# ZERO info by AVM about vulnerabilty, tr064cgi binary exists since FOS 05.2x. Up to FOS 6.0x (Sep 2015) it seems to be safe as 7270 v2+v3 and 7240 got no fixes.
 	# Now 1 week later also extender get fixes, regardingless of existence of tr064cgi binary. Extender with FOS 7.56 (Jun 2023) have no longer the file.
 	# As Extender without tr064cgi binary get the fixes too, the bug seems to be in arguments handling of avm's own developed closed-source webserver.
+	# Seems there are multiple vulerabilities, as without tr064cgi binary (=Extender), only libwebsrv.so.2.0.0 is changed, libcmapi.so.1.0.0 not.
 	# https://wid.cert-bund.de/portal/wid/securityadvisory?name=WID-SEC-2023-2262 CVSS Base Score first 7.1, now 7.3
 	# rev38787-svn / rev107809-git is the revision of the first firmware found tr064cgi vulnerability has been fixed in.
 	echo "Firmware with tr064cgi vulnerability detected."

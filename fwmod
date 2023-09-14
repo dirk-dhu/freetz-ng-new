@@ -1630,16 +1630,15 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 	# Vulnarability 2023-09-04 tr064cgi
 	# COMPAT: remove me when juis no longer spreads vulnerable firmware files
-	VUL_tr064cgi='new'
-	for file in libcmapi.so.1.0.0 libwebsrv.so.2.0.0; do
-		[ -f "${FILESYSTEM_DIR}/lib/$file" ] || continue
-		strings "${FILESYSTEM_DIR}/lib/$file" | grep -q 'tr064cgi$'
-		[ $? == "0" ] || VUL_tr064cgi='bug'
-	done
+	VUL_tr064cgi='fix'
+	strings "${FILESYSTEM_DIR}/lib/libwebsrv.so.2.0.0" 2>/dev/null | grep -q '^tr064cgi$' || VUL_tr064cgi='bug'
+	if [ -f "${FILESYSTEM_DIR}/lib/libcmapi.so.1.0.0" -a -x "${FILESYSTEM_DIR}/usr/www/cgi-bin/tr064cgi" ]; then
+	strings "${FILESYSTEM_DIR}/lib/libcmapi.so.1.0.0" | grep -q '^/cgi-bin/tr064cgi$' || VUL_tr064cgi='bug'
+	fi
 	[ "$FREETZ_AVM_VERSION_06_2X_MIN" == "y" ] || VUL_tr064cgi='old'
 	case "$VUL_tr064cgi" in
 	#	old)	echo "This firmware is not yet vulnerable for tr064cgi-bug!" ;;
-	#	new)	echo "This firmware is fixed for tr064cgi-bug vulnerability!" ;;
+	#	fix)	echo "This firmware is fixed for tr064cgi-bug vulnerability!" ;;
 		bug)
 			warn "============================================="
 			warn "This firmware is VULNERABLE for tr064cgi-bug!"
