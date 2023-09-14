@@ -169,6 +169,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - other: [fritz.powerline_1220E_cm9_2130_01_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/other/fritz.os/fritz.powerline_1220E_cm9_2130_01_tr069_38.image)
  * fritzpowerline-1240e/
    - deutschland: [FRITZ.Powerline_1240E.150.07.16.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1240e/deutschland/fritz.os/FRITZ.Powerline_1240E.150.07.16.image)
+   - other: [FRITZ.Powerline_1240E.150.07.16.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1240e/other/fritz.os/FRITZ.Powerline_1240E.150.07.16.image)
  * fritzpowerline-1260/
    - deutschland: [FRITZ.Powerline_1260.249.07.57.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1260/deutschland/fritz.os/FRITZ.Powerline_1260.249.07.57.image)
    - other: [FRITZ.Powerline_1260.249.07.57.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1260/other/fritz.os/FRITZ.Powerline_1260.249.07.57.image)
@@ -197,8 +198,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Repeater_1200-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200/deutschland/fritz.os/FRITZ.Repeater_1200-07.57.image)
    - other: [FRITZ.Repeater_1200-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200/other/fritz.os/FRITZ.Repeater_1200-07.57.image)
  * fritzrepeater-1200-ax/
-   - deutschland: [FRITZ.Repeater_1200_AX-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200-ax/deutschland/fritz.os/FRITZ.Repeater_1200_AX-07.56.image)
-   - other: [FRITZ.Repeater_1200_AX-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200-ax/other/fritz.os/FRITZ.Repeater_1200_AX-07.56.image)
+   - deutschland: [FRITZ.Repeater_1200_AX-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200-ax/deutschland/fritz.os/FRITZ.Repeater_1200_AX-07.57.image)
+   - other: [FRITZ.Repeater_1200_AX-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-1200-ax/other/fritz.os/FRITZ.Repeater_1200_AX-07.57.image)
  * fritzrepeater-2400/
    - deutschland: [FRITZ.Repeater_2400-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-2400/deutschland/fritz.os/FRITZ.Repeater_2400-07.57.image)
    - other: [FRITZ.Repeater_2400-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-2400/other/fritz.os/FRITZ.Repeater_2400-07.57.image)
@@ -206,14 +207,14 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Repeater_3000-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000/deutschland/fritz.os/FRITZ.Repeater_3000-07.57.image)
    - other: [FRITZ.Repeater_3000-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000/other/fritz.os/FRITZ.Repeater_3000-07.57.image)
  * fritzrepeater-3000-ax/
-   - deutschland: [FRITZ.Repeater_3000_AX-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000-ax/deutschland/fritz.os/FRITZ.Repeater_3000_AX-07.56.image)
-   - other: [FRITZ.Repeater_3000_AX-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000-ax/other/fritz.os/FRITZ.Repeater_3000_AX-07.56.image)
+   - deutschland: [FRITZ.Repeater_3000_AX-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000-ax/deutschland/fritz.os/FRITZ.Repeater_3000_AX-07.57.image)
+   - other: [FRITZ.Repeater_3000_AX-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-3000-ax/other/fritz.os/FRITZ.Repeater_3000_AX-07.57.image)
  * fritzrepeater-600/
    - deutschland: [FRITZ.Repeater_600-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-600/deutschland/fritz.os/FRITZ.Repeater_600-07.57.image)
    - other: [FRITZ.Repeater_600-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-600/other/fritz.os/FRITZ.Repeater_600-07.57.image)
  * fritzrepeater-6000/
-   - deutschland: [FRITZ.Repeater_6000-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-6000/deutschland/fritz.os/FRITZ.Repeater_6000-07.56.image)
-   - other: [FRITZ.Repeater_6000-07.56.image](https://ftp.avm.de/fritzwlan/fritzrepeater-6000/other/fritz.os/FRITZ.Repeater_6000-07.56.image)
+   - deutschland: [FRITZ.Repeater_6000-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-6000/deutschland/fritz.os/FRITZ.Repeater_6000-07.57.image)
+   - other: [FRITZ.Repeater_6000-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-6000/other/fritz.os/FRITZ.Repeater_6000-07.57.image)
  * fritzrepeater-600v2/
    - deutschland: [FRITZ.Repeater_600v2-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-600v2/deutschland/fritz.os/FRITZ.Repeater_600v2-07.57.image)
    - other: [FRITZ.Repeater_600v2-07.57.image](https://ftp.avm.de/fritzwlan/fritzrepeater-600v2/other/fritz.os/FRITZ.Repeater_600v2-07.57.image)
