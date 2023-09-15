@@ -76,6 +76,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 270: [FRITZ.Repeater_3000_AX-07.57.image](http://download.avm.de/fritzwlan/fritzrepeater-3000-ax/deutschland/fritz.os/FRITZ.Repeater_3000_AX-07.57.image)
  - HWR 271: [FRITZ.Box_7510-07.57.image](http://download.avm.de/fritzbox/fritzbox-7510/deutschland/fritz.os/FRITZ.Box_7510-07.57.image)
  - HWR 272: [FRITZ.Box_5590_Fiber-07.58.image](http://download.avm.de/fritzbox/fritzbox-5590-fiber/deutschland/fritz.os/FRITZ.Box_5590_Fiber-07.58.image)
+ - HWR 275: [FRITZ.Powerline_1240_AX.275.07.57.image](https://download.avm.de/fritzpowerline/fritzpowerline-1240-ax/deutschland/fritz.os/FRITZ.Powerline_1240_AX.275.07.57.image)
  - HWR 276: [FRITZ.Box_7520_B-07.57.image](http://download.avm.de/fritzbox/fritzbox-7520-B/deutschland/fritz.os/FRITZ.Box_7520_B-07.57.image)
 
 ### FOS-Labor
