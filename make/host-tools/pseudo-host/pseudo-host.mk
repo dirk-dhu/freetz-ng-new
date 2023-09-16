@@ -25,7 +25,8 @@ $(PKG)_TARGET_BIARCH_LIB:=$($(PKG)_BIARCH_LD_PRELOAD_PATH)/libpseudo.so
 # We need 32-bit pseudo support if we use the 32-bit mips*-linux-strip during fwmod on a 64-bit host
 # The correct condition here would be:
 # (using 32-bit [tools/toolchains] [own/dl]) AND (any of the STRIP-options is selected) AND (host is 64-bit)
-BIARCH_BUILD_SYSTEM:=$(filter-out 32,$(HOST_BITNESS))
+#BIARCH_BUILD_SYSTEM:=$(filter-out 32,$(HOST_BITNESS))
+# replaced by HOST_BIARCH
 
 $(PKG)_TARBALL_STRIP_COMPONENTS:=0
 $(PKG)_PATCH_POST_CMDS := mv $(pkg_short)-* $($(PKG)_MAINARCH_NAME);
@@ -45,8 +46,8 @@ $($(PKG)_MAINARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 		./configure \
 		--prefix=$(PSEUDO_HOST_DESTDIR) \
 		--enable-xattr=no \
-		$(if $(BIARCH_BUILD_SYSTEM),--bits=32) \
-		--cflags="-Wno-cast-function-type -Wno-nonnull-compare -fcommon $(if $(BIARCH_BUILD_SYSTEM),$(HOST_CFLAGS_FORCE_32BIT_CODE))" \
+		$(if $(HOST_BIARCH),--bits=32) \
+		--cflags="-Wno-cast-function-type -Wno-nonnull-compare -fcommon $(if $(HOST_BIARCH),$(HOST_CFLAGS_FORCE_32BIT_CODE))" \
 		--libdir=$(PSEUDO_HOST_MAINARCH_LD_PRELOAD_PATH) \
 		$(DISABLE_NLS) \
 		$(QUIET) \
@@ -54,7 +55,7 @@ $($(PKG)_MAINARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
 	);
 	touch $@
 $($(PKG)_TARGET_MAINARCH_LIB): $($(PKG)_MAINARCH_DIR)/.configured
-	$(TOOLS_SUBMAKE) -C $(PSEUDO_HOST_MAINARCH_DIR) install-lib $(if $(BIARCH_BUILD_SYSTEM),,install-bin)
+	$(TOOLS_SUBMAKE) -C $(PSEUDO_HOST_MAINARCH_DIR) install-lib $(if $(HOST_BIARCH),,install-bin)
 	touch $@
 
 $($(PKG)_BIARCH_DIR)/.configured: $($(PKG)_DIR)/.unpacked
@@ -80,7 +81,7 @@ $($(PKG)_TARGET_BIARCH_LIB): $($(PKG)_BIARCH_DIR)/.configured
 	$(TOOLS_SUBMAKE) -C $(PSEUDO_HOST_BIARCH_DIR) install-lib install-bin
 	touch $@
 
-$(pkg)-precompiled: $($(PKG)_TARGET_MAINARCH_LIB) $(if $(BIARCH_BUILD_SYSTEM),$($(PKG)_TARGET_BIARCH_LIB))
+$(pkg)-precompiled: $($(PKG)_TARGET_MAINARCH_LIB) $(if $(HOST_BIARCH),$($(PKG)_TARGET_BIARCH_LIB))
 
 
 $(pkg)-clean:
