@@ -1,4 +1,4 @@
-# Virtual IP CGI 0.4.2 (deprecated)
+# Virtual IP CGI (deprecated)
  - Package: [master/make/pkgs/virtualip-cgi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/virtualip-cgi/)
 
 [![VirtualIP: Einstellungen](../screenshots/61_md.png)](../screenshots/61.png)

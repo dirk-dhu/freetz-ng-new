@@ -1,4 +1,4 @@
-# Iptables-CGI 1.1
+# Iptables-CGI
  - Package: [master/make/pkgs/iptables-cgi/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/iptables-cgi/)
 
 **iptables-CGI** ist ein Web-Frontend für

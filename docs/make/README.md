@@ -296,7 +296,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>IPsec-tools 0.7.2</u><a id='ipsec-tools'></a>**<br>
     IPsec-tools (plainrsa-gen racoon racoonctl setkey)
 
-  * **[Iptables-CGI 1.1](iptables-cgi.md)<a id='iptables'></a>**<br>
+  * **[Iptables-CGI](iptables-cgi.md)<a id='iptables'></a>**<br>
 
   * **<u>Iptraf 3.0.1 (binary only)</u><a id='iptraf'></a>**<br>
     IPTraf is a console-based network monitoring program for Linux that displays information about IP traffic. It returns such information as: Current TCP connections UDP, ICMP, OSPF, and other types of IP packets Packet and byte counts on TCP connections IP, TCP, UDP, ICMP, non-IP, and other packet and byte counts TCP/UDP counts by ports Packet counts by packet sizes Packet and byte counts by IP address Interface activity Flag statuses on TCP packets LAN station statistics
@@ -869,7 +869,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[usbroot: USB root 0.2](usbroot.md)<a id='usbroot'></a>**<br>
     Mount an ext{2,3} filesystem (fs) from an USB stick and use it as root fs which may be fully writable and basically unlimited in size. The Linux kernel will still be loaded from your box and during the first phase of the init process the SquashFS on the box is still used, but after the USB root is mounted, we pivot_root into it and it becomes the new root fs. The default is to unmount the read-only fs on the box to conserve memory, but if desired, it can be still be accessed under /oldroot (though this is absolutely not necessary anymore after pivot_root). Having said that, it should be clear that the usb stick should contain everything necessary to run the box. Usually you just create a full copy of a target filesystem (e.g. from build/modified/filesystem or from an unpacked firmware image) and start modifying it as needed. The binaries (kernel modules, executables, shared libraries) used therein just have to fit the kernel installed on the box. Note: The webinterface makes it pretty easy to (de-)activate and configure the functionality of this package. However, USB root is an expert thing! See also the help screen of /etc/init.d/rc.usbroot for further description. As some config data is stored in bootloader environment, this package is special anyway.
 
-  * **[virtualip-cgi: Virtual IP CGI 0.4.2 (deprecated)](virtualip-cgi.md)<a id='virtualip'></a>**<br>
+  * **[virtualip-cgi: Virtual IP CGI (deprecated)](virtualip-cgi.md)<a id='virtualip'></a>**<br>
     Creates a virtual network interface. In former times this was used to comfortably open server ports on the Fritz!Box itself via AVM web interface. Nowadays the avm-firewall package is used for this task. The package is also equipped with a configuration interface for the Freetz web configurator which lets you choose the IP address and net mask of the virtual interface as well as toggle auto-start.
 
   * **<u>Zabbix 2.4.6 (binary only)</u><a id='zabbix'></a>**<br>
@@ -895,7 +895,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[AVM-rules (deprecated)](avm-rules.md)<a id='avm-rules'></a>**<br>
     Configuration of port forwardings to the FritzBox itself by using voip_forwardrules. Please don't use this package, but AVM-portfw! Warning: This package changes the ar7.cfg. On syntax errors AVM will reset the whole file to default, including default password and default ip. Backup you config before!
 
-  * **<u>Cpmaccfg CGI 1.0</u><a id='cpmaccfg'></a>**<br>
+  * **<u>Cpmaccfg CGI</u><a id='cpmaccfg'></a>**<br>
     Configuration front-end to cpmaccfg This frontend shows the current settings of the LAN ports and gives a very simple way to set VLAN, portmode and WLAN assigment. Additional to this, you can set IP addresses for the VLAN interfaces eth0-eth3 if needed.
 
   * **[dnsd-cgi](dnsd-cgi.md)<a id='dnsd'></a>**<br>
@@ -925,7 +925,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Syslogd CGI](syslogd-cgi.md)<a id='syslogd'></a>**<br>
     Configuration frontend to syslogd
 
-  * **<u>Transmission CGI 0.0.4</u><a id='transmission'></a>**<br>
+  * **<u>Transmission CGI</u><a id='transmission'></a>**<br>
     Provides a simple configuration interface for transmission-daemon.
 
   * **<u>vnstat-cgi: vnstat Webinterface</u><a id='vnstat'></a>**<br>
