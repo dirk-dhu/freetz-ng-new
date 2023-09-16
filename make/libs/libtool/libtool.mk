@@ -3,6 +3,10 @@ $(PKG)_LIB_VERSION:=3.1.6
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=1c35ae34fe85aa167bd7ab4bc9f477fe019138e1af62678d952fc43c0b7e2f09
 $(PKG)_SITE:=@GNU/$(pkg)
+### WEBSITE:=https://www.gnu.org/software/libtool/
+### MANPAGE:=https://www.gnu.org/software/libtool/manual/
+### CHANGES:=https://ftp.wayne.edu/gnu/libtool/
+### CVSREPO:=https://git.savannah.gnu.org/cgit/libtool.git
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/libltdl/.libs/libltdl.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libltdl.so.$($(PKG)_LIB_VERSION)
@@ -18,6 +22,7 @@ $(PKG)_CONFIGURE_PRE_CMDS += \
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --enable-static
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -39,6 +44,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBTOOL_DIR) clean
