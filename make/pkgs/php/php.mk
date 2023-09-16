@@ -4,6 +4,8 @@ $(PKG)_HASH_5.6.40:=1369a51eee3995d7fbd1c5342e5cc917760e276d561595b6052b21ace265
 $(PKG)_HASH:=$($(PKG)_HASH_$($(PKG)_VERSION))
 $(PKG)_SITE:=http://de.php.net/distributions,http://de2.php.net/distributions
 
+$(PKG)_CATEGORY:=Unstable
+
 $(PKG)_CONDITIONAL_PATCHES+=$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 
 $(PKG)_BINARY              := $($(PKG)_DIR)/sapi/cgi/php-cgi
