@@ -3,6 +3,10 @@ $(PKG)_LIB_VERSION:=2.5.0
 $(PKG)_SOURCE:=lib$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=55a36168306089009d054ccdd9d013041bfc3ab26be7033d107821f1c4949a49
 $(PKG)_SITE:=@GNU/$(pkg)
+### WEBSITE:=https://www.gnu.org/software/libiconv/
+### MANPAGE:=https://www.gnu.org/savannah-checkouts/gnu/libiconv/documentation/
+### CHANGES:=https://ftp.gnu.org/pub/gnu/libiconv/
+### CVSREPO:=https://git.savannah.gnu.org/gitweb/?p=libiconv.git
 
 ifeq ($(strip $(FREETZ_TARGET_UCLIBC_0_9_28)),y)
 LIB$(PKG)_PREFIX:=/usr
