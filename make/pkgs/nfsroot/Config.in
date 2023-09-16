@@ -4,6 +4,7 @@ comment "NFS-root (not available, needs replace kernel)"
 config FREETZ_PACKAGE_NFSROOT
 	bool "NFS-root 1.0"
 	depends on FREETZ_REPLACE_KERNEL
+	depends on FREETZ_KERNEL_VERSION_3_MAX
 	select FREETZ_MODULE_nfs if !FREETZ_AVM_HAS_NFS_FS_BUILTIN
 	default n
 	help
