@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_VIRTUALIP_CGI
-	bool "Virtual IP CGI 0.4.2 (deprecated)"
+	bool "Virtual IP CGI (deprecated)"
 	depends on FREETZ_SHOW_EXPERT
 	default n
 	help
