@@ -263,7 +263,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### I
 
-  * **<u>iconv 1.13.1 (binary only)</u><a id='iconv'></a>**<br>
+  * **[iconv 1.13.1 (binary only)](iconv.md)<a id='iconv'></a>**<br>
     A program for converting text from one encoding to another.
 
   * **<u>ifstat 1.1 (binary only)</u><a id='ifstat'></a>**<br>
