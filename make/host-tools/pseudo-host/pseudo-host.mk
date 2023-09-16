@@ -21,6 +21,10 @@ $(PKG)_BIARCH_LD_PRELOAD_PATH:=$($(PKG)_DESTDIR)/lib64
 $(PKG)_TARGET_MAINARCH_LIB:=$($(PKG)_MAINARCH_LD_PRELOAD_PATH)/libpseudo.so
 $(PKG)_TARGET_BIARCH_LIB:=$($(PKG)_BIARCH_LD_PRELOAD_PATH)/libpseudo.so
 
+$(PKG)_TARBALL_STRIP_COMPONENTS:=0
+$(PKG)_PATCH_POST_CMDS := mv $(pkg_short)-* $($(PKG)_MAINARCH_NAME);
+$(PKG)_PATCH_POST_CMDS += cp -a $($(PKG)_MAINARCH_NAME) $($(PKG)_BIARCH_NAME);
+
 # BIARCH means 32-bit libraries on 64-bit hosts
 # We need 32-bit pseudo support if we use the 32-bit mips*-linux-strip during fwmod on a 64-bit host
 # The correct condition here would be:
@@ -28,9 +32,6 @@ $(PKG)_TARGET_BIARCH_LIB:=$($(PKG)_BIARCH_LD_PRELOAD_PATH)/libpseudo.so
 #BIARCH_BUILD_SYSTEM:=$(filter-out 32,$(HOST_BITNESS))
 # replaced by HOST_BIARCH
 
-$(PKG)_TARBALL_STRIP_COMPONENTS:=0
-$(PKG)_PATCH_POST_CMDS := mv $(pkg_short)-* $($(PKG)_MAINARCH_NAME);
-$(PKG)_PATCH_POST_CMDS += cp -a $($(PKG)_MAINARCH_NAME) $($(PKG)_BIARCH_NAME);
 
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
