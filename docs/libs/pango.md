@@ -1,4 +1,4 @@
-# Pango (libpango-1.0.so) 1.50.14
+# Pango (libpango-1.0.so) 1.51.0
  - Homepage: [https://www.pango.org/](https://www.pango.org/)
  - Manpage: [https://docs.gtk.org/Pango/](https://docs.gtk.org/Pango/)
  - Changelog: [https://gitlab.gnome.org/GNOME/pango/blob/main/NEWS](https://gitlab.gnome.org/GNOME/pango/blob/main/NEWS)
