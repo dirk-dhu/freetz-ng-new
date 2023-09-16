@@ -1,4 +1,4 @@
-$(call TOOLS_INIT, 0)
+$(call TOOLS_INIT, 1.0)
 
 $(PKG)_BUILD_PREREQ += $(if $(HOST_RUN32BIT),,32bit-capable-cpu)
 $(PKG)_BUILD_PREREQ_HINT := You have to use a 32-bit capable cpu to compile this
