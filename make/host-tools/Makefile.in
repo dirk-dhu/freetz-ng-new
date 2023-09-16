@@ -5,13 +5,30 @@ TOOLS_CFLAGS:=-Wall -O2
 TOOLS_CXXFLAGS:=-Wall -O2
 TOOLS_LDFLAGS:=
 
+
+# architecture of the processor
+# contains: eg x86_64, armv7l, aarch64, ...
+HOST_ARCH:=$(shell uname -m)
+
 # bitness of the build system (also the host system)
 # heuristic: if "uname -m" contains 64 then it's a 64-bit system, 32-bit otherwise
-HOST_BITNESS:=$(if $(findstring 64,$(shell uname -m)),64,32)
-# on 32-bit systems no special CFLAGS are required, on all other systems use -m32 [ and hope it's supported :-) aarch64 does not :{ ]
-HOST_CFLAGS_FORCE_32BIT_CODE:=$(if $(filter-out 32,$(HOST_BITNESS)),-m32)
+# contains: 32 or 64
+HOST_BITNESS:=$(if $(findstring 64,$(HOST_ARCH)),64,32)
 
-# Hardcoded directory of precompiled host-tools
+# for biarch a 64 bit cpu is required which can run 32 bit code - aarch64 does not
+# contains: y or nothing
+HOST_BIARCH:=$(if $(findstring aarch64,$(HOST_ARCH)),,$(if $(findstring 64,$(HOST_BITNESS)),y,))
+
+# if this cpu is able to run 32bit code, native or biarch
+# contains: y or nothing
+HOST_RUN32BIT:=$(if $(or $(findstring y,$(HOST_BIARCH)),$(findstring 32,$(HOST_BITNESS))),y,)
+
+# on 32-bit systems no special CFLAGS are required, on all other systems use -m32 [ and hope it's supported :-) aarch64 does not :{ ]
+# contains: -m32 or nothing
+HOST_CFLAGS_FORCE_32BIT_CODE:=$(if $(findstring y,$(HOST_BIARCH)),-m32)
+
+
+# Hardcoded directory of precompiled host-tools, used to fix absolute paths in precompiled tools
 TOOLS_HARDCODED_DIR:=/home/freetz/freetz-ng/tools/build
 
 TOOLS_SOURCE_DIR:=$(FREETZ_BASE_DIR)/source/host-tools
