@@ -78,6 +78,7 @@ Latest changes
    * glib2 2.32.4/2.76.5
    * harfbuzz 8.2.0
    * libxml2 2.11.5
+   * pango 1.51.0
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
