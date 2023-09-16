@@ -3,6 +3,9 @@ $(PKG)_SOURCE:=dtc-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=65cec529893659a49a89740bb362f507a3b94fc8cd791e76a8d6a2b6f3203473
 $(PKG)_SITE:=@KERNEL/software/utils/dtc
 
+$(PKG)_BUILD_PREREQ += $(if $(HOST_RUN32BIT),,32bit-capable-cpu)
+$(PKG)_BUILD_PREREQ_HINT := You have to use a 32-bit capable cpu to compile this
+
 $(PKG)_LIBFDT_BINARY:=$($(PKG)_DIR)/libfdt/libfdt.a
 $(PKG)_BINARY:=$(HOST_TOOLS_DIR)/lib/libfdt.a
 
