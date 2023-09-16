@@ -220,8 +220,10 @@ endif
 endif
 # check cpu for aarch64
 ifeq ($(shell uname -m),aarch64)
+ifeq ($(FREETZ_AVM_KERNEL_CONFIG_AREA_KNOWN),y)
 DLCHG:=y
-$(info You have an aarch64 CPU+OS and so you can not compile and run 32-bit code, please use another one.)
+$(info You have an aarch64 CPU+OS and so you can not compile and run 32-bit code, required by yf-akcarea-host which is used for this avm device.)
+endif
 endif
 # check cpu for x86_64
 ifneq ($(shell uname -m),x86_64)
