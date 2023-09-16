@@ -22,7 +22,8 @@ $(PKG)_TARGET_BIARCH_LIB:=$($(PKG)_BIARCH_LD_PRELOAD_PATH)/libfakeroot-0.so
 # We need 32-bit fakeroot support if we use the 32-bit mips*-linux-strip during fwmod on a 64-bit host
 # The correct condition here would be:
 # (using 32-bit [tools/toolchains] [own/dl]) AND (any of the STRIP-options is selected) AND (host is 64-bit)
-BIARCH_BUILD_SYSTEM:=$(filter-out 32,$(HOST_BITNESS))
+#BIARCH_BUILD_SYSTEM:=$(filter-out 32,$(HOST_BITNESS))
+# replaced by HOST_BIARCH
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
@@ -78,7 +79,7 @@ $(pkg)-fixhardcoded:
 		$(FAKEROOT_HOST_MAINARCH_LD_PRELOAD_PATH)/libfakeroot.la \
 		$(FAKEROOT_HOST_BIARCH_LD_PRELOAD_PATH)/libfakeroot.la
 
-$(pkg)-precompiled: $($(PKG)_TARGET_SCRIPT) $(if $(BIARCH_BUILD_SYSTEM),$($(PKG)_TARGET_BIARCH_LIB))
+$(pkg)-precompiled: $($(PKG)_TARGET_SCRIPT) $(if $(HOST_BIARCH),$($(PKG)_TARGET_BIARCH_LIB))
 
 
 $(pkg)-clean:
