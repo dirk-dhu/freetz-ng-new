@@ -3,7 +3,7 @@
 
 --- Rules.mak
 +++ Rules.mak
-@@ -205,7 +205,7 @@
+@@ -206,7 +206,7 @@
  CPU_CFLAGS=$(call qstrip,$(CPU_CFLAGS-y))
  
  # Some nice CFLAGS to work with

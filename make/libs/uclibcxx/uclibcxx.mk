@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, a52285d2f1084e85f5eac7053f5cfd35c39d6834)
+$(call PKG_INIT_LIB, 75186445c1abab4db8124251a914310b565e3b2b)
 $(PKG)_LIB_VERSION:=0.2.5
 $(PKG)_SOURCE:=uClibc++-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=802f16ca7af2d78696b6ad8712dca4ed95836617c2435011739285f723165d25
+$(PKG)_HASH:=9ce499acebbdc4bfbdff85684905142c2b4df1f98e3b8c19676bc1c1088126c5
 $(PKG)_SITE:=http://git.uclibc.org/uClibc++/snapshot
 ### WEBSITE:=https://cxx.uclibc.org/
 ### MANPAGE:=https://cxx.uclibc.org/faq.html

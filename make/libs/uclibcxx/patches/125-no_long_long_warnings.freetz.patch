@@ -1,7 +1,7 @@
 --- Rules.mak
 +++ Rules.mak
-@@ -201,7 +201,7 @@
- $(eval $(call check-gxx-var,-Wno-sized-deallocation))
+@@ -202,7 +202,7 @@
+ $(eval $(call check-gxx-var,-Wno-tautological-compare))
  
  # Add a bunch of extra pedantic annoyingly strict checks
 -XWARNINGS=$(call qstrip,$(UCLIBCXX_WARNINGS)) -Wno-trigraphs -pedantic

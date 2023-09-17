@@ -1,6 +1,6 @@
 --- Rules.mak
 +++ Rules.mak
-@@ -249,6 +249,9 @@
+@@ -250,6 +250,9 @@
  list-archive-members = $(if $(1),$(shell $(AR) t $(1)))
  variablify = $(strip $(subst /,_,$(subst :,_,$(subst ;,_,$(subst |,_,$(subst >,_,$(subst <,_,$(1))))))))
  
