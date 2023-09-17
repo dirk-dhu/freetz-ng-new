@@ -45,7 +45,7 @@ ifeq ($$(strip $$(DL_SITE$(1))),)
 	fi
 else
 	@ \
-	if [ "$$(call qstrip,$(FREETZ_TYPE_FIRMWARE_DETECT_LATEST))" == "y" ]; then \
+	if [ "$$(call qstrip,$(FREETZ_TYPE_FIRMWARE_DETECT_LATEST))" == "y" -a -z "$(1)" ]; then \
 		echo -n "JUIS: "; \
 		find $$(DL_FW_DIR) -maxdepth 1 -name $$(DL_SOURCE$(1)_LOCAL).url -mmin +360 -exec rm -f {} ';'; \
 		DL_URL_FIRMWARE="$$$$(cat $$(IMAGE$(1)).url.own 2>/dev/null)"; \
