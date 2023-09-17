@@ -50,12 +50,13 @@ $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBFTDI_DIR) clean
-	$(RM) $(TARGET_TOOLCHAIN_STAGING_DIR)/lib/libftdi* \
+	$(RM) \
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/libftdi.* \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/pkgconfig/libftdi.pc \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/bin/libftdi-config \
 		$(TARGET_TOOLCHAIN_STAGING_DIR)/include/ftdi.h
 
 $(pkg)-uninstall:
-	$(RM) $(LIBFTDI_TARGET_DIR)/libftdi*.so*
+	$(RM) $(LIBFTDI_TARGET_DIR)/libftdi.so*
 
 $(PKG_FINISH)
