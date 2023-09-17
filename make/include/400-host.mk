@@ -4,6 +4,7 @@ HOSTCC:=gcc
 HOST_ARCH:=$(shell $(HOSTCC) -dumpmachine | sed -e s'/-.*//' \
 	-e 's/sparc.*/sparc/' \
 	-e 's/arm.*/arm/g' \
+	-e 's/aarch64.*/aarch64/g' \
 	-e 's/m68k.*/m68k/' \
 	-e 's/ppc/powerpc/g' \
 	-e 's/v850.*/v850/g' \
