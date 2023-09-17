@@ -79,6 +79,7 @@ Latest changes
    * harfbuzz 8.2.0
    * libxml2 2.11.5
    * pango 1.51.0
+   * uClibc++ 0.2.6-6687fc92
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
