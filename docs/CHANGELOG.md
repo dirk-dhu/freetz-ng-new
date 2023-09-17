@@ -60,6 +60,7 @@ Latest changes
    * CA-bundle 2023-08-22
    * Curl 8.3.0
    * FFmpeg 5.1.3
+   * ftdi1 1.5
    * Git 2.42.0
    * iPerf3 3.3/3.15
    * mc (Midnight Commander) 4.8.30

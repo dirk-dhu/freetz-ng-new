@@ -167,6 +167,7 @@ menu "USB & FTDI"
 	source "make/libs/libusb/Config.in"
 	source "make/libs/libusb1/Config.in"
 	source "make/libs/libftdi/Config.in"
+	source "make/pkgs/ftdi1/Config.in.libs"
 endmenu ### "USB & FTDI"
 
 menu "Web and WebDAV"
