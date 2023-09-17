@@ -1,4 +1,4 @@
-# uclibcxx: uClibc++ (libuClibc++.so.0.2.5) 2b58f77ee27c60842054fd0e5dd67f5d00e89eb8
+# uclibcxx: uClibc++ (libuClibc++.so.0.2.6) 6687fc9276fa52defaf8592f2001c19b826aec93
  - Homepage: [https://cxx.uclibc.org/](https://cxx.uclibc.org/)
  - Manpage: [https://cxx.uclibc.org/faq.html](https://cxx.uclibc.org/faq.html)
  - Changelog: [https://git.busybox.net/uClibc++/log/](https://git.busybox.net/uClibc++/log/)
