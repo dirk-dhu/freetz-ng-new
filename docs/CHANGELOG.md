@@ -51,6 +51,7 @@ Latest changes
  - Host tools:
    * cmake 3.27.5
    * kconfig 6.5
+   * pkgconf 2.0.3
    * python 3.11.5
 
  - Packages:
