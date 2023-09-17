@@ -110,6 +110,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[libconfig (libconfig.so) 1.5](libconfig.md)<a id='libconfig'></a>**<br>
     Libconfig is a simple library for processing structured configuration files. Libconfig is very compact - just 46K for the stripped C shared library. This makes it well-suited for memory-constrained systems.
 
+  * **[libconfuse (libconfuse.so) 3.3](libconfuse.md)<a id='libconfuse'></a>**<br>
+    libConfuse is a configuration file parser library written in C. It supports sections and (lists of) values, as well as other features such as single/double quoted strings, environment variable expansion, functions and nested include statements. Values can be strings, integers, floats, booleans, and sections. The goal is not to be the configuration file parser library with a gazillion of features. Instead, it aims to be easy to use and quick to integrate with your code.
+
   * **[libctlmgr (libctlmgr.so) 1.0](libctlmgr.md)<a id='libctlmgr'></a>**<br>
     This is Freetz compatibility library which overwrites functions of AVM's libraries, e.g. write_etc_passwd.
 
