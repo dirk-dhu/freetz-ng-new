@@ -1,4 +1,4 @@
-# FriBidi (libfribidi.so) 1.0.12
+# FriBidi (libfribidi.so) 1.0.13
  - Homepage: [https://github.com/fribidi/fribidi](https://github.com/fribidi/fribidi)
  - Manpage: [https://github.com/fribidi/fribidi/wiki](https://github.com/fribidi/fribidi/wiki)
  - Changelog: [https://github.com/fribidi/fribidi/releases](https://github.com/fribidi/fribidi/releases)
