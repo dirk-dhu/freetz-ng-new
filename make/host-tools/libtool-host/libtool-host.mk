@@ -4,7 +4,7 @@ $(PKG)_HASH:=4f7f217f057ce655ff22559ad221a0fd8ef84ad1fc5fcb6990cecc333aa1635d
 $(PKG)_SITE:=@GNU/$(pkg_short)
 ### WEBSITE:=https://www.gnu.org/software/libtool/
 ### MANPAGE:=https://www.gnu.org/software/libtool/manual/
-### CHANGES:=https://mirrors.ocf.berkeley.edu/gnu/libtool/
+### CHANGES:=https://ftpmirror.gnu.org/libtool/
 ### CVSREPO:=https://git.savannah.gnu.org/cgit/libtool.git
 
 $(PKG)_DEPENDS_ON+=autoconf-host
