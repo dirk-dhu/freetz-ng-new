@@ -80,6 +80,7 @@ Latest changes
    * glib2 2.32.4/2.76.5
    * harfbuzz 8.2.0
    * libconfuse 3.3
+   * fribidi 1.0.13
    * libxml2 2.11.5
    * pango 1.51.0
    * uClibc++ 0.2.6-6687fc92
