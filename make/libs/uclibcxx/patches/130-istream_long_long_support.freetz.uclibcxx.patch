@@ -85,5 +85,5 @@
 +#endif // __STRICT_ANSI__
 +
  
- #ifndef __STRICT_ANSI__
+ #if !defined(__STRICT_ANSI__) || (__cplusplus >= 201103L)
  	template <class traits> class _UCXXEXPORT __istream_readin<traits, char, long long>{

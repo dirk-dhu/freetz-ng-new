@@ -4,5 +4,5 @@ config EXTERNAL_FREETZ_LIB_libuClibc__
 	default n
 	help
 		externals the following file(s):
-		 ${FREETZ_LIBRARY_DIR}/libuClibc++.so.0.2.5
+		 ${FREETZ_LIBRARY_DIR}/libuClibc++.so.0.2.6
 
