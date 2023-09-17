@@ -2,6 +2,8 @@ $(call PKG_INIT_BIN, 1.27)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH:=e91341b779ffd3d70af6f00028bcd7f65ae664fedf947a27c42311102a84784e
 $(PKG)_SITE:=http://www.xmailserver.org
+### WEBSITE:=http://www.xmailserver.org/
+### MANPAGE:=http://www.xmailserver.org/Readme.txt
 
 $(PKG)_BINARIES := compartment sendmail XMail XMCrypt CtrlClnt MkUsers
 $(PKG)_BINARIES_BUILD_DIR := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/bin/%)
