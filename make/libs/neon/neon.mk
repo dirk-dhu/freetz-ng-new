@@ -1,9 +1,9 @@
-$(call PKG_INIT_LIB, $(if $(FREETZ_KERNEL_VERSION_2_MAX),0.30.2,0.32.5))
-$(PKG)_LIB_VERSION:=$(if $(FREETZ_KERNEL_VERSION_2_MAX),27.3.2,27.5.5)
+$(call PKG_INIT_LIB, $(if $(FREETZ_LIB_libneon_VERSION_ABANDON),0.30.2,0.32.5))
+$(PKG)_LIB_VERSION:=$(if $(FREETZ_LIB_libneon_VERSION_ABANDON),27.3.2,27.5.5)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.gz
 $(PKG)_HASH_ABANDON:=db0bd8cdec329b48f53a6f00199c92d5ba40b0f015b153718d1b15d3d967fbca
 $(PKG)_HASH_CURRENT:=4872e12f802572dedd4b02f870065814b2d5141f7dbdaf708eedab826b51a58a
-$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_KERNEL_VERSION_2_MAX),ABANDON,CURRENT))
+$(PKG)_HASH:=$($(PKG)_HASH_$(if $(FREETZ_LIB_libneon_VERSION_ABANDON),ABANDON,CURRENT))
 $(PKG)_SITE:=https://notroj.github.io/neon,http://www.webdav.org/neon
 ### VERSION:=0.30.2/0.32.5
 ### WEBSITE:=https://notroj.github.io/neon/
@@ -24,7 +24,7 @@ ifeq ($(strip $(FREETZ_LIB_libneon_WITH_ZLIB)),y)
 $(PKG)_DEPENDS_ON += zlib
 endif
 
-$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_KERNEL_VERSION_2_MAX),abandon,current)
+$(PKG)_CONDITIONAL_PATCHES+=$(if $(FREETZ_LIB_libneon_VERSION_ABANDON),abandon,current)
 
 $(PKG)_CONFIGURE_PRE_CMDS += $(call PKG_PREVENT_RPATH_HARDCODING,./configure)
 
@@ -33,7 +33,7 @@ $(PKG)_CONFIGURE_ENV += ac_cv_func_CRYPTO_set_idptr_callback=
 
 $(PKG)_CONFIGURE_OPTIONS += --enable-shared
 $(PKG)_CONFIGURE_OPTIONS += --with-expat=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libexpat.la
-$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_KERNEL_VERSION_2_MAX),--with-gssapi,--without-gssapi)
+$(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_LIB_libneon_VERSION_ABANDON),--with-gssapi,--without-gssapi)
 $(PKG)_CONFIGURE_OPTIONS += --disable-nls
 $(PKG)_CONFIGURE_OPTIONS += --without-egd
 $(PKG)_CONFIGURE_OPTIONS += --without-libproxy

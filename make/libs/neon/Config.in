@@ -7,6 +7,20 @@ config FREETZ_LIB_libneon
 
 if FREETZ_LIB_libneon
 
+	choice
+		prompt "Version"
+			default FREETZ_LIB_libneon_VERSION_CURRENT
+
+		config FREETZ_LIB_libneon_VERSION_ABANDON
+			bool "0.30.2"
+			depends on FREETZ_KERNEL_VERSION_2_MAX
+
+		config FREETZ_LIB_libneon_VERSION_CURRENT
+			bool "0.32.5"
+			depends on !FREETZ_KERNEL_VERSION_2_MAX
+
+	endchoice
+
 	config FREETZ_LIB_libneon_WITH_SSL
 		bool "build with SSL support"
 		select FREETZ_LIB_libcrypto
