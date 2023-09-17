@@ -1,6 +1,6 @@
 --- include/istream
 +++ include/istream
-@@ -575,6 +575,25 @@
+@@ -597,6 +597,25 @@
  #ifdef __UCLIBCXX_EXPAND_ISTREAM_CHAR__
  #ifndef __UCLIBCXX_COMPILE_ISTREAM__
  
@@ -85,5 +85,5 @@
 +#endif // __STRICT_ANSI__
 +
  
- #ifdef __UCLIBCXX_HAS_FLOATS__
- 
+ #ifndef __STRICT_ANSI__
+ 	template <class traits> class _UCXXEXPORT __istream_readin<traits, char, long long>{

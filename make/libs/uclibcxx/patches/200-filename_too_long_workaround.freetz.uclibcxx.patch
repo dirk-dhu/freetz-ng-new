@@ -7,7 +7,7 @@
 +MD5SUM = md5sum
 +md5sum = $(shell echo -n '$1' | $(MD5SUM) | tr -d -c "0-9a-f")
 +
- GEN_LIBS:=
+ GEN_LIBS:= -lc
  ifneq ($(LIBGCC_DIR),$(UCLIBCXX_RUNTIME_LIBDIR))
  GEN_LIBS += -L$(LIBGCC_DIR)
 --- src/abi/libgcc_eh/Makefile.in

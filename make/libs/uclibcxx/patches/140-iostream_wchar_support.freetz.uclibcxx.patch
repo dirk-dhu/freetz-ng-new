@@ -1,6 +1,6 @@
 --- include/ostream
 +++ include/ostream
-@@ -130,22 +130,22 @@
+@@ -134,22 +134,22 @@
  		}
  
  		_UCXXEXPORT void printout(const char_type* s, streamsize n){
@@ -31,7 +31,7 @@
  	protected:
 --- include/istream_helpers
 +++ include/istream_helpers
-@@ -398,6 +398,265 @@
+@@ -453,6 +453,265 @@
  		}
  	};
  

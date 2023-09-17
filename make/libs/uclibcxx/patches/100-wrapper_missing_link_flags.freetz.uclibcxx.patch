@@ -3,15 +3,13 @@
 
 --- Rules.mak
 +++ Rules.mak
-@@ -268,11 +268,13 @@
- LIBS-ASNEEDED-$(LIBNAME).so = -lgcc_s
- endif
+@@ -267,9 +267,11 @@
+ #LIBS-ASNEEDED-$(LIBNAME).so = -lgcc_s
+ #endif
  ifneq ($(IMPORT_LIBGCC_EH),y)
 +  LIBS += $(call link.asneeded,-lgcc_s)
    STATIC_LIBS += -lgcc_eh
- #ifeq ($(GCC_MAJOR_VER),3)
- #  LIBS += -lgcc_eh
- #endif
+   LIBS-ASNEEDED-$(LIBNAME).so+= -lgcc_eh
  endif
 +STATIC_LIBS := -Wl$(comma)--start-group $(STATIC_LIBS) -Wl$(comma)--end-group
  
