@@ -82,6 +82,7 @@ Latest changes
    * libconfuse 3.3
    * fribidi 1.0.13
    * libxml2 2.11.5
+   * neon 0.30.2/0.32.5
    * pango 1.51.0
    * uClibc++ 0.2.6-6687fc92
 
