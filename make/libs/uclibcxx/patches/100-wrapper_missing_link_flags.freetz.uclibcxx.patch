@@ -3,7 +3,7 @@
 
 --- Rules.mak
 +++ Rules.mak
-@@ -268,9 +268,11 @@
+@@ -270,9 +270,11 @@
  #LIBS-ASNEEDED-$(LIBNAME).so = -lgcc_s
  #endif
  ifneq ($(IMPORT_LIBGCC_EH),y)

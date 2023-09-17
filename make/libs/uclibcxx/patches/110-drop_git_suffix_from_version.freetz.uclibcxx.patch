@@ -1,6 +1,6 @@
 --- Rules.mak
 +++ Rules.mak
-@@ -66,7 +66,7 @@
+@@ -67,7 +67,7 @@
  
  MAJOR_VERSION:=0
  MINOR_VERSION:=2
