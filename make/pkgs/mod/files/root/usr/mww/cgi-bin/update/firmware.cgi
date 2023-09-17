@@ -54,8 +54,8 @@ function CheckInput(form) {
 	<label for="downgrade">$(lang de:"Downgrade auf &auml;ltere Version zulassen" en:"Allow downgrade to older version")</label>
 	</p>
 EOF
-# Only if less then 100mb ram and pre-supervisor
-[ -z "$(which svctl)" ] && [ -z "$(free | sed -rn 's/^Mem: *([^ ]*)[^ ]{5} .*/\1/p')" ] && cat << EOF
+# Only if less then 100mb ram
+[ -z "$(free | sed -rn 's/^Mem: *([^ ]*)[^ ]{5} .*/\1/p')" ] && cat << EOF
 	<p>
 	<input type="radio" name="do_prepare" id="stop_avm" value="stop_avm">
 	<label for="stop_avm">$(lang de:"AVM-Dienste stoppen (bei Speichermangel)" en:"Stop AVM services (less memory available)")</label><br>
