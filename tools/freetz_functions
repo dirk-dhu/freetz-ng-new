@@ -832,6 +832,8 @@ function image_details() {
 	[ -z "$AVM_FW_REVISION" ] && AVM_FW_REVISION="$(sed -rn 's/^export CONFIG_SUBVERSION=\"?-?([^\"]*)\"?/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # newer firmware
 	[ -z "$AVM_FW_REVISION" ] && AVM_FW_REVISION="$(sed -rn 's/^export CONFIG_BUILDNUMBER=\"([^\"]*)\"/\1/p' ${FILESYSTEM_DIR}/etc/init.d/rc.conf)" # latest firmware
 	AVM_FW_DATE="$(sed -rn 's/^export FIRMWARE_DATE="(.*)"/\1/p' ${FILESYSTEM_DIR}/etc/version)" # older firmware
+	stat "${FILESYSTEM_DIR}/etc/version" --printf="%Y\n%W\n" | sort -u | wc -l | grep -q '^1$' && \
+	 AVM_FW_DATE="$(date -d"$(stat -c '%y' "${FIRMWARE_DIR}/var/content" 2>/dev/null)" "+%d.%m.%Y %H:%M:%S" 2>/dev/null)" # cpio packed fs
 	[ -z "$AVM_FW_DATE" ] && AVM_FW_DATE="$(date -d"$(stat -c '%y' ${FILESYSTEM_DIR}/etc/version)" "+%d.%m.%Y %H:%M:%S")" # newer firmware
 	AVM_FW_CYCLE="$(sed -rn 's/^Releasecycle=//p' "${FIRMWARE_DIR}/var/content" 2>/dev/null)"
 	[ -n "$AVM_FW_CYCLE" ] && AVM_FW_CYCLE=" [$AVM_FW_CYCLE]"
