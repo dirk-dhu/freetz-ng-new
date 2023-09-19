@@ -159,8 +159,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [fritz.powerline_1000ET_01_05.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-t/deutschland/fritz.os/fritz.powerline_1000ET_01_05.image)
    - other: [fritz.powerline_1000ET_01_05.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-t/other/fritz.os/fritz.powerline_1000ET_01_05.image)
  * fritzpowerline-1000e-v2/
-   - deutschland: [fritz.powerline_1000E_v2_2130_01_tr069_3.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-v2/deutschland/fritz.os/fritz.powerline_1000E_v2_2130_01_tr069_3.image)
-   - other: [fritz.powerline_1000E_v2_2130_01_tr069_3.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-v2/other/fritz.os/fritz.powerline_1000E_v2_2130_01_tr069_3.image)
+   - deutschland: [fritz.powerline_1000E_v2_2130_02_tr069_3.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-v2/deutschland/fritz.os/fritz.powerline_1000E_v2_2130_02_tr069_3.image)
+   - other: [fritz.powerline_1000E_v2_2130_02_tr069_3.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-v2/other/fritz.os/fritz.powerline_1000E_v2_2130_02_tr069_3.image)
  * fritzpowerline-1220/
    - deutschland: [fritz.powerline_1220_cm9_2130_01_tr069_7.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220/deutschland/fritz.os/fritz.powerline_1220_cm9_2130_01_tr069_7.image)
    - other: [fritz.powerline_1220_cm9_2130_01_tr069_7.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220/other/fritz.os/fritz.powerline_1220_cm9_2130_01_tr069_7.image)
