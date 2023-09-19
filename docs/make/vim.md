@@ -1,4 +1,4 @@
-# Vim 9.0.0049 (binary only)
+# Vim 9.0.1872 (binary only)
  - Homepage: [https://www.vim.org/](https://www.vim.org/)
  - Manpage: [https://www.vim.org/docs.php](https://www.vim.org/docs.php)
  - Changelog: [https://www.arp242.net/vimlog/](https://www.arp242.net/vimlog/)
