@@ -80,7 +80,7 @@ Latest changes
 
  - Libraries:
    * glib2 2.32.4/2.76.5
-   * harfbuzz 8.2.0
+   * harfbuzz 8.2.1
    * libconfuse 3.3
    * fribidi 1.0.13
    * libxml2 2.11.5
