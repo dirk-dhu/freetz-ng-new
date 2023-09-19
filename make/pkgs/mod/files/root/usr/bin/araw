@@ -1,7 +1,7 @@
 #!/bin/sh
 #by cuma, 2008
 # araw - every file could be altered
-# its a vi wrapper when called as vix
+# its a wrapper when called as vix/vimx/nanox
 # !!! CHANGES ARE LOST UPON REBOOT !!!
 MNT="/tmp/araw"
 NOW="$(date +%Y%m%d-%H%M%S)"
@@ -11,11 +11,12 @@ ARG="$1"
 [ ! -e "$ARG" ] && echo "Error, '$ARG' does not exist." && exit 1
 [ ! -f "$ARG" -a ! -d "$ARG" ] && echo "Error, '$ARG' is not a file nor a direcotry." && exit 1
 
+LINK="${0##*/}"
 SRC="$(realpath $ARG)"
 NAME=$(basename $SRC)
 DST="$MNT/$NAME--$NOW"
 
-echx() { [ "${0##*/}" != "vix" ] && echo "$@" ; }
+echx() { case "$LINK" in nanox|vimx|vix) return ;; esac ; echo "$@" ; }
 
 if sed -rn 's/^tmpfs (.*) .* rw.*/\1/p' /proc/mounts | grep -q "^$SRC$"; then
   echx "Already mounted, skipped."
@@ -28,7 +29,6 @@ else
 fi
 
 [ -d "$SRC" ] && exit 0
-[ "${0##*/}" != "vix" ] && exit 0
-vi "$ARG"
-exit $?
+case "$LINK" in nanox|vimx|vix) ${LINK::-1} "$ARG" ; exit $? ;; esac
+exit 0
 
