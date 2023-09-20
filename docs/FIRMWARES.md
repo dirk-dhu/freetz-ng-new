@@ -484,7 +484,7 @@ Currently supported devices and firmwares
 * __Fritz!WLAN Repeater DVB-C__
   - 133.06.32 rev31507 {ALL}
   - 133.06.50 rev33858 {ALL}
-  - 133.07.02 rev94126 {ALL}
+  - 133.07.03 rev108008 {ALL}
   - 133.07.08 rev66669 {ALL} [MESH18] (Inhaus)
   - Alien 1750E {GER} (No dvbc!)
 * __Fritz!WLAN Repeater 1750E__
