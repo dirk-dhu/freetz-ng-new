@@ -514,7 +514,7 @@ Currently supported devices and firmwares
   - 270.07.42 rev108161 {ALL} [MOVE21]
   - 270.07.57 rev107839 {ALL} [MOVE21NL1]
 * __Fritz!Repeater 6000__
-  - 253.07.30 rev98407 {ALL} [PSQ19P2NL4]
+  - 253.07.31 rev108162 {ALL} [PSQ19P2NL4]
   - 253.07.57 rev107838 {ALL} [MOVE21NL1]
 
 ### Fritz!Smart
