@@ -14,6 +14,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - other: [FRITZ.Box_3490-07.31.image](https://ftp.avm.de/fritzbox/fritzbox-3490/other/fritz.os/FRITZ.Box_3490-07.31.image)
  * fritzbox-4020/
    - deutschland: [FRITZ.Box_4020.07.03.image](https://ftp.avm.de/fritzbox/fritzbox-4020/deutschland/fritz.os/FRITZ.Box_4020.07.03.image)
+   - italy: [FRITZ.Box_4020.147.06.84.image](https://ftp.avm.de/fritzbox/fritzbox-4020/italy/fritz.os/FRITZ.Box_4020.147.06.84.image)
    - other: [FRITZ.Box_4020.07.03.image](https://ftp.avm.de/fritzbox/fritzbox-4020/other/fritz.os/FRITZ.Box_4020.07.03.image)
  * fritzbox-4040/
    - deutschland: [FRITZ.Box_4040-07.57.image](https://ftp.avm.de/fritzbox/fritzbox-4040/deutschland/fritz.os/FRITZ.Box_4040-07.57.image)
