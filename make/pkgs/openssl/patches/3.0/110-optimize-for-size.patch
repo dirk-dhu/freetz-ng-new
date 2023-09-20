@@ -1,6 +1,6 @@
 --- Configurations/10-main.conf
 +++ Configurations/10-main.conf
-@@ -1938,5 +1938,66 @@
+@@ -1941,5 +1941,66 @@
          inherit_from     => [ "vms-generic" ],
          bn_ops           => "SIXTY_FOUR_BIT",
          pointer_size     => "",
