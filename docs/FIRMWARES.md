@@ -96,7 +96,7 @@ Currently supported devices and firmwares
 ### Fritz!Box WAN (4xxx)
 
 * __Fritz!Box 4020__
-  - 147.06.83 rev43440 {GER}
+  - 147.06.84 rev108194 {GER}
   - 147.07.03 rev107962 {GER}
 * __Fritz!Box 4040__
   - 155.07.01 rev61489 {ALL}
