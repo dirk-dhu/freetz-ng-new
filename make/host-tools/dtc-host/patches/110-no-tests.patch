@@ -1,6 +1,6 @@
 --- Makefile
 +++ Makefile
-@@ -325,9 +325,6 @@
+@@ -332,9 +332,6 @@
  TESTS_PYLIBFDT += maybe_pylibfdt
  endif
  

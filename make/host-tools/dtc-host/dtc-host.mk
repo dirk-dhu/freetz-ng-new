@@ -1,6 +1,6 @@
-$(call TOOLS_INIT, 1.6.1)
+$(call TOOLS_INIT, 1.7.0)
 $(PKG)_SOURCE:=dtc-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=65cec529893659a49a89740bb362f507a3b94fc8cd791e76a8d6a2b6f3203473
+$(PKG)_HASH:=29edce3d302a15563d8663198bbc398c5a0554765c83830d0d4c0409d21a16c4
 $(PKG)_SITE:=@KERNEL/software/utils/dtc
 
 $(PKG)_INSTALL_DIR := $(TOOLS_DIR)/fit
@@ -10,7 +10,7 @@ $(PKG)_BINARIES_BUILD_DIR  := $($(PKG)_BINARIES:%=$($(PKG)_DIR)/%)
 $(PKG)_BINARIES_TARGET_DIR := $($(PKG)_BINARIES:%=$($(PKG)_INSTALL_DIR)/%)
 
 
-# libdtc-host, dtc-host and fitdump using the same source
+# dtc-host and dtc using the same source
 $(TOOLS_SOURCE_DOWNLOAD)
 $(TOOLS_UNPACKED)
 $(TOOLS_CONFIGURED_NOP)

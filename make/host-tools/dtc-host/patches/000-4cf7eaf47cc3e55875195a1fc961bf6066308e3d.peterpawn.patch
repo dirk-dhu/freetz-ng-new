@@ -103,11 +103,9 @@ vidar:/home/GitHub/YourFritz/fit_tools/fit-images/FB5590 $
  4 files changed, 333 insertions(+)
  create mode 100644 fitdump.c
 
-diff --git a/.gitignore b/.gitignore
-index 416fa05b..2ba8992b 100644
---- a/.gitignore
-+++ b/.gitignore
-@@ -11,6 +11,7 @@ lex.yy.c
+--- .gitignore
++++ .gitignore
+@@ -11,6 +11,7 @@
  .*.swp
  /dtc
  /fdtdump
@@ -115,11 +113,9 @@ index 416fa05b..2ba8992b 100644
  /convert-dtsv0
  /version_gen.h
  /fdtget
-diff --git a/Makefile b/Makefile
-index ee77115f..65637ad9 100644
---- a/Makefile
-+++ b/Makefile
-@@ -148,6 +148,7 @@ BIN += fdtdump
+--- Makefile
++++ Makefile
+@@ -148,6 +148,7 @@
  BIN += fdtget
  BIN += fdtput
  BIN += fdtoverlay
@@ -127,7 +123,7 @@ index ee77115f..65637ad9 100644
  
  SCRIPTS = dtdiff
  
-@@ -181,6 +182,7 @@ ifneq ($(MAKECMDGOALS),libfdt)
+@@ -181,6 +182,7 @@
  -include $(DTC_OBJS:%.o=%.d)
  -include $(CONVERT_OBJS:%.o=%.d)
  -include $(FDTDUMP_OBJS:%.o=%.d)
@@ -135,20 +131,18 @@ index ee77115f..65637ad9 100644
  -include $(FDTGET_OBJS:%.o=%.d)
  -include $(FDTPUT_OBJS:%.o=%.d)
  -include $(FDTOVERLAY_OBJS:%.o=%.d)
-@@ -261,6 +263,8 @@ convert-dtsv0: $(CONVERT_OBJS)
+@@ -268,6 +270,8 @@
  
  fdtdump:	$(FDTDUMP_OBJS)
  
 +fitdump:	$(FITDUMP_OBJS)
 +
- fdtget:	$(FDTGET_OBJS) $(LIBFDT_lib)
+ fdtget:	$(FDTGET_OBJS) $(LIBFDT_dep)
  
- fdtput:	$(FDTPUT_OBJS) $(LIBFDT_lib)
-diff --git a/Makefile.utils b/Makefile.utils
-index 9436b34d..254aeb45 100644
---- a/Makefile.utils
-+++ b/Makefile.utils
-@@ -10,6 +10,12 @@ FDTDUMP_SRCS = \
+ fdtput:	$(FDTPUT_OBJS) $(LIBFDT_dep)
+--- Makefile.utils
++++ Makefile.utils
+@@ -10,6 +10,12 @@
  
  FDTDUMP_OBJS = $(FDTDUMP_SRCS:%.c=%.o)
  
@@ -164,8 +158,8 @@ index 9436b34d..254aeb45 100644
 diff --git a/fitdump.c b/fitdump.c
 new file mode 100644
 index 00000000..065c6d0c
---- /dev/null
-+++ b/fitdump.c
+--- fitdump.c
++++ fitdump.c
 @@ -0,0 +1,322 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*

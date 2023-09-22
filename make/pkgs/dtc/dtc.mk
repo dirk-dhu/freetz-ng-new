@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, 1.6.1)
+$(call PKG_INIT_BIN, 1.7.0)
 $(PKG)_SOURCE:=dtc-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=65cec529893659a49a89740bb362f507a3b94fc8cd791e76a8d6a2b6f3203473
+$(PKG)_HASH:=29edce3d302a15563d8663198bbc398c5a0554765c83830d0d4c0409d21a16c4
 $(PKG)_SITE:=@KERNEL/software/utils/dtc
 ### WEBSITE:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git
 ### CHANGES:=https://git.kernel.org/pub/scm/utils/dtc/dtc.git/log/
@@ -16,7 +16,7 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_DTC_fdtput)  ,,usr/bin/fdtput)
 $(PKG)_EXCLUDED += $(if $(FREETZ_PACKAGE_DTC_fitdump) ,,usr/bin/fitdump)
 
 
-# libdtc-host, dtc-host and fitdump using the same source
+# dtc-host and dtc using the same source
 ifneq ($($(PKG)_SOURCE),$(DTC_HOST_SOURCE))
 $(PKG_SOURCE_DOWNLOAD)
 endif

@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_DTC
-	bool "dtc 1.6.1"
+	bool "dtc 1.7.0"
 	default n
 	help
 		Device  Tree  Compiler,  dtc, takes as input a device-tree in a given format and outputs a

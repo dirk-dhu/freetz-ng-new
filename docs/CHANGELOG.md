@@ -50,6 +50,7 @@ Latest changes
 
  - Host tools:
    * cmake 3.27.5
+   * dtc 1.7.0
    * kconfig 6.5
    * pkgconf 2.0.3
    * precompiled host-tools 2023-09-17
@@ -60,6 +61,7 @@ Latest changes
    * BIND 9.11.37/9.16.43
    * CA-bundle 2023-08-22
    * Curl 8.3.0
+   * dtc 1.7.0
    * FFmpeg 5.1.3
    * ftdi1 1.5
    * Git 2.42.0
