@@ -247,7 +247,7 @@ config FREETZ_DL_SITE
 	#
 	default "@AVM/fritzbox-7590-ax/{deutschland,other}/fritz.os"                                                       if FREETZ_TYPE_7599
 	#
-	default "@AVM/firmware/smartgateway,@AVM/FRITZSmartGateway"                                                        if FREETZ_TYPE_GATE
+	default "@AVM/fritzwlan/fritzsmart-gateway/deutschland/fritz.os,@AVM/FRITZSmartGateway"                            if FREETZ_TYPE_GATE
 	#
 	default "@TELEKOM/Speedport/Speedport_W501V"                                                                       if FREETZ_TYPE_W501V
 	#
@@ -661,7 +661,7 @@ config FREETZ_DL_SOURCE
 	default "FRITZ.Box_7590_AX-07.31.image"                                                if FREETZ_TYPE_7599 &&                        FREETZ_TYPE_FIRMWARE_07_2X
 	default "FRITZ.Box_7590_AX-07.57.image"                                                if FREETZ_TYPE_7599 &&                        FREETZ_TYPE_FIRMWARE_07_5X
 	#
-	default "FRITZ.Smart_Gateway-07.54.image"                                              if FREETZ_TYPE_GATE &&                        FREETZ_TYPE_FIRMWARE_07_5X
+	default "FRITZ.Smart_Gateway-07.57-108214-Release.image"                               if FREETZ_TYPE_GATE &&                        FREETZ_TYPE_FIRMWARE_07_5X
 	#
 	default "fw_Speedport_W501V_v_28.04.38.image"                                          if FREETZ_TYPE_W501V
 
