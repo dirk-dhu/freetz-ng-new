@@ -16719,8 +16719,6 @@ config FREETZ_AVM_HAS_REBOOT_SCRIPT
 	def_bool y
 config FREETZ_AVM_HAS_IP_BINARY
 	def_bool y
-config FREETZ_AVM_HAS_UPSI_2023_TR064CGI
-	def_bool y
 config FREETZ_AVM_HAS_AHA
 	def_bool y
 config FREETZ_AVM_HAS_DECT
