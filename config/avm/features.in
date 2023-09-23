@@ -1,5 +1,5 @@
 ###
-### 
+### internet connection type
 ###
 
 config FREETZ_TYPE_CABLE
