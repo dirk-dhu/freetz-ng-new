@@ -119,7 +119,7 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 08.01: [08.01.04.67.avm.de.upd](http://download.avm.de/dect/0801/psq19p2/08.01.04.67.avm.de.upd)
  - MHW 08.02: [08.02.04.67.avm.de.upd](http://download.avm.de/dect/0802/psq19p2/08.02.04.67.avm.de.upd)
  - MHW 08.03: [08.03.04.67.avm.de.upd](http://download.avm.de/dect/0803/psq19p2/08.03.04.67.avm.de.upd)
- - MHW 08.04: [08.04.04.93.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.93.avm.de.upd)
+ - MHW 08.04: [08.04.04.94.avm.de.upd](http://download.avm.de/dect/0804/move21/08.04.04.94.avm.de.upd)
  - MHW 10.01: [34.10.16.16.015.avm.de.upd](http://download.avm.de/dect/1001/Release/34.10.16.16.015.avm.de.upd)
 
 ### Dect-Labor
@@ -129,8 +129,8 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - MHW 07.03: [07.03.04.25.avm.de.upd](http://download.avm.de/dect/0703/move21/07.03.04.25.avm.de.upd)
  - MHW 07.04: [07.04.04.25.avm.de.upd](http://download.avm.de/dect/0704/move21/07.04.04.25.avm.de.upd)
  - MHW 08.01: [08.01.04.93.avm.de.upd](http://download.avm.de/dect/0801/move21/08.01.04.93.avm.de.upd)
- - MHW 08.02: [08.02.04.93.avm.de.upd](http://download.avm.de/dect/0802/move21/08.02.04.93.avm.de.upd)
- - MHW 08.03: [08.03.04.93.avm.de.upd](http://download.avm.de/dect/0803/move21/08.03.04.93.avm.de.upd)
+ - MHW 08.02: [08.02.04.94.avm.de.upd](http://download.avm.de/dect/0802/move21/08.02.04.94.avm.de.upd)
+ - MHW 08.03: [08.03.04.94.avm.de.upd](http://download.avm.de/dect/0803/move21/08.03.04.94.avm.de.upd)
 
 ### Dect-Inhaus
 
