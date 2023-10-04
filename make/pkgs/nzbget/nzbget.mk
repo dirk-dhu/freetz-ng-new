@@ -52,7 +52,7 @@ $(PKG_CONFIGURED_CONFIGURE)
 
 $($(PKG)_BINARY): $(NZBGET_DIR)/.configured
 	$(SUBMAKE) -C $(NZBGET_DIR) \
-		EXTRA_CXXFLAGS="-fpermissive" \
+		EXTRA_CXXFLAGS="-fpermissive -fPIC" \
 		EXTRA_LDFLAGS="$(if $(FREETZ_PACKAGE_NZBGET_STATIC),-static)"
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
