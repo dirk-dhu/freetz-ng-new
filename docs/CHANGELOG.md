@@ -68,6 +68,7 @@ Latest changes
    * iPerf3 3.3/3.15
    * mc (Midnight Commander) 4.8.30
    * Nmap 4.76/5.51/7.94
+   * NZBGet 21.1/21.4-rc2
    * OpenSSH 9.3p2/9.4p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.11
    * PCSC-lite 2.0.0

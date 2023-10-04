@@ -1,5 +1,5 @@
 config FREETZ_PACKAGE_NZBGET
-	bool "NZBGet 21.1/21.4-rc1"
+	bool "NZBGet 21.1/21.4-rc2"
 	select FREETZ_STDCXXLIB_FORCE_GNULIBSTDCXX
 	select FREETZ_LIB_libxml2            if !FREETZ_PACKAGE_NZBGET_STATIC
 	select FREETZ_LIB_libpthread         if !FREETZ_PACKAGE_NZBGET_STATIC && FREETZ_TARGET_UCLIBC_HAS_multiple_libs
@@ -26,7 +26,7 @@ if FREETZ_PACKAGE_NZBGET
 			bool "21.1"
 
 		config FREETZ_PACKAGE_NZBGET_VERSION_CURRENT
-			bool "21.4-rc1 - EXPERIMENTAL"
+			bool "21.4-rc2 - EXPERIMENTAL"
 			depends on FREETZ_TARGET_GCC_4_8_MIN
 			help
 				libcap needs gcc 4.8+
