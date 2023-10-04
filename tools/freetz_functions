@@ -554,10 +554,10 @@ collect_pkg_files()
 invoke_fwmod_custom()
 {
 	local dirty
-	[ "$(git ls-files -m  fwmod_custom 2>/dev/null | wc -l)" != "0" ] && dirty=1
-	[ "$(svn st           fwmod_custom 2>/dev/null | wc -l)" != "0" ] && dirty=1
-	[ -e .fwmod_custom ]                                              && dirty=1
-	[ "$1" == "all_no_freetz" ]                                       && dirty=1
+	[ "$(git ls-files -m  "${BASE_DIR}/fwmod_custom" 2>/dev/null | wc -l)" != "0" ] && dirty=1
+	[ "$(svn st           "${BASE_DIR}/fwmod_custom" 2>/dev/null | wc -l)" != "0" ] && dirty=1
+	[ -e "${BASE_DIR}/.fwmod_custom" ]                                              && dirty=1
+	[ "$1" == "all_no_freetz" ]                                                     && dirty=1
 	[ -n "$dirty" ] && echo0 "invoking custom scripts" || return
 
 	for file in fwmod_custom .fwmod_custom; do
