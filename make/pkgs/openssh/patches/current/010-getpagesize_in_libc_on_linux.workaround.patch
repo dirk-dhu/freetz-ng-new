@@ -7,7 +7,7 @@ We workaround the problem for Freetz in a hackish way by patching the "in libucb
 
 --- configure
 +++ configure
-@@ -14575,14 +14575,13 @@
+@@ -14581,14 +14581,13 @@
  printf "%s\n" "#define HAVE_GETPAGESIZE 1" >>confdefs.h
  
  else $as_nop
@@ -25,7 +25,7 @@ We workaround the problem for Freetz in a hackish way by patching the "in libucb
  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
  
-@@ -14600,19 +14599,19 @@
+@@ -14606,19 +14605,19 @@
  _ACEOF
  if ac_fn_c_try_link "$LINENO"
  then :
