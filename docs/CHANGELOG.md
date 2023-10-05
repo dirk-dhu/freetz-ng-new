@@ -75,6 +75,7 @@ Latest changes
    * PCSC-lite 2.0.0
    * Screen 4.9.1
    * SQLite 3.43.1
+   * sslh 2.0.1
    * strace 4.9/5.0/6.5
    * Stunnel 5.71
    * Tor 0.4.8.7
