@@ -1,8 +1,8 @@
 # ProxyChains-NG 4.14
- - Homepage: [http://proxychains.sourceforge.net](http://proxychains.sourceforge.net)
- - Manpage: [https://github.com/haad/proxychains#readme](https://github.com/haad/proxychains#readme)
- - Changelog: [https://github.com/haad/proxychains/tags](https://github.com/haad/proxychains/tags)
- - Repository: [https://github.com/haad/proxychains](https://github.com/haad/proxychains)
+ - Homepage: [https://proxychains-ng.sourceforge.net](https://proxychains-ng.sourceforge.net)
+ - Manpage: [https://github.com/rofl0r/proxychains-ng#readme](https://github.com/rofl0r/proxychains-ng#readme)
+ - Changelog: [https://github.com/rofl0r/proxychains-ng/releases](https://github.com/rofl0r/proxychains-ng/releases)
+ - Repository: [https://github.com/rofl0r/proxychains-ng](https://github.com/rofl0r/proxychains-ng)
  - Package: [master/make/pkgs/proxychains-ng/](https://github.com/Freetz-NG/freetz-ng/tree/master/make/pkgs/proxychains-ng/)
 Mit ProxyChains-NG kann (fast) jedes Programm einen Proxy verwenden.<br>
 
