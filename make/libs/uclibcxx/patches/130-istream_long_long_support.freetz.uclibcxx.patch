@@ -4,7 +4,7 @@
  #ifdef __UCLIBCXX_EXPAND_ISTREAM_CHAR__
  #ifndef __UCLIBCXX_COMPILE_ISTREAM__
  
-+#ifndef __STRICT_ANSI__
++#if !defined __STRICT_ANSI__ && __C__ > 4
 +
 +//Support for input of long long data types
 +
@@ -22,7 +22,7 @@
 +	return is;
 +}
 +
-+#endif // __STRICT_ANSI__
++#endif // ! __STRICT_ANSI__ && __C__ > 4
  
  	template <> _UCXXEXPORT istream & basic_istream<char, char_traits<char> >::get(char & c);
  	template <> _UCXXEXPORT istream::int_type basic_istream<char, char_traits<char> >::get();
@@ -32,7 +32,7 @@
  		}
  	};
  
-+#ifndef __STRICT_ANSI__
++#if !defined __STRICT_ANSI__ && __C__ > 4
 +	template <class traits> class _UCXXEXPORT __istream_readin<traits, char, long long int>{
 +	public:
 +		inline static void readin(basic_istream<char, traits >& stream, long long int & var)
@@ -82,7 +82,7 @@
 +			}
 +		}
 +	};
-+#endif // __STRICT_ANSI__
++#endif // ! __STRICT_ANSI__ && __C__ > 4
 +
  
  #if !defined(__STRICT_ANSI__) || (__cplusplus >= 201103L)
