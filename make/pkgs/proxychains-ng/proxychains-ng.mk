@@ -1,9 +1,7 @@
-PROXYCHAINS_NG_GIT_REPOSITORY:=https://github.com/rofl0r/proxychains-ng.git
-$(call PKG_INIT_BIN, $(if $(FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_LATEST), $(call git-get-latest-revision,$(PROXYCHAINS_NG_GIT_REPOSITORY),), $(if $(FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_CUSTOM), $(shell echo "$(FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_COMMIT)"), e895fb713a) ))
+$(call PKG_INIT_BIN, 4.14)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=X
-$(PKG)_SITE:=git@$($(PKG)_GIT_REPOSITORY)
-#$(PKG)_SITE:=https://github.com/haad/proxychains/archive/refs/tags
+$(PKG)_HASH:=9d00e035b8a808b9e0c750501b08f38eeadd0be421f30ee83e88fd15e872b0ae
+$(PKG)_SITE:=https://ftp.barfooze.de/pub/sabotage/tarballs
 ### WEBSITE:=http://proxychains.sourceforge.net
 ### MANPAGE:=https://github.com/haad/proxychains#readme
 ### CHANGES:=https://github.com/haad/proxychains/tags
@@ -14,11 +12,6 @@ $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/proxychains4
 
 $(PKG)_MODULE:=$($(PKG)_DIR)/libproxychains4.so
 $(PKG)_TARGET_MODULE := $($(PKG)_DEST_LIBDIR)/libproxychains4.so
-
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_STABLE
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_LATEST
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_CUSTOM
-$(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_PROXYCHAINS_NG_VERSION_COMMIT
 
 $(PKG)_CONFIGURE_OPTIONS += --libdir="$(FREETZ_RPATH)"
 
