@@ -2,10 +2,10 @@ $(call PKG_INIT_BIN, 4.14)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=9d00e035b8a808b9e0c750501b08f38eeadd0be421f30ee83e88fd15e872b0ae
 $(PKG)_SITE:=https://ftp.barfooze.de/pub/sabotage/tarballs
-### WEBSITE:=http://proxychains.sourceforge.net
-### MANPAGE:=https://github.com/haad/proxychains#readme
-### CHANGES:=https://github.com/haad/proxychains/tags
-### CVSREPO:=https://github.com/haad/proxychains
+### WEBSITE:=https://proxychains-ng.sourceforge.net
+### MANPAGE:=https://github.com/rofl0r/proxychains-ng#readme
+### CHANGES:=https://github.com/rofl0r/proxychains-ng/releases
+### CVSREPO:=https://github.com/rofl0r/proxychains-ng
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/proxychains4
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/proxychains4
