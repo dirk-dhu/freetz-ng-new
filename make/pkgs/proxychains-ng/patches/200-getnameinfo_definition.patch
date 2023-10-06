@@ -1,0 +1,11 @@
+--- src/libproxychains.c
++++ src/libproxychains.c
+@@ -730,7 +730,7 @@
+ 
+ HOOKFUNC(int, getnameinfo, const struct sockaddr *sa, socklen_t salen,
+ 	           char *host, socklen_t hostlen, char *serv,
+-	           socklen_t servlen, int flags)
++	           socklen_t servlen, unsigned int flags)
+ {
+ 	INIT();
+ 	PFUNC();

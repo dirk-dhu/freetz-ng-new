@@ -73,6 +73,7 @@ Latest changes
    * OpenSSH 9.3p2/9.5p1
    * OpenSSL 0.9.8zh/1.0.2u/1.1.1w/3.0.11
    * PCSC-lite 2.0.0
+   * ProxyChains-NG 4.16
    * Screen 4.9.1
    * SQLite 3.43.1
    * sslh 2.0.1
