@@ -58,6 +58,7 @@ Latest changes
    * python 3.11.5
 
  - Packages:
+   * ACME.sh 3.0.7 (letsencrypt)
    * Atop 2.9.0
    * BIND 9.11.37/9.16.43
    * CA-bundle 2023-08-22
