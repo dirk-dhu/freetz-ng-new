@@ -1826,8 +1826,10 @@ if [ "$action_names" ]; then
 	fi
 
 	# Pack var.tar (use old tar for compatibility)
+	# Switch to new tar because of uid/gid
+	# oldgnu should be enough compatibility ...
 	echo0 "packing var.tar"
-	"$TAR" -C "$VARTAR_MOD_DIR" -cf "$VARTAR_MOD" .
+	"$TAR_GNU" -f "$VARTAR_MOD"  --owner=0 --group=0 --format=oldgnu --numeric-owner  -C "$VARTAR_MOD_DIR"  --create .
 	if [ $? -ne 0 ] || ! is_valid_tarball "$VARTAR_MOD"; then
 		mv "${VARTAR_MOD}" "${VARTAR_MOD}.corrupted" 2>/dev/null
 		error 1 "packing of var.tar failed"
