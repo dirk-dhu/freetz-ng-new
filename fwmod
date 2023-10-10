@@ -300,10 +300,10 @@ validate_signature() {
 		cat "$2" > "$TMP/img"
 		# fix
 		local FIX="$(mktemp -p $TMP)"
-		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --append  ${FIX##*/}
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu --numeric-owner  -C "$TMP"  --append  ${FIX##*/}
 		# sig
-		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$TMP"  --extract ./var/signature --transform='s!.*!sig!'
-		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu             --delete  ./var/signature ${FIX##*/}
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu --numeric-owner  -C "$TMP"  --extract ./var/signature --transform='s!.*!sig!'
+		"$TAR_GNU" -f "$TMP/img"  --owner=0 --group=0 --mode=0755 --format=oldgnu --numeric-owner             --delete  ./var/signature ${FIX##*/}
 		# key
 		{
 			echo -n 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ==' | base64 -d
@@ -475,10 +475,10 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 		fi
 		# Unpack standard *.image file in tar format
 		tail -c $(( $image_size - ${image_grbg:-0x0} )) "$FIRMWARE" | \
-		  "$TAR_GNU" -x -C "$FIRMWARE_DIR" || untar_failed=1
+		  "$TAR_GNU" -x --numeric-owner -C "$FIRMWARE_DIR" || untar_failed=1
 	elif [ "$FIRMWARE_EXTENSION" != "exe" ]; then
 		# Unpack standard *.image file in tar format
-		"$TAR_GNU" -xif "$FIRMWARE" -C "$FIRMWARE_DIR" || untar_failed=1
+		"$TAR_GNU" -xif "$FIRMWARE" --numeric-owner -C "$FIRMWARE_DIR" || untar_failed=1
 	fi
 	if [ "$FIRMWARE_EXTENSION" == "exe" ] || [ "$untar_failed" ]; then
 		# Unpack Windows recover.exe file or mtdblock dump
@@ -594,7 +594,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 	if [ -r "$AVMPLUGINS" ]; then
 		echo0 "unpacking AVM plugins"
 		mkdir -p "$AVMPLUGINS_DIR"
-		"$TAR_GNU" -xif "$AVMPLUGINS" -C "$AVMPLUGINS_DIR" || error 1 "tar failed"
+		"$TAR_GNU" -xif "$AVMPLUGINS" --numeric-owner -C "$AVMPLUGINS_DIR" || error 1 "tar failed"
 
 		for i in "${AVMPLUGINS_DIR}/var/"*.image; do
 			AVMPLUGIN="${i##*/plugin-}"
@@ -615,7 +615,7 @@ if [ "$DO_UNPACK" -gt 0 ]; then
 
 	echo "unpacking var.tar"
 	mkdir "$VARTAR_DIR"
-	"$TAR_GNU" -xipf "$VARTAR" -C "$VARTAR_DIR" || error 1 "tar failed"
+	"$TAR_GNU" -xipf "$VARTAR" --numeric-owner -C "$VARTAR_DIR" || error 1 "tar failed"
 
 	image_details
 	echo2 -lc "detected firmware version: ${SOURCE_IMAGE_DETAILS}"
@@ -795,7 +795,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	[ -n "$PV" ] && echo0 "preparing directory build/modified/"
 	mkdir -p "$MOD_DIR"
 	[ "$FREETZ_AVM_HAS_UDEV" == y ] || exclude_dev="--exclude=./filesystem/dev"
-	"$TAR_GNU" -c -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR" -x -C "$MOD_DIR" || error 1 "tar failed"
+	"$TAR_GNU" -c --numeric-owner -C "$ORG_DIR" $exclude_dev  --exclude='*.log' . | ${PV:-cat} | "$TAR" -x -C "$MOD_DIR" || error 1 "tar failed"
 
 	# Fix some permissions
 	chmod -R u+w "$FILESYSTEM_MOD_DIR"
@@ -1283,10 +1283,10 @@ if [ "$DO_MOD" -gt 0 ]; then
 		pkg_name=$(pkg_name "$pkg")
 
 		"$TAR_GNU" $(find "${PACKAGES_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
-		  -c -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+		  -c --numeric-owner -C "${PACKAGES_DIR}/${pkg}/root" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 		if [ -d "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
-			"$TAR_GNU" -c -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+			"$TAR_GNU" -c --numeric-owner -C "${PACKAGES_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
 		fi
 
 		[ -r "${PACKAGES_DIR}/${pkg}/.language" ] && \
@@ -1312,7 +1312,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 
 		if [ -e "${ADDON_DIR}/${pkg}/etc/init.d/rc.${pkg_name}" ]; then
 			echo "NOTICE: addon '$pkg' is in old-style format (no language support)." 1>&2
-			"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
+			"$TAR_GNU" -c --numeric-owner -C "${ADDON_DIR}/${pkg}" . | "$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 		elif [ "$(echo ${pkg^^}-corrupt | sed -r 's/([^.-_-]*).*/\LfLawed-\1-Addon/' | md5sum | sed 's/ .*//')" != "80d00cf16e1a48ec11801feed60a2be7" ]; then
 			"$TAR"  $(find "${ADDON_DIR}/${pkg}/" -maxdepth 1 -type f -name ".exclude*" -printf '--exclude-from=%p ') \
 				-c -C "${ADDON_DIR}/${pkg}/root" \
@@ -1320,7 +1320,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 			"$TAR" -x -C "$FILESYSTEM_MOD_DIR" || error 1 "tar failed"
 
 			if [ -d "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" ]; then
-				"$TAR_GNU" -c -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
+				"$TAR_GNU" -c --numeric-owner -C "${ADDON_DIR}/${pkg}/${VARTAR_SUBDIR}" . | "$TAR" -x -C ${VARTAR_MOD_DIR} || error 1 "tar failed"
 			fi
 
 			[ -r "${ADDON_DIR}/${pkg}/.language" ] && \
@@ -2128,7 +2128,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 		echo1 "fitimg file size: $(byte_to_mb $FITIMAGE_SIZE), max $(byte_to_mb $FITIMAGE_LIMIT), free $(byte_to_mb $((-FITIMAGE_DIFF))) ($((-FITIMAGE_DIFF)) bytes)"
 	fi
 	echo0 "packing ${img_name}"
-	"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --create ./var
+	"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu --numeric-owner  -C "$FIRMWARE_MOD_DIR"  --create ./var
 	if [ $? -ne 0 ] || ! is_valid_tarball "${img_name}"; then
 		mv "${img_name}" "${img_name}.packed.corrupted" 2>/dev/null
 		error 1 "packing of firmware image failed"
@@ -2149,7 +2149,7 @@ if [ "$DO_PACK" -gt 0 ]; then
 		else
 			openssl md5 -sign "${SIGNATURE_SUBDIR}/prv" -passin "pass:$FREETZ_FWMOD_SIGN_PASSWORD" -out "${FIRMWARE_MOD_DIR}/var/signature" "${img_name}" || \
 				error 1 "could not create signature file for firmware image"
-			"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
+			"$TAR_GNU" -f "${img_name}"  --owner=0 --group=0 --mode=0755 --format=oldgnu --numeric-owner  -C "$FIRMWARE_MOD_DIR"  --append ./var/signature
 			RET=$?
 		fi
 		if [ $RET -ne 0 ] || ! is_valid_tarball "${img_name}"; then
