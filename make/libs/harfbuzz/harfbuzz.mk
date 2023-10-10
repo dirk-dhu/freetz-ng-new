@@ -14,42 +14,46 @@ $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/$($(PKG)_LIBNAME_LONG)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/$($(PKG)_LIBNAME_LONG)
 $(PKG)_TARGET_BINARY:=$($(PKG)_TARGET_DIR)/$($(PKG)_LIBNAME_LONG)
 
+$(PKG)_DEPENDS_ON += meson-host
 $(PKG)_DEPENDS_ON += freetype
 
 $(PKG)_REBUILD_SUBOPTS += FREETZ_STDCXXLIB
 
-$(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc
-$(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc-html
-$(PKG)_CONFIGURE_OPTIONS += --disable-gtk-doc-pdf
-$(PKG)_CONFIGURE_OPTIONS += --disable-introspection
-$(PKG)_CONFIGURE_OPTIONS += --without-glib
-$(PKG)_CONFIGURE_OPTIONS += --without-gobject
-$(PKG)_CONFIGURE_OPTIONS += --without-chafa
-$(PKG)_CONFIGURE_OPTIONS += --without-icu
-$(PKG)_CONFIGURE_OPTIONS += --without-cairo
-$(PKG)_CONFIGURE_OPTIONS += --without-libstdc++
-$(PKG)_CONFIGURE_OPTIONS += --with-freetype
-$(PKG)_CONFIGURE_OPTIONS += --without-graphite2
-$(PKG)_CONFIGURE_OPTIONS += --without-uniscribe
-$(PKG)_CONFIGURE_OPTIONS += --without-gdi
-$(PKG)_CONFIGURE_OPTIONS += --without-directwrite
-$(PKG)_CONFIGURE_OPTIONS += --without-coretext
+$(PKG)_CONFIGURE_OPTIONS += -D buildtype=release
+$(PKG)_CONFIGURE_OPTIONS += -D tests=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D benchmark=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D docs=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D doc_tests=false
+$(PKG)_CONFIGURE_OPTIONS += -D freetype=enabled
+$(PKG)_CONFIGURE_OPTIONS += -D cairo=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D chafa=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D coretext=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D directwrite=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D gdi=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D glib=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D gobject=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D graphite=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D graphite2=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D icu=disabled
+$(PKG)_CONFIGURE_OPTIONS += -D introspection=disabled
 
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
-$(PKG_CONFIGURED_CONFIGURE)
+$(PKG_CONFIGURED_MESON)
 
 $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
-	$(SUBMAKE) -C $(HARFBUZZ_DIR)
+	$(SUBMESON) compile \
+		-C $(HARFBUZZ_DIR)/builddir/
+#meson	$(MESON) configure $(HARFBUZZ_DIR)/builddir/
 
 $($(PKG)_STAGING_BINARY): $($(PKG)_BINARY)
-	$(SUBMAKE) -C $(HARFBUZZ_DIR) \
-		DESTDIR="$(TARGET_TOOLCHAIN_STAGING_DIR)" \
-		install
+	$(SUBMESON) install \
+		--destdir "$(TARGET_TOOLCHAIN_STAGING_DIR)" \
+		-C $(HARFBUZZ_DIR)/builddir/
 	$(PKG_FIX_LIBTOOL_LA) \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz*.pc \
-		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz*.la
+		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/pkgconfig/harfbuzz*.pc
+#meson		$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libharfbuzz*.la
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 	$(INSTALL_LIBRARY_STRIP)
