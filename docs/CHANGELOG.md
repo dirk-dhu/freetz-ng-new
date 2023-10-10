@@ -68,6 +68,7 @@ Latest changes
    * ftdi1 1.5
    * Git 2.42.0
    * iPerf3 3.3/3.15
+   * Lighttpd 1.4.72
    * mc (Midnight Commander) 4.8.30
    * Nmap 4.76/5.51/7.94
    * NZBGet 21.1/21.4-rc2

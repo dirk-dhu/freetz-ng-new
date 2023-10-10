@@ -24,7 +24,7 @@
          OPENSSL_free(ocsp_resp);
          return SSL_TLSEXT_ERR_NOACK; /* ignore OCSP request if error occurs */
          /*return SSL_TLSEXT_ERR_ALERT_FATAL;*/
-@@ -802,8 +808,9 @@
+@@ -806,8 +812,9 @@
      if (1 != X509_STORE_load_locations(store, ssl_ca_crl_file->ptr, NULL))
    #endif
      {
@@ -35,7 +35,7 @@
            ssl_ca_crl_file->ptr);
          return 0;
      }
-@@ -821,8 +828,9 @@
+@@ -825,8 +832,9 @@
      if (1 == SSL_CTX_load_verify_locations(ssl_ctx, fn, NULL))
          return 1;
  
@@ -46,7 +46,7 @@
      return 0;
  }
  
-@@ -1095,9 +1103,10 @@
+@@ -1099,9 +1107,10 @@
      /* first set certificate!
       * setting private key checks whether certificate matches it */
      if (1 != SSL_use_certificate(ssl, pc->ssl_pemfile_x509)) {
@@ -58,7 +58,7 @@
          return 0;
      }
  
-@@ -1120,10 +1129,11 @@
+@@ -1124,10 +1133,11 @@
                                          SSL_BUILD_CHAIN_FLAG_NO_ROOT
                                        | SSL_BUILD_CHAIN_FLAG_IGNORE_ERROR
                                        | SSL_BUILD_CHAIN_FLAG_CLEAR_ERROR)) {
@@ -71,7 +71,7 @@
              return 0;
          }
          else { /* copy chain for future reuse */
-@@ -1137,9 +1147,10 @@
+@@ -1141,9 +1151,10 @@
    #endif
  
      if (1 != SSL_use_PrivateKey(ssl, pc->ssl_pemfile_pkey)) {
@@ -83,7 +83,7 @@
          return 0;
      }
  
-@@ -1149,9 +1160,10 @@
+@@ -1153,9 +1164,10 @@
      buffer *ocsp_resp = pc->ssl_stapling;
      if (NULL != ocsp_resp
          && !SSL_set_ocsp_response(ssl, (uint8_t *)BUF_PTR_LEN(ocsp_resp))) {
@@ -95,7 +95,7 @@
          return 0;
      }
    #endif
-@@ -1438,9 +1450,10 @@
+@@ -1442,9 +1454,10 @@
      BIO_free(in);
      free(data);
      if (NULL == x) {
@@ -107,7 +107,7 @@
          return NULL;
      }
  
-@@ -1714,9 +1727,10 @@
+@@ -1718,9 +1731,10 @@
      }
  
      if (!X509_check_private_key(ssl_pemfile_x509, ssl_pemfile_pkey)) {
@@ -119,7 +119,7 @@
            pemfile->ptr, privkey->ptr);
          EVP_PKEY_free(ssl_pemfile_pkey);
          X509_free(ssl_pemfile_x509);
-@@ -1824,10 +1838,11 @@
+@@ -1828,10 +1842,11 @@
  
        #if 0 /* redundant with below? */
          if (!X509_check_private_key(ssl_pemfile_x509, ssl_pemfile_pkey)) {
@@ -132,7 +132,7 @@
              break;
          }
        #endif
-@@ -1835,9 +1850,10 @@
+@@ -1839,9 +1854,10 @@
          /* first set certificate!
           * setting private key checks whether certificate matches it */
          if (1 != SSL_use_certificate(ssl, ssl_pemfile_x509)) {
@@ -144,7 +144,7 @@
              break;
          }
  
-@@ -1847,9 +1863,10 @@
+@@ -1851,9 +1867,10 @@
          }
  
          if (1 != SSL_use_PrivateKey(ssl, ssl_pemfile_pkey)) {
@@ -156,8 +156,8 @@
              break;
          }
  
-@@ -2002,18 +2019,20 @@
-         }
+@@ -2010,18 +2027,20 @@
+       #endif
          ERR_clear_error();
          if (SSL_CONF_cmd(cctx, ds->key.ptr, ds->value.ptr) <= 0) {
 +            char ssl_error_string_buf[256];
@@ -179,7 +179,7 @@
          rc = -1;
      }
  
-@@ -2276,8 +2295,9 @@
+@@ -2284,8 +2303,9 @@
          s->ssl_ctx = SSL_CTX_new(SSLv23_server_method());
        #endif
          if (NULL == s->ssl_ctx) {
@@ -190,7 +190,7 @@
              return -1;
          }
  
-@@ -2296,9 +2316,10 @@
+@@ -2304,9 +2324,10 @@
           * required for client cert verification to work with sessions */
          if (0 == SSL_CTX_set_session_id_context(
                     s->ssl_ctx,(const unsigned char*)CONST_STR_LEN("lighttpd"))){
@@ -202,7 +202,7 @@
              return -1;
          }
  
-@@ -2319,8 +2340,9 @@
+@@ -2327,8 +2348,9 @@
              if ((SSL_OP_NO_SSLv2
                   & SSL_CTX_set_options(s->ssl_ctx, SSL_OP_NO_SSLv2))
                  != SSL_OP_NO_SSLv2) {
@@ -213,7 +213,7 @@
                  return -1;
              }
          }
-@@ -2330,8 +2352,9 @@
+@@ -2338,8 +2360,9 @@
              if ((SSL_OP_NO_SSLv3
                   & SSL_CTX_set_options(s->ssl_ctx, SSL_OP_NO_SSLv3))
                  != SSL_OP_NO_SSLv3) {
@@ -224,7 +224,7 @@
                  return -1;
              }
          }
-@@ -2339,8 +2362,9 @@
+@@ -2347,8 +2370,9 @@
          if (s->ssl_cipher_list) {
              /* Disable support for low encryption ciphers */
              if (SSL_CTX_set_cipher_list(s->ssl_ctx,s->ssl_cipher_list->ptr)!=1){
@@ -235,7 +235,7 @@
                  return -1;
              }
  
-@@ -2429,23 +2453,26 @@
+@@ -2437,23 +2461,26 @@
  
          if (1 != SSL_CTX_use_certificate_chain_file(s->ssl_ctx,
                                                      s->pc->ssl_pemfile->ptr)) {
@@ -265,7 +265,7 @@
                s->pc->ssl_pemfile->ptr, s->pc->ssl_privkey->ptr);
              return -1;
          }
-@@ -2812,6 +2839,7 @@
+@@ -2820,6 +2847,7 @@
          config_plugin_value_t *cpv = p->cvlist + p->cvlist[i].v.u2[0];
          config_plugin_value_t *pemfile = NULL;
          config_plugin_value_t *privkey = NULL;
@@ -273,7 +273,7 @@
          const buffer *ssl_stapling_file = NULL;
          const buffer *ssl_ca_file = NULL;
          const buffer *ssl_ca_dn_file = NULL;
-@@ -2839,7 +2867,7 @@
+@@ -2847,7 +2875,7 @@
                  }
                  else {
                      log_error(srv->errh, __FILE__, __LINE__, "SSL: %s %s",
@@ -282,7 +282,7 @@
                        ssl_ca_file->ptr);
                      return HANDLER_ERROR;
                  }
-@@ -2857,7 +2885,7 @@
+@@ -2865,7 +2893,7 @@
                  }
                  else {
                      log_error(srv->errh, __FILE__, __LINE__, "SSL: %s %s",
@@ -291,7 +291,7 @@
                        ssl_ca_dn_file->ptr);
                      return HANDLER_ERROR;
                  }
-@@ -3031,6 +3059,7 @@
+@@ -3039,6 +3067,7 @@
  {
      int ssl_r;
      unsigned long err;
@@ -299,7 +299,7 @@
  
      switch ((ssl_r = SSL_get_error(ssl, wr))) {
        case SSL_ERROR_WANT_READ:
-@@ -3044,7 +3073,7 @@
+@@ -3052,7 +3081,7 @@
          if (0 != (err = ERR_get_error())) {
              do {
                  log_error(errh, __FILE__, __LINE__,
@@ -308,7 +308,7 @@
              } while ((err = ERR_get_error()));
          }
          else if (wr == -1) {
-@@ -3074,7 +3103,7 @@
+@@ -3082,7 +3111,7 @@
        default:
          while ((err = ERR_get_error()))
              log_error(errh, __FILE__, __LINE__,
@@ -317,7 +317,7 @@
          break;
      }
  
-@@ -3289,8 +3318,9 @@
+@@ -3297,8 +3326,9 @@
               */
              while((ssl_err = ERR_get_error())) {
                  /* get all errors from the error-queue */
@@ -328,7 +328,7 @@
              }
  
              switch(oerrno) {
-@@ -3347,8 +3377,9 @@
+@@ -3355,8 +3385,9 @@
                      break;
                  }
                  /* get all errors from the error-queue */
@@ -339,7 +339,7 @@
                    con->dst_addr_buf.ptr);
              }
              break;
-@@ -3394,8 +3425,9 @@
+@@ -3402,8 +3433,9 @@
          return HANDLER_GO_ON;
      }
      else {
@@ -350,7 +350,7 @@
          return HANDLER_ERROR;
      }
  }
-@@ -3521,8 +3553,9 @@
+@@ -3529,8 +3561,9 @@
              default:
                  errh = hctx->r->conf.errh;
                  while((err = ERR_get_error())) {
@@ -361,7 +361,7 @@
                  }
  
                  break;
-@@ -3965,8 +3998,9 @@
+@@ -3981,8 +4014,9 @@
      if (ciphersuites && !buffer_is_blank(ciphersuites)) {
        #if defined(LIBRESSL_VERSION_NUMBER) && defined(LIBRESSL_HAS_TLS1_3)
          if (SSL_CTX_set_ciphersuites(s->ssl_ctx, ciphersuites->ptr) != 1) {
@@ -372,7 +372,7 @@
              rc = -1;
          }
        #endif
-@@ -3977,8 +4011,9 @@
+@@ -3993,8 +4027,9 @@
          buffer_append_string_len(cipherstring,
                                   CONST_STR_LEN(":!aNULL:!eNULL:!EXP"));
          if (SSL_CTX_set_cipher_list(s->ssl_ctx, cipherstring->ptr) != 1) {

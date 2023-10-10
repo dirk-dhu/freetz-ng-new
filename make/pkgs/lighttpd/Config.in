@@ -1,5 +1,5 @@
 menuconfig FREETZ_PACKAGE_LIGHTTPD
-	bool "Lighttpd 1.4.71"
+	bool "Lighttpd 1.4.72"
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_BUSYBOX_MD5SUM
 	default n
