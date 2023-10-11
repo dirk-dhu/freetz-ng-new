@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -4283,13 +4283,16 @@
+@@ -4281,13 +4281,16 @@
    for xc_word in $CFLAGS; do
      case "$xc_word" in
        -D*)
@@ -20,7 +20,7 @@
          ;;
        -rpath*)
          xc_bad_var_cflags=yes
-@@ -45721,13 +45724,16 @@
+@@ -45718,13 +45721,16 @@
    for xc_word in $CFLAGS; do
      case "$xc_word" in
        -D*)

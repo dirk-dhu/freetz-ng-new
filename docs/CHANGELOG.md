@@ -62,7 +62,7 @@ Latest changes
    * Atop 2.9.0
    * BIND 9.11.37/9.16.43
    * CA-bundle 2023-08-22
-   * Curl 8.3.0
+   * Curl 8.4.0
    * dtc 1.7.0
    * FFmpeg 5.1.3
    * ftdi1 1.5
