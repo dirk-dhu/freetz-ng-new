@@ -312,6 +312,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzbox-7412/
    - [source-files-FRITZ.Box_7412-06.83.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7412/source-files-FRITZ.Box_7412-06.83.tar.gz)
    - [source-files-FRITZ.Box_7412-06.86.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7412/source-files-FRITZ.Box_7412-06.86.tar.gz)
+   - [source-files-FRITZ.Box_7412-vr9-06.87.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7412/source-files-FRITZ.Box_7412-vr9-06.87.tar.gz)
  * fritzbox-7430/
    - [source-files-FRITZ.Box_7430-07.27.tar.gz](https://osp.avm.de/fritzbox/fritzbox-7430/source-files-FRITZ.Box_7430-07.27.tar.gz)
  * fritzbox-7490/
