@@ -55,7 +55,7 @@ Latest changes
    * meson 1.2.2
    * pkgconf 2.0.3
    * precompiled host-tools 2023-09-17
-   * python 3.11.5
+   * python 3.11.6
 
  - Packages:
    * ACME.sh 3.0.7 (letsencrypt)
