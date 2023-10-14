@@ -55,6 +55,7 @@ Latest changes
    * meson 1.2.2
    * pkgconf 2.0.3
    * precompiled host-tools 2023-09-17
+   * pseudo 1.9.0 oe-core cc1f616
    * python 3.11.6
 
  - Packages:
