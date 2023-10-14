@@ -70,6 +70,8 @@ McNetic
 MichaelHeimpold
 mickey
 mike
+milahu
+MilanHauth
 mrtnmtth
 Oliver
 openfnord
@@ -78,8 +80,11 @@ PeterMeiser
 PeterPawn
 Rainer
 ralf
+ralfhartmann
 reiffert
 RolfLeggewie
+SaMMy-lacht
+SebastianErtz
 sf3978
 sfritz2
 smischke
