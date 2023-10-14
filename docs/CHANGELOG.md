@@ -69,6 +69,7 @@ Latest changes
    * FFmpeg 5.1.3
    * ftdi1 1.5
    * Git 2.42.0
+   * ImageMagick 7.1.1-20
    * iPerf3 3.3/3.15
    * Lighttpd 1.4.72
    * mc (Midnight Commander) 4.8.30
