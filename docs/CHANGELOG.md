@@ -57,6 +57,7 @@ Latest changes
    * precompiled host-tools 2023-09-17
    * pseudo 1.9.0 oe-core cc1f616
    * python 3.11.6
+   * u-boot 2023.10
 
  - Packages:
    * ACME.sh 3.0.7 (letsencrypt)
