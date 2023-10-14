@@ -80,7 +80,7 @@ Latest changes
    * PCSC-lite 2.0.0
    * ProxyChains-NG 4.16
    * Screen 4.9.1
-   * SQLite 3.43.1
+   * SQLite 3.43.2
    * sslh 2.0.1
    * strace 4.9/5.0/6.5
    * Stunnel 5.71
