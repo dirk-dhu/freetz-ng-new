@@ -1111,9 +1111,6 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>Collectd 4.10.3</u><a id='collectd'></a>**<br>
     Collectd collects information about the system it is running on and stores this information. The information can then be used to do find current performance bottlenecks (i. e. performance analysis) and predict future system load (i. e. capacity planning). Or if you just want pretty graphs of your private server and are fed up with some homegrown solution you're at the right place, too.
 
-  * **<u>fhem -r16562 (5.8)</u><a id='fhem'></a>**<br>
-    fhem is a perl server for house automation, see web page http://fhem.de
-
   * **<u>gptfdisk 1.0.1</u><a id='gptfdisk'></a>**<br>
     Interactive GUID partition table (GPT) manipulator
 
