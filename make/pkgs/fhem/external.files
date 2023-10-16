@@ -1,3 +1,0 @@
-[ "$EXTERNAL_FREETZ_PACKAGE_FHEM" == "y" ] && EXTERNAL_FILES+=" /etc/init.d/rc.fhem "
-[ "$EXTERNAL_FREETZ_PACKAGE_FHEM" == "y" -a "$EXTERNAL_SUBDIRS" == "y" ] && EXTERNAL_FILES+=" /usr/lib/fhem"
-
