@@ -848,9 +848,6 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[MySQL 6.0.11-alpha](mysql.md)<a id='mysql'></a>**<br>
     MySQL is a very fast, multi-threaded, multi-user and robust SQL (Structured Query Language) database server. Unstable, as this version is quite old, but runs well on Fritzbox. Do not expose this daemon to the internet!
 
-  * **<u>Perl 5.32.1 (binary only)</u><a id='perl'></a>**<br>
-    Perl without operating-specific functions such as readdir.
-
   * **[PHP 5.6.40 (binary only)](php.md)<a id='php'></a>**<br>
     PHP: Hypertext Preprocessor PHP is a widely-used general-purpose scripting language that is especially suited for Web development and can be embedded into HTML. Much of its syntax is borrowed from C, Java and Perl with a couple of unique PHP-specific features thrown in. The goal of the language is to allow web developers to write dynamically generated pages quickly.
 
