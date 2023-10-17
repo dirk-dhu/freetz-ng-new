@@ -4,7 +4,7 @@ $(PKG)_HASH:=0fab78fa7f133f4f38210c6260d90d7c0d5c7198446419ce057ec7ac2e6f5f38
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
-$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python3.11
+$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 
 # python quirk: CFLAGS and OPT flags passed here are then used while cross-compiling -> use some target neutral flags
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
@@ -27,6 +27,7 @@ $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	@touch -c $@
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
+	\
 	\
 	(PATH=$(TARGET_PATH); \
 		$(TOOLS_SUBMAKE) -C $(PYTHON3_HOST_DIR) \

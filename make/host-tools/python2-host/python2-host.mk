@@ -4,7 +4,7 @@ $(PKG)_HASH:=b62c0e7937551d0cc02b8fd5cb0f544f9405bafc9a54d3808ed4594812edef43
 $(PKG)_SITE:=https://www.python.org/ftp/python/$($(PKG)_VERSION)
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/python
-$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python2.7
+$(PKG)_TARGET_BINARY:=$(HOST_TOOLS_DIR)/usr/bin/python$(call GET_MAJOR_VERSION,$($(PKG)_VERSION))
 
 # python quirk: CFLAGS and OPT flags passed here are then used while cross-compiling -> use some target neutral flags
 $(PKG)_CONFIGURE_ENV += OPT="-fno-inline"
@@ -13,6 +13,7 @@ $(PKG)_CONFIGURE_OPTIONS += --build=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --host=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --target=$(GNU_HOST_NAME)
 $(PKG)_CONFIGURE_OPTIONS += --prefix=/usr
+#
 
 
 $(TOOLS_SOURCE_DOWNLOAD)
