@@ -26,6 +26,7 @@ $($(PKG)_BINARY): $($(PKG)_DIR)/.configured
 	@touch -c $@
 
 $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
+	mkdir -p $(HOST_TOOLS_DIR)/usr/bin
 	cp -a $(PYTHON2_HOST_DIR)/Parser/pgen $(HOST_TOOLS_DIR)/usr/bin
 	(PATH=$(TARGET_PATH); \
 		$(TOOLS_SUBMAKE) -C $(PYTHON2_HOST_DIR) \
