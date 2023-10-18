@@ -40,6 +40,7 @@ $(PKG)_CONFIGURE_OPTIONS += --disable-root-mailer
 $(PKG)_CONFIGURE_OPTIONS += --disable-root-sudo
 $(PKG)_CONFIGURE_OPTIONS += --sysconfdir=/mod/etc
 $(PKG)_CONFIGURE_OPTIONS += --disable-zlib
+$(PKG)_CONFIGURE_OPTIONS += --enable-static-sudoers
 
 $(PKG)_CONFIGURE_ENV += sudo_cv_uid_t_len=10
 
