@@ -40,7 +40,6 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Box_6490_Cable-07.57.image](https://ftp.avm.de/fritzbox/fritzbox-6490-cable/deutschland/fritz.os/FRITZ.Box_6490_Cable-07.57.image)
    - other: [FRITZ.Box_6490_Cable-07.57.image](https://ftp.avm.de/fritzbox/fritzbox-6490-cable/other/fritz.os/FRITZ.Box_6490_Cable-07.57.image)
  * fritzbox-6590-cable/
-   - deutschland: [FRITZ.Box_6590_Cable-07.56.image](https://ftp.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.56.image)
    - deutschland: [FRITZ.Box_6590_Cable-07.57.image](https://ftp.avm.de/fritzbox/fritzbox-6590-cable/deutschland/fritz.os/FRITZ.Box_6590_Cable-07.57.image)
    - other: [FRITZ.Box_6590_Cable-07.57.image](https://ftp.avm.de/fritzbox/fritzbox-6590-cable/other/fritz.os/FRITZ.Box_6590_Cable-07.57.image)
  * fritzbox-6591-cable/
@@ -152,9 +151,9 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
 
 ### FritzPowerline
  * fritzpowerline-1000e/
-   - deutschland: [fritz.powerline_1000E_2130_01_tr069_43.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e/deutschland/fritz.os/fritz.powerline_1000E_2130_01_tr069_43.image)
+   - deutschland: [fritz.powerline_1000E_2130_02_tr069_43.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e/deutschland/fritz.os/fritz.powerline_1000E_2130_02_tr069_43.image)
    - deutschland-recover: [fritz.powerline_1000E_200_03_200.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e/deutschland/recover/fritz.powerline_1000E_200_03_200.image)
-   - other: [fritz.powerline_1000E_2130_01_tr069_43.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e/other/fritz.os/fritz.powerline_1000E_2130_01_tr069_43.image)
+   - other: [fritz.powerline_1000E_2130_02_tr069_43.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e/other/fritz.os/fritz.powerline_1000E_2130_02_tr069_43.image)
    - other-recover: [fritz.powerline_1000E_200_03_200.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e/other/recover/fritz.powerline_1000E_200_03_200.image)
  * fritzpowerline-1000e-t/
    - deutschland: [fritz.powerline_1000ET_01_05.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-t/deutschland/fritz.os/fritz.powerline_1000ET_01_05.image)
@@ -162,12 +161,15 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
  * fritzpowerline-1000e-v2/
    - deutschland: [fritz.powerline_1000E_v2_2130_02_tr069_3.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-v2/deutschland/fritz.os/fritz.powerline_1000E_v2_2130_02_tr069_3.image)
    - other: [fritz.powerline_1000E_v2_2130_02_tr069_3.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1000e-v2/other/fritz.os/fritz.powerline_1000E_v2_2130_02_tr069_3.image)
+ * fritzpowerline-1210/
+   - deutschland: [fritz.powerline_1210_cm9_2130_02_tr069_1.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1210/deutschland/fritz.os/fritz.powerline_1210_cm9_2130_02_tr069_1.image)
+   - other: [fritz.powerline_1210_cm9_2130_02_tr069_1.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1210/other/fritz.os/fritz.powerline_1210_cm9_2130_02_tr069_1.image)
  * fritzpowerline-1220/
-   - deutschland: [fritz.powerline_1220_cm9_2130_01_tr069_7.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220/deutschland/fritz.os/fritz.powerline_1220_cm9_2130_01_tr069_7.image)
-   - other: [fritz.powerline_1220_cm9_2130_01_tr069_7.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220/other/fritz.os/fritz.powerline_1220_cm9_2130_01_tr069_7.image)
+   - deutschland: [fritz.powerline_1220_cm9_2130_02_tr069_7.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220/deutschland/fritz.os/fritz.powerline_1220_cm9_2130_02_tr069_7.image)
+   - other: [fritz.powerline_1220_cm9_2130_02_tr069_7.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220/other/fritz.os/fritz.powerline_1220_cm9_2130_02_tr069_7.image)
  * fritzpowerline-1220e/
-   - deutschland: [fritz.powerline_1220E_cm9_2130_01_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/deutschland/fritz.os/fritz.powerline_1220E_cm9_2130_01_tr069_38.image)
-   - other: [fritz.powerline_1220E_cm9_2130_01_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/other/fritz.os/fritz.powerline_1220E_cm9_2130_01_tr069_38.image)
+   - deutschland: [fritz.powerline_1220E_cm9_2130_02_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/deutschland/fritz.os/fritz.powerline_1220E_cm9_2130_02_tr069_38.image)
+   - other: [fritz.powerline_1220E_cm9_2130_02_tr069_38.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1220e/other/fritz.os/fritz.powerline_1220E_cm9_2130_02_tr069_38.image)
  * fritzpowerline-1240-ax/
    - deutschland: [FRITZ.Powerline_1240_AX.275.07.57.image](https://ftp.avm.de/fritzpowerline/fritzpowerline-1240-ax/deutschland/fritz.os/FRITZ.Powerline_1240_AX.275.07.57.image)
  * fritzpowerline-1240e/
