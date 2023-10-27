@@ -3,6 +3,10 @@ $(PKG)_LIB_VERSION:=1.3.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc
 $(PKG)_SITE:=@APACHE/serf
+### WEBSITE:=https://serf.apache.org/
+### MANPAGE:=https://serf.apache.org/abi/timeline/serf/index.html
+### CHANGES:=https://svn.apache.org/viewvc/serf/trunk/CHANGES?view=markup
+### CVSREPO:=https://svn.apache.org/viewvc/serf/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/libserf-1.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/lib/libserf-1.so.$($(PKG)_LIB_VERSION)
@@ -21,6 +25,7 @@ $(PKG)_SCONS_OPTIONS += APR="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 $(PKG)_SCONS_OPTIONS += APU="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 $(PKG)_SCONS_OPTIONS += OPENSSL="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
 $(PKG)_SCONS_OPTIONS += ZLIB="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -44,6 +49,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean: $(pkg)-clean-staging
 	-$(SCONS_HOST_TARGET_BINARY) -C $(SERF_DIR) -c
