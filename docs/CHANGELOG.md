@@ -93,6 +93,7 @@ Latest changes
 
  - Libraries:
    * apr 1.7.4
+   * apr-util 1.6.3
    * FreeType 2.13.2
    * glib2 2.32.4/2.76.5
    * harfbuzz 8.2.2
