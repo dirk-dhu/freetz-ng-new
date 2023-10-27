@@ -4,6 +4,10 @@ $(PKG)_LIB_VERSION:=0.7.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_HASH:=e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea
 $(PKG)_SITE:=@APACHE/apr
+### WEBSITE:=https://apr.apache.org/
+### MANPAGE:=https://apr.apache.org/docs/apr/1.7/
+### CHANGES:=https://downloads.apache.org/apr/CHANGES-APR-1.7
+### CVSREPO:=https://svn.apache.org/viewvc/apr/apr/
 
 $(PKG)_MAJOR_LIBNAME=libapr-$(APR_MAJOR_VERSION)
 $(PKG)_LIBNAME=$($(PKG)_MAJOR_LIBNAME).so.$($(PKG)_LIB_VERSION)
@@ -37,6 +41,7 @@ $(PKG)_CONFIGURE_OPTIONS += --includedir=$(APR_INCLUDE_DIR)
 $(PKG)_CONFIGURE_OPTIONS += --with-installbuilddir=$(APR_BUILD_DIR)
 $(PKG)_CONFIGURE_OPTIONS += $(if $(FREETZ_TARGET_IPV6_SUPPORT),--enable-ipv6,--disable-ipv6)
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_CONFIGURE)
@@ -66,6 +71,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(APR_DIR) clean
