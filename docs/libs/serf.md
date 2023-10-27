@@ -1,4 +1,4 @@
-# serf: libserf (libserf.so) 1.3.9
+# serf: libserf (libserf.so) 1.3.10
  - Homepage: [https://serf.apache.org/](https://serf.apache.org/)
  - Manpage: [https://serf.apache.org/abi/timeline/serf/index.html](https://serf.apache.org/abi/timeline/serf/index.html)
  - Changelog: [https://svn.apache.org/viewvc/serf/trunk/CHANGES?view=markup](https://svn.apache.org/viewvc/serf/trunk/CHANGES?view=markup)

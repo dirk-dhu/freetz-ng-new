@@ -323,7 +323,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### S
 
-  * **[serf: libserf (libserf.so) 1.3.9](serf.md)<a id='serf'></a>**<br>
+  * **[serf: libserf (libserf.so) 1.3.10](serf.md)<a id='serf'></a>**<br>
     High-performance asynchronous HTTP client library
 
   * **[spandsp: libspandsp (libspandsp.so) 0.0.6](spandsp.md)<a id='spandsp'></a>**<br>
