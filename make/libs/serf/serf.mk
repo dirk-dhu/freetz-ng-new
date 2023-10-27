@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.3.9)
+$(call PKG_INIT_LIB, 1.3.10)
 $(PKG)_LIB_VERSION:=1.3.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=549c2d21c577a8a9c0450facb5cca809f26591f048e466552240947bdf7a87cc
+$(PKG)_HASH:=be81ef08baa2516ecda76a77adf7def7bc3227eeb578b9a33b45f7b41dc064e6
 $(PKG)_SITE:=@APACHE/serf
 ### WEBSITE:=https://serf.apache.org/
 ### MANPAGE:=https://serf.apache.org/abi/timeline/serf/index.html

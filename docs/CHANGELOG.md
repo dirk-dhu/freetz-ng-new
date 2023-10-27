@@ -103,6 +103,7 @@ Latest changes
    * mbedTLS 2.7.19/2.28.5
    * neon 0.30.2/0.32.5
    * pango 1.51.0
+   * serf 1.3.10
    * uClibc++ 0.2.6-6687fc92
 
  - Firmware updates:
