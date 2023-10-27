@@ -1,8 +1,8 @@
-$(call PKG_INIT_LIB, 1.7.0)
+$(call PKG_INIT_LIB, 1.7.4)
+$(PKG)_LIB_VERSION:=0.7.4
 $(PKG)_MAJOR_VERSION:=1
-$(PKG)_LIB_VERSION:=0.7.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=e2e148f0b2e99b8e5c6caa09f6d4fb4dd3e83f744aa72a952f94f5a14436f7ea
+$(PKG)_HASH:=fc648de983f3a2a6c9e78dea1f180639bd2fad6c06d556d4367a701fe5c35577
 $(PKG)_SITE:=@APACHE/apr
 ### WEBSITE:=https://apr.apache.org/
 ### MANPAGE:=https://apr.apache.org/docs/apr/1.7/

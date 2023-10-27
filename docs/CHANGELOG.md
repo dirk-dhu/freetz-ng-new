@@ -92,6 +92,7 @@ Latest changes
    * Vim 9.0.1872
 
  - Libraries:
+   * apr 1.7.4
    * FreeType 2.13.2
    * glib2 2.32.4/2.76.5
    * harfbuzz 8.2.2
