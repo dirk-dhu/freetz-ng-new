@@ -4,7 +4,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
 
 ### A
 
-  * **[apr: Apache Portable Runtime Library (libapr-1.so) 1.7.0](apr.md)<a id='apr'></a>**<br>
+  * **[apr: Apache Portable Runtime Library (libapr-1.so) 1.7.4](apr.md)<a id='apr'></a>**<br>
     APR is Apache's Portable Runtime Library, designed to be a support library that provides a predictable and consistent interface to underlying platform-specific implementations.
 
   * **[apr-util: Apache Portable Runtime Utility Library (libaprutil-1.so) 1.6.1](apr-util.md)<a id='apr-util'></a>**<br>
