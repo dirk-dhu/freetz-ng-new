@@ -1,10 +1,12 @@
 stat_begin() {
 	echo '<table class="daemons">'
-	if [ "$MOD_SHOW_MEMORY_USAGE" = yes ]; then
 cat << EOF
 <th align="left">$(lang de:"Name" en:"Name")</th>
 <th align="left">$(lang de:"Status" en:"State")</th>
 <th align="left" colspan="3">$(lang de:"Kontrolle" en:"Control")</th>
+EOF
+	if [ "$MOD_SHOW_MEMORY_USAGE" = yes ]; then
+cat << EOF
 <th align="right">VmSize</th>
 <th align="right">VmRSS</th>
 EOF
