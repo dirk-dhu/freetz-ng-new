@@ -51,7 +51,7 @@ Latest changes
  - Host tools:
    * cmake 3.27.7
    * dtc 1.7.0
-   * kconfig 6.5
+   * kconfig 6.6
    * meson 1.2.2
    * pkgconf 2.0.3
    * precompiled host-tools 2023-10-17
