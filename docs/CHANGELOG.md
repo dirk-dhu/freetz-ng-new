@@ -83,7 +83,7 @@ Latest changes
    * Screen 4.9.1
    * SQLite 3.43.2
    * sslh 2.0.1
-   * strace 4.9/5.0/6.5
+   * strace 4.9/5.0/6.6
    * Stunnel 5.71
    * Tor 0.4.8.7
    * Transmission 3.00/4.0.4
