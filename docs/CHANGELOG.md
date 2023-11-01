@@ -58,6 +58,7 @@ Latest changes
    * pseudo 1.9.0 oe-core cc1f616
    * python 3.11.6
    * u-boot 2023.10
+   * xz 5.4.5
 
  - Packages:
    * ACME.sh 3.0.7 (letsencrypt)
