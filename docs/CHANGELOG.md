@@ -90,6 +90,7 @@ Latest changes
    * Unbound 1.18.0
    * UnRAR 6.1.7/6.2.12
    * Vim 9.0.1872
+   * XZ Utils 5.4.5
 
  - Libraries:
    * apr 1.7.4
