@@ -20,12 +20,12 @@ $(pkg):
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
 $(pkg)-clean:
-	$(RM) -r $($(PKG)_DIR)/build
+	$(RM) -r $(PYTHON_MYSQL_CONNECTOR_DIR)/build
 
 $(pkg)-uninstall:
 	$(RM) -r \
-		$($(PKG)_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/mysql \
-		$($(PKG)_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/mysqlx \
-		$($(PKG)_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/mysql_connector_python-*.egg-info
+		$(PYTHON_MYSQL_CONNECTOR_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/mysql \
+		$(PYTHON_MYSQL_CONNECTOR_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/mysqlx \
+		$(PYTHON_MYSQL_CONNECTOR_DEST_DIR)$(PYTHON_SITE_PKG_DIR)/mysql_connector_python-*.egg-info
 
 $(PKG_FINISH)
