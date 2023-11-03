@@ -49,6 +49,9 @@ Latest changes
  - Packages:
    * Git 2.42.1
 
+ - Libraries:
+   * cairo 1.18.0
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
