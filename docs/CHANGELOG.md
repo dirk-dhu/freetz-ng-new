@@ -47,6 +47,7 @@ Latest changes
 ### devel
 
  - Packages:
+   * BIND 9.11.37/9.16.44
    * Git 2.42.1
 
  - Libraries:
