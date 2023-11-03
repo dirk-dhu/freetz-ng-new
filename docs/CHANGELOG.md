@@ -4,6 +4,7 @@ Latest changes
 
 - Freetz-NG
   * [devel](#devel)
+  * [ng23110](#ng23110)
   * [ng23080](#ng23080)
   * [ng23050](#ng23050)
   * [ng23030](#ng23030)
@@ -44,6 +45,11 @@ Latest changes
 <br>
 
 ### devel
+
+ - Firmware updates:
+   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+
+### ng23110
 
  - Build system:
    * Ccache 4.8.3
@@ -111,7 +117,7 @@ Latest changes
    * uClibc++ 0.2.6-6687fc92
 
  - Firmware updates:
-   * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
+   * Please see [FIRMWARES](https://github.com/Freetz-NG/freetz-ng/blob/ng23110/docs/FIRMWARES.md) for the list of supported devices and firmwares.
 
 ### ng23080
 
