@@ -33,7 +33,6 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
 		$(TOOLS_SUBMAKE) -C $(PYTHON2_HOST_DIR) \
 		DESTDIR="$(HOST_TOOLS_DIR)" \
 		install )
-#	find $(HOST_TOOLS_DIR)/usr/lib/python$(call GET_MAJOR_VERSION,$(PYTHON2_HOST_VERSION),2) -name "*.pyc" -o -name "*.pyo" -delete
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 

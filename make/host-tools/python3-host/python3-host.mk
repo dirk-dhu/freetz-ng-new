@@ -33,7 +33,6 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY) | $(HOST_TOOLS_DIR)
 		$(TOOLS_SUBMAKE) -C $(PYTHON3_HOST_DIR) \
 		DESTDIR="$(HOST_TOOLS_DIR)" \
 		commoninstall bininstall maninstall )
-#	find $(HOST_TOOLS_DIR)/usr/lib/python$(call GET_MAJOR_VERSION,$(PYTHON3_HOST_VERSION),2) -name "*.pyc" -delete
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
 
