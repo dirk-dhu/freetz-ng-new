@@ -46,6 +46,9 @@ Latest changes
 
 ### devel
 
+ - Packages:
+   * Git 2.42.1
+
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
 
