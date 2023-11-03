@@ -1,7 +1,11 @@
 $(call PKG_INIT_BIN, v3.7.2)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=X
+$(PKG)_HASH:=c7a58543f2d3c1ac4f116eb09f23f70734609a0f0981a26bc5c5e44e3e8af279
 $(PKG)_SITE:=git@https://github.com/bcl/digitemp.git
+### WEBSITE:=https://github.com/bcl/digitemp
+### MANPAGE:=https://github.com/bcl/digitemp#readme
+### CHANGES:=https://github.com/bcl/digitemp/releases
+### CVSREPO:=https://github.com/bcl/digitemp/commits/master
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/digitemp
 $(PKG)_TARGET_BINARY:=$($(PKG)_DEST_DIR)/usr/bin/digitemp
@@ -24,6 +28,7 @@ $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_DIGITEMP_DS9097
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_DIGITEMP_DS2490
 $(PKG)_REBUILD_SUBOPTS += FREETZ_PACKAGE_DIGITEMP_DS9097U
 
+
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
 $(PKG_CONFIGURED_NOP)
@@ -42,6 +47,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_BINARY)
 $(pkg):
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(DIGITEMP_DIR) clean
