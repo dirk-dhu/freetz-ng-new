@@ -457,12 +457,17 @@ config FREETZ_AVM_HAS_FIRMWARE_07_5X
 		))
 
 
-#config FREETZ_AVM_HAS_FIRMWARE_07_5X_LABOR
+#config FREETZ_AVM_HAS_FIRMWARE_07_8X
 #	bool
 #	default y
 #	depends on \
 
-config FREETZ_AVM_HAS_FIRMWARE_07_5X_INHAUS
+#config FREETZ_AVM_HAS_FIRMWARE_07_8X_LABOR
+#	bool
+#	default y
+#	depends on \
+
+config FREETZ_AVM_HAS_FIRMWARE_07_8X_INHAUS
 	bool
 	default y
 	depends on !FREETZ_TYPE_CABLE
