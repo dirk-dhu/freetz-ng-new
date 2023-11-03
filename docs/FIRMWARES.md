@@ -138,9 +138,11 @@ Currently supported devices and firmwares
 * __Fritz!Box 5530 Fiber (DEVELOPER, No fiber!)__
   - 257.07.30 rev99334 {ALL} [PSQ19P2NL4]
   - 257.07.58 rev108018 {ALL} [MOVE21NL1]
+  - 257.07.70 rev108943 {ALL} [GoFiber23] (Labor)
 * __Fritz!Box 5590 Fiber__
   - 272.07.30 rev101793 {ALL} [PSQ19P2NL4]
   - 272.07.58 rev108019 {ALL} [MOVE21NL1]
+  - 272.07.70 rev108944 {ALL} [GoFiber23] (Labor)
 
 ### Fritz!Box Cable (64xx/65xx/66xx)
 
@@ -397,6 +399,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7530 AX__
   - 256.07.31 rev94779 {ALL} [PSQ19P2NL4]
   - 256.07.57 rev107818 {ALL} [MOVE21NL1]
+  - 256.07.70 rev108941 {ALL} [GoFiber23] (Labor)
 * __Fritz!Box Fon WLAN 7560__
   - 149.06.53 rev41227 {GER}
   - 149.06.83 rev43670 {GER}
@@ -440,6 +443,7 @@ Currently supported devices and firmwares
 * __Fritz!Box Fon WLAN 7590 AX__
   - 259.07.31 rev94867 {ALL} [PSQ19P2NL4]
   - 259.07.57 rev107809 {ALL} [MOVE21NL1]
+  - 259.07.70 rev108942 {ALL} [GoFiber23] (Labor)
 
 ### Fritz!Powerline
 
