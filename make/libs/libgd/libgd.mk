@@ -3,6 +3,10 @@ $(PKG)_LIB_VERSION:=3.0.11
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=3fe822ece20796060af63b7c60acb151e5844204d289da0ce08f8fdf131e5a61
 $(PKG)_SITE:=https://bitbucket.org/libgd/gd-libgd/downloads,https://github.com/libgd/libgd/releases/download/gd-$($(PKG)_VERSION)
+### WEBSITE:=https://libgd.github.io/
+### MANPAGE:=https://libgd.github.io/pages/docs.html
+### CHANGES:=https://github.com/libgd/libgd/releases
+### CVSREPO:=https://github.com/libgd/libgd
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/.libs/libgd.so.$($(PKG)_LIB_VERSION)
 $(PKG)_STAGING_BINARY:=$(TARGET_TOOLCHAIN_STAGING_DIR)/usr/lib/libgd.so.$($(PKG)_LIB_VERSION)
@@ -26,6 +30,7 @@ $(PKG)_CONFIGURE_OPTIONS += --with-vpx=no
 $(PKG)_CONFIGURE_OPTIONS += --with-x=no
 $(PKG)_CONFIGURE_OPTIONS += --with-xpm=no
 $(PKG)_CONFIGURE_OPTIONS += --with-zlib="$(TARGET_TOOLCHAIN_STAGING_DIR)/usr"
+
 
 $(PKG_SOURCE_DOWNLOAD)
 $(PKG_UNPACKED)
@@ -51,6 +56,7 @@ $($(PKG)_TARGET_BINARY): $($(PKG)_STAGING_BINARY)
 $(pkg): $($(PKG)_STAGING_BINARY)
 
 $(pkg)-precompiled: $($(PKG)_TARGET_BINARY)
+
 
 $(pkg)-clean:
 	-$(SUBMAKE) -C $(LIBGD_DIR) clean
