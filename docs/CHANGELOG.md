@@ -55,7 +55,7 @@ Latest changes
    * meson 1.2.2
    * openssl 3.0.12
    * pkgconf 2.0.3
-   * precompiled host-tools 2023-10-17
+   * precompiled host-tools 2023-11-03
    * pseudo 1.9.0 oe-core cc1f616
    * python 3.11.6
    * u-boot 2023.10
