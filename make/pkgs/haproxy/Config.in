@@ -11,7 +11,7 @@ config FREETZ_PACKAGE_HAPROXY
 if FREETZ_PACKAGE_HAPROXY
 
 	config FREETZ_PACKAGE_HAPROXY_WITH_OPENSSL
-		bool "with OpenSSL support"
+		bool "With OpenSSL support"
 		select FREETZ_LIB_libcrypto
 		select FREETZ_LIB_libssl
 		default n
@@ -19,11 +19,26 @@ if FREETZ_PACKAGE_HAPROXY
 			This option enables SSL support in HAProxy.
 
 	config FREETZ_PACKAGE_HAPROXY_WITH_PCRE
-		bool "with regex support (PCRE)"
-		select FREETZ_LIB_libpcre
+		bool "With regex support"
 		default n
 		help
-			This option enables use of libpcre for regex.
+			This option enables regex support in HAProxy.
+
+		choice
+			prompt "PCRE"
+				default FREETZ_PACKAGE_HAPROXY_WITH_PCRE2
+				depends on FREETZ_PACKAGE_HAPROXY_WITH_PCRE
+
+			config FREETZ_PACKAGE_HAPROXY_WITH_PCRE1
+				bool "v1"
+				select FREETZ_LIB_libpcre
+
+			config FREETZ_PACKAGE_HAPROXY_WITH_PCRE2
+				bool "v2"
+				select FREETZ_LIB_libpcre2
+				select FREETZ_LIB_libpcre2_posix
+
+		endchoice
 
 endif # FREETZ_PACKAGE_HAPROXY
 
