@@ -798,13 +798,13 @@ determine_() {
 
 	#OPENSSL
 	#X="$([ -e "$unpacked/lib/libssl.so" ] && realpath "$unpacked/lib/libssl.so" 2>/dev/null | sed 's/.*\/lib\/libssl\.so\.//')"
-	X="$( strings "${unpacked}/lib/libssl.so" 2>/dev/null | sed -nr 's/^@?OpenSSL ([10]\.[0-9a-z\.]*).*/\1/p' )"
+	X="$( strings "${unpacked}/lib/libssl.so" 2>/dev/null | sed -nr 's/^@?(Open)?SSL ([013]\.[0-9a-z\.]*).*/\2/p' )"
 	[ -z "$X" ] && X="%"
 	[ $DOSHOW -ge 2 ] && outp "openssl" "$X"
 	if [ "$X" != "%" ]; then
 		in_b "FREETZ_AVM_HAS_OPENSSL"
 		X="${X:0:1}"
-		[ "$X" != "0" -a "$X" != "1" ] && echo "ERROR-11" 1>&2 && X=ERROR
+		[ "$X" != "0" -a "$X" != "1"  -a "$X" != "3" ] && echo "ERROR-11" 1>&2 && X=ERROR
 		in_b FREETZ_AVM_HAS_OPENSSL_VERSION_${X}
 	fi
 
