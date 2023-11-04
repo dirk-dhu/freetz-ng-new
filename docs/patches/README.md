@@ -422,6 +422,9 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>DROP_NOEXEC_EXTERNAL: Drop noexec for (external) storages</u><a id='drop-noexec-external'></a>**<br>
     Allows to execute files on external storages like USB sticks and HDDs.
 
+  * **<u>Enable GPON serial textbox</u><a id='enable-gpon-serial'></a>**<br>
+    Re-enables access to the GPON serial textbox on support page.
+
   * **<u>Enable LED deactivation page</u><a id='enable-led-deactivation'></a>**<br>
     Re-enables access to the LED deactivation page in expert mode.
 
