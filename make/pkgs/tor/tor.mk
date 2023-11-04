@@ -4,7 +4,7 @@ $(PKG)_HASH:=b20d2b9c74db28a00c07f090ee5b0241b2b684f3afdecccc6b8008931c557491
 $(PKG)_SITE:=https://www.torproject.org/dist
 ### WEBSITE:=https://www.torproject.org/download/tor/
 ### MANPAGE:=https://trac.torproject.org/projects/tor/wiki/
-### CHANGES:=https://gitweb.torproject.org/tor.git/tree/ChangeLog
+### CHANGES:=https://gitlab.torproject.org/tpo/core/tor/tags
 ### CVSREPO:=https://gitweb.torproject.org/tor.git/
 
 $(PKG)_BINARY:=$($(PKG)_DIR)/src/app/tor
