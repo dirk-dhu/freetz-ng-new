@@ -46,6 +46,9 @@ Latest changes
 
 ### devel
 
+ - Host tools:
+   * meson 1.2.3
+
  - Packages:
    * BIND 9.11.37/9.16.44
    * CCID 1.5.4
