@@ -79,14 +79,21 @@ menu2html_remove() {
 	  "${HTML_SPEC_MOD_DIR}/menus/menu2_home.html"
 }
 
-#homelua_disable <function-name> [optional return value]
-#easily disable functions within home.lua by returning $2, if $2 is omitted the function is assumed to return void
-homelua_disable() {
-	local return_statement="${2:+return }${2}"
+#replace_lua_function <lua_file_name> <function_name> [optional return_statement]
+#easily replace function $2 within file $1 by returning $3, if $3 is omitted the function is assumed to return void
+replace_lua_function() {
+	local lua_file_name="$1"
+	local function_name="$2"
+	local return_statement="${3:+return }${3}"
 	modsed -r \
-	  "s/^(((local )?function $1)([(][^)]*[)]))$/\1\n${return_statement}\nend\n\2_\4/" \
-	  "${HTML_LANG_MOD_DIR}/home/home.lua" \
-	  " $1_("
+	  "s/^(((local )?function $function_name)([(][^)]*[)]))$/\1\n${return_statement}\nend\n\2_\4/" \
+	  "$lua_file_name" \
+	  " $function_name_("
+}
+#homelua_disable <function-name> [optional return value]
+#easily disable function $1 within "home.lua" by returning $2, if $2 is omitted the function is assumed to return void
+homelua_disable() {
+	replace_lua_function "${HTML_LANG_MOD_DIR}/home/home.lua" "$1" "$2"
 }
 homelua_disable_wrapper() {
 	if [ "$FREETZ_AVM_HAS_LUA_SCALABLE" == "y" ]; then
