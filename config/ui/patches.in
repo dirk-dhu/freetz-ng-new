@@ -1322,6 +1322,14 @@ config FREETZ_MODIFY_COUNTER
 	help
 		Converts counter hours to days and traffic MB to GB.
 
+config FREETZ_ENABLE_GPON_SERIAL
+	bool "Enable GPON serial textbox"
+	depends on FREETZ_TYPE_FIBER
+	depends on !FREETZ_REMOVE_SUPPORT
+	default n
+	help
+		Re-enables access to the GPON serial textbox on support page.
+
 config FREETZ_ENABLE_LED_DEACTIVATION
 	bool "Enable LED deactivation page"
 	depends on FREETZ_AVM_HAS_LEDPAGE
