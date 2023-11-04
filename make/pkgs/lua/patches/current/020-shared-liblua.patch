@@ -2,11 +2,11 @@
 +++ Makefile
 @@ -38,16 +38,17 @@
  # Convenience platforms targets.
- PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
+ PLATS= guess aix bsd c89 freebsd generic ios linux linux-readline macosx mingw posix solaris
  
 +# Lua version and release.
 +export V=5.4
-+export R=$V.4
++export R=$V.6
 +
  # What to install.
  TO_BIN= lua luac
@@ -18,7 +18,7 @@
  
 -# Lua version and release.
 -V= 5.4
--R= $V.4
+-R= $V.6
 -
  # Targets start here.
  all:	$(PLAT)
@@ -42,7 +42,7 @@
 --- src/Makefile
 +++ src/Makefile
 @@ -33,6 +33,7 @@
- PLATS= guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
+ PLATS= guess aix bsd c89 freebsd generic ios linux linux-readline macosx mingw posix solaris
  
  LUA_A=	liblua.a
 +LUA_SO=	liblua.so
@@ -76,18 +76,18 @@
 +	$(CC) -o $@.$(R) -shared -Wl,-soname,"$@.$(V)" $? \
 +	&& ln -fs $@.$(R) $@.$(V) \
 +	&& ln -fs $@.$(V) $@
++
++$(LUA_T): $(LUA_O) $(LUA_A) $(LUA_SO)
++	$(CC) -o $@ $(LDFLAGS) $(LUA_O) -L. -llua $(LIBS)
  
 -$(LUAC_T): $(LUAC_O) $(LUA_A)
 -	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
-+$(LUA_T): $(LUA_O) $(LUA_A) $(LUA_SO)
-+	$(CC) -o $@ $(LDFLAGS) $(LUA_O) -L. -llua $(LIBS)
-+
 +$(LUAC_T): $(LUAC_O) $(LUA_A) $(LUA_SO)
 +	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) -L. -llua $(LIBS)
  
  test:
  	./$(LUA_T) -v
-@@ -120,10 +129,10 @@
+@@ -123,10 +132,10 @@
  Linux linux:	linux-noreadline
  
  linux-noreadline:

@@ -50,6 +50,7 @@ Latest changes
    * BIND 9.11.37/9.16.44
    * CCID 1.5.4
    * Git 2.42.1
+   * Lua 5.1.5/5.4.6
 
  - Libraries:
    * cairo 1.18.0

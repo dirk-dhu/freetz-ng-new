@@ -11,7 +11,7 @@
  LUAI_FUNC l_noret luaG_typeerror (lua_State *L, const TValue *o,
 --- src/ldo.h
 +++ src/ldo.h
-@@ -68,7 +68,7 @@
+@@ -77,7 +77,7 @@
                                          ptrdiff_t oldtop, ptrdiff_t ef);
  LUAI_FUNC void luaD_poscall (lua_State *L, CallInfo *ci, int nres);
  LUAI_FUNC int luaD_reallocstack (lua_State *L, int newsize, int raiseerror);
