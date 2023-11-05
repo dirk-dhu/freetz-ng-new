@@ -31,6 +31,9 @@ cat << EOX
 	tr069:fwupdate_available			0|1|2
 	tr069:upload_enable				0|1
 	tr069:FWdownload_enable				0|1
+	updatecheck:auto_update_all_enabled		0|1
+	updatecheck:auto_update_enabled			0|1
+	updatecheck:auto_update_check_enabled		0|1
 	updatecheck:auto_update_mode			update_all|update_important|check	neue FRITZ!OS-Versionen automatisch installieren
 	webui:expertmode				0|1
 	webui:ata_hidden				0|1
