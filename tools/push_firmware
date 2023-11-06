@@ -596,8 +596,14 @@ if [ "$oa" == "unknown" ]; then
 		1)	echo " This command could help to fix:" ;;
 		*)	echo " One(!) of these commands could help to fix:" ;;
 	esac
-	for x in $(ls /sys/class/net/ | grep -v "^lo$" ); do
-		echo -e  "   $ \033[4msudo ifconfig $x:0 ${ip%.*}.$(ifconfig $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*) .*/\1/p') up\033[0m"
+	for x in $(ls /sys/class/net/ | grep -v "^lo$"); do
+		if command -v ifconfig >/dev/null; then
+			IPNUM="$(ifconfig $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*) .*/\1/p')"
+			echo -e  "   $ \033[4msudo ifconfig $x:0 ${ip%.*}.$IPNUM up\033[0m"
+		else
+			IPNUM="$(ip -4 -o addr show up $x | sed -rn 's/.*inet [0-9\.]*\.([0-9]*)\/.*/\1/p' | head -n1)"
+			echo -e  "   $ \033[4msudo ip address add ${ip%.*}.$IPNUM dev $x\033[0m"
+		fi
 	done
 	echo -n  "   Proceed anyway? ([y]/n) "
 	read -n 1 -s PROCEED_NETCFG
