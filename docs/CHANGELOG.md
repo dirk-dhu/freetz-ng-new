@@ -47,6 +47,7 @@ Latest changes
 ### devel
 
  - Host tools:
+   * fakeroot 1.32.2
    * meson 1.2.3
 
  - Packages:
