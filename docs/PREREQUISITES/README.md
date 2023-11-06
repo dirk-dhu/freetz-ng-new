@@ -46,7 +46,7 @@ aarch64
 sudo dnf -y update && sudo systemctl daemon-reload
 ```
 
- - Fedora 37/38 64-Bit:
+ - Fedora 37/38/39 64-Bit:
 ```
 sudo dnf -y install \
   bc binutils bison bzip2 ccache cmake cpio curl ecj elfutils-libelf-devel flex gcc gcc-c++ \
