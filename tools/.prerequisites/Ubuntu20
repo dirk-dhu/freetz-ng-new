@@ -62,3 +62,4 @@ uuid-dev
 wget
 zip
 zlib1g-dev
+ftp
