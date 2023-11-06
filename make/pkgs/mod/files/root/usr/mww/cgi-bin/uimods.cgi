@@ -16,9 +16,11 @@ cat << EOX
 	emailnotify:crashreport_mode			to_support_only|disabled_by_user	Fehlerberichte automatisch an AVM senden
 	eth_ports:eee_off_for_all_ports			0|1					Energy Efficient Ethernet DEAKTIVIEREN
 	meshd:loop_prevention_state			0|1					Netzwerkschleifenverhinderung
-	sar:gpon_serial
+	sar:gpon_ploam_password				|					GPON ONT-Installationskennung
+	sar:gpon_reg_id					|					GPON Registrierungs-ID
+	sar:gpon_serial					|					GPON Seriennummer
 	sar:Annex					A|B
-	sar:vlan_id
+	sar:vlan_id					0|7|8					PPPoE Vlan-ID
 	sar:MaxDownstreamRate
 	sar:MaxUpstreamRate
 	sar:DownstreamMarginOffset			-4|-3|-2|-1|0|1|2|3|4
@@ -67,7 +69,7 @@ uimods_table() {
 		[ "$uikey" == "${uikey//\//}" ] && uikey="settings/$uikey"
 		[ "$oldhr" != "$modul" ] && table_head "$modul" "$oldhr" && oldhr="$modul"
 		saved="$(echo "$uimods_result" | sed -n "s,^${modul}:${uikey} = ,,p")"
-		table_line "$modul" "$uikey" "$saved" "$vals" "$desc"
+		table_line "$modul" "$uikey" "$saved" "${vals#|}" "$desc"
 	done
 	table_end
 }
