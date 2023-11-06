@@ -10,6 +10,7 @@ cpio
 curl
 ecj
 flex
+ftp
 g++
 gawk
 gcc
@@ -58,4 +59,3 @@ unzip
 uuid-dev
 wget
 zlib1g-dev
-ftp

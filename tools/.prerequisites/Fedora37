@@ -9,6 +9,7 @@ curl
 ecj
 elfutils-libelf-devel
 flex
+ftp
 gcc
 gcc-c++
 gettext
@@ -61,4 +62,3 @@ wget
 xz
 zlib-devel
 zlib-devel.i686
-ftp
