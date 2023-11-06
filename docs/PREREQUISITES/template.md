@@ -84,7 +84,7 @@ sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y dist-upgrade
 ```
- - Debian 11 (Bullseye) 64-Bit:
+ - Debian 11/12 64-Bit:
 ```
 sudo apt -y install %%Debian11%%
 ```
