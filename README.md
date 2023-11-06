@@ -33,6 +33,12 @@ More features - less bugs!
   git clone https://github.com/Freetz-NG/freetz-ng ~/freetz-ng --single-branch --branch TAGNAME
 ```
 
+### Install prerequisites:
+```
+  cd ~/freetz-ng
+  tools/prerequisites install # -y
+```
+
 ### Build firmware:
 ```
   cd ~/freetz-ng
