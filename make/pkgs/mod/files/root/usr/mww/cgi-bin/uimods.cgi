@@ -42,7 +42,7 @@ cat << EOX
 	webui:lanbridges_gui_hidden			0|1
 	webui:voip_2ndPVC_hidden			0|1
 	webui:country_gui_hidden			0|1
-	webui:sid_timeout_minutes			20
+	webui:sid_timeout_minutes			20					$(lang de:"Akzeptiert keine &Auml;nderungen" en:"Does not accept changes")
 	wlan:ap_enabled					0|1					Wlan AP 1 (2,4 Ghz)
 	wlan:ap_enabled_scnd				0|1					Wlan AP 2 (5 GHz)
 	wlan:ap_enabled_thrd				0|1					Wlan AP 3
