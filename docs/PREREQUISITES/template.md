@@ -119,7 +119,12 @@ sudo apt-get -y upgrade
 sudo apt-get -y dist-upgrade
 ```
 
- - Ubuntu 22/23 64-Bit:
+ - Ubuntu 23 64-Bit:
+```
+sudo apt-get -y install %%Ubuntu23%%
+```
+
+ - Ubuntu 22 64-Bit:
 ```
 sudo apt-get -y install %%Ubuntu22%%
 ```
