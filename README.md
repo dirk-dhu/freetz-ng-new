@@ -49,7 +49,7 @@ More features - less bugs!
 
 ### Flash firmware:
 ```
-  # make push-firmware
+  cd ~/freetz-ng
   tools/push_firmware -h
 ```
 
