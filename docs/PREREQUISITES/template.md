@@ -84,7 +84,13 @@ sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y dist-upgrade
 ```
- - Debian 11/12 64-Bit:
+
+ - Debian 12 64-Bit:
+```
+sudo apt -y install %%Debian12%%
+```
+
+ - Debian 11 64-Bit:
 ```
 sudo apt -y install %%Debian11%%
 ```
