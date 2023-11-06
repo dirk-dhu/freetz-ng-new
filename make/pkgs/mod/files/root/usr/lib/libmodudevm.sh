@@ -21,24 +21,21 @@ do_mount_locked() {
 	REAL__do_mount_locked $*
 	local _RV=$?
 
-	local _FS="$(sed -nr "s,^${_BD} [^ ]* ([^ ]*).*,\1,p" /proc/mounts)"
+	# Special case SWAP partition
 	if [ "$_RV" != "0" ]; then
-		# Special case SWAP partition
-		if [ "$(modconf value MOD_SWAP mod)" == "yes" ]; then
-			if [ "$(modconf value MOD_SWAP_FILE mod | grep '/dev')" == "$_BD" ]; then
-				if [ -e /etc/init.d/rc.swap ]; then
-					/etc/init.d/rc.swap autostart "$_BD"
-					_RV=$?
-				fi
+		if [ -e /etc/init.d/rc.swap ]; then
+			if /etc/init.d/rc.swap autostart "$_BD"; then
+				eventadd 140 "Partition SWAP ($_BD)"
+				udev_log '0' "$_BD - mounted as SWAP (swap)"
+				return $_RV
 			fi
 		fi
-		if [ "$_RV" == "0" ]; then
-			eventadd 140 "SWAP Partition $_BD"
-			udev_log $_RV "$_BD - mounted as SWAP partition"
-		else
-			eventadd 142 "Partition $_BD" "$_FS"
-			udev_log $_RV "$_BD - unsupported filesystem or partition table${_FS:+: $_FS}"
-		fi
+	fi
+
+	local _FS="$(sed -nr "s,^${_BD} [^ ]* ([^ ]*).*,\1,p" /proc/mounts)"
+	if [ "$_RV" != "0" ]; then
+		eventadd 142 "Partition $_BD" "${_FS:-unsupported}"
+		udev_log $_RV "$_BD - unsupported filesystem or partition table${_FS:+: $_FS}"
 	else
 		local _MP="$(sed -rn "s,^$_BD ([^ ]*).*,\1,p" /proc/mounts)"
 
@@ -124,5 +121,4 @@ do_umount_locked() {
 
 	return $_RV
 }
-
 
