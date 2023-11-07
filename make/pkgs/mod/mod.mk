@@ -31,7 +31,7 @@ $(PKG)_EXCLUDED += $(if $(FREETZ_BUSYBOX_TELNETD),,etc/init.d/rc.telnetd usr/lib
 $(PKG)_EXCLUDED += $(if $(or $(call not-y,$(EXTERNAL_ENABLED)),$(EXTERNAL_DOWNLOADER)),usr/lib/cgi-bin/mod/conf/40-external.sh etc/init.d/rc.external etc/external.pkg)
 $(PKG)_EXCLUDED += $(if $(EXTERNAL_ENABLED),,/usr/mww/cgi-bin/update/external.cgi /usr/mww/cgi-bin/update/do_external.cgi)
 #$(PKG)_EXCLUDED += $(if $(FREETZ_AVM_HAS_FWLAYOUT_7),usr/mww/cgi-bin/update/)
-$(PKG)_EXCLUDED += $(if $(FREETZ_ADD_UIMODS),,usr/mww/cgi-bin/uimods.cgi usr/mww/cgi-bin/exec.d/uimods.sh)
+$(PKG)_EXCLUDED += $(if $(FREETZ_ADD_UIMODS),,usr/mww/cgi-bin/uimods.cgi etc/uimods.conf usr/mww/cgi-bin/exec.d/uimods.sh)
 
 $(PKG)_EXCLUDED += $(if $(FREETZ_BUSYBOX_FEATURE_WTMP),,usr/lib/cgi-bin/mod/conf/60-utmp_wtmp.sh)
 $(PKG)_EXCLUDED += $(if $(and $(call not-y,$(FREETZ_AVM_HAS_AVMSERVICES_PRELOAD)),$(FREETZ_TARGET_IPV6_SUPPORT)),,usr/lib/cgi-bin/mod/conf/90-ipv6.sh)

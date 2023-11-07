@@ -6,6 +6,7 @@ files
 {
 	etc/default.mod/*.def
 	etc/init.d/rc.mod
+	etc/uimods.conf
 	usr/bin/modreg
 	usr/lib/cgi-bin/conf*/*.sh
 	usr/lib/cgi-bin/mod.cgi
