@@ -79,6 +79,7 @@
  - [Shell Language [EN]](60_Development/shell_coding_conventions.en.md)
  - [SquashFS 4 (BE) [EN]](60_Development/squashfs4-be.en.md)
  - [STARTLEVEL of packages [EN]](60_Development/startlevel_of_packages.en.md)
+ - [UI-Module und ctlmgr_ctl](60_Development/uimods.md)
 
 ### [Various](70_Various/README.md)
  - [FreetzConf 2011](70_Various/FreetzConf.md)

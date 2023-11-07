@@ -123,4 +123,12 @@
     * [Interpreter Magic](shell_coding_conventions.en.md#interpreter-magic)
  - [SquashFS 4 (BE) [EN]](squashfs4-be.en.md)
  - [STARTLEVEL of packages [EN]](startlevel_of_packages.en.md)
+ - [UI-Module und ctlmgr_ctl](uimods.md)
+    * [Module](uimods.md#module)
+    * [Keys](uimods.md#keys)
+    * [Alle Variablen](uimods.md#alle-variablen)
+    * [Variable lesen](uimods.md#variable-lesen)
+    * [Variable schreiben](uimods.md#variable-schreiben)
+    * [Mehrere Variablen](uimods.md#mehrere-variablen)
+    * [Listen](uimods.md#listen)
 
