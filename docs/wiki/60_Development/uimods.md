@@ -149,5 +149,26 @@ Nächstes freies Element anzeigen:
 ```
 $ ctlmgr_ctl r boxusers settings/user/newid
 
-user1
+user2
 ```
+
+Ein neues Element anlegen:
+```
+$ ctlmgr_ctl w  boxusers settings/user2/enabled 0  boxusers settings/user2/name horst  boxusers settings/user2/box_admin_rights 3  boxusers settings/user2/password aciouasvdtn
+
+0
+horst
+3
+****
+```
+
+Ein Element löschen:
+```
+$ ctlmgr_ctl del  boxusers boxusers:command/user2
+
+
+```
+
+### Links
+ - [Losing Freetz due to an automatic update](https://github.com/Freetz-NG/freetz-ng/discussions/871#discussioncomment-7372142)
+
