@@ -113,7 +113,6 @@ tr064:settings/username = dslf-config
 ```
 
 ### Listen
-Dieser Abschnitt ist unvollständig!
 
 Anzahl Elemente einer Liste ausgeben:
 ```
