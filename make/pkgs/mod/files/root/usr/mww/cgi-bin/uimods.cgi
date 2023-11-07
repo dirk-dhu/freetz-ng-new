@@ -25,6 +25,7 @@ cat << EOX
 	sar:MaxUpstreamRate
 	sar:DownstreamMarginOffset			-4|-3|-2|-1|0|1|2|3|4
 	sar:UpstreamMarginOffset			-4|-3|-2|-1|0|1|2|3|4
+	sipextra:gui_readonly				0|1					Neue Rufnummer SPERREN
 	tr369:enable					0|1					Fernadministration des LAN durch den Provider
 	tr069:LabSupportEnable				0|1
 	tr069:LabUploadReqEnable			0|1
