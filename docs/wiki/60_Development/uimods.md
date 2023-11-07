@@ -130,7 +130,7 @@ $ ctlmgr_ctl l boxusers settings/user/list
   user1
 ```
 
-Ausgewählten Variablen aller Elemente lesen:
+Ausgewählte Variablen aller Elemente lesen:
 ```
 $ ctlmgr_ctl l boxusers "settings/user/list(UID,name,box_admin_rights)"
 
