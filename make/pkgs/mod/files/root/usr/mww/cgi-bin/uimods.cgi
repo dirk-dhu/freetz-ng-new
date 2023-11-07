@@ -130,8 +130,28 @@ table_end() {
 	sec_end
 }
 
+uimods_info() {
+cat << EOX
+<br>
+$(lang \
+  de:"Hier k&ouml;nnen interne Variablen ge&auml;ndert werden die im AVM Webinterface deaktiviert oder schwer zu finden sind." \
+  en:"You could change here internal variables which are disabled or hidden on the AVM web interface." \
+)
+$(lang \
+  de:"Das kann eine schlechte Idee sein! Vor dem Experimentieren sollte man unbedingt eine Konfigurationsicherung erstellen. Siehe auch" \
+  en:"This could be a very bad idea! You should create a settings backup before you start. See also" \
+)
+<a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods' target='_blank'>Wiki: UI-Module und ctlmgr_ctl</a>,
+$(lang \
+  de:"insbesondere der Punkt 'Alle Variablen'." \
+  en:"especially 'Alle Variablen' to find more variables." \
+)
+EOX
+}
+
 
 cgi_begin "$(lang de:"FOS UI-Module" en:"FOS UI-Modules")"
+uimods_info
 uimods_table
 cgi_end
 
