@@ -1278,33 +1278,35 @@ config FREETZ_PATCH_SECURE
 	help
 		Hides the "unsecure settings" message from the web interface.
 
-config FREETZ_PATCH_SECURE_2fa
-	bool "Caused by twofactor_disabled"
-	depends on FREETZ_PATCH_SECURE
-	default y
-	help
-		twofactor_disabled does not trigger the message.
+if FREETZ_PATCH_SECURE
 
-config FREETZ_PATCH_SECURE_sip
-	bool "Caused by ipphone_from_outside"
-	depends on FREETZ_PATCH_SECURE
-	default n
-	help
-		ipphone_from_outside does not trigger the message.
+	config FREETZ_PATCH_SECURE_2fa
+		bool "Caused by twofactor_disabled"
+		default y
+		help
+			twofactor_disabled does not trigger the message.
 
-config FREETZ_PATCH_SECURE_nau
-	bool "Caused by noAutoupdate"
-	depends on FREETZ_PATCH_SECURE && FREETZ_AVM_VERSION_07_8X_MIN
-	default y
-	help
-		noAutoupdate does not trigger the message.
+	config FREETZ_PATCH_SECURE_sip
+		bool "Caused by ipphone_from_outside"
+		default n
+		help
+			ipphone_from_outside does not trigger the message.
 
-config FREETZ_PATCH_SECURE_nus
-	bool "Caused by noUpdateSearch"
-	depends on FREETZ_PATCH_SECURE && FREETZ_AVM_VERSION_07_8X_MIN
-	default n
-	help
-		noUpdateSearch does not trigger the message.
+	config FREETZ_PATCH_SECURE_nau
+		bool "Caused by noAutoupdate"
+		depends on FREETZ_AVM_VERSION_07_8X_MIN
+		default y
+		help
+			noAutoupdate does not trigger the message.
+
+	config FREETZ_PATCH_SECURE_nus
+		bool "Caused by noUpdateSearch"
+		depends on FREETZ_AVM_VERSION_07_8X_MIN
+		default n
+		help
+			noUpdateSearch does not trigger the message.
+
+endif # FREETZ_PATCH_SECURE
 
 config FREETZ_MODIFY_DSL_WARNING
 	bool "Patch DSL modified message"
