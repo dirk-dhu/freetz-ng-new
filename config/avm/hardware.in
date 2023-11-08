@@ -122,6 +122,7 @@ config FREETZ_SYSTEM_TYPE_MAPLE
 	default y
 	depends on \
 		FREETZ_TYPE_1209 || \
+		FREETZ_TYPE_1249 || \
 		FREETZ_TYPE_3009 || \
 		FREETZ_TYPE_7510 || \
 		FREETZ_TYPE_GATE
@@ -174,7 +175,6 @@ config FREETZ_SYSTEM_TYPE_QCAARMv8
 	bool
 	default y
 	depends on \
-		FREETZ_TYPE_1249 || \
 		FREETZ_TYPE_4060 || \
 		FREETZ_TYPE_5590 || \
 		FREETZ_TYPE_6000
