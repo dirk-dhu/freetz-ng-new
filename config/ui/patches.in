@@ -1293,18 +1293,18 @@ config FREETZ_PATCH_SECURE_sip
 		ipphone_from_outside does not trigger the message.
 
 config FREETZ_PATCH_SECURE_nau
-	bool "Caused by noAutoupdate_disabled"
+	bool "Caused by noAutoupdate"
 	depends on FREETZ_PATCH_SECURE && FREETZ_AVM_VERSION_07_8X_MIN
 	default y
 	help
-		noAutoupdate_disabled does not trigger the message.
+		noAutoupdate does not trigger the message.
 
 config FREETZ_PATCH_SECURE_nus
-	bool "Caused by noUpdateSearch_disabled"
+	bool "Caused by noUpdateSearch"
 	depends on FREETZ_PATCH_SECURE && FREETZ_AVM_VERSION_07_8X_MIN
-	default y
+	default n
 	help
-		noUpdateSearch_disabled does not trigger the message.
+		noUpdateSearch does not trigger the message.
 
 config FREETZ_MODIFY_DSL_WARNING
 	bool "Patch DSL modified message"
