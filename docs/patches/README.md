@@ -558,11 +558,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **<u>PATCH_SECURE_2fa: Caused by twofactor_disabled</u><a id='patch-secure-2fa'></a>**<br>
     twofactor_disabled does not trigger the message.
 
-  * **<u>PATCH_SECURE_nau: Caused by noAutoupdate_disabled</u><a id='patch-secure-nau'></a>**<br>
-    noAutoupdate_disabled does not trigger the message.
+  * **<u>PATCH_SECURE_nau: Caused by noAutoupdate</u><a id='patch-secure-nau'></a>**<br>
+    noAutoupdate does not trigger the message.
 
-  * **<u>PATCH_SECURE_nus: Caused by noUpdateSearch_disabled</u><a id='patch-secure-nus'></a>**<br>
-    noUpdateSearch_disabled does not trigger the message.
+  * **<u>PATCH_SECURE_nus: Caused by noUpdateSearch</u><a id='patch-secure-nus'></a>**<br>
+    noUpdateSearch does not trigger the message.
 
   * **<u>PATCH_SECURE_sip: Caused by ipphone_from_outside</u><a id='patch-secure-sip'></a>**<br>
     ipphone_from_outside does not trigger the message.
