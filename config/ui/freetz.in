@@ -360,7 +360,7 @@ menu "Additional informations"
 			bool "Buildtype"
 			default n
 			help
-				Adds the  build type.
+				Adds the build type.
 				Values: release/labor/beta/inhaus
 
 		config FREETZ_IMAGE_NAME_BRANDINGS
