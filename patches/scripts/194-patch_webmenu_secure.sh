@@ -8,6 +8,8 @@ for oem in $(supported_brandings) all; do
        [ ! -e ${FILESYSTEM_MOD_DIR}${file} ] && continue
            [ "$FREETZ_PATCH_SECURE_2fa" == "y" ] && modsed 's/data[.]fritzos[.]twofactor_disabled/false/g'   ${FILESYSTEM_MOD_DIR}${file}
            [ "$FREETZ_PATCH_SECURE_sip" == "y" ] && modsed 's/data[.]fritzos[.]ipphone_from_outside/false/g' ${FILESYSTEM_MOD_DIR}${file}
+           [ "$FREETZ_PATCH_SECURE_nau" == "y" ] && modsed 's/data[.]fritzos[.]noAutoupdate/false/g'         ${FILESYSTEM_MOD_DIR}${file}
+           [ "$FREETZ_PATCH_SECURE_nus" == "y" ] && modsed 's/data[.]fritzos[.]noUpdateSearch/false/g'       ${FILESYSTEM_MOD_DIR}${file}
    done
 done
 
