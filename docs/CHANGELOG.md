@@ -82,6 +82,9 @@ Latest changes
    * u-boot 2023.10
    * xz 5.4.5
 
+ - AVM sources:
+   * 1240 ax 7.57 - 4.4.271
+
  - Packages:
    * ACME.sh 3.0.7 (letsencrypt)
    * Apache2 2.4.58
