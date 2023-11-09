@@ -57,6 +57,7 @@ Latest changes
    * Lua 5.1.5/5.4.6
    * OpenVPN 2.4.12/2.5.9/2.6.7
    * SQLite 3.44.0
+   * Tor 0.4.8.8
    * Unbound 1.19.0
 
  - Libraries:
@@ -116,7 +117,7 @@ Latest changes
    * sslh 2.0.1
    * strace 4.9/5.0/6.6
    * Stunnel 5.71
-   * Tor 0.4.8.8
+   * Tor 0.4.8.7
    * Transmission 3.00/4.0.4
    * Unbound 1.18.0
    * UnRAR 6.1.7/6.2.12
