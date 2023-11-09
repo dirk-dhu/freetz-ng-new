@@ -774,6 +774,25 @@ is_valid_tarball() {
 #	[ -s "$1" ] && "$TAR" -xf "$1" -O >/dev/null 2>&1
 }
 
+# copy timestamps from (all in) $1 to $2 - if item (in) $1 exists, otherwise sets $SOURCE_DATE_EPOCH or 1970
+# $1 - required - destination file or directory
+# $2 - optional - source file or directory
+sync_timestamps() {
+	local dst_dir="$1"
+	local src_dir="$2"
+	local dst_itm
+	local src_itm
+
+	find "$dst_dir" | while read -r dst_itm; do
+		src_itm="$src_dir${dst_itm#$dst_dir}"
+		if [ ! -e "$src_itm" -a ! -L "$src_itm" ]; then
+			touch -h -c -d "@${SOURCE_DATE_EPOCH:-0}" "$dst_itm"
+		else
+			touch -h -c -r "$src_itm" "$dst_itm"
+		fi
+	done
+}
+
 # avm image details
 # Requires	$FILESYSTEM_DIR
 # Requires	$FIRMWARE_DIR
