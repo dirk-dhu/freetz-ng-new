@@ -77,5 +77,16 @@ menu "Build system options"
 			in make/pkgs/<pkg>/files and make/pkgs/<pkg>/patches. If
 			so, the package will be recreated.
 
+	config FREETZ_REPRODUCIBLE
+		bool "Enable reproducible build - DEVELOPER"
+		depends on FREETZ_SHOW_DEVELOPER
+		default n
+		help
+			Creates a reproducible image, hopefully.
+			 - Replace kernel is not tested
+			 - Only a few packages are tested
+			 - Squashfs is reproducible since 4.4,
+			   so v2+v3+v4.3 needs to be patched
+
 endmenu # "Build system options" #
 
