@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+TOOLS="$(dirname $(realpath $0))"
 
 # Buildroot wrapper to the collection of ext2/3/4 filesystem tools:
 # - genext2fs, to generate ext2 filesystem images
@@ -110,7 +111,7 @@ main() {
     if [ -n "${nb_res_blocks}" ]; then
         genext2fs_opts+=( -m ${nb_res_blocks} )
     fi
-    genext2fs "${genext2fs_opts[@]}" "${image}"
+    $TOOLS/genext2fs "${genext2fs_opts[@]}" "${image}"
 
     # genext2fs does not generate a UUID, but fsck will whine if one
     # is missing, so we need to add a UUID.
@@ -121,11 +122,11 @@ main() {
     # Although a random UUID may seem bad for reproducibility, there
     # already are so many things that are not reproducible in a
     # filesystem: file dates, file ordering, content of the files...
-    tune2fs -U "${uuid:-random}" "${image}"
+    $TOOLS/tune2fs -U "${uuid:-random}" "${image}"
 
     # Upgrade the filesystem
     if [ ${#tune2fs_opts[@]} -ne 0 ]; then
-        tune2fs "${tune2fs_opts[@]}" "${image}"
+        $TOOLS/tune2fs "${tune2fs_opts[@]}" "${image}"
     fi
 
     # After changing filesystem options, running fsck is required
@@ -140,7 +141,7 @@ main() {
     # Exit codes 1 & 2 are OK, it means fs errors were successfully
     # corrected, hence our little trick with $ret.
     ret=0
-    e2fsck -pDf "${image}" >/dev/null || ret=$?
+    $TOOLS/e2fsck -pDf "${image}" >/dev/null || ret=$?
     case ${ret} in
        0|1|2) ;;
        *)   errorN ${ret} "failed to run e2fsck on '%s' (ext%d)\n" \
@@ -153,7 +154,7 @@ main() {
     # Remove count- and time-based checks, they are not welcome
     # on embedded devices, where they can cause serious boot-time
     # issues by tremendously slowing down the boot.
-    tune2fs -c 0 -i 0 "${image}"
+    $TOOLS/tune2fs -c 0 -i 0 "${image}"
 }
 
 help() {
