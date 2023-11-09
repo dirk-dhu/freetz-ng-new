@@ -2,6 +2,10 @@ $(call PKG_INIT_BIN, 1.42.13)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=e16474b5a3a30f9197160c4b91bd48d5a463583049c0fcc405b6f0f7075aa0c7
 $(PKG)_SITE:=@SF/e2fsprogs,@KERNEL/linux/kernel/people/tytso/e2fsprogs/v$($(PKG)_VERSION)
+### WEBSITE:=https://e2fsprogs.sourceforge.net/
+### MANPAGE:=https://www.mankier.com/package/e2fsprogs
+### CHANGES:=https://e2fsprogs.sourceforge.net/e2fsprogs-release.html
+### CVSREPO:=https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
 
 $(PKG)_LIBNAMES_SHORT_ALL := blkid com_err e2p ext2fs ss uuid
 $(PKG)_LIBNAMES_SHORT :=

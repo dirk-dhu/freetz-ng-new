@@ -2,6 +2,10 @@ $(call TOOLS_INIT, 1.42.13)
 $(PKG)_SOURCE:=e2fsprogs-$($(PKG)_VERSION).tar.xz
 $(PKG)_HASH:=e16474b5a3a30f9197160c4b91bd48d5a463583049c0fcc405b6f0f7075aa0c7
 $(PKG)_SITE:=@SF/e2fsprogs,@KERNEL/linux/kernel/people/tytso/e2fsprogs/v$($(PKG)_VERSION)
+### WEBSITE:=https://e2fsprogs.sourceforge.net/
+### MANPAGE:=https://www.mankier.com/package/e2fsprogs
+### CHANGES:=https://e2fsprogs.sourceforge.net/e2fsprogs-release.html
+### CVSREPO:=https://git.kernel.org/pub/scm/fs/ext2/e2fsprogs.git
 
 $(PKG)_E2FSCK_BINARY:=$($(PKG)_DIR)/e2fsck/e2fsck
 $(PKG)_DEBUGFS_BINARY:=$($(PKG)_DIR)/debugfs/debugfs
