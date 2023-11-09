@@ -1432,6 +1432,15 @@ if [ "$DO_MOD" -gt 0 ]; then
 			echo "kernel/drivers/net/rfcntl/rfcntl.ko: kernel/drivers/char/audio/avm_audio.ko" >> "$MODULES_DIR/modules.dep"
 			echo "kernel/drivers/char/audio/avm_audio.ko:" >> "$MODULES_DIR/modules.dep"
 		fi
+		if [ "$FREETZ_REPRODUCIBLE" == "y" ]; then
+			sort "$MODULES_DIR/modules.dep" | while read -r mod dep; do
+				echo -n "$mod"
+				echo "$dep" | sed 's/ /\n/g' | sort | while read line; do echo -n " $line"; done
+				echo
+			done > "$MODULES_DIR/modules.dep.reproducible"
+			cat "$MODULES_DIR/modules.dep.reproducible" > "$MODULES_DIR/modules.dep"
+			rm -f "$MODULES_DIR/modules.dep.reproducible"
+		fi
 	fi
 
 	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"
