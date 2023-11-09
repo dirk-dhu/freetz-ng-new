@@ -63,6 +63,7 @@ Latest changes
    * cairo 1.18.0
    * libuv 1.44.2/1.47.0
    * libmaxminddb 1.8.0
+   * mbedTLS 2.7.19/2.28.6
 
  - Firmware updates:
    * Please see [FIRMWARES](FIRMWARES.md) for the list of currently supported devices and firmwares.
