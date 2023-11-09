@@ -85,8 +85,9 @@ menu "Build system options"
 			Creates a reproducible image, hopefully.
 			 - Replace kernel is not tested
 			 - Only a few packages are tested
+			 - Ext creation is incomplete
 			 - Squashfs is reproducible since 4.4,
-			   so v2+v3+v4.3 needs to be patched
+			   so v2+v3+v4.3 needs to be backported
 
 endmenu # "Build system options" #
 
