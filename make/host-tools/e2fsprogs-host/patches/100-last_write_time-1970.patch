@@ -1,0 +1,11 @@
+--- lib/ext2fs/closefs.c
++++ lib/ext2fs/closefs.c
+@@ -295,7 +295,7 @@
+ 	fs_state = fs->super->s_state;
+ 	feature_incompat = fs->super->s_feature_incompat;
+ 
+-	fs->super->s_wtime = fs->now ? fs->now : time(NULL);
++	fs->super->s_wtime = 0;
+ 	fs->super->s_block_group_nr = 0;
+ #ifdef WORDS_BIGENDIAN
+ 	retval = EXT2_ET_NO_MEMORY;
