@@ -1429,13 +1429,13 @@ if [ "$DO_MOD" -gt 0 ]; then
 		rm -f "$DEPMOD_TEMP"
 		# add plugin kernel modules for 7270v1 if plugins are not enabled
 		if [ "$FREETZ_TYPE_7270_V1" == "y" -a "$FREETZ_AVMPLUGINS_INTEGRATE" != "y" ]; then
-			echo "kernel/drivers/net/rfcntl/rfcntl.ko: kernel/drivers/char/audio/avm_audio.ko" >> $MODULES_DIR/modules.dep
-			echo "kernel/drivers/char/audio/avm_audio.ko:" >> $MODULES_DIR/modules.dep
+			echo "kernel/drivers/net/rfcntl/rfcntl.ko: kernel/drivers/char/audio/avm_audio.ko" >> "$MODULES_DIR/modules.dep"
+			echo "kernel/drivers/char/audio/avm_audio.ko:" >> "$MODULES_DIR/modules.dep"
 		fi
 	fi
 
-	kolinecnt="$(cat $MODULES_DIR/modules.dep | wc -l)"
-	kofilecnt="$(find $MODULES_DIR -type f -name '*.ko' | wc -l)"
+	kolinecnt="$(cat "$MODULES_DIR/modules.dep" | wc -l)"
+	kofilecnt="$(find "$MODULES_DIR" -type f -name '*.ko' | wc -l)"
 	echo1 "kernel modules installed: $kolinecnt entries in modules.dep and $kofilecnt .ko-files found."
 	if [ "$FREETZ_KERNEL_VERSION_2_6_28" == "y" ]; then
 		if [ "$FREETZ_REPLACE_KERNEL" != "y" ];then
@@ -1450,7 +1450,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 
 	echo1 "removing empty kernel module directories"
-	for dir in $(find ${MODULES_DIR} -type d -empty -delete -printf "%P\n"); do
+	for dir in $(find "${MODULES_DIR}" -type d -empty -delete -printf "%P\n"); do
 		echo2 $dir
 	done
 
@@ -1571,7 +1571,7 @@ if [ "$DO_MOD" -gt 0 ]; then
 	fi
 	if  [ "$FREETZ_STRIP_MODULES_ALL" == "y" ]; then
 		echo0 "stripping all kernel modules"
-		for i in $(find ${MODULES_DIR} -name '*.ko'); do
+		for i in $(find "${MODULES_DIR}" -name '*.ko'); do
 			echo2 $i
 			${ABS_BASE_DIR}/toolchain/kernel/bin/${FREETZ_KERNEL_CROSS}strip -p --strip-unneeded \
 			  --remove-section={.comment,.pdr,.mdebug.abi32,.note.gnu.build-id} $i
