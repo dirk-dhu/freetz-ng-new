@@ -108,6 +108,9 @@ MAKE=make -j$(shell echo $$(( $$(nproc || echo 1) +1 )) )
 else
 MAKE=make -j$(FREETZ_JLEVEL)
 endif
+ifeq ($(FREETZ_REPRODUCIBLE),y)
+export SOURCE_DATE_EPOCH:=$(shell tools/freetz_revision ticks)
+endif
 
 # Don't go parallel
 .NOTPARALLEL:
