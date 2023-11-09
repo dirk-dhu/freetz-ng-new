@@ -23,8 +23,9 @@ if [ -n "$_kernelversion" ]; then
 fi
 echo "<dl class='info'><dt>Freetz$(lang de:"-Version" en:" version")</dt><dd>$FREETZ_INFO_VERSION</dd></dl>"
 date_de_format=$(echo "$FREETZ_INFO_MAKEDATE" \
-		| sed -re 's/([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2})(.*)/\3.\2.\1 \4\:\5\:\6/')
-echo "<dl class='info'><dt>$(lang de:"Erstellungsdatum" en:"Creation date")</dt><dd>$date_de_format</dd></dl>"
+  | sed -re 's/([0-9]{4})([0-9]{2})([0-9]{2})-([0-9]{2})([0-9]{2})([0-9]{2})(.*)/\3.\2.\1 \4\:\5\:\6/')
+[ "$date_de_format" != "reproducible" ] && \
+  echo "<dl class='info'><dt>$(lang de:"Erstellungsdatum" en:"Creation date")</dt><dd>$date_de_format</dd></dl>"
 echo "<dl class='info'><dt>$(lang de:"Urspr&uuml;nglicher Dateiname" en:"Initial file name")</dt><dd>$FREETZ_INFO_IMAGE_NAME</dd></dl>"
 if [ ! -z "$FREETZ_INFO_COMMENT" ]; then
 	echo "<dl class='info'><dt>$(lang de:"Benutzerdefinierte Informationen" en:"User defined information")</dt><dd>$FREETZ_INFO_COMMENT</dd></dl>"
