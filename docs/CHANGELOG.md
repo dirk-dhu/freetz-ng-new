@@ -55,6 +55,7 @@ Latest changes
    * CCID 1.5.4
    * Git 2.42.1
    * Lua 5.1.5/5.4.6
+   * OpenVPN 2.4.12/2.5.9/2.6.7
    * SQLite 3.44.0
 
  - Libraries:

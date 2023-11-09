@@ -1,6 +1,6 @@
 --- src/openvpn/lladdr.c
 +++ src/openvpn/lladdr.c
-@@ -26,6 +26,10 @@
+@@ -24,6 +24,10 @@
          return -1;
      }
  
@@ -13,7 +13,7 @@
  
 --- src/openvpn/networking_sitnl.c
 +++ src/openvpn/networking_sitnl.c
-@@ -69,6 +69,10 @@
+@@ -67,6 +67,10 @@
          _nest->rta_len = (void *)NLMSG_TAIL(_msg) - (void *)_nest;  \
      }
  
