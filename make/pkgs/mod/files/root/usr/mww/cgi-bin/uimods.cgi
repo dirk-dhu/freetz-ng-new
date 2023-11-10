@@ -5,7 +5,7 @@ cgi --id=uimods
 
 # for x in $(ctlmgr_ctl u | sed '1,2d'); do echo; ctlmgr_ctl u $x; done | tee uimods.txt
 uimods_listing() {
-	. /etc/uimods.conf
+	. /etc/uimods.conf | sed 's/^[\t ]*//g' | grep -vE '^(;|#|$)'
 }
 
 uimods_request() {
@@ -20,7 +20,7 @@ uimods_request() {
 uimods_table() {
 	local oldhr=""
 	uimods_result="$(ctlmgr_ctl r -v $(uimods_request))"
-	uimods_listing | sort | while read -r a vals desc; do
+	uimods_listing | sort -u | while read -r a vals desc; do
 		modul="${a%%:*}"
 		uikey="${a#$modul:}"
 		[ "$uikey" == "${uikey//\//}" ] && uikey="settings/$uikey"
@@ -54,7 +54,7 @@ table_line() {
 	local saved="$3"
 	local vals="$4"
 	local desc="$5"
-	local short="${uikey##*/}"
+	local short="${uikey#*/}"
 	local htmlid="uimod_${modul}__${short}"
 	local listid="dlist_${modul}__${short}"
 	local disabled=""
