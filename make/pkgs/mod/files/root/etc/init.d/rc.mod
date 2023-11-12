@@ -15,11 +15,6 @@ log() {
 }
 
 
-tmp_permissions() {
-	# re-set /tmp permissions as AVM overwrites them to 0755 somehow after var.tar unpacking
-	chmod 1777 /var/tmp
-}
-
 vulcheck_2014() {
 	[ "$FREETZ_AVM_HAS_CVE_2014_9727" != "y" ] && return
 	# 04.55 is the version of the first firmware with support for remote access (according to AVM)
@@ -173,7 +168,6 @@ start() {
 		echo " ... done."
 	fi
 
-	tmp_permissions
 	vulcheck_2014
 	vulcheck_2023
 	utmp_wtmp
