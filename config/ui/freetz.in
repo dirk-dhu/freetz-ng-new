@@ -233,8 +233,8 @@ menu "Additional informations"
 	config FREETZ_ADD_UIMODS
 		bool "Add FOS UI-Modules"
 		depends on FREETZ_AVM_HAS_CTLMGR_CTL
-		default y if FREETZ_SHOW_EXPERT
-		default n
+		depends on FREETZ_SHOW_EXPERT
+		default y
 		help
 			Adds fos ui-modules management to webif, category 'system'.
 
