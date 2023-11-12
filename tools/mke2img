@@ -111,6 +111,7 @@ main() {
     if [ -n "${nb_res_blocks}" ]; then
         genext2fs_opts+=( -m ${nb_res_blocks} )
     fi
+    [ -n "$SOURCE_DATE_EPOCH" ] && genext2fs_opts+=( -f )
     $TOOLS/genext2fs "${genext2fs_opts[@]}" "${image}"
 
     # genext2fs does not generate a UUID, but fsck will whine if one
@@ -141,6 +142,7 @@ main() {
     # Exit codes 1 & 2 are OK, it means fs errors were successfully
     # corrected, hence our little trick with $ret.
     ret=0
+    export E2FSCK_TIME="$SOURCE_DATE_EPOCH"
     $TOOLS/e2fsck -pDf "${image}" >/dev/null || ret=$?
     case ${ret} in
        0|1|2) ;;
@@ -189,8 +191,11 @@ SYNOPSIS
 DESCRIPTION
     Create ext2/3/4 filesystem image from the content of a directory.
 
-    reproducible (incomplete):
-      If SOURCE_DATE_EPOCH is set it overwrites the UUID and the last-check time.
+    reproducible:
+      If SOURCE_DATE_EPOCH is set it overwrites
+       - the UUID
+       - last-check time
+       - last-write time
 
     -b BLOCKS
         Create a filesystem of BLOCKS 1024-byte blocs. The default is to
