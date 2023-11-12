@@ -99,8 +99,8 @@ $(lang \
 )
 <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods' target='_blank'>Wiki: UI-Module und ctlmgr_ctl</a>,
 $(lang \
-  de:"insbesondere der Punkt 'Alle Variablen'." \
-  en:"especially 'Alle Variablen' to find more variables." \
+  de:"insbesondere der Punkt <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>Alle Variablen</a>." \
+  en:"especially <a href='https://freetz-ng.github.io/freetz-ng/wiki/60_Development/uimods#alle-variablen' target='_blank'>Alle Variablen</a> to find more variables." \
 )
 EOX
 }
