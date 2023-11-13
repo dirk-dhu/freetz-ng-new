@@ -12,16 +12,12 @@ config FREETZ_DL_TOOLCHAIN_SITE
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_VERSION
 	string "Kernel toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default "${FREETZ_REAL_DEVELOPER_ONLY__DLTCV}"                                if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
-	#
 #	default "rXXXXX"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
 #	default "rXXXXX"                                                              if FREETZ_TARGET_GCC_13
 	default "r22199"
 
 config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 	string "Kernel toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default ""                                                                    if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
-	#
 	default "e8e45d9ae52a5246a30854fab30ec3c3154d51181ac874e8d3d81269a16f9871"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_KERNEL_GCC_3_4
 	default "c0a46ebc76acca29b1e66f4fd9a27311b5239512d8b11b1dab60babdffed86e6"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_KERNEL_GCC_4_6
 	default "d4765679a7556046dbbf807b8d52348f5990c4f93f808fad8d1fdf76f8cda792"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_BE && FREETZ_KERNEL_GCC_4_6
@@ -40,16 +36,12 @@ config FREETZ_DL_KERNEL_TOOLCHAIN_HASH
 
 config FREETZ_DL_TARGET_TOOLCHAIN_VERSION
 	string "Target toolchain version"                                             if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default "${FREETZ_REAL_DEVELOPER_ONLY__DLTCV}"                                if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
-	#
 #	default "rXXXXX"                                                              if FREETZ_SEPARATE_AVM_UCLIBC
 #	default "rXXXXX"                                                              if FREETZ_TARGET_GCC_13
 	default "r22199"
 
 config FREETZ_DL_TARGET_TOOLCHAIN_HASH
 	string "Target toolchain SHA256"                                              if FREETZ_DL_TOOLCHAIN_OVERRIDE
-	default ""                                                                    if FREETZ_REAL_DEVELOPER_ONLY__DLTCS
-	#
 	default "e8ac386da2784eb05966a23c2bae88e25a9411d0c98b80248172c34ba6043e54"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_28 && FREETZ_KERNEL_VERSION_2
 	default "176ab85e660be7f9ccc96a2d5db3870c55af948a9309f645c0e88064cf4b8afe"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_29 && FREETZ_KERNEL_VERSION_2
 	default "76f093ee4af02c75e05b6478eaa0760f409fe9f00893b6d7498ec64015280dd6"    if FREETZ_TARGET_ARCH_MIPS && FREETZ_TARGET_ARCH_LE && FREETZ_TARGET_GCC_4_6 && FREETZ_TARGET_UCLIBC_0_9_32 && FREETZ_KERNEL_VERSION_2
