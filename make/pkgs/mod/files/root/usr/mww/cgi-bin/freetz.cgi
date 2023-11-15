@@ -6,7 +6,7 @@ PATH=/bin:/usr/bin:/sbin:/usr/sbin
 
 cgi --id=freetz
 
-# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'hermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
+# (svn log --quiet | sed -rn 's/^r[^|]*.([^|]*).*/\1/p' ; echo -e 'TobjasR\nL3P3\nhermann72pb\njohnbock\nM66B\nmagenbrot\nreiffert\nsf3978') | sed 's/(.*)//g;s/ //g' | sort -u | grep -vE '^(root|administrator|github-actions|dependabot\[bot\]|fda77|oliver|derheimi|sfritz|SvenLuebke)$' 
 cgi_begin "$(lang de:"&Uuml;ber" en:"About")"
 cat << EOF | sed -r 's/(.+[^>])$/\1<br>/g'
 <center>
@@ -55,6 +55,7 @@ Jens
 jer194
 johnbock
 kriegaex
+L3P3
 leo22
 lherschi
 M66B
@@ -92,6 +93,7 @@ stblassitude
 SvenLübke
 telsch
 thiloms
+TobjasR
 uwes-ufo
 Whoopie
 WileC
