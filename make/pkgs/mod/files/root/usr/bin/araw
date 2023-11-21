@@ -29,6 +29,6 @@ else
 fi
 
 [ -d "$SRC" ] && exit 0
-case "$LINK" in nanox|vimx|vix) ${LINK::-1} "$ARG" ; exit $? ;; esac
+case "$LINK" in nanox|vimx|vix) ${LINK::$(( ${#LINK}-1 ))} "$ARG" ; exit $? ;; esac
 exit 0
 
