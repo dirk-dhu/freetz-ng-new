@@ -18,15 +18,16 @@ uimods_request() {
 }
 
 uimods_table() {
-	local oldhr=""
+	local colit oldhr=""
 	uimods_result="$(ctlmgr_ctl r -v $(uimods_request))"
-	uimods_listing | sort -u | while read -r a vals desc; do
+	uimods_listing | sort -u | while read -r a defa vals desc; do
 		modul="${a%%:*}"
 		uikey="${a#$modul:}"
 		[ "$uikey" == "${uikey//\//}" ] && uikey="settings/$uikey"
 		[ "$oldhr" != "$modul" ] && table_head "$modul" "$oldhr" && oldhr="$modul"
 		saved="$(echo "$uimods_result" | sed -n "s,^${modul}:${uikey} = ,,p")"
-		table_line "$modul" "$uikey" "$saved" "${vals#|}" "$desc"
+		[ "$defa" -gt 0 ] 2>/dev/null && [ "$(echo "$vals" | cut -f$defa -d'|')" != "$saved" ] && colit="red" || colit=''
+		table_line "$modul" "$uikey" "$saved" "$colit" "${vals#|}" "$desc"
 	done
 	table_end
 }
@@ -52,8 +53,10 @@ table_line() {
 	local modul="$1"
 	local uikey="$2"
 	local saved="$3"
-	local vals="$4"
-	local desc="$5"
+	local style="${4:+border:3px solid $4;}"
+#	local style="${4:+color:black;background-color:$4;}"
+	local vals="$5"
+	local desc="$6"
 	local short="${uikey#*/}"
 	local htmlid="uimod_${modul}__${short}"
 	local listid="dlist_${modul}__${short}"
@@ -66,7 +69,7 @@ table_line() {
 
 	echo "<td width='400'><b>$short</b></td>"
 
-	echo "<td width='150'><input type='text' list='$listid' name='val' id='$htmlid' value='$saved' /> <datalist id='$listid'>"
+	echo "<td width='150'><input type='text' list='$listid' name='val' id='$htmlid' value='$saved' style='$style' /> <datalist id='$listid'>"
 	for x in $(echo "$items" | sed 's/|/\n/g' | sort -u); do echo "<option value='$x'>"; done
 	echo "</datalist></td>";
 
