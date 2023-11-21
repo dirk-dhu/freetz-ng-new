@@ -1,6 +1,6 @@
 --- src/openvpn/options.c
 +++ src/openvpn/options.c
-@@ -4862,7 +4862,7 @@
+@@ -4864,7 +4864,7 @@
      show_dco_version(M_INFO | M_NOPREFIX);
      msg(M_INFO|M_NOPREFIX, "Originally developed by James Yonan");
      msg(M_INFO|M_NOPREFIX, "Copyright (C) 2002-2023 OpenVPN Inc <sales@openvpn.net>");
