@@ -1,4 +1,4 @@
-# Git 2.42.1
+# Git 2.43.0
  - Homepage: [https://www.git-scm.com/](https://www.git-scm.com/)
  - Manpage: [https://www.git-scm.com/docs](https://www.git-scm.com/docs)
  - Changelog: [https://github.com/git/git/tree/master/Documentation/RelNotes](https://github.com/git/git/tree/master/Documentation/RelNotes)
