@@ -62,8 +62,8 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - [source-files-FRITZ.Box_3490-vr9-07.29.tar.gz](https://osp.avm.de/fritzbox/fritzbox-3490/source-files-FRITZ.Box_3490-vr9-07.29.tar.gz)
  * fritzbox-4020/
    - [source-files-FRITZ.Box_4020-06.50.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-06.50.tar.gz)
-   - [source-files-FRITZ.Box_4020-06.83.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-06.83.tar.gz)
    - [source-files-FRITZ.Box_4020-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-07.01.tar.gz)
+   - [source-files-FRITZ.Box_4020-drgfly-06.84.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4020/source-files-FRITZ.Box_4020-drgfly-06.84.tar.gz)
  * fritzbox-4040/
    - [source-files-FRITZ.Box_4040-07.00.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.00.tar.gz)
    - [source-files-FRITZ.Box_4040-07.01.tar.gz](https://osp.avm.de/fritzbox/fritzbox-4040/source-files-FRITZ.Box_4040-07.01.tar.gz)
