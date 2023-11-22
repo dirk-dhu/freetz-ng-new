@@ -125,6 +125,8 @@ config FREETZ_AVM_HAS_MESHD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -154,6 +156,8 @@ config FREETZ_AVM_HAS_MESHD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -367,6 +371,8 @@ config FREETZ_AVM_HAS_PLCD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -418,6 +424,8 @@ config FREETZ_AVM_HAS_PLCD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -609,6 +617,8 @@ config FREETZ_AVM_HAS_PLCD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -660,6 +670,8 @@ config FREETZ_AVM_HAS_PLCD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -987,6 +999,8 @@ config FREETZ_AVM_HAS_PLCD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -1012,6 +1026,8 @@ config FREETZ_AVM_HAS_PLCD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -1545,6 +1561,8 @@ config FREETZ_AVM_HAS_MESHD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -1597,6 +1615,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -1648,6 +1668,8 @@ config FREETZ_AVM_HAS_MESHD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -1795,6 +1817,8 @@ config FREETZ_AVM_HAS_MESHD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -1848,6 +1872,8 @@ config FREETZ_AVM_HAS_MESHD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -2074,6 +2100,8 @@ config FREETZ_AVM_HAS_TR069_FWUPDATE
 config FREETZ_AVM_HAS_UDEV
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_ALL_REGIONS
 	def_bool y
@@ -4081,6 +4109,8 @@ config FREETZ_AVM_HAS_PLCD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -5768,6 +5798,8 @@ config FREETZ_AVM_HAS_WEBDAV
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_X86
@@ -6012,6 +6044,8 @@ config FREETZ_AVM_HAS_WEBDAV
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_X86
@@ -6253,6 +6287,8 @@ config FREETZ_AVM_HAS_VPN
 config FREETZ_AVM_HAS_WEBDAV
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_LE
 	def_bool y
@@ -6988,6 +7024,8 @@ config FREETZ_AVM_HAS_PLCD
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -7026,6 +7064,8 @@ config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_COMPRESSION_XZ
@@ -7063,6 +7103,8 @@ config FREETZ_AVM_HAS_PLCD
 config FREETZ_AVM_HAS_ETCSERVICES
 	def_bool y
 config FREETZ_AVM_HAS_NSSWITCH
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_SQUASHFS_VERSION_4
 	def_bool y
@@ -7278,6 +7320,8 @@ config FREETZ_AVM_HAS_VPN
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
+	def_bool y
 config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_MIPS
@@ -7403,6 +7447,8 @@ config FREETZ_AVM_HAS_UNTRUSTEDD
 config FREETZ_AVM_HAS_VPN
 	def_bool y
 config FREETZ_AVM_HAS_WLAN
+	def_bool y
+config FREETZ_AVM_HAS_ZRAM_MODULE
 	def_bool y
 config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
