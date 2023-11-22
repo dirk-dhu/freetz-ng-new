@@ -28,26 +28,26 @@ case "$3" in
 	logs_avm*)
 		logg=false
 
-		aicmd ctlmgr sessions show 2>/dev/null | sed -rn 's/^ +//p' > /var/tmp/sessions.txt
-		[ -s /var/tmp/sessions.txt ] || msgsend ctlmgr sessions
-		[ "0$(wc -l /var/tmp/sessions.txt 2>/dev/null | sed 's/ .*//')" -gt 2 ] || rm -f /var/tmp/sessions.txt
-		do_log /var/tmp/sessions.txt "WEB-Sessions"
-		rm -f /var/tmp/sessions.txt
+		aicmd ctlmgr sessions show 2>/dev/null | sed -rn 's/^ +//p' > /tmp/.logs.sessions.txt
+		[ -s /tmp/.logs.sessions.txt ] || msgsend ctlmgr sessions
+		[ "0$(wc -l /tmp/.logs.sessions.txt 2>/dev/null | sed 's/ .*//')" -gt 2 ] || rm -f /tmp/.logs.sessions.txt
+		do_log /tmp/.logs.sessions.txt "WEB-Sessions"
+		rm -f /tmp/.logs.sessions.txt
 
-		[ -x "$(which svctl)" ] && svctl status 2>&1 | sed 's/\.service//g;s/, status/ /g;s/$/./g' > /var/tmp/svctl.txt
-		do_log /var/tmp/svctl.txt "AVM-Supervisor"
-		rm -f /var/tmp/svctl.txt
+		[ -x "$(which svctl)" ] && svctl status 2>&1 | sed 's/\.service//g;s/, status/ /g;s/$/./g' > /tmp/.logs.svctl.txt
+		do_log /tmp/.logs.svctl.txt "AVM-Supervisor"
+		rm -f /tmp/.logs.svctl.txt
 
 		do_log /proc/avm/wdt "AVM-Watchdog"
 		do_log /proc/kdsld/dsliface/internet/ipmasq/pcp44 "PCP-Sessions"
 
-		[ -x "$(which showdsldstat)" ] && showdsldstat > /var/tmp/dsldstat.txt 2>&1
-		do_log /var/tmp/dsldstat.txt "AVM-DsldStat"
-		rm -f /var/tmp/dsldstat.txt
+		[ -x "$(which showdsldstat)" ] && showdsldstat > /tmp/.logs.dsldstat.txt 2>&1
+		do_log /tmp/.logs.dsldstat.txt "AVM-DsldStat"
+		rm -f /tmp/.logs.dsldstat.txt
 
-		[ -x "$(which cableinfo)" ] && ctlmgr_ctl u showdocsisstate > /var/tmp/docsisstate.txt 2>&1
-		do_log /var/tmp/docsisstate.txt "AVM-DocsisState"
-		rm -f /var/tmp/docsisstate.txt
+		[ -x "$(which cableinfo)" ] && ctlmgr_ctl u showdocsisstate > /tmp/.logs.docsisstate.txt 2>&1
+		do_log /tmp/.logs.docsisstate.txt "AVM-DocsisState"
+		rm -f /tmp/.logs.docsisstate.txt
 
 		for x in /sys/fs/pstore/*; do do_log $x; done
 
