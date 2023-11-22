@@ -330,6 +330,11 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[Remove WLAN](REMOVE_WLAN.md)<a id='remove-wlan'></a>**<br>
     Radically remove a lot of wlan-related files. This patch saves about 700 kb of uncomrpessed data size in the firmware image. WARNING: Do not enable Wlan, you will get a reboot loop!
 
+### Z
+
+  * **<u>Remove zram.ko</u><a id='remove-zram'></a>**<br>
+    Remove zram.ko (about 30 kB uncompressed).
+
 # Other patches
 
   * **[Add Annex A firmware file](ADD_ANNEX_A_FIRMWARE.md)<a id='add-annex-a-firmware'></a>**<br>
