@@ -41,6 +41,14 @@ case "$3" in
 		do_log /proc/avm/wdt "AVM-Watchdog"
 		do_log /proc/kdsld/dsliface/internet/ipmasq/pcp44 "PCP-Sessions"
 
+		[ -x "$(which showdsldstat)" ] && showdsldstat > /var/tmp/dsldstat.txt 2>&1
+		do_log /var/tmp/dsldstat.txt "AVM-DsldStat"
+		rm -f /var/tmp/dsldstat.txt
+
+		[ -x "$(which cableinfo)" ] && ctlmgr_ctl u showdocsisstate > /var/tmp/docsisstate.txt 2>&1
+		do_log /var/tmp/docsisstate.txt "AVM-DocsisState"
+		rm -f /var/tmp/docsisstate.txt
+
 		for x in /sys/fs/pstore/*; do do_log $x; done
 
 		do_log /proc/avm/log_sd/crash
