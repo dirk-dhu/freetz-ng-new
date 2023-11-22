@@ -721,6 +721,13 @@ config FREETZ_REMOVE_RAMZSWAP
 	help
 		Remove ramzswap.ko (about 35 kB uncompressed).
 
+config FREETZ_REMOVE_ZRAM
+	bool "Remove zram.ko"
+	default n
+	depends on FREETZ_AVM_HAS_ZRAM_MODULE
+	help
+		Remove zram.ko (about 30 kB uncompressed).
+
 config FREETZ_REMOVE_LSOF
 	bool "Remove lsof"
 	depends on FREETZ_AVM_HAS_LSOF
