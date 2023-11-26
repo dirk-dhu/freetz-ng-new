@@ -7,7 +7,7 @@ on:
       - '.github/workflows/generate_juis.yml'
       - 'docs/juis/generate.sh'
   schedule:
-    - cron: '30 15 * * 1-5'
+    - cron: '30 16 * * 1-5'
   workflow_dispatch:
 
 jobs:
