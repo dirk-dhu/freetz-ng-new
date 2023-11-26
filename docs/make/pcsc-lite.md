@@ -1,4 +1,4 @@
-# PCSC-lite 2.0.0 (binary only)
+# PCSC-lite 2.0.1 (binary only)
  - Homepage: [https://pcsclite.apdu.fr/](https://pcsclite.apdu.fr/)
  - Manpage: [https://salsa.debian.org/rousseau/PCSC/blob/master/README](https://salsa.debian.org/rousseau/PCSC/blob/master/README)
  - Changelog: [https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog](https://salsa.debian.org/rousseau/PCSC/blob/master/ChangeLog)
