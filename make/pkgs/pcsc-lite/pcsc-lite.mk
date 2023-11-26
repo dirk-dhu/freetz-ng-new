@@ -29,6 +29,7 @@ $(PKG)_CONFIGURE_OPTIONS += --enable-scf
 $(PKG)_CONFIGURE_OPTIONS += --disable-libhal
 $(PKG)_CONFIGURE_OPTIONS += --disable-libudev
 $(PKG)_CONFIGURE_OPTIONS += --disable-libsystemd
+$(PKG)_CONFIGURE_OPTIONS += --disable-polkit
 $(PKG)_CONFIGURE_OPTIONS += --enable-embedded
 $(PKG)_CONFIGURE_OPTIONS += --enable-usbdropdir=$(PCSC_LITE_USBDROPDIR)
 
