@@ -43,5 +43,21 @@ if EXTERNAL_FREETZ_PACKAGE_BIND
 			externals the following file(s):
 			 /usr/bin/dig
 
+	config EXTERNAL_FREETZ_PACKAGE_BIND_HOST
+		depends on FREETZ_PACKAGE_BIND_HOST
+		bool "host"
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/host
+
+	config EXTERNAL_FREETZ_PACKAGE_BIND_NSLOOKUP
+		depends on FREETZ_PACKAGE_BIND_NSLOOKUP
+		bool "nslookup"
+		default n
+		help
+			externals the following file(s):
+			 /usr/bin/nslookup
+
 endif # EXTERNAL_FREETZ_PACKAGE_BIND
 

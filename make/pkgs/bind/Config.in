@@ -3,13 +3,13 @@ config FREETZ_PACKAGE_BIND
 	select FREETZ_LIB_libpthread if FREETZ_TARGET_UCLIBC_HAS_multiple_libs
 	select FREETZ_LIB_libcrypto          if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libcrypto_WITH_EC  if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
+	select FREETZ_LIB_libssl             if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libuv              if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	select FREETZ_LIB_libatomic          if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 	default n
 	help
-		BIND is an implementation of the Domain Name System (DNS) protocols.
+		BIND is a suite of software for interacting with the Domain Name System (DNS).
 		The name BIND stands for "Berkeley Internet Name Daemon".
-		You have to provide the config and needed zone files yourself.
 
 if FREETZ_PACKAGE_BIND
 
@@ -36,7 +36,9 @@ if FREETZ_PACKAGE_BIND
 		default y
 		select FREETZ_LIB_libcap     if !FREETZ_PACKAGE_BIND_VERSION_ABANDON
 		help
-			Adds named, a internet domain name server.
+			named is a DNS server, part of the BIND 9 distribution.
+			You have to provide the config and needed zone files yourself.
+			This file needs about 3,5 MB uncompressed.
 
 		comment "HINT: Don't forget to enable the DNS server."
 		depends on FREETZ_PACKAGE_BIND_NAMED && \
@@ -57,19 +59,36 @@ if FREETZ_PACKAGE_BIND
 		bool "rndc (binary only)"
 		default n
 		help
-			Adds the rndc name server control utility binary.
+			rndc allows you to use command line statements to administer the named daemon.
+			This file needs about 0,5 MB uncompressed.
 
 	config FREETZ_PACKAGE_BIND_NSUPDATE
 		bool "nsupdate (binary only)"
 		default n
 		help
-			Adds the nsupdate binary for manipulation dynamic Zones.
+			nsupdate is used to submit Dynamic DNS Update requests to a name server.
+			This file needs about 2,8 MB uncompressed.
 
 	config FREETZ_PACKAGE_BIND_DIG
 		bool "dig (binary only)"
 		default n
 		help
-			Adds the dig DNS lookup utility.
+			dig is a flexible tool for interrogating DNS name servers.
+			This file needs about 2,8 MB uncompressed.
+
+	config FREETZ_PACKAGE_BIND_HOST
+		bool "host (binary only)"
+		default n
+		help
+			host is a simple utility for performing DNS lookups.
+			This file needs about 2,8 MB uncompressed.
+
+	config FREETZ_PACKAGE_BIND_NSLOOKUP
+		bool "nslookup (binary only)"
+		default n
+		help
+			nslookup is a program to query Internet domain name servers.
+			This file needs about 2,8 MB uncompressed.
 
 endif # FREETZ_PACKAGE_BIND
 

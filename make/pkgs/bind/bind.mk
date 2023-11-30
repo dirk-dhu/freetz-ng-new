@@ -11,17 +11,16 @@ $(PKG)_SITE:=https://downloads.isc.org/isc/bind9/$($(PKG)_VERSION),http://ftp.is
 
 $(PKG)_STARTLEVEL=40 # multid-wrapper may start it earlier!
 
-define $(PKG)_DEFS
-$(PKG)_BINARIES_ALL_$(1)            := $(2)
-$(PKG)_BINARIES_$(1)                := $$(call PKG_SELECTED_SUBOPTIONS,$$($(PKG)_BINARIES_ALL_$(1)))
-$(PKG)_BINARIES_BUILD_DIR_$(1)      := $$(addprefix $$($(PKG)_DIR)/bin/, $$(join $$(addsuffix /,$$($(PKG)_BINARIES_$(1))),$$($(PKG)_BINARIES_$(1))))
-$(PKG)_BINARIES_ALL_TARGET_DIR_$(1) := $$($(PKG)_BINARIES_ALL_$(1):%=$$($(PKG)_DEST_DIR)/usr/$(1)/%)
-$(PKG)_BINARIES_TARGET_DIR_$(1)     := $$($(PKG)_BINARIES_$(1):%=$$($(PKG)_DEST_DIR)/usr/$(1)/%)
-$(PKG)_EXCLUDED                     += $$(filter-out $$($(PKG)_BINARIES_TARGET_DIR_$(1)),$$($(PKG)_BINARIES_ALL_TARGET_DIR_$(1)))
-endef
+$(PKG)_BINARIES_DST_DIR             := sbin  sbin  bin      bin  bin  bin
+$(PKG)_BINARIES_SRC_DIR             := named rndc  nsupdate dig  dig  dig
+$(PKG)_BINARIES_ALL                 := named rndc  nsupdate dig  host nslookup
 
-$(eval $(call $(PKG)_DEFS,sbin,named rndc))
-$(eval $(call $(PKG)_DEFS,bin,nsupdate dig))
+$(PKG)_BINARIES                     := $(call PKG_SELECTED_SUBOPTIONS,$($(PKG)_BINARIES_ALL))
+$(PKG)_BINARIES_BUILD_DIR           := $(join $($(PKG)_BINARIES_SRC_DIR:%=$($(PKG)_DIR)/bin/%/),$($(PKG)_BINARIES_ALL))
+$(PKG)_BINARIES_ALL_TARGET_DIR      := $(join $($(PKG)_BINARIES_DST_DIR:%=$($(PKG)_DEST_DIR)/usr/%/),$($(PKG)_BINARIES_ALL))
+$(PKG)_FILTER_OUT                    = $(foreach k,$(1), $(foreach v,$(2), $(if $(subst $(notdir $(v)),,$(k)),,$(v)) ) )
+$(PKG)_BINARIES_TARGET_DIR          := $(call $(PKG)_FILTER_OUT,$($(PKG)_BINARIES),$($(PKG)_BINARIES_ALL_TARGET_DIR))
+$(PKG)_EXCLUDED                     += $(filter-out $($(PKG)_BINARIES_TARGET_DIR),$($(PKG)_BINARIES_ALL_TARGET_DIR))
 
 $(PKG)_EXCLUDED+=$(if $(FREETZ_PACKAGE_BIND_NAMED),,usr/lib/bind usr/lib/cgi-bin/bind.cgi etc/default.bind etc/init.d/rc.bind)
 
@@ -81,15 +80,17 @@ $($(PKG)_EXPORT_LIB_DIR)/.installed: $($(PKG)_DIR)/.compiled
 		install
 	@touch $@
 
-$($(PKG)_BINARIES_BUILD_DIR_sbin) $($(PKG)_BINARIES_BUILD_DIR_bin): $($(PKG)_DIR)/.compiled
+$($(PKG)_BINARIES_BUILD_DIR): $($(PKG)_DIR)/.compiled
 	@touch -c $@
 
-$(foreach binary,$($(PKG)_BINARIES_BUILD_DIR_sbin),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/sbin)))
-$(foreach binary,$($(PKG)_BINARIES_BUILD_DIR_bin),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/bin)))
+# just ignoring the unused ...
+$(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/sbin)))
+$(foreach binary,$($(PKG)_BINARIES_BUILD_DIR),$(eval $(call INSTALL_BINARY_STRIP_RULE,$(binary),/usr/bin)))
+
 
 $(pkg):
 
-$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR_sbin) $($(PKG)_BINARIES_TARGET_DIR_bin) $($(PKG)_EXPORT_LIB_DIR)/.installed
+$(pkg)-precompiled: $($(PKG)_BINARIES_TARGET_DIR) $($(PKG)_EXPORT_LIB_DIR)/.installed
 
 
 $(pkg)-clean:
@@ -97,7 +98,7 @@ $(pkg)-clean:
 	$(RM) -r $(BIND_DIR)/.configured $(BIND_DIR)/.compiled $(BIND_EXPORT_LIB_DIR)/.installed $(BIND_EXPORT_LIB_DIR)
 
 $(pkg)-uninstall:
-	$(RM) $(BIND_BINARIES_ALL_TARGET_DIR_sbin) $(BIND_BINARIES_ALL_TARGET_DIR_bin)
+	$(RM) $(BIND_BINARIES_ALL_TARGET_DIR)
 
 $(PKG_FINISH)
 
