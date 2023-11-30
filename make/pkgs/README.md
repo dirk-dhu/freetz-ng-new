@@ -711,7 +711,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
   * **[psl 0.21.2 (binary only)](../../docs/make/psl.md)<a id='psl'></a>**<br>
     Public Suffix List library functions This includes psl binary and public_suffix_list.dat
 
-  * **[pyLoad 0.4.20/9b358adf](../../docs/make/pyload.md)<a id='pyload'></a>**<br>
+  * **[pyLoad 0.4.20/78162d75](../../docs/make/pyload.md)<a id='pyload'></a>**<br>
     pyLoad is a fast, lightweight and full featured download manager for many One-Click-Hoster, container formats like DLC, video sites or just plain http/ftp links.
 
   * **[Python 2.7.18](../../docs/make/python.md)<a id='python'></a>**<br>

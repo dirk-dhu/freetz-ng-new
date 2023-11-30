@@ -1,4 +1,4 @@
-# pyLoad 0.4.20/9b358adf
+# pyLoad 0.4.20/78162d75
  - Homepage: [https://www.pyload.net/](https://www.pyload.net/)
  - Manpage: [https://github.com/pyload/pyload/wiki](https://github.com/pyload/pyload/wiki)
  - Changelog: [https://github.com/pyload/pyload/releases](https://github.com/pyload/pyload/releases)
