@@ -7160,6 +7160,7 @@ config FREETZ_BUSYBOX___V136_FEATURE_NETSTAT_PRG
 	Add support for -p flag to print out PID and program name.
 	+700 bytes of code.
 config FREETZ_BUSYBOX___V136_NSLOOKUP
+	depends on !FREETZ_PACKAGE_BIND_NSLOOKUP
 	bool "nslookup (9.7 kb)"
 	default n
 	help
