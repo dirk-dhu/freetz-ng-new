@@ -64,7 +64,7 @@ Index: [A](#a) - [B](#b) - [C](#c) - [D](#d) - [E](#e) - [F](#f) - [G](#g) - [H]
     This package adds support for the AVM BlueFRITZ! USB stick.
 
   * **[BIND 9.11.37/9.16.45](../../docs/make/bind.md)<a id='bind'></a>**<br>
-    BIND is an implementation of the Domain Name System (DNS) protocols. The name BIND stands for "Berkeley Internet Name Daemon". You have to provide the config and needed zone files yourself.
+    BIND is a suite of software for interacting with the Domain Name System (DNS). The name BIND stands for "Berkeley Internet Name Daemon".
      - [named.conf](../../docs/make/bind.md#namedconf)
 
   * **[Bip 0.9.2](../../docs/make/bip.md)<a id='bip'></a>**<br>
