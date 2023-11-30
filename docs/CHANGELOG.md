@@ -47,7 +47,7 @@ Latest changes
 ### devel
 
  - Host tools:
-   * cmake 3.27.8
+   * cmake 3.27.9
    * fakeroot 1.32.2
    * meson 1.3.0
    * precompiled host-tools 2023-11-13
