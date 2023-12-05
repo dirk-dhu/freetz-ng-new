@@ -50,7 +50,7 @@ Latest changes
    * cmake 3.27.9
    * fakeroot 1.32.2
    * meson 1.3.0
-   * precompiled host-tools 2023-11-13
+   * precompiled host-tools 2023-12-05
    * python 3.11.7
 
  - Packages:
