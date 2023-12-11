@@ -63,6 +63,7 @@ Latest changes
    * pyLoad 0.4.20/78162d75
    * SQLite 3.44.2
    * Tor 0.4.8.9
+   * Transmission 3.00/4.0.5
    * Unbound 1.19.0
    * xsltproc 1.1.39
 
