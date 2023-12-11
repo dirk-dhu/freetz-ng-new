@@ -56,6 +56,7 @@ Latest changes
  - Packages:
    * BIND 9.11.37/9.16.45
    * CCID 1.5.4
+   * Curl 8.5.0
    * Git 2.43.0
    * Lua 5.1.5/5.4.6
    * OpenVPN 2.4.12/2.5.9/2.6.8

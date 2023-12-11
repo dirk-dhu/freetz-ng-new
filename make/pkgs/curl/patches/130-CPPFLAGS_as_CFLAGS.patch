@@ -20,7 +20,7 @@
          ;;
        -rpath*)
          xc_bad_var_cflags=yes
-@@ -45718,13 +45721,16 @@
+@@ -46021,13 +46024,16 @@
    for xc_word in $CFLAGS; do
      case "$xc_word" in
        -D*)
