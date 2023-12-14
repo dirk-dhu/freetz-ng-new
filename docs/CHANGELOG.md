@@ -55,6 +55,7 @@ Latest changes
 
  - Packages:
    * BIND 9.11.37/9.16.45
+   * CA-bundle 2023-12-12
    * CCID 1.5.4
    * Curl 8.5.0
    * Git 2.43.0
