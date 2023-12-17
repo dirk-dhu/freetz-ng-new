@@ -98,6 +98,23 @@ _CONFIG_EMMC="$(echo $CONFIG_ROMSIZE | sed -ne   "s/^.*emmc_size=\([0-9BKMG]*\).
 [ $(which run_clock) ] && run_clock=$(run_clock | sed 's/.*: //')
 reboot_status="$(cat /proc/sys/urlader/reboot_status 2>/dev/null)"
 
+if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies ]; then
+	_CPU_FQZ="$(sed 's!...[ $]! MHz !g;s! *$!!;;s!MHz !MHz, !g' /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies)"
+elif [ -e /proc/clocks ]; then
+	_PCLOCKS="$(sed 's/ [ ]*/ /g;s/^Clocks: //;s/^[A-Z0-9 ]*Clock: //;s/\([A-Za-z0-9]*\):[ ]*\([0-9,.]*\)[ ]*\([a-zA-Z]*\) */<dt>\1<\/dt><dd>\2 \3<\/dd>/g;' /proc/clocks 2>/dev/null)"
+else
+	_CPU_FRQ="$(sed -n 's/^cpufrequency\t//p' /proc/sys/urlader/environment | awk '{ printf "%.0f", $1 /1000/1000 }')"
+	_SYS_FRQ="$(sed -n 's/^sysfrequency\t//p' /proc/sys/urlader/environment | awk '{ printf "%.0f", $1 /1000/1000 }')"
+	[ -z "$_CPU_FRQ" ] && _CPU_FRQ="$(sed 's/000$//' /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)"
+	[ -z "$_SYS_FRQ" ] && _SYS_FRQ="$(sed 's/000$//' /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_max_freq)"
+fi
+
+_CPU_TMP="$(sed -rn 's!^Channel .: ([0-9.]*) .*!\1!p' /proc/chip_temperature 2>/dev/null | sort -r | head -n1)"
+[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/^../&./' /sys/devices/virtual/thermal/thermal_zone0/temp 2>/dev/null)"
+[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/ .*//g' /proc/avm/powermanagmentressourceinfo/powerdevice_temperature | grep -v '^0$' 2>/dev/null)"
+[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed -rn 's!^(CPU|cpu-thermal) *: ([0-9.]*) .*!\2!p' /proc/avm/temp_sensors 2>/dev/null)"
+
+
 sec_begin "$(lang de:"Hardware" en:"Hardware")"
 
 echo "<dl class='info'>"
@@ -124,37 +141,30 @@ echo "<dl class='info'>"
 [ -n "$cpu_cores"  ] && echo "<dt>CPU$(lang de:"-Kerne" en:" cores" )</dt><dd>$cpu_cores</dd>"
 echo "</dl>"
 
-if [ -e /proc/clocks -o -e /proc/sys/urlader/environment ]; then
+if [ -n "$_CPU_FQZ$_PCLOCKS$_CPU_FRQ$_SYS_FRQ" ]; then
 	echo "<dl class='info'>"
-	echo "<dt>$(lang de:"Taktfrequenzen" en:"Clock frequencies")</dt><dl>"
-	if [ -e /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies ]; then
-		_CPU_FQZ="$(sed 's!...[ $]! MHz !g;s! *$!!;;s!MHz !MHz, !g' /sys/devices/system/cpu/cpu0/cpufreq/scaling_available_frequencies)"
-		echo "<dt>$(lang de:"Verf&uuml;gbar" en:"Available")</dt><dd>$_CPU_FQZ</dd>"
-		echo "</dl>"
-		echo "</dl>"
-		echo "<dl class='info'>"
-		echo "<dt>$(lang de:"Prozessor" en:"Processor")</dt><dl>"
-		_CPU_TMP="$(sed -rn 's!^Channel .: ([0-9.]*) .*!\1!p' /proc/chip_temperature 2>/dev/null | sort -r | head -n1)"
-		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/^../&./' /sys/devices/virtual/thermal/thermal_zone0/temp 2>/dev/null)"
-		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed 's/ .*//g' /proc/avm/powermanagmentressourceinfo/powerdevice_temperature | grep -v '^0$' 2>/dev/null)"
-		[ -z "$_CPU_TMP" ] && _CPU_TMP="$(sed -rn 's!^cpu-thermal *: ([0-9.]*) .*!\1!p' /proc/avm/temp_sensors 2>/dev/null)"
-		[ -n "$_CPU_TMP" ] && echo "<dt>$(lang de:"Temperatur" en:"Temperature")</dt><dd>${_CPU_TMP%%.} $(echo -e '\260')C</dd>"
-	elif [ -e /proc/clocks ]; then
-		sed 's/ [ ]*/ /g;s/^Clocks: //;s/^[A-Z0-9 ]*Clock: //;s/\([A-Za-z0-9]*\):[ ]*\([0-9,.]*\)[ ]*\([a-zA-Z]*\) */<dt>\1<\/dt><dd>\2 \3<\/dd>/g;' /proc/clocks 2>/dev/null
-	else
-		_CPU_FRQ="$(sed -n 's/^cpufrequency\t//p' /proc/sys/urlader/environment | awk '{ printf "%.0f", $1 /1000/1000 }')"
-		_SYS_FRQ="$(sed -n 's/^sysfrequency\t//p' /proc/sys/urlader/environment | awk '{ printf "%.0f", $1 /1000/1000 }')"
-		[ -z "$_CPU_FRQ" ] && _CPU_FRQ="$(sed 's/000$//' /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq)"
-		[ -z "$_SYS_FRQ" ] && _SYS_FRQ="$(sed 's/000$//' /sys/devices/system/cpu/cpu1/cpufreq/cpuinfo_max_freq)"
-		[ -n "$_CPU_FRQ" ] && echo "<dt>CPU</dt><dd>$_CPU_FRQ MHz</dd>"
-		[ -n "$_SYS_FRQ" ] && echo "<dt>SYSTEM</dt><dd>$_SYS_FRQ MHz</dd>"
-	fi
+	echo "<dt>$(lang de:"Taktfrequenzen" en:"Clock frequencies")</dt>"
+	echo "<dl>"
+	[ -n "$_CPU_FQZ" ] && echo "<dt>$(lang de:"Verf&uuml;gbar" en:"Available")</dt><dd>$_CPU_FQZ</dd>"
+	[ -n "$_PCLOCKS" ] && echo "$_PCLOCKS"
+	[ -n "$_CPU_FRQ" ] && echo "<dt>CPU</dt><dd>$_CPU_FRQ MHz</dd>"
+	[ -n "$_SYS_FRQ" ] && echo "<dt>SYSTEM</dt><dd>$_SYS_FRQ MHz</dd>"
+	echo "</dl>"
+	echo "</dl>"
+fi
+
+if [ -n "$_CPU_TMP$cpu_bogom" ]; then
+	echo "<dl class='info'>"
+	echo "<dt>$(lang de:"Prozessor" en:"Processor")</dt>"
+	echo "<dl>"
+	[ -n "$_CPU_TMP" ] && echo "<dt>$(lang de:"Temperatur" en:"Temperature")</dt><dd>${_CPU_TMP%%.} $(echo -e '\260')C</dd>"
 	[ -n "$cpu_bogom" ] && echo "<dt>BogoMIPS</dt><dd>$cpu_bogom</dd>"
 	echo "</dl>"
 	echo "</dl>"
 fi
 
 sec_end
+
 
 sec_begin "$(lang de:"Bootenvironment" en:"Boot environment")"
 
