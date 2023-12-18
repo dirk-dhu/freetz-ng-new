@@ -56,7 +56,7 @@
  #endif
 --- ldso/ldso/ldso.c
 +++ ldso/ldso/ldso.c
-@@ -244,7 +244,7 @@
+@@ -245,7 +245,7 @@
  				PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS | _MAP_UNINITIALIZED, -1, 0);
  		if (_dl_mmap_check_error(_dl_mmap_zero)) {
  			_dl_dprintf(2, "%s: mmap of a spare page failed!\n", _dl_progname);

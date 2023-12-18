@@ -46,6 +46,9 @@ Latest changes
 
 ### devel
 
+ - Build system:
+   * uClibc 0.9.28/0.9.29/0.9.32.1/0.9.33.2/1.0.14/1.0.45
+
  - Host tools:
    * cmake 3.27.9
    * fakeroot 1.32.2

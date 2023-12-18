@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# uClibc-ng 1.0.44 C Library Configuration
+# uClibc-ng 1.0.45 C Library Configuration
 #
 # TARGET_aarch64 is not set
 # TARGET_alpha is not set
@@ -74,6 +74,7 @@ HAVE_DOT_CONFIG=y
 DOPIC=y
 # STATIC_PIE is not set
 ARCH_HAS_UCONTEXT=y
+HAVE_LDSO=y
 HAVE_SHARED=y
 # FORCE_SHAREABLE_TEXT_SEGMENTS is not set
 LDSO_LDD_SUPPORT=y
@@ -96,6 +97,7 @@ UCLIBC_HAS_THREADS_NATIVE=y
 UCLIBC_HAS_THREADS=y
 UCLIBC_HAS_TLS=y
 PTHREADS_DEBUG_SUPPORT=y
+PTHREADS_STACK_DEFAULT_SIZE=2097152
 UCLIBC_HAS_SYSLOG=y
 UCLIBC_HAS_LFS=y
 # MALLOC is not set

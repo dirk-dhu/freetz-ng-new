@@ -1,6 +1,6 @@
 --- Rules.mak
 +++ Rules.mak
-@@ -334,8 +334,10 @@
+@@ -336,8 +336,10 @@
  
  # Some nice CPU specific optimizations
  ifeq ($(TARGET_ARCH),i386)
