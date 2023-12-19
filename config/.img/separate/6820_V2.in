@@ -102,9 +102,6 @@ config FREETZ_AVM_HAS_VPN
 config FREETZ_AVM_HAS_WLAN
 	def_bool y
 
-config FREETZ_AVM_HAS_ZRAM_MODULE
-	def_bool y
-
 config FREETZ_AVM_PROP_ARCH_BE
 	def_bool y
 
