@@ -54,6 +54,7 @@ Latest changes
    * fakeroot 1.32.2
    * meson 1.3.0
    * precompiled host-tools 2023-12-05
+   * precompiled toolchains r22972
    * python 3.11.7
 
  - Packages:
