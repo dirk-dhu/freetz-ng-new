@@ -6,6 +6,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
 ### Getestete Distributionen
  - [Fedora](#fedora)
  - [Debian](#debian)
+ - [Devuan](#devuan)
  - [Ubuntu](#ubuntu)
  - [Kali](#kali)
  - sonst keine
@@ -140,6 +141,10 @@ sudo apt -y install \
   libstring-crc32-perl libtool-bin libusb-dev libxml2-dev libzstd-dev make netcat patch perl pkg-config pv rsync \
   sharutils sqlite3 subversion sudo texinfo tofrodos unar unzip uuid-dev wget zlib1g-dev
 ```
+
+
+### Devuan
+Devuan wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Debian vorgeschlagen werden.
 
 
 ### Ubuntu
