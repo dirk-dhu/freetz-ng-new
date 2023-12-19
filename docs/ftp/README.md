@@ -230,7 +230,7 @@ Content: [FritzBox](#fritzbox) - [FritzPowerline](#fritzpowerline) - [FritzWlan]
    - deutschland: [FRITZ.Repeater_600v2-07.57.image](https://download.avm.de/fritzwlan/fritzrepeater-600v2/deutschland/fritz.os/FRITZ.Repeater_600v2-07.57.image)
    - other: [FRITZ.Repeater_600v2-07.57.image](https://download.avm.de/fritzwlan/fritzrepeater-600v2/other/fritz.os/FRITZ.Repeater_600v2-07.57.image)
  * fritzsmart-gateway/
-   - deutschland: [FRITZ.Smart_Gateway-07.58-Release.image](https://download.avm.de/fritzwlan/fritzsmart-gateway/deutschland/fritz.os/FRITZ.Smart_Gateway-07.58-Release.image)
+   - deutschland: [FRITZ.Smart_Gateway-07.59-Release.image](https://download.avm.de/fritzwlan/fritzsmart-gateway/deutschland/fritz.os/FRITZ.Smart_Gateway-07.59-Release.image)
  * fritzwlan-repeater-1160/
    - deutschland: [FRITZ.Box_WLAN_Repeater_1160-07.15.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1160/deutschland/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.15.image)
    - other: [FRITZ.Box_WLAN_Repeater_1160-07.15.image](https://download.avm.de/fritzwlan/fritzwlan-repeater-1160/other/fritz.os/FRITZ.Box_WLAN_Repeater_1160-07.15.image)
