@@ -1,6 +1,6 @@
 
 config FREETZ_DL_OVERRIDE
-	bool "Override firmware options" if FREETZ_SHOW_EXPERT
+	bool "Override firmware options" if FREETZ_SHOW_EXPERT && !FREETZ_TYPE_FIRMWARE_DETECT_LATEST
 	default n
 	help
 		Enable this to override automatically generated firmware entries.
