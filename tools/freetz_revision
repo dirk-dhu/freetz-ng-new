@@ -43,7 +43,7 @@ fi
 R=" ${RC:+$RC-}${RH:-UNKNOWN}${RB:+ $RB}${RD:+ $RD}"
 [ "${1:0:1}" == "f" ] && R="${R// /-}"
 case "${1}" in
-	s|short)	echo "${RH:-INVALID}${RC//[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/}-${RH:-UNKNOWN}" ;;
+	s|short)	[ "$RC" == "INVALID" ] && echo "$RC" ; echo "${RC//[ABCDEFGHIJKLMNOPQRSTUVWXYZ]/}-${RH:-UNKNOWN}" ;;
 	m|make)		echo "Freetz-NG${R#-}" ;;
 #	f|fwmod)	;&
 	*)		echo "$(cat $DIR/.version)${R}" ;;
