@@ -6,6 +6,7 @@ Mit `tools/prerequisites` können die Pakete auch installiert werden.
 ### Getestete Distributionen
  - [Fedora](#fedora)
  - [Debian](#debian)
+ - [Devuan](#devuan)
  - [Ubuntu](#ubuntu)
  - [Kali](#kali)
  - sonst keine
@@ -94,6 +95,10 @@ sudo apt -y install %%Debian12%%
 ```
 sudo apt -y install %%Debian11%%
 ```
+
+
+### Devuan
+Devuan wurde schon erfolgreich zum Bauen benutzt. Einfach die Pakete installieren, die für Debian vorgeschlagen werden.
 
 
 ### Ubuntu
