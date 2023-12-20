@@ -851,6 +851,11 @@ determine_() {
 	[ "$X" != "%" ] && X="available" && in_b "FREETZ_AVM_HAS_RAMZSWAP_MODULE"
 	[ $DOSHOW -ge 2 ] && outp "ramzswap.ko" "$X"
 
+	#ZRAM
+	X="%$(find $unpacked/lib/modules/ -type f -name zram.ko)"
+	[ "$X" != "%" ] && X="available" && in_b "FREETZ_AVM_HAS_ZRAM_MODULE"
+	[ $DOSHOW -ge 2 ] && outp "zram.ko" "$X"
+
 	#ISOFS
 	X="%$(find $unpacked/lib/modules/ -type f -name isofs.ko)"
 	[ "$X" != "%" ] && X="available" && in_b "FREETZ_AVM_HAS_ISOFS_MODULE"
