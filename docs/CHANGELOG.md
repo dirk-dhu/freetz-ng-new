@@ -64,6 +64,7 @@ Latest changes
    * Curl 8.5.0
    * Git 2.43.0
    * Lua 5.1.5/5.4.6
+   * minicom 2.9
    * OpenVPN 2.4.12/2.5.9/2.6.8
    * PCSC-lite 2.0.1
    * pyLoad 0.4.20/78162d75
