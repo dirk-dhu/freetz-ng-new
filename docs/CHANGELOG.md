@@ -52,7 +52,7 @@ Latest changes
  - Host tools:
    * cmake 3.27.9
    * fakeroot 1.32.2
-   * meson 1.3.0
+   * meson 1.3.1
    * precompiled host-tools 2023-12-05
    * precompiled toolchains r22972
    * python 3.11.7
