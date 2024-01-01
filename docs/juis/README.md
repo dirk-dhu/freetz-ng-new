@@ -87,6 +87,8 @@ Content: [FOS-Release](#fos-release) - [FOS-Labor](#fos-labor) - [FOS-Inhaus](#f
  - HWR 257: [FRITZ.Box_5530_Fiber-07.70-109881-LabBETA.image](http://download.avm.de/labor/GoFiber23/5530Fiber/FRITZ.Box_5530_Fiber-07.70-109881-LabBETA.image)
  - HWR 259: [FRITZ.Box_7590_AX-07.70-109882-LabBETA.image](http://download.avm.de/labor/GoFiber23/7590AX/FRITZ.Box_7590_AX-07.70-109882-LabBETA.image)
  - HWR 260: [FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image](http://download.avm.de/labor/MOVE21/7583VDSL/FRITZ.Box_7583_VDSL-07.39-103078-LabBETA.image)
+ - HWR 261: [FRITZ.Box_4060-07.57-109903-Release.image](http://download.avm.de/firmware/WWA/FRITZ.Box_4060-07.57-109903-Release.image)
+ - HWR 267: [FRITZ.Box_6690_Cable-07.57.image](http://download.avm.de/fritzbox/fritzbox-6690-cable/deutschland/fritz.os/FRITZ.Box_6690_Cable-07.57.image)
  - HWR 272: [FRITZ.Box_5590_Fiber-07.70-109883-LabBETA.image](http://download.avm.de/labor/GoFiber23/5590Fiber/FRITZ.Box_5590_Fiber-07.70-109883-LabBETA.image)
 
 ### FOS-Inhaus
