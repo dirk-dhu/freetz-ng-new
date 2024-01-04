@@ -1,6 +1,6 @@
 --- configure
 +++ configure
-@@ -7196,6 +7196,7 @@
+@@ -8705,6 +8705,7 @@
  fi
  rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
  } # clang
@@ -8,7 +8,7 @@
  	{
  	{ printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking if $LD supports link flag -Wl,-z,retpolineplt" >&5
  printf %s "checking if $LD supports link flag -Wl,-z,retpolineplt... " >&6; }
-@@ -7243,6 +7244,7 @@
+@@ -8844,6 +8845,7 @@
  rm -f core conftest.err conftest.$ac_objext conftest.beam \
      conftest$ac_exeext conftest.$ac_ext
  }
