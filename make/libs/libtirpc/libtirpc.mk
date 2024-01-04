@@ -1,7 +1,7 @@
-$(call PKG_INIT_LIB, 1.3.3)
+$(call PKG_INIT_LIB, 1.3.4)
 $(PKG)_LIB_VERSION:=3.0.0
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.bz2
-$(PKG)_HASH:=6474e98851d9f6f33871957ddee9714fdcd9d8a5ee9abb5a98d63ea2e60e12f3
+$(PKG)_HASH:=1e0b0c7231c5fa122e06c0609a76723664d068b0dba3b8219b63e6340b347860
 $(PKG)_SITE:=@SF/libtirpc
 ### WEBSITE:=https://sourceforge.net/projects/libtirpc/
 ### CHANGES:=http://git.linux-nfs.org/?p=steved/libtirpc.git;a=shortlog;h=refs/heads/master

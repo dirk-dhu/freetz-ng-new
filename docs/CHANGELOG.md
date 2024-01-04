@@ -80,6 +80,7 @@ Latest changes
    * cairo 1.18.0
    * harfbuzz 8.3.0
    * libmaxminddb 1.8.0
+   * libtirpc 1.3.4
    * libuv 1.44.2/1.47.0
    * libxml2 2.11.5
    * mbedTLS 2.7.19/2.28.6
