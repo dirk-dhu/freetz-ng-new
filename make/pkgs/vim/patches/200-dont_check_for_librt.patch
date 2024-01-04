@@ -1,6 +1,6 @@
 --- src/auto/configure
 +++ src/auto/configure
-@@ -14117,6 +14117,7 @@
+@@ -14179,6 +14179,7 @@
  fi
  rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
  
@@ -8,7 +8,7 @@
  { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for timer_create without -lrt" >&5
  printf %s "checking for timer_create without -lrt... " >&6; }
  if test ${vim_cv_timer_create+y}
-@@ -14243,6 +14244,7 @@
+@@ -14305,6 +14306,7 @@
  
    LIBS="$LIBS -lrt"
  fi

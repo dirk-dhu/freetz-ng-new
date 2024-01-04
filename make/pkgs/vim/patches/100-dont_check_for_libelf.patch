@@ -1,6 +1,6 @@
 --- src/auto/configure
 +++ src/auto/configure
-@@ -11338,6 +11338,7 @@
+@@ -11400,6 +11400,7 @@
  fi
  rm -f core conftest.err conftest.$ac_objext conftest.beam conftest.$ac_ext
  
@@ -8,7 +8,7 @@
  ac_fn_c_check_header_compile "$LINENO" "elf.h" "ac_cv_header_elf_h" "$ac_includes_default"
  if test "x$ac_cv_header_elf_h" = xyes
  then :
-@@ -11386,6 +11387,7 @@
+@@ -11448,6 +11449,7 @@
  fi
  
  fi

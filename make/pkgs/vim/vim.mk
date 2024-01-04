@@ -1,6 +1,6 @@
-$(call PKG_INIT_BIN, v9.0.1872)
+$(call PKG_INIT_BIN, v9.1.0000)
 $(PKG)_SOURCE:=$(pkg)-$($(PKG)_VERSION).tar.xz
-$(PKG)_HASH:=9cac2b8c73172d8c4524c589a227c221938678ee6cc7b555b1fb401965cfe0ff
+$(PKG)_HASH:=b55a188697ace924340a71ffffccad460a9e1f8ebae5d2df9280a5eea4468bb9
 $(PKG)_SITE:=git@https://github.com/vim/vim.git
 ### WEBSITE:=https://www.vim.org/
 ### MANPAGE:=https://www.vim.org/docs.php
